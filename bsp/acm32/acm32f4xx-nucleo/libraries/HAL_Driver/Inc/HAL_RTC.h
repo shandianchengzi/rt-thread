@@ -21,7 +21,7 @@
 #define RTC_IE_STP2FIE       (BIT15)
 #define RTC_IE_STP1RIE       (BIT14)
 #define RTC_IE_STP1FIE       (BIT13)
-#define RTC_IE_ADJ32         (BIT12)    
+#define RTC_IE_ADJ32         (BIT12)
 #define RTC_IE_ALM           (BIT11)
 #define RTC_IE_1KHZ          (BIT10)
 #define RTC_IE_256HZ         (BIT9)
@@ -40,7 +40,7 @@
 #define RTC_SR_STP2FIE       (BIT15)
 #define RTC_SR_STP1RIE       (BIT14)
 #define RTC_SR_STP1FIE       (BIT13)
-#define RTC_SR_ADJ32         (BIT12)    
+#define RTC_SR_ADJ32         (BIT12)
 #define RTC_SR_ALM           (BIT11)
 #define RTC_SR_1KHZ          (BIT10)
 #define RTC_SR_256HZ         (BIT9)
@@ -311,11 +311,11 @@ typedef enum
 {
     RTC_WAKEUP_RTC_INT = 0,
     RTC_WAKEUP_WKUP1  = 0x00010000,  // PA0
-    RTC_WAKEUP_WKUP2  = 0x00020000,  // PC13   
-    RTC_WAKEUP_WKUP3  = 0x00040000,  // PA2 
-    RTC_WAKEUP_WKUP4  = 0x00080000,  // PC5  
-    RTC_WAKEUP_WKUP5  = 0x00100000,  // PB5  
-    RTC_WAKEUP_WKUP6  = 0x00200000,  // PB15  
+    RTC_WAKEUP_WKUP2  = 0x00020000,  // PC13
+    RTC_WAKEUP_WKUP3  = 0x00040000,  // PA2
+    RTC_WAKEUP_WKUP4  = 0x00080000,  // PC5
+    RTC_WAKEUP_WKUP5  = 0x00100000,  // PB5
+    RTC_WAKEUP_WKUP6  = 0x00200000,  // PB15
     RTC_WAKEUP_STAMP2 = (RTC_IE_STP2RIE | RTC_IE_STP2FIE),
     RTC_WAKEUP_STAMP1 = (RTC_IE_STP1RIE | RTC_IE_STP1FIE),
     RTC_WAKEUP_32S    = RTC_IE_ADJ32,
@@ -324,10 +324,10 @@ typedef enum
     RTC_WAKEUP_MIN    = RTC_IE_MIN,
     RTC_WAKEUP_HOUR   = RTC_IE_HOUR,
     RTC_WAKEUP_DATE   = RTC_IE_DATE,
-}enum_WKUP_t; 
+}enum_WKUP_t;
 
-#define STANDBY_WAKEUP_RISING     0  
-#define STANDBY_WAKEUP_FALLING    1     
+#define STANDBY_WAKEUP_RISING     0
+#define STANDBY_WAKEUP_FALLING    1
 
 /**
   * @}
@@ -355,13 +355,13 @@ typedef enum
   */
 typedef struct
 {
-    uint32_t u32_ClockSource;           /*!< The RTC Clock Source to be configured. 
+    uint32_t u32_ClockSource;           /*!< The RTC Clock Source to be configured.
                                              This parameter can be a value of @ref ClockSource */
 
-    uint32_t u32_Compensation;          /*!< The RTC Clock Compensation to be configured. 
+    uint32_t u32_Compensation;          /*!< The RTC Clock Compensation to be configured.
                                              This parameter can be a value of @ref Clock_Compensation */
 
-    uint32_t u32_CompensationValue;     /*!< The RTC Clock Compensation Value to be configured. 
+    uint32_t u32_CompensationValue;     /*!< The RTC Clock Compensation Value to be configured.
                                              This parameter must be a number between Min_Data = 0x000 and Max_Data = 0x1FF */
 }RTC_ConfigTypeDef;
 
@@ -383,7 +383,7 @@ typedef struct
     uint8_t u8_WeekDay;  /*!< Specifies the RTC Date WeekDay.
                               This parameter can be a value of @ref RTC_WeekDay_Definitions */
 }RTC_DateTypeDef;
-/* Attention: Year¡¢Month¡¢Date¡¢Week use BCD code */
+/* Attention: Yearã€Monthã€Dateã€Week use BCD code */
 
 
 /**
@@ -400,7 +400,7 @@ typedef struct
     uint8_t u8_Seconds;     /*!< Specifies the RTC Time Seconds.
                                  This parameter must be a number between Min_Data = 0x00 and Max_Data = 0x59 */
 }RTC_TimeTypeDef;
-/* Attention: Hour¡¢Minute¡¢Second use BCD code */
+/* Attention: Hourã€Minuteã€Second use BCD code */
 
 
 /**
@@ -414,21 +414,21 @@ typedef struct
     uint32_t u32_AlarmInterrupt;    /*!< Specifies the RTC alarm interrupt Enable or Disable.
                                          This parameter can be a value of @ref RTC_AlarmInterrupt */
 
-    uint32_t u32_DayMask;           /*!< Specifies the RTC alarm Day/Week Mask. 
+    uint32_t u32_DayMask;           /*!< Specifies the RTC alarm Day/Week Mask.
                                          This parameter can be a value of @ref RTC_DayMask */
-    
-    uint32_t u32_HourMask;          /*!< Specifies the RTC alarm Hour Mask. 
+
+    uint32_t u32_HourMask;          /*!< Specifies the RTC alarm Hour Mask.
                                          This parameter can be a value of @ref RTC_HourMask */
-    
-    uint32_t u32_MinMask;           /*!< Specifies the RTC alarm Min Mask. 
+
+    uint32_t u32_MinMask;           /*!< Specifies the RTC alarm Min Mask.
                                          This parameter can be a value of @ref RTC_MinMask */
-    
+
     uint32_t u32_AlarmWeek;         /*!< Specifies the RTC alarm week select(Select WeekMode this parameter is valid).
                                          This parameter can be a value of @ref RTC_Alarm_WeekSelect */
-    
+
     uint32_t u32_AlarmDay;          /*!< Specifies the RTC alarm day  select(Select DayMode this parameter is valid).
                                          This parameter must be a number between Min_Data = 0x01 and Max_Data = 0x31 */
-    
+
     uint32_t u32_Hours;             /*!< Specifies the RTC alarm Hour.
                                          This parameter must be a number between Min_Data = 0x00 and Max_Data = 0x23 */
 
@@ -443,7 +443,7 @@ typedef struct
 /**
   * @brief  RTC Temper structure definition
   */
-typedef struct 
+typedef struct
 {
     uint32_t u32_TemperEdge;      /*!< Specifies the RTC Temper edge select.
                                        This parameter can be a value of @ref RTC_Temper_edge */
@@ -459,43 +459,43 @@ typedef struct
 }RTC_TemperTypeDef;
 
 
-/** @brief  PC13 function select 
+/** @brief  PC13 function select
   * @param  __FUNC__: PC13 function select.
-  *         This parameter can be 0: GPIO£¬1£ºRTC Fout£¬2£ºRTC tamper 3£ºPC13 Value
+  *         This parameter can be 0: GPIOï¼Œ1ï¼šRTC Foutï¼Œ2ï¼šRTC tamper 3ï¼šPC13 Value
   */
 #define __HAL_RTC_PC13_SEL(__FUNC__)    (PMU->IOSEL |= (PMU->IOSEL & ~(0x3)) | (__FUNC__))
 
-/** @brief  PC14 function select 
+/** @brief  PC14 function select
   * @param  __FUNC__: PC14 function select.
-  *         This parameter can be 0: GPIO£¬1£ºPC14 Value
+  *         This parameter can be 0: GPIOï¼Œ1ï¼šPC14 Value
   */
 #define __HAL_RTC_PC14_SEL(__FUNC__)    (PMU->IOSEL |= (PMU->IOSEL & ~(0x3 << 3)) | (__FUNC__ << 3))
 
-/** @brief  PC15 function select 
+/** @brief  PC15 function select
   * @param  __FUNC__: PC15 function select.
-  *         This parameter can be 0: GPIO£¬1£ºPC15 Value
+  *         This parameter can be 0: GPIOï¼Œ1ï¼šPC15 Value
   */
 #define __HAL_RTC_PC15_SEL(__FUNC__)    (PMU->IOSEL |= (PMU->IOSEL & ~(0x3 << 5)) | (__FUNC__ << 5))
 
-/** @brief  PC13 Value set 
+/** @brief  PC13 Value set
   * @param  __FUNC__: PC13 Value set.
-  *         This parameter can be 0: set£¬1£ºclaer
+  *         This parameter can be 0: setï¼Œ1ï¼šclaer
   */
 #define __HAL_RTC_PC13_VALUE(__VALUE__)    (PMU->IOSEL |= (PMU->IOSEL & ~(1 << 8)) | (__VALUE__ << 8))
 
-/** @brief  PC14 Value set 
+/** @brief  PC14 Value set
   * @param  __FUNC__: PC14 Value set.
-  *         This parameter can be 0: set£¬1£ºclaer
+  *         This parameter can be 0: setï¼Œ1ï¼šclaer
   */
 #define __HAL_RTC_PC14_VALUE(__VALUE__)    (PMU->IOSEL |= (PMU->IOSEL & ~(1 << 9)) | (__VALUE__ << 9))
 
-/** @brief  PC15 Value set 
+/** @brief  PC15 Value set
   * @param  __FUNC__: PC15 Value set.
-  *         This parameter can be 0: set£¬1£ºclaer
+  *         This parameter can be 0: setï¼Œ1ï¼šclaer
   */
 #define __HAL_RTC_PC15_VALUE(__VALUE__)    (PMU->IOSEL |= (PMU->IOSEL & ~(1 << 10)) | (__VALUE__ << 10))
 
-/* @brief  PC13¡¢PC14¡¢PC15 pull up or pull down */
+/* @brief  PC13ã€PC14ã€PC15 pull up or pull down */
 #define __HAL_RTC_PC13_PULL_UP_ENABLE()       (PMU->IOCR |=  BIT0)
 #define __HAL_RTC_PC13_PULL_UP_DISABLE()      (PMU->IOCR &= ~BIT0)
 #define __HAL_RTC_PC13_PULL_DOWN_ENABLE()     (PMU->IOCR |=  BIT1)
@@ -511,7 +511,7 @@ typedef struct
 #define __HAL_RTC_PC15_PULL_DOWN_ENABLE()     (PMU->IOCR |=  BIT17)
 #define __HAL_RTC_PC15_PULL_DOWN_DISABLE()    (PMU->IOCR &= ~BIT17)
 
-/* @brief  PC13¡¢PC14¡¢PC15 digit or analog */
+/* @brief  PC13ã€PC14ã€PC15 digit or analog */
 #define __HAL_RTC_PC13_ANALOG()    (PMU->IOCR |=  BIT6)
 #define __HAL_RTC_PC13_DIGIT()     (PMU->IOCR &= ~BIT6)
 
@@ -571,7 +571,7 @@ typedef struct
 
 #define IS_RTC_ALARM_DAY_MASK(__MASKD__)     (((__MASKD__) == RTC_ALARM_DAY_MASK_ENABLE) || \
                                               ((__MASKD__) == RTC_ALARM_DAY_MASK_DISABLE))
-                                              
+
 #define IS_RTC_ALARM_HOUR_MASK(__MASKH__)    (((__MASKH__) == RTC_ALARM_HOUR_MASK_ENABLE) || \
                                               ((__MASKH__) == RTC_ALARM_HOUR_MASK_DISABLE))
 
@@ -607,35 +607,35 @@ typedef struct
   * @}
   */
 
-/* RTC stamp1 interrupt enable¡¢disable */
+/* RTC stamp1 interrupt enableã€disable */
 #define __HAL_RTC_ENABLE_STAMP1_IT         (RTC->IE |= (RTC_IE_STP1RIE | RTC_IE_STP1FIE))
 #define __HAL_RTC_DISABLE_STAMP1_IT        (RTC->IE &= ~(RTC_IE_STP1RIE | RTC_IE_STP1FIE))
 
-/* RTC stamp2 interrupt enable¡¢disable */
+/* RTC stamp2 interrupt enableã€disable */
 #define __HAL_RTC_ENABLE_STAMP2_IT         (RTC->IE |= (RTC_IE_STP2RIE | RTC_IE_STP2FIE))
 #define __HAL_RTC_DISABLE_STAMP2_IT        (RTC->IE &= ~(RTC_IE_STP2RIE | RTC_IE_STP2FIE))
 
-/* RTC 32S interrupt enable¡¢disable */
+/* RTC 32S interrupt enableã€disable */
 #define __HAL_RTC_ENABLE_32S_IT            (RTC->IE |= RTC_IE_ADJ32)
 #define __HAL_RTC_DISABLE_32S_IT           (RTC->IE &= ~RTC_IE_ADJ32)
 
-/* RTC alarm interrupt enable¡¢disable */
+/* RTC alarm interrupt enableã€disable */
 #define __HAL_RTC_ENABLE_ALM_IT            (RTC->IE |= RTC_IE_ALM)
 #define __HAL_RTC_DISABLE_ALM_IT           (RTC->IE &= RTC_IE_ALM)
 
-/* RTC sec interrupt enable¡¢disable */
+/* RTC sec interrupt enableã€disable */
 #define __HAL_RTC_ENABLE_SEC_IT            (RTC->IE |= RTC_IE_SEC)
 #define __HAL_RTC_DISABLE_SEC_IT           (RTC->IE &= ~RTC_IE_SEC)
 
-/* RTC Minutes interrupt enable¡¢disable */
+/* RTC Minutes interrupt enableã€disable */
 #define __HAL_RTC_ENABLE_MIN_IT            (RTC->IE |= RTC_IE_MIN)
 #define __HAL_RTC_DISABLE_MIN_IT           (RTC->IE &= ~RTC_IE_MIN)
 
-/* RTC Hour interrupt enable¡¢disable */
+/* RTC Hour interrupt enableã€disable */
 #define __HAL_RTC_ENABLE_HOUR_IT           (RTC->IE |= RTC_IE_HOUR)
 #define __HAL_RTC_DISABLE_HOUR_IT          (RTC->IE &= ~RTC_IE_HOUR)
 
-/* RTC Date interrupt enable¡¢disable */
+/* RTC Date interrupt enableã€disable */
 #define __HAL_RTC_ENABLE_DATE_IT           (RTC->IE |= RTC_IE_DATE)
 #define __HAL_RTC_DISABLE_DATE_IT          (RTC->IE &= ~RTC_IE_DATE)
 
