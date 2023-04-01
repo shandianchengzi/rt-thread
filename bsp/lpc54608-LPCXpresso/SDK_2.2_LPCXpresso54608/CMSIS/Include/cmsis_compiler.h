@@ -120,11 +120,11 @@
     #define __UNALIGNED_UINT32_READ(addr)          (((const struct T_UINT32_READ *)(const void *)(addr))->v)
   #endif
   #ifndef   __ALIGNED
-    #warning No compiler specific solution for __ALIGNED. __ALIGNED is ignored.
+    #warning ""
     #define __ALIGNED(x)
   #endif
   #ifndef   __RESTRICT
-    #warning No compiler specific solution for __RESTRICT. __RESTRICT is ignored.
+    #warning ""
     #define __RESTRICT
   #endif
 
@@ -208,7 +208,7 @@
     #define __ALIGNED(x)                           __attribute__((aligned(x)))
   #endif
   #ifndef   __RESTRICT
-    #warning No compiler specific solution for __RESTRICT. __RESTRICT is ignored.
+    #warning ""
     #define __RESTRICT
   #endif
 
@@ -274,7 +274,7 @@
     #define __ALIGNED(x)              __align(x)
   #endif
   #ifndef   __RESTRICT
-    #warning No compiler specific solution for __RESTRICT. __RESTRICT is ignored.
+    #warning ""
     #define __RESTRICT
   #endif
 
@@ -299,7 +299,7 @@
     #define __NO_RETURN
   #endif
   #ifndef   __USED
-    #warning No compiler specific solution for __USED. __USED is ignored.
+    #warning ""
     #define __USED
   #endif
   #ifndef   __WEAK
@@ -335,11 +335,11 @@
     #define __UNALIGNED_UINT32_READ(addr)          (((const struct T_UINT32_READ *)(const void *)(addr))->v)
   #endif
   #ifndef   __ALIGNED
-    #warning No compiler specific solution for __ALIGNED. __ALIGNED is ignored.
+    #warning ""
     #define __ALIGNED(x)
   #endif
   #ifndef   __RESTRICT
-    #warning No compiler specific solution for __RESTRICT. __RESTRICT is ignored.
+    #warning ""
     #define __RESTRICT
   #endif
 

@@ -1340,7 +1340,7 @@ extern cy_stc_capsense_context_t cy_capsense_context;
 
 
 #if ((CY_CAPSENSE_PERI_CLK / 2) > 50000000)
-    #warning The maximum CSD modulator clock frequency is 50 MHz: increase CSD modulator clock divider to meet the valid operation conditions
+    #warning ""
 #endif
 
 

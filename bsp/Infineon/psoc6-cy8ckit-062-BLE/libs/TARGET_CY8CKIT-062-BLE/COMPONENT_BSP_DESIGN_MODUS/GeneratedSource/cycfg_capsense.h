@@ -2290,19 +2290,19 @@ extern cy_stc_capsense_context_t cy_capsense_context;
 
 
 #if ((CY_CAPSENSE_PERI_CLK / 2) > 50000000)
-    #warning The maximum CSD modulator clock frequency is 50 MHz: increase CSD modulator clock divider to meet the valid operation conditions
+    #warning ""
 #endif
 
 #if ((CY_CAPSENSE_PERI_CLK / 2) > 50000000)
-    #warning The maximum CSX modulator clock frequency is 50 MHz: increase CSX modulator clock divider to meet the valid operation conditions
+    #warning ""
 #endif
 
 #if ((CY_CAPSENSE_PERI_CLK / 2 / 32) > 3000000)
-    #warning The maximum Tx clock frequency is 3 MHz: increase Tx clock divider for widget Button0 to meet the valid operation conditions
+    #warning ""
 #endif
 
 #if ((CY_CAPSENSE_PERI_CLK / 2 / 32) > 3000000)
-    #warning The maximum Tx clock frequency is 3 MHz: increase Tx clock divider for widget Button1 to meet the valid operation conditions
+    #warning ""
 #endif
 
 

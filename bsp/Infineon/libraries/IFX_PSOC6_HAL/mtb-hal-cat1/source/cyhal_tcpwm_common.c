@@ -53,7 +53,7 @@ extern "C" {
     #elif (CY_IP_MXTCPWM_INSTANCES == 2)
         #define _CYHAL_TCPWM_CHANNELS (TCPWM0_CNT_NR + TCPWM1_CNT_NR)
     #else
-        #warning Unhandled TCPWM instance count
+        #warning ""
     #endif
 #else // (CY_IP_MXTCPWM_VERSION >= 2)
     #if (CY_IP_MXTCPWM_INSTANCES == 1)
@@ -100,14 +100,14 @@ extern "C" {
 
         #define _CYHAL_TCPWM_CHANNELS (_CYHAL_TCPWM0_CHANNELS + _CYHAL_TCPWM1_CHANNELS)
     #else
-        #warning Unhandled TCPWM instance count
+        #warning ""
     #endif
 #endif
 #elif defined(CY_IP_M0S8TCPWM_INSTANCES)
     #if (CY_IP_M0S8TCPWM_INSTANCES == 1)
         #define _CYHAL_TCPWM_CHANNELS (TCPWM_CNT_NR)
     #else
-        #warning Unhandled TCPWM instance count
+        #warning ""
     #endif
 #endif
 
@@ -122,7 +122,7 @@ const _cyhal_tcpwm_data_t _CYHAL_TCPWM_DATA[] =
             {TCPWM1, TCPWM_CLOCK(1, 0), TCPWM1_CNT_CNT_WIDTH, TCPWM1_CNT_NR, TCPWM0_CNT_NR, tcpwm_1_interrupts_0_IRQn },
         #endif
         #if (CY_IP_MXTCPWM_INSTANCES > 2)
-            #warning Unhandled TCPWM instance count
+            #warning ""
         #endif
     #else // (CY_IP_MXTCPWM_VERSION >= 2)
         #if (CY_IP_MXTCPWM_INSTANCES == 1)
@@ -172,7 +172,7 @@ const _cyhal_tcpwm_data_t _CYHAL_TCPWM_DATA[] =
             #endif
         #endif
         #if (CY_IP_MXTCPWM_INSTANCES > 2)
-            #warning Unhandled TCPWM instance count
+            #warning ""
         #endif
     #endif
 #elif defined(CY_IP_M0S8TCPWM_INSTANCES)
@@ -180,7 +180,7 @@ const _cyhal_tcpwm_data_t _CYHAL_TCPWM_DATA[] =
         {TCPWM, PCLK_TCPWM_CLOCKS0, 16, TCPWM_CNT_NR, 0, tcpwm_interrupts_0_IRQn },
     #endif
     #if (CY_IP_M0S8TCPWM_INSTANCES > 1)
-        #warning Unhandled TCPWM instance count
+        #warning ""
     #endif
 #endif
 };
@@ -207,7 +207,7 @@ const _cyhal_tcpwm_data_t _CYHAL_TCPWM_DATA[] =
     const uint16_t _CYHAL_TCPWM_TRIGGER_INPUTS_IDX_OFFSET[2] = {(2 + TCPWM0_TR_ONE_CNT_NR), (2 + TCPWM1_TR_ONE_CNT_NR)};
     const uint16_t _CYHAL_TCPWM_TRIGGER_INPUTS_PER_BLOCK[2] = {(TCPWM0_TR_ALL_CNT_NR), (TCPWM1_TR_ALL_CNT_NR)};
     #else
-    #warning Unhandled TCPWM instance count
+    #warning ""
     #endif
 #else // (CY_IP_M0S8TCPWM_VERSION == 2)
     #if defined(CY_DEVICE_PSOC4AS1)
@@ -228,7 +228,7 @@ const _cyhal_tcpwm_data_t _CYHAL_TCPWM_DATA[] =
     #elif (CY_IP_MXTCPWM_INSTANCES == 2)
         uint8_t _CYHAL_OUTPUT_TRIGGERS_USED [_CYHAL_TCPWM0_CHANNELS + _CYHAL_TCPWM1_CHANNELS];
     #else
-        #warning Unhandled TCPWM instance count
+        #warning ""
     #endif // (CY_IP_MXTCPWM_INSTANCES == 1 or 2)
 #endif // (CY_IP_MXTCPWM_VERSION == 2)
 

@@ -892,7 +892,7 @@ void init_cycfg_system(void)
             #ifdef CY_CFG_PWR_INIT
                 init_cycfg_power();
             #else
-                #warning Power system will not be configured. Update power personality to v1.20 or later.
+                #warning ""
             #endif /* CY_CFG_PWR_INIT */
         #endif /* CY_CFG_PWR_ENABLED */
 
