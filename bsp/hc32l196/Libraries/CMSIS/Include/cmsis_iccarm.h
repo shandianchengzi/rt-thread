@@ -48,7 +48,7 @@
     /* Needs IAR language extensions */
     #define __ALIGNED(x) __attribute__((aligned(x)))
   #else
-    #warning No compiler specific solution for __ALIGNED.__ALIGNED is ignored.
+    #warning ""
     #define __ALIGNED(x)
   #endif
 #endif
