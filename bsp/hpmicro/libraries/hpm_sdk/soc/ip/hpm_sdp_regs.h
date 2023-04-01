@@ -235,9 +235,9 @@ typedef struct {
  * HASALG (RW)
  *
  * HASH Algorithem selection.
- * 0x0 SHA1 —
- * 0x1 CRC32 —
- * 0x2 SHA256 —
+ * 0x0 SHA1 
+ * 0x1 CRC32 
+ * 0x2 SHA256 
  */
 #define SDP_MODCTRL_HASALG_MASK (0xF000U)
 #define SDP_MODCTRL_HASALG_SHIFT (12U)

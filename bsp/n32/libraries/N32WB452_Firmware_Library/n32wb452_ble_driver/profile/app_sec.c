@@ -386,7 +386,7 @@ static int gapc_encrypt_req_ind_handler(ke_msg_id_t const msgid,
     // Prepare the GAPC_ENCRYPT_CFM message
     struct gapc_encrypt_cfm *cfm = KE_MSG_ALLOC(GAPC_ENCRYPT_CFM,src_id, TASK_APP,gapc_encrypt_cfm);
     cfm->found    = false;
-    //移出未使用变量 app_sec_env.bonded
+    // app_sec_env.bonded
 
 
     #if (NVDS_SUPPORT)

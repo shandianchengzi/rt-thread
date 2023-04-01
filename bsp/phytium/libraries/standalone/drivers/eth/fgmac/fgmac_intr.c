@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fgmac_intr.c
  * Date: 2022-04-06 14:46:52
  * LastEditTime: 2022-04-06 14:46:58
- * Description:  This file is for
+ * Description: This file is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 /***************************** Include Files *********************************/
@@ -45,11 +45,11 @@
 
 /**
  * @name: FGmacInterruptHandler
- * @msg: FGMAC中断处理函数
+ * @msg: FGMAC
  * @return {*}
- * @param {s32} vector, 中断向量号，此处没有用到
-          {void} *param, 中断输入参数，此处传入的是FGMAC的驱动控制数据
- * @note 此函数运行在中断上下文
+ * @param {s32} vector, 
+          {void} *param, FGMAC
+ * @note 
  */
 void FGmacInterruptHandler(s32 vector, void *param)
 {
@@ -99,12 +99,12 @@ void FGmacInterruptHandler(s32 vector, void *param)
 
 /**
  * @name: FGmacRegisterEvtHandler
- * @msg: 注册FGMAC中断事件响应函数
+ * @msg: FGMAC
  * @return {*}
- * @param {FGmac} *instance_p 驱动控制数据
- * @param {u32} evt 中断事件类型
- * @param {FGmacEvtHandler} handler 中断事件响应函数
- * @note 注册的函数handler会在中断上下文执行
+ * @param {FGmac} *instance_p 
+ * @param {u32} evt 
+ * @param {FGmacEvtHandler} handler 
+ * @note handler
  */
 void FGmacRegisterEvtHandler(FGmac *instance_p, u32 evt, FGmacEvtHandler handler)
 {
@@ -114,12 +114,12 @@ void FGmacRegisterEvtHandler(FGmac *instance_p, u32 evt, FGmacEvtHandler handler
 
 /**
  * @name: FGmacSetInterruptMask
- * @msg: 屏蔽FGMAC中断
+ * @msg: FGMAC
  * @return {*}
- * @param {FGmac} *instance_p 驱动控制数据
- * @param {u32} intr_type 中断类型 GMAC中断/DMA中断
- * @param {u32} mask 中断屏蔽位
- * @note 在FGMAC驱动初始化成功后调用此函数
+ * @param {FGmac} *instance_p 
+ * @param {u32} intr_type  GMAC/DMA
+ * @param {u32} mask 
+ * @note FGMAC
  */
 void FGmacSetInterruptMask(FGmac *instance_p, u32 intr_type, u32 mask)
 {
@@ -146,12 +146,12 @@ void FGmacSetInterruptMask(FGmac *instance_p, u32 intr_type, u32 mask)
 
 /**
  * @name: FGmacSetInterruptUmask
- * @msg: 使能FGMAC中断
+ * @msg: FGMAC
  * @return {*}
- * @param {FGmac} *instance_p 驱动控制数据
- * @param {u32} intr_type 中断类型 GMAC中断/DMA中断
- * @param {u32} mask 中断使能标志位
- * @note 在FGMAC驱动初始化成功后调用此函数
+ * @param {FGmac} *instance_p 
+ * @param {u32} intr_type  GMAC/DMA
+ * @param {u32} mask 
+ * @note FGMAC
  */
 void FGmacSetInterruptUmask(FGmac *instance_p, u32 intr_type, u32 mask)
 {

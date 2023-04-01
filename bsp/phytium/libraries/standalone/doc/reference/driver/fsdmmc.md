@@ -1,56 +1,56 @@
-# FSDMMC 驱动程序
+# FSDMMC 
 
-## 1. 概述
+## 1. 
 
-SD/MMC控制器主要提供对固态非易失性存储的内存卡的访问能力，包括多媒体存储卡（MMC，MultiMedia Card）和安全和数据保护卡（SD，Secure Digital Card）。
+SD/MMCMMCMultiMedia CardSDSecure Digital Card
 
-## 2. 功能
+## 2. 
 
-SD/MMC控制器驱动提供了SD/MMC卡的控制访问方法，
-- 初始化SD/MMC控制器
-- 以轮询方式发送/接收数据和命令
-- 以中断方式发送/接收数据和命令
-- 设置SD/MMC控制器的中断工作模式和中断响应函数
+SD/MMCSD/MMC
+- SD/MMC
+- /
+- /
+- SD/MMC
 
-访问SD/MMC卡需要兼容一系列协议命令，这一部分驱动不提供，可以通过第三方框架sdmmc使用
+SD/MMCsdmmc
 
-驱动相关的源文件包括，
+
 ```
 fsdmmc
-    ├── fsdmmc.c
-    ├── fsdmmc.h
-    ├── fsdmmc_dma.c
-    ├── fsdmmc_dma.h
-    ├── fsdmmc_g.c
-    ├── fsdmmc_hw.c
-    ├── fsdmmc_hw.h
-    ├── fsdmmc_intr.c
-    └── fsdmmc_sinit.c
+     fsdmmc.c
+     fsdmmc.h
+     fsdmmc_dma.c
+     fsdmmc_dma.h
+     fsdmmc_g.c
+     fsdmmc_hw.c
+     fsdmmc_hw.h
+     fsdmmc_intr.c
+     fsdmmc_sinit.c
 ```
 
-## 3. 配置方法
+## 3. 
 
-以下部分将指导您完成 FSDMMC 驱动的软件配置:
+ FSDMMC :
 
-- 初始化FSDMMC控制器
-- 通过协议命令完成SD/MMC卡初始化
-- 通过协议命令读写SD/MMC卡数据
+- FSDMMC
+- SD/MMC
+- SD/MMC
 
-## 4 应用示例
+## 4 
 
-### [检测SD卡](../../../baremetal/example/peripheral/mmc/fsdmmc_probe)
+### [SD](../../../baremetal/example/peripheral/mmc/fsdmmc_probe)
 
-### [SD/MMC卡协议实现](../../../third-party/sdmmc)
+### [SD/MMC](../../../third-party/sdmmc)
 
-### [通过协议命令读写SD卡](../../../baremetal/example/storage/sdmmc_cmds)
+### [SD](../../../baremetal/example/storage/sdmmc_cmds)
 
-### [通过文件系统使用SD卡](../../../baremetal/example/storage/sdmmc_fatfs)
+### [SD](../../../baremetal/example/storage/sdmmc_fatfs)
 
-## 5. API参考
+## 5. API
 
-### 5.1. 用户数据结构
+### 5.1. 
 
-- FSDMMC控制数据
+- FSDMMC
 
 ```c
 typedef struct
@@ -61,7 +61,7 @@ typedef struct
 } FSdmmc; /* Device instance */
 ```
 
-- FSDMMC配置数据
+- FSDMMC
 
 ```c
 typedef struct
@@ -72,7 +72,7 @@ typedef struct
 } FSdmmcConfig;
 ```
 
-- FSDMMC命令结构
+- FSDMMC
 ```c
 typedef struct 
 {
@@ -95,7 +95,7 @@ typedef struct
 } FSdmmcCmd;
 ```
 
-- FSDMMC数据结构
+- FSDMMC
 ```c
 typedef struct 
 {
@@ -106,7 +106,7 @@ typedef struct
 } FSdmmcData;
 ```
 
-- FSDMMC中断类型和中断事件
+- FSDMMC
 ```c
 enum
 {
@@ -115,7 +115,7 @@ enum
     FSDMMC_ERROR_INTR,
 
     FSDMMC_INTR_NUM  
-}; /* 中断类型 */
+}; /*  */
 
 enum
 {
@@ -128,30 +128,30 @@ enum
     FSDMMC_EVT_DATA_WRITE_DONE,
 
     FSDMMC_EVT_NUM
-}; /* 事件类型 */
+}; /*  */
 ```
 
-### 5.2  错误码定义
+### 5.2  
 
 - [0x0] FSDMMC_SUCCESS : success
 
-- [0x10c0001] FSDMMC_ERR_NOT_READY : FSDMMC控制器未初始化
+- [0x10c0001] FSDMMC_ERR_NOT_READY : FSDMMC
 
-- [0x10c0001] FSDMMC_ERR_TIMEOUT : 数据或者命令传输等待超时
+- [0x10c0001] FSDMMC_ERR_TIMEOUT : 
 
-- [0x10c0001] FSDMMC_ERR_CMD_FAILED : 命令传输失败
+- [0x10c0001] FSDMMC_ERR_CMD_FAILED : 
 
-- [0x10c0001] FSDMMC_ERR_DATA_FAILED : 数据传输失败
+- [0x10c0001] FSDMMC_ERR_DATA_FAILED : 
 
-- [0x10c0001] FSDMMC_ERR_CARD_NO_FOUND : 卡未检测到
+- [0x10c0001] FSDMMC_ERR_CARD_NO_FOUND : 
 
-- [0x10c0001] FSDMMC_ERR_INVALID_BUF : 数据缓冲区不合法
+- [0x10c0001] FSDMMC_ERR_INVALID_BUF : 
 
-### 5.3. 用户API接口
+### 5.3. API
 
 #### FSdmmcLookupConfig
 
-- 获取FSDMMC控制器默认配置
+- FSDMMC
 
 ```c
 const FSdmmcConfig *FSdmmcLookupConfig(u32 instance_id);
@@ -159,19 +159,19 @@ const FSdmmcConfig *FSdmmcLookupConfig(u32 instance_id);
 
 Note:
 
-- instance_id从0开始，取决于FSDMMC控制器的个数
+- instance_id0FSDMMC
 
 Input:
 
-- {u32} instance_id 驱动控制器ID
+- {u32} instance_id ID
 
 Return:
 
-- {const FSdmmcConfig *}  FSDMMC默认配置，返回NULL如果找不到默认配置
+- {const FSdmmcConfig *}  FSDMMCNULL
 
 #### FSdmmcCfgInitialize
 
-- 初始化FSDMMC控制器, 使之可以使用
+- FSDMMC, 
 
 ```c
 FError FSdmmcCfgInitialize(FSdmmc *instance_p, const FSdmmcConfig *input_config_p);
@@ -179,20 +179,20 @@ FError FSdmmcCfgInitialize(FSdmmc *instance_p, const FSdmmcConfig *input_config_
 
 Note:
 
-- 输入配置通过FSdmmcLookupConfig获取，用户按照需要修改后传入此函数
+- FSdmmcLookupConfig
 
 Input:
 
-- {FSdmmc} *instance_p FSDMMC驱动控制数据
-- {FSdmmcConfig} *input_config_p FSDMMC用户输入配置
+- {FSdmmc} *instance_p FSDMMC
+- {FSdmmcConfig} *input_config_p FSDMMC
 
 Return:
 
-- {FError} 驱动初始化的错误码信息，FSDMMC_SUCCESS 表示初始化成功，其它返回值表示初始化失败
+- {FError} FSDMMC_SUCCESS 
 
 #### FSdmmcDeInitialize
 
-- 去使能FSDMMC控制器, 清零实例数据
+- FSDMMC, 
 
 ```c
 void FSdmmcDeInitialize(FSdmmc *instance_p);
@@ -200,19 +200,19 @@ void FSdmmcDeInitialize(FSdmmc *instance_p);
 
 Note:
 
-- 无
+- 
 
 Input:
 
-- {FSdmmc} *instance_p FSDMMC驱动控制数据
+- {FSdmmc} *instance_p FSDMMC
 
 Return:
 
-- 无
+- 
 
 #### FSdmmcPollTransfer
 
-- 通过FSDMMC轮询方式发送/接收数据和命令
+- FSDMMC/
 
 ```c
 FError FSdmmcPollTransfer(FSdmmc *instance_p, FSdmmcCmd *cmd_data_p);
@@ -220,20 +220,20 @@ FError FSdmmcPollTransfer(FSdmmc *instance_p, FSdmmcCmd *cmd_data_p);
 
 Note:
 
-- FSDMMC控制器初始化后才能调用此函数
+- FSDMMC
 
 Input:
 
-- {FSdmmc} *instance_p FSDMMC驱动控制数据
-- {FSdmmcCmd} *cmd_data_p FSDMMC数据和命令
+- {FSdmmc} *instance_p FSDMMC
+- {FSdmmcCmd} *cmd_data_p FSDMMC
 
 Return:
 
-- {FError} 驱动初始化的错误码信息，FSDMMC_SUCCESS 表示发送/接收成功，其它返回值表示发送/接收失败
+- {FError} FSDMMC_SUCCESS //
 
 #### FSdmmcInterruptTransfer
 
-- 通过FSDMMC中断方式发送/接收数据和命令
+- FSDMMC/
 
 ```c
 FError FSdmmcInterruptTransfer(FSdmmc *instance_p, FSdmmcCmd *cmd_data_p);
@@ -241,20 +241,20 @@ FError FSdmmcInterruptTransfer(FSdmmc *instance_p, FSdmmcCmd *cmd_data_p);
 
 Note:
 
-- FSDMMC控制器初始化后才能调用此函数，使用前需要确保FSDMMC中断设置完成
+- FSDMMCFSDMMC
 
 Input:
 
-- {FSdmmc} *instance_p FSDMMC驱动控制数据
-- {FSdmmcCmd} *cmd_data_p FSDMMC数据和命令
+- {FSdmmc} *instance_p FSDMMC
+- {FSdmmcCmd} *cmd_data_p FSDMMC
 
 Return:
 
-- {FError} 驱动初始化的错误码信息，FSDMMC_SUCCESS 表示发送/接收成功，其它返回值表示发送/接收失败
+- {FError} FSDMMC_SUCCESS //
 
 #### FSdmmcGetInterruptMask
 
-- 获取FSDMMC的中断掩码
+- FSDMMC
 
 ```c
 u32 FSdmmcGetInterruptMask(uintptr base_addr, u32 intr_type);
@@ -262,20 +262,20 @@ u32 FSdmmcGetInterruptMask(uintptr base_addr, u32 intr_type);
 
 Note:
 
-- FSDMMC控制器初始化后才能调用此函数
+- FSDMMC
 
 Input:
 
-- {uintptr} base_addr FSDMMC控制器基地址
-- {u32} intr_type FSDMMC中断类型, 参考FSDMMC_INTR_NUM
+- {uintptr} base_addr FSDMMC
+- {u32} intr_type FSDMMC, FSDMMC_INTR_NUM
 
 Return:
 
-- {u32} 中断掩码
+- {u32} 
 
 #### FSdmmcSetInterruptMask
 
-- 设置FSDMMC的中断掩码
+- FSDMMC
 
 ```c
 void FSdmmcSetInterruptMask(uintptr base_addr, u32 intr_type, u32 mask, boolean enable);
@@ -283,22 +283,22 @@ void FSdmmcSetInterruptMask(uintptr base_addr, u32 intr_type, u32 mask, boolean 
 
 Note:
 
-- FSDMMC控制器初始化后才能调用此函数
+- FSDMMC
 
 Input:
 
-- {uintptr} base_addr FSDMMC控制器基地址
-- {u32} intr_type FSDMMC中断类型, 参考FSDMMC_INTR_NUM
-- {u32} mask 中断掩码
-- {boolean} enable TRUE:打开中断, FALSE:关闭中断
+- {uintptr} base_addr FSDMMC
+- {u32} intr_type FSDMMC, FSDMMC_INTR_NUM
+- {u32} mask 
+- {boolean} enable TRUE:, FALSE:
 
 Return:
 
-- 无
+- 
 
 #### FSdmmcCmdInterrupHandler
 
-- 命令中断响应函数
+- 
 
 ```c
 void FSdmmcCmdInterrupHandler(s32 vector, void *param);
@@ -306,20 +306,20 @@ void FSdmmcCmdInterrupHandler(s32 vector, void *param);
 
 Note:
 
-- 此函数用于设置FSDMMC中断时注册，用户可以自定义一个中断响应函数替换此函数
+- FSDMMC
 
 Input:
 
-- vector 中断向量号
-- {void} *param 中断响应输入参数
+- vector 
+- {void} *param 
 
 Return:
 
-- 无
+- 
 
 #### FSdmmcDmaInterrupHandler
 
-- DMA中断响应函数
+- DMA
 
 ```c
 void FSdmmcDmaInterrupHandler(s32 vector, void *param);
@@ -327,20 +327,20 @@ void FSdmmcDmaInterrupHandler(s32 vector, void *param);
 
 Note:
 
-- 此函数用于设置FSDMMC中断时注册，用户可以自定义一个中断响应函数替换此函数
+- FSDMMC
 
 Input:
 
-- {s32} vector 中断向量号
-- {void} *param 中断响应输入参数
+- {s32} vector 
+- {void} *param 
 
 Return:
 
-- 无
+- 
 
 #### FSdmmcErrInterrupHandler
 
-- 错误中断响应函数
+- 
 
 ```c
 void FSdmmcErrInterrupHandler(s32 vector, void *param);
@@ -348,20 +348,20 @@ void FSdmmcErrInterrupHandler(s32 vector, void *param);
 
 Note:
 
-- 此函数用于设置FSDMMC中断时注册，用户可以自定义一个中断响应函数替换此函数
+- FSDMMC
 
 Input:
 
-- {s32} vector 中断向量号
-- {void} *param 中断响应输入参数
+- {s32} vector 
+- {void} *param 
 
 Return:
 
-- 无
+- 
 
 #### FSdmmcRegisterInterruptHandler
 
-- 注册中断事件响应函数
+- 
 
 ```c
 void FSdmmcRegisterInterruptHandler(FSdmmc *instance_p, u32 event, FSdmmcEventHandler handler);
@@ -369,15 +369,15 @@ void FSdmmcRegisterInterruptHandler(FSdmmc *instance_p, u32 event, FSdmmcEventHa
 
 Note:
 
-- 此函数用于设置FSDMMC中断时注册，被注册的函数被FSdmmcCmdInterrupHandler、FSdmmcErrInterrupHandler
- * 和FSdmmcDmaInterrupHandler调用
+- FSDMMCFSdmmcCmdInterrupHandlerFSdmmcErrInterrupHandler
+ * FSdmmcDmaInterrupHandler
 
 Input:
 
-- {FSdmmc} *instance_p FSDMMC驱动控制数据
-- {u32} event FSDMMC中断事件类型，参考FSDMMC_EVT_NUM
-- {FSdmmcEventHandler} handler, FSDMMC中断事件响应函数
+- {FSdmmc} *instance_p FSDMMC
+- {u32} event FSDMMCFSDMMC_EVT_NUM
+- {FSdmmcEventHandler} handler, FSDMMC
 
 Return:
 
-- 无
+- 

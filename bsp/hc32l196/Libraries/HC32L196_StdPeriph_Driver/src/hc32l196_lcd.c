@@ -86,10 +86,10 @@
  
 /**
 ******************************************************************************
-    ** \brief  获取LCD中断标志位INTF
+    ** \brief  LCDINTF
     ** 
-    ** @param  无
-    ** \retval 无
+    ** @param  
+    ** \retval 
     **
 ******************************************************************************/
 boolean_t Lcd_GetItStatus(void)
@@ -99,10 +99,10 @@ boolean_t Lcd_GetItStatus(void)
 
 /**
 ******************************************************************************
-    ** \brief  清除中断标志位INTF
+    ** \brief  INTF
     ** 
-    ** @param  无
-    ** \retval 无
+    ** @param  
+    ** \retval 
     **
 ******************************************************************************/
 void Lcd_ClearItPendingBit(void)
@@ -112,11 +112,11 @@ void Lcd_ClearItPendingBit(void)
 
 /**
 ******************************************************************************
-    ** \brief  根据LCD显示模式获取端口配置
+    ** \brief  LCD
     **
-    ** \param pstcSegComPara：显示方式， stcSegCom获取端口参数
+    ** \param pstcSegComPara stcSegCom
     **
-    ** \retval enRet 成功或失败
+    ** \retval enRet 
     **
 ******************************************************************************/
 en_result_t Lcd_GetSegCom(stc_lcd_segcompara_t *pstcSegComPara,stc_lcd_segcom_t *pstcSegCom)
@@ -180,11 +180,11 @@ en_result_t Lcd_GetSegCom(stc_lcd_segcompara_t *pstcSegComPara,stc_lcd_segcom_t 
 
 /**
 ******************************************************************************
-    ** \brief  LCD COMSEG端口配置，使用该函数之前需要先使能相应的Seg
+    ** \brief  LCD COMSEGSeg
     **
-    ** \param [in] pstcSegCom端口配置结构体
+    ** \param [in] pstcSegCom
     **
-    ** \retval enRet 成功或失败
+    ** \retval enRet 
     **
 ******************************************************************************/
 void Lcd_SetSegCom(stc_lcd_segcom_t *pstcSegCom)
@@ -195,11 +195,11 @@ void Lcd_SetSegCom(stc_lcd_segcom_t *pstcSegCom)
 
 /**
 ******************************************************************************
-    ** \brief  LCD模块初始化函数
+    ** \brief  LCD
     **
-    ** \param stcLcdCfg配置初始化结构体
+    ** \param stcLcdCfg
     **
-    ** \retval 无
+    ** \retval 
     **
 ******************************************************************************/
 void Lcd_Init(stc_lcd_cfg_t *pstcLcdCfg)
@@ -216,11 +216,11 @@ void Lcd_Init(stc_lcd_cfg_t *pstcLcdCfg)
 
 /**
 ******************************************************************************
-    ** \brief  液晶全显
+    ** \brief  
     **
-    ** \param  无
+    ** \param  
     **
-    ** \retval 无
+    ** \retval 
     **
 ******************************************************************************/
 void Lcd_FullDisp(void)
@@ -237,11 +237,11 @@ void Lcd_FullDisp(void)
 
 /**
 ******************************************************************************
-    ** \brief  清屏
+    ** \brief  
     **
-    ** \param 无
+    ** \param 
     **
-    ** \retval 无
+    ** \retval 
     **
 ******************************************************************************/
 void Lcd_ClearDisp(void)
@@ -258,11 +258,11 @@ void Lcd_ClearDisp(void)
 
 /**
  ******************************************************************************
- ** \brief  LCD RAM 0-f寄存器设置函数
+ ** \brief  LCD RAM 0-f
  **
- ** \param u8Row RAM地址索引，范围：0-15，u8Data写入寄存器数值
+ ** \param u8Row RAM0-15u8Data
  **
- ** \retval enRet 成功或失败
+ ** \retval enRet 
  **
  ******************************************************************************/
 en_result_t Lcd_WriteRam(uint8_t u8Row,uint32_t u32Data)

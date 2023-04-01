@@ -29,31 +29,31 @@ typedef rt_int32_t s32;
 #define _local_irq_save(level) level = rt_hw_interrupt_disable()
 #define _local_irq_restore(level) rt_hw_interrupt_enable(level)
 
-static u8 floppy_buffer[512];                       /* 软盘高速缓冲区地址指针 */
+static u8 floppy_buffer[512];                       /*  */
 
 #define MAX_REPLIES 7
-static u8 floppy_reply_buffer[MAX_REPLIES];         /* 软驱回应缓冲区 */
-#define ST0 (floppy_reply_buffer[0])                /* 软驱回应0号字节 */
-#define ST1 (floppy_reply_buffer[1])                /* 软驱回应1号字节 */
-#define ST2 (floppy_reply_buffer[2])                /* 软驱回应2号字节 */
-#define ST3 (floppy_reply_buffer[3])                /* 软驱回应3号字节 */
+static u8 floppy_reply_buffer[MAX_REPLIES];         /*  */
+#define ST0 (floppy_reply_buffer[0])                /* 0 */
+#define ST1 (floppy_reply_buffer[1])                /* 1 */
+#define ST2 (floppy_reply_buffer[2])                /* 2 */
+#define ST3 (floppy_reply_buffer[3])                /* 3 */
 
 
-static char *floppy_inc_name;                       /* 软驱型号名 */
+static char *floppy_inc_name;                       /*  */
 static char *floppy_type;
-static u32  floppy_motor=0;                         /* 软驱马达状态字节 */
+static u32  floppy_motor=0;                         /*  */
 static u32  floppy_size =0;
-/**********************功能函数***************************/
-static void floppy_result(void);                    /* 获得软驱响应状态  */
-static u32  floppy_sendbyte(u32);                   /* 向软驱控制寄存器发送一个控制字节  */
-static u32  floppy_getbyte(void);                   /* 从软驱数据寄存器得到一个数据字节  */
-static u32  floppy_get_info(void);                  /* 得到软驱信息  */
-static void floppy_motorOn(void);                   /* 打开软驱马达  */
-static void floppy_motorOff(void);                  /* 关闭软驱马达  */
-static void floppy_setmode(void);                   /* 软驱模式设置  */
-static void block_to_hts(u32, u32*, u32*, u32*);    /* 逻辑块转为磁盘头、磁道号和扇区号  */
-static void floppy_setupDMA(void);                  /* 设置软驱DMA通道  */
-static void floppy_read_cmd(u32 blk);               /* 从软盘上读取指定的逻辑块到缓冲区  */
+/*************************************************/
+static void floppy_result(void);                    /*   */
+static u32  floppy_sendbyte(u32);                   /*   */
+static u32  floppy_getbyte(void);                   /*   */
+static u32  floppy_get_info(void);                  /*   */
+static void floppy_motorOn(void);                   /*   */
+static void floppy_motorOff(void);                  /*   */
+static void floppy_setmode(void);                   /*   */
+static void block_to_hts(u32, u32*, u32*, u32*);    /*   */
+static void floppy_setupDMA(void);                  /* DMA  */
+static void floppy_read_cmd(u32 blk);               /*   */
 
 
 void floppy_result(void)
@@ -62,7 +62,7 @@ void floppy_result(void)
     i=0;
     for(count=0; count<0xFF; count++)
     {
-        stat = inb( FD_STATUS ) & (STATUS_READY|STATUS_DIR|STATUS_BUSY); //读取状态寄存器
+        stat = inb( FD_STATUS ) & (STATUS_READY|STATUS_DIR|STATUS_BUSY); //
         if (stat == STATUS_READY)
             return;
         if (stat == (STATUS_READY|STATUS_DIR|STATUS_BUSY))
@@ -80,13 +80,13 @@ u32 floppy_sendbyte( u32 value )
     u8 stat, i;
 
     for ( i = 0; i < 128; i++ ) {
-        stat = inb( FD_STATUS ) & (STATUS_READY|STATUS_DIR);    //读取状态寄存器
+        stat = inb( FD_STATUS ) & (STATUS_READY|STATUS_DIR);    //
         if  ( stat  == STATUS_READY )
         {
-            OUTB( value ,FD_DATA);                              //将参数写入数据寄存器
+            OUTB( value ,FD_DATA);                              //
             return 1;
         }
-        io_delay();                                             // 作一些延迟
+        io_delay();                                             // 
     }
     return 0;
 }
@@ -97,7 +97,7 @@ u32 floppy_getbyte(void)
     u8 stat, i;
 
     for ( i = 0; i < 128; i++ ) {
-        stat = inb( FD_STATUS ) & (STATUS_READY|STATUS_DIR|STATUS_BUSY); //读取状态寄存器
+        stat = inb( FD_STATUS ) & (STATUS_READY|STATUS_DIR|STATUS_BUSY); //
         if (stat == STATUS_READY)
             return -1;
         if ( stat  == 0xD0 )
@@ -136,7 +136,7 @@ u32 floppy_get_info(void)
         floppy_size = 2458*512;
     break;
 
-    case 0x04: // 1.44MB       标准软盘
+    case 0x04: // 1.44MB       
         floppy_type = "1.44MB";
         floppy_size = 2880*512;
         break;

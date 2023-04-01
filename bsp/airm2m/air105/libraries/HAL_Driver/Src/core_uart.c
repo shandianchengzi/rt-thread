@@ -335,7 +335,7 @@ int32_t Uart_BufferTx(uint8_t UartID, const uint8_t *Data, uint32_t Len)
     }
     Uart->OFFSET_4.IER &= ~(UART_IER_PTIME|UART_IER_ETBEI);
 #ifdef __BUILD_OS__
-    // 把缓存的Tx指针交给发送的Tx指针，缓存的Tx指针重新建立一个
+    // TxTxTx
     Buffer_StaticInit(&prvUart[UartID].TxBuf, prvUart[UartID].TxCacheBuf.Data, prvUart[UartID].TxCacheBuf.Pos);
 #else
     Buffer_StaticInit(&prvUart[UartID].TxBuf, Data, Len);
@@ -347,7 +347,7 @@ int32_t Uart_BufferTx(uint8_t UartID, const uint8_t *Data, uint32_t Len)
     }
     if (prvUart[UartID].TxBuf.Pos >= prvUart[UartID].TxBuf.MaxLen)
     {
-        // 只有少量数据，只靠FIFO就能填充满，就不需要重新分配内存
+        // FIFO
         memset(&prvUart[UartID].TxBuf, 0, sizeof(prvUart[UartID].TxBuf));
 #ifdef __BUILD_OS__
         prvUart[UartID].TxCacheBuf.Pos = 0;
@@ -358,7 +358,7 @@ int32_t Uart_BufferTx(uint8_t UartID, const uint8_t *Data, uint32_t Len)
     }
     else
     {
-        // 数据多，暂时发不完，就需要为缓存重新分配内存
+        // 
 #ifdef __BUILD_OS__
         OS_InitBuffer(&prvUart[UartID].TxCacheBuf, TX_BUF_INIT);
 #endif

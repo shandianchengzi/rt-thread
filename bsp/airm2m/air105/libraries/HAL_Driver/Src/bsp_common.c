@@ -498,10 +498,10 @@ uint32_t AsciiToU32(uint8_t *Src, uint32_t Len)
 
 
 /**
-* @brief  反转数据
-* @param  ref 需要反转的变量
-* @param    ch 反转长度，多少位
-* @retval N反转后的数据
+* @brief  
+* @param  ref 
+* @param    ch 
+* @retval N
 */
 static LongInt Reflect(LongInt ref, uint8_t ch)
 {
@@ -517,9 +517,9 @@ static LongInt Reflect(LongInt ref, uint8_t ch)
 }
 
 /**
-* @brief  建立CRC32的查询表
-* @param  Tab 表缓冲
-* @param    Gen CRC32根
+* @brief  CRC32
+* @param  Tab 
+* @param    Gen CRC32
 * @retval None
 */
 void CRC32_CreateTable(uint32_t *Tab, uint32_t Gen)
@@ -553,12 +553,12 @@ void CRC32_CreateTable(uint32_t *Tab, uint32_t Gen)
 
 
 /**
-* @brief  计算buffer的crc校验码
-* @param  CRC32_Table CRC32表
-* @param  Buf 缓冲
-* @param    Size 缓冲区长度
-* @param    CRC32 初始CRC32值
-* @retval 计算后的CRC32
+* @brief  buffercrc
+* @param  CRC32_Table CRC32
+* @param  Buf 
+* @param    Size 
+* @param    CRC32 CRC32
+* @retval CRC32
 */
 uint32_t CRC32_Cal(uint32_t *CRC32_Table, uint8_t *Buf, uint32_t Size, uint32_t CRC32Last)
 {
@@ -572,7 +572,7 @@ uint32_t CRC32_Cal(uint32_t *CRC32_Table, uint8_t *Buf, uint32_t Size, uint32_t 
 
 
 /************************************************************************/
-/*时间与时间戳转换，C语言实现                                                                    */
+/*C                                                                    */
 /************************************************************************/
 /************************************************************************/
 uint8_t IsLeapYear(uint32_t Year)
@@ -593,7 +593,7 @@ LongInt UTC2Tamp(Date_UserDataStruct *Date, Time_UserDataStruct *Time)
     LongInt DYear, DDay, DSec;
     uint32_t Year100;
     DYear = Date->Year - 1970;
-    if (DYear)  //1970年以后,1972是第一个闰年,1973年是第一年需要增加一天，2100年是非闰年
+    if (DYear)  //1970,1972,19732100
     {
         DDay = DYear * 365 + ((DYear + 1) / 4) + DayTable[IsLeapYear(Date->Year)][Date->Mon - 1] + (Date->Day - 1);
 //      if (IsLeapYear(Date->Year))
@@ -1032,10 +1032,10 @@ void BytesGetMemoryFromBuf(Buffer_Struct *Buf, uint8_t *Data, uint32_t Len)
 }
 
 /*
- * 转义打包
- * 标识Flag，即包头包尾加入Flag
- * 数据中遇到Flag -> Code F1
- * 数据中遇到Code -> Code F2
+ * 
+ * FlagFlag
+ * Flag -> Code F1
+ * Code -> Code F2
  */
 
 uint32_t TransferPack(uint8_t Flag, uint8_t Code, uint8_t F1, uint8_t F2, uint8_t *InBuf, uint32_t Len, uint8_t *OutBuf)
@@ -1067,11 +1067,11 @@ uint32_t TransferPack(uint8_t Flag, uint8_t Code, uint8_t F1, uint8_t F2, uint8_
 
 
 /*
- * 转义解包
- * 标识Flag，即包头包尾加入Flag
- * 数据中遇到Code F1 -> Flag
- * 数据中遇到Code F2 -> Code
- * 数据中遇到Flag 出错返回0
+ * 
+ * FlagFlag
+ * Code F1 -> Flag
+ * Code F2 -> Code
+ * Flag 0
  */
 uint32_t TransferUnpack(uint8_t Flag, uint8_t Code, uint8_t F1, uint8_t F2, uint8_t *InBuf, uint32_t Len, uint8_t *OutBuf)
 {

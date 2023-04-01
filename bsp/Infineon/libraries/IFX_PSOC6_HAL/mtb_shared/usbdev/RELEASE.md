@@ -43,10 +43,10 @@ This version of the USB Device Middleware was validated for compatibility with t
 
 | Software and Tools                                             | Version |
 | :---                                                           | :----:  |
-| ModusToolbox™ Software Environment                             | 2.3     |
-| - ModusToolbox™ Device Configurator                            | 3.0     |
-| - ModusToolbox™ USB Device Personality in Device Configurator  | 1.1     |
-| - ModusToolbox™ USB Device Configurator                        | 2.30    |
+| ModusToolbox Software Environment                             | 2.3     |
+| - ModusToolbox Device Configurator                            | 3.0     |
+| - ModusToolbox USB Device Personality in Device Configurator  | 1.1     |
+| - ModusToolbox USB Device Configurator                        | 2.30    |
 | MTB CAT1A Peripheral Driver Library (PDL)                      | 2.2.1   |
 | MTB CAT2 Peripheral Driver Library (PDL)                       | 1.2.0   |
 | GCC Compiler                                                   | 9.3.1   |
@@ -58,5 +58,5 @@ This version of the USB Device Middleware was validated for compatibility with t
 For a more information, refer to [README.md](./README.md)
 
 ---
-© 2019-2021, CYPRESS™ Semiconductor Corporation (an Infineon company)
-or an affiliate of CYPRESS™ Semiconductor Corporation.
+ 2019-2021, CYPRESS Semiconductor Corporation (an Infineon company)
+or an affiliate of CYPRESS Semiconductor Corporation.

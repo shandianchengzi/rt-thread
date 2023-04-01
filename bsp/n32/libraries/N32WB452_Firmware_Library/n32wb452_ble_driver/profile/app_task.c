@@ -484,7 +484,7 @@ static int gapc_connection_req_ind_handler(ke_msg_id_t const msgid,
                 KE_BUILD_ID(TASK_GAPC, app_env.conidx), TASK_APP,
                 gapc_connection_cfm);
 
-        // 设置邦定认证模式 为  GAP_AUTH_REQ_NO_MITM_BOND
+        //    GAP_AUTH_REQ_NO_MITM_BOND
         cfm->auth      = GAP_AUTH_REQ_NO_MITM_BOND;
 
         // Send the message

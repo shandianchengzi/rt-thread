@@ -11,7 +11,7 @@
 
 /*******************************************************************************
 * Function Name  : PWMX_CycleCfg
-* Description    : PWM4-PWM11基准时钟配置
+* Description    : PWM4-PWM11
 * Input          : cyc:
                     refer to PWMX_CycleTypeDef
 * Return         : None
@@ -59,15 +59,15 @@ void PWMX_CycleCfg( PWMX_CycleTypeDef cyc )
 
 /*******************************************************************************
 * Function Name  : PWMX_ACTOUT
-* Description    : PWM4-PWM11通道输出波形配置
+* Description    : PWM4-PWM11
 * Input          : ch:  select channel of pwm
                     refer to channel of PWM define
                    da:  effective pulse width
                    pr:  select wave polar
                     refer to PWMX_PolarTypeDef
                    s :  control pwmx function
-                    ENABLE  - 输出PWM
-                    DISABLE - 关闭PWM
+                    ENABLE  - PWM
+                    DISABLE - PWM
 * Return         : None
 *******************************************************************************/
 void PWMX_ACTOUT( UINT8 ch, UINT8 da, PWMX_PolarTypeDef pr, UINT8 s)
@@ -88,15 +88,15 @@ void PWMX_ACTOUT( UINT8 ch, UINT8 da, PWMX_PolarTypeDef pr, UINT8 s)
 
 /*******************************************************************************
 * Function Name  : PWMX_AlterOutCfg
-* Description    : PWM 交替输出模式配置
+* Description    : PWM 
 * Input          : ch:  select group of PWM alternate output
-                    RB_PWM4_5_STAG_EN   -  PWM4 和 PWM5 通道交替输出
-                    RB_PWM6_7_STAG_EN   -  PWM6 和 PWM7 通道交替输出
-                    RB_PWM8_9_STAG_EN   -  PWM8 和 PWM9 通道交替输出
-                    RB_PWM10_11_STAG_EN -  PWM10 和 PWM11 通道交替输出
+                    RB_PWM4_5_STAG_EN   -  PWM4  PWM5 
+                    RB_PWM6_7_STAG_EN   -  PWM6  PWM7 
+                    RB_PWM8_9_STAG_EN   -  PWM8  PWM9 
+                    RB_PWM10_11_STAG_EN -  PWM10  PWM11 
                    s :  control pwmx function
-                    ENABLE  - 打开交替输出功能
-                    DISABLE - 关闭交替输出功能
+                    ENABLE  - 
+                    DISABLE - 
 * Return         : None
 *******************************************************************************/
 void PWMX_AlterOutCfg( UINT8 ch, UINT8 s)

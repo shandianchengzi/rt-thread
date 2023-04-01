@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fpinctrl.h
  * Date: 2022-03-28 14:16:09
  * LastEditTime: 2022-03-28 14:16:10
- * Description:  This files is for IO pin ctrl API definition
+ * Description: This files is for IO pin ctrl API definition
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   zhugengyu   2022/3/28   init commit
  */
 #ifndef  COMMON_FPINCTRL_H
@@ -68,7 +68,7 @@ typedef enum
     FPIN_FUNC7 = 0b111,
 #endif
     FPIN_NUM_OF_FUNC
-} FPinFunc; /* 引脚复用功能配置, func0为默认功能 */
+} FPinFunc; /* , func0 */
 
 #if defined(FPIN_IO_PAD) /* Only support driver strength config in E2000 */
 typedef enum
@@ -91,7 +91,7 @@ typedef enum
     FPIN_DRV15 = 0b1111,
 
     FPIN_NUM_OF_DRIVE
-} FPinDrive; /* 引脚驱动能力配置 */
+} FPinDrive; /*  */
 #endif
 
 typedef enum
@@ -101,23 +101,23 @@ typedef enum
     FPIN_PULL_UP = 0b10,
 
     FPIN_NUM_OF_PULL
-} FPinPull; /* 引脚上下拉配置 */
+} FPinPull; /*  */
 
 typedef enum
 {
-    FPIN_OUTPUT_DELAY = 0, /* 延时设置方向为输出 */
-    FPIN_INPUT_DELAY, /* 延时设置方向为输入 */
+    FPIN_OUTPUT_DELAY = 0, /*  */
+    FPIN_INPUT_DELAY, /*  */
 
     FPIN_NUM_OF_DELAY_DIR
-} FPinDelayDir; /* 引脚延时配置方向 */
+} FPinDelayDir; /*  */
 
 typedef enum
 {
-    FPIN_DELAY_COARSE_TUNING = 0, /* 延迟粗调档位 */
-    FPIN_DELAY_FINE_TUNING, /* 延迟精调档位 */
+    FPIN_DELAY_COARSE_TUNING = 0, /*  */
+    FPIN_DELAY_FINE_TUNING, /*  */
 
     FPIN_NUM_OF_DELAY_TYPE
-} FPinDelayType; /* 引脚延时配置类型 */
+} FPinDelayType; /*  */
 
 typedef enum
 {
@@ -141,60 +141,60 @@ typedef enum
 
 typedef struct
 {
-    u32 reg_off; /* 引脚配置寄存器偏移量 */
-    u32 reg_bit; /* 引脚配置起始位 */
-} FPinIndex; /* 引脚索引 */
+    u32 reg_off; /*  */
+    u32 reg_bit; /*  */
+} FPinIndex; /*  */
 /************************** Variable Definitions *****************************/
 
 /***************** Macros (Inline Functions) Definitions *********************/
 #define FPIN_NULL  {0xffffffff, 0}
 
 /************************** Function Prototypes ******************************/
-/* 获取IO引脚当前的复用功能 */
+/* IO */
 FPinFunc FPinGetFunc(const FPinIndex pin);
 
-/* 设置IO引脚复用功能 */
+/* IO */
 void FPinSetFunc(const FPinIndex pin, FPinFunc func);
 
-/* 获取IO引脚当前的上下拉设置 */
+/* IO */
 FPinPull FPinGetPull(const FPinIndex pin);
 
-/* 设置IO引脚的上下拉 */
+/* IO */
 void FPinSetPull(const FPinIndex pin, FPinPull pull);
 
 #if defined(FPIN_IO_PAD)
-/* 获取IO引脚的驱动能力 */
+/* IO */
 FPinDrive FPinGetDrive(const FPinIndex pin);
 
-/* 设置IO引脚的驱动能力 */
+/* IO */
 void FPinSetDrive(const FPinIndex pin, FPinDrive drive);
 
-/* 获取IO引脚的复用、上下拉和驱动能力设置 */
+/* IO */
 void FPinGetConfig(const FPinIndex pin, FPinFunc *func, FPinPull *pull, FPinDrive *drive);
 
-/* 设置IO引脚的复用、上下拉和驱动能力 */
+/* IO */
 void FPinSetConfig(const FPinIndex pin, FPinFunc func, FPinPull pull, FPinDrive drive);
 
 #else
 
-/* 获取IO引脚的复用、上下拉和驱动能力设置 */
+/* IO */
 void FPinGetConfig(const FPinIndex pin, FPinFunc *func, FPinPull *pull);
 
-/* 设置IO引脚的复用、上下拉和驱动能力 */
+/* IO */
 void FPinSetConfig(const FPinIndex pin, FPinFunc func, FPinPull pull);
 
 #endif
 
-/* 获取IO引脚当前的单项延时设置 */
+/* IO */
 FPinDelay FPinGetDelay(const FPinIndex pin, FPinDelayDir dir, FPinDelayType type);
 
-/* 检查IO引脚延时是否使能 */
+/* IO */
 boolean FPinGetDelayEn(const FPinIndex pin, FPinDelayDir dir);
 
-/* 设置IO引脚单项延时 */
+/* IO */
 void FPinSetDelay(const FPinIndex pin, FPinDelayDir dir, FPinDelayType type, FPinDelay delay);
 
-/* 使能或去使能IO引脚延时 */
+/* IO */
 void FPinSetDelayEn(const FPinIndex pin, FPinDelayDir dir, boolean enable);
 
 /* Update and enable common IO pin delay config */

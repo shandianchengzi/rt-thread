@@ -141,7 +141,7 @@ static int user_data_notify_req_handler(ke_msg_id_t const msgid,
             // Stable measurement indication or intermediate measurement notification
 
             user_env->operation->op      = user_env->ntf_ind_cfg[param->att_idx+1];// USER_DATA_NTF;
-            //蓝牙 notify handle
+            // notify handle
             user_env->operation->handle  = USER_HANDLE(param->att_idx);
 
 

@@ -122,10 +122,10 @@ static rt_err_t ov2640_read_id(struct rt_i2c_bus_device *bus, rt_uint16_t *id)
 {
     rt_uint8_t read_value[2];
 
-    write_reg(bus, OV2640_SEL_Registers, OV2640_SEL_SENSOR); // 选择 SENSOR 寄存器组
+    write_reg(bus, OV2640_SEL_Registers, OV2640_SEL_SENSOR); //  SENSOR 
 
-    read_reg(bus, OV2640_SENSOR_PIDH, 1, &read_value[0]); // 读取ID高字节
-    read_reg(bus, OV2640_SENSOR_PIDL, 1, &read_value[1]); // 读取ID低字节
+    read_reg(bus, OV2640_SENSOR_PIDH, 1, &read_value[0]); // ID
+    read_reg(bus, OV2640_SENSOR_PIDL, 1, &read_value[1]); // ID
 
     *id = ((rt_uint16_t)(read_value[0] << 8) & 0xFF00);
     *id |= ((rt_uint16_t)(read_value[1]) & 0x00FF);
@@ -144,17 +144,17 @@ static rt_err_t ov2640_reset(struct rt_i2c_bus_device *bus)
 {
     rt_pin_mode(PWDN_PIN, PIN_MODE_OUTPUT);
 
-    rt_thread_mdelay(5);  // 等待模块上电稳定，最少5ms，然后拉低PWDN
-    rt_pin_write(PWDN_PIN, PIN_LOW);  // PWDN 引脚输出低电平，不开启掉电模式，摄像头正常工作，此时摄像头模块的白色LED会点亮
+    rt_thread_mdelay(5);  // 5msPWDN
+    rt_pin_write(PWDN_PIN, PIN_LOW);  // PWDN LED
 
-    // 根据OV2640的上电时序，硬件复位的持续时间要>=3ms，反客的OV2640采用硬件RC复位，持续时间大概在6ms左右
-    // 因此加入延时，等待硬件复位完成并稳定下来
+    // OV2640>=3msOV2640RC6ms
+    // 
     rt_thread_mdelay(5);
 
-    write_reg(bus, OV2640_SEL_Registers, OV2640_SEL_SENSOR);   // 选择 SENSOR 寄存器组
-    write_reg(bus, OV2640_SENSOR_COM7, 0x80);                  // 启动软件复位
+    write_reg(bus, OV2640_SEL_Registers, OV2640_SEL_SENSOR);   //  SENSOR 
+    write_reg(bus, OV2640_SENSOR_COM7, 0x80);                  // 
 
-    // 根据OV2640的软件复位时序，软件复位执行后，要>=2ms方可执行SCCB配置，此处采用保守一点的参数，延时10ms
+    // OV2640>=2msSCCB10ms
     rt_thread_mdelay(10);
     return RT_EOK;
 }
@@ -164,7 +164,7 @@ static rt_err_t ov2640_config(struct rt_i2c_bus_device *bus, const rt_uint8_t (*
     rt_uint32_t i    = 0;
 
     for (i = 0; configdata[i][0]; i++) {
-        write_reg(bus, configdata[i][0], configdata[i][1]); // 进行参数配置
+        write_reg(bus, configdata[i][0], configdata[i][1]); // 
     }
 
     return RT_EOK;
@@ -173,7 +173,7 @@ static rt_err_t ov2640_config(struct rt_i2c_bus_device *bus, const rt_uint8_t (*
 void ov2640_set_pixformat(struct rt_i2c_bus_device *bus, rt_uint8_t pixformat)
 {
     const rt_uint8_t(*configdata)[2];
-    uint32_t i; // 计数变量
+    uint32_t i; // 
 
     switch (pixformat) {
         case Pixformat_RGB565:
@@ -187,68 +187,68 @@ void ov2640_set_pixformat(struct rt_i2c_bus_device *bus, rt_uint8_t pixformat)
     }
 
     for (i = 0; configdata[i][0]; i++) {
-        write_reg(bus, configdata[i][0], configdata[i][1]); // 进行参数配置
+        write_reg(bus, configdata[i][0], configdata[i][1]); // 
     }
 }
 
 rt_err_t ov2640_set_framesize(struct rt_i2c_bus_device *bus, rt_uint16_t width, rt_uint16_t height)
 {
-    if ((width % 4) || (height % 4)) // 输出图像的大小一定要能被4整除
+    if ((width % 4) || (height % 4)) // 4
     {
-        return -RT_ERROR; // 返回错误标志
+        return -RT_ERROR; // 
     }
 
-    write_reg(bus, OV2640_SEL_Registers,OV2640_SEL_DSP); // 选择 dsp寄存器组
+    write_reg(bus, OV2640_SEL_Registers,OV2640_SEL_DSP); //  dsp
 
-    write_reg(bus, 0x5a, width / 4 & 0xff);                                   // 实际图像输出的宽度（outw），7~0 bit，寄存器的值等于实际值/4
-    write_reg(bus, 0x5b, height / 4 & 0xff);                                  // 实际图像输出的高度（outh），7~0 bit，寄存器的值等于实际值/4
-    write_reg(bus, 0x5c, (width / 4 >> 8 & 0x03) | (height / 4 >> 6 & 0x04)); // 设置zmhh的bit[2:0]，也就是outh 的第 8 bit，outw 的第 9~8 bit，
+    write_reg(bus, 0x5a, width / 4 & 0xff);                                   // outw7~0 bit/4
+    write_reg(bus, 0x5b, height / 4 & 0xff);                                  // outh7~0 bit/4
+    write_reg(bus, 0x5c, (width / 4 >> 8 & 0x03) | (height / 4 >> 6 & 0x04)); // zmhhbit[2:0]outh  8 bitoutw  9~8 bit
 
-    write_reg(bus, OV2640_DSP_RESET, 0x00); // 复位
+    write_reg(bus, OV2640_DSP_RESET, 0x00); // 
 
-    return RT_EOK; // 成功
+    return RT_EOK; // 
 }
 
 rt_err_t ov2640_set_horizontal_mirror(struct rt_i2c_bus_device *bus, rt_uint8_t configstate)
 {
-    rt_uint8_t ov2640_reg; // 寄存器的值
+    rt_uint8_t ov2640_reg; // 
 
-    write_reg(bus, OV2640_SEL_Registers, OV2640_SEL_SENSOR); // 选择 sensor 寄存器组
-    read_reg(bus, OV2640_SENSOR_REG04, 1, &ov2640_reg);      // 读取 0x04 的寄存器值
+    write_reg(bus, OV2640_SEL_Registers, OV2640_SEL_SENSOR); //  sensor 
+    read_reg(bus, OV2640_SENSOR_REG04, 1, &ov2640_reg);      //  0x04 
 
-    // reg04,寄存器组4，寄存器地址为 0x04，该寄存器的bit[7]，用于设置水平是否镜像
-    if (configstate == OV2640_Enable) // 如果使能镜像
+    // reg04,4 0x04bit[7]
+    if (configstate == OV2640_Enable) // 
     {
-        ov2640_reg |= 0x80; // bit[7]置1则镜像
-    } else                  // 取消镜像
+        ov2640_reg |= 0x80; // bit[7]1
+    } else                  // 
     {
-        ov2640_reg &= ~0x80; // bit[7]置0则是正常模式
+        ov2640_reg &= ~0x80; // bit[7]0
     }
-    return write_reg(bus, OV2640_SENSOR_REG04, ov2640_reg); // 写入寄存器
+    return write_reg(bus, OV2640_SENSOR_REG04, ov2640_reg); // 
 }
 
 rt_err_t ov2640_set_vertical_flip(struct rt_i2c_bus_device *bus, rt_uint8_t configstate)
 {
-    rt_uint8_t ov2640_reg; // 寄存器的值
+    rt_uint8_t ov2640_reg; // 
 
-    write_reg(bus, OV2640_SEL_Registers, OV2640_SEL_SENSOR); // 选择 sensor 寄存器组
-    read_reg(bus, OV2640_SENSOR_REG04, 1, &ov2640_reg);      // 读取 0x04 的寄存器值
+    write_reg(bus, OV2640_SEL_Registers, OV2640_SEL_SENSOR); //  sensor 
+    read_reg(bus, OV2640_SENSOR_REG04, 1, &ov2640_reg);      //  0x04 
 
-    // reg04,寄存器组4，寄存器地址为 0x04，该寄存器的第bit[6]，用于设置水平是垂直翻转
+    // reg04,4 0x04bit[6]
     if (configstate == OV2640_Enable) {
-        // 此处设置参考openmv的驱动
-        // bit[4]具体的作用是什么手册没有说，如果垂直翻转之后，该位不置1的话，颜色会不对
-        ov2640_reg |= 0x40 | 0x10; // bit[6]置1时，图像会垂直翻转
-    } else                         // 取消翻转
+        // openmv
+        // bit[4]1
+        ov2640_reg |= 0x40 | 0x10; // bit[6]1
+    } else                         // 
     {
-        ov2640_reg &= ~(0x40 | 0x10); // 将bit[6]和bit[4]都写0
+        ov2640_reg &= ~(0x40 | 0x10); // bit[6]bit[4]0
     }
-    return write_reg(bus, OV2640_SENSOR_REG04, ov2640_reg); // 写入寄存器
+    return write_reg(bus, OV2640_SENSOR_REG04, ov2640_reg); // 
 }
 
 void ov2640_set_saturation(struct rt_i2c_bus_device *bus, rt_int8_t saturation)
 {
-    write_reg(bus, OV2640_SEL_Registers, OV2640_SEL_DSP); // 选择 dsp寄存器组
+    write_reg(bus, OV2640_SEL_Registers, OV2640_SEL_DSP); //  dsp
 
     switch (saturation) {
         case 2:
@@ -298,7 +298,7 @@ void ov2640_set_saturation(struct rt_i2c_bus_device *bus, rt_int8_t saturation)
 
 void ov2640_set_brightness(struct rt_i2c_bus_device *bus, rt_int8_t brightness)
 {
-    write_reg(bus, OV2640_SEL_Registers, OV2640_SEL_DSP); // 选择 dsp寄存器组
+    write_reg(bus, OV2640_SEL_Registers, OV2640_SEL_DSP); //  dsp
 
     switch (brightness) {
         case 2:
@@ -348,7 +348,7 @@ void ov2640_set_brightness(struct rt_i2c_bus_device *bus, rt_int8_t brightness)
 
 void ov2640_set_contrast(struct rt_i2c_bus_device *bus, rt_int8_t contrast)
 {
-    write_reg(bus, OV2640_SEL_Registers, OV2640_SEL_DSP); // 选择 dsp寄存器组
+    write_reg(bus, OV2640_SEL_Registers, OV2640_SEL_DSP); //  dsp
 
     switch (contrast) {
         case 2:
@@ -408,10 +408,10 @@ void ov2640_set_contrast(struct rt_i2c_bus_device *bus, rt_int8_t contrast)
 
 void ov2640_set_effect(struct rt_i2c_bus_device *bus, rt_uint8_t effect_mode)
 {
-    write_reg(bus, OV2640_SEL_Registers, OV2640_SEL_DSP); // 选择 dsp寄存器组
+    write_reg(bus, OV2640_SEL_Registers, OV2640_SEL_DSP); //  dsp
 
     switch (effect_mode) {
-        case OV2640_Effect_Normal: // 正常模式
+        case OV2640_Effect_Normal: // 
             write_reg(bus, OV2640_DSP_BPADDR, 0x00);
             write_reg(bus, OV2640_DSP_BPDATA, 0x00);
             write_reg(bus, OV2640_DSP_BPADDR, 0x05);
@@ -419,7 +419,7 @@ void ov2640_set_effect(struct rt_i2c_bus_device *bus, rt_uint8_t effect_mode)
             write_reg(bus, OV2640_DSP_BPDATA, 0x80);
             break;
 
-        case OV2640_Effect_Negative: // 负片模式，也就是颜色全部取反
+        case OV2640_Effect_Negative: // 
             write_reg(bus, OV2640_DSP_BPADDR, 0x00);
             write_reg(bus, OV2640_DSP_BPDATA, 0x40);
             write_reg(bus, OV2640_DSP_BPADDR, 0x05);
@@ -427,7 +427,7 @@ void ov2640_set_effect(struct rt_i2c_bus_device *bus, rt_uint8_t effect_mode)
             write_reg(bus, OV2640_DSP_BPDATA, 0x80);
             break;
 
-        case OV2640_Effect_BW: // 黑白模式
+        case OV2640_Effect_BW: // 
             write_reg(bus, OV2640_DSP_BPADDR, 0x00);
             write_reg(bus, OV2640_DSP_BPDATA, 0x18);
             write_reg(bus, OV2640_DSP_BPADDR, 0x05);
@@ -435,7 +435,7 @@ void ov2640_set_effect(struct rt_i2c_bus_device *bus, rt_uint8_t effect_mode)
             write_reg(bus, OV2640_DSP_BPDATA, 0x80);
             break;
 
-        case OV2640_Effect_BW_Negative: // 黑白+负片模式
+        case OV2640_Effect_BW_Negative: // +
             write_reg(bus, OV2640_DSP_BPADDR, 0x00);
             write_reg(bus, OV2640_DSP_BPDATA, 0x58);
             write_reg(bus, OV2640_DSP_BPADDR, 0x05);
@@ -473,11 +473,11 @@ int rt_hw_ov2640_init(void)
 
     ov2640_reset(i2c_bus);
     ov2640_read_id(i2c_bus, &id);
-    ov2640_config(i2c_bus, OV2640_SVGA_Config); // 配置 SVGA模式  ------>  800*600，  最大帧率30帧
-    // ov2640_config(i2c_bus, OV2640_UXGA_Config);  // 配置 UXGA模式  ------>  1600*1200，最大帧率15帧
-    ov2640_set_framesize(i2c_bus, OV2640_Width, OV2640_Height);                   // 设置OV2640输出的图像大小
+    ov2640_config(i2c_bus, OV2640_SVGA_Config); //  SVGA  ------>  800*600  30
+    // ov2640_config(i2c_bus, OV2640_UXGA_Config);  //  UXGA  ------>  1600*120015
+    ov2640_set_framesize(i2c_bus, OV2640_Width, OV2640_Height);                   // OV2640
 
-    // 将OV2640输出图像裁剪成适应屏幕的大小
+    // OV2640
     struct stm32_dcmi_cropsize cropsize = {Display_Width, Display_Height, OV2640_Width, OV2640_Height};
     rt_device_control(dcmi_dev, DCMI_CTRL_CROP, &cropsize);
 
@@ -513,7 +513,7 @@ int camera_sample(int argc, char **argv)
     struct rt_memheap* axi_sram = (struct rt_memheap*)rt_object_find("axi_sram", RT_Object_Class_MemHeap);
     void* buff_ptr = rt_memheap_alloc(axi_sram, OV2640_BufferSize);
 
-    // 启动DMA连续传输
+    // DMA
     struct stm32_dcmi_dma_transmitbuffer transmitbuffer = {(uint32_t)buff_ptr, OV2640_BufferSize};
     rt_device_control(dcmi_dev, DCMI_CTRL_TRANSMIT_CONTINUOUS, &transmitbuffer);
 
@@ -521,7 +521,7 @@ int camera_sample(int argc, char **argv)
         rt_sem_take(&stm32_dcmi_dev->cam_semaphore, RT_WAITING_FOREVER);
         // rt_device_control(dcmi_dev, DCMI_CTRL_SUSPEND, RT_NULL);
 
-        // 将图像数据复制到屏幕
+        // 
         lcd_copybuffer(0, 0, Display_Width, Display_Height, (uint16_t *)buff_ptr);
         // rt_device_control(dcmi_dev, DCMI_CTRL_RESUME, RT_NULL);
         rt_device_control(dcmi_dev, DCMI_CTRL_GET_FPS, &fps);

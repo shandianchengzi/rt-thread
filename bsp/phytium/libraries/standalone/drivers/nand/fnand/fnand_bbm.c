@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fnand_bbm.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:56:12
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 
@@ -542,7 +542,7 @@ FError FNandReadBbt(FNand *instance_p, u32 chip_addr)
     FNandBbtDesc *desc_p = &instance_p->bbt_manager[chip_addr].bbt_desc;
     FNandBbtDesc *mirror_desc_p = &instance_p->bbt_manager[chip_addr].bbt_mirror_desc;
 
-    bbtlen = instance_p->nand_geometry[chip_addr].num_blocks >> FNAND_BBT_BLOCK_SHIFT; /* 根据nand 介质信息获取的总块数，除以4 的含义为每字节存储4个块信息 */
+    bbtlen = instance_p->nand_geometry[chip_addr].num_blocks >> FNAND_BBT_BLOCK_SHIFT; /* nand 4 4 */
     FNAND_BBM_DEBUG_I("FNandReadBbt ,bbtlen is %d", bbtlen);
 
     status1 = FNandSearchBbt(instance_p, desc_p, chip_addr);

@@ -83,15 +83,15 @@ extern "C"
 
 /**
  *******************************************************************************
- ** \brief 外设复位控制类型定义
+ ** \brief 
  ** \note
  ******************************************************************************/
 typedef enum
 {
-    ResetUart0   = 0x00000001u,             ///< 串口0
-    ResetUart1   = 0x00000002u,             ///< 串口1
-    ResetLpUart0 = 0x00000004u,             ///< 低功耗串口0
-    ResetLpUart1 = 0x00000008u,             ///< 低功耗串口1
+    ResetUart0   = 0x00000001u,             ///< 0
+    ResetUart1   = 0x00000002u,             ///< 1
+    ResetLpUart0 = 0x00000004u,             ///< 0
+    ResetLpUart1 = 0x00000008u,             ///< 1
     ResetI2c0    = 0x00000010u,             ///< I2C0
     ResetI2c1    = 0x00000020u,             ///< I2C1    
     ResetSpi0    = 0x00000040u,             ///< SPI0   
@@ -122,20 +122,20 @@ typedef enum
 
 /**
  *******************************************************************************
- ** \brief 复位源（标识）显示
+ ** \brief 
  **
  ** \note
  ******************************************************************************/
 typedef struct
 {
-    uint8_t     u8Por5V     :1;         ///< 5V启动复位
-    uint8_t     u8Por1_5V   :1;         ///< 1.5V启动复位
-    uint8_t     u8Lvd       :1;         ///< 低电压检测复位
-    uint8_t     u8Wdt       :1;         ///< 看门狗复位
-    uint8_t     u8Pca       :1;         ///< PCA复位
-    uint8_t     u8Lockup    :1;         ///< 系统异常复位
-    uint8_t     u8Sysreq    :1;         ///< 软件复位
-    uint8_t     u8RSTB      :1;         ///< RESET脚 复位
+    uint8_t     u8Por5V     :1;         ///< 5V
+    uint8_t     u8Por1_5V   :1;         ///< 1.5V
+    uint8_t     u8Lvd       :1;         ///< 
+    uint8_t     u8Wdt       :1;         ///< 
+    uint8_t     u8Pca       :1;         ///< PCA
+    uint8_t     u8Lockup    :1;         ///< 
+    uint8_t     u8Sysreq    :1;         ///< 
+    uint8_t     u8RSTB      :1;         ///< RESET 
 }stc_reset_cause_t;
 
 /*******************************************************************************
@@ -145,11 +145,11 @@ typedef struct
 /*******************************************************************************
  * Global function prototypes (definition in C source)
  ******************************************************************************/
-///< 获得复位源
+///< 
 en_result_t Reset_GetCause(stc_reset_cause_t *pstcOut);
-///< 清除复位源
+///< 
 en_result_t Reset_Clear(stc_reset_cause_t stcval);
-///< 外设模块复位控制
+///< 
 en_result_t Reset_SetPeripheralReset(en_reset_peripheral_t enPeri,boolean_t bFlag);
 
 //@} // ResetGroup

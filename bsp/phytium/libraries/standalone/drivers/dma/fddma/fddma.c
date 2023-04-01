@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fddma.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:24:47
- * Description:  This files is for ddma interface implementation
+ * Description: This files is for ddma interface implementation
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   Zhugengyu  2022/5/13    init commit
  */
 
@@ -52,10 +52,10 @@ static FError FDdmaReset(FDdma *const instance);
 /****************************************************************************/
 /**
  * @name: FDdmaCfgInitialization
- * @msg: 初始化DDMA控制器
- * @return {FError} FDDMA_SUCCESS表示初始化成功，其它返回值表示初始化失败
- * @param {FDdma} *instance, DDMA控制器实例
- * @param {FDdmaConfig} *input_config, DDMA控制器配置
+ * @msg: DDMA
+ * @return {FError} FDDMA_SUCCESS
+ * @param {FDdma} *instance, DDMA
+ * @param {FDdmaConfig} *input_config, DDMA
  */
 FError FDdmaCfgInitialization(FDdma *const instance, const FDdmaConfig *input_config)
 {
@@ -83,9 +83,9 @@ FError FDdmaCfgInitialization(FDdma *const instance, const FDdmaConfig *input_co
 
 /**
  * @name: FDdmaStart
- * @msg: 启动DDMA控制器，开始传输
- * @return {FError} FDDMA_SUCCESS表示启动成功，其它返回值表示启动失败
- * @param {FDdma} *instance, DDMA控制器实例
+ * @msg: DDMA
+ * @return {FError} FDDMA_SUCCESS
+ * @param {FDdma} *instance, DDMA
  */
 FError FDdmaStart(FDdma *const instance)
 {
@@ -106,9 +106,9 @@ FError FDdmaStart(FDdma *const instance)
 
 /**
  * @name: FDdmaStop
- * @msg: 停止DDMA控制器
- * @return {FError} FDDMA_SUCCESS表示停止成功，其它返回值表示停止失败
- * @param {FDdma} *instance, DDMA控制器实例
+ * @msg: DDMA
+ * @return {FError} FDDMA_SUCCESS
+ * @param {FDdma} *instance, DDMA
  */
 FError FDdmaStop(FDdma *const instance)
 {
@@ -129,9 +129,9 @@ FError FDdmaStop(FDdma *const instance)
 
 /**
  * @name: FDdmaDeInitialization
- * @msg: 去初始化DDMA控制器
- * @return {无}
- * @param {FDdma} *instance, DDMA控制器实例
+ * @msg: DDMA
+ * @return {}
+ * @param {FDdma} *instance, DDMA
  */
 void FDdmaDeInitialization(FDdma *const instance)
 {
@@ -152,11 +152,11 @@ void FDdmaDeInitialization(FDdma *const instance)
 
 /**
  * @name: FDdmaAllocateChan
- * @msg: 按照配置分配DDMA通道
- * @return {FError} FDDMA_SUCCESS表示分配成功，其它返回值表示分配失败
- * @param {FDdma} *instance, DDMA控制器实例
- * @param {FDdmaChan} *dma_chan, DDMA通道实例
- * @param {FDdmaChanConfig} *dma_chan_config, DDMA通道配置
+ * @msg: DDMA
+ * @return {FError} FDDMA_SUCCESS
+ * @param {FDdma} *instance, DDMA
+ * @param {FDdmaChan} *dma_chan, DDMA
+ * @param {FDdmaChanConfig} *dma_chan_config, DDMA
  */
 FError FDdmaAllocateChan(FDdma *const instance, FDdmaChan *const dma_chan, const FDdmaChanConfig *dma_chan_config)
 {
@@ -218,8 +218,8 @@ FError FDdmaAllocateChan(FDdma *const instance, FDdmaChan *const dma_chan, const
     FDdmaSetChanBind(base_addr, chan_idx, TRUE); /* bind channel */
 
     /* setup transfer src and dst */
-    /*     dma_tx_req: ddr --> dev 从内存中读取数据，写入外设 */
-    /*     dma_rx_req: dev --> ddr 从外设读取数据到内存 */
+    /*     dma_tx_req: ddr --> dev  */
+    /*     dma_rx_req: dev --> ddr  */
 #ifdef __aarch64___
     FDdmaWriteReg(base_addr, FDDMA_CHAN_DDR_LOW_ADDR_OFFSET(chan_idx), LOWER_32_BITS(dma_chan_config->ddr_addr));
     FDdmaWriteReg(base_addr, FDDMA_CHAN_DDR_UP_ADDR_OFFSET(chan_idx), UPPER_32_BITS(dma_chan_config->ddr_addr));
@@ -255,9 +255,9 @@ FError FDdmaAllocateChan(FDdma *const instance, FDdmaChan *const dma_chan, const
 
 /**
  * @name: FDdmaDellocateChan
- * @msg: 释放之前分配的DDMA通道
- * @return {FError} FDDMA_SUCCESS表示释放成功，其它返回值表示释放失败
- * @param {FDdmaChan} *dma_chan, DDMA控制器实例
+ * @msg: DDMA
+ * @return {FError} FDDMA_SUCCESS
+ * @param {FDdmaChan} *dma_chan, DDMA
  */
 FError FDdmaDellocateChan(FDdmaChan *const dma_chan)
 {
@@ -302,10 +302,10 @@ FError FDdmaDellocateChan(FDdmaChan *const dma_chan)
 
 /**
  * @name: FDdmaActiveChan
- * @msg: 使能指定的DDMA通道
- * @note: 调用FDdmaAllocateChan后无需调用此函数
- * @return {FError} 返回FDDMA_SUCCESS表示成功，返回其它表示失败
- * @param FDdmaChan *const dma_chan, DDMA通道实例
+ * @msg: DDMA
+ * @note: FDdmaAllocateChan
+ * @return {FError} FDDMA_SUCCESS
+ * @param FDdmaChan *const dma_chan, DDMA
  */
 FError FDdmaActiveChan(FDdmaChan *const dma_chan)
 {
@@ -341,9 +341,9 @@ FError FDdmaDeactiveChan(FDdmaChan *const dma_chan)
 
 /**
  * @name: FDdmaReset
- * @msg: 重置DDMA控制器
- * @return {FError} FDDMA_SUCCESS表示重置成功，其它返回值表示失败
- * @param {FDdma} *instance, DDMA控制器实例
+ * @msg: DDMA
+ * @return {FError} FDDMA_SUCCESS
+ * @param {FDdma} *instance, DDMA
  */
 static FError FDdmaReset(FDdma *const instance)
 {

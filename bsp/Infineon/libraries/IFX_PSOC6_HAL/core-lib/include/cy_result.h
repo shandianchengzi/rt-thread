@@ -188,7 +188,7 @@ typedef enum
 /**
  * Define codes to identify the module from which an error originated.
  * @note This is provided as a debugging convenience tool, not as a definitive
- * list of all module IDs. Due to the distributed nature of ModusToolbox™, each
+ * list of all module IDs. Due to the distributed nature of ModusToolbox, each
  * library has its own release schedule. It is possible that some module IDs
  * may not appear in the enumeration yet. Missing items are expected to be
  * added over time.
@@ -331,7 +331,7 @@ typedef enum
     /** Module identifier for the BMI160 Motion Sensor Library.
        Asset(s): (sensor-orientation-bmx160) */
     CY_RSLT_MODULE_BOARD_HARDWARE_BMX160 = 0x01C7,
-    /** Module identifier for the XENSIV™  DPS3XX Pressure Sensor Library */
+    /** Module identifier for the XENSIV  DPS3XX Pressure Sensor Library */
     CY_RSLT_MODULE_BOARD_HARDWARE_DPS3XX = 0x01C8,
     /** Module identifier for the WM8960 Audio Codec Library */
     CY_RSLT_MODULE_BOARD_HARDWARE_WM8960 = 0x01C9,

@@ -34,7 +34,7 @@
 * \addtogroup group_hal_impl_i2s I2S (Inter-IC Sound)
 * \ingroup group_hal_impl
 * \{
-* The CAT1 (PSoC™ 6) I2S Supports the following values for word lengths:
+* The CAT1 (PSoC 6) I2S Supports the following values for word lengths:
 * - 8 bits
 * - 10 bits (CAT1B only)
 * - 12 bits (CAT1B only)
@@ -75,7 +75,7 @@
 * \ingroup group_hal_impl
 * \{
 *
-* The CAT2 (PSoC™ 4) I2S only supports TX in master mode.
+* The CAT2 (PSoC 4) I2S only supports TX in master mode.
 *
 * There are no trigger connections available from the I2S peripheral to other peripherals on
 * the CAT2 platform. Hence, the \ref cyhal_i2s_enable_output and \ref cyhal_i2s_disable_output

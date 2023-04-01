@@ -26340,7 +26340,7 @@ typedef struct {
 #define I3C_SDATACTRL_TXTRIG_SHIFT               (4U)
 /*! TXTRIG - Trigger level for TX FIFO emptiness
  *  0b00..Trigger on empty
- *  0b01..Trigger on ¼ full or less
+ *  0b01..Trigger on  full or less
  *  0b10..Trigger on .5 full or less
  *  0b11..Trigger on 1 less than full or less (Default)
  */
@@ -26350,7 +26350,7 @@ typedef struct {
 #define I3C_SDATACTRL_RXTRIG_SHIFT               (6U)
 /*! RXTRIG - Trigger level for RX FIFO fullness
  *  0b00..Trigger on not empty
- *  0b01..Trigger on ¼ or more full
+ *  0b01..Trigger on  or more full
  *  0b10..Trigger on .5 or more full
  *  0b11..Trigger on 3/4 or more full
  */

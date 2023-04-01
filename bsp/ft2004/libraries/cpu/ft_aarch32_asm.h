@@ -1,8 +1,8 @@
 /*
- * @ : Copyright (c) 2021 Phytium Information Technology, Inc.
- *
- * SPDX-License-Identifier: Apache-2.0.
- *
+*@:Copyright(c)2021PhytiumInformationTechnology,Inc.
+*
+*SPDX-License-Identifier:Apache-2.0.
+*
  * @Date: 2021-01-22 16:30:56
  * @LastEditTime: 2021-05-24 14:35:53
  * @LastEditors: Please set LastEditors
@@ -22,7 +22,7 @@ extern "C"
 
 #define __ASM __asm
 #define __STRINGIFY(x) #x
-/* C语言实现MCR指令 */
+/* CMCR */
 #define __MCR(coproc, opcode_1, src, CRn, CRm, opcode_2)                                                                                                   \
     __ASM volatile("MCR " __STRINGIFY(p##coproc) ", " __STRINGIFY(opcode_1) ", "                                                                           \
                                                                             "%0, " __STRINGIFY(c##CRn) ", " __STRINGIFY(c##CRm) ", " __STRINGIFY(opcode_2) \
@@ -30,7 +30,7 @@ extern "C"
                    : "r"(src)                                                                                                                              \
                    : "memory");
 
-/* C语言实现MRC指令 */
+/* CMRC */
 #define __MRC(coproc, opcode_1, CRn, CRm, opcode_2)                                                                                                            \
     ({                                                                                                                                                         \
         u32 __dst;                                                                                                                                             \

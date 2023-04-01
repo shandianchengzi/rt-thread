@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fpcie_hw.c
  * Date: 2022-02-10 14:55:11
  * LastEditTime: 2022-02-18 08:58:12
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 #include "fpcie_hw.h"
@@ -48,11 +48,11 @@ enum FPcieSize
 
 /**
  * @name: FPcieEcamConfigAddress
- * @msg:   提供一个可用于ECAM 访问机制的地址
+ * @msg:   ECAM 
  * @param {FPcie} *instance_p is a pointer to the FPcie instance.
  * @param {s32} bdf  {Bus Device function}
- * @param {u32} offset 配置空间中的偏移量
- * @param {void **} addrp   用于存放输出有效访问空间的地址
+ * @param {u32} offset 
+ * @param {void **} addrp   
  * @return FError
  */
 static FError FPcieEcamConfigAddress(uintptr addr, s32 bdf, u32 offset, void **addrp)
@@ -95,7 +95,7 @@ static FError FPcieEcamConfigAddress(uintptr addr, s32 bdf, u32 offset, void **a
 
 /**
  * @name: FPcieSkipDevice
- * @msg:  跳过部分无效设备
+ * @msg:  
  * @param {FPcie} *instance_p  is a pointer to the FPcie instance.
  * @param {s32} bdf {Bus Device function}
  * @return FError
@@ -115,16 +115,16 @@ FError FPcieSkipDevice(uintptr ecam_addr, s32 bdf)
     while (1)
     {
         pos = FPCIE_READREG_BYTE(addr, pos) ;
-        if (pos < 0x40)/* 超过Capability Pointer所代表的空间offset最大范围 */
+        if (pos < 0x40)/* Capability Pointeroffset */
             break;
-        pos &= ~3 ; /* offset 第两位对齐 */
+        pos &= ~3 ; /* offset  */
         id = FPCIE_READREG_BYTE(addr, pos) ;  /* PCI Express Cap ID */
         if (id == 0xff)
         {
             break ;
         }
 
-        if (id == 0x10) /* 找到 PCIe设备的cap structure */
+        if (id == 0x10) /*  PCIecap structure */
         {
             capreg = FPCIE_READREG(addr, pos + 2) ;
             port_type = (capreg >> 4) & 0xf ; /* Device/Port type */
@@ -162,10 +162,10 @@ static s32 FPcieGetFf(enum FPcieSize size)
 
 /**
  * @name: FPcieEcamReadConfig8bit
- * @msg:  基于ECAM机制读取配置空间中偏移量的值
+ * @msg:  ECAM
  * @param {FPcie} *instance_p is a pointer to the FPcie instance.
  * @param {s32} bdf {Bus Device function}
- * @param {u32} offset 配置空间中的偏移量
+ * @param {u32} offset 
  * @param {u8} *value_p pointer store date available in the offset
  * @return FError
  */
@@ -188,10 +188,10 @@ void FPcieEcamReadConfig8bit(uintptr ecam_addr, s32 bdf, u32 offset, u8 *value_p
 
 /**
  * @name: FPcieEcamReadConfig16bit
- * @msg:  基于ECAM机制读取配置空间中偏移量的值
+ * @msg:  ECAM
  * @param {FPcie} *instance_p is a pointer to the FPcie instance.
  * @param {s32} bdf {Bus Device function}
- * @param {u32} offset 配置空间中的偏移量
+ * @param {u32} offset 
  * @param {u16} *value_p pointer store date available in the offset
  * @return FError
  */
@@ -214,10 +214,10 @@ void FPcieEcamReadConfig16bit(uintptr ecam_addr, s32 bdf, u32 offset, u16 *value
 
 /**
  * @name: FPcieEcamReadConfig32bit
- * @msg:  基于ECAM机制读取配置空间中偏移量的值
+ * @msg:  ECAM
  * @param {FPcie} *instance_p is a pointer to the FPcie instance.
  * @param {s32} bdf {Bus Device function}
- * @param {u32} offset 配置空间中的偏移量
+ * @param {u32} offset 
  * @param {u32} *value_p pointer store date available in the offset
  * @return FError
  */
@@ -240,10 +240,10 @@ void FPcieEcamReadConfig32bit(uintptr ecam_addr, s32 bdf, u32 offset, u32 *value
 
 /**
  * @name: FPcieEcamWriteConfig8bit
- * @msg:  基于ECAM机制写入配置空间中偏移量的值
+ * @msg:  ECAM
  * @param {FPcie} *instance_p  is a pointer to the FPcie instance.
  * @param {s32} bdf {Bus Device function}
- * @param {u32} offset  配置空间中的偏移量
+ * @param {u32} offset  
  * @param {u8} value to be written on to the offset
 * @return FError
  */
@@ -264,10 +264,10 @@ void FPcieEcamWriteConfig8bit(uintptr ecam_addr, s32 bdf, u32 offset, u8 value)
 
 /**
  * @name: FPcieEcamWriteConfig16bit
- * @msg:  基于ECAM机制写入配置空间中偏移量的值
+ * @msg:  ECAM
  * @param {FPcie} *instance_p  is a pointer to the FPcie instance.
  * @param {s32} bdf {Bus Device function}
- * @param {u32} offset  配置空间中的偏移量
+ * @param {u32} offset  
  * @param {u16} value to be written on to the offset
 * @return FError
  */
@@ -289,10 +289,10 @@ void FPcieEcamWriteConfig16bit(uintptr ecam_addr, s32 bdf, u32 offset, u16 value
 
 /**
  * @name: FPcieEcamWriteConfig32bit
- * @msg:  基于ECAM机制写入配置空间中偏移量的值
+ * @msg:  ECAM
  * @param {FPcie} *instance_p  is a pointer to the FPcie instance.
  * @param {s32} bdf {Bus Device function}
- * @param {u32} offset  配置空间中的偏移量
+ * @param {u32} offset  
  * @param {u32} value to be written on to the offset
 * @return FError
  */

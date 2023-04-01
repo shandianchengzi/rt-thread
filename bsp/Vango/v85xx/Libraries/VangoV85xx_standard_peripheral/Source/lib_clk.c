@@ -25,7 +25,7 @@ __IO uint32_t ana_reg3_tmp;
   *             4. HCLK/PCLK divider configuration.                             - optional
   *
   * @note   CLK_InitTypeDef *CLK_ClkInitStruct
-  *         [in]CLK_ClkInitStruct->ClockType, can use the ¡®|¡¯ operator, the selection of parameters is as follows 
+  *         [in]CLK_ClkInitStruct->ClockType, can use the | operator, the selection of parameters is as follows 
   *                 CLK_TYPE_ALL
   *                 CLK_TYPE_AHBSRC
   *                 CLK_TYPE_PLLL
@@ -305,7 +305,7 @@ void CLK_ClockConfig(CLK_InitTypeDef *CLK_ClkInitStruct)
 
 /**
   * @brief  AHB Periphral clock control.
-  * @param  Periphral: can use the ¡®|¡¯ operator
+  * @param  Periphral: can use the | operator
                 CLK_AHBPERIPHRAL_DMA     
                 CLK_AHBPERIPHRAL_GPIO  
                 CLK_AHBPERIPHRAL_LCD
@@ -333,7 +333,7 @@ void CLK_AHBPeriphralCmd(uint32_t Periphral, uint32_t NewState)
 
 /**
   * @brief  APB Periphral clock control.
-  * @param  Periphral: can use the ¡®|¡¯ operator
+  * @param  Periphral: can use the | operator
                  CLK_APBPERIPHRAL_DMA       
                  CLK_APBPERIPHRAL_I2C       
                  CLK_APBPERIPHRAL_SPI1 

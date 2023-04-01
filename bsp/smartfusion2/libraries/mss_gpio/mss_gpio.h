@@ -33,7 +33,7 @@
   must ensure that the MSS GPIOs are enabled and configured in the SmartFusion2
   MSS configurator if you wish to use them. For more information on IOMUXs,
   refer to the IOMUX section of the SmartFusion2 Microcontroller Subsystem (MSS)
-  User’s Guide.
+  Users Guide.
   The base address, register addresses and interrupt number assignment for the
   MSS GPIO block are defined as constants in the SmartFusion2 CMSIS HAL. You
   must ensure that the latest SmartFusion2 CMSIS HAL is included in the project

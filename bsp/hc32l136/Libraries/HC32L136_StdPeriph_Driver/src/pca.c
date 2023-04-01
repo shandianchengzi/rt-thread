@@ -90,10 +90,10 @@ static func_ptr_t pfnPcaCallback = NULL;
  ******************************************************************************/
 /**
  *****************************************************************************
- ** \brief PCA中断标志获取
+ ** \brief PCA
  **
  **
- ** \param [in]  enModule           PCA模块选择（Module0、Module1、Module2、Module3、Module4）
+ ** \param [in]  enModule           PCAModule0Module1Module2Module3Module4
  ** 
  ** \retval TRUE or FALSE                                      
  *****************************************************************************/
@@ -130,7 +130,7 @@ boolean_t Pca_GetIntFlag(en_pca_module_t enModule)
 
 /**
  *****************************************************************************
- ** \brief PCA计数中断标志获取
+ ** \brief PCA
  **
  **
  ** 
@@ -147,10 +147,10 @@ boolean_t Pca_GetCntIntFlag(void)
 
 /**
  *****************************************************************************
- ** \brief PCA中断标志清除
+ ** \brief PCA
  **
  **
- ** \param [in]  enModule           PCA模块选择（Module0、Module1、Module2、Module3、Module4）
+ ** \param [in]  enModule           PCAModule0Module1Module2Module3Module4
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -192,7 +192,7 @@ en_result_t Pca_ClearIntFlag(en_pca_module_t enModule)
 
 /**
  *****************************************************************************
- ** \brief PCA计数中断标志清除
+ ** \brief PCA
  **
  **
  ** 
@@ -210,7 +210,7 @@ en_result_t Pca_ClearCntIntFlag(void)
 
 /**
  *****************************************************************************
- ** \brief PCA中断服务程序
+ ** \brief PCA
  **
  **
  ** \param [in]  u8Param           == 0
@@ -226,10 +226,10 @@ void Pca_IRQHandler(uint8_t u8Param)
 
 /**
  *****************************************************************************
- ** \brief PCA中断使能
+ ** \brief PCA
  **
  **
- ** \param [in]  enModule           PCA模块选择（Module0、Module1、Module2、Module3、Module4）
+ ** \param [in]  enModule           PCAModule0Module1Module2Module3Module4
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -271,7 +271,7 @@ en_result_t Pca_EnableIrq(en_pca_module_t enModule)
 
 /**
  *****************************************************************************
- ** \brief PCA计数中断使能
+ ** \brief PCA
  **
  **
  ** 
@@ -290,10 +290,10 @@ en_result_t Pca_EnableCntIrq (void)
 
 /**
  *****************************************************************************
- ** \brief PCA中断禁止
+ ** \brief PCA
  **
  **
- ** \param [in]  enModule           PCA模块选择（Module0、Module1、Module2、Module3、Module4）
+ ** \param [in]  enModule           PCAModule0Module1Module2Module3Module4
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -335,7 +335,7 @@ en_result_t Pca_DisableIrq(en_pca_module_t enModule)
 
 /**
  *****************************************************************************
- ** \brief PCA计数中断禁止
+ ** \brief PCA
  **
  **
  ** 
@@ -355,10 +355,10 @@ en_result_t Pca_DisableCntIrq(void)
 
 /**
  *****************************************************************************
- ** \brief PCA初始化配置
+ ** \brief PCA
  **
  **
- ** \param [in]  pstcConfig           PCA模块配置结构体指针
+ ** \param [in]  pstcConfig           PCA
  **  
  ** \retval Ok or Error
  *****************************************************************************/
@@ -379,11 +379,11 @@ en_result_t Pca_Init(stc_pca_config_t* pstcConfig)
 
 /**
  *****************************************************************************
- ** \brief PCA模式配置
+ ** \brief PCA
  **
  **
- ** \param [in]  enModule            PCA模块选择（Module0、Module1、Module2、Module3、Module4）
- ** \param [in]  pstcCapMod          PCA模式配置结构体指针
+ ** \param [in]  enModule            PCAModule0Module1Module2Module3Module4
+ ** \param [in]  pstcCapMod          PCA
  **  
  ** \retval Ok or Error
  *****************************************************************************/
@@ -460,7 +460,7 @@ en_result_t Pca_CapModConfig(en_pca_module_t enModule, stc_pca_capmodconfig_t* p
 
 /**
  *****************************************************************************
- ** \brief PCA启动运行
+ ** \brief PCA
  **
  **
  ** 
@@ -479,7 +479,7 @@ en_result_t Pca_Run(void)
 
 /**
  *****************************************************************************
- ** \brief PCA停止运行
+ ** \brief PCA
  **
  **
  ** 
@@ -498,11 +498,11 @@ en_result_t Pca_Stop(void)
 
 /**
  *****************************************************************************
- ** \brief PCA16位比较数据设置
+ ** \brief PCA16
  **
  **
- ** \param [in]  enModule            PCA模块选择（Module0、Module1、Module2、Module3、Module4）
- ** \param [in]  u16Data             PCA捕获数据
+ ** \param [in]  enModule            PCAModule0Module1Module2Module3Module4
+ ** \param [in]  u16Data             PCA
  **  
  ** \retval Ok or Error
  *****************************************************************************/
@@ -545,10 +545,10 @@ en_result_t Pca_CmpData16Set(en_pca_module_t enModule, uint16_t u16Data)
 
 /**
  *****************************************************************************
- ** \brief PCA16位捕获数据获取
+ ** \brief PCA16
  **
  **
- ** \param [in]  enModule            PCA模块选择（Module0、Module1、Module2、Module3、Module4）
+ ** \param [in]  enModule            PCAModule0Module1Module2Module3Module4
  **  
  ** \retval u16Data
  *****************************************************************************/
@@ -585,11 +585,11 @@ uint16_t Pca_CapData16Get(en_pca_module_t enModule)
 
 /**
  *****************************************************************************
- ** \brief PCA高8位比较数据设置
+ ** \brief PCA8
  **
  **
- ** \param [in]  enModule            PCA模块选择（Module0、Module1、Module2、Module3、Module4）
- ** \param [in]  u8Data             PCA高8位捕获数据
+ ** \param [in]  enModule            PCAModule0Module1Module2Module3Module4
+ ** \param [in]  u8Data             PCA8
  **  
  ** \retval Ok or Error
  *****************************************************************************/
@@ -631,11 +631,11 @@ en_result_t Pca_CmpDataHSet(en_pca_module_t enModule, uint8_t u8Data)
 
 /**
  *****************************************************************************
- ** \brief PCA低8位比较数据设置
+ ** \brief PCA8
  **
  **
- ** \param [in]  enModule            PCA模块选择（Module0、Module1、Module2、Module3、Module4）
- ** \param [in]  u8Data              PCA低8位捕获数据
+ ** \param [in]  enModule            PCAModule0Module1Module2Module3Module4
+ ** \param [in]  u8Data              PCA8
  **  
  ** \retval Ok or Error
  *****************************************************************************/
@@ -677,11 +677,11 @@ en_result_t Pca_CmpDataLSet(en_pca_module_t enModule, uint8_t u8Data)
 
 /**
  *****************************************************************************
- ** \brief PCA计数器初值设置
+ ** \brief PCA
  **
  **
  ** 
- ** \param [in]  u16Data              PCA计数器初值
+ ** \param [in]  u16Data              PCA
  **  
  ** \retval Ok or Error
  *****************************************************************************/
@@ -697,11 +697,11 @@ en_result_t Pca_Cnt16Set(uint16_t u16Data)
 
 /**
  *****************************************************************************
- ** \brief PCA16位计数器值获取
+ ** \brief PCA16
  **
  **
  **  
- ** \retval 16位计数器值
+ ** \retval 16
  *****************************************************************************/
 uint16_t Pca_Cnt16Get(void)
 {
@@ -714,11 +714,11 @@ uint16_t Pca_Cnt16Get(void)
 
 /**
  *****************************************************************************
- ** \brief PCA周期重载值设置
+ ** \brief PCA
  **
  **
  ** 
- ** \param [in]  u16Data              PCA周期重载值
+ ** \param [in]  u16Data              PCA
  **  
  ** \retval Ok or Error
  *****************************************************************************/
@@ -734,11 +734,11 @@ en_result_t Pca_CARRSet(uint16_t u16Data)
 
 /**
  *****************************************************************************
- ** \brief PCA周期重载值获取
+ ** \brief PCA
  **
  **
  **  
- ** \retval PCA周期重载值
+ ** \retval PCA
  *****************************************************************************/
 uint16_t Pca_CARRGet(void)
 {
@@ -751,7 +751,7 @@ uint16_t Pca_CARRGet(void)
 
 /**
  *****************************************************************************
- ** \brief PCA增强PWM 使能
+ ** \brief PCAPWM 
  **
  **
  ** 
@@ -770,7 +770,7 @@ en_result_t Pca_Enable16bitPWM(void)
 
 /**
  *****************************************************************************
- ** \brief PCA增强PWM 禁止
+ ** \brief PCAPWM 
  **
  **
  ** 
@@ -789,10 +789,10 @@ en_result_t Pca_Disable16bitPWM(void)
 
 /**
  *****************************************************************************
- ** \brief PCA比较高速输出标志获取
+ ** \brief PCA
  **
  **
- ** \param [in]  enModule            PCA模块选择（Module0、Module1、Module2、Module3、Module4）
+ ** \param [in]  enModule            PCAModule0Module1Module2Module3Module4
  **  
  ** \retval TRUE or FALSE
  *****************************************************************************/

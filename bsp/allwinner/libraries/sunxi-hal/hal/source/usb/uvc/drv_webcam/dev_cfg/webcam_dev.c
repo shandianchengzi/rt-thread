@@ -20,8 +20,8 @@
 
 
 
-__webcam_mode_all_t webcam_mode_all;//所有使用模式
-__webcam_mode_t webcam_mode;//当前使用模式
+__webcam_mode_all_t webcam_mode_all;//
+__webcam_mode_t webcam_mode;//
 
 __s32  webcam_dev_init(void)
 {
@@ -30,9 +30,9 @@ __s32  webcam_dev_init(void)
     webcam_mode.store_mode      = YUV_MOD_UV_MB_COMBINED;   //YUV_MOD_UV_MB_COMBINED; YUV_MOD_INTERLEAVED;
     webcam_mode.size.width      = 1280;                     //1280; 640;
     webcam_mode.size.height     = 720;                      //720; 480;
-    webcam_mode.frame_rate      = 25000;                    //帧率，单位Hz
-    webcam_mode.frame_period    = 40000;                    //帧长（=1/帧率，单位us）
-    webcam_mode.color_space         = BT601;                    //色彩空间
+    webcam_mode.frame_rate      = 25000;                    //Hz
+    webcam_mode.frame_period    = 40000;                    //=1/us
+    webcam_mode.color_space         = BT601;                    //
     //webcam_mode.csi_buf_scrab_mode = CSI0_FULL;
 
     webcam_mode_all.number = 2;

@@ -42,7 +42,7 @@ typedef struct
     uint8_t Sec;
     uint8_t Min;
     uint8_t Hour;
-    uint8_t Week;//表示日期0~6,sun~sat，表示预约时，bit0~bit6,sun~sat
+    uint8_t Week;//0~6,sun~satbit0~bit6,sun~sat
 }Time_UserDataStruct;
 
 typedef struct
@@ -125,7 +125,7 @@ enum
     UART_CB_RX_TIMEOUT,
     UART_CB_RX_BUFFER_FULL,
     UART_CB_ERROR,
-    UART_CB_CONNECTED,  //串口工具对方已经打开
+    UART_CB_CONNECTED,  //
     DMA_CB_ERROR = 0xffffffff,
 
     CORE_EVENT_ID_START = 0,
@@ -159,23 +159,23 @@ typedef struct
 {
     CBFuncEx_t CB;
     union {
-        void *pParam;   //用户回调模式
-        uint32_t MaxCnt;    //设置捕获模式时的最大tick，捕获时的tick
+        void *pParam;   //
+        uint32_t MaxCnt;    //ticktick
     }uParam;
 
     union {
         struct {
-            uint8_t Level;  //IO输入输出电平，捕获模式下中断时IO电平
-            uint8_t PullMode; //IO上下拉控制
+            uint8_t Level;  //IOIO
+            uint8_t PullMode; //IO
         } IOArg;
         struct {
-            uint8_t ExtiMode;   //中断模式
-            uint8_t PullMode; //IO上下拉控制
+            uint8_t ExtiMode;   //
+            uint8_t PullMode; //IO
         } ExitArg;
-        uint16_t Time;  //delay时间，us
+        uint16_t Time;  //delayus
     } uArg;
-    uint8_t Operation;  //操作类型
-    uint8_t Arg1;       //IO操作时为IOpin，delay操作时则为微调值，0~47，48为1us
+    uint8_t Operation;  //
+    uint8_t Arg1;       //IOIOpindelay0~47481us
 }OPQueue_CmdStruct;
 
 __attribute__((weak)) uint8_t OS_CheckInIrq(void);
@@ -217,16 +217,16 @@ uint8_t IsLeapYear(uint32_t Year);
 LongInt UTC2Tamp(Date_UserDataStruct *Date, Time_UserDataStruct *Time);
 uint32_t Tamp2UTC(LongInt Sec, Date_UserDataStruct *Date, Time_UserDataStruct *Time, uint32_t LastDDay);
 /*
- * 转义解包
- * 标识Flag，即包头包尾加入Flag
- * 数据中遇到Code F1 -> Flag
- * 数据中遇到Code F2 -> Code
- * 数据中遇到Flag 出错返回0
+ * 
+ * FlagFlag
+ * Code F1 -> Flag
+ * Code F2 -> Code
+ * Flag 0
  */
 
 uint32_t TransferUnpack(uint8_t Flag, uint8_t Code, uint8_t F1, uint8_t F2, uint8_t *InBuf, uint32_t Len, uint8_t *OutBuf);
 /*
- * llist相关代码，大部分来自linux内核
+ * llistlinux
  */
 /**
  * container_of - cast a member of a structure out to the containing structure

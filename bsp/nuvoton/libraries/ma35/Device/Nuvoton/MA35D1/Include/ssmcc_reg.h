@@ -714,27 +714,27 @@ typedef struct
      * |        |          |When any bit in this field is set to 1, TZC-400 permits Non-secure write access to any access with the associated NSAIDW<x> value
      * |        |          |For example, if NSAIDW<x> is 3 and the corresponding nsaid_wr_en[3] bit is set HIGH then TZC-400 permits the Non-secure write access to progress.
      * @var TZC_T::PID4
-     * Offset: 0xFD0  Provides the following information about the peripheral configurationu2022 4KB_count.u2022 Jep106_c_code.
+     * Offset: 0xFD0  Provides the following information about the peripheral configurationu2022 4KB_count.u2022 Jep106_c_code.
      * ---------------------------------------------------------------------------------------------------
      * |Bits    |Field     |Descriptions
      * | :----: | :----:   | :---- |
      * |[3:0]   |jep106_c_code|The JEP106 continuation code value represents how many 0x7F continuation characters occur in the manufacturer identity code These bits read back as 0x4 For information on the JEP106 standard, see the Additional reading section.
      * |[7:4]   |4KB_count |The number of 4KB address blocks required to access the registers, expressed in powers of 2 These bits read back as 0x0 This means that the TZC-400 occupies a single 4KB address block.
      * @var TZC_T::PID0
-     * Offset: 0xFE0  The PID0 register provides the following information about the peripheral configuration:u2022 part_number_0.
+     * Offset: 0xFE0  The PID0 register provides the following information about the peripheral configuration:u2022 part_number_0.
      * ---------------------------------------------------------------------------------------------------
      * |Bits    |Field     |Descriptions
      * | :----: | :----:   | :---- |
      * |[7:0]   |part_number_0|These bits read back as 0x60
      * @var TZC_T::PID1
-     * Offset: 0xFE4  The PID1 register provides the following information about the peripheral configuration:u2022 part_number_1.u2022 Jep106_id_3_0.
+     * Offset: 0xFE4  The PID1 register provides the following information about the peripheral configuration:u2022 part_number_1.u2022 Jep106_id_3_0.
      * ---------------------------------------------------------------------------------------------------
      * |Bits    |Field     |Descriptions
      * | :----: | :----:   | :---- |
      * |[3:0]   |part_number_1|These bits read back as 0x4.
      * |[7:4]   |jep106_id_3_0|JEP106 identity code [3:0] See the JEP106, Standard Manufacturer Identification Code These bits read back as 0xB because ARM is the peripheral designer.
      * @var TZC_T::PID2
-     * Offset: 0xFE8  The PID2 register provides the following information about the peripheral configuration:u2022 Jep106_id_6_4.u2022 Revision number.u2022 JEDEC use flag.
+     * Offset: 0xFE8  The PID2 register provides the following information about the peripheral configuration:u2022 Jep106_id_6_4.u2022 Revision number.u2022 JEDEC use flag.
      * ---------------------------------------------------------------------------------------------------
      * |Bits    |Field     |Descriptions
      * | :----: | :----:   | :---- |
@@ -742,7 +742,7 @@ typedef struct
      * |[3]     |jedec_used|This indicates that the TZC-400 uses a manufacturer identity code that was allocated by JEDEC according to JEP106 This bit always reads back as 0x1.
      * |[7:4]   |revision  |Identifies the revision of the TZC-400 For revision r0p1, this field is set to 0x2.
      * @var TZC_T::PID3
-     * Offset: 0xFEC  The PID3 register provides the following information about the peripheral configuration:u2022 Mod Number.u2022 RevAnd.
+     * Offset: 0xFEC  The PID3 register provides the following information about the peripheral configuration:u2022 Mod Number.u2022 RevAnd.
      * ---------------------------------------------------------------------------------------------------
      * |Bits    |Field     |Descriptions
      * | :----: | :----:   | :---- |
@@ -786,12 +786,12 @@ typedef struct
     /*!< [0x0100] This register is read-only and is hard-wired to all zeros.       */
     REGION_T REGION[9];                  /*!< [0x0100] All structure regions in TZC.                                    */
     __I  uint32_t RESERVE10[876];
-    __I  uint32_t PID4;                  /*!< [0x0fd0] Provides the following information about the peripheral configurationu2022 4KB_count.u2022 Jep106_c_code. */
+    __I  uint32_t PID4;                  /*!< [0x0fd0] Provides the following information about the peripheral configurationu2022 4KB_count.u2022 Jep106_c_code. */
     __I  uint32_t RESERVE11[3];
-    __I  uint32_t PID0;                  /*!< [0x0fe0] The PID0 register provides the following information about the peripheral configuration:u2022 part_number_0. */
-    __I  uint32_t PID1;                  /*!< [0x0fe4] The PID1 register provides the following information about the peripheral configuration:u2022 part_number_1.u2022 Jep106_id_3_0. */
-    __I  uint32_t PID2;                  /*!< [0x0fe8] The PID2 register provides the following information about the peripheral configuration:u2022 Jep106_id_6_4.u2022 Revision number.u2022 JEDEC use flag. */
-    __I  uint32_t PID3;                  /*!< [0x0fec] The PID3 register provides the following information about the peripheral configuration:u2022 Mod Number.u2022 RevAnd. */
+    __I  uint32_t PID0;                  /*!< [0x0fe0] The PID0 register provides the following information about the peripheral configuration:u2022 part_number_0. */
+    __I  uint32_t PID1;                  /*!< [0x0fe4] The PID1 register provides the following information about the peripheral configuration:u2022 part_number_1.u2022 Jep106_id_3_0. */
+    __I  uint32_t PID2;                  /*!< [0x0fe8] The PID2 register provides the following information about the peripheral configuration:u2022 Jep106_id_6_4.u2022 Revision number.u2022 JEDEC use flag. */
+    __I  uint32_t PID3;                  /*!< [0x0fec] The PID3 register provides the following information about the peripheral configuration:u2022 Mod Number.u2022 RevAnd. */
     __I  uint32_t CID0;                  /*!< [0x0ff0] This is one of four 8-bit registers that together hold a 32-bit component ID value. */
     __I  uint32_t CID1;                  /*!< [0x0ff4] This is one of four 8-bit registers, that together hold a 32-bit component ID value. */
     __I  uint32_t CID2;                  /*!< [0x0ff8] This is one of four 8-bit registers, that together hold a 32-bit component ID value. */

@@ -11,7 +11,7 @@
 *
 * Date          :  2013/03/26
 *
-* Description   :  USB VIDEO CONTROL Driver中对USB接口设备的处理
+* Description   :  USB VIDEO CONTROL DriverUSB
 *
 * Others        :  NULL
 *

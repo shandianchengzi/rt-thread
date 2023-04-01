@@ -1,15 +1,15 @@
 /*
- * @ : Copyright (c) 2021 Phytium Information Technology, Inc.
- *
- * SPDX-License-Identifier: Apache-2.0.
- *
+*@:Copyright(c)2021PhytiumInformationTechnology,Inc.
+*
+*SPDX-License-Identifier:Apache-2.0.
+*
  * @Date: 2021-04-07 09:53:07
  * @LastEditTime: 2021-05-25 16:42:56
- * @Description:  This files is for gmac irq
+ * @Description: This files is for gmac irq
  *
- * @Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * @ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 #include "ft_gmac_hw.h"

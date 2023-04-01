@@ -1,103 +1,103 @@
-# 珠海泰为 TAE32F5300_EVAL_BOARD 开发板 BSP 说明
+#  TAE32F5300_EVAL_BOARD  BSP 
 
-## 简介
+## 
 
-本文档为 TAE32F5300_EVAL_BOARD 开发板的 BSP (板级支持包) 说明。
+ TAE32F5300_EVAL_BOARD  BSP () 
 
-主要内容如下：
 
-- 开发板资源介绍
-- BSP 快速上手
-- 进阶使用方法
 
-通过阅读快速上手章节开发者可以快速地上手该 BSP，将 RT-Thread 运行在开发板上。在进阶使用指南章节，将会介绍更多高级功能，帮助开发者利用 RT-Thread 驱动更多板载资源。
+- 
+- BSP 
+- 
 
-## 开发板介绍
+ BSP RT-Thread  RT-Thread 
+
+## 
 
 ![image-20210905115438031](.\figures\TAE32_EVBorad.png)
 
-TAE32F5300_EVAL_BOARD 是珠海泰为官方推出的开发板，搭载 TAE32F5300 芯片，基于 ARM Cortex-M3 内核，最高主频 90 MHz，内置硬件加速器（ERPU），具有丰富的板载资源，包括 can 收发电路、485 收发电路，音频输入接口、USB 接口、LED、按键等。
+TAE32F5300_EVAL_BOARD  TAE32F5300  ARM Cortex-M3  90 MHzERPU can 485 USB LED
 
-TAE32F5300_EVAL_BOARD 开发板常用 ** 板载资源 ** 如下：
+TAE32F5300_EVAL_BOARD  **  ** 
 
-- MCU：TAE32F5300，主频 90MHz，75KBFLASH ，内置 16KB 容量数据 FLASH 存储器, 内置 16KB 系统 SRAM+8KB 算法 SRAM（两块 SRAM 4KB+4KB）
-- 板载资源
-  - 蜂鸣器
+- MCUTAE32F5300 90MHz75KBFLASH  16KB  FLASH ,  16KB  SRAM+8KB  SRAM SRAM 4KB+4KB
+- 
+  - 
   - USB
   - LED
-  - 按键
-  - 音频输入口
-  - 可调电阻
-  - 温湿度传感器接口
+  - 
+  - 
+  - 
+  - 
   - EEPROM
-  - 蓝牙模块接口
+  - 
   - RS485
   - CAN
   - uart lcd
-- 调试接口：标准 JTAG/SWD。
+-  JTAG/SWD
 
-开发板更多详细信息请参考珠海泰为 [TAE32F5300_EVAL_BOARD](http://www.tai-action.com/)
+ [TAE32F5300_EVAL_BOARD](http://www.tai-action.com/)
 
-## 外设支持
+## 
 
-本 BSP 目前对外设的支持情况如下：
+ BSP 
 
-| ** 板载外设 **  | ** 支持情况 ** |               ** 备注 **                |
+| **  **  | **  ** |               **  **                |
 | :------------ | :-----------: | :-----------------------------------: |
-| LED           |     支持     |           LED                   |
-| ** 片上外设 **  | ** 支持情况 ** |               ** 备注 **                |
+| LED           |          |           LED                   |
+| **  **  | **  ** |               **  **                |
 | :------------ | :-----------: | :-----------------------------------: |
-| GPIO          |     支持     | PA0, PA1... PI15 ---> PIN: 0, 1...144 |
-| UART          |     支持     |              UART0~1                 |
-| I2C           |     支持     |              软件 I2C                 |
-| LED           |     支持     |              LED1~3                     |
+| GPIO          |          | PA0, PA1... PI15 ---> PIN: 0, 1...144 |
+| UART          |          |              UART0~1                 |
+| I2C           |          |               I2C                 |
+| LED           |          |              LED1~3                     |
 
 
-## 使用说明
-
-使用说明分为如下两个章节：
-
-- 快速上手
-
-    本章节是为刚接触 RT-Thread 的新手准备的使用说明，遵循简单的步骤即可将 RT-Thread 操作系统运行在该开发板上，看到实验效果 。
-
-- 进阶使用
-
-    本章节是为需要在 RT-Thread 操作系统上使用更多开发板资源的开发者准备的。通过使用 ENV 工具对 BSP 进行配置，可以开启更多板载资源，实现更多高级功能。
+## 
 
 
-### 快速上手
 
-本 BSP 为开发者提供 MDK5 工程，暂不支持 GCC 开发环境。下面以 MDK5 开发环境为例，介绍如何将系统运行起来。
+- 
 
-#### 硬件连接
+     RT-Thread  RT-Thread  
 
-#### CMSIS-DAP 接线
+- 
 
-| TAE32 开发板 | CMSIS-DAP |
+     RT-Thread  ENV  BSP 
+
+
+### 
+
+ BSP  MDK5  GCC  MDK5 
+
+#### 
+
+#### CMSIS-DAP 
+
+| TAE32  | CMSIS-DAP |
 | :---------- | :-------: |
 | SWDIO       |   SWDIO   |
 | SWCLK       |   SWCLK   |
 | VCC         |   3.3v    |
 | GND         |    GND    |
 
-串口转 USB 接线
+ USB 
 
-| TAE32 开发板 | 串口转 USB |
+| TAE32  |  USB |
 | :---------- | :-------: |
 | RXD(PA10)   |    TXD    |
 | TXD(PA11)   |    RXD    |
 | GND         |    GND    |
 
-#### 编译下载
+#### 
 
-双击 project.uvprojx 文件，打开 MDK5 工程，编译并下载程序到开发板。
+ project.uvprojx  MDK5 
 
-> 工程默认配置使用 CMSIS-DAP 下载程序，点击下载按钮即可下载程序到开发板。
+>  CMSIS-DAP 
 
-#### 运行结果
+#### 
 
-下载程序成功之后，系统会自动运行，观察开发板上 LED 的运行效果，PB6 每 500ms 闪烁一次。
+ LED PB6  500ms 
 ```
  \ | /
 - RT -     Thread Operating System
@@ -106,22 +106,22 @@ TAE32F5300_EVAL_BOARD 开发板常用 ** 板载资源 ** 如下：
 msh >
 ```
 
-### 进阶使用
+### 
 
-此 BSP 默认只开启了 GPIO 和 串口 0 的功能，更多高级功能需要利用 env 工具对 BSP 进行配置，步骤如下：
+ BSP  GPIO   0  env  BSP 
 
-1. 在 bsp 下打开 env 工具。
+1.  bsp  env 
 
-2. 输入 `menuconfig` 命令配置工程，配置好之后保存退出。
+2.  `menuconfig` 
 
-3. 输入 `pkgs --update` 命令更新软件包。
+3.  `pkgs --update` 
 
-4. 输入 `scons --target=mdk5` 命令重新生成工程。
+4.  `scons --target=mdk5` 
 
-## 注意事项
+## 
 
-## 联系人信息
+## 
 
-维护人:
+:
 
--  qinweizhong 邮箱：<369247354@qq.com>
+-  qinweizhong <369247354@qq.com>

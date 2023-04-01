@@ -23,14 +23,14 @@
 <div class="sectione dark">
 <center>
 <h1 id="release-notes-for-stm32f1xx-cmsis"><strong>Release Notes for STM32F1xx CMSIS</strong></h1>
-<p>Copyright © 2016 STMicroelectronics<br />
+<p>Copyright  2016 STMicroelectronics<br />
 </p>
 <a href="https://www.st.com" class="logo"><img src="./_htmresc/st_logo.png" alt="ST logo" /></a>
 </center>
 </div>
 </div>
 <h1 id="license"><strong>License</strong></h1>
-This software component is licensed by ST under BSD 3-Clause license, the “License”; You may not use this component except in compliance with the License. You may obtain a copy of the License at:
+This software component is licensed by ST under BSD 3-Clause license, the License; You may not use this component except in compliance with the License. You may obtain a copy of the License at:
 <center>
 <a href="https://opensource.org/licenses/BSD-3-Clause">https://opensource.org/licenses/BSD-3-Clause</a>
 </center>
@@ -45,7 +45,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>Improve GCC startup files robustness.</li>
 <li>Add LSI maximum startup time datasheet value: LSI_STARTUP_TIME.</li>
 <li>Add atomic register access macros.</li>
-<li>File “startup_stm32f105xc.s” updated to call static constructors.</li>
+<li>File startup_stm32f105xc.s updated to call static constructors.</li>
 </ul>
 </div>
 </div>
@@ -55,7 +55,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <h2 id="main-changes-1">Main Changes</h2>
 <ul>
 <li>Protect Vector table modification following SRAM or FLASH preprocessor directive by a generic preprocessor directive : USER_VECT_TAB_ADDRESS</li>
-<li>SystemInit(): update to don’t reset RCC registers to its reset values.</li>
+<li>SystemInit(): update to dont reset RCC registers to its reset values.</li>
 <li>TIM:
 <ul>
 <li>Remove unused IS_TIM_SYNCHRO_INSTANCE() assert macro</li>
@@ -72,8 +72,8 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <div>
 <h2 id="main-changes-2">Main Changes</h2>
 <ul>
-<li>Fix MISRA C 2012 Compilation errors: update to use “UL” postfix for bits mask definitions(_Msk) and memory/peripheral base addresses</li>
-<li>Fix wrong initialization value for “SystemCoreClock” in System_stm32f1xx.c file</li>
+<li>Fix MISRA C 2012 Compilation errors: update to use UL postfix for bits mask definitions(_Msk) and memory/peripheral base addresses</li>
+<li>Fix wrong initialization value for SystemCoreClock in System_stm32f1xx.c file</li>
 <li>Update gcc linker file template to be aligned with AC6 linker file template</li>
 <li>stm32f1xx.h
 <ul>
@@ -238,7 +238,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>stm32f10x.h
 <ul>
 <li>Change <em>#define FLASH_ACR_LATENCY ((uint8_t)<strong>0x03</strong>)</em> by #define <em>FLASH_ACR_LATENCY ((uint8_t)<strong>0x07</strong>)</em></li>
-<li>Remove ‘<strong>,</strong>’ from #define <em>DMA_CCR7_PSIZE , ((uint16_t)0x0300)</em></li>
+<li>Remove <strong>,</strong> from #define <em>DMA_CCR7_PSIZE , ((uint16_t)0x0300)</em></li>
 </ul></li>
 </ul>
 </div>
@@ -267,7 +267,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>Add missing bits definition for <em>FSMC BTR1</em>, _BTR2__, <em>BTR3</em>, <em>BWTR1</em>, <em>BWTR2</em>, <em>BWTR3</em> and <em>BWTR4</em> registers</li>
 <li>Definition for Flash keys moved from stm32f10x_flash.c to stm32f10x.h</li>
 </ul></li>
-<li>V3.5.0 (based CMSIS V1.3) vs. V3.6.0 (based on CMSIS V2.1) compatibility update
+<li>V3.5.0 (based CMSIS V1.3) vs.V3.6.0 (based on CMSIS V2.1) compatibility update
 <ul>
 <li>Due to the directory structure difference between CMSIS V1.3 and V2.1, when migrating a project based on STM32F10x drivers V3.5.0 to V3.6.0 you need to perform the following update:
 <ul>
@@ -275,7 +275,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>In the compiler preprocessor, remove CortexM3 CMSIS include path. CortexM3 CMSIS files are included by default in your development toolchain</li>
 <li>Remove core_cm3.c file (if it is used). Almost of CortexM3 CMSIS_ function are provided as intrinsic by the compiler</li>
 <li>In the compiler preprocessor, update path of _STM32F10x CMSIS include files from <em>Libraries332F10x to Libraries32F10x</em></li>
-<li>In the project settings, update path of <em>startup_stm32f10x_xx.s</em> file from <em>Libraries332F10x”Compiler”</em> to <em>Libraries32F10x”Compiler”</em> where, “Compiler” refer to arm, gcc_ride7, iar, TASKING or TrueSTUDIO</li>
+<li>In the project settings, update path of <em>startup_stm32f10x_xx.s</em> file from <em>Libraries332F10xCompiler</em> to <em>Libraries32F10xCompiler</em> where, Compiler refer to arm, gcc_ride7, iar, TASKING or TrueSTUDIO</li>
 </ul></li>
 </ul></li>
 </ul>
@@ -311,14 +311,14 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li>All STM32 devices definitions are commented by default. User has to select the appropriate device before starting else an error will be signaled on compile time.</li>
 <li>Add new IRQs definitions inside the IRQn_Type enumeration for STM23 High-density Value line devices.</li>
-<li>“<strong>bool</strong>” type removed.</li>
+<li><strong>bool</strong> type removed.</li>
 </ul></li>
 </ul></li>
 <li>STM32F10x CMSIS Cortex-M3 Device Peripheral Access Layer System Files: <em><strong>system_stm32f10x.h</strong></em> and <em><strong>system_stm32f10x.c</strong></em>
 <ul>
-<li>“<em><strong>system_stm32f10x.c</strong></em>” moved to to “<em><strong>STM32F10x_StdPeriph_Template</strong></em>” directory. This file is also moved to each example directory under “<strong>STM32F10x_StdPeriph_Examples</strong>”.</li>
+<li><em><strong>system_stm32f10x.c</strong></em> moved to to <em><strong>STM32F10x_StdPeriph_Template</strong></em> directory. This file is also moved to each example directory under <strong>STM32F10x_StdPeriph_Examples</strong>.</li>
 <li>SystemInit_ExtMemCtl() function: update to support High-density Value line devices.</li>
-<li>Add “VECT_TAB_SRAM” inside “<em><strong>system_stm32f10x.c</strong></em>” to select if the user want to place the Vector Table in internal SRAM. An additional define is also to specify the Vector Table offset “VECT_TAB_OFFSET”.</li>
+<li>Add VECT_TAB_SRAM inside <em><strong>system_stm32f10x.c</strong></em> to select if the user want to place the Vector Table in internal SRAM. An additional define is also to specify the Vector Table offset VECT_TAB_OFFSET.</li>
 </ul></li>
 <li>STM32F10x CMSIS startup files:<em><strong>startup_stm32f10x_xx.s</strong></em>
 <ul>
@@ -349,7 +349,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>Add new IP instances TIM9..14</li>
 <li>RCC, AFIO, DBGMCU bits definition updated</li>
 </ul></li>
-<li>Correct IRQs definition for MD-, LD-, MD_VL- and LD_VL-density devices (remove comma “,” at the end of enum list)</li>
+<li>Correct IRQs definition for MD-, LD-, MD_VL- and LD_VL-density devices (remove comma , at the end of enum list)</li>
 </ul></li>
 <li>STM32F10x CMSIS Cortex-M3 Device Peripheral Access Layer System Files: <em><strong>system_stm32f10x.h</strong></em> and <em><strong>system_stm32f0xx.c</strong></em>
 <ul>

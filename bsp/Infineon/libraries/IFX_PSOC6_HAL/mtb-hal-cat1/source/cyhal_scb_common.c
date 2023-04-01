@@ -399,7 +399,7 @@ cy_rslt_t _cyhal_scb_set_fifo_level(CySCB_Type *base, cyhal_scb_fifo_type_t type
 
 cy_rslt_t _cyhal_scb_enable_output(cyhal_resource_inst_t resource, cyhal_scb_output_t output, cyhal_source_t *source)
 {
-// All PSoC™ 6 devices have scb triggers but not all PSoC™ 4 devices do
+// All PSoC 6 devices have scb triggers but not all PSoC 4 devices do
 #if ((defined(CY_IP_MXSCB) && !defined(COMPONENT_CAT2)) || defined(CY_DEVICE_PSOC4AMC) || defined(CY_DEVICE_PSOC4AS3) || defined(CY_DEVICE_PSOC4AS4))
     // This just returns a proper cyhal_source_t. Use _cyhal_scb_set_fifo_level
     // to actually set level.
@@ -446,7 +446,7 @@ cy_rslt_t _cyhal_scb_enable_output(cyhal_resource_inst_t resource, cyhal_scb_out
 
 cy_rslt_t _cyhal_scb_disable_output(cyhal_scb_output_t output)
 {
-// All PSoC™ 6 devices have scb triggers but not all PSoC™ 4 devices do
+// All PSoC 6 devices have scb triggers but not all PSoC 4 devices do
 #if (defined(CY_IP_MXSCB) || defined(CY_DEVICE_PSOC4AMC) || defined(CY_DEVICE_PSOC4AS3) || defined(CY_DEVICE_PSOC4AS4))
     // Noop: Use _cyhal_scb_set_fifo_level to actually set level
     if (output == CYHAL_SCB_OUTPUT_TRIGGER_RX_FIFO_LEVEL_REACHED ||

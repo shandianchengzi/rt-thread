@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fsdio.c
  * Date: 2022-05-26 16:27:54
  * LastEditTime: 2022-05-26 16:27:54
- * Description:  This files is for SDIO user function implementation
+ * Description: This files is for SDIO user function implementation
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   zhugengyu  2021/12/2    init
  * 1.1   zhugengyu  2022/6/6     modify according to tech manual.
  */
@@ -95,16 +95,16 @@ void FSdioDeInitialize(FSdio *const instance_p)
     FASSERT(instance_p);
     uintptr base_addr = instance_p->config.base_addr;
 
-    FSdioSetInterruptMask(instance_p, FSDIO_GENERAL_INTR, FSDIO_INT_ALL_BITS, FALSE); /* 关闭控制器中断位 */
-    FSdioSetInterruptMask(instance_p, FSDIO_IDMA_INTR, FSDIO_DMAC_INT_ENA_ALL, FALSE); /* 关闭DMA中断位 */
+    FSdioSetInterruptMask(instance_p, FSDIO_GENERAL_INTR, FSDIO_INT_ALL_BITS, FALSE); /*  */
+    FSdioSetInterruptMask(instance_p, FSDIO_IDMA_INTR, FSDIO_DMAC_INT_ENA_ALL, FALSE); /* DMA */
 
-    FSdioClearRawStatus(base_addr); /* 清除中断状态 */
+    FSdioClearRawStatus(base_addr); /*  */
     FSdioClearDMAStatus(base_addr);
 
-    FSdioSetPower(base_addr, FALSE); /* 关闭电源 */
-    FSdioSetClock(base_addr, FALSE); /* 关闭卡时钟 */
-    FSDIO_CLR_BIT(base_addr, FSDIO_UHS_REG_EXT_OFFSET, FSDIO_UHS_EXT_CLK_ENA); /* 关闭外部时钟 */
-    FSDIO_CLR_BIT(base_addr, FSDIO_UHS_REG_OFFSET, FSDIO_UHS_REG_VOLT_180); /* 恢复为3.3v默认电压 */
+    FSdioSetPower(base_addr, FALSE); /*  */
+    FSdioSetClock(base_addr, FALSE); /*  */
+    FSDIO_CLR_BIT(base_addr, FSDIO_UHS_REG_EXT_OFFSET, FSDIO_UHS_EXT_CLK_ENA); /*  */
+    FSDIO_CLR_BIT(base_addr, FSDIO_UHS_REG_OFFSET, FSDIO_UHS_REG_VOLT_180); /* 3.3v */
 
     instance_p->is_ready = 0;
 }

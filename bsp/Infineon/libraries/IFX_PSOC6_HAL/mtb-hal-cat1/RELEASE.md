@@ -1,5 +1,5 @@
-# CAT1 (PSoC™ 6) Hardware Abstraction Layer (HAL) Release Notes
-The CAT1 Hardware Abstraction Layer (HAL) provides an implementation of the Hardware Abstraction Layer for the PSoC™ 6 family of chips. This API provides convenience methods for initializing and manipulating different hardware peripherals. Depending on the specific chip being used, not all features may be supported.
+# CAT1 (PSoC 6) Hardware Abstraction Layer (HAL) Release Notes
+The CAT1 Hardware Abstraction Layer (HAL) provides an implementation of the Hardware Abstraction Layer for the PSoC 6 family of chips. This API provides convenience methods for initializing and manipulating different hardware peripherals. Depending on the specific chip being used, not all features may be supported.
 
 This library is only supported on the Cortex-M4. It is not compatible with the Cortex-M0+. Any peripherals used by the Cortex-M0+ must be configured using the PDL and reserved on the Cortex-M4 by calling cyhal_hwmgr_reserve(). This ensures the HAL is aware the resource is in use and does not overuse it.
 
@@ -75,7 +75,7 @@ This major version update includes changes that break API compatibility with pri
 * PWM:
   1. cyhal_pwm_connect_digital no longer takes the signal type parameter.
   2. cyhal_pwm_init will always produce a non-inverted waveform on the specified pin, even if that pin natively produces an inverted
-     output (for example, the `line_compl` pins on PSoC™ devices). This improves consistency with the behavior of cyhal_pwm_init_adv.
+     output (for example, the `line_compl` pins on PSoC devices). This improves consistency with the behavior of cyhal_pwm_init_adv.
 * QSPI:
   1. cyhal_qspi_init() function got one additional parameter - shared clock (clk), which will allow users to use multiple HAL drivers which depends on same clock source.
   2. cyhal_qspi_init() now takes io[x] and ssel pins as pointer to cyhal_qspi_slave_pin_config_t structure, that contain mentioned pins.
@@ -111,7 +111,7 @@ NOTE: This version requires core-lib 1.3.0 or later
 * Added optional implementations for SDHC control pin APIs and RTOS aware delay API provided as weak functions in the PDL (Disabled by: DEFINES+=CYHAL_DISABLE_WEAK_FUNC_IMPL)
 #### v1.4.0
 * Renamed library from psoc6hal to mtb-hal-cat1
-* Added support for new PSoC™ 6 S4 devices
+* Added support for new PSoC 6 S4 devices
 * Extended clock support for QSPI and SDHC drivers
 * Fixed a few bugs in various drivers
 * Minor documentation updates
@@ -160,19 +160,19 @@ This version of the CAT1 Hardware Abstraction Layer was validated for compatibil
 
 | Software and Tools                        | Version |
 | :---                                      | :----:  |
-| ModusToolbox™ Software Environment         | 2.4.0   |
+| ModusToolbox Software Environment         | 2.4.0   |
 | GCC Compiler                              | 10.3.1  |
 | IAR Compiler                              | 8.4     |
 | ARM Compiler                              | 6.11    |
 
-Minimum required ModusToolbox™ Software Environment: v2.0
+Minimum required ModusToolbox Software Environment: v2.0
 
 ### More information
 Use the following links for more information, as needed:
 * [API Reference Guide](https://infineon.github.io/mtb-hal-cat1/html/modules.html)
 * [Cypress Semiconductor, an Infineon Technologies Company](http://www.cypress.com)
 * [Infineon GitHub](https://github.com/infineon)
-* [ModusToolbox™](https://www.cypress.com/products/modustoolbox-software-environment)
+* [ModusToolbox](https://www.cypress.com/products/modustoolbox-software-environment)
 
 ---
-© Cypress Semiconductor Corporation (an Infineon company) or an affiliate of Cypress Semiconductor Corporation, 2019-2021.
+ Cypress Semiconductor Corporation (an Infineon company) or an affiliate of Cypress Semiconductor Corporation, 2019-2021.

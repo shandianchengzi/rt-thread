@@ -1,10 +1,10 @@
 # STM32G431-Nucleo BSP Introduction
 
-[中文](README_zh.md) 
+[](README_zh.md) 
 
 ## MCU: STM32G474RB @170MHz, 512KB FLASH,  128KB RAM
 
-The STM32G474xB/xC/xE devices are based on the high-performance Arm® Cortex®-M4 32-bit RISC core. They operate at a frequency of up to 170 MHz. The Cortex-M4 core features a single-precision floating-point unit (FPU), which supports all the Arm single-precision data-processing instructions and all the data types. It also implements a full set of DSP (digital signal processing) instructions and a memory protection unit (MPU) which enhances the application’s security.
+The STM32G474xB/xC/xE devices are based on the high-performance Arm Cortex-M4 32-bit RISC core. They operate at a frequency of up to 170 MHz. The Cortex-M4 core features a single-precision floating-point unit (FPU), which supports all the Arm single-precision data-processing instructions and all the data types. It also implements a full set of DSP (digital signal processing) instructions and a memory protection unit (MPU) which enhances the applications security.
 These devices embed high-speed memories (up to 512 Kbytes of Flash memory, and 128 Kbytes of SRAM), a flexible external memory controller (FSMC) for static memories (for devices with packages of 100 pins and more), a Quad-SPI Flash memory interface, and an extensive range of enhanced I/Os and peripherals connected to two APB buses, two AHB buses and a 32-bit multi-AHB bus matrix.
 The devices also embed several protection mechanisms for embedded Flash memory and SRAM: readout protection, write protection, securable memory area and proprietary code readout protection.
 The devices embed peripherals allowing mathematical/arithmetic function acceleration (CORDIC for trigonometric functions and FMAC unit for filter functions).
@@ -17,13 +17,13 @@ They also feature standard and advanced communication interfaces such as:
 \- One SAI
 \- USB device
 \- UCPD
-The devices operate in the -40 to +85 °C (+105 °C junction) and -40 to +125 °C (+130 °C junction) temperature ranges from a 1.71 to 3.6 V power supply. A comprehensive set of power-saving modes allows the design of low-power applications.
+The devices operate in the -40 to +85 C (+105 C junction) and -40 to +125 C (+130 C junction) temperature ranges from a 1.71 to 3.6 V power supply. A comprehensive set of power-saving modes allows the design of low-power applications.
 Some independent power supplies are supported including an analog independent supply input for ADC, DAC, OPAMPs and comparators. A VBAT input allows backup of the RTC and the registers.
 The STM32G474xB/xC/xE family offers 9 packages from 48-pin to 128-pin.
 
 #### KEY FEATURES
 
-- Core: Arm® 32-bit Cortex®-M4 CPU with FPU, Adaptive real-time accelerator (ART Accelerator) allowing 0-wait-state execution from Flash memory, frequency up to 170 MHz with 213 DMIPS, MPU, DSP instructions
+- Core: Arm 32-bit Cortex-M4 CPU with FPU, Adaptive real-time accelerator (ART Accelerator) allowing 0-wait-state execution from Flash memory, frequency up to 170 MHz with 213 DMIPS, MPU, DSP instructions
 - Operating conditions:
   - VDD, VDDA voltage range: 1.71 V to 3.6 V
 - Mathematical hardware accelerators
@@ -43,14 +43,14 @@ The STM32G474xB/xC/xE family offers 9 packages from 48-pin to 128-pin.
 - Clock management
   - 4 to 48 MHz crystal oscillator
   - 32 kHz oscillator with calibration
-  - Internal 16 MHz RC with PLL option (± 1%)
-  - Internal 32 kHz RC oscillator (± 5%)
+  - Internal 16 MHz RC with PLL option ( 1%)
+  - Internal 32 kHz RC oscillator ( 5%)
 - Up to 107 fast I/Os
   - All mappable on external interrupt vectors
   - Several I/Os with 5 V tolerant capability
 - Interconnect matrix
 - 16-channel DMA controller
-- 5 x 12-bit ADCs 0.25 µs, up to 42 channels. Resolution up to 16-bit with hardware oversampling, 0 to 3.6 V conversion range
+- 5 x 12-bit ADCs 0.25 s, up to 42 channels. Resolution up to 16-bit with hardware oversampling, 0 to 3.6 V conversion range
 - 7 x 12-bit DAC channels
   - 3 x buffered external channels 1 MSPS
   - 4 x unbuffered internal channels 15 MSPS
@@ -77,10 +77,10 @@ The STM32G474xB/xC/xE family offers 9 packages from 48-pin to 128-pin.
   - 1 x SAI (serial audio interface)
   - USB 2.0 full-speed interface with LPM and BCD support
   - IRTIM (infrared interface)
-  - USB Type-C™ /USB power delivery controller (UCPD)
+  - USB Type-C /USB power delivery controller (UCPD)
 - True random number generator (RNG)
 - CRC calculation unit, 96-bit unique ID
-- Development support: serial wire debug (SWD), JTAG, Embedded Trace Macrocell™
+- Development support: serial wire debug (SWD), JTAG, Embedded Trace Macrocell
 
 
 

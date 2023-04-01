@@ -1,4 +1,4 @@
-﻿# NuMaker-IoT-M487
+# NuMaker-IoT-M487
 ## 1. Introduction
 NuMaker-IoT-M487 provides multiple networking, interfaces, audio recording, playback functions, and flexible extended data storage. Whether you need a sensor node or a light-weight gateway, the NuMaker-IoT-M487 is an ideal choice for IoT applications.
 
@@ -51,7 +51,7 @@ Notice: Please install Nu-Link_Keil_Driver or Nu-Link_IAR_Driver for development
 
 ## 3. Program firmware
 ### Step 1:
-At first, you need to configure ISW1 switch on the NuMaker-IOT-M487 board. Set the four switches to ‘ON’ position. After the configuration is done,  connect the NuMaker-IOT-M487 board and your computer using the USB Micro cable. After that, window manager will show a ‘NuMicro MCU’ virtual disk. Finally, you will use this virtual disk to burn firmware.
+At first, you need to configure ISW1 switch on the NuMaker-IOT-M487 board. Set the four switches to ON position. After the configuration is done,  connect the NuMaker-IOT-M487 board and your computer using the USB Micro cable. After that, window manager will show a NuMicro MCU virtual disk. Finally, you will use this virtual disk to burn firmware.
 
 [![NuLinkMe](https://i.imgur.com/us0Fhhu.png "NuLinkMe")](https://i.imgur.com/us0Fhhu.png "NuLinkMe")
 

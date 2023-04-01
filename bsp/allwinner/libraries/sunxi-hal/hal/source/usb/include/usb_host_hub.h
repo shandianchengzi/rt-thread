@@ -58,7 +58,7 @@
  * wPortStatus bit field
  * See USB 2.0 spec Table 11-21
  */
-#define USB_PORT_STAT_CONNECTION        0x0001  //当前的连接状态
+#define USB_PORT_STAT_CONNECTION        0x0001  //
 #define USB_PORT_STAT_ENABLE            0x0002
 #define USB_PORT_STAT_SUSPEND           0x0004
 #define USB_PORT_STAT_OVERCURRENT       0x0008
@@ -78,7 +78,7 @@
  * See USB 2.0 spec Table 11-22
  * Bits 0 to 4 shown, bits 5 to 15 are reserved
  */
-#define USB_PORT_STAT_C_CONNECTION      0x0001  //连接状态变化
+#define USB_PORT_STAT_C_CONNECTION      0x0001  //
 #define USB_PORT_STAT_C_ENABLE          0x0002
 #define USB_PORT_STAT_C_SUSPEND         0x0004
 #define USB_PORT_STAT_C_OVERCURRENT     0x0008
@@ -203,10 +203,10 @@ struct usb_hub
 {
     //struct device     *intfdev;   /* the "interface" device */
     struct usb_host_virt_dev *hdev;
-    struct urb *urb;                //就是用来查询status的urb//for interrupt polling pipe
+    struct urb *urb;                //statusurb//for interrupt polling pipe
 
     /* buffer for urb ... with extra space in case of babble */
-    //char (*buffer)[8];        //是status urb和 hub交互status的中介
+    //char (*buffer)[8];        //status urb hubstatus
     char status_urb_ubff[STATUS_URB_BUFF_LEN];
     u32 buffer_dma;                 /* DMA address for buffer */
 
@@ -237,15 +237,15 @@ struct usb_hub
     enum hub_led_mode indicator[USB_MAXCHILDREN];
     //struct work_struct    leds;
 
-    //USB_OS_KERNEL_EVENT *HubStatusSemi;     /* hub status thread的睡眠和唤醒 */
-    //USB_OS_KERNEL_EVENT *notify_complete;   /* 同步thread创建/删除           */
-    hal_sem_t   HubStatusSemi;     /* hub status thread的睡眠和唤醒 */
-    hal_sem_t   notify_complete;   /* 同步thread创建/删除           */
+    //USB_OS_KERNEL_EVENT *HubStatusSemi;     /* hub status thread */
+    //USB_OS_KERNEL_EVENT *notify_complete;   /* thread/           */
+    hal_sem_t   HubStatusSemi;     /* hub status thread */
+    hal_sem_t   notify_complete;   /* thread/           */
 
     rt_thread_t thread;
-    __u32 HubStatusThrdId;                  /* hub线程ID                     */
-    __u8 HubRemove;                         /* flag. Hub是否拔出             */
-    __u32 hub_req_busy;                     /* 正在发送urb请求               */
+    __u32 HubStatusThrdId;                  /* hubID                     */
+    __u8 HubRemove;                         /* flag. Hub             */
+    __u32 hub_req_busy;                     /* urb               */
 };
 
 

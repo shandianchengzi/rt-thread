@@ -24,23 +24,23 @@
 #define ADC_VALUE_ERROR (0xffffffff)
 void ADC_GlobalInit(void);
 /**
- * @brief 通道开关，在globalinit时只打开了0，0也无法被关闭，目前已经废弃，ADC_GetChannelValue的时候临时打开
+ * @brief globalinit00ADC_GetChannelValue
  *
- * @param Channel 通道号
- * @param OnOff 开关
+ * @param Channel 
+ * @param OnOff 
  */
 void ADC_ChannelOnOff(uint8_t Channel, uint8_t OnOff);
 /**
- * @brief 获取通道的原始ADC值，12bit，1.8V参考电压，通道0内部9:5分压，其他关闭
+ * @brief ADC12bit1.8V09:5
  *
- * @param Channel 通道号
- * @return != ADC_VALUE_ERROR 为有效值
+ * @param Channel 
+ * @return != ADC_VALUE_ERROR 
  */
 uint32_t ADC_GetChannelValue(uint8_t Channel);
 /**
- * @brief 开关内部分压，1~5都是1:1 6就不确定了，手册和demo不一致
+ * @brief 1~51:1 6demo
  *
- * @param OnOff 开关
+ * @param OnOff 
  */
 void ADC_IntelResistance(uint8_t OnOff);
 #endif

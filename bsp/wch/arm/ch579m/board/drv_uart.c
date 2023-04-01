@@ -53,11 +53,11 @@ static rt_err_t uart_configure(struct rt_serial_device *serial, struct serial_co
     UINT16V R16_UARTx_DL = 0;
     struct uart_device *uart_device = serial->parent.user_data;
 
-    //设置波特率
+    //
     x = 10 * GetSysClock() / 8 / cfg->baud_rate;
     x = (x + 5) / 10;
     R16_UARTx_DL = (UINT16)x;
-    //设置数据长度
+    //
     switch (cfg->data_bits)
     {
     case DATA_BITS_5:
@@ -74,7 +74,7 @@ static rt_err_t uart_configure(struct rt_serial_device *serial, struct serial_co
         R8_UARTx_LCR |= 0x03;
         break;
     }
-    //设置停止位
+    //
     switch (cfg->stop_bits)
     {
     case STOP_BITS_2:
@@ -85,7 +85,7 @@ static rt_err_t uart_configure(struct rt_serial_device *serial, struct serial_co
         //R8_UARTx_LCR |= 0x00;
         break;
     }
-    //设置校验位
+    //
     switch (cfg->parity)
     {
     case PARITY_ODD:
@@ -106,10 +106,10 @@ static rt_err_t uart_configure(struct rt_serial_device *serial, struct serial_co
     if (uart_device == &uart_device0)
     {
         GPIOB_SetBits(GPIO_Pin_7);
-        GPIOB_ModeCfg(GPIO_Pin_4, GPIO_ModeIN_PU);          // RXD-配置上拉输入
-        GPIOB_ModeCfg(GPIO_Pin_7, GPIO_ModeOut_PP_5mA);     // TXD-配置推挽输出，注意先让IO口输出高电平
+        GPIOB_ModeCfg(GPIO_Pin_4, GPIO_ModeIN_PU);          // RXD-
+        GPIOB_ModeCfg(GPIO_Pin_7, GPIO_ModeOut_PP_5mA);     // TXD-IO
         R16_UART0_DL = R16_UARTx_DL;
-        R8_UART0_FCR = (2 << 6) | RB_FCR_TX_FIFO_CLR | RB_FCR_RX_FIFO_CLR | RB_FCR_FIFO_EN;     // FIFO打开，触发点4字节
+        R8_UART0_FCR = (2 << 6) | RB_FCR_TX_FIFO_CLR | RB_FCR_RX_FIFO_CLR | RB_FCR_FIFO_EN;     // FIFO4
         R8_UART0_LCR = R8_UARTx_LCR;
         R8_UART0_IER = RB_IER_TXD_EN;
         R8_UART0_DIV = 1;
@@ -119,10 +119,10 @@ static rt_err_t uart_configure(struct rt_serial_device *serial, struct serial_co
     if (uart_device == &uart_device1)
     {
         GPIOA_SetBits(GPIO_Pin_9);
-        GPIOA_ModeCfg(GPIO_Pin_8, GPIO_ModeIN_PU);          // RXD-配置上拉输入
-        GPIOA_ModeCfg(GPIO_Pin_9, GPIO_ModeOut_PP_5mA);     // TXD-配置推挽输出，注意先让IO口输出高电平
+        GPIOA_ModeCfg(GPIO_Pin_8, GPIO_ModeIN_PU);          // RXD-
+        GPIOA_ModeCfg(GPIO_Pin_9, GPIO_ModeOut_PP_5mA);     // TXD-IO
         R16_UART1_DL = R16_UARTx_DL;
-        R8_UART1_FCR = (2 << 6) | RB_FCR_TX_FIFO_CLR | RB_FCR_RX_FIFO_CLR | RB_FCR_FIFO_EN;     // FIFO打开，触发点4字节
+        R8_UART1_FCR = (2 << 6) | RB_FCR_TX_FIFO_CLR | RB_FCR_RX_FIFO_CLR | RB_FCR_FIFO_EN;     // FIFO4
         R8_UART1_LCR = R8_UARTx_LCR;
         R8_UART1_IER = RB_IER_TXD_EN;
         R8_UART1_DIV = 1;
@@ -132,10 +132,10 @@ static rt_err_t uart_configure(struct rt_serial_device *serial, struct serial_co
     if (uart_device == &uart_device2)
     {
         GPIOA_SetBits(GPIO_Pin_7);
-        GPIOA_ModeCfg(GPIO_Pin_6, GPIO_ModeIN_PU);          // RXD-配置上拉输入
-        GPIOA_ModeCfg(GPIO_Pin_7, GPIO_ModeOut_PP_5mA);     // TXD-配置推挽输出，注意先让IO口输出高电平
+        GPIOA_ModeCfg(GPIO_Pin_6, GPIO_ModeIN_PU);          // RXD-
+        GPIOA_ModeCfg(GPIO_Pin_7, GPIO_ModeOut_PP_5mA);     // TXD-IO
         R16_UART2_DL = R16_UARTx_DL;
-        R8_UART2_FCR = (2 << 6) | RB_FCR_TX_FIFO_CLR | RB_FCR_RX_FIFO_CLR | RB_FCR_FIFO_EN;     // FIFO打开，触发点4字节
+        R8_UART2_FCR = (2 << 6) | RB_FCR_TX_FIFO_CLR | RB_FCR_RX_FIFO_CLR | RB_FCR_FIFO_EN;     // FIFO4
         R8_UART2_LCR = R8_UARTx_LCR;
         R8_UART2_IER = RB_IER_TXD_EN;
         R8_UART2_DIV = 1;
@@ -145,10 +145,10 @@ static rt_err_t uart_configure(struct rt_serial_device *serial, struct serial_co
     if (uart_device == &uart_device3)
     {
         GPIOA_SetBits(GPIO_Pin_5);
-        GPIOA_ModeCfg(GPIO_Pin_4, GPIO_ModeIN_PU);          // RXD-配置上拉输入
-        GPIOA_ModeCfg(GPIO_Pin_5, GPIO_ModeOut_PP_5mA);     // TXD-配置推挽输出，注意先让IO口输出高电平
+        GPIOA_ModeCfg(GPIO_Pin_4, GPIO_ModeIN_PU);          // RXD-
+        GPIOA_ModeCfg(GPIO_Pin_5, GPIO_ModeOut_PP_5mA);     // TXD-IO
         R16_UART3_DL = R16_UARTx_DL;
-        R8_UART3_FCR = (2 << 6) | RB_FCR_TX_FIFO_CLR | RB_FCR_RX_FIFO_CLR | RB_FCR_FIFO_EN;     // FIFO打开，触发点4字节
+        R8_UART3_FCR = (2 << 6) | RB_FCR_TX_FIFO_CLR | RB_FCR_RX_FIFO_CLR | RB_FCR_FIFO_EN;     // FIFO4
         R8_UART3_LCR = R8_UARTx_LCR;
         R8_UART3_IER = RB_IER_TXD_EN;
         R8_UART3_DIV = 1;
@@ -328,13 +328,13 @@ void uart_isr(struct rt_serial_device *serial, UINT8 flag)
 {
     switch (flag)
     {
-    case UART_II_RECV_RDY:          // 数据达到设置触发点
+    case UART_II_RECV_RDY:          // 
         rt_hw_serial_isr(serial, RT_SERIAL_EVENT_RX_IND);
         break;
-    case UART_II_RECV_TOUT:         // 接收超时，暂时一帧数据接收完成
+    case UART_II_RECV_TOUT:         // 
         rt_hw_serial_isr(serial, RT_SERIAL_EVENT_RX_TIMEOUT);
         break;
-    case UART_II_THR_EMPTY:         // 发送缓存区空，可继续发送
+    case UART_II_THR_EMPTY:         // 
         rt_hw_serial_isr(serial, RT_SERIAL_EVENT_TX_DONE);
         break;
     default:

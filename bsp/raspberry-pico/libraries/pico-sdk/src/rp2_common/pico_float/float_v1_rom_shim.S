@@ -143,7 +143,7 @@ regular_func fatan2_shim
  cmp r4,#28
  blo 3f
 2:
-@ here |x|>>|y| or both x and y are ±0
+@ here |x|>>|y| or both x and y are 0
  cmp r0,#0
  bge 4f         @ x positive, return signed 0
  ldr r3, =0x2cfc         @ &pi_q29, circular coefficients

@@ -48,16 +48,16 @@ extern "C" {
   */
 typedef struct
 {
-    /** 秘钥长度 */
+    /**  */
     uint32_t keyLength;
 
-    /** 数据流处理模式 */
+    /**  */
     uint32_t cipherMode;
 
-    /** AES工作模式 */
+    /** AES */
     uint32_t operationMode;
 
-    /** 输入数据类型 */
+    /**  */
     uint32_t dataType;
 
 } FL_AES_InitTypeDef;

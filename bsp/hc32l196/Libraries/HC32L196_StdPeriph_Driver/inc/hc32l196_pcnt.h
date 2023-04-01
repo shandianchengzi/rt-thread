@@ -78,40 +78,40 @@ extern "C"
 
 /**
  *******************************************************************************
- ** \brief PCNT S0通道极性选择
+ ** \brief PCNT S0
  ** \note           PCNT_CTRL  S0P
  ******************************************************************************/
 typedef enum 
 {
-    PcntS0PNoinvert = 0u, //  S0通道极性不取反
-    PcntS0PInvert   = 1u  //  S0通道极性取反
+    PcntS0PNoinvert = 0u, //  S0
+    PcntS0PInvert   = 1u  //  S0
 }en_pcnt_s0polar_t;
 
 /**
  *******************************************************************************
- ** \brief PCNT S1通道极性选择
+ ** \brief PCNT S1
  ** \note           PCNT_CTRL  S1P
  ******************************************************************************/
 typedef enum 
 {
-    PcntS1PNoinvert = 0u, //  S1通道极性不取反
-    PcntS1PInvert   = 1u  //  S1通道极性取反
+    PcntS1PNoinvert = 0u, //  S1
+    PcntS1PInvert   = 1u  //  S1
 }en_pcnt_s1polar_t;
 
 /**
  *******************************************************************************
- ** \brief PCNT 计数方向选择
+ ** \brief PCNT 
  ** \note           PCNT_CTRL  DIR
  ******************************************************************************/
 typedef enum 
 {
-    PcntNDoubleDirAdd  = 0u, //  加计数
-    PcntNDoubleDirSub  = 1u  //  减计数
+    PcntNDoubleDirAdd  = 0u, //  
+    PcntNDoubleDirSub  = 1u  //  
 }en_pcnt_dir_t;
 
 /**
  *******************************************************************************
- ** \brief PCNT 计数时钟选择
+ ** \brief PCNT 
  ** \note           PCNT_CTRL  ClkSel
  ******************************************************************************/
 typedef enum 
@@ -123,78 +123,78 @@ typedef enum
 
 /**
  *******************************************************************************
- ** \brief PCNT 脉冲计数模式选择
+ ** \brief PCNT 
  ** \note           PCNT_CTRL  Mode
  ******************************************************************************/
 typedef enum 
 {
-    PcntSingleMode   = 1u, // 单通道脉冲计数模式
-    PcntSpecialMode  = 2u, // 双通道非正交脉冲计数模式
-    PcntDoubleMode   = 3u  // 双通道正交脉冲计数模式  
+    PcntSingleMode   = 1u, // 
+    PcntSpecialMode  = 2u, // 
+    PcntDoubleMode   = 3u  //   
 }en_pcnt_mode_t;
 
 /**
  ******************************************************************************
- ** \brief PCNT 状态
+ ** \brief PCNT 
  ** \note           PCNT_IFR  & PCNT_ICR  &  PCNT_IEN
  *****************************************************************************/
 typedef enum 
 {
-    PcntS1E            = 7,   // S1通道脉冲解码错误
-    PcntS0E            = 6,   // S0通道脉冲解码错误   
-    PcntBB             = 5,   // 脉冲解码错误    
-    PcntFE             = 4,   // 采样周期脉冲解码错误
-    PcntDIR            = 3,   // 反向改变中断    
-    PcntTO             = 2,   // 超时中断标识   
-    PcntOV             = 1,   // 上溢中断标识
-    PcntUF             = 0,   // 下溢中断标识     
+    PcntS1E            = 7,   // S1
+    PcntS0E            = 6,   // S0   
+    PcntBB             = 5,   //     
+    PcntFE             = 4,   // 
+    PcntDIR            = 3,   //     
+    PcntTO             = 2,   //    
+    PcntOV             = 1,   // 
+    PcntUF             = 0,   //      
 }en_pcnt_itfce_t;
 
 /**
  ******************************************************************************
- ** \brief PCNT 状态寄存器1   PCNT_SR1
+ ** \brief PCNT 1   PCNT_SR1
  ** \note           PCNT_SR1 : DIR
  *****************************************************************************/
 typedef enum
 {
-    PcntDoubleDirAdd = 0,     //  双通道正交脉冲加计数
-    PcntDoubleDirSub = 1      //  双通道正交脉冲加计数
+    PcntDoubleDirAdd = 0,     //  
+    PcntDoubleDirSub = 1      //  
 }en_pcnt_sr1dir_t;
 
 /**
  ******************************************************************************
- ** \brief PCNT 观测输出选择寄存器   PCNT_DBG
+ ** \brief PCNT    PCNT_DBG
  ** \note           PCNT_DBG: DBG
  *****************************************************************************/
 typedef enum
 {
-    PcntDBGZero = 0,     //  固定为0
-    PcntDBGSxA  = 1,     //  脉冲同步之后通过S0A/S1A输出
-    PcntDBGSxP  = 2,     //  脉冲极性选择之后通过S0P/S1P输出
-    PcntDBGSxPF = 3      //  脉冲滤波之后通过S0PF/S1PF输出
+    PcntDBGZero = 0,     //  0
+    PcntDBGSxA  = 1,     //  S0A/S1A
+    PcntDBGSxP  = 2,     //  S0P/S1P
+    PcntDBGSxPF = 3      //  S0PF/S1PF
 }en_pcnt_dbg_t;
 
 typedef enum
 {
-    PcntDirUp   = 0,   //加计数
-    PcntDirDown = 1    //减计数
+    PcntDirUp   = 0,   //
+    PcntDirDown = 1    //
 }en_pent_dir_t;
 /**
  ******************************************************************************
- ** \brief PCNT 整体配置结构体
+ ** \brief PCNT 
  *****************************************************************************/
 typedef struct stc_pcnt_cfg
 {
-    en_pcnt_s0polar_t   Pcnt_S0Sel;         //  S0通道极性选择
-    en_pcnt_s1polar_t   Pcnt_S1Sel;         //  S1通道极性选择       
-    en_pcnt_clksel_t    Pcnt_Clk;           //  计数时钟选择
-    en_pcnt_mode_t      Pcnt_Mode;          //  脉冲计数模式选择
-    boolean_t           Pcnt_FltEn;         //  脉冲宽度滤波器使能控制  PCNT_FLT: EN 
-    uint8_t             Pcnt_DebTop;        //  计数器阀值   PCNT_FLT: DebTop
-    uint16_t            Pcnt_ClkDiv;        //  滤波时钟分频系数  PCNT_FLT: ClkDiv
-    boolean_t           Pcnt_TocrEn;        //  超时功能使能控制位    PCNT_TOCR  : EN
-    uint16_t            Pcnt_TocrTh;        //  超时阈值      PCNT_TOCR  :  TH
-    en_pcnt_dbg_t       Pcnt_Dbg;           //  观测输出选择寄存器   PCNT_DBG
+    en_pcnt_s0polar_t   Pcnt_S0Sel;         //  S0
+    en_pcnt_s1polar_t   Pcnt_S1Sel;         //  S1       
+    en_pcnt_clksel_t    Pcnt_Clk;           //  
+    en_pcnt_mode_t      Pcnt_Mode;          //  
+    boolean_t           Pcnt_FltEn;         //    PCNT_FLT: EN 
+    uint8_t             Pcnt_DebTop;        //     PCNT_FLT: DebTop
+    uint16_t            Pcnt_ClkDiv;        //    PCNT_FLT: ClkDiv
+    boolean_t           Pcnt_TocrEn;        //      PCNT_TOCR  : EN
+    uint16_t            Pcnt_TocrTh;        //        PCNT_TOCR  :  TH
+    en_pcnt_dbg_t       Pcnt_Dbg;           //     PCNT_DBG
     en_pent_dir_t       Pcnt_Dir;
 }stc_pcnt_initstruct_t;
 

@@ -48,25 +48,25 @@ extern "C" {
   */
 typedef struct
 {
-    /** 正向输入选择 */
+    /**  */
     uint32_t INP;
 
-    /** 反向输入选择*/
+    /** */
     uint32_t INN;
 
-    /** OPA 工作模式*/
+    /** OPA */
     uint32_t mode;
 
-    /** 数字滤波器使能 */
+    /**  */
     uint32_t digitalFilter;
 
-    /** PGA反向输入到选择由Pin输入 */
+    /** PGAPin */
     uint32_t negtiveToPin;
 
-    /** PGA模式下的放大倍数*/
+    /** PGA*/
     uint32_t gain;
 
-    /** 低功耗模式使能 */
+    /**  */
     uint32_t lowPowermode;
 
 } FL_OPA_InitTypeDef;

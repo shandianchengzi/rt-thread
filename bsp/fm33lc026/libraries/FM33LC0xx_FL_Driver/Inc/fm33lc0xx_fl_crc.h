@@ -48,31 +48,31 @@ extern "C" {
   */
 typedef struct
 {
-    /** CRC初值 */
+    /** CRC */
     uint32_t initVal;
 
-    /** 计算数据宽度 */
+    /**  */
     uint32_t dataWidth;
 
-    /** 输入数据翻转 */
+    /**  */
     uint32_t reflectIn;
 
-    /** 输出数据翻转 */
+    /**  */
     uint32_t reflectOut;
 
-    /** 输出结果异或寄存器 */
+    /**  */
     uint32_t xorReg;
 
-    /** 输出结果异或使能 */
+    /**  */
     uint32_t xorRegState;
 
-    /** CRC多项式宽 */
+    /** CRC */
     uint32_t polynomialWidth;
 
-    /** CRC多项式 */
+    /** CRC */
     uint32_t polynomial;
 
-    /** 计算模式串行或并行 */
+    /**  */
     uint32_t calculatMode;
 
 } FL_CRC_InitTypeDef;

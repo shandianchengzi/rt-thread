@@ -11,10 +11,10 @@
 *
 * Date          :  2010.06.02
 *
-* Description   :  USB Mouse 去抖动算法.
-*     1、所有鼠标事件信息添加到队列中
-*     2、每隔5ms处理队列中的所事件有信息。
-*     3、
+* Description   :  USB Mouse .
+*     1
+*     25ms
+*     3
 *
 * Others        :  NULL
 *
@@ -64,7 +64,7 @@ static void UsbMouse_DriftTimeOut(void *parg)
         return ;
     }
 
-    /* 如果有可疑的点存在，就把可疑的点发出去 */
+    /*  */
     if(Drift->WaitEvent && Drift->DubiousMouseEvent.vaild) {
         int val = 0;
         ENTER_CRITICAL(cup_sr);
@@ -131,18 +131,18 @@ static unsigned int UsbMouse_IsDubiousEvent(USBHMouseEvent_t *Event, UsbMouseDri
 {
     unsigned int Dubious = 0;
 
-    /* 如果参考点PreMouseEvent不存在, 那么就不用怀疑本次的点 */
+    /* PreMouseEvent,  */
     if(Drift->PreMouseEvent.vaild == 0){
         return 0;
     }
 
-    /* 如果前后两次 X 坐标差值大于127, 那么就认为本次的坐标为可疑的坐标 */
+    /*  X 127,  */
     if(absolute(Event->X - Drift->PreMouseEvent.MouseEvent.X) > USB_HID_MOUSE_DITHER_AREA){
         usb_set_bit(1, (volatile uint32_t *)&Drift->DubiousCoordinate);
         Dubious = 1;
     }
 
-    /* 如果前后两次 Y 坐标差值大于127, 那么就认为本次的坐标为可疑的坐标 */
+    /*  Y 127,  */
     if(absolute(Event->Y - Drift->PreMouseEvent.MouseEvent.Y) > USB_HID_MOUSE_DITHER_AREA){
         usb_set_bit(2, (volatile uint32_t *)&Drift->DubiousCoordinate);
         Dubious = 1;
@@ -155,15 +155,15 @@ static unsigned int UsbMouse_IsDubiousEvent(USBHMouseEvent_t *Event, UsbMouseDri
     return Dubious;
 }
 
-/* 判断X和Y是否都是正数或者是否都是负数 */
+/* XY */
 static __u32 UsbMouse_IsAccord8(__s8 x, __s8 y)
 {
-    /* 是否都是负数 */
+    /*  */
     if(x <= 0 && y <= 0){
         return 1;
     }
 
-    /* 是否都是正数 */
+    /*  */
     if(x >= 0 && y >= 0){
         return 1;
     }
@@ -176,7 +176,7 @@ static __u32 UsbMouse_IsAccord8(__s8 x, __s8 y)
 *                     UsbMouse_AddToDriftArray
 *
 * Description:
-*     从3个鼠标数据中找出轨迹相同的两个, 然后取平均值。
+*     3, 
 *
 * Parameters:
 *
@@ -193,31 +193,31 @@ static int UsbMouse_AdjustCoordinate(USBHMouseEvent_t *Event1,
                                        USBHMouseEvent_t *Event3,
                                        USBHMouseEvent_t *OutEvent)
 {
-    /* 寻找 X 坐标上方向一致的点 */
+    /*  X  */
     if(UsbMouse_IsAccord8(Event1->X, Event2->X)
-       && UsbMouse_IsAccord8(Event1->X, Event3->X)){ /* 1,2,3都一致 */
+       && UsbMouse_IsAccord8(Event1->X, Event3->X)){ /* 1,2,3 */
         OutEvent->X = (Event1->X / 3) + (Event2->X / 3) + (Event3->X / 3);
-    }else if(UsbMouse_IsAccord8(Event1->X, Event2->X)){  /* 1,2都是一致的 */
+    }else if(UsbMouse_IsAccord8(Event1->X, Event2->X)){  /* 1,2 */
         OutEvent->X = Event2->X;
-    }else if(UsbMouse_IsAccord8(Event1->X, Event3->X)){  /* 1,3都是一致的 */
+    }else if(UsbMouse_IsAccord8(Event1->X, Event3->X)){  /* 1,3 */
         OutEvent->X = Event3->X;
-    }else if(UsbMouse_IsAccord8(Event2->X, Event3->X)){  /* 2,3都是一致的 */
+    }else if(UsbMouse_IsAccord8(Event2->X, Event3->X)){  /* 2,3 */
         OutEvent->X = (Event2->X / 2) + (Event3->X / 2);
-    }else{  /* 1,2,3都不是一致的 */
+    }else{  /* 1,2,3 */
         OutEvent->X = (Event1->X / 3) + (Event2->X / 3) + (Event3->X / 3);
     }
 
-    /* 寻找 Y 坐标上方向一致的点 */
+    /*  Y  */
     if(UsbMouse_IsAccord8(Event1->Y, Event2->Y)
-       && UsbMouse_IsAccord8(Event1->Y, Event3->Y)){ /* 1,2,3都一致 */
+       && UsbMouse_IsAccord8(Event1->Y, Event3->Y)){ /* 1,2,3 */
         OutEvent->Y = (Event1->Y / 3) + (Event2->Y / 3) + (Event3->Y / 3);
-    }else if(UsbMouse_IsAccord8(Event1->Y, Event2->Y)){  /* 1,2都是一致的 */
+    }else if(UsbMouse_IsAccord8(Event1->Y, Event2->Y)){  /* 1,2 */
         OutEvent->Y = Event2->Y;
-    }else if(UsbMouse_IsAccord8(Event1->Y, Event3->Y)){  /* 1,3都是一致的 */
+    }else if(UsbMouse_IsAccord8(Event1->Y, Event3->Y)){  /* 1,3 */
         OutEvent->Y = Event3->Y;
-    }else if(UsbMouse_IsAccord8(Event2->Y, Event3->Y)){  /* 2,3都是一致的 */
+    }else if(UsbMouse_IsAccord8(Event2->Y, Event3->Y)){  /* 2,3 */
         OutEvent->Y = (Event2->Y / 2) + (Event3->Y / 2);
-    }else{  /* 1,2,3都不是一致的 */
+    }else{  /* 1,2,3 */
         OutEvent->Y = (Event1->Y / 3) + (Event2->Y / 3) + (Event3->Y / 3);
     }
 
@@ -239,16 +239,16 @@ static int UsbMouse_AdjustCoordinate(USBHMouseEvent_t *Event1,
 *
 * note:
 *
-*   1、只有按键消息，直接发送给app。
+*   1app
 *
-*   2、只有wheel消息，直接发送给app。
+*   2wheelapp
 *
-*   3、只有坐标，就预测鼠标的轨迹，
-*      如果本次的点A和上一次的点B相差太大，在规定时间内取下一次的点C作参考，
-*      如果A和C相近，就丢掉B点，发送A点和C点给app；如果规定时间内没有鼠标事件,就把A点和B点给发给app。
+*   3
+*      ABC
+*      ACBACapp,ABapp
 *
-*   4、如果按键、wheel、坐标参杂在一起，遇到按键或者wheel事件后，
-*      把当前所有的点全部发给app，并且把下一次的按键抬起消息，也及时的发送出去。
+*   4wheelwheel
+*      app
 *
 *******************************************************************************
 */void UsbMouse_AddToDriftArray(usbMouse_t *usbMouse, USBHMouseEvent_t *Event)
@@ -268,9 +268,9 @@ static int UsbMouse_AdjustCoordinate(USBHMouseEvent_t *Event1,
         return ;
     }
 
-    /* 先前有按键按下, 这里遇到抬起键, 就给把本次消息发送给APP */
+    /* , , APP */
     if(Drift->ButtonDown){
-        /* 如果本次还有按键消息, 就记录下来 */
+        /* ,  */
         if(UsbMouse_IsButtonEvent(Event)){
             DMSG_MOUSE_TEST("Had send a button down event, then a new button event come\n");
             Drift->ButtonDown = 1;
@@ -282,7 +282,7 @@ static int UsbMouse_AdjustCoordinate(USBHMouseEvent_t *Event1,
         goto SendMsg;
     }
 
-    /* 有按键事件或者滚轮事件，就唤醒线程 */
+    /*  */
     if(UsbMouse_IsButtonEvent(Event)){
         DMSG_MOUSE_TEST("have a button event\n");
 
@@ -290,7 +290,7 @@ static int UsbMouse_AdjustCoordinate(USBHMouseEvent_t *Event1,
         goto SendMsg;
     }
 
-    /* 如果PreMouseEvent和dubiousMouseEvent都有效, 那么就直接比较 */
+    /* PreMouseEventdubiousMouseEvent,  */
     if(Drift->PreMouseEvent.vaild && Drift->DubiousMouseEvent.vaild){
         ENTER_CRITICAL(cup_sr);
         DMSG_MOUSE_TEST("------Pre------\n");
@@ -342,8 +342,8 @@ static int UsbMouse_AdjustCoordinate(USBHMouseEvent_t *Event1,
 
         EXIT_CRITICAL(cup_sr);
 
-        /* 寻找同方向的两个点 */
-        /* X坐标可疑 */
+        /*  */
+        /* X */
         UsbMouse_AdjustCoordinate(&Drift->PreMouseEvent.MouseEvent,
                                   &Drift->DubiousMouseEvent.MouseEvent,
                                   Event,
@@ -354,7 +354,7 @@ static int UsbMouse_AdjustCoordinate(USBHMouseEvent_t *Event1,
 
         goto SendMsg;
     }else{
-        /* 判断本次坐标是否可疑? */
+        /* ? */
         if(UsbMouse_IsDubiousEvent(Event, Drift) == 0){
             goto SendMsg;
         }else{
@@ -392,7 +392,7 @@ SendMsg:
 *                     UsbMouse_DriftControl
 *
 * Description:
-*    鼠标去抖动
+*    
 *
 * Parameters:
 *
@@ -401,7 +401,7 @@ SendMsg:
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -410,7 +410,7 @@ static int UsbMouse_DriftControl(UsbMouseDriftControl_t *Drift)
     int val = 0;
     unsigned int cup_sr = 0;
 
-    /* 清除等待标志 */
+    /*  */
     ENTER_CRITICAL(cup_sr);
     Drift->WaitEvent = 0;
     EXIT_CRITICAL(cup_sr);
@@ -471,7 +471,7 @@ static int UsbMouse_DriftControl(UsbMouseDriftControl_t *Drift)
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -488,7 +488,7 @@ static void UsbMouse_DriftThread(void *p_arg)
     hal_sem_post(Drift->notify_complete);
 
     while(1){
-        //--<1>--杀死线程
+        //--<1>--
 //      TryToKillThreadSelf("UsbMouse_DriftThread");
 
 //      /* sleep */

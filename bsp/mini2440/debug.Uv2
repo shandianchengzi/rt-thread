@@ -28,8 +28,8 @@ Options 1,0,0  // Target 'RT-Thread Debug'
  EnvBin ()
  EnvInc ()
  EnvLib ()
- EnvReg (ÿSamsung\)
- OrgReg (ÿSamsung\)
+ EnvReg (Samsung\)
+ OrgReg (Samsung\)
  TgStat=16
  OutDir (.\)
  OutName (rtthread-mini2440)

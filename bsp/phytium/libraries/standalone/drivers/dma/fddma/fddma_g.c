@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fddma_g.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:24:47
- * Description:  This files is for ddma static configuration
+ * Description: This files is for ddma static configuration
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   Zhugengyu  2022/5/13    init commit
  */
 
@@ -50,7 +50,7 @@ const FDdmaConfig fddma_cfg_tbl[FDDMA_INSTANCE_NUM] =
         .irq_num = FDDMA1_IRQ_NUM,
         .irq_prority = 0
     }
-}; /* DDMA控制器默认配置 */
+}; /* DDMA */
 
 /***************** Macros (Inline Functions) Definitions *********************/
 

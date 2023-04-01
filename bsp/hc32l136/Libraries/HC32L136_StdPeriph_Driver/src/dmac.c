@@ -1382,11 +1382,11 @@ en_result_t Dma_DisableChannelErrIrq(en_dma_channel_t enCh)
 
 /**
  * \brief   
- *          Dma中断服务程序
+ *          Dma
  *
- * \param   [in]  u8Param  未使用
+ * \param   [in]  u8Param  
  *
- * \retval  无
+ * \retval  
  */
 
 void Dma_IRQHandler(uint8_t u8Param)
@@ -1427,12 +1427,12 @@ void Dma_IRQHandler(uint8_t u8Param)
 }
 /**
  * \brief   
- *          配置ADC中断函数入口
+ *          ADC
  *
- * \param   [in]  pstcAdcIrqCfg  ADC中断配置指针
- * \param   [in]  pstcAdcIrqCalbaks  ADC中断回调函数指针
+ * \param   [in]  pstcAdcIrqCfg  ADC
+ * \param   [in]  pstcAdcIrqCalbaks  ADC
  *
- * \retval  无
+ * \retval  
  */
 en_result_t Dma_ConfigIrq(en_dma_channel_t enCh,stc_dma_irq_sel_t* stcDmaIrqCfg,stc_dma_irq_calbakfn_pt_t* pstcDmaIrqCalbaks)
 {
@@ -1481,14 +1481,14 @@ en_result_t Dma_ConfigIrq(en_dma_channel_t enCh,stc_dma_irq_sel_t* stcDmaIrqCfg,
 }
 /**
 ** \brief   
-**          获取DMA状态
+**          DMA
 **
 ** \param  [in] enCh                   The specified dma channel.
 **
 ** \retval en_dma_stat_t              
 ** 
 **
-** \retval  无
+** \retval  
 **/
 en_dma_stat_t Dma_GetStat(en_dma_channel_t enCh)
 {
@@ -1508,14 +1508,14 @@ en_dma_stat_t Dma_GetStat(en_dma_channel_t enCh)
 }
 /**
 ** \brief   
-**          获取DMA状态
+**          DMA
 **
 ** \param  [in] enCh                   The specified dma channel.
 **
 ** \retval en_dma_stat_t              
 ** 
 **
-** \retval  无
+** \retval  
 **/
 void Dma_ClrStat(en_dma_channel_t enCh)
 {

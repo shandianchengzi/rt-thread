@@ -1,3 +1,3 @@
 # allwinner-bsp
 
-针对全志芯片的rt-smart bsp，包括D1/D1s（RISC-V64）
+rt-smart bspD1/D1sRISC-V64

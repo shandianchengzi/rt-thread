@@ -32,4 +32,4 @@ This version of the CY8CKIT-062-BLE BSP was validated for compatibility with the
 [api]: modules.html
 
 ---
-© Cypress Semiconductor Corporation, 2019.
+ Cypress Semiconductor Corporation, 2019.

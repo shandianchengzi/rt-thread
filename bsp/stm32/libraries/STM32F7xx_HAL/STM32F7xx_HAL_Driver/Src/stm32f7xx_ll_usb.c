@@ -1368,7 +1368,7 @@ static HAL_StatusTypeDef USB_CoreReset(USB_OTG_GlobalTypeDef *USBx)
 
 #ifdef USB_HS_PHYC
 /**
-  * @brief  Enables control of a High Speed USB PHYs
+  * @brief  Enables control of a High Speed USB PHYs
   *         Init the low level hardware : GPIO, CLOCK, NVIC...
   * @param  USBx  Selected device
   * @retval HAL status

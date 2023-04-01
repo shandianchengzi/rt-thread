@@ -181,7 +181,7 @@ static FError FNandToggleReadParamPage(FNand *instance_p,  u8 *id_buffer, u32 bu
 
 static FError FNandToggleDetectJedec(FNand *instance_p, struct ToggleNandGeometry *toggle_geometry_p, FNandNandGeometry *geometry_p)
 {
-    /* 检查crc */
+    /* crc */
     if (FNandToggleCrc16(FNAND_TOGGLE_CRC_BASE, (u8 *)toggle_geometry_p, 510) != toggle_geometry_p->crc)
     {
         FNAND_TOGGLE_DEBUG_E("Toggle error mode");
@@ -222,10 +222,10 @@ static FError FNandToggleDetectJedec(FNand *instance_p, struct ToggleNandGeometr
     FNAND_TOGGLE_DEBUG_D("device_size %d ", geometry_p->device_size) ;            /* Total device size in bytes */
     FNAND_TOGGLE_DEBUG_D("rowaddr_cycles %d ", geometry_p->rowaddr_cycles) ;          /* Row address cycles */
     FNAND_TOGGLE_DEBUG_D("coladdr_cycles %d ", geometry_p->coladdr_cycles) ;          /* Column address cycles */
-    FNAND_TOGGLE_DEBUG_D("hw_ecc_length %d ", geometry_p->hw_ecc_length) ;          /* 产生硬件ecc校验参数的个数 */
-    FNAND_TOGGLE_DEBUG_D("ecc_offset %d ", geometry_p->ecc_offset) ;          /* obb存放硬件ecc校验参数页位置的偏移 */
+    FNAND_TOGGLE_DEBUG_D("hw_ecc_length %d ", geometry_p->hw_ecc_length) ;          /* ecc */
+    FNAND_TOGGLE_DEBUG_D("ecc_offset %d ", geometry_p->ecc_offset) ;          /* obbecc */
     FNAND_TOGGLE_DEBUG_D("hw_ecc_steps %d ", geometry_p->hw_ecc_steps) ;          /* number of ECC steps per page */
-    FNAND_TOGGLE_DEBUG_D("ecc_step_size %d ", geometry_p->ecc_step_size) ;       /* 进行读写操作时，单次ecc 的步骤的跨度 */
+    FNAND_TOGGLE_DEBUG_D("ecc_step_size %d ", geometry_p->ecc_step_size) ;       /* ecc  */
 
 
 
@@ -239,7 +239,7 @@ static FError FNandToggleDetectJedec(FNand *instance_p, struct ToggleNandGeometr
  * @note:
  * @param {FNand} *instance_p is the pointer to the FNand instance.
  * @param {u32} chip_addr is chip address
- * @return {FError} FT_SUCCESS 初始化成功 ，FNAND_NOT_FET_TOGGLE_MODE 初始化toggle 模式错误。
+ * @return {FError} FT_SUCCESS  FNAND_NOT_FET_TOGGLE_MODE toggle 
  */
 FError FNandToggleInit(FNand *instance_p, u32 chip_addr)
 {

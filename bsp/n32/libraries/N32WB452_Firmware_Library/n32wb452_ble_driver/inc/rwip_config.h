@@ -53,7 +53,7 @@
 //#define CFG_PRF_BASS
 //#define CFG_APP_BATT
 #define CFG_PRF_HTPTx
-/*支持的最大连接数*/
+/**/
 #define CFG_CON            1
 
 

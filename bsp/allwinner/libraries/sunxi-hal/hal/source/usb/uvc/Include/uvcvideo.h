@@ -142,10 +142,10 @@
 
 /* UVC device state */
 typedef enum _UVCDev_state{
-    UVC_DEV_OFFLINE= 0,         /* UVCDev已经拔出       */
-    UVC_DEV_ONLINE,             /* UVCDev已经添加       */
-    UVC_DEV_DIED,               /* UVCDev不可用        */
-    UVC_DEV_RESET               /* UVCDev正在被reset   */
+    UVC_DEV_OFFLINE= 0,         /* UVCDev       */
+    UVC_DEV_ONLINE,             /* UVCDev       */
+    UVC_DEV_DIED,               /* UVCDev        */
+    UVC_DEV_RESET               /* UVCDevreset   */
 }UVCDev_State_t;
 
 /* ------------------------------------------------------------------------
@@ -298,18 +298,18 @@ struct uvc_buffer {
 typedef __s32   (* uvc_irq_t)(__u32* addr0, __u32* addr1, __u32* addr2 );
 
 typedef struct _UVCDev {
-    struct usb_host_virt_dev *pusb_dev;     /* UVCDev 对应的Public USB Device  */
+    struct usb_host_virt_dev *pusb_dev;     /* UVCDev Public USB Device  */
     struct usb_interface     *pusb_intf;    /* Public usb interface             */
 
     /* device information */
-    __u8 InterfaceNo;                       /* 接口号                          */
-    __u8 SubClass;                          /* 子类                           */
-    __u8 Protocol;                          /* 传输协议                         */
-    __u32 DevType;                          /* 设备类型                         */
-    __u32 DevNo;                            /* 设备在 UVC 管理中的编号           */
+    __u8 InterfaceNo;                       /*                           */
+    __u8 SubClass;                          /*                            */
+    __u8 Protocol;                          /*                          */
+    __u32 DevType;                          /*                          */
+    __u32 DevNo;                            /*  UVC            */
 
     /* device manager */
-    UVCDev_State_t State;                   /* Dev当前所处的连接状态             */
+    UVCDev_State_t State;                   /* Dev             */
 
     /* transport */
     __u32 CtrlIn;                           /* ctrl in  pipe                    */
@@ -317,20 +317,20 @@ typedef struct _UVCDev {
     __u32 IntIn;                            /* interrupt in pipe                */
     __u32 BlukIn;                           /* bulk in pipe                 */
     __u32 IsoIn;                            /* iso in pipe              */
-    __u8  EpInterval;                       /* int 传输主机查询设备的周期      */
-    __u32 OnceTransferLength;               /* 中断ep的最大传输包大小             */
+    __u8  EpInterval;                       /* int       */
+    __u32 OnceTransferLength;               /* ep             */
 
-    __u32 busy;                             /* 主机是否正在处理命令           */
+    __u32 busy;                             /*            */
 
 
     __u32                   quirks;
     __u16                   uvc_version;
     __u32                   clock_frequency;
     struct uvc_entity       entities[UVC_VC_MAX+1];
-    struct uvc_streaming*   streams;                //注意要释放
+    struct uvc_streaming*   streams;                //
 
 
-    void *Extern;                           /* 对应具体的UVC设备 */
+    void *Extern;                           /* UVC */
 
     __u32 frame_len;                //add by Kingvan
     __u32 frame_buf0;                   //add by Kingvan
@@ -359,7 +359,7 @@ struct uvc_streaming {
     enum v4l2_buf_type type;
 
     unsigned int nformats;
-    struct uvc_format *format;      //注意释放
+    struct uvc_format *format;      //
 
     struct uvc_streaming_control ctrl;
     struct uvc_format *cur_format;

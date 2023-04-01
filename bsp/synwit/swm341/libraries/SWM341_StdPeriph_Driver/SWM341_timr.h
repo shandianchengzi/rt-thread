@@ -2,23 +2,23 @@
 #define __SWM341_TIMR_H__
 
 #define TIMR_MODE_TIMER     ((0 << 2) | 0)
-#define TIMR_MODE_IC        ((1 << 2) | 0)  //输入捕获
-#define TIMR_MODE_OC        ((2 << 2) | 0)  //输出比较
-#define TIMR_MODE_COUNTER   ((0 << 2) | 2)  //计数上升沿
+#define TIMR_MODE_IC        ((1 << 2) | 0)  //
+#define TIMR_MODE_OC        ((2 << 2) | 0)  //
+#define TIMR_MODE_COUNTER   ((0 << 2) | 2)  //
 
 
-void TIMR_Init(TIMR_TypeDef * TIMRx, uint32_t mode, uint16_t prediv, uint32_t period, uint32_t int_en); //定时器/计数器初始化
-void TIMR_Start(TIMR_TypeDef * TIMRx);                          //启动定时器，从初始值开始计时/计数
-void TIMR_Stop(TIMR_TypeDef * TIMRx);                           //停止定时器
-void TIMR_Halt(TIMR_TypeDef * TIMRx);                           //暂停定时器，计数值保持不变
-void TIMR_Resume(TIMR_TypeDef * TIMRx);                         //恢复定时器，从暂停处继续计数
+void TIMR_Init(TIMR_TypeDef * TIMRx, uint32_t mode, uint16_t prediv, uint32_t period, uint32_t int_en); ///
+void TIMR_Start(TIMR_TypeDef * TIMRx);                          ///
+void TIMR_Stop(TIMR_TypeDef * TIMRx);                           //
+void TIMR_Halt(TIMR_TypeDef * TIMRx);                           //
+void TIMR_Resume(TIMR_TypeDef * TIMRx);                         //
 
-uint32_t TIMR_GetCurValue(TIMR_TypeDef * TIMRx);                //获取当前计数值
+uint32_t TIMR_GetCurValue(TIMR_TypeDef * TIMRx);                //
 
-void TIMR_INTEn(TIMR_TypeDef * TIMRx);                          //使能中断
-void TIMR_INTDis(TIMR_TypeDef * TIMRx);                         //禁能中断
-void TIMR_INTClr(TIMR_TypeDef * TIMRx);                         //清除中断标志
-uint32_t TIMR_INTStat(TIMR_TypeDef * TIMRx);                    //获取中断状态
+void TIMR_INTEn(TIMR_TypeDef * TIMRx);                          //
+void TIMR_INTDis(TIMR_TypeDef * TIMRx);                         //
+void TIMR_INTClr(TIMR_TypeDef * TIMRx);                         //
+uint32_t TIMR_INTStat(TIMR_TypeDef * TIMRx);                    //
 
 
 void TIMR_OC_Init(TIMR_TypeDef * TIMRx, uint32_t match, uint32_t match_int_en, uint32_t init_lvl);

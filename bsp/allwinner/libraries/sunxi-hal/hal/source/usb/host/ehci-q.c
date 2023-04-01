@@ -41,9 +41,9 @@
 /*-------------------------------------------------------------------------*/
 
 /* fill a qtd, returning how much of the buffer we were able to queue up */
-// 该函数用于填充qtd结构，并返回当前qtd所承载的数据长度，
-// 每个qtd有5个pionter，每个pionter最大索引范围4k，因此，每个qtd最大索引5*4k
-// 该函数填充pionter，把指针与要指向的物理地址关联起来
+// qtdqtd
+// qtd5pionterpionter4kqtd5*4k
+// pionter
 // #include "sunxi_hal_timer.h"
 
 static int
@@ -304,7 +304,7 @@ static int qh_schedule (struct ehci_hcd *ehci, struct ehci_qh *qh);
  * Chases up to qh->hw_current.  Returns nonzero if the caller should
  * unlink qh.
  */
-// qh_completions()中通过对qh下链接的qtd进行逐个遍历，来判断传输的情况
+// qh_completions()qhqtd
 static unsigned qh_completions(struct ehci_hcd *ehci, struct ehci_qh *qh)
 {
     struct ehci_qtd *last, *end = qh->dummy;
@@ -338,29 +338,29 @@ rescan:
      * then let the queue advance.
      * if queue is stopped, handles unlinks.
      */
-    // list_for_each_safe逐个的把qh上的qtd取出放在指针entry中，
-    // list_for_each_safe的特点是可以中途删除entry，通过指针tmp去找到下一个entry
-    //该语句实际上是一个for循环
+    // list_for_each_safeqhqtdentry
+    // list_for_each_safeentrytmpentry
+    //for
     list_for_each_safe (entry, tmp, &qh->qtd_list) {
         struct ehci_qtd *qtd;
         struct urb *urb;
         u32 token = 0;
 
         //printf("\n");
-        // 找到对应的qtd内存地址
+        // qtd
         qtd = list_entry(entry, struct ehci_qtd, qtd_list);
         urb = qtd->urb;
 
         /* clean up any state from previous QTD ...*/
-        //last初始值是NULL，第一次不执行，跳过if
-        // 当再一次执行到此处时，如果前一次的处理中有qtd是执行完传输的（包括传输出错），
-        // last此时就会指向了前一个qtd，并在if语句中的ehci_qtd_free()函数中把分配的qtd空间释放掉
+        //lastNULLif
+        // qtd
+        // lastqtdifehci_qtd_free()qtd
         if (last) {
-            // 一个qtd链表中的urb指针的指向都是相同的，除了最末这一个dummy qtd，
-            // 所以在遍历到最后的qtd时“last->urb != urb”满足
+            // qtdurbdummy qtd
+            // qtdlast->urb != urb
             if (likely(last->urb != urb)) {
-                // ehci_urb_done()要做的一件事是回调urb->complete()函数指针，
-                // 从而使控制权回到USB device Driver中，这就是我们填充一个urb的回调函数的触发处
+                // ehci_urb_done()urb->complete()
+                // USB device Driverurb
                 ehci_urb_done(ehci, last->urb, last_status);
                 last_status = -EINPROGRESS;
             }
@@ -371,15 +371,15 @@ rescan:
         }
 
         /* ignore urbs submitted during completions we reported */
-        // 判断遍历到最后的dummy qtd，就跳出循环，表明整个qtd链表已被处理完了
+        // dummy qtdqtd
         if (qtd == end) {
             break;
         }
 
         /* hardware copies qtd out of qh overlay */
         //rmb ();
-        // HC在处理完一个qtd后，反映处理结果的值会回写到当前qtd的token字段中，
-        // HCD读取这个token的Status值后，可以获知HC的传输情况
+        // HCqtdqtdtoken
+        // HCDtokenStatusHC
         hal_dcache_invalidate((unsigned long)&(((struct ehci_qtd *)(qtd->qtd_dma))->hw_token), sizeof(uint32_t));
         token = hc32_to_cpu(ehci, qtd->hw_token);
         EHCI_DEBUG_PRINTF("token = 0x%lx", token);
@@ -387,10 +387,10 @@ rescan:
         /* always clean up qtds the hc de-activated */
     retry_xacterr:
         if ((token & QTD_STS_ACTIVE) == 0) {
-            // 传输完成
+            // 
 
             /* Report Data Buffer Error: non-fatal but useful */
-            // 在EHCI SPEC里说，不被视作传输错误，会强制endpoint重发一次，所以代码也只是做了打印
+            // EHCI SPECendpoint
             if (token & QTD_STS_DBE)
             {
                 EHCI_DEBUG_PRINTF("detected DataBufferErr for urb %p ep%d%s len %d, qtd %p [qh %p]",
@@ -405,12 +405,12 @@ rescan:
              * complete and all its qtds must be recycled.
              */
             if ((token & QTD_STS_HALT) != 0) {
-                // 表明当前qtd的传输出现了错误，而且与该endpoint的传输都被停掉
+                // qtdendpoint
                 EHCI_DEBUG_PRINTF("error halt");
                 /* retry transaction errors until we
                  * reach the software xacterr limit
                  */
-                // QTD_STS_XACT代表HC没有收到device发回的有效应答包
+                // QTD_STS_XACTHCdevice
                 if ((token & QTD_STS_XACT) &&
                         QTD_CERR(token) == 0 &&
                         ++qh->xacterrs < QH_XACTERR_MAX &&
@@ -423,11 +423,11 @@ rescan:
                      * the qtd) so that we pick up from
                      * where we left off
                      */
-                    // 出现这样的错误HCD的处理方式是，
-                    // 由软件把Halted位清零，
-                    // token[11:10] CERR位设为0x3，
-                    // Active位置1再次使能该qtd，
-                    // 让HC重新传输这个qtd
+                    // HCD
+                    // Halted
+                    // token[11:10] CERR0x3
+                    // Active1qtd
+                    // HCqtd
                     token &= ~QTD_STS_HALT;
                     token |= QTD_STS_ACTIVE |
                             (EHCI_TUNE_CERR << 10);
@@ -438,7 +438,7 @@ rescan:
                     hal_dcache_clean_invalidate((unsigned long)&(((struct ehci_qtd *)(qtd->qtd_dma))->hw_token), sizeof(uint32_t));
                     hal_dcache_clean_invalidate((unsigned long)&(((struct ehci_qh_hw *)(qh->qh_dma))->hw_token), sizeof(uint32_t));
 
-                    // 重复以上动作，直到传输成功或超时为止
+                    // 
                     goto retry_xacterr;
                 }
                 stopped = 1;
@@ -517,7 +517,7 @@ rescan:
          * short read the second must be removed by hand.
          */
         if (last_status == -EINPROGRESS) {
-            // 读取状态
+            // 
             last_status = qtd_copy_status(ehci, urb,
                     qtd->length, token);
             if (last_status == -EREMOTEIO
@@ -548,13 +548,13 @@ rescan:
         /* if we're removing something not at the queue head,
          * patch the hardware queue pointer.
          */
-        //如果是qtd链表的首个元素，则qtd->qtd_list.prev == &qh->qtd_list
-        //如果不是首元素，则需要先解链再释放，如是首元素，则不必
+        //qtdqtd->qtd_list.prev == &qh->qtd_list
+        //
         if (stopped && qtd->qtd_list.prev != &qh->qtd_list) {
-            //找到上一个qtd的地址
+            //qtd
             last = list_entry (qtd->qtd_list.prev,
                     struct ehci_qtd, qtd_list);
-            //将上一个qtd的next与本qtd的next链接，即，将本qtd从链表中解链
+            //qtdnextqtdnextqtd
             last->hw_next = qtd->hw_next;
 
             hal_dcache_clean_invalidate((unsigned long)&(((struct ehci_qtd *)(last->qtd_dma))->hw_next), sizeof(uint32_t));
@@ -562,9 +562,9 @@ rescan:
         }
 
         /* remove qtd; it's recycled after possible urb completion */
-        //释放
+        //
         list_del (&qtd->qtd_list);
-        //记录到last里，下一次循环时真正回收qtd
+        //lastqtd
         last = qtd;
 
         /* reinit the xacterr counter for the next qtd */
@@ -572,7 +572,7 @@ rescan:
     }//end of list_for_each_safe(entry, tmp, &qh->qtd_list)
 
     /* last urb's completion might still need calling */
-    // 如果指针last非空，那么一定是指向一个qtd链表队列的末尾处（非dummy qtd）
+    // lastqtddummy qtd
     if (last != NULL) {
         ehci_urb_done(ehci, last->urb, last_status);
         ehci_qtd_free(ehci, last);
@@ -647,9 +647,9 @@ static void qtd_list_free (
 
 /*
  * create a list of filled qtds for this URB; won't link into qh.
- * 为URB创建并填充qtd列表，但是并未加到qh中
- * 一次USB的传输请求是由usb_submit_urb()提交下来的，要传输相关的数据、地址等信息都放在URB中
- * qh_urb_transaction()函数就是对URB携带的信息整合到EHCI能识别的数据结构中，即构造相应的qTD
+ * URBqtdqh
+ * USBusb_submit_urb()URB
+ * qh_urb_transaction()URBEHCIqTD
  */
 static struct list_head *
 qh_urb_transaction (
@@ -675,7 +675,7 @@ qh_urb_transaction (
     list_add_tail (&qtd->qtd_list, head);
     qtd->urb = urb;
 
-    token = QTD_STS_ACTIVE;//使能该qtd
+    token = QTD_STS_ACTIVE;//qtd
     token |= (EHCI_TUNE_CERR << 10);
     /* for split transactions, SplitXState initialized to zero */
 
@@ -683,26 +683,26 @@ qh_urb_transaction (
     is_input = usb_pipein (urb->pipe);
     if (usb_pipecontrol (urb->pipe)) {
         /* SETUP pid */
-        // 在此处将urb对应的数据包地址信息分配到qtd的pointer中，并返回长度
+        // urbqtdpointer
         qtd_fill(ehci, qtd, urb->setup_dma,
                 sizeof (struct usb_ctrlrequest),
                 token | (2 /* "setup" */ << 8), 8);
 
         /* ... and always at least one more pid */
         token ^= QTD_TOGGLE;
-        //用qtd_prev指向填充过的qtd，再申请一个空的qtd
+        //qtd_prevqtdqtd
         qtd_prev = qtd;
         qtd = ehci_qtd_alloc (ehci, flags);
         if (!qtd)
             goto cleanup;
         qtd->urb = urb;
 
-        // 将新的qtd联入队列
+        // qtd
         qtd_prev->hw_next = QTD_NEXT(ehci, qtd->qtd_dma);
         list_add_tail (&qtd->qtd_list, head);
 
         /* for zero length DATA stages, STATUS is always IN */
-        // 为0说明是仅用于control的命令传输，没有数据
+        // 0control
         if (len == 0)
             token |= (1 /* "in" */ << 8);
     }
@@ -788,8 +788,8 @@ qh_urb_transaction (
      * other OUT ones may need a terminating short packet
      * (zero length).
      */
-    // 对urb中transfer_buffer_length非零，即涉及数据传输，且传输类型为Control或者是传输方向为OUT，就增加一个qtd作为结束，
-    // 该qtd要传输的数据长度为零。并把最后一个qtd的token中IOC位置1，表示在完成qtd的传输后，在下一个中断周期产生一个中断
+    // urbtransfer_buffer_lengthControlOUTqtd
+    // qtdqtdtokenIOC1qtd
     if (urb->transfer_buffer_length != 0) {
         int one_more = 0;
 
@@ -1496,7 +1496,7 @@ static void start_unlink_async(struct ehci_hcd *ehci, struct ehci_qh *qh)
 }
 
 /*-------------------------------------------------------------------------*/
-// scan_async()函数的工作就是去check传输的状况，并回收qtd
+// scan_async()checkqtd
 static void scan_async (struct ehci_hcd *ehci)
 {
     struct ehci_qh      *qh;

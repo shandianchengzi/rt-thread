@@ -2,17 +2,17 @@
 #define __SWM320_SDRAM_H__
 
 typedef struct {
-    uint8_t CellSize;           // SDRAM颗粒的容量，SDRAM_CELLSIZE_16Mb、SDRAM_CELLSIZE_64Mb、SDRAM_CELLSIZE_128Mb、SDRAM_CELLSIZE_256Mb
-    uint8_t CellBank;           // SDRAM颗粒有几个bank，SDRAM_CELLBANK_2、SDRAM_CELLBANK_4
-    uint8_t CellWidth;          // SDRAM颗粒的位宽，SDRAM_CELLWIDTH_16、SDRAM_CELLWIDTH_32
-    uint8_t CASLatency;         // 列地址到有效数据输出间隔，SDRAM_CASLATENCY_2、SDRAM_CASLATENCY_3
+    uint8_t CellSize;           // SDRAMSDRAM_CELLSIZE_16MbSDRAM_CELLSIZE_64MbSDRAM_CELLSIZE_128MbSDRAM_CELLSIZE_256Mb
+    uint8_t CellBank;           // SDRAMbankSDRAM_CELLBANK_2SDRAM_CELLBANK_4
+    uint8_t CellWidth;          // SDRAMSDRAM_CELLWIDTH_16SDRAM_CELLWIDTH_32
+    uint8_t CASLatency;         // SDRAM_CASLATENCY_2SDRAM_CASLATENCY_3
 
     uint8_t TimeTMRD;           // MRS to New Command
     uint8_t TimeTRRD;           // Activate to activate on different banks
-    uint8_t TimeTRAS;           // Self refresh time，最小Self-refresh周期
-    uint8_t TimeTRC;            // Row cycle delay，Refresh命令到Activate命令间延时，也是两个连续Refresh命令间延时
-    uint8_t TimeTRCD;           // Row to column delay，行地址到列地址间延时，也即Activate命令到读写命令间延时
-    uint8_t TimeTRP;            // Row precharge delay，Precharge命令到另一个命令间延时
+    uint8_t TimeTRAS;           // Self refresh timeSelf-refresh
+    uint8_t TimeTRC;            // Row cycle delayRefreshActivateRefresh
+    uint8_t TimeTRCD;           // Row to column delayActivate
+    uint8_t TimeTRP;            // Row precharge delayPrecharge
 } SDRAM_InitStructure;
 
 #define SDRAM_CELLSIZE_16Mb     3

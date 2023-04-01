@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fadc_hw.h
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:28:45
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 #ifndef BSP_DRIVERS_ADC_HW_H
 #define BSP_DRIVERS_ADC_HW_H
@@ -90,19 +90,19 @@ extern "C"
 
 /**
  * @name: FADC_READ_REG32
- * @msg:  读取FADC寄存器
- * @param {u32} addr 定时器的基地址
- * @param {u32} reg_offset   定时器的寄存器的偏移
- * @return {u32} 寄存器参数
+ * @msg:  FADC
+ * @param {u32} addr 
+ * @param {u32} reg_offset   
+ * @return {u32} 
  */
 #define FADC_READ_REG32(addr, reg_offset) FtIn32(addr + (u32)(reg_offset))
 
 /**
  * @name: FADC_WRITE_REG32
- * @msg:  写入FADC寄存器
- * @param {u32} addr 定时器的基地址
- * @param {u32} reg_offset   定时器的寄存器的偏移
- * @param {u32} reg_value    写入寄存器参数
+ * @msg:  FADC
+ * @param {u32} addr 
+ * @param {u32} reg_offset   
+ * @param {u32} reg_value    
  * @return {void}
  */
 #define FADC_WRITE_REG32(addr, reg_offset, reg_value) FtOut32((addr) + (u32)(reg_offset), (u32)(reg_value))

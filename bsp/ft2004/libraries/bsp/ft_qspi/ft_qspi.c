@@ -1,14 +1,14 @@
 /*
- * @ : Copyright (c) 2021 Phytium Information Technology, Inc.
- *
- * SPDX-License-Identifier: Apache-2.0.
+*@:Copyright(c)2021PhytiumInformationTechnology,Inc.
+*
+*SPDX-License-Identifier:Apache-2.0.
  *
  * @Date: 2021-04-05 22:15:53
  * @LastEditTime: 2021-05-25 16:45:36
- * @Description:  Description of file
- * @Modify History:
- * * * Ver   Who        Date         Changes
- * * ----- ------     --------    --------------------------------------
+ * @Description: Descriptionoffile
+ * @ModifyHistory:
+ * **VerWhoDateChanges
+ * *---------------------------------------------------------
  * *   1.00   hh        2021.04-06    init
  */
 

@@ -9,8 +9,8 @@
             "commands": [
                 "scons"
             ],
-            "label": "编译",
-            "tooltip": "编译 RT-Thread 内核"
+            "label": "",
+            "tooltip": " RT-Thread "
         },
         "clean": {
             "icon": "$(clear-all)",
@@ -18,8 +18,8 @@
             "commands": [
                 "scons -c"
             ],
-            "label": "清理",
-            "tooltip": "清理 RT-Thread 内核"
+            "label": "",
+            "tooltip": " RT-Thread "
         },
         "name" : {
             "icon" : "$(location)",
@@ -28,7 +28,7 @@
                 ""
             ],
             "label" : "QEMU Virt AArch64",
-            "tooltip" : "项目名称"
+            "tooltip" : ""
         }
     }
 }

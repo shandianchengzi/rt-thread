@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fsata_g.c
  * Date: 2022-02-10 14:55:11
  * LastEditTime: 2022-02-18 09:03:08
- * Description:  This files is for static config of sata ctrl
+ * Description: This files is for static config of sata ctrl
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 #include "fparameters.h"

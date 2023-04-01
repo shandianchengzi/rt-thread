@@ -179,7 +179,7 @@ static cy_rslt_t _cyhal_spi_int_frequency(cyhal_spi_t *obj, uint32_t hz, uint8_t
     }
     else
     {
-        /* Slave requires such frequency: required_frequency = N / ((0.5 * desired_period) â€“ 20 nsec - tDSI,
+        /* Slave requires such frequency: required_frequency = N / ((0.5 * desired_period)  20 nsec - tDSI,
         *   N is 3 when "Enable Input Glitch Filter" is false and 4 when true.
         *   tDSI Is external master delay which is assumed to be 16.66 nsec */
 

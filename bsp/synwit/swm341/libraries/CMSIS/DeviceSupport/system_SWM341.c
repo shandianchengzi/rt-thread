@@ -1,10 +1,10 @@
 /******************************************************************************************************************************************
-* 文件名称: system_SWM341.c
-* 功能说明: SWM341单片机的时钟设置
-* 技术支持: http://www.synwit.com.cn/e/tool/gbook/?bid=1
-* 注意事项:
-* 版本日期: V1.1.0      2017年10月25日
-* 升级记录:
+* : system_SWM341.c
+* : SWM341
+* : http://www.synwit.com.cn/e/tool/gbook/?bid=1
+* :
+* : V1.1.0      20171025
+* :
 *
 *
 *******************************************************************************************************************************************
@@ -23,34 +23,34 @@
 
 
 /******************************************************************************************************************************************
- * 系统时钟设定
+ * 
  *****************************************************************************************************************************************/
-#define SYS_CLK_20MHz       0       //0 内部高频20MHz  RC振荡器
-#define SYS_CLK_2M5Hz       1       //1 内部高频2.5MHz RC振荡器
-#define SYS_CLK_40MHz       2       //2 内部高频40MHz  RC振荡器
-#define SYS_CLK_5MHz        3       //3 内部高频 5MHz  RC振荡器
-#define SYS_CLK_XTAL        4       //4 外部晶体振荡器（4-32MHz）
-#define SYS_CLK_XTAL_DIV8   5       //5 外部晶体振荡器（4-32MHz） 8分频
-#define SYS_CLK_PLL         6       //6 锁相环输出
-#define SYS_CLK_PLL_DIV8    7       //7 锁相环输出 8分频
-#define SYS_CLK_32KHz       8       //8 内部低频32KHz RC  振荡器
-#define SYS_CLK_XTAL_32K    9       //9 外部低频32KHz 晶体振荡器
+#define SYS_CLK_20MHz       0       //0 20MHz  RC
+#define SYS_CLK_2M5Hz       1       //1 2.5MHz RC
+#define SYS_CLK_40MHz       2       //2 40MHz  RC
+#define SYS_CLK_5MHz        3       //3  5MHz  RC
+#define SYS_CLK_XTAL        4       //4 4-32MHz
+#define SYS_CLK_XTAL_DIV8   5       //5 4-32MHz 8
+#define SYS_CLK_PLL         6       //6 
+#define SYS_CLK_PLL_DIV8    7       //7  8
+#define SYS_CLK_32KHz       8       //8 32KHz RC  
+#define SYS_CLK_XTAL_32K    9       //9 32KHz 
 
 #define SYS_CLK   SYS_CLK_PLL
 
 
-#define __HSI       (20000000UL)        //高速内部时钟
-#define __LSI       (   32000UL)        //低速内部时钟
-#define __HSE       (12000000UL)        //高速外部时钟
-#define __LSE       (   32768UL)        //低速外部时钟
+#define __HSI       (20000000UL)        //
+#define __LSI       (   32000UL)        //
+#define __HSE       (12000000UL)        //
+#define __LSE       (   32768UL)        //
 
 
-/********************************** PLL 设定 **********************************************
- * VCO输出频率 = PLL输入时钟 / INDIV * 4 * FBDIV
- * PLL输出频率 = PLL输入时钟 / INDIV * 4 * FBDIV / OUTDIV = VCO输出频率 / OUTDIV
- * 注意：VCO输出频率需要在 [600MHz, 1400MHz] 之间
+/********************************** PLL  **********************************************
+ * VCO = PLL / INDIV * 4 * FBDIV
+ * PLL = PLL / INDIV * 4 * FBDIV / OUTDIV = VCO / OUTDIV
+ * VCO [600MHz, 1400MHz] 
  *****************************************************************************************/
-#define SYS_PLL_SRC     SYS_CLK_XTAL    //可取值SYS_CLK_20MHz、SYS_CLK_XTAL
+#define SYS_PLL_SRC     SYS_CLK_XTAL    //SYS_CLK_20MHzSYS_CLK_XTAL
 
 #define PLL_IN_DIV      3
 
@@ -70,11 +70,11 @@ uint32_t CyclesPerUs      = (__HSI / 1000000);      //Cycles per micro second
 
 
 /******************************************************************************************************************************************
-* 函数名称:
-* 功能说明: This function is used to update the variable SystemCoreClock and must be called whenever the core clock is changed
-* 输    入:
-* 输    出:
-* 注意事项:
+* :
+* : This function is used to update the variable SystemCoreClock and must be called whenever the core clock is changed
+*     :
+*     :
+* :
 ******************************************************************************************************************************************/
 void SystemCoreClockUpdate(void)
 {
@@ -131,11 +131,11 @@ void SystemCoreClockUpdate(void)
 }
 
 /******************************************************************************************************************************************
-* 函数名称:
-* 功能说明: The necessary initializaiton of systerm
-* 输    入:
-* 输    出:
-* 注意事项:
+* :
+* : The necessary initializaiton of systerm
+*     :
+*     :
+* :
 ******************************************************************************************************************************************/
 void SystemInit(void)
 {
@@ -404,7 +404,7 @@ void PLLInit(void)
 
     SYS->PLLCR &= ~(1 << SYS_PLLCR_OFF_Pos);
 
-    while(SYS->PLLLOCK == 0);       //等待PLL锁定
+    while(SYS->PLLLOCK == 0);       //PLL
 
     SYS->PLLCR |= (1 << SYS_PLLCR_OUTEN_Pos);
 }

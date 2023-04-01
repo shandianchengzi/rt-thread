@@ -68,7 +68,7 @@ static rt_err_t spi_configure(struct rt_spi_device *device, struct rt_spi_config
     RT_ASSERT(cfg != RT_NULL);
     RT_ASSERT(device != RT_NULL);
 
-    /*将cfg参数放到device中*/
+    /*cfgdevice*/
     struct wm_spi *hspi = (struct wm_spi *)device->bus->parent.user_data;
     hspi->cfg = cfg;
 

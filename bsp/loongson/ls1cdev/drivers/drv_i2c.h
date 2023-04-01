@@ -5,7 +5,7 @@
  *
  * Change Logs:
  * Date           Author       Notes
- * 2017-11-14     勤为本       first version
+ * 2017-11-14            first version
  */
 
 #ifndef LS1C_DRV_I2C_H

@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fpcie_config.c
  * Date: 2022-02-10 14:55:11
  * LastEditTime: 2022-02-18 08:57:30
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 #include "fpcie.h"
@@ -39,7 +39,7 @@
 
 /**
  * @name: FPcieMiscIrqEnable
- * @msg:  开启PCIE 子系统中对应中断源的 misc 中断
+ * @msg:  PCIE  misc 
  * @param {FPcie} *instance_p
  * @param {fsize_t} peu_num
  */
@@ -69,7 +69,7 @@ void FPcieMiscIrqEnable(FPcie *instance_p, fsize_t peu_num)
 
 /**
  * @name: FPcieMiscIrqDisable
- * @msg:  关闭PCIE 子系统中对应中断的 misc 中断
+ * @msg:  PCIE  misc 
  * @param {FPcie} *instance_p is a pointer to the FPcie instance.
  * @param {fsize_t} peu_num is pci-e unit controller selection
  */

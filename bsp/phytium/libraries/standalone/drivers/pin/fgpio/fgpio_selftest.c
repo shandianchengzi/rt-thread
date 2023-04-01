@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fgpio_selftest.c
  * Date: 2022-06-17 14:32:12
  * LastEditTime: 2022-06-17 14:32:12
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 /***************************** Include Files *********************************/
 #include "fdebug.h"
@@ -48,9 +48,9 @@
 
 /**
  * @name: FGpioDumpRegisters
- * @msg: 打印GPIO控制寄存器信息
+ * @msg: GPIO
  * @return {NONE}
- * @param {uintptr} base_addr, GPIO控制器基地址
+ * @param {uintptr} base_addr, GPIO
  */
 void FGpioDumpRegisters(uintptr base_addr)
 {

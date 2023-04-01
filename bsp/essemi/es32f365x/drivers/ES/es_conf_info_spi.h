@@ -29,7 +29,7 @@
 #include <ald_gpio.h>
 #include <ald_cmu.h>
 
-/* SPI 配置 */
+/* SPI  */
 
 #define SPI_BUS_CONFIG(_CONF_,_I_)       do{_CONF_.mode = 0U;                                         \
                                             _CONF_.mode |= ( ES_SPI##_I_##_MASTER_SLAVE |             \
@@ -43,14 +43,14 @@
                                             }while(0)
 
 
-//    spi_config.mode &= ~RT_SPI_SLAVE; /* 主机模式 */
-//    spi_config.mode &= ~RT_SPI_3WIRE; /* 4线，双向传输 */
-//    spi_config.mode |= RT_SPI_CPHA;   /* 第二边沿采样 */
-//    spi_config.mode |= RT_SPI_CPOL;   /* 空闲高电平 */
-//    spi_config.mode |= RT_SPI_NO_CS;  /* 禁用软件从机选择管理 */
-//    spi_config.mode |= RT_SPI_MSB;    /* 高位在前 */
-//    spi_config.data_width = 8;        /* 数据长度：8 */
-//    spi_config.max_hz = 2000000;      /* 最快时钟频率 */
+//    spi_config.mode &= ~RT_SPI_SLAVE; /*  */
+//    spi_config.mode &= ~RT_SPI_3WIRE; /* 4 */
+//    spi_config.mode |= RT_SPI_CPHA;   /*  */
+//    spi_config.mode |= RT_SPI_CPOL;   /*  */
+//    spi_config.mode |= RT_SPI_NO_CS;  /*  */
+//    spi_config.mode |= RT_SPI_MSB;    /*  */
+//    spi_config.data_width = 8;        /* 8 */
+//    spi_config.max_hz = 2000000;      /*  */
 
 #define ES_C_SPI_CLK_POL_HIGH            RT_SPI_CPOL
 #define ES_C_SPI_CLK_POL_LOW             !RT_SPI_CPOL

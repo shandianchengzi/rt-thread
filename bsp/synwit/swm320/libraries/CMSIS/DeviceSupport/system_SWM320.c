@@ -1,10 +1,10 @@
 /******************************************************************************************************************************************
-* 文件名称: system_SWM320.c
-* 功能说明: SWM320单片机的时钟设置
-* 技术支持: http://www.synwit.com.cn/e/tool/gbook/?bid=1
-* 注意事项:
-* 版本日期: V1.1.0      2017年10月25日
-* 升级记录:
+* : system_SWM320.c
+* : SWM320
+* : http://www.synwit.com.cn/e/tool/gbook/?bid=1
+* :
+* : V1.1.0      20171025
+* :
 *
 *
 *******************************************************************************************************************************************
@@ -23,13 +23,13 @@
 
 
 /******************************************************************************************************************************************
- * 系统时钟设定
+ * 
  *****************************************************************************************************************************************/
-#define SYS_CLK_20MHz   0       //0 内部高频20MHz RC振荡器
-#define SYS_CLK_40MHz   1       //1 内部高频40MHz RC振荡器
-#define SYS_CLK_32KHz   2       //2 内部低频32KHz RC振荡器
-#define SYS_CLK_XTAL    3       //3 外部晶体振荡器（2-30MHz）
-#define SYS_CLK_PLL     4       //4 片内锁相环输出
+#define SYS_CLK_20MHz   0       //0 20MHz RC
+#define SYS_CLK_40MHz   1       //1 40MHz RC
+#define SYS_CLK_32KHz   2       //2 32KHz RC
+#define SYS_CLK_XTAL    3       //3 2-30MHz
+#define SYS_CLK_PLL     4       //4 
 
 #define SYS_CLK   SYS_CLK_PLL
 
@@ -40,17 +40,17 @@
 #define SYS_CLK_DIV     SYS_CLK_DIV_1
 
 
-#define __HSI       (20000000UL)        //高速内部时钟
-#define __LSI       (   32000UL)        //低速内部时钟
-#define __HSE       (20000000UL)        //高速外部时钟
+#define __HSI       (20000000UL)        //
+#define __LSI       (   32000UL)        //
+#define __HSE       (20000000UL)        //
 
 
-/********************************** PLL 设定 **********************************************
- * VCO输出频率 = PLL输入时钟 / INDIV * 4 * FBDIV
- * PLL输出频率 = PLL输入时钟 / INDIV * 4 * FBDIV / OUTDIV = VCO输出频率 / OUTDIV
- * 注意：VCO输出频率需要在 [600MHz, 1200MHz] 之间
+/********************************** PLL  **********************************************
+ * VCO = PLL / INDIV * 4 * FBDIV
+ * PLL = PLL / INDIV * 4 * FBDIV / OUTDIV = VCO / OUTDIV
+ * VCO [600MHz, 1200MHz] 
  *****************************************************************************************/
-#define SYS_PLL_SRC     SYS_CLK_20MHz   //可取值SYS_CLK_20MHz、SYS_CLK_XTAL
+#define SYS_PLL_SRC     SYS_CLK_20MHz   //SYS_CLK_20MHzSYS_CLK_XTAL
 
 #define PLL_IN_DIV      5
 
@@ -70,11 +70,11 @@ uint32_t CyclesPerUs      = (__HSI / 1000000);      //Cycles per micro second
 
 
 /******************************************************************************************************************************************
-* 函数名称:
-* 功能说明: This function is used to update the variable SystemCoreClock and must be called whenever the core clock is changed
-* 输    入:
-* 输    出:
-* 注意事项:
+* :
+* : This function is used to update the variable SystemCoreClock and must be called whenever the core clock is changed
+*     :
+*     :
+* :
 ******************************************************************************************************************************************/
 void SystemCoreClockUpdate(void)
 {
@@ -123,11 +123,11 @@ void SystemCoreClockUpdate(void)
 }
 
 /******************************************************************************************************************************************
-* 函数名称:
-* 功能说明: The necessary initializaiton of systerm
-* 输    入:
-* 输    出:
-* 注意事项:
+* :
+* : The necessary initializaiton of systerm
+*     :
+*     :
+* :
 ******************************************************************************************************************************************/
 void SystemInit(void)
 {
@@ -137,23 +137,23 @@ void SystemInit(void)
 
     switch(SYS_CLK)
     {
-        case SYS_CLK_20MHz:         //0 内部高频20MHz RC振荡器
+        case SYS_CLK_20MHz:         //0 20MHz RC
             switchCLK_20MHz();
             break;
 
-        case SYS_CLK_40MHz:         //1 内部高频40MHz RC振荡器
+        case SYS_CLK_40MHz:         //1 40MHz RC
             switchCLK_40MHz();
             break;
 
-        case SYS_CLK_32KHz:         //2 内部低频32KHz RC振荡器
+        case SYS_CLK_32KHz:         //2 32KHz RC
             switchCLK_32KHz();
             break;
 
-        case SYS_CLK_XTAL:          //3 外部晶体振荡器（2-30MHz）
+        case SYS_CLK_XTAL:          //3 2-30MHz
             switchCLK_XTAL();
             break;
 
-        case SYS_CLK_PLL:           //4 片内锁相环输出
+        case SYS_CLK_PLL:           //4 
             switchCLK_PLL();
             break;
     }
@@ -281,5 +281,5 @@ void PLLInit(void)
 
     SYS->PLLCR &= ~(1 << SYS_PLLCR_OFF_Pos);
 
-    while(SYS->PLLLOCK == 0);       //等待PLL锁定
+    while(SYS->PLLLOCK == 0);       //PLL
 }

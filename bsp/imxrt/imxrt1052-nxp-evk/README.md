@@ -1,6 +1,6 @@
 # NXP i. MX RT1050 EVK BSP(Board Support Package) Execution Instruction.
 
-[中文页](README_zh.md) |
+[](README_zh.md) |
 
 ## Introduction
 
@@ -23,11 +23,11 @@ The i.MX RT1050 EVK  is a development board based on ARM Cortex-M7. The maximum 
 The mainly-used resources of this board are shown as follows:
 
 - MCU: MIMXRT1052DVL6A. Main Frequency 600MHz,
-- Memory: 256MB SDRAM、512MB Hyper FLASH
+- Memory: 256MB SDRAM512MB Hyper FLASH
 - Common-used peripherals:
   - Motion Sensors: FXOS8700CQ
   - LED
-- Common-used interfaces: USB、SD Card、Ethernet、LCD、Camera.
+- Common-used interfaces: USBSD CardEthernetLCDCamera.
 - Debug interface: Standard JTAG/SWD. For more details about this board, please refer to [nxp.com](https://www.nxp.com/)
 
 ## Peripheral Condition

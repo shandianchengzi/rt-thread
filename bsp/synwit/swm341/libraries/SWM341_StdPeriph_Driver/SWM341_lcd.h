@@ -3,32 +3,32 @@
 
 
 typedef struct {
-    uint8_t  ClkDiv;        //取值范围2--65
-    uint8_t  Format;        //LCD_FMT_RGB565、LCD_FMT_RGB888、LCD_FMT_SRGB565、LCD_FMT_SRGB888
-    uint16_t HnPixel;       //水平方向像素个数，最大取值1024
-    uint16_t VnPixel;       //垂直方向像素个数，最大取值1024
-    uint8_t  Hfp;           //horizonal front porch，最大取值64
-    uint16_t Hbp;           //horizonal back porch， 最大取值256
-    uint8_t  Vfp;           //vertical front porch， 最大取值64
-    uint16_t Vbp;           //vertical back porch，  最大取值256
-    uint16_t HsyncWidth;    //HSYNC低电平持续多少个DOTCLK，最大取值256
-    uint16_t VsyncWidth;    //VSYNC低电平持续多少个行时间，最大取值256
+    uint8_t  ClkDiv;        //2--65
+    uint8_t  Format;        //LCD_FMT_RGB565LCD_FMT_RGB888LCD_FMT_SRGB565LCD_FMT_SRGB888
+    uint16_t HnPixel;       //1024
+    uint16_t VnPixel;       //1024
+    uint8_t  Hfp;           //horizonal front porch64
+    uint16_t Hbp;           //horizonal back porch 256
+    uint8_t  Vfp;           //vertical front porch 64
+    uint16_t Vbp;           //vertical back porch  256
+    uint16_t HsyncWidth;    //HSYNCDOTCLK256
+    uint16_t VsyncWidth;    //VSYNC256
 
-    uint32_t DataSource;    //显示数据地址
-    uint32_t Background;    //背景颜色
-    uint8_t  SampleEdge;    //屏幕在DOTCLK的哪个边沿采样数据：LCD_SAMPLE_RISE、LCD_SAMPLE_FALL
+    uint32_t DataSource;    //
+    uint32_t Background;    //
+    uint8_t  SampleEdge;    //DOTCLKLCD_SAMPLE_RISELCD_SAMPLE_FALL
 
-    uint8_t  IntEOTEn;      //End of Transter（传输完成）中断使能
+    uint8_t  IntEOTEn;      //End of Transter
 } LCD_InitStructure;
 
 
 typedef struct {
     uint8_t  Alpha;
-    uint16_t HStart;        //水平方向起始位置，取值范围0 ~ HnPixel-1
-    uint16_t HStop;         //水平方向终止位置（包含），不得小于HStart，且 HStop - HStart 结果必须为奇数
+    uint16_t HStart;        //0 ~ HnPixel-1
+    uint16_t HStop;         //HStart HStop - HStart 
     uint16_t VStart;
     uint16_t VStop;
-    uint32_t DataSource;    //显示数据地址
+    uint32_t DataSource;    //
 } LCD_LayerInitStructure;
 
 
@@ -37,8 +37,8 @@ typedef struct {
 #define LCD_FMT_SRGB565 2   //Serial RGB
 #define LCD_FMT_SRGB888 3
 
-#define LCD_SAMPLE_RISE 0   //屏幕在DOTCLK的上升沿采样数据
-#define LCD_SAMPLE_FALL 1   //屏幕在DOTCLK的下降沿采样数据
+#define LCD_SAMPLE_RISE 0   //DOTCLK
+#define LCD_SAMPLE_FALL 1   //DOTCLK
 
 #define LCD_LAYER_1     0
 #define LCD_LAYER_2     1
@@ -58,12 +58,12 @@ uint32_t LCD_INTStat(LCD_TypeDef * LCDx);
 
 
 typedef struct {
-    uint8_t  RDHoldTime;    //LCD_RD低电平保持时间,取值1--32
-    uint8_t  WRHoldTime;    //LCD_WR低电平保持时间,取值1--16
-    uint8_t  CSFall_WRFall; //LCD_CS下降沿到LCD_WR下降沿延时，取值1--4
-    uint8_t  WRRise_CSRise; //LCD_WR上升沿到LCD_CS上升沿延时，取值1--4
-    uint8_t  RDCSRise_Fall; //读操作时，LCD_CS上升沿到下降沿延时，取值1--32
-    uint8_t  WRCSRise_Fall; //写操作时，LCD_CS上升沿到下降沿延时，取值1--16
+    uint8_t  RDHoldTime;    //LCD_RD,1--32
+    uint8_t  WRHoldTime;    //LCD_WR,1--16
+    uint8_t  CSFall_WRFall; //LCD_CSLCD_WR1--4
+    uint8_t  WRRise_CSRise; //LCD_WRLCD_CS1--4
+    uint8_t  RDCSRise_Fall; //LCD_CS1--32
+    uint8_t  WRCSRise_Fall; //LCD_CS1--16
 } MPULCD_InitStructure;
 
 

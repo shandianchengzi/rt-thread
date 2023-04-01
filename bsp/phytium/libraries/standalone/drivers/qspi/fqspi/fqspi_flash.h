@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,13 +14,13 @@
  * FilePath: fqspi_flash.h
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-07-12 16:20:55
- * Description:  
+ * Description: 
  * This file is for S25FS256, GD25Q256, GD25Q64 norflash program, includes reading and writing registers and data,
  * Users can refer to this file to adapt chips from other manufacturers.
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.1   wangxiaodong  2021.11.12  re-construct
  * 1.2   wangxiaodong  2022.3.27   re-construct
  * 1.3   wangxiaodong  2022.7.5    adapt to e2000

@@ -26,18 +26,18 @@
 
 typedef struct _usbh_disk_device_info
 {
-    char Classname[USB_HOST_MAX_STRING_LEN];    /* 设备名       */
-    char DeviceName[USB_HOST_MAX_STRING_LEN];   /* 设备节点名   */
+    char Classname[USB_HOST_MAX_STRING_LEN];    /*        */
+    char DeviceName[USB_HOST_MAX_STRING_LEN];   /*    */
 
-    usbhDeivceInfo_t DeivceInfo;                /* 设备信息     */
+    usbhDeivceInfo_t DeivceInfo;                /*      */
 } usbh_disk_device_info_t;
 
-/* usbh_disk_info设备总的数据结构 */
+/* usbh_disk_info */
 typedef struct tag_usbh_disk_info
 {
-    unsigned int  cnt;            //打开的个数
+    unsigned int  cnt;            //
 
-    void *reghandle;    //注册的设备句柄
+    void *reghandle;    //
 
     //  usbh_disk_device_info_t device_info[USBH_DISK_INFO_MAX_DEVICE_NUMBER];
     struct usb_list_head device_list;

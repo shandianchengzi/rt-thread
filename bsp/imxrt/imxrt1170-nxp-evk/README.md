@@ -1,6 +1,6 @@
 # NXP i. MX RT1170 EVK BSP(Board Support Package) Execution Instruction.
 
-[中文页](README_zh.md) |
+[](README_zh.md) |
 
 ## Introduction
 
@@ -16,7 +16,7 @@ By reading the Quickly Get Started section developers can quickly get their hand
 
 ## Board Resources Introduction
 
-i.MX RT1170 crossover MCUs are part of the EdgeVerse™ edge computing platform and are setting speed records at 1 GHz. This ground-breaking family combines superior computing power and multiple media capabilities with ease-of-use and real-time functionality. The dual core i.MX RT1170 MCU runs on the Arm® Cortex®-M7 core at 1 GHz and Arm Cortex-M4 at 400 MHz, while providing advanced security. The i.MX RT1170 MCU offers support over a wide temperature range and is designed for consumer, industrial and automotive markets.
+i.MX RT1170 crossover MCUs are part of the EdgeVerse edge computing platform and are setting speed records at 1 GHz. This ground-breaking family combines superior computing power and multiple media capabilities with ease-of-use and real-time functionality. The dual core i.MX RT1170 MCU runs on the Arm Cortex-M7 core at 1 GHz and Arm Cortex-M4 at 400 MHz, while providing advanced security. The i.MX RT1170 MCU offers support over a wide temperature range and is designed for consumer, industrial and automotive markets.
 
 ![board](figures/board.jpg)
 
@@ -28,17 +28,17 @@ Each peripheral supporting condition for this BSP is as follows:
 
 | **On-board Peripherals** | **Support** | **Remark**                            |
 | ------------------------ | ----------- | ------------------------------------- |
-| USB                      | √           |                                       |
-| SPI Flash                | √           |                                       |
-| Ethernet                 | √           |                                       |
+| USB                      |            |                                       |
+| SPI Flash                |            |                                       |
+| Ethernet                 |            |                                       |
 | **On-chip Peripherals**  | **Support** | **Remark**                            |
-| GPIO                     | √           |                                       |
-| SPI                      | √           |                                       |
-| I2C                      | √           |                                       |
-| SDIO                     | √           |                                       |
-| RTC                      | √           |                                       |
-| PWM                      | √           |                                       |
-| CAN                      | √           |                                       |
+| GPIO                     |            |                                       |
+| SPI                      |            |                                       |
+| I2C                      |            |                                       |
+| SDIO                     |            |                                       |
+| RTC                      |            |                                       |
+| PWM                      |            |                                       |
+| CAN                      |            |                                       |
 
 ## Execution Instruction
 

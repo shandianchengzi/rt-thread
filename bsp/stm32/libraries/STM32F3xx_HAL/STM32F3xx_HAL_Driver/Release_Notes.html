@@ -23,14 +23,14 @@
 <div class="sectione dark">
 <center>
 <h1 id="release-notes-for-stm32f3xx-hal-drivers"><strong>Release Notes for STM32F3xx HAL Drivers</strong></h1>
-<p>Copyright © 2016 STMicroelectronics<br />
+<p>Copyright  2016 STMicroelectronics<br />
 </p>
 <a href="https://www.st.com" class="logo"><img src="../../_htmresc/st_logo.png" alt="ST logo" /></a>
 </center>
 </div>
 </div>
 <h1 id="license"><strong>License</strong></h1>
-This software component is licensed by ST under BSD 3-Clause license, the “License”; You may not use this component except in compliance with the License. You may obtain a copy of the License at:
+This software component is licensed by ST under BSD 3-Clause license, the License; You may not use this component except in compliance with the License. You may obtain a copy of the License at:
 <center>
 <a href="https://opensource.org/licenses/BSD-3-Clause">https://opensource.org/licenses/BSD-3-Clause</a>
 </center>
@@ -61,7 +61,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li><strong>LL/HAL DAC</strong> update
 <ul>
-<li>Remove ‘register’ storage class specifier from LL DAC driver.</li>
+<li>Remove register storage class specifier from LL DAC driver.</li>
 </ul></li>
 <li><strong>LL/HAL TIM</strong> update
 <ul>
@@ -75,7 +75,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li><strong>HAL UART</strong> update
 <ul>
-<li>Fix erroneous UART’s handle state in case of error returned after DMA reception start within UART_Start_Receive_DMA().</li>
+<li>Fix erroneous UARTs handle state in case of error returned after DMA reception start within UART_Start_Receive_DMA().</li>
 <li>Correction on UART ReceptionType management in case of ReceptionToIdle API are called from RxEvent callback</li>
 <li>Handling of UART concurrent register access in case of race condition between Tx and Rx transfers (HAL UART and LL LPUART)</li>
 </ul></li>
@@ -83,7 +83,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>Update HAL_CAN_Init() API to be aligned with STM32F3 documentation and to avoid timeout error:
 <ul>
-<li>Update CAN Initialization sequence to set “request initialization” bit before exit from sleep mode.</li>
+<li>Update CAN Initialization sequence to set request initialization bit before exit from sleep mode.</li>
 </ul></li>
 </ul></li>
 <li><strong>LL FMC</strong> update
@@ -113,7 +113,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li><strong>HAL RTC</strong> update
 <ul>
-<li>Update __HAL_RTC_…(__HANDLE__, …) macros to access registers through (__HANDLE__)-&gt;Instance pointer and avoid “unused variable” warnings.</li>
+<li>Update __HAL_RTC_(__HANDLE__, ) macros to access registers through (__HANDLE__)-&gt;Instance pointer and avoid unused variable warnings.</li>
 <li>Correct month management in IS_LL_RTC_MONTH() macro</li>
 </ul></li>
 <li><strong>LL USART</strong> update
@@ -123,8 +123,8 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li><strong>HAL NAND</strong> update
 <ul>
-<li>Update implementation of “HAL_NAND_Read_SpareArea_16b” and “HAL_NAND_Write_SpareArea_16b” to fix an issue with the spare area Column address calculation</li>
-<li>Update implementation of “HAL_NAND_Write_Page_16b” and “HAL_NAND_Read_Page_16b” APIs implementation to fix an issue with the page calculation of 8 bits memories</li>
+<li>Update implementation of HAL_NAND_Read_SpareArea_16b and HAL_NAND_Write_SpareArea_16b to fix an issue with the spare area Column address calculation</li>
+<li>Update implementation of HAL_NAND_Write_Page_16b and HAL_NAND_Read_Page_16b APIs implementation to fix an issue with the page calculation of 8 bits memories</li>
 </ul></li>
 <li><strong>HAL USB_FS</strong> update
 <ul>
@@ -156,7 +156,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>__packed</li>
 <li>__NOINLINE</li>
 </ul></li>
-<li>Remove compile switch “USE_HAL_LEGACY” on #include “Legacy/stm32_hal_legacy.h”</li>
+<li>Remove compile switch USE_HAL_LEGACY on #include Legacy/stm32_hal_legacy.h</li>
 </ul></li>
 <li><strong>HAL/LL ADC</strong> update
 <ul>
@@ -170,7 +170,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>Add LL_ADC_REG_TRIG_EXT_TIM2_CH2 in LL driver and ADC_EXTERNALTRIGCONV_T2_CC2 in HAL driver</li>
 </ul></li>
-<li>fix codesonar warning: “Negative Shift Amount”
+<li>fix codesonar warning: Negative Shift Amount
 <ul>
 <li>impacted API:
 <ul>
@@ -180,7 +180,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>LL_ADC_INJ_GetSequencerRanks</li>
 </ul></li>
 </ul></li>
-<li>Update comment to clarify the “How to use low power mode”</li>
+<li>Update comment to clarify the How to use low power mode</li>
 </ul></li>
 <li><strong>LL COMP</strong> update
 <ul>
@@ -293,15 +293,15 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li><strong>HAL HRTIM</strong> update
 <ul>
-<li>Update HAL_HRTIM_DLLCalibrationStart() and HAL_HRTIM_DLLCalibrationStart_IT() to set the handler state back to “READY” before exiting.</li>
+<li>Update HAL_HRTIM_DLLCalibrationStart() and HAL_HRTIM_DLLCalibrationStart_IT() to set the handler state back to READY before exiting.</li>
 </ul></li>
 <li><strong>HAL TSC</strong> update
 <ul>
-<li>Update the HAL_TSC_Init() API to add new check condition on “PulseGeneratorPrescaler” Parameter.</li>
+<li>Update the HAL_TSC_Init() API to add new check condition on PulseGeneratorPrescaler Parameter.</li>
 </ul></li>
 <li><strong>HAL/LL TIM</strong> update
 <ul>
-<li>Update Encoder input interface to don’t allow both input polarity configuration
+<li>Update Encoder input interface to dont allow both input polarity configuration
 <ul>
 <li>Replace IS_TIM_IC_POLARITY() macro by IS_TIM_ENCODERINPUT_POLARITY() macro.</li>
 </ul></li>
@@ -373,7 +373,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li><strong>HAL/LL GPIO</strong> update
 <ul>
-<li>Update GPIO initialization sequence to avoid unwanted pulse on GPIO Pin’s.</li>
+<li>Update GPIO initialization sequence to avoid unwanted pulse on GPIO Pins.</li>
 <li>Update HAL_GPIO_TogglePin() API to allow the toggling of many pins.</li>
 <li>HAL_GPIO_TogglePin reentrancy robustness improvement by using BSRR register instead of ODR register.</li>
 </ul></li>
@@ -383,7 +383,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>Add stop condition generation when NACK occurs.</li>
 </ul></li>
-<li>Update I2C_DMAXferCplt(), I2C_DMAError() and I2C_DMAAbort() APIs to fix hardfault issue when hdmatx and hdmarx parameters in i2c handle aren’t initialized (NULL pointer).
+<li>Update I2C_DMAXferCplt(), I2C_DMAError() and I2C_DMAAbort() APIs to fix hardfault issue when hdmatx and hdmarx parameters in i2c handle arent initialized (NULL pointer).
 <ul>
 <li>Add additional check on hi2c-&gt;hdmtx and hi2c-&gt;hdmarx before resetting DMA Tx/Rx complete callbacks</li>
 </ul></li>
@@ -437,7 +437,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li><strong>HAL CRC</strong> update
 <ul>
-<li>Remove extra call to HAL_LOCK/HAL_UNLOCK from the followings API’s:
+<li>Remove extra call to HAL_LOCK/HAL_UNLOCK from the followings APIs:
 <ul>
 <li>HAL_CRC_Accumulate()</li>
 <li>HAL_CRC_Calculate()</li>
@@ -502,7 +502,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>Rename HAL_I2C_Slave_Sequentiel_Transmit_IT() to HAL_I2C_Slave_Seq_Transmit_IT()</li>
 <li>Rename HAL_I2C_Slave_Sequentiel_Receive_DMA() to HAL_I2C_Slave_Seq_Receive_DMA()</li>
 </ul></li>
-<li>Add support of I2C repeated start feature in DMA Mode With the following new API’s
+<li>Add support of I2C repeated start feature in DMA Mode With the following new APIs
 <ul>
 <li>HAL_I2C_Master_Seq_Transmit_DMA()</li>
 <li>HAL_I2C_Master_Seq_Receive_DMA()</li>
@@ -696,7 +696,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>SJW to SyncJumpWidth, BS1 to TimeSeg1, BS2 to TimeSeg2, TTCM to TimeTriggeredMode, ABOM to AutoBusOff, AWUM to AutoWakeUp, NART to AutoRetransmission (inversed), RFLM to ReceiveFifoLocked and TXFP to TransmitFifoPriority</li>
 </ul></li>
-<li>HAL_CAN_Init() is split into both HAL_CAN_Init() and HAL_CAN_Start() API’s</li>
+<li>HAL_CAN_Init() is split into both HAL_CAN_Init() and HAL_CAN_Start() APIs</li>
 <li>HAL_CAN_Transmit() is replaced by HAL_CAN_AddTxMessage() to place Tx Request, then HAL_CAN_GetTxMailboxesFreeLevel() for polling until completion.</li>
 <li>HAL_CAN_Transmit_IT() is replaced by HAL_CAN_ActivateNotification() to enable transmit IT, then HAL_CAN_AddTxMessage() for place Tx request.</li>
 <li>HAL_CAN_Receive() is replaced by HAL_CAN_GetRxFifoFillLevel() for polling until reception, then HAL_CAN_GetRxMessage()</li>
@@ -706,7 +706,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>HAL_CAN_Slepp() is renamed as HAL_CAN_RequestSleep()</li>
 <li>HAL_CAN_TxCpltCallback() is split into HAL_CAN_TxMailbox0CompleteCallback(), HAL_CAN_TxMailbox1CompleteCallback() and HAL_CAN_TxMailbox2CompleteCallback().</li>
 <li>HAL_CAN_RxCpltCallback is split into HAL_CAN_RxFifo0MsgPendingCallback() and HAL_CAN_RxFifo1MsgPendingCallback().</li>
-<li>More complete “How to use the new driver” is detailed in the driver header section itself.</li>
+<li>More complete How to use the new driver is detailed in the driver header section itself.</li>
 </ul></li>
 <li><strong>HAL COMP</strong> update
 <ul>
@@ -777,7 +777,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>Update HAL driver to allow user to change systick period to 1ms, 10 ms or 100 ms :
 <ul>
-<li>Add the following API’s :
+<li>Add the following APIs :
 <ul>
 <li>HAL_GetTickPrio(): Returns a tick priority.</li>
 <li>HAL_SetTickFreq(): Sets new tick frequency.</li>
@@ -878,8 +878,8 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>MISRA C 2004 rule 12.4 (The right-hand operand of a logical or I I operator shall not</li>
 <li>contain side effects).</li>
 <li>MISRA C 2004 rule 17.4 (Array indexing shall be the only allowed form of pointer arithmetic).</li>
-<li>Remove uselesss cast (uint32_t ) cast in case of ‘U’ suffix.</li>
-<li>Fix Code Sonar warnings (useless assignment, cast alters value, empty while statement …).</li>
+<li>Remove uselesss cast (uint32_t ) cast in case of U suffix.</li>
+<li>Fix Code Sonar warnings (useless assignment, cast alters value, empty while statement ).</li>
 <li>Minor improvement of Doxygen Tags for CHM UM generation.</li>
 <li>Replace POSITION_VAL(xxx) macro by corresponding CMSIS_Pos definitions.</li>
 <li><strong>HAL Drivers changes</strong></li>
@@ -955,7 +955,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>Fix full duplex I2S with circular DMA issues :
 <ul>
-<li>Don’t stop DMA at end of transfer</li>
+<li>Dont stop DMA at end of transfer</li>
 <li>Solve synchroniszation issues between RX and TX.</li>
 </ul></li>
 </ul></li>
@@ -973,7 +973,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li><strong>LL Drivers changes</strong></li>
 <li><strong>LL ADC</strong>
 <ul>
-<li>Set TEMPSENSOR_CAL1_TEMP value to 30°C as specified in datasheet.</li>
+<li>Set TEMPSENSOR_CAL1_TEMP value to 30C as specified in datasheet.</li>
 </ul></li>
 <li><strong>LL DMA</strong>
 <ul>
@@ -1021,11 +1021,11 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li><em>HAL CEC</em> driver: Overall driver rework with compatibility break versus previous HAL version
 <ul>
 <li>Remove HAL CEC polling Process functions: HAL_CEC_Transmit() and HAL_CEC_Receive()</li>
-<li>Remove HAL CEC receive interrupt process function HAL_CEC_Receive_IT() and enable the “receive” mode during the Init phase</li>
+<li>Remove HAL CEC receive interrupt process function HAL_CEC_Receive_IT() and enable the receive mode during the Init phase</li>
 <li>Rename HAL_CEC_GetReceivedFrameSize() API to HAL_CEC_GetLastReceivedFrameSize()</li>
 <li>Add new HAL APIs: HAL_CEC_SetDeviceAddress() and HAL_CEC_ChangeRxBuffer()</li>
-<li>Remove the ‘InitiatorAddress’ field from the CEC_InitTypeDef structure and manage it as a parameter in the HAL_CEC_Transmit_IT() function</li>
-<li>Add new parameter ‘RxFrameSize’ in HAL_CEC_RxCpltCallback() function</li>
+<li>Remove the InitiatorAddress field from the CEC_InitTypeDef structure and manage it as a parameter in the HAL_CEC_Transmit_IT() function</li>
+<li>Add new parameter RxFrameSize in HAL_CEC_RxCpltCallback() function</li>
 <li>Move CEC Rx buffer pointer from CEC_HandleTypeDef structure to CEC_InitTypeDef structure</li>
 </ul></li>
 <li><em>HAL TIM</em> driver : add one field (AutoReloadPreload) in TIM_Base_InitTypeDef structure</li>
@@ -1033,7 +1033,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>Update HAL Driver compliance with:
 <ul>
-<li>MISRA C 2004 rule 10.6 (‘U’ suffix applied to all constants of ‘unsigned’ type)</li>
+<li>MISRA C 2004 rule 10.6 (U suffix applied to all constants of unsigned type)</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL CEC</strong>
@@ -1041,17 +1041,17 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>Overall driver rework with break of compatibility with HAL V1.3.0
 <ul>
 <li>Remove the HAL CEC polling Process: HAL_CEC_Transmit() and HAL_CEC_Receive()</li>
-<li>Remove the HAL CEC receive interrupt process (HAL_CEC_Receive_IT()) and manage the “Receive” mode enable within the Init phase</li>
+<li>Remove the HAL CEC receive interrupt process (HAL_CEC_Receive_IT()) and manage the Receive mode enable within the Init phase</li>
 <li>Rename HAL_CEC_GetReceivedFrameSize() function to HAL_CEC_GetLastReceivedFrameSize() function</li>
 <li>Add new HAL APIs: HAL_CEC_SetDeviceAddress() and HAL_CEC_ChangeRxBuffer()</li>
-<li>Remove the ‘InitiatorAddress’ field from the CEC_InitTypeDef structure and manage it as a parameter in the HAL_CEC_Transmit_IT() function</li>
-<li>Add new parameter ‘RxFrameSize’ in HAL_CEC_RxCpltCallback() function</li>
+<li>Remove the InitiatorAddress field from the CEC_InitTypeDef structure and manage it as a parameter in the HAL_CEC_Transmit_IT() function</li>
+<li>Add new parameter RxFrameSize in HAL_CEC_RxCpltCallback() function</li>
 <li>Move CEC Rx buffer pointer from CEC_HandleTypeDef structure to CEC_InitTypeDef structure</li>
 </ul></li>
 <li>Update driver to implement the new CEC state machine:
 <ul>
-<li>Add new “rxState” field in CEC_HandleTypeDef structure to provide the CEC state information related to Rx Operations</li>
-<li>Rename “state” field in CEC_HandleTypeDef structure to “gstate”: CEC state information related to global Handle management and Tx Operations</li>
+<li>Add new rxState field in CEC_HandleTypeDef structure to provide the CEC state information related to Rx Operations</li>
+<li>Rename state field in CEC_HandleTypeDef structure to gstate: CEC state information related to global Handle management and Tx Operations</li>
 <li>Update CEC process to manage the new CEC states.</li>
 <li>Update __HAL_CEC_RESET_HANDLE_STATE() macro to handle the new CEC state parameters (gState, rxState)</li>
 </ul></li>
@@ -1072,7 +1072,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>Polling mode:
 <ul>
-<li>Replace the use of SPI_WaitOnFlagUnitTimeout() function by “if” statement to check on RXNE/TXE flags while transferring data</li>
+<li>Replace the use of SPI_WaitOnFlagUnitTimeout() function by if statement to check on RXNE/TXE flags while transferring data</li>
 </ul></li>
 <li>Interrupt mode:</li>
 <li>Minimize access on SPI registers</li>
@@ -1096,7 +1096,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>Updated HAL Driver compliance with MISRA C 2004 rules:
 <ul>
 <li>MISRA C 2004 rule 14.3 (a null statement shall only occur on a line by itself).</li>
-<li>MISRA C 2004 rule 14.8 (statement forming the body of a switch, while, do … while or for statement shall be a compound statement).</li>
+<li>MISRA C 2004 rule 14.8 (statement forming the body of a switch, while, do  while or for statement shall be a compound statement).</li>
 </ul></li>
 </ul></li>
 </ul></li>
@@ -1136,7 +1136,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>Updated HAL Driver compliance with MISRA C 2004 rules : (10.3, 105)
 <ul>
-<li>MISRA C 2004 rule 10.3 (illegal explicit conversion from underlying MISRA type “unsigned int” to "uint32_t *").</li>
+<li>MISRA C 2004 rule 10.3 (illegal explicit conversion from underlying MISRA type unsigned int to "uint32_t *").</li>
 <li>MISRA C 2004 rule 10.5 (bitwise operators ~ and &lt;&lt;).</li>
 <li>MISRA C 2004 rule 12.7 (bitwise operations not performed on signed integer types).</li>
 </ul></li>
@@ -1285,7 +1285,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>Updated HAL SDADC Driver compliance with MISRA C 2004 rules:
 <ul>
-<li>MISRA C 2004 rule 10.3 (illegal explicit conversion from type “unsigned int” to "uint16_t *).</li>
+<li>MISRA C 2004 rule 10.3 (illegal explicit conversion from type unsigned int to "uint16_t *).</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL SPI</strong>
@@ -1314,12 +1314,12 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>Updated HAL Driver compliance with MISRA C 2004 rules:
 <ul>
-<li>MISRA C 2004 rule 10.6 (‘U’ suffix applied to all constants of ‘unsigned’ type).</li>
+<li>MISRA C 2004 rule 10.6 (U suffix applied to all constants of unsigned type).</li>
 <li>MISRA C 2004 rule 10.5 (bitwise operators ~ and &lt;&lt;).</li>
 <li>MISRA C 2004 rule 12.6 (operands of logical operators (&amp;&amp;, || and !) should be effectively Boolean).</li>
 <li>MISRA C 2004 rule 12.7 (bitwise operations not performed on signed integer types).</li>
 <li>MISRA C 2004 rule 14.3 (a null statement shall only occur on a line by itself).</li>
-<li>MISRA C 2004 rule 14.8 (statement forming the body of a switch, while, do … while or for statement shall be a compound statement).</li>
+<li>MISRA C 2004 rule 14.8 (statement forming the body of a switch, while, do  while or for statement shall be a compound statement).</li>
 <li>MISRA C 2004 rule 15.3 (final clause of a switch statement shall be the default clause).</li>
 <li>MISRA C 2004 rule 16.4 (identifiers used in the declaration and definition of a function shall be identical).</li>
 </ul></li>
@@ -1488,8 +1488,8 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>The 3 analog watchdog has its own callback function (AWD1 callback function is unchanged with HAL_ADC_LevelOutOfWindowCallback()).</li>
 <li>Updated ADC multimode (for devices with several ADC instances).</li>
 <li>Now takes into account mixed configuration: ADC group regular in multimode, ADC group injected in independent mode (and the opposite).</li>
-<li>Updated ADC group injected use case when used with feature low power “auto-wait”:</li>
-<li>updated function HAL_ADCEx_InjectedGetValue() which don’t clear anymore ADC flag EOS, and could cause some issues when using ADC group injected with high sampling rate.</li>
+<li>Updated ADC group injected use case when used with feature low power auto-wait:</li>
+<li>updated function HAL_ADCEx_InjectedGetValue() which dont clear anymore ADC flag EOS, and could cause some issues when using ADC group injected with high sampling rate.</li>
 </ul></li>
 <li><strong>HAL CAN</strong>
 <ul>
@@ -1500,8 +1500,8 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li><strong>HAL CEC</strong>
 <ul>
 <li>Changed the HAL_CEC_ErrorTypeDef structure by separate defines.</li>
-<li>Added CEC Flags Definitions(CEC_FLAG_TXACKE,…).</li>
-<li>Add CEC Interrupts Definitions(CEC_IT_TXACKE,…).</li>
+<li>Added CEC Flags Definitions(CEC_FLAG_TXACKE,).</li>
+<li>Add CEC Interrupts Definitions(CEC_IT_TXACKE,).</li>
 <li>Renamed CEC_ISR_XXX to CEC_FLAG_XXX.</li>
 <li>Renamed CEC_IER_XXX to CEC_IT_XXX.</li>
 <li>Added missing assert_param(IS_CEC_ALL_INSTANCE(hcec-&gt;Instance)); in In HAL_CEC_Init().</li>
@@ -1922,7 +1922,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li><strong>HAL generic</strong> update
 <ul>
-<li>Fix flag clear procedure: use atomic write operation “=” instead of ready-modify-write operation “|=” or “&amp;=”</li>
+<li>Fix flag clear procedure: use atomic write operation = instead of ready-modify-write operation |= or &amp;=</li>
 <li>Fix on Timeout management, Timeout value set to 0 passed to API automatically exits the function after checking the flag without any wait.</li>
 <li>Add new macro __HAL_RESET_HANDLE_STATE to reset a given handle state.</li>
 </ul></li>

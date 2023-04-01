@@ -1,14 +1,14 @@
 /*
- * @ : Copyright (c) 2021 Phytium Information Technology, Inc.
- *
- * SPDX-License-Identifier: Apache-2.0.
+*@:Copyright(c)2021PhytiumInformationTechnology,Inc.
+*
+*SPDX-License-Identifier:Apache-2.0.
  *
  * @Date: 2021-04-07 11:31:12
  * @LastEditTime: 2021-04-07 11:31:13
- * @Description:  Description of file
- * @Modify History:
- * * * Ver   Who        Date         Changes
- * * ----- ------     --------    --------------------------------------
+ * @Description: Descriptionoffile
+ * @ModifyHistory:
+ * **VerWhoDateChanges
+ * *---------------------------------------------------------
  * *   v1.0   hh       2021-04-07    init
  */
 #include "ft_qspi.h"

@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fsdio_g.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:37:44
- * Description:  This files is for static init
+ * Description: This files is for static init
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   zhugengyu  2021/12/2    init
  * 1.1   zhugengyu  2022/6/6     modify according to tech manual.
  */

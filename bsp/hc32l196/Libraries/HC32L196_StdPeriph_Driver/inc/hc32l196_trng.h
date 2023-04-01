@@ -87,11 +87,11 @@ extern "C"
 /******************************************************************************
  * Global function prototypes (definition in C source)
  ******************************************************************************/
-///< 随机数初始化(上电第一次生成随机数）
+///< (
 en_result_t Trng_Init(void);
-///< 生成随机数（非上电第一次生成随机数）
+///< 
 en_result_t Trng_Generate(void);
-///< 获取64bits随机数（执行随机数初始化或生成随机数函数后可使用该函数获取随机数值）
+///< 64bits
 uint32_t Trng_GetData0(void);
 uint32_t Trng_GetData1(void);
 

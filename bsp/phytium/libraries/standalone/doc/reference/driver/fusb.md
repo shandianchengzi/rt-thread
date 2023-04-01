@@ -1,71 +1,71 @@
 
-# FUSB 驱动程序
+# FUSB 
 
-## 1. 概述
+## 1. 
 
-USB是通用串行总线（Universal Serial Bus）的缩写, USB是一种简易、双向、快速、同步、即插即用（Plug and Play，PnP）且支持热插拔功能的串行接口。USB设备现在已经非常普及，如U盘、鼠标、键盘等。USB协议曾经出现过多种版本，如USB1.0、USB1.1、USB2.0、USB3.0等
+USBUniversal Serial Bus, USBPlug and PlayPnPUSBUUSBUSB1.0USB1.1USB2.0USB3.0
 
-USB总线体系中, USB主机（Host）是系统的主人, 负责USB通信过程中数据的控制和处理, USB设备（Device）是系统的从机，用于实现特定的功能，如常用的U盘、移动硬盘、鼠标、键盘、游戏手柄等，在USB传输过程中，USB主机处于主导地位，由USB主机发起数据和命令的传输，USB设备被动响应USB主机发来的请求命令，USB总线中的主要角色包括USB主机、根Hub、USB Hub和USB设备等
+USB, USBHost, USB, USBDeviceUUSBUSBUSBUSBUSBUSBUSBHubUSB HubUSB
 
-USB主机和USB设备间的通信是通过管道（Pipe）进行的，管道是指在USB主机端的一组缓冲区，用于管道中数据的收发；在USB设备端，有一个特定端点（Endpoint，ENDP）与管道对接
+USBUSBPipeUSBUSBEndpointENDP
 
-USB可靠传输（具有反馈机制）的最小单位是事务，事务就是利用令牌包、数据包和握手包实现一个带有错误反馈机制的通信，使USB传输更加安全可靠，按照令牌包的类型可以分为，Setup事务、IN事务、OUT事务等。基于事务，USB协议定义了传输（Transfer）用于完成一组具有特定目的的事务，包括控制传输、中断传输、批量传输和同步传输
+USBUSBSetupINOUTUSBTransfer
 
-## 2. 功能
+## 2. 
 
-- 驱动相关的源文件如下，
+- 
 - drivers/usb
 ```
 .
-├── Kconfig
-├── fusb.c
-├── fusb.h
-├── fusb_debug.c
-├── fusb_def.h
-├── fusb_dev.c
-├── fusb_g.c
-├── fusb_generic_hub.c
-├── fusb_generic_hub.h
-├── fusb_hid.c
-├── fusb_hid.h
-├── fusb_hub.c
-├── fusb_hub.h
-├── fusb_msc.c
-├── fusb_msc.h
-├── fusb_private.h
-├── fusb_sinit.c
+ Kconfig
+ fusb.c
+ fusb.h
+ fusb_debug.c
+ fusb_def.h
+ fusb_dev.c
+ fusb_g.c
+ fusb_generic_hub.c
+ fusb_generic_hub.h
+ fusb_hid.c
+ fusb_hid.h
+ fusb_hub.c
+ fusb_hub.h
+ fusb_msc.c
+ fusb_msc.h
+ fusb_private.h
+ fusb_sinit.c
 ```
 
-- 关于 [XHCI](./fxhci.md)
+-  [XHCI](./fxhci.md)
 
-## 3. 配置方法
+## 3. 
 
-参考以下步骤完成 FUSB 硬件配置，
+ FUSB 
 
-- 1. FUSB驱动支持 E2000，在 E2000 上完成测试
+- 1. FUSB E2000 E2000 
 
-参考以下步骤完成 FUSB 软件配置，
+ FUSB 
 
-- 1. 选择USB控制器类型为 XHCI
-- 2. 配置 FUSB 的内存池空间，推荐在1Mb以上
-- 3. 注册USB设备驱动
-- 4. 调用USB控制器驱动接口启动FUSB实例
-- 5. 调用USB控制器驱动接口轮询FUSB，更新USB设备状态
-- 6. 调用USB设备驱动操作USB设备
+- 1. USB XHCI
+- 2.  FUSB 1Mb
+- 3. USB
+- 4. USBFUSB
+- 5. USBFUSBUSB
+- 6. USBUSB
 
-## 4 应用示例
+## 4 
 
-- USB主机操作和USB设备发现
+- USBUSB
 ### [fxhci_host](../../../baremetal/example/peripheral/usb/fxhci_host)
 
-- USB大容量存储器读写
+- USB
 ### [fusb_fatfs](../../../baremetal/example/storage/fusb_fatfs)
 
-## 5. API参考
+## 5. API
 
-### 5.1. 用户数据结构
+### 5.1. 
 
-#### 5.1.1 USB端点
+#### 5.1.1 USB
 
 ```c
 typedef struct 
@@ -81,7 +81,7 @@ typedef struct
 } FUsbEndpoint; /* encapsulates a single endpoint of an USB device */
 ```
 
-#### 5.1.2 USB设备
+#### 5.1.2 USB
 
 ```c
 typedef struct _FUsbDev
@@ -105,7 +105,7 @@ typedef struct _FUsbDev
 } FUsbDev; /* encapsulates a single USB device */
 ```
 
-#### 5.1.3 USB主机
+#### 5.1.3 USB
 
 ```c
 typedef struct _FUsbHc
@@ -155,7 +155,7 @@ typedef struct _FUsbHc
 } FUsbHc; /* encapsulates a single USB host */
 ```
 
-#### 5.1.4 USB系统配置
+#### 5.1.4 USB
 
 ```c
 typedef struct
@@ -174,7 +174,7 @@ typedef struct
 } FUsbConfig; /* configure data of the USB system */
 ```
 
-#### 5.1.4 USB系统
+#### 5.1.4 USB
 
 ```c
 typedef struct _FUsb
@@ -190,10 +190,10 @@ typedef struct _FUsb
 } FUsb; /* instance of the USB system */
 ```
 
-### 5.2  错误码定义
+### 5.2  
 
 
-- 模块错误码编号 `0x1110000`
+-  `0x1110000`
 
 - [0x0] FUSB_SUCCESS : success
 - [0x1110000] FUSB_ERR_WAIT_TIMEOUT : wait for status timeout
@@ -206,12 +206,12 @@ typedef struct _FUsb
 - [0x1110007] FUSB_ERR_TRANS_FAIL : failed to transfer data
 
 
-- 传输过程完成错误码
+- 
 
 - [0] FUSB_CC_ZERO_BYTES : failed, transfer zero bytes
 - [1] FUSB_CC_SUCCESS : transfer success with bytes unkonwn
 
-### 5.3. 用户API接口
+### 5.3. API
 
 #### FUsbLookupConfig
 
@@ -221,15 +221,15 @@ const FUsbConfig *FUsbLookupConfig(u32 instance_id)
 
 Note:
 
-- 获取USB的默认配置
+- USB
 
 Input:
 
-- {u32} instance_id USB实例号
+- {u32} instance_id USB
 
 Return:
 
-- {const FUsbConfig *} USB默认配置
+- {const FUsbConfig *} USB
 
 #### FUsbCfgInitialize
 
@@ -239,17 +239,17 @@ FError FUsbCfgInitialize(FUsb *instance, const FUsbConfig *input_config)
 
 Note:
 
-- 初始化USB实例
-- 在PCIE模式下，USB Hc实例在PCIE总线发现控制器后创建
+- USB
+- PCIEUSB HcPCIE
 
 Input:
 
-- {FUsb} *instance, USB实例
-- {const FUsbConfig} *input_config, USB输入配置
+- {FUsb} *instance, USB
+- {const FUsbConfig} *input_config, USB
 
 Return:
 
-- {FError} 初始化错误码
+- {FError} 
 
 #### FUsbDeInitialize
 
@@ -259,15 +259,15 @@ void FUsbDeInitialize(FUsb *instance);
 
 Note:
 
-- 去初始化USB实例
+- USB
 
 Input:
 
-- {FUsb} *instance, USB实例
+- {FUsb} *instance, USB
 
 Return:
 
-- 无
+- 
 
 #### FUsbPoll
 
@@ -277,15 +277,15 @@ void FUsbPoll(FUsb *instance)
 
 Note:
 
-- 轮询USB控制器连接的所有设备, 更新设备拓扑
+- USB, 
 
 Input:
 
-- {FUsb} *instance, USB实例
+- {FUsb} *instance, USB
 
 Return:
 
-- 无
+- 
 
 #### FUsbExit
 
@@ -295,15 +295,15 @@ void FUsbExit(FUsb *instance)
 
 Note:
 
-- 关闭所有的USB控制器，移除所有连接的设备
+- USB
 
 Input:
 
-- {FUsb} *instance, USB实例
+- {FUsb} *instance, USB
 
 Return:
 
-- 无
+- 
 
 
 #### FUsbAssignDevInitFunc
@@ -314,17 +314,17 @@ FError FUsbAssignDevInitFunc(FUsb *instance, const FUsbDevIndex *index, FUsbDevI
 
 Note:
 
-- 指定特定USB设备的初始化函数，供创建USB设备实例时使用
+- USBUSB
 
 Input:
 
-- {FUsb} *instance, USB实例
-- {FUsbDevIndex} *index, 特定USB设备的索引
-- {FUsbDevInitHandler} handler, 特定USB设备的初始化函数
+- {FUsb} *instance, USB
+- {FUsbDevIndex} *index, USB
+- {FUsbDevInitHandler} handler, USB
 
 Return:
 
-- {FError} 处理返回错误码
+- {FError} 
 
 #### FUsbGetAllDevEntries
 
@@ -334,17 +334,17 @@ size_t FUsbGetAllDevEntries(FUsbHc *controller, FUsbDev *devs[], size_t max_dev_
 
 Note:
 
-- 获取USB控制器上连接的所有USB设备实例
+- USBUSB
 
 Input:
 
-- {FUsbHc} *controller, USB控制器实例
-- {FUsbDev} *devs, 放置USB设备实例的缓冲区
-- {size_t} max_dev_num, 最多可以获取的USB设备实例数目
+- {FUsbHc} *controller, USB
+- {FUsbDev} *devs, USB
+- {size_t} max_dev_num, USB
 
 Return:
 
-- {size_t} 实际获取的USB设备实例数目
+- {size_t} USB
 
 #### FUsbSetFeature
 
@@ -354,18 +354,18 @@ FUsbTransCode FUsbSetFeature(FUsbDev *dev, int endp, int feature, int rtype)
 
 Note:
 
-- 标准USB主机请求，使能设备/接口/端点的某个特性
+- USB//
 
 Input:
 
-- {FUsbDev} *dev, USB设备实例
-- {int} endp, 设备号(0x00)/接口号/端点号
-- {int} feature, 待使能的特性
-- {int} rtype, 请求类型，由FUsbGenerateReqType生成
+- {FUsbDev} *dev, USB
+- {int} endp, (0x00)//
+- {int} feature, 
+- {int} rtype, FUsbGenerateReqType
 
 Return:
 
-- {FUsbTransCode} 控制传输的返回值，小于0表示失败，大于0表示成功传输的字节数目
+- {FUsbTransCode} 00
 
 #### FUsbGetStatus
 
@@ -375,19 +375,19 @@ FUsbTransCode FUsbGetStatus(FUsbDev *dev, int intf, int rtype, int len, void *da
 
 Note:
 
-- 标准USB主机请求，获取设备/接口/端点的状态
+- USB//
 
 Input:
 
-- {FUsbDev} *dev, USB设备实例
-- {int} intf，设备号(0x00)/接口号/端点号
-- {int} rtype, 请求类型，由FUsbGenerateReqType生成
-- {int} len, Data Stage的数据长度
-- {void} *data, Data Stage的数据缓冲区
+- {FUsbDev} *dev, USB
+- {int} intf(0x00)//
+- {int} rtype, FUsbGenerateReqType
+- {int} len, Data Stage
+- {void} *data, Data Stage
 
 Return:
 
-- {FUsbTransCode} 控制传输的返回值，小于0表示失败，大于0表示成功传输的字节数目
+- {FUsbTransCode} 00
 
 #### FUsbGetDescriptor
 
@@ -397,20 +397,20 @@ FUsbTransCode FUsbGetDescriptor(FUsbDev *dev, int rtype, FUsbDescriptorType desc
 
 Note:
 
-- 标准USB主机请求，获取指定描述符
+- USB
 
 Input:
 
-- {FUsbDev} *dev, USB设备实例
-- {int} rtype, 请求类型，由FUsbGenerateReqType生成
-- {FUsbDescriptorType} desc_type, 描述符类型
-- {int} desc_idx, 描述符索引
-- {void} *data, Data Stage的数据缓冲区
-- {size_t} len, Data Stage的数据长度
+- {FUsbDev} *dev, USB
+- {int} rtype, FUsbGenerateReqType
+- {FUsbDescriptorType} desc_type, 
+- {int} desc_idx, 
+- {void} *data, Data Stage
+- {size_t} len, Data Stage
 
 Return:
 
-- {FUsbTransCode} 控制传输的返回值，小于0表示失败，大于0表示成功传输的字节数目
+- {FUsbTransCode} 00
 
 #### FUsbGetStringDescriptor
 
@@ -420,21 +420,21 @@ FUsbTransCode FUsbGetStringDescriptor(FUsbDev *dev, int rtype, FUsbDescriptorTyp
 
 Note:
 
-- USB主机请求，获取字符串描述符
+- USB
 
 Input:
 
-- {FUsbDev} *dev, USB设备实例
-- {int} rtype, 请求类型，由FUsbGenerateReqType生成
-- {int} desc_type, 描述符类型
-- {int} desc_idx, 描述符索引
-- {int} lang_id, 语言类型
-- {void} *data, Data Stage的数据缓冲区
-- {size_t} len, Data Stage的数据长度
+- {FUsbDev} *dev, USB
+- {int} rtype, FUsbGenerateReqType
+- {int} desc_type, 
+- {int} desc_idx, 
+- {int} lang_id, 
+- {void} *data, Data Stage
+- {size_t} len, Data Stage
 
 Return:
 
-- {int} 控制传输的返回值，小于0表示失败，大于0表示成功传输的字节数目
+- {int} 00
 
 #### FUsbSetConfiguration
 
@@ -444,15 +444,15 @@ FUsbTransCode FUsbSetConfiguration(FUsbDev *dev)
 
 Note:
 
-- 标准USB主机请求，设置配置值
+- USB
 
 Input:
 
-- {FUsbDev} *dev, USB设备实例
+- {FUsbDev} *dev, USB
 
 Return:
 
-- {FUsbTransCode} 控制传输的返回值，小于0表示失败，大于0表示成功传输的字节数目
+- {FUsbTransCode} 00
 
 #### FUsbClearFeature
 
@@ -462,18 +462,18 @@ FUsbTransCode FUsbClearFeature(FUsbDev *dev, int endp, int feature, int rtype)
 
 Note:
 
-- 标准USB主机请求，去使能设备/接口/端点的某个特性
+- USB//
 
 Input:
 
-- {FUsbDev} *dev, USB设备实例
-- {int} endp, 设备号(0x00)/接口号/端点号
-- {int} feature，待去除的特性
-- {int} rtype, 请求类型，由FUsbGenerateReqType生成
+- {FUsbDev} *dev, USB
+- {int} endp, (0x00)//
+- {int} feature
+- {int} rtype, FUsbGenerateReqType
 
 Return:
 
-- {FUsbTransCode} 控制传输的返回值，小于0表示失败，大于0表示成功传输的字节数目
+- {FUsbTransCode} 00
 
 #### FUsbDumpAllDescriptors
 
@@ -483,15 +483,15 @@ void FUsbDumpAllDescriptors(FUsbDev *dev)
 
 Note:
 
-- 打印USB设备的描述符信息（设备描述符，配置描述符和接口描述符）
+- USB
 
 Input:
 
-- {FUsbDev} *dev, USB设备实例，已完成初始化
+- {FUsbDev} *dev, USB
 
 Return:
 
-- 无
+- 
 
 #### FUsbDetachDev
 
@@ -501,16 +501,16 @@ void FUsbDetachDev(FUsbHc *controller, int devno)
 
 Note:
 
-- 从USB主机移除指定USB设备(USB设备驱动使用)
+- USBUSB(USB)
 
 Input:
 
-- {FUsbHc} *controller, USB控制器实例
-- {int} devno, USB设备地址
+- {FUsbHc} *controller, USB
+- {int} devno, USB
 
 Return:
 
-- 无
+- 
 
 
 #### FUsbAttachDev
@@ -521,15 +521,15 @@ FUsbDevAddr FUsbAttachDev(FUsbHc *controller, int hubaddress, int port, FUsbSpee
 
 Note:
 
-- 向USB主机添加USB设备(USB设备驱动使用)
+- USBUSB(USB)
 
 Input:
 
-- {FUsbHc} *controller, USB控制器实例
-- {int} hubaddress, Hub地址
-- {int} port, 连接的Port
-- {FUsbSpeed} speed, USB设备的设置速度类型
+- {FUsbHc} *controller, USB
+- {int} hubaddress, Hub
+- {int} port, Port
+- {FUsbSpeed} speed, USB
 
 Return:
 
-- {FUsbDevAddr} 分配的USB设备地址
+- {FUsbDevAddr} USB

@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: ft_assert.c
  * Date: 2021-04-07 09:53:07
  * LastEditTime: 2022-02-17 18:04:28
- * Description:  This files is for assertion implmentation
+ * Description: This files is for assertion implmentation
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   huanghe    2021.4       init commit
  * 1.1   zhugengyu  2022.3       re-define assert macro
  */
@@ -32,9 +32,9 @@
 /**************************** Type Definitions *******************************/
 typedef struct
 {
-    u32 status; /* 当前断言状态 */
-    FAssertCB cb; /* 断言回调函数 */
-} FAssertInfo; /* 断言实例类型 */
+    u32 status; /*  */
+    FAssertCB cb; /*  */
+} FAssertInfo; /*  */
 
 /***************** Macros (Inline Functions) Definitions *********************/
 
@@ -46,14 +46,14 @@ static FAssertInfo assert_info =
 {
     .status = FASSERT_NONE,
     .cb     = FAssertCallback
-}; /* 断言实例 */
+}; /*  */
 
 /*****************************************************************************/
 /**
  * @name: FAssertSetStatus
- * @msg: 设置断言状态
+ * @msg: 
  * @return {*}
- * @param {FAssertStatus} status, 断言状态
+ * @param {FAssertStatus} status, 
  */
 void FAssertSetStatus(FAssertStatus status)
 {
@@ -62,8 +62,8 @@ void FAssertSetStatus(FAssertStatus status)
 
 /**
  * @name: FAssertGetStatus
- * @msg: 获取当前断言状态
- * @return {FAssertStatus} 当前断言状态
+ * @msg: 
+ * @return {FAssertStatus} 
  */
 FAssertStatus FAssertGetStatus(void)
 {
@@ -72,11 +72,11 @@ FAssertStatus FAssertGetStatus(void)
 
 /**
  * @name: FAssertCallback
- * @msg: 默认的断言回调函数
+ * @msg: 
  * @return {*}
- * @param {char} *file, 断言发生的源文件
- * @param {s32} line, 断言发生的源文件行号
- * @param {int} ret, 保留给Non-block断言使用
+ * @param {char} *file, 
+ * @param {s32} line, 
+ * @param {int} ret, Non-block
  */
 static void FAssertCallback(const char *file, s32 line, int ret)
 {
@@ -85,9 +85,9 @@ static void FAssertCallback(const char *file, s32 line, int ret)
 
 /**
  * @name: FAssertSetCB
- * @msg: 设置断言回调函数
+ * @msg: 
  * @return {*}
- * @param {FAssertCB} cb, 断言回调函数
+ * @param {FAssertCB} cb, 
  */
 void FAssertSetCB(FAssertCB cb)
 {
@@ -97,17 +97,17 @@ void FAssertSetCB(FAssertCB cb)
 
 /**
  * @name: FAssert
- * @msg: 断言实现
+ * @msg: 
  * @return {*}
- * @param {char} *file, 断言发生的源文件
- * @param {s32} line, 断言发生的源文件行号
- * @param {int} code, 断言发生的退出码，保留给Non-block断言使用
+ * @param {char} *file, 
+ * @param {s32} line, 
+ * @param {int} code, Non-block
  */
 void FAssert(const char *file, s32 line, int code)
 {
     if (NULL != assert_info.cb)
     {
-        /* 如果要实现Non-block断言，需要在回调中返回 */
+        /* Non-block */
         assert_info.cb(file, line, code);
     }
 

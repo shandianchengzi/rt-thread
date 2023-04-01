@@ -48,7 +48,7 @@ extern "C" {
   */
 typedef struct
 {
-    /*! EXTI时钟源配置 */
+    /*! EXTI */
     uint32_t clockSource;
 
 } FL_EXTI_CommonInitTypeDef;
@@ -58,13 +58,13 @@ typedef struct
   */
 typedef struct
 {
-    /*! EXTI输入配置 */
+    /*! EXTI */
     uint32_t input;
 
-    /*! EXTI触发边沿配置 */
+    /*! EXTI */
     uint32_t triggerEdge;
 
-    /*! EXTI数字滤波配置 */
+    /*! EXTI */
     uint32_t filter;
 
 } FL_EXTI_InitTypeDef;

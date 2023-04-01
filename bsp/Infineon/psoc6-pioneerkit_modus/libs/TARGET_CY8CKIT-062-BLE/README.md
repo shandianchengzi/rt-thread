@@ -54,4 +54,4 @@ See the [BSP API Reference Manual][api] for the complete list of the provided in
 [api]: https://cypresssemiconductorco.github.io/TARGET_CY8CKIT-062-BLE/html/modules.html
 
 ---
-© Cypress Semiconductor Corporation, 2019.
+ Cypress Semiconductor Corporation, 2019.

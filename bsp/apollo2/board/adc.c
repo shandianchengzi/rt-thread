@@ -19,14 +19,14 @@ struct rt_messagequeue adcbat_mq;
 
 #define BATTERY_GPIO            35                        /* Battery */
 #define BATTERY_ADC_PIN         AM_HAL_PIN_35_ADCSE7
-#define BATTERY_ADC_CHANNEL     AM_HAL_ADC_SLOT_CHSEL_SE7 /* BATTERY ADC采集通道 */
-#define BATTERY_ADC_CHANNELNUM  7                         /* BATTERY ADC采集通道号 */
+#define BATTERY_ADC_CHANNEL     AM_HAL_ADC_SLOT_CHSEL_SE7 /* BATTERY ADC */
+#define BATTERY_ADC_CHANNELNUM  7                         /* BATTERY ADC */
 
-#define ADC_CTIMER_NUM          3                         /* ADC使用定时器 */
+#define ADC_CTIMER_NUM          3                         /* ADC */
 #define ADC_CTIMER_COUNT        (2048/512 - 1)
 
-#define ADC_CHANNEL_NUM         1                         /* ADC采集通道个数 */
-#define ADC_SAMPLE_NUM          8                         /* ADC采样个数 */
+#define ADC_CHANNEL_NUM         1                         /* ADC */
+#define ADC_SAMPLE_NUM          8                         /* ADC */
 
 rt_uint8_t bat_adc_cnt = 0;
 static rt_uint8_t am_adcbat_buffer_pool[256];

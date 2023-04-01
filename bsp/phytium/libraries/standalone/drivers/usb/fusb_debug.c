@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fusb_debug.c
  * Date: 2022-02-11 13:33:11
  * LastEditTime: 2022-02-18 09:18:04
- * Description:  This files is for implmentation of USB debug utilities
+ * Description: This files is for implmentation of USB debug utilities
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   Zhugengyu  2022/2/7    init commit
  */
 
@@ -39,9 +39,9 @@ static inline boolean FUsbIsValidStringIndex(u8 id)
 
 /**
  * @name: FUsbDumpAllDescriptors
- * @msg: 打印USB设备的描述符信息（设备描述符，配置描述符和接口描述符）
+ * @msg: USB
  * @return {*}
- * @param {FUsbDev} *dev, USB设备实例，已完成初始化
+ * @param {FUsbDev} *dev, USB
  */
 void FUsbDumpAllDescriptors(FUsbDev *dev)
 {
@@ -119,9 +119,9 @@ void FUsbDumpAllDescriptors(FUsbDev *dev)
 
 /**
  * @name: FUsbDumpDeviceDescriptor
- * @msg: 打印设备描述符信息
+ * @msg: 
  * @return {*}
- * @param {FUsbDeviceDescriptor} *descriptor, 设备描述符
+ * @param {FUsbDeviceDescriptor} *descriptor, 
  */
 void FUsbDumpDeviceDescriptor(const FUsbDeviceDescriptor *descriptor)
 {
@@ -148,9 +148,9 @@ void FUsbDumpDeviceDescriptor(const FUsbDeviceDescriptor *descriptor)
 
 /**
  * @name: FUsbDumpConfigDescriptor
- * @msg: 打印配置描述符信息
+ * @msg: 
  * @return {*}
- * @param {FUsbConfigurationDescriptor} *descriptor, 配置描述符
+ * @param {FUsbConfigurationDescriptor} *descriptor, 
  */
 void FUsbDumpConfigDescriptor(const FUsbConfigurationDescriptor *descriptor)
 {
@@ -161,8 +161,8 @@ void FUsbDumpConfigDescriptor(const FUsbConfigurationDescriptor *descriptor)
         FUSB_INFO("	bLength: %d", descriptor->bLength);
         FUSB_INFO("	bDescriptorType: %d", descriptor->bDescriptorType);
         FUSB_INFO("	wTotalLength: %d", descriptor->wTotalLength);
-        FUSB_INFO("	bNumInterfaces: %d", descriptor->bNumInterfaces);   /* 该配置下有多少个接口描述符 */
-        FUSB_INFO("	bConfigurationValue: %d", descriptor->bConfigurationValue); /* 该配置描述符的配置号信息 */
+        FUSB_INFO("	bNumInterfaces: %d", descriptor->bNumInterfaces);   /*  */
+        FUSB_INFO("	bConfigurationValue: %d", descriptor->bConfigurationValue); /*  */
         FUSB_INFO("	iConfiguration: %d", descriptor->iConfiguration);
         FUSB_INFO("	bmAttributes: 0x%x", descriptor->bmAttributes);
         FUSB_INFO("		remote-weakup: %s",
@@ -178,9 +178,9 @@ void FUsbDumpConfigDescriptor(const FUsbConfigurationDescriptor *descriptor)
 
 /**
  * @name: FUsbDumpInterfaceDescriptor
- * @msg: 打印接口描述符信息
+ * @msg: 
  * @return {*}
- * @param {FUsbInterfaceDescriptor} *descriptor, 接口描述符
+ * @param {FUsbInterfaceDescriptor} *descriptor, 
  */
 void FUsbDumpInterfaceDescriptor(const FUsbInterfaceDescriptor *descriptor)
 {
@@ -203,9 +203,9 @@ void FUsbDumpInterfaceDescriptor(const FUsbInterfaceDescriptor *descriptor)
 
 /**
  * @name: FUsbDumpEndpointDescriptor
- * @msg: 打印端点描述符信息
+ * @msg: 
  * @return {*}
- * @param {FUsbEndpointDescriptor} *descriptor, 端点描述符
+ * @param {FUsbEndpointDescriptor} *descriptor, 
  */
 void FUsbDumpEndpointDescriptor(const FUsbEndpointDescriptor *descriptor)
 {

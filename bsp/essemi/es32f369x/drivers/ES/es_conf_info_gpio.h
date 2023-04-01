@@ -30,7 +30,7 @@
 #include <rtdevice.h>
 #include <ald_cmu.h>
 
-/* GPIO 配置 */
+/* GPIO  */
 
 typedef struct {
         uint8_t pin;
@@ -41,7 +41,7 @@ typedef struct {
         void (*callback)(void *arg);
 } gpio_conf_t;
 
-/*参数的定义*/
+/**/
 
 #define ES_C_GPIO_LEVEL_HIGH          PIN_HIGH
 #define ES_C_GPIO_LEVEL_LOW           PIN_LOW
@@ -72,7 +72,7 @@ typedef struct {
 #define  ES_DEVICE_NAME_PIN     "pin"
 #endif
 
-/*GPIO外部中断回调函数控制需要，补充是否中断*/
+/*GPIO*/
 #if 11111
 
 #ifndef  ES_INIT_GPIO_A_0_IRQ_EN
@@ -591,7 +591,7 @@ typedef struct {
 
 
 
-/*是否需要 GPIO外部中断回调函数 （控制函数本体+声明）*/
+/* GPIO +*/
 #if 11111
 
 #if (ES_INIT_GPIO_A_0_IRQ_EN)||(ES_INIT_GPIO_B_0_IRQ_EN)||(ES_INIT_GPIO_C_0_IRQ_EN)||(ES_INIT_GPIO_D_0_IRQ_EN)||   \
@@ -677,7 +677,7 @@ typedef struct {
 #endif //11111
 
 
-/*GPIO外部中断 声明*/
+/*GPIO */
 #if 11111
 
 #ifdef ES_CONF_EXTI_IRQ_0
@@ -750,7 +750,7 @@ void irq_pin15_callback(void* arg);
 
 
 
-/*是否有配置的管脚*/
+/**/
 #if defined(ES_INIT_PIN_GPIO_A_0) || defined(ES_INIT_PIN_GPIO_A_1) || defined(ES_INIT_PIN_GPIO_A_2) || defined(ES_INIT_PIN_GPIO_A_3) || \
     defined(ES_INIT_PIN_GPIO_A_4) || defined(ES_INIT_PIN_GPIO_A_5) || defined(ES_INIT_PIN_GPIO_A_6) || defined(ES_INIT_PIN_GPIO_A_7) || \
     defined(ES_INIT_PIN_GPIO_A_8) || defined(ES_INIT_PIN_GPIO_A_9) || defined(ES_INIT_PIN_GPIO_A_10) || defined(ES_INIT_PIN_GPIO_A_11) || \

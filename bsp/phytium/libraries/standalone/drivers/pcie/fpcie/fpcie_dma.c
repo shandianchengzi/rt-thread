@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fpcie_dma.c
  * Date: 2022-02-10 14:55:11
  * LastEditTime: 2022-02-18 08:57:38
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 
@@ -64,15 +64,15 @@ FError FPcieDmaDescSet(uintptr axi_addr,
                        struct FPcieDmaDescriptor *desc,
                        struct FPcieDmaDescriptor *next_desc)
 {
-    /* 设置内存地址 */
+    /*  */
     desc->axi_base_address = axi_addr;
     desc->axi_address_phase_controls = 0x00;
 
-    /* 设置pcie空间地址 */
+    /* pcie */
     desc->pcie_base_address = bar_addr;
     desc->pcie_tlp_header_attributes = 0x01;
 
-    /* 设置数据长度， 设置dma完成中断 */
+    /*  dma */
     desc->transfer_control = length;
 
     desc->axi_bus_status = 0x00;
@@ -81,11 +81,11 @@ FError FPcieDmaDescSet(uintptr axi_addr,
 
     if (next_desc != NULL)
     {
-        /* 使能链表模式 */
+        /*  */
         desc->transfer_control &= ~(BIT(24));
         desc->transfer_control |= BIT(29);
 
-        /* 设置下一级链表地址 */
+        /*  */
         desc->next_descriptor = (uintptr)next_desc;
     }
     else

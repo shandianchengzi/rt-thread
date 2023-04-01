@@ -134,7 +134,7 @@ void LPUART_Init(LPUART_InitType* LPUART_InitStruct)
     assert_param(IS_LPUART_RTSTHRESHOLD(LPUART_InitStruct->RtsThreshold));
     assert_param(IS_LPUART_HARDWARE_FLOW_CONTROL(LPUART_InitStruct->HardwareFlowControl));
 
-    // 时钟源判断，波特率范围
+    // 
 
     /*---------------------------- LPUART CTRL Configuration -----------------------*/
     tmpregister = LPUART->CTRL;

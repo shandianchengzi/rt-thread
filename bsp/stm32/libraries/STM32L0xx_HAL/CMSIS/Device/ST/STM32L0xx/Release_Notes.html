@@ -23,7 +23,7 @@
 <div class="sectione dark">
 <center>
 <h1 id="release-notes-for-stm32l0xx-cmsis"><small>Release Notes for</small> <mark>STM32L0xx CMSIS</mark></h1>
-<p>Copyright © 2009-2018 ARM Limited - STMicroelectronics<br />
+<p>Copyright  2009-2018 ARM Limited - STMicroelectronics<br />
 </p>
 <a href="https://www.st.com" class="logo"><img src="_htmresc/st_logo.png" alt="ST logo" /></a>
 </center>
@@ -41,12 +41,12 @@
 <li>STM32L051xx, STM32L052xx, STM32L053xx, STM32L062xx and STM32L063xx devices</li>
 <li>STM32L071xx, STM32L072xx, STM32L073xx, STM32L082xx and STM32L083xx devices</li>
 </ul>
-<p>This driver is composed of the descriptions of the registers under “Include” directory.</p>
+<p>This driver is composed of the descriptions of the registers under Include directory.</p>
 <p>Various template file are provided to easily build an application. They can be adapted to fit applications requirements.</p>
 <ul>
 <li>Templates/system_stm32l0xx.c contains the initialization code referred as SystemInit.</li>
-<li>Startup files are provided as example for IAR©, KEIL© and SW4STM32©.</li>
-<li>Linker files are provided as example for IAR©, KEIL© and SW4STM32©.</li>
+<li>Startup files are provided as example for IAR, KEIL and SW4STM32.</li>
+<li>Linker files are provided as example for IAR, KEIL and SW4STM32.</li>
 </ul>
 </div>
 <div class="col-sm-12 col-lg-8">
@@ -72,7 +72,7 @@
 <ul>
 <li>system_stm32l0xx.c
 <ul>
-<li>SystemInit(): update to don’t reset RCC registers to its reset values.</li>
+<li>SystemInit(): update to dont reset RCC registers to its reset values.</li>
 <li>Protect Vector table modification following SRAM or FLASH preprocessor directive by a generic preprocessor directive: USER_VECT_TAB_ADDRESS.</li>
 </ul></li>
 <li>All header files
@@ -102,16 +102,16 @@
 <ul>
 <li>Add the following device defines:
 <ul>
-<li>“#define STM32L010xB” for all STM32L010xB devices</li>
-<li>“#define STM32L010x8” for all STM32L010x8 devices</li>
-<li>“#define STM32L010x6” for all STM32L010x6 devices</li>
-<li>“#define STM32L010x4” for all STM32L010x4 devices</li>
+<li>#define STM32L010xB for all STM32L010xB devices</li>
+<li>#define STM32L010x8 for all STM32L010x8 devices</li>
+<li>#define STM32L010x6 for all STM32L010x6 devices</li>
+<li>#define STM32L010x4 for all STM32L010x4 devices</li>
 </ul></li>
 <li>Align ErrorStatus typedef to common error handling.</li>
 </ul></li>
 <li>All stm32l0xxxx.h device description files.h
 <ul>
-<li>[MISRAC2012-Rule-10.6] Use ‘UL’ postfix for _Msk definitions and memory/peripheral base addresses</li>
+<li>[MISRAC2012-Rule-10.6] Use UL postfix for _Msk definitions and memory/peripheral base addresses</li>
 <li>Correct comments in the bit definition of RCC_AHBRST, RCC_APB2RSTR and RCC_APB1RSTR registers.</li>
 <li>Rename RTC_CR_BCK bit to RTC_CR_BKP to be aligned with reference manual.</li>
 <li>Add missing definition of IS_TSC_ALL_INSTANCE after TSC driver update.</li>
@@ -204,7 +204,7 @@
 </ul></li>
 <li>The same rule applies on all the other constants present inside the CMSIS files.</li>
 </ul></li>
-<li><p>MISRA C 2004 rule 10.6 compliancy. (A ‘U’ suffix shall be applied to all constants of unisgned type).</p></li>
+<li><p>MISRA C 2004 rule 10.6 compliancy. (A U suffix shall be applied to all constants of unisgned type).</p></li>
 <li><p>Several SYSCFG definition changes :</p></li>
 <li><p>SYSCFG_CFGR3_EN_VREFINT enable bit suppressed. (no more needed and must not be used).</p></li>
 <li><p>SYSCFG_CFGR3_EN_BGAP define suppressed.</p></li>
@@ -267,7 +267,7 @@
 <li>Rename USART_ISR_LBD into USART_ISR_LBDF</li>
 <li>Rename WWDG_CR_Tx into WWDG_CR_T_x with x = {0,..6}</li>
 <li>Rename WWDG_CFR_WDGTBx into WWDG_CFR_WDGTB_x with x = {0,1}</li>
-<li>Add several macros to check Timer instances (IS_TIM_CLOCKSOURCE_ETRMODE1_INSTANCE(), IS_TIM_CLOCK_DIVISION_INSTANCE(), …)</li>
+<li>Add several macros to check Timer instances (IS_TIM_CLOCKSOURCE_ETRMODE1_INSTANCE(), IS_TIM_CLOCK_DIVISION_INSTANCE(), )</li>
 </ul></li>
 </ul>
 </div>

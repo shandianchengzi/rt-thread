@@ -1,4 +1,4 @@
-﻿
+
 /******************************************************************************
 * @brief providing APIs for configuring ETM. 
 *
@@ -60,22 +60,22 @@ ETM_CallbackPtr ETM_Callback[3] = {(ETM_CallbackPtr)NULL};
 *********************************************************************************/
 /*******************************************************************************//*!
 *
-* @设置时钟资源及分频系数    
-* @输入     pETM                 指向三个ETM定时器其中一个的基址
-* @输入     ClockSource          ETM 时钟资源
-* @输入     ClockPrescale        分频系数 
+* @    
+* @     pETM                 ETM
+* @     ClockSource          ETM 
+* @     ClockPrescale         
 *
-* @无返回
+* @
 *
 *********************************************************************************/
 void ETM_ClockSet(ETM_Type *pETM, uint8_t u8ClockSource, uint8_t u8ClockPrescale)
 {
     uint8_t   u8Temp;
-	//pETM指向的SC寄存器低5位清0，即未选择时钟，时钟输入采取1分频
+	//pETMSC501
     u8Temp  = (pETM->SC & 0xE0);
-	//时钟选择，及预分频因子选择
+	//
     u8Temp |= (ETM_SC_CLKS(u8ClockSource & 0x3) | ETM_SC_PS(u8ClockPrescale & 0x7));
-	//配置该ETM的状态与控制寄存器ETMx_SC
+	//ETMETMx_SC
     pETM->SC = u8Temp;
 }
 
@@ -95,22 +95,22 @@ void ETM_ClockSet(ETM_Type *pETM, uint8_t u8ClockSource, uint8_t u8ClockPrescale
 *********************************************************************************/
 /******************************************************************************************
 *
-* @ETM中PWM的初始化函数      
-* @输入        pETM                 指向三个ETM定时器其中一个的基址
-* @输入        PWMModeSelect        居中对齐CPWM（10）、边沿对齐EPWM（01）以及级联模式PWM（11）
-* @输入        PWMEdgeSelect        高真脉冲（01）、低真脉冲（10）
+* @ETMPWM      
+* @        pETM                 ETM
+* @        PWMModeSelect        CPWM10EPWM01PWM11
+* @        PWMEdgeSelect        0110
 *
-* @无返回
+* @
 *
 ******************************************************************************************/
 void ETM_PWMInit(ETM_Type *pETM, uint8_t u8PWMModeSelect, uint8_t u8PWMEdgeSelect)
 {
     uint8_t   channels, i;
     
-    ASSERT((ETM0== pETM) || (ETM1== pETM) || (ETM2== pETM));//断言检测通道合法性
+    ASSERT((ETM0== pETM) || (ETM1== pETM) || (ETM2== pETM));//
     
     /* open the clock gate */  
-	//使能ETM的时钟
+	//ETM
 	if (ETM0 == pETM)
     {
         channels = 2;
@@ -129,14 +129,14 @@ void ETM_PWMInit(ETM_Type *pETM, uint8_t u8PWMModeSelect, uint8_t u8PWMEdgeSelec
         SIM->SCGC  |= SIM_SCGC_ETM2_MASK;
     }
     
-    pETM->SC  = 0x0;     //关闭计数器          /* disable counter */  
+    pETM->SC  = 0x0;     //          /* disable counter */  
 	pETM->MOD = ETM_MOD_INIT; 
     
-    if(ETM_PWMMODE_CENTERALLIGNED == u8PWMModeSelect) //使能CPWM   /* enable CPWM */
+    if(ETM_PWMMODE_CENTERALLIGNED == u8PWMModeSelect) //CPWM   /* enable CPWM */
     {
         pETM->SC |= ETM_SC_CPWMS_MASK; 
     }
-    else if(ETM_PWMMODE_COMBINE == u8PWMModeSelect) // 打开级联PWM模式    /* enable combine pwm mode */
+    else if(ETM_PWMMODE_COMBINE == u8PWMModeSelect) // PWM    /* enable combine pwm mode */
     {
         ASSERT(ETM2 == pETM);
         pETM->MODE    |= ETM_MODE_WPDIS_MASK | ETM_MODE_ETMEN_MASK;
@@ -149,7 +149,7 @@ void ETM_PWMInit(ETM_Type *pETM, uint8_t u8PWMModeSelect, uint8_t u8PWMEdgeSelec
     if(ETM_PWM_HIGHTRUEPULSE == u8PWMEdgeSelect)
     {
         /* Configure ETMers PWM High True Pulses */
-		/* 配置通道寄存器，设置通道状态及通道计数值 */
+		/*  */
         for(i=0; i<channels; i++)
         {
             pETM->CONTROLS[i].CnSC = ETM_CnSC_MSB_MASK | ETM_CnSC_ELSB_MASK;  
@@ -182,13 +182,13 @@ void ETM_PWMInit(ETM_Type *pETM, uint8_t u8PWMModeSelect, uint8_t u8PWMEdgeSelec
 *********************************************************************************/
 /*********************************************************************************
 *
-* @输入捕捉初始化函数
+* @
 *        
-* @输入        pETM                  指向三个ETM定时器其中一个的基址
-* @输入        Channel               配置通道号
-* @输入        CaptureMode           选择捕捉方式:上升沿, 下降沿或跳变沿.
+* @        pETM                  ETM
+* @        Channel               
+* @        CaptureMode           :, .
 *
-* @无返回
+* @
 *
 *********************************************************************************/
 void ETM_InputCaptureInit(ETM_Type *pETM, uint8_t u8ETM_Channel, uint8_t u8CaptureMode)
@@ -200,7 +200,7 @@ void ETM_InputCaptureInit(ETM_Type *pETM, uint8_t u8ETM_Channel, uint8_t u8Captu
 
     
     /* open the clock gate */
-	 /* 使能ETM的时钟 */
+	 /* ETM */
 	if ((ETM0 == pETM) && (u8ETM_Channel < 2))
     {
         SIM->SCGC |= SIM_SCGC_ETM0_MASK;
@@ -219,18 +219,18 @@ void ETM_InputCaptureInit(ETM_Type *pETM, uint8_t u8ETM_Channel, uint8_t u8Captu
         NVIC_EnableIRQ(ETM2_IRQn);
     }
     
-    pETM->SC  = 0x0;    //关闭计数器     /* diable counter */ 
+    pETM->SC  = 0x0;    //     /* diable counter */ 
     pETM->MOD = 0xFFFF;  /* free running */
     
-    if(ETM_INPUTCAPTURE_RISINGEDGE == u8CaptureMode) //使能中断，在上升沿捕捉       /* enable interrupt, Capture on rising edge */
+    if(ETM_INPUTCAPTURE_RISINGEDGE == u8CaptureMode) //       /* enable interrupt, Capture on rising edge */
     {
         pETM->CONTROLS[u8ETM_Channel].CnSC = ETM_CnSC_CHIE_MASK | ETM_CnSC_ELSA_MASK;
     }
-    else if(ETM_INPUTCAPTURE_FALLINGEDGE == u8CaptureMode) //在下降沿捕捉      /* Capture on falling edge */
+    else if(ETM_INPUTCAPTURE_FALLINGEDGE == u8CaptureMode) //      /* Capture on falling edge */
     {
         pETM->CONTROLS[u8ETM_Channel].CnSC = ETM_CnSC_CHIE_MASK | ETM_CnSC_ELSB_MASK;
     }
-    else if(ETM_INPUTCAPTURE_BOTHEDGE == u8CaptureMode) //在上升沿或下降沿捕捉     /* Capture on rising or falling edge */
+    else if(ETM_INPUTCAPTURE_BOTHEDGE == u8CaptureMode) //     /* Capture on rising or falling edge */
     {
         pETM->CONTROLS[u8ETM_Channel].CnSC = ETM_CnSC_CHIE_MASK | ETM_CnSC_ELSA_MASK | ETM_CnSC_ELSB_MASK;       
     }
@@ -254,15 +254,15 @@ void ETM_InputCaptureInit(ETM_Type *pETM, uint8_t u8ETM_Channel, uint8_t u8Captu
 *********************************************************************************/
 /*********************************************************************************//*!
 *
-* @对ETM配置双边捕获模式来测量一个脉冲的宽度或周期
+* @ETM
 *        
-* @输入        pETM                  指向三个ETM定时器其中一个的基址
-* @输入        ChannelPair           频道配对数的配置为: 0, 2, 4.
-* @输入        CaptureMode           选择单周期捕捉，和连续捕捉方式
-* @输入        Channel_N_Edge        频道N边沿检测 
-* @输入        Channel_Np1_Edge      频道N+1边沿检测.
+* @        pETM                  ETM
+* @        ChannelPair           : 0, 2, 4.
+* @        CaptureMode           
+* @        Channel_N_Edge        N 
+* @        Channel_Np1_Edge      N+1.
 *
-* @无返回
+* @
 *
 *********************************************************************************/
 void ETM_DualEdgeCaptureInit(ETM_Type *pETM, uint8_t u8ChannelPair, uint8_t u8CaptureMode, 
@@ -273,30 +273,30 @@ void ETM_DualEdgeCaptureInit(ETM_Type *pETM, uint8_t u8ChannelPair, uint8_t u8Ca
     SIM->SCGC |= SIM_SCGC_ETM2_MASK;
     if((0 == u8ChannelPair) || (2== u8ChannelPair))
     {
-                                  //通道滤波      /* channel filter is active */
+                                  //      /* channel filter is active */
     }
        
-    pETM->SC    = 0x0;         //关闭计数器         /* diable counter */ 
+    pETM->SC    = 0x0;         //         /* diable counter */ 
     pETM->MOD   = 0xFFFF;
     pETM->MODE |= ETM_MODE_ETMEN_MASK;  /* ETMEN = 1 */  
     /* DECAPEN = 1,  ChannelPair/2 * 8 */
     pETM->COMBINE |=  ((ETM_COMBINE_DECAPEN0_MASK) << (u8ChannelPair * 4)); 
     
-    pETM->CONTROLS[u8ChannelPair].CnSC &= ~ETM_CnSC_CHF_MASK;  //清除相关位     /* CH(n)F and CH(n+1)F bits must be cleared first */
+    pETM->CONTROLS[u8ChannelPair].CnSC &= ~ETM_CnSC_CHF_MASK;  //     /* CH(n)F and CH(n+1)F bits must be cleared first */
     pETM->CONTROLS[u8ChannelPair + 1].CnSC &= ~ETM_CnSC_CHF_MASK;
     
-    if(ETM_INPUTCAPTURE_DUALEDGE_ONESHOT == u8CaptureMode)   //单周期模式     /* oneshot mode */
+    if(ETM_INPUTCAPTURE_DUALEDGE_ONESHOT == u8CaptureMode)   //     /* oneshot mode */
     {
         pETM->CONTROLS[u8ChannelPair].CnSC &= ~ETM_CnSC_MSA_MASK;
         pETM->CONTROLS[u8ChannelPair+1].CnSC &= ~ETM_CnSC_MSA_MASK;
     }
-    else if(ETM_INPUTCAPTURE_DUALEDGE_CONTINUOUS == u8CaptureMode) //连续模式   /* continuouse mode */
+    else if(ETM_INPUTCAPTURE_DUALEDGE_CONTINUOUS == u8CaptureMode) //   /* continuouse mode */
     {
         pETM->CONTROLS[u8ChannelPair].CnSC |= ETM_CnSC_MSA_MASK;
         pETM->CONTROLS[u8ChannelPair+1].CnSC |= ETM_CnSC_MSA_MASK;
     }
     
-    pETM->CONTROLS[u8ChannelPair].CnSC |= (u8Channel_N_Edge << 2); //选择检测边沿  /* select detec edge */
+    pETM->CONTROLS[u8ChannelPair].CnSC |= (u8Channel_N_Edge << 2); //  /* select detec edge */
     pETM->CONTROLS[u8ChannelPair + 1].CnSC |= (u8Channel_Np1_Edge << 2);   
     
     pETM->COMBINE |=  (ETM_COMBINE_DECAP0_MASK << (u8ChannelPair * 4)); 
@@ -317,13 +317,13 @@ void ETM_DualEdgeCaptureInit(ETM_Type *pETM, uint8_t u8ChannelPair, uint8_t u8Ca
 *********************************************************************************/
 /*********************************************************************************//*!
 *
-* @输出对比初始化
+* @
 * 
-* @输入     pETM                   指向三个ETM定时器其中一个的基址
-* @输入     Channel                必须完成配置通道即通道号
-* @输入     CompareMode            选择模式：翻转（01）、置位（11）、清0（10）
+* @     pETM                   ETM
+* @     Channel                
+* @     CompareMode            0111010
 *
-* @无返回
+* @
 *
 *********************************************************************************/
 void ETM_OutputCompareInit(ETM_Type *pETM, uint8_t u8ETM_Channel, uint8_t u8CompareMode)
@@ -334,7 +334,7 @@ void ETM_OutputCompareInit(ETM_Type *pETM, uint8_t u8ETM_Channel, uint8_t u8Comp
            );
     
     /* open the clock gate */
-	 /* 使能ETM的时钟 */
+	 /* ETM */
 	if(ETM0 == pETM)
     {
         SIM->SCGC |= SIM_SCGC_ETM0_MASK;
@@ -350,9 +350,9 @@ void ETM_OutputCompareInit(ETM_Type *pETM, uint8_t u8ETM_Channel, uint8_t u8Comp
         SIM->SCGC |= SIM_SCGC_ETM2_MASK;
     }
     
-    pETM->SC  = 0x0;                                                 //关闭计数器                  /* diable counter */
+    pETM->SC  = 0x0;                                                 //                  /* diable counter */
     pETM->MOD = ETM_MOD_INIT; 
-    pETM->CONTROLS[u8ETM_Channel].CnSC = (ETM_CnSC_MSA_MASK | (u8CompareMode << 2)); //选择检测边沿   /* select detec edge */
+    pETM->CONTROLS[u8ETM_Channel].CnSC = (ETM_CnSC_MSA_MASK | (u8CompareMode << 2)); //   /* select detec edge */
     pETM->CONTROLS[u8ETM_Channel].CnV  = ETM_C0V_INIT;
 }
 
@@ -369,18 +369,18 @@ void ETM_OutputCompareInit(ETM_Type *pETM, uint8_t u8ETM_Channel, uint8_t u8Comp
 *********************************************************************************/
 /*********************************************************************************//*!
 *
-* @运用ETM2来实现软件同步
+* @ETM2
 *        
-* @输入       pETM                   指向三个ETM定时器其中一个的基址
+* @       pETM                   ETM
 *
-* @无返回
+* @
 *
 *********************************************************************************/
 void ETM_SoftwareSync(ETM_Type *pETM)
 {
     ASSERT(ETM2 == pETM);
 
-    pETM->SYNCONF   |= ETM_SYNCONF_SYNCMODE_MASK;   // 选择增强PWM同步  /* recommend enhanced sync mode */
+    pETM->SYNCONF   |= ETM_SYNCONF_SYNCMODE_MASK;   // PWM  /* recommend enhanced sync mode */
     pETM->SYNC      |= ETM_SYNC_SWSYNC_MASK;
 }
 
@@ -397,19 +397,19 @@ void ETM_SoftwareSync(ETM_Type *pETM)
 *
 *********************************************************************************/
 /********************************************************************
-* @ETM中配置ETMx_SYNC 寄存器来保证软件同步        
+* @ETMETMx_SYNC         
 * 
-* @输入       pETM                    指向三个ETM定时器其中一个的基址
-* @输入       u8TriggerN              选择硬件触发资源
+* @       pETM                    ETM
+* @       u8TriggerN              
 *
-* @无返回
+* @
 *
 *********************************************************************************/
 void ETM_HardwareSync(ETM_Type *pETM, uint8_t u8TriggerN)
 {
     ASSERT(ETM2 == pETM);
     
-    pETM->SYNCONF   |= ETM_SYNCONF_SYNCMODE_MASK; //选择增强PWM同步 /* recommend enhanced sync mode */
+    pETM->SYNCONF   |= ETM_SYNCONF_SYNCMODE_MASK; //PWM /* recommend enhanced sync mode */
     
     switch(u8TriggerN)
     {
@@ -418,10 +418,10 @@ void ETM_HardwareSync(ETM_Type *pETM, uint8_t u8TriggerN)
                 break;  
         case ETM_SYNC_TRIGGER_TRIGGER1: 
                 pETM->SYNC |= ETM_SYNC_TRIG1_MASK;
-                break;   //首先配置ETM0CH0  /* need configure ETM0CH0 first */
+                break;   //ETM0CH0  /* need configure ETM0CH0 first */
         case ETM_SYNC_TRIGGER_TRIGGER0:
                 pETM->SYNC |= ETM_SYNC_TRIG0_MASK; 
-                break;   //首先配置CMP0  /* need configure CMP0 first */
+                break;   //CMP0  /* need configure CMP0 first */
         default: 
                 break;
     }
@@ -441,19 +441,19 @@ void ETM_HardwareSync(ETM_Type *pETM, uint8_t u8TriggerN)
 *********************************************************************************/
 /*********************************************************************************//*!
 *
-* @通过配置ETM保证硬件同步，产生触发
+* @ETM
 *        
-* @输入   pETM              指向三个ETM定时器其中一个的基址
-* @输入   u8TriggerMask     选择硬件触发资源. 
+* @   pETM              ETM
+* @   u8TriggerMask     . 
 *
-* @无返回.
+* @.
 *
 *********************************************************************************/
 void ETM_HardwareSyncCombine(ETM_Type *pETM, uint8_t u8TriggerMask)
 {
     ASSERT(ETM2 == pETM);
     
-    pETM->SYNCONF   |= ETM_SYNCONF_SYNCMODE_MASK;  //选择增强PWM同步 /* recommend enhanced sync mode */
+    pETM->SYNCONF   |= ETM_SYNCONF_SYNCMODE_MASK;  //PWM /* recommend enhanced sync mode */
     pETM->SYNC      &= 0x8F;
     pETM->SYNC      |= (u8TriggerMask & 0x70);
 }
@@ -471,11 +471,11 @@ void ETM_HardwareSyncCombine(ETM_Type *pETM, uint8_t u8TriggerMask)
 *********************************************************************************/
 /*********************************************************************************//*!
 *
-* @产生ETM2硬件触发
+* @ETM2
 *        
-* @输入        pETM              指向三个ETM定时器其中一个的基址
+* @        pETM              ETM
 *
-* @无返回
+* @
 *
 *********************************************************************************/
 void ETM_GenerateTrig2(ETM_Type *pETM)
@@ -510,33 +510,33 @@ void ETM_GenerateTrig2(ETM_Type *pETM)
 *********************************************************************************/
 /*********************************************************************************//*!
 *
-* @ETM死区时间插入设置.
+* @ETM.
 *        
-* @输入         pETM                  指向三个ETM定时器其中一个的基址
-* @输入         PrescalerValue        系统时钟分频值
-* @输入         DeadETMeValue         死去插入时间值，0-63可选
+* @         pETM                  ETM
+* @         PrescalerValue        
+* @         DeadETMeValue         0-63
 *
-* @无返回
+* @
 *
 *********************************************************************************/
 void ETM_PWMDeadETMeSet(ETM_Type *pETM, uint8_t u8PrescalerValue, uint8_t u8DeadETMeValue)
 {
     ASSERT(ETM2 == pETM);
     
-    pETM->COMBINE |= 0x101010;     //使能死区时间插入    /* enable dead ETMe insertion */
+    pETM->COMBINE |= 0x101010;     //    /* enable dead ETMe insertion */
 
-    if(!(pETM->MODE & ETM_MODE_WPDIS_MASK)) //如果开启了写保护/* if write protection is enabled */
+    if(!(pETM->MODE & ETM_MODE_WPDIS_MASK)) ///* if write protection is enabled */
     {
-        pETM->MODE |= ETM_MODE_WPDIS_MASK; //禁用写保护 /* disable the write protection */
+        pETM->MODE |= ETM_MODE_WPDIS_MASK; // /* disable the write protection */
         pETM->DEADETME = (ETM_DEADETME_DTVAL(u8DeadETMeValue & 0x3F) | ETM_DEADETME_DTPS(u8PrescalerValue & 0x3));
-        pETM->MODE &= ~ETM_MODE_WPDIS_MASK;//使能写保护 /* enable the write protection */       
+        pETM->MODE &= ~ETM_MODE_WPDIS_MASK;// /* enable the write protection */       
     }
     else 
     {
-        //如果没有开启写保护     /* if no protection */
+        //     /* if no protection */
         pETM->DEADETME = (ETM_DEADETME_DTVAL(u8DeadETMeValue & 0x3F) | ETM_DEADETME_DTPS(u8PrescalerValue & 0x3));
     }
-    pETM->SYNC |= ETM_SYNC_SWSYNC_MASK;    //软件同步 /* software sync */
+    pETM->SYNC |= ETM_SYNC_SWSYNC_MASK;    // /* software sync */
 }    
 
 /*********************************************************************************//*!
@@ -553,12 +553,12 @@ void ETM_PWMDeadETMeSet(ETM_Type *pETM, uint8_t u8PrescalerValue, uint8_t u8Dead
 *********************************************************************************/
 /*********************************************************************************//*!
 *
-* @设置输出标志位
+* @
 *        
-* @输入           pETM                  指向三个ETM定时器其中一个的基址
-* @输入           Channel               PWM通道位需要被置标志
+* @           pETM                  ETM
+* @           Channel               PWM
 *
-* @无返回
+* @
 *
 *********************************************************************************/
 void ETM_OutputMaskSet(ETM_Type *pETM, uint8_t u8ETM_Channel)
@@ -567,19 +567,19 @@ void ETM_OutputMaskSet(ETM_Type *pETM, uint8_t u8ETM_Channel)
 
     pETM->OUTMASK |= (1 << u8ETM_Channel);
     
-    if(pETM->SYNC & ETM_SYNC_SYNCHOM_MASK)           //如果需要PWM同步更新   /* if PWM sync is needed */
+    if(pETM->SYNC & ETM_SYNC_SYNCHOM_MASK)           //PWM   /* if PWM sync is needed */
     {
-        pETM->SYNCONF |= ETM_SYNCONF_SYNCMODE_MASK;   //选择增强PWM同步  /* recommend enhanced sync mode */
-        if(pETM->SYNCONF & ETM_SYNCONF_SWOM_MASK)    //如果需要软件同步   /* if software sync is needed*/
+        pETM->SYNCONF |= ETM_SYNCONF_SYNCMODE_MASK;   //PWM  /* recommend enhanced sync mode */
+        if(pETM->SYNCONF & ETM_SYNCONF_SWOM_MASK)    //   /* if software sync is needed*/
         {
             pETM->SYNC |= ETM_SYNC_SWSYNC_MASK;
         }
-        else if(pETM->SYNCONF & ETM_SYNCONF_HWOM_MASK)//如果需要硬件同步 /* if hardware sync is needed*/
+        else if(pETM->SYNCONF & ETM_SYNCONF_HWOM_MASK)// /* if hardware sync is needed*/
         {
             pETM->SYNC |= ETM_SYNC_TRIG2_MASK;
             
 #if defined(CPU_NV32)
-            SIM->SOPT  |= SIM_SOPT_ETMSYNC_MASK;      //硬件同步   /* hardware sync */ 
+            SIM->SOPT  |= SIM_SOPT_ETMSYNC_MASK;      //   /* hardware sync */ 
 #elif defined(CPU_NV32M3)
             SIM->SOPT  |= SIM_SOPT_ETMSYNC_MASK;         /* hardware sync */ 
 #elif defined(CPU_NV32M4)
@@ -610,13 +610,13 @@ void ETM_OutputMaskSet(ETM_Type *pETM, uint8_t u8ETM_Channel)
 *********************************************************************************/
 /*********************************************************************************//*!
 *
-* @配置软件输出控制SWOCTRL寄存器的同步是否由软件触发
+* @SWOCTRL
 *        
-* @输入        pETM                  指向三个ETM定时器其中一个的基址
-* @输入        Channel               PWM波的通道选择
-* @输入        ChannelValue          0或1,0不触发;1触发
+* @        pETM                  ETM
+* @        Channel               PWM
+* @        ChannelValue          01,0;1
 *
-* @无返回
+* @
 *
 *********************************************************************************/
 void ETM_SWOutputControlSet(ETM_Type *pETM, uint8_t u8ETM_Channel, uint8_t u8ChannelValue)
@@ -672,13 +672,13 @@ void ETM_SWOutputControlSet(ETM_Type *pETM, uint8_t u8ETM_Channel, uint8_t u8Cha
 *********************************************************************************/
 /*********************************************************************************
 *
-* @设置通道输出极性的功能函数
+* @
 *        
-* @输入     pETM                 指向三个ETM定时器其中一个的基址
-* @输入     Channel              PWM波的通道选择
-* @输入     ActiveValue          极性的选择，0为高电平，1为低电平
+* @     pETM                 ETM
+* @     Channel              PWM
+* @     ActiveValue          01
 *
-* @无返回
+* @
 *
 *********************************************************************************/
 void ETM_PolaritySet(ETM_Type *pETM, uint8_t u8ETM_Channel, uint8_t u8ActiveValue)
@@ -709,12 +709,12 @@ void ETM_PolaritySet(ETM_Type *pETM, uint8_t u8ETM_Channel, uint8_t u8ActiveValu
 *********************************************************************************/
 /*********************************************************************************
 *
-* @选择BDM模式下的ETM行为
+* @BDMETM
 *        
-* @输入   pETM             指向三个ETM定时器其中一个的基址
-* @输入   u8DebugMode      debug 的模式从00-11之间选择
+* @   pETM             ETM
+* @   u8DebugMode      debug 00-11
 *
-* @无返回
+* @
 *
 *********************************************************************************/
 void ETM_SetDebugModeBehavior(ETM_Type *pETM, uint8_t u8DebugMode)
@@ -738,12 +738,12 @@ void ETM_SetDebugModeBehavior(ETM_Type *pETM, uint8_t u8DebugMode)
 *********************************************************************************/
 /*********************************************************************************//*!
 *
-* @ETM中TOF频率大小的设置功能函数
+* @ETMTOF
 *        
-* @输入    pETM              指向三个ETM定时器其中一个的基址
-* @输入    u8TOFNUM          TOF频率数，大小0和31之间
+* @    pETM              ETM
+* @    u8TOFNUM          TOF031
 * 
-* @无返回
+* @
 *
 *********************************************************************************/
 void ETM_SetTOFFrequency(ETM_Type *pETM, uint8_t u8TOFNUM)
@@ -767,10 +767,10 @@ void ETM_SetTOFFrequency(ETM_Type *pETM, uint8_t u8TOFNUM)
 *********************************************************************************/
 /*********************************************************************************
 *
-* @交换通道CH（n）和通道CH（n+1）的输出结果   
+* @CHnCHn+1   
 *    
-* @输入  pETM                   其中一个ETM定时器的基址
-* @输入  ChannelPair            要被交换的通道数号，即n可为0,1,2,
+* @  pETM                   ETM
+* @  ChannelPair            n0,1,2,
 *
 *********************************************************************************/
 void ETM_InvertChannel(ETM_Type *pETM, uint8_t u8ChannelPair)
@@ -778,19 +778,19 @@ void ETM_InvertChannel(ETM_Type *pETM, uint8_t u8ChannelPair)
     ASSERT((ETM2 == pETM)  && u8ChannelPair <= 2);
 
     pETM->INVCTRL |= 1<<u8ChannelPair;
-    if(pETM->SYNCONF & ETM_SYNCONF_INVC_MASK)     //如果需要PWM同步  /* if PWM sync is needed */
+    if(pETM->SYNCONF & ETM_SYNCONF_INVC_MASK)     //PWM  /* if PWM sync is needed */
     {
-        pETM->SYNCONF |= ETM_SYNCONF_SYNCMODE_MASK; //选择增强PWM同步 /* recommend enhanced sync mode */
-        if(pETM->SYNCONF & ETM_SYNCONF_SWINVC_MASK)//如果需要软件同步 /* if software sync is needed*/
+        pETM->SYNCONF |= ETM_SYNCONF_SYNCMODE_MASK; //PWM /* recommend enhanced sync mode */
+        if(pETM->SYNCONF & ETM_SYNCONF_SWINVC_MASK)// /* if software sync is needed*/
         {
-            pETM->SYNC |= ETM_SYNC_SWSYNC_MASK; //开启软件同步   /* software sync */ 
+            pETM->SYNC |= ETM_SYNC_SWSYNC_MASK; //   /* software sync */ 
         }
-        else if(pETM->SYNCONF & ETM_SYNCONF_HWINVC_MASK)   //如果需要硬件同步 /* if hardware sync is needed*/
+        else if(pETM->SYNCONF & ETM_SYNCONF_HWINVC_MASK)   // /* if hardware sync is needed*/
         {
             pETM->SYNC |= ETM_SYNC_TRIG2_MASK;
 
 #if defined(CPU_NV32)
-            SIM->SOPT  |= SIM_SOPT_ETMSYNC_MASK;       //硬件同步      /* hardware sync */ 
+            SIM->SOPT  |= SIM_SOPT_ETMSYNC_MASK;       //      /* hardware sync */ 
 #elif defined(CPU_NV32M3)
             SIM->SOPT  |= SIM_SOPT_ETMSYNC_MASK;             /* hardware sync */ 
 #elif defined(CPU_NV32M4)
@@ -818,11 +818,11 @@ void ETM_InvertChannel(ETM_Type *pETM, uint8_t u8ChannelPair)
 *****************************************************************************/
 /*****************************************************************************//*!
 *
-* @ETM初始化函数
+* @ETM
 *        
-* @输入        pETM           指向三个ETM定时器其中一个的基址
-* @输入        pConfig        指向ETM的一些基本参数
-* @无返回值
+* @        pETM           ETM
+* @        pConfig        ETM
+* @
 *
 *****************************************************************************/
 void ETM_Init(ETM_Type *pETM, ETM_ConfigType *pConfig)
@@ -852,7 +852,7 @@ void ETM_Init(ETM_Type *pETM, ETM_ConfigType *pConfig)
     if( pETM->MODE & ETM_MODE_ETMEN_MASK  ) 
     {
         /* when ETMEN = 1, all other registers can be written */
-		 /* 当 ETMEN = 1, 所有寄存器都可以被写入 */
+		 /*  ETMEN = 1,  */
         pETM->COMBINE   = pConfig->combine;      
         pETM->CNTIN     = pConfig->cntin;      
         pETM->SYNC      = pConfig->sync;      
@@ -871,7 +871,7 @@ void ETM_Init(ETM_Type *pETM, ETM_ConfigType *pConfig)
         pETM->PWMLOAD   = pConfig->pwmload;      
     }
     /* write SC to enable clock */
-    /*通过写入状态控制寄存器SC来使能ETM时钟 */
+    /*SCETM */
     pETM->SC = pConfig->sc;
 }
 
@@ -889,7 +889,7 @@ void ETM_Init(ETM_Type *pETM, ETM_ConfigType *pConfig)
 *****************************************************************************/
 /*****************************************************************************
 *
-*关闭相应的ETM功能组件函数     
+*ETM     
 *
 *****************************************************************************/
 void ETM_DeInit(ETM_Type *pETM)
@@ -919,7 +919,7 @@ void ETM_DeInit(ETM_Type *pETM)
           pETM->PWMLOAD = 0;      
     }
     /* close the clock gate */
-	/* 禁用时钟 */
+	/*  */
 	if (ETM0 == pETM)
     {
         SIM->SCGC &= ~SIM_SCGC_ETM0_MASK;
@@ -954,12 +954,12 @@ void ETM_DeInit(ETM_Type *pETM)
 *****************************************************************************/
 /*****************************************************************************//*!
 *
-* @本函数用来配置ETM通道, 包括通道状态及控制寄存器CnSC和通道计数值寄存器CnV      
-* @输入     pETM                 指向三个ETM定时器其中一个的基址
-* @输入     ETM_Channel          ETM的通道号
-* @输入     pTETMCH_Params      指向ETM通道一般参数的指针
+* @ETM, CnSCCnV      
+* @     pETM                 ETM
+* @     ETM_Channel          ETM
+* @     pTETMCH_Params      ETM
 *
-* @无返回值
+* @
 *
 *****************************************************************************/
 void ETM_ChannelInit(ETM_Type *pETM, uint8_t u8ETM_Channel, ETM_ChParamsType *pTETMCH_Params)
@@ -1006,11 +1006,11 @@ void ETM_ChannelInit(ETM_Type *pETM, uint8_t u8ETM_Channel, ETM_ChParamsType *pT
 *****************************************************************************/
 /*****************************************************************************//*!
 *
-* 必须设置奇数通道数，且偶数通道的值不变
+* 
 *
-* @输入        pETM            指向三个ETM定时器其中一个的基址
-* @输入        ETM_Channel     奇通道数：1、3、5
-* @输入        dutyCycle       设置占空比，若DutyCycle为10,那么占空比就为10%
+* @        pETM            ETM
+* @        ETM_Channel     135
+* @        dutyCycle       DutyCycle10,10%
 *
 * @return none.
 *
@@ -1046,12 +1046,12 @@ void  ETM_SetDutyCycleCombine(ETM_Type *pETM, uint8_t u8ETM_Channel, uint8_t u8D
 *****************************************************************************/
 /*****************************************************************************
 *
-* @配置寄存器 ETMx_SYNCONF,其中里面包含了软件输出的控制是否由硬件触发HW或是否有软件出发SW
+* @ ETMx_SYNCONF,HWSW
 *
-* @输入     pETM               指向三个ETM定时器其中一个的基址
-* @输入     u32ConfigValue     ETMx_SYNCONF这个寄存器的值 
+* @     pETM               ETM
+* @     u32ConfigValue     ETMx_SYNCONF 
 *
-* @无返回
+* @
 *
 *****************************************************************************/
 void  ETM_SyncConfigActivate(ETM_Type *pETM, uint32_t u32ConfigValue)
@@ -1075,12 +1075,12 @@ void  ETM_SyncConfigActivate(ETM_Type *pETM, uint32_t u32ConfigValue)
 *****************************************************************************/
 /*****************************************************************************
 *
-* @恢复配置寄存器 ETMx_SYNCONF,其中里面包含了软件输出的控制是否由硬件触发HW或是否有软件出发SW
+* @ ETMx_SYNCONF,HWSW
 *
-* @输入     pETM               指向三个ETM定时器其中一个的基址
-* @输入     u32ConfigValue     ETMx_SYNCONF这个寄存器的值 
+* @     pETM               ETM
+* @     u32ConfigValue     ETMx_SYNCONF 
 *
-* @无返回
+* @
 *
 *****************************************************************************/
 void  ETM_SyncConfigDeactivate(ETM_Type *pETM, uint32_t u32ConfigValue)
@@ -1103,12 +1103,12 @@ void  ETM_SyncConfigDeactivate(ETM_Type *pETM, uint32_t u32ConfigValue)
 *****************************************************************************/
 /*****************************************************************************//*!
 *
-* @设置中断回调函数入口
+* @
 *
-* @输入       pETM            指向三个ETM中其中一个的基址
-* @输入       pfnCallback     功能函数的地址
+* @       pETM            ETM
+* @       pfnCallback     
 *
-* @无返回.
+* @.
 *
 *****************************************************************************/
 void  ETM_SetCallback(ETM_Type *pETM, ETM_CallbackPtr pfnCallback)
@@ -1132,11 +1132,11 @@ void  ETM_SetCallback(ETM_Type *pETM, ETM_CallbackPtr pfnCallback)
 *****************************************************************************/
 /*********************************************************************************//*!
 *
-* @ETM0中断服务函数
+* @ETM0
 * 
-* @无输入
+* @
 *
-* @无返回
+* @
 *
 *********************************************************************************/
 void ETM0_Isr(void)
@@ -1160,11 +1160,11 @@ void ETM0_Isr(void)
 *****************************************************************************/
 /*********************************************************************************//*!
 *
-* @ETM1中断服务函数
+* @ETM1
 * 
-* @无输入
+* @
 *
-* @无返回
+* @
 *
 *********************************************************************************/
 void ETM1_Isr(void)
@@ -1188,11 +1188,11 @@ void ETM1_Isr(void)
 *****************************************************************************/
 /*********************************************************************************//*!
 *
-* @ETM2中断服务函数
+* @ETM2
 * 
-* @无输入
+* @
 *
-* @无返回
+* @
 *
 *********************************************************************************/
 void ETM2_Isr(void)

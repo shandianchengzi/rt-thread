@@ -1,15 +1,15 @@
 '''
- : Copyright (c) 2020 Phytium Information Technology, Inc.
+: Copyright(c)2020PhytiumInformationTechnology,Inc.
 
-SPDX-License-Identifier: Apache-2.0.
+SPDX-License-Identifier:Apache-2.0.
 
 Date: 2021-05-24 14:30:13
 LastEditTime: 2021-05-26 14:58:34
-Description:  This files is for
+Description: Thisfilesisfor
 
-Modify History:
- Ver   Who        Date         Changes
------ ------     --------    --------------------------------------
+ModifyHistory:
+VerWhoDateChanges
+---------------------------------------------------------
 '''
 from building import *
 import rtconfig

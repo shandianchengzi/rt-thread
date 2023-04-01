@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fusb_def.h
  * Date: 2022-02-11 13:33:11
  * LastEditTime: 2022-02-18 09:18:24
- * Description:  This files is for definition of spec defined USB data structure
+ * Description: This files is for definition of spec defined USB data structure
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   Zhugengyu  2022/2/7    init commit
  */
 
@@ -209,7 +209,7 @@ typedef struct
     unsigned char bLength;
     unsigned char bDescriptorType;
     unsigned char bEndpointAddress;
-    /* Low-speed devices can have a maximum of 3 endpoint, other devices can have 16 (0–15) */
+    /* Low-speed devices can have a maximum of 3 endpoint, other devices can have 16 (015) */
 #define FUSB_EP_DESC_EP_NUM(x)      (GENMASK(3, 0) & (x))   /* endpoint number */
 #define FUSB_EP_DESC_EP_DIR_IN      BIT(7)                  /* direction, 0: OUT, 1: IN */
     unsigned char bmAttributes;

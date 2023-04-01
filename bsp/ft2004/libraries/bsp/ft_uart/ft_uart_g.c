@@ -1,15 +1,15 @@
 /*
- * @ : Copyright (c) 2021 Phytium Information Technology, Inc.
- *
- * SPDX-License-Identifier: Apache-2.0.
- *
+*@:Copyright(c)2021PhytiumInformationTechnology,Inc.
+*
+*SPDX-License-Identifier:Apache-2.0.
+*
  * @Date: 2021-04-07 09:53:07
  * @LastEditTime: 2021-04-07 13:42:30
- * @Description:  This files is for uart config
+ * @Description: This files is for uart config
  *
- * @Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * @ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 #include "ft_uart.h"

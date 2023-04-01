@@ -13,7 +13,7 @@
 *
 * Date          : 2010.03.02
 *
-* Description   : 内存预分配
+* Description   : 
 *
 * History       :
 *
@@ -36,19 +36,19 @@
 *                     xGetDataFromBuffer
 *
 * Description:
-*     从Buffer的BitOffset位置开始取出BitCount个bit的数据, 存放到32位的Data中。
+*     BufferBitOffsetBitCountbit, 32Data
 *
 * Parameters:
-*    Buffer     :  input.  存放着原始数据
-*    BitOffset  :  input.  相对起始地址的bit偏移位
-*    BitCount   :  input.  bit的个数, 最大32位
-*    Data       :  output. 存放最终结果
+*    Buffer     :  input.  
+*    BitOffset  :  input.  bit
+*    BitCount   :  input.  bit, 32
+*    Data       :  output. 
 *
 * Return value:
-*    返回成功或者失败
+*    
 *
 * note:
-*    无
+*    
 *
 *        BitOffset                                       BitOffset + BitCount
 *           |                                                   |
@@ -62,15 +62,15 @@
 */
 int xGetDataFromBuffer(unsigned char *Buffer, unsigned int BitOffset, unsigned int BitCount, int *Data)
 {
-    unsigned char *Start            = NULL; /* 本次换算的起始地址    */
+    unsigned char *Start            = NULL; /*     */
 
-    unsigned int TempData_Head  = 0;    /* 存放数据的头       */
+    unsigned int TempData_Head  = 0;    /*        */
     unsigned int Len_Head       = 0;
 
-    unsigned int TempData_Body  = 0;    /* 存放数据中间部分     */
+    unsigned int TempData_Body  = 0;    /*      */
     unsigned int Len_Body       = 0;
 
-    unsigned int TempData_Tail  = 0;    /* 存放数据尾巴       */
+    unsigned int TempData_Tail  = 0;    /*        */
     unsigned int Len_Tail       = 0;
 
     DMSG_TEMP_TEST("xGetDataFromBuffer: Buffer = %x, BitOffset = %x, BitCount = %x, Data = %x\n",

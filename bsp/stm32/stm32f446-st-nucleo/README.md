@@ -1,10 +1,10 @@
 # STM32F446-Nucleo BSP Introduction
 
-[中文](README_zh.md) 
+[](README_zh.md) 
 
 ## MCU: STM32F446ZE @180MHz, 512KB FLASH,  128KB RAM
 
-The STM32F446xC/E devices are based on the high-performance Arm® Cortex®-M4 32-bit RISC core operating at a frequency of up to 180 MHz. The Cortex-M4 core features a floating point unit (FPU) single precision supporting all Arm® single-precision data-processing instructions and data types. It also implements a full set of DSP instructions and a memory protection unit (MPU) that enhances application security.
+The STM32F446xC/E devices are based on the high-performance Arm Cortex-M4 32-bit RISC core operating at a frequency of up to 180 MHz. The Cortex-M4 core features a floating point unit (FPU) single precision supporting all Arm single-precision data-processing instructions and data types. It also implements a full set of DSP instructions and a memory protection unit (MPU) that enhances application security.
 
 The STM32F446xC/E devices incorporate high-speed embedded memories (Flash memory up to 512 Kbytes, up to 128 Kbytes of SRAM), up to 4 Kbytes of backup SRAM, and an extensive range of enhanced I/Os and peripherals connected to two APB buses, two AHB buses and a 32-bit multi-AHB bus matrix.
 All devices offer three 12-bit ADCs, two DACs, a low-power RTC, twelve general-purpose 16-bit timers including two PWM timers for motor control, two general-purpose 32-bit timers.
@@ -12,7 +12,7 @@ They also feature standard and advanced communication interfaces.
 
 #### KEY FEATURES
 
-- Core: Arm® 32-bit Cortex®-M4 CPU with FPU, Adaptive real-time accelerator (ART Accelerator) allowing 0-wait state execution from Flash memory, frequency up to 180 MHz, MPU, 225 DMIPS/1.25 DMIPS/MHz (Dhrystone 2.1), and DSP instructions
+- Core: Arm 32-bit Cortex-M4 CPU with FPU, Adaptive real-time accelerator (ART Accelerator) allowing 0-wait state execution from Flash memory, frequency up to 180 MHz, MPU, 225 DMIPS/1.25 DMIPS/MHz (Dhrystone 2.1), and DSP instructions
 - Memories
   - 512 Kbytes of Flash memory
   - 128 Kbytes of SRAM
@@ -28,25 +28,25 @@ They also feature standard and advanced communication interfaces.
   - Internal 32 kHz RC with calibration
 - Low power
   - Sleep, Stop and Standby modes
-  - VBAT supply for RTC, 20×32 bit backup registers plus optional 4 KB backup SRAM
-- 3× 12-bit, 2.4 MSPS ADC: up to 24 channels and 7.2 MSPS in triple interleaved mode
-- 2× 12-bit D/A converters
+  - VBAT supply for RTC, 2032 bit backup registers plus optional 4 KB backup SRAM
+- 3 12-bit, 2.4 MSPS ADC: up to 24 channels and 7.2 MSPS in triple interleaved mode
+- 2 12-bit D/A converters
 - General-purpose DMA: 16-stream DMA controller with FIFOs and burst support
 - Up to 17 timers: 2x watchdog, 1x SysTick timer and up to twelve 16-bit and two 32-bit timers up to 180 MHz, each with up to four IC/OC/PWM or pulse counter
 
 - Debug mode
   - SWD and JTAG interfaces
-  - Cortex®-M4 Trace Macrocell™
+  - Cortex-M4 Trace Macrocell
 - Up to 114 I/O ports with interrupt capability
   - Up to 111 fast I/Os up to 90 MHz
   - Up to 112 5 V-tolerant I/Os
 - Up to 20 communication interfaces
   - SPDIF-Rx
-  - Up to 4× I2C interfaces (SMBus/PMBus)
+  - Up to 4 I2C interfaces (SMBus/PMBus)
   - Up to four USARTs and two UARTs (11.25 Mbit/s, ISO7816 interface, LIN, IrDA, modem control)
   - Up to four SPIs (45 Mbits/s), three with muxed I2S for audio class accuracy via internal audio PLL or external clock
   - 2x SAI (serial audio interface)
-  - 2× CAN (2.0B Active)
+  - 2 CAN (2.0B Active)
   - SDIO interface
   - Consumer electronics control (CEC) I/F
 - Advanced connectivity

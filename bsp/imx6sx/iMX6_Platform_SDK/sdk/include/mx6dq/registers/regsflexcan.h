@@ -371,7 +371,7 @@ typedef union _hw_flexcan_mcr
  *
  * Values:
  * - 0 - TWRN_INT and RWRN_INT bits are zero, independent of the values in the error counters.
- * - 1 - TWRN_INT and RWRN_INT bits are set when the respective error counter transition from <96 to ℜ≥ 96.
+ * - 1 - TWRN_INT and RWRN_INT bits are set when the respective error counter transition from <96 to  96.
  */
 //@{
 #define BP_FLEXCAN_MCR_WRN_EN      (21)      //!< Bit position for FLEXCAN_MCR_WRN_EN.
@@ -472,7 +472,7 @@ typedef union _hw_flexcan_mcr
  * When this bit is asserted, FLEXCAN resets its internal state machines and some of the memory
  * mapped registers. The following registers are reset: MCR (except the MDIS bit), TIMER, ECR, ESR,
  * IMASK1, IMASK2, IFLAG1, IFLAG2. Configuration registers that control the interface to the CAN bus
- * are not affected by soft reset. The following registers are unaffected: CTRL RXIMR0‚RXIMR63
+ * are not affected by soft reset. The following registers are unaffected: CTRL RXIMR0RXIMR63
  * RXGMASK, RX14MASK, RX15MASK all Message Buffers The SOFT_RST bit can be asserted directly by the
  * ARM when it writes to the MCR Register. Because soft reset is synchronous and has to follow a
  * request/acknowledge procedure across clock domains, it may take some time to fully propagate its
@@ -714,7 +714,7 @@ typedef union _hw_flexcan_ctrl
 /*! @name Register FLEXCAN_CTRL, field PROP_SEG[2:0] (RW)
  *
  * This 3-bit field defines the length of the Propagation Segment in the bit time. The valid
- * programmable values are 0‚7. Propagation Segment Time = (PROPSEG + 1) * Time-Quanta. Time-Quantum
+ * programmable values are 07. Propagation Segment Time = (PROPSEG + 1) * Time-Quanta. Time-Quantum
  * = one Sclock period.
  */
 //@{
@@ -1005,7 +1005,7 @@ typedef union _hw_flexcan_ctrl
 /*! @name Register FLEXCAN_CTRL, field PSEG2[18:16] (RW)
  *
  * This 3-bit field defines the length of Phase Buffer Segment 2 in the bit time. The valid
- * programmable values are 1‚7. Phase Buffer Segment 2 = (PSEG2 + 1) x Time-Quanta.
+ * programmable values are 17. Phase Buffer Segment 2 = (PSEG2 + 1) x Time-Quanta.
  */
 //@{
 #define BP_FLEXCAN_CTRL_PSEG2      (16)      //!< Bit position for FLEXCAN_CTRL_PSEG2.
@@ -1026,7 +1026,7 @@ typedef union _hw_flexcan_ctrl
 /*! @name Register FLEXCAN_CTRL, field PSEG1[21:19] (RW)
  *
  * This 3-bit field defines the length of Phase Buffer Segment 1 in the bit time. The valid
- * programmable values are 0‚7. Phase Buffer Segment 1 = (PSEG1 + 1) x Time-Quanta.
+ * programmable values are 07. Phase Buffer Segment 1 = (PSEG1 + 1) x Time-Quanta.
  */
 //@{
 #define BP_FLEXCAN_CTRL_PSEG1      (19)      //!< Bit position for FLEXCAN_CTRL_PSEG1.
@@ -1048,7 +1048,7 @@ typedef union _hw_flexcan_ctrl
  *
  * This 2-bit field defines the maximum number of time quanta One time quantum is equal to the
  * Sclock period. that a bit time can be changed by one re-synchronization. The valid programmable
- * values are 0‚3. Resync Jump Width = RJW + 1.
+ * values are 03. Resync Jump Width = RJW + 1.
  */
 //@{
 #define BP_FLEXCAN_CTRL_RJW      (22)      //!< Bit position for FLEXCAN_CTRL_RJW.
@@ -1177,7 +1177,7 @@ typedef union _hw_flexcan_timer
  *
  * Supports individual masks per message buffer, setting the BCC bit in MCR causes the RXGMASK
  * Register to have no effect on the block operation. RXGMASK is used as acceptance mask for all Rx
- * message buffers, excluding message buffers 14‚ 15, which have individual mask registers. When the
+ * message buffers, excluding message buffers 14 15, which have individual mask registers. When the
  * FEN bit in MCR is set (FIFO enabled), the RXGMASK also applies to all elements of the ID filter
  * table, except elements 6-7, which have individual masks. The contents of this register must be
  * programmed while the block is in Freeze Mode, and must not be modified when the block is
@@ -1394,7 +1394,7 @@ typedef union _hw_flexcan_rx15mask
  * register. If desired, software can poll the register to discover when the data was actually
  * written. FLEXCAN responds to any bus state as described in the protocolthat is transmit Error
  * Active or Error Passive flag, delay its transmission start time (Error Passive) and avoid any
- * influence on the bus when in ‚ Bus Off state. The following are the basic rules for FLEXCAN bus
+ * influence on the bus when in  Bus Off state. The following are the basic rules for FLEXCAN bus
  * state transitions. If the value of Tx_Err_Counter or Rx_Err_Counter increases to be greater than
  * or equal to 128, the FLT_CONF field in the Error and Status Register is updated to reflect Error
  * Passive state. If the FLEXCAN state is Error Passive and either Tx_Err_Counter or Rx_Err_Counter
@@ -1501,9 +1501,9 @@ typedef union _hw_flexcan_ecr
  * Reset value: 0x00000000
  *
  * This register reflects various error conditions. Four of these error conditions may be programed
- * to signal an interrupt to the ARM. The reported error conditions (bits 15‚ 10) are those that
+ * to signal an interrupt to the ARM. The reported error conditions (bits 15 10) are those that
  * occurred since the last time the ARM read this register. The ARM read action clears (bits
- * 15‚10)(bits . (Bits 9‚ 4) (bits are status bits. Most bits in this register are read only, except
+ * 1510)(bits . (Bits 9 4) (bits are status bits. Most bits in this register are read only, except
  * TWRN_INT, RWRN_INT, BOFF_INT, WAK_INT and ERR_INT, that are interrupt flags that can be cleared
  * by writing 1 to them (writing 0 has no effect).
  */
@@ -1691,7 +1691,7 @@ typedef union _hw_flexcan_esr
  *
  * Values:
  * - 0 - No such occurrence
- * - 1 - Rx_Err_Counter ℜ≥ 96
+ * - 1 - Rx_Err_Counter  96
  */
 //@{
 #define BP_FLEXCAN_ESR_RX_WRN      (8)      //!< Bit position for FLEXCAN_ESR_RX_WRN.
@@ -1707,7 +1707,7 @@ typedef union _hw_flexcan_esr
  *
  * Values:
  * - 0 - No such occurrence
- * - 1 - TX_Err_Counter ℜ≥ 96
+ * - 1 - TX_Err_Counter  96
  */
 //@{
 #define BP_FLEXCAN_ESR_TX_WRN      (9)      //!< Bit position for FLEXCAN_ESR_TX_WRN.
@@ -1828,7 +1828,7 @@ typedef union _hw_flexcan_esr
  *
  * Values:
  * - 0 - No such occurrence
- * - 1 - The Rx error counter transition from < 96 to ℜ≥ 96
+ * - 1 - The Rx error counter transition from < 96 to  96
  */
 //@{
 #define BP_FLEXCAN_ESR_RWRN_INT      (16)      //!< Bit position for FLEXCAN_ESR_RWRN_INT.
@@ -1855,7 +1855,7 @@ typedef union _hw_flexcan_esr
  *
  * Values:
  * - 0 - No such occurrence
- * - 1 - The Tx error counter transition from < 96 to ℜ≥ 96
+ * - 1 - The Tx error counter transition from < 96 to  96
  */
 //@{
 #define BP_FLEXCAN_ESR_TWRN_INT      (17)      //!< Bit position for FLEXCAN_ESR_TWRN_INT.

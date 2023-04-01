@@ -1,10 +1,10 @@
 # STM32L496-Nucleo BSP Introduction
 
-[中文](README_zh.md) 
+[](README_zh.md) 
 
 ## MCU: STM32L496ZG @80MHz, 1024KB FLASH, 320KB RAM
 
-The STM32L496xx devices are the ultra-low-power microcontrollers based on the high-performance Arm® Cortex®-M4 32-bit RISC core operating at a frequency of up to 80 MHz. The Cortex-M4 core features a Floating point unit (FPU) single precision which supports all Arm® single-precision data-processing instructions and data types. It also implements a full set of DSP instructions and a memory protection unit (MPU) which enhances application security.
+The STM32L496xx devices are the ultra-low-power microcontrollers based on the high-performance Arm Cortex-M4 32-bit RISC core operating at a frequency of up to 80 MHz. The Cortex-M4 core features a Floating point unit (FPU) single precision which supports all Arm single-precision data-processing instructions and data types. It also implements a full set of DSP instructions and a memory protection unit (MPU) which enhances application security.
 
 The STM32L496xx devices embed high-speed memories (up to 1 Mbyte of Flash memory, 320 Kbyte of SRAM), a flexible external memory controller (FSMC) for static memories (for devices with packages of 100 pins and more), a Quad SPI flash memories interface (available on all packages) and an extensive range of enhanced I/Os and peripherals connected to two APB buses, two AHB buses and a 32-bit multi-AHB bus matrix.
 The STM32L496xx devices embed several protection mechanisms for embedded Flash memory and SRAM: readout protection, write protection, proprietary code readout protection and Firewall.
@@ -16,29 +16,29 @@ They also feature standard and advanced communication interfaces.
 
 - Ultra-low-power with FlexPowerControl
   - 1.71 V to 3.6 V power supply
-  - -40 °C to 85/125 °C temperature range
+  - -40 C to 85/125 C temperature range
   - 320 nA in VBAT mode: supply for RTC and 32x32-bit backup registers
   - 25 nA Shutdown mode (5 wakeup pins)
   - 108 nA Standby mode (5 wakeup pins)
   - 426 nA Standby mode with RTC
-  - 2.57 µA Stop 2 mode, 2.86 µA Stop 2 with RTC
-  - 91 µA/MHz run mode (LDO Mode)
-  - 37 μA/MHz run mode (@3.3 V SMPS Mode)
+  - 2.57 A Stop 2 mode, 2.86 A Stop 2 with RTC
+  - 91 A/MHz run mode (LDO Mode)
+  - 37 A/MHz run mode (@3.3 V SMPS Mode)
   - Batch acquisition mode (BAM)
-  - 5 µs wakeup from Stop mode
+  - 5 s wakeup from Stop mode
   - Brown out reset (BOR) in all modes except shutdown
   - Interconnect matrix
-- Core: Arm® 32-bit Cortex®-M4 CPU with FPU, Adaptive real-time accelerator (ART Accelerator™) allowing 0-wait-state execution from Flash memory, frequency up to 80 MHz, MPU, 100 DMIPS and DSP instructions
+- Core: Arm 32-bit Cortex-M4 CPU with FPU, Adaptive real-time accelerator (ART Accelerator) allowing 0-wait-state execution from Flash memory, frequency up to 80 MHz, MPU, 100 DMIPS and DSP instructions
 - Performance benchmark
   - 1.25 DMIPS/MHz (Drystone 2.1)
-  - 273.55 Coremark® (3.42 Coremark/MHz @ 80 MHz)
+  - 273.55 Coremark (3.42 Coremark/MHz @ 80 MHz)
 - Energy benchmark
-  - 279 ULPMark™ CP score
-  - 80.2 ULPMark™ PP score
+  - 279 ULPMark CP score
+  - 80.2 ULPMark PP score
 - 16 x timers: 2 x 16-bit advanced motor-control, 2 x 32-bit and 5 x 16-bit general purpose, 2 x 16-bit basic, 2 x low-power 16-bit timers (available in Stop mode), 2 x watchdogs, SysTick timer
 - RTC with HW calendar, alarms and calibration
 - Up to 136 fast I/Os, most 5 V-tolerant, up to 14 I/Os with independent supply down to 1.08 V
-- Dedicated Chrom-ART Accelerator™ for enhanced graphic content creation (DMA2D)
+- Dedicated Chrom-ART Accelerator for enhanced graphic content creation (DMA2D)
 - 8- to 14-bit camera interface up to 32 MHz (black&white) or 10 MHz (color)
 - Memories
   - Up to 1 MB Flash, 2 banks read-while-write, proprietary code readout protection
@@ -49,16 +49,16 @@ They also feature standard and advanced communication interfaces.
 - Clock Sources
   - 4 to 48 MHz crystal oscillator
   - 32 kHz crystal oscillator for RTC (LSE)
-  - Internal 16 MHz factory-trimmed RC (±1%)
-  - Internal low-power 32 kHz RC (±5%)
-  - Internal multispeed 100 kHz to 48 MHz oscillator, auto-trimmed by LSE (better than ±0.25% accuracy)
+  - Internal 16 MHz factory-trimmed RC (1%)
+  - Internal low-power 32 kHz RC (5%)
+  - Internal multispeed 100 kHz to 48 MHz oscillator, auto-trimmed by LSE (better than 0.25% accuracy)
   - Internal 48 MHz with clock recovery
   - 3 PLLs for system clock, USB, audio, ADC
-- LCD 8 × 40 or 4 × 44 with step-up converter
+- LCD 8  40 or 4  44 with step-up converter
 - Up to 24 capacitive sensing channels: support touchkey, linear and rotary touch sensors
 - 4 x digital filters for sigma delta modulator
 - Rich analog peripherals (independent supply)
-  - 3 × 12-bit ADC 5 Msps, up to 16-bit with hardware oversampling, 200 µA/Msps
+  - 3  12-bit ADC 5 Msps, up to 16-bit with hardware oversampling, 200 A/Msps
   - 2 x 12-bit DAC output channels, low-power sample and hold
   - 2 x operational amplifiers with built-in PGA
   - 2 x ultra-low-power comparators
@@ -75,7 +75,7 @@ They also feature standard and advanced communication interfaces.
 - 14-channel DMA controller
 - True random number generator
 - CRC calculation unit, 96-bit unique ID
-- Development support: serial wire debug (SWD), JTAG, Embedded Trace Macrocell™
+- Development support: serial wire debug (SWD), JTAG, Embedded Trace Macrocell
 
 
 

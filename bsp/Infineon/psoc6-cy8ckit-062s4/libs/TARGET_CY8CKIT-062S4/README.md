@@ -71,10 +71,10 @@ See the [BSP API Reference Manual][api] for the complete list of the provided in
 * [CY8CKIT-062S4 Documentation](http://www.cypress.com/CY8CKIT-062S4)
 * [Cypress Semiconductor, an Infineon Technologies Company](http://www.cypress.com)
 * [Infineon GitHub](https://github.com/infineon)
-* [ModusToolbox™](https://www.cypress.com/products/modustoolbox-software-environment)
+* [ModusToolbox](https://www.cypress.com/products/modustoolbox-software-environment)
 
 [api]: https://infineon.github.io/TARGET_CY8CKIT-062S4/html/modules.html
 [settings]: https://infineon.github.io/TARGET_CY8CKIT-062S4/html/md_bsp_settings.html
 
 ---
-© Cypress Semiconductor Corporation (an Infineon company) or an affiliate of Cypress Semiconductor Corporation, 2019-2021.
+ Cypress Semiconductor Corporation (an Infineon company) or an affiliate of Cypress Semiconductor Corporation, 2019-2021.

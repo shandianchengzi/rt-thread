@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fsata.h
  * Date: 2022-02-10 14:55:11
  * LastEditTime: 2022-02-18 09:05:24
- * Description:  This files is for sata ctrl function definition
+ * Description: This files is for sata ctrl function definition
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 #ifndef BSP_DRIVERS_FSATA_H
@@ -173,20 +173,20 @@ FSataAhciRecvFis;
 /* command list structure - command header */
 typedef struct
 {
-    u32 description_info;/* DW 0 – Description Information */
+    u32 description_info;/* DW 0  Description Information */
     u32 status; /* DW 1 - Command Status */
-    u32 tbl_addr; /* DW 2 – Command Table Base Address */
-    u32 tbl_addr_hi; /* DW 3 – Command Table Base Address Upper */
+    u32 tbl_addr; /* DW 2  Command Table Base Address */
+    u32 tbl_addr_hi; /* DW 3  Command Table Base Address Upper */
     u32 reserved[4];
 } FSataAhciCommandList;
 
 /* command table - PRDT */
 typedef struct
 {
-    u32 addr_low; /* DW 0 – Data Base Address */
-    u32 addr_high; /* DW 1 – Data Base Address Upper */
-    u32 reserved; /* DW 2 – Reserved */
-    u32 data_byte; /* DW 3 – Description Information */
+    u32 addr_low; /* DW 0  Data Base Address */
+    u32 addr_high; /* DW 1  Data Base Address Upper */
+    u32 reserved; /* DW 2  Reserved */
+    u32 data_byte; /* DW 3  Description Information */
 } FSataAhciCommandTablePrdt;
 
 /* ahci port information structure */
@@ -216,7 +216,7 @@ typedef struct
     FSataAhciPorts port[FSATA_AHCI_MAX_PORTS];
     u16 *ataid[FSATA_AHCI_MAX_PORTS];
     u32 n_ports;    /* maximum number of ports supported by the ahci, Number of Ports (NP)*/
-    u32 port_map;   /* each bit indicate port can be used, If a bit is set to ‘1’, the corresponding port is available for software to use. */
+    u32 port_map;   /* each bit indicate port can be used, If a bit is set to 1, the corresponding port is available for software to use. */
     u32 link_port_map; /* each bit indicate port linkup sata device */
     u32 private_data;  /* each bit indicate port sata achi started */
 

@@ -86,7 +86,7 @@ static void hpm_sdmmc_request(struct rt_mmcsd_host *host, struct rt_mmcsd_req *r
 
     data = cmd->data;
 
-    /*　configure command　*/
+    /*configure command*/
     sdxc_cmd.cmd_index = cmd->cmd_code;
     sdxc_cmd.cmd_argument = cmd->arg;
     if (cmd->cmd_code == STOP_TRANSMISSION)

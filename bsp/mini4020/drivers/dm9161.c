@@ -315,7 +315,7 @@ static void update_link_speed(unsigned short phy_addr)
     {
         mac_cfg |= 0x800;           /* set speed 100 M */
         //bmcr &=(~0x2000);
-        //write_phy(lp->phy_address, MII_BMCR, bmcr); //将dm9161的速度设为10M
+        //write_phy(lp->phy_address, MII_BMCR, bmcr); //dm916110M
         if (duplex == DUPLEX_FULL)              /* 100 Full Duplex */
             mac_cfg |= 0x400;
         else                                    /* 100 Half Duplex */
@@ -376,7 +376,7 @@ static rt_err_t rt_dm9161_init(rt_device_t dev)
                 //get_mac_address(dev);     /* Get ethernet address and store it in dev->dev_addr */
                 update_mac_address();   /* Program ethernet address into MAC */
 
-                //用哈希寄存器比较当前群播地址，全双工，添加CRC校验，短数据帧进行填充
+                //CRC
                 sep_emac_write(MAC_CTRL, 0xa413);
                 #warning ""
                 update_link_speed(phy_address);
@@ -407,7 +407,7 @@ static void sepether_start(void)
 
     sep_emac_write(MAC_TXBD_NUM,MAX_TX_DESCR);
 
-    //初始化发送和接收描述符
+    //
     for (i = 0; i < MAX_TX_DESCR; i++)
     {
         tempaddr=(MAC_TX_BD+i*8);
@@ -453,17 +453,17 @@ static rt_err_t rt_dm9161_open(rt_device_t dev, rt_uint16_t oflag)
     enable_mdi();
     mask_irq(28);
 
-    sep_emac_write(MAC_INTMASK,0x0);  //首先屏蔽中断
+    sep_emac_write(MAC_INTMASK,0x0);  //
 
     sepether_start();
 
     /* Enable PHY interrupt */
     *(volatile unsigned long*)GPIO_PORTA_DIR |= 0x0080 ;          //1 stands for in
     *(volatile unsigned long*)GPIO_PORTA_SEL |= 0x0080 ;       //for common use
-    *(volatile unsigned long*)GPIO_PORTA_INCTL |= 0x0080;      //中断输入方式
-    *(volatile unsigned long*)GPIO_PORTA_INTRCTL |= (0x3UL<<14);    //中断类型为低电平解发
-    *(volatile unsigned long*)GPIO_PORTA_INTRCLR |= 0x0080;    //清除中断
-    *(volatile unsigned long*)GPIO_PORTA_INTRCLR = 0x0000;          //清除中断
+    *(volatile unsigned long*)GPIO_PORTA_INCTL |= 0x0080;      //
+    *(volatile unsigned long*)GPIO_PORTA_INTRCTL |= (0x3UL<<14);    //
+    *(volatile unsigned long*)GPIO_PORTA_INTRCLR |= 0x0080;    //
+    *(volatile unsigned long*)GPIO_PORTA_INTRCLR = 0x0000;          //
 
     rt_hw_interrupt_install(INTSRC_MAC, rt_dm9161_isr, RT_NULL, "EMAC");
     enable_irq(INTSRC_EXINT7);
@@ -478,7 +478,7 @@ static rt_err_t rt_dm9161_open(rt_device_t dev, rt_uint16_t oflag)
 
     /************************************************************************************/
     /* Enable MAC interrupts */
-    sep_emac_write(MAC_INTMASK,0xff);  //open中断
+    sep_emac_write(MAC_INTMASK,0xff);  //open
     sep_emac_write(MAC_INTSRC,0xff);   //clear all mac irq
     unmask_irq(28);
     disable_mdi();
@@ -501,7 +501,7 @@ static rt_err_t rt_dm9161_close(rt_device_t dev)
 //  disable_phyirq(dev);
 
     /* Disable MAC interrupts */
-    sep_emac_write(MAC_INTMASK,0);  //屏蔽中断
+    sep_emac_write(MAC_INTMASK,0);  //
 
 //  INT_DISABLE(28);
 

@@ -92,7 +92,7 @@ typedef struct {
  * ENET0_RMII_TXCLK_SEL (RW)
  *
  * default to use internal clk.
- * set from pad， two option here:
+ * set from pad two option here:
  *   internal 50MHz clock out to pad then in;
  *   use external clock;
  */

@@ -17,7 +17,7 @@
   * @brief  GPIO initialization.
   * @param  GPIOx: GPIOB~GPIOF
             InitStruct:GPIO configuration.
-                GPIO_Pin: can use the ¡®|¡¯ operator
+                GPIO_Pin: can use the | operator
                     GPIO_Pin_0 ~ GPIO_Pin_15 or GPIO_Pin_All
                 GPIO_Mode:
                     GPIO_Mode_INPUT
@@ -73,7 +73,7 @@ void GPIOBToF_Init(GPIO_TypeDef *GPIOx, GPIO_InitType *InitStruct)
   * @brief  GPIOA initialization.
   * @param  GPIOx: GPIOA
             InitStruct:GPIO configuration.
-                GPIO_Pin: can use the ¡®|¡¯ operator
+                GPIO_Pin: can use the | operator
                     GPIO_Pin_0 ~ GPIO_Pin_15 or GPIO_Pin_All
                 GPIO_Mode:
                     GPIO_Mode_INPUT
@@ -266,7 +266,7 @@ uint16_t GPIOA_ReadOutputData(GPIOA_TypeDef* GPIOx)
 /**
   * @brief  Set output data register bit.
   * @param  GPIOx: GPIOB~GPIOF
-            GPIO_Pin: can use the ¡®|¡¯ operator
+            GPIO_Pin: can use the | operator
                 GPIO_Pin_0 ~ GPIO_Pin_15 or GPIO_Pin_All
   * @retval None.
   */
@@ -282,7 +282,7 @@ void GPIOBToF_SetBits(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
 /**
   * @brief  Set output data register bit.
   * @param  GPIOx: GPIOA
-            GPIO_Pin: can use the ¡®|¡¯ operator
+            GPIO_Pin: can use the | operator
                 GPIO_Pin_0~GPIO_Pin_15 or GPIO_Pin_All
   * @retval None.
   */
@@ -298,7 +298,7 @@ void GPIOA_SetBits(GPIOA_TypeDef* GPIOx, uint16_t GPIO_Pin)
 /**
   * @brief  Reset output data register bit.
   * @param  GPIOx: GPIOB~GPIOF
-            GPIO_Pin: can use the ¡®|¡¯ operator
+            GPIO_Pin: can use the | operator
                 GPIO_Pin_0~GPIO_Pin_15 or GPIO_Pin_All
   * @retval None.
   */
@@ -314,7 +314,7 @@ void GPIOBToF_ResetBits(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
 /**
   * @brief  Reset output data register bit.
   * @param  GPIOx: GPIOA 
-            GPIO_Pin: can use the ¡®|¡¯ operator
+            GPIO_Pin: can use the | operator
                 GPIO_Pin_0~GPIO_Pin_15 or GPIO_Pin_All
   * @retval None.
   */
@@ -330,7 +330,7 @@ void GPIOA_ResetBits(GPIOA_TypeDef* GPIOx, uint16_t GPIO_Pin)
 /**
   * @brief  Write output data register bit.
   * @param  GPIOx: GPIOB~GPIOF
-            GPIO_Pin: can use the ¡®|¡¯ operator
+            GPIO_Pin: can use the | operator
                 GPIO_Pin_0~GPIO_Pin_15 or GPIO_Pin_All
             val:value write to register bit.
   * @retval None.
@@ -355,7 +355,7 @@ void GPIOBToF_WriteBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, uint8_t val)
 /**
   * @brief  Write output data register bit.
   * @param  GPIOx: GPIOA
-            GPIO_Pin: can use the ¡®|¡¯ operator
+            GPIO_Pin: can use the | operator
                  GPIO_Pin_0~GPIO_Pin_15 or GPIO_Pin_All
             val:value write to register bit.
   * @retval None.
@@ -531,7 +531,7 @@ void GPIO_PLLDIV_Config(uint32_t Divider)
 
 /**
   * @brief  GPIOA de-glitch circuit control.
-  * @param  GPIO_Pin: can use the ¡®|¡¯ operator
+  * @param  GPIO_Pin: can use the | operator
                  GPIO_Pin_0~GPIO_Pin_15 or GPIO_Pin_All
             NewState:
                ENABLE 

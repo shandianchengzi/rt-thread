@@ -110,13 +110,13 @@
 
 /**
  * \brief   
- *          OPA 初始化
+ *          OPA 
  *
- * \param   无
- * \param   无
+ * \param   
+ * \param   
  *
- * \retval  无
- * \retval  无
+ * \retval  
+ * \retval  
  */
 en_result_t OPA_Init(void)
 {
@@ -138,13 +138,13 @@ en_result_t OPA_Init(void)
 
 /**
  * \brief   
- *          OPA 去初始化
+ *          OPA 
  *
- * \param   无
- * \param   无
+ * \param   
+ * \param   
  *
- * \retval  无
- * \retval  无
+ * \retval  
+ * \retval  
  */
 en_result_t OPA_DeInit(void)
 {
@@ -160,13 +160,13 @@ en_result_t OPA_DeInit(void)
 
 /**
  * \brief   
- *          OPA 基本功能设置
+ *          OPA 
  *
- * \param   [in]  en_opa_channel_t  使用那个通道的OPA
- * \param   [in]  en_opa_modesel_t  OPA模式选择
-  * \param  [in]  stc_opa_gain_config_t  OPA增益选择
+ * \param   [in]  en_opa_channel_t  OPA
+ * \param   [in]  en_opa_modesel_t  OPA
+  * \param  [in]  stc_opa_gain_config_t  OPA
  *
- * \retval  无
+ * \retval  
  */
 en_result_t OPA_Operate(en_opa_channel_t enchannel ,en_opa_modesel_t enMode,stc_opa_gain_config_t *pstrGain)
 {
@@ -267,11 +267,11 @@ en_result_t OPA_Operate(en_opa_channel_t enchannel ,en_opa_modesel_t enMode,stc_
 
 /**
  * \brief   
- *          OPA 基本功能设置  (级联正向和反向模式以及仪表模式)
- * \param   [in]  en_opa_modesel_t  OPA模式选择
-  * \param  [in]  stc_opa_gain_config_t  OPA增益选择
+ *          OPA   ()
+ * \param   [in]  en_opa_modesel_t  OPA
+  * \param  [in]  stc_opa_gain_config_t  OPA
  *
- * \retval  无
+ * \retval  
  */
 en_result_t OPA_ThreeOperate(en_opa_modesel_t enMode,stc_opa_gain_config_t *pstrGain0,stc_opa_gain_config_t *pstrGain1,stc_opa_gain_config_t *pstrGain2)
 {
@@ -346,10 +346,10 @@ en_result_t OPA_ThreeOperate(en_opa_modesel_t enMode,stc_opa_gain_config_t *pstr
 
 /**
  * \brief   
- *          OPA 仪表模式
-  * \param  [in]  en_opa_metergain_t  OPA增益选择
+ *          OPA 
+  * \param  [in]  en_opa_metergain_t  OPA
  *
- * \retval  无
+ * \retval  
  */
 en_result_t OPA_MeterOperate(en_opa_metergain_t enGainMode)
 {
@@ -402,10 +402,10 @@ en_result_t OPA_MeterOperate(en_opa_metergain_t enGainMode)
 }
 /**
  * \brief   
- *          OPA 校正模式
-  * \param  [in]  en_opa_calsel_t  OPA校正模式选择
+ *          OPA 
+  * \param  [in]  en_opa_calsel_t  OPA
  *
- * \retval  无
+ * \retval  
  */
 en_result_t OPA_Cal(en_opa_calsel_t enCalMode)
 {

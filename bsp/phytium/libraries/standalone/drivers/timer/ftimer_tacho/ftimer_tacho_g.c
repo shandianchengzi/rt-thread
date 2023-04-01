@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: ftimer_tacho_g.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 09:09:07
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 /***************************** Include Files *********************************/
@@ -56,7 +56,7 @@ void FTachoGetDefConfig(u32 tacho_id, FTimerTachoConfig *config_p)
     config_p->timer_mode = FTIMER_RESTART;
     config_p->edge_mode = FTACHO_RISING_EDGE;
     config_p->jitter_level = 0;
-    config_p->plus_num = TACHO_PERIOD;/*采样周期越长，能够检测到的单位时间脉冲越多，能够检测更小的频率*/
+    config_p->plus_num = TACHO_PERIOD;/**/
     config_p->clear_cnt = FALSE;
     config_p->force_load = TRUE;
 }

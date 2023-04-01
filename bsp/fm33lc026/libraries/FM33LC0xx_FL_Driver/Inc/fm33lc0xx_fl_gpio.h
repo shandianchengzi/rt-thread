@@ -50,16 +50,16 @@ typedef struct
     /*! PIN */
     uint32_t pin;
 
-    /*! 功能模式 */
+    /*!  */
     uint32_t mode;
 
-    /*! 输出类型 */
+    /*!  */
     uint32_t outputType;
 
-    /*! 上拉使能 */
+    /*!  */
     uint32_t pull;
 
-    /*! 数字功能重定向 */
+    /*!  */
     uint32_t remapPin;
 
 } FL_GPIO_InitTypeDef;
@@ -69,7 +69,7 @@ typedef struct
   */
 typedef struct
 {
-    /*! 触发边沿 */
+    /*!  */
     uint32_t polarity;
 
 } FL_WKUP_InitTypeDef;

@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fqspi.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-03-28 09:00:41
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.1    wangxiaodong  2021.11.12  re-construct
  * 1.2    wangxiaodong  2022.3.27   re-construct
  */
@@ -42,7 +42,7 @@
  * @msg:  Initializes a specific instance such that it is ready to be used.
  * @param {FQspiCtrl} *pctrl, instance of FQSPI controller
  * @param {FQspiConfig} *input_config_p, Configuration parameters of FQSPI
- * @return err code information, FQSPI_SUCCESS indicates success，others indicates failed
+ * @return err code information, FQSPI_SUCCESS indicates successothers indicates failed
  */
 FError FQspiCfgInitialize(FQspiCtrl *pctrl, const FQspiConfig *input_config_p)
 {
@@ -141,7 +141,7 @@ void FQspiSetCapacityAndNum(FQspiCtrl *pctrl)
  * @name: FQspiRdCfgConfig
  * @msg:  config read config register
  * @param {FQspiCtrl} *pctrl, instance of FQSPI controller
- * @return err code information, FQSPI_SUCCESS indicates success，others indicates failed
+ * @return err code information, FQSPI_SUCCESS indicates successothers indicates failed
  */
 FError FQspiRdCfgConfig(FQspiCtrl *pctrl)
 {
@@ -192,7 +192,7 @@ FError FQspiRdCfgConfig(FQspiCtrl *pctrl)
  * @name: FQspiWrCfgConfig
  * @msg:  config write config register
  * @param {FQspiCtrl} *pctrl, instance of FQSPI controller
- * @return err code information, FQSPI_SUCCESS indicates success，others indicates failed
+ * @return err code information, FQSPI_SUCCESS indicates successothers indicates failed
  */
 FError FQspiWrCfgConfig(FQspiCtrl *pctrl)
 {
@@ -221,7 +221,7 @@ FError FQspiWrCfgConfig(FQspiCtrl *pctrl)
  * @name: FQspiCommandPortConfig
  * @msg:  config command port register
  * @param {FQspiCtrl} *pctrl, instance of FQSPI controller
- * @return err code information, FQSPI_SUCCESS indicates success，others indicates failed
+ * @return err code information, FQSPI_SUCCESS indicates successothers indicates failed
  */
 FError FQspiCommandPortConfig(FQspiCtrl *pctrl)
 {
@@ -293,7 +293,7 @@ void FQspiChannelSet(FQspiCtrl *pctrl, FQspiChipCS channel)
  * @msg:  config qspi cs timing
  * @param {FQspiCtrl} *pctrl, instance of FQSPI controller
  * @param {FQspiCsTimingCfgDef} cs_timing_cfg, cs timing
- * @return err code information, FQSPI_SUCCESS indicates success，others indicates failed
+ * @return err code information, FQSPI_SUCCESS indicates successothers indicates failed
  */
 void FQspiCsTimingSet(FQspiCtrl *pctrl, FQspiCsTimingCfgDef *cs_timing_cfg)
 {

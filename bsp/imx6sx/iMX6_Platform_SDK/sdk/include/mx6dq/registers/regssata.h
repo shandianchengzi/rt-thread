@@ -136,7 +136,7 @@ typedef union _hw_sata_cap
 /*! @name Register SATA_CAP, field NP[4:0] (RO)
  *
  * Number of Ports. 0's based value indicating the number of Ports supported by the SATA block: The
- * options for this field are: • 0x00: 1 Port • 0x01: 2 Ports • 0x02: 3 Ports Reset Value: 0x00
+ * options for this field are:  0x00: 1 Port  0x01: 2 Ports  0x02: 3 Ports Reset Value: 0x00
  */
 //@{
 #define BP_SATA_CAP_NP      (0)      //!< Bit position for SATA_CAP_NP.
@@ -786,8 +786,8 @@ typedef union _hw_sata_ccc_ctl
  * Command Completions. This field specifies the number of command completions that are necessary to
  * cause a CCC interrupt. The value 0x00 for this field disables CCC interrupts being generated
  * based on the number of commands completed. In this case, CCC interrupts are only generated based
- * on the timer. Software loads this value prior to enabling CCC: Field access is: • RW when
- * SATA_CCC_CTL[EN]==0 • RO when SATA_CCC_CTL[EN]==1
+ * on the timer. Software loads this value prior to enabling CCC: Field access is:  RW when
+ * SATA_CCC_CTL[EN]==0  RO when SATA_CCC_CTL[EN]==1
  */
 //@{
 #define BP_SATA_CCC_CTL_CC      (8)      //!< Bit position for SATA_CCC_CTL_CC.
@@ -808,8 +808,8 @@ typedef union _hw_sata_ccc_ctl
 /*! @name Register SATA_CCC_CTL, field TV[31:16] (RW)
  *
  * Time-out Value. This field specifies the CCC time-out value in 1ms intervals. The software loads
- * this value prior to enabling CCC. The options for this field are: • RW when SATA_CCC_CTL[EN]==0.
- * • RO when SATA_CCC_CTL[EN]==1. A time-out value of 0x0000 is reserved and should not be used.
+ * this value prior to enabling CCC. The options for this field are:  RW when SATA_CCC_CTL[EN]==0.
+ *  RO when SATA_CCC_CTL[EN]==1. A time-out value of 0x0000 is reserved and should not be used.
  */
 //@{
 #define BP_SATA_CCC_CTL_TV      (16)      //!< Bit position for SATA_CCC_CTL_TV.
@@ -1206,11 +1206,11 @@ typedef union _hw_sata_bistcr
 /*! @name Register SATA_BISTCR, field LLC[10:8] (RW)
  *
  * Link Layer Control This field controls the Port Link Layer functions: scrambler, descrambler, and
- * repeat primitive drop. Note the different meanings for normal and BIST modes of operation: •
+ * repeat primitive drop. Note the different meanings for normal and BIST modes of operation: 
  * Bit8-SCRAM The options for this field are: 0 Scrambler disabled in normal mode, enabled in BIST
- * mode 1 Scrambler enabled in normal mode, disabled in BIST mode • Bit9-DESCRAM The options for
+ * mode 1 Scrambler enabled in normal mode, disabled in BIST mode  Bit9-DESCRAM The options for
  * this field are: 0 Descrambler disabled in normal mode, enabled in BIST mode 1 Descrambler enabled
- * in normal mode, disabled in BIST mode • Bit10-RPD The options for this field are: 0 Repeat
+ * in normal mode, disabled in BIST mode  Bit10-RPD The options for this field are: 0 Repeat
  * primitive drop function disabled in normal mode, NA in BIST mode. 1 Repeat primitive drop
  * function enabled in normal mode, NA in BIST mode. The SCRAM bit is cleared (enabled) by the Port
  * when the Port enters a responder far-end transmit BIST mode with scrambling enabled
@@ -1637,7 +1637,7 @@ typedef union _hw_sata_oobr
  * Reset value: 0x00000000
  *
  * This 32-bit register is used for general purpose control. This register only exists when GP_CTRL
- * parameter is set to “Include” otherwise this location is reserved. The bits of this register are
+ * parameter is set to Include otherwise this location is reserved. The bits of this register are
  * connected to the corresponding bits of the gp_ctrl output. Resets on power-up (system reset) only
  * to the GP_CTRL_DEF value.
  */
@@ -1703,7 +1703,7 @@ typedef union _hw_sata_gpcr
  * Reset value: 0x00000000
  *
  * This 32-bit register is used to monitor the general purpose status. This register only exists
- * when GP_STAT parameter is set to “Include”, otherwise, this location is reserved. The bits of
+ * when GP_STAT parameter is set to Include, otherwise, this location is reserved. The bits of
  * this register reflect the state of the corresponding bits of the gp_status input. Signals
  * connected to the gp_status input can be asynchronous to any of the DWC_ahsata clocks, however
  * they must not change faster than five hclk/aclk periods, otherwise the GPSR register may never be
@@ -1808,8 +1808,8 @@ typedef union _hw_sata_timer1ms
 /*! @name Register SATA_TIMER1MS, field TIMV[19:0] (RW)
  *
  * 1ms Timer Value This field contains the following value for the internal timer to generate 1-ms
- * tick: Fhclk*1000 where Fhclk = AHB clock frequency in MHz The options for this field are: • RW
- * when SATA_CCC_CTL[EN]==0 • RO when SATA_CCC_CTL[EN]==1.
+ * tick: Fhclk*1000 where Fhclk = AHB clock frequency in MHz The options for this field are:  RW
+ * when SATA_CCC_CTL[EN]==0  RO when SATA_CCC_CTL[EN]==1.
  */
 //@{
 #define BP_SATA_TIMER1MS_TIMV      (0)      //!< Bit position for SATA_TIMER1MS_TIMV.
@@ -1883,11 +1883,11 @@ typedef union _hw_sata_testr
  * SATA_P 0 SIG registers become read-write - SATA_P 0 SCTL register - SATA_P 0 SERR register RW1C
  * bits become read-write bits - SATA_P 0 SACT, SATA_P 0 CI, SATA_P 0 SNTF registers become read-
  * write - SATA_P 0 DMACR register - SATA_P 0 PHYCR register - SATA_P 0 PHYSR register becomes read-
- * write Notes: • Interrupt is asserted when any of the SATA_IS register bits is set after setting
- * the corresponding SATA_P 0 IS and SATA_P 0 IE registers and SATA_GHC[IE]=1. • SATA_CAP[SMPS],
+ * write Notes:  Interrupt is asserted when any of the SATA_IS register bits is set after setting
+ * the corresponding SATA_P 0 IS and SATA_P 0 IE registers and SATA_GHC[IE]=1.  SATA_CAP[SMPS],
  * SATA_CAP[SSS], SATA_PI, SATA_P 0 CMD[ESP], SATA_P 0 CMD[CPD], SATA_P 0 CMD[MPSP], and SATA_P 0
  * CMD[HPCP] register bits are HwInit type and can not be used in Test mode. They are written once
- * after power-on reset and become read-only. • Global SATA block reset must be issued
+ * after power-on reset and become read-only.  Global SATA block reset must be issued
  * (SATA_GHC[HR]=1) after TEST_WHEN bit is cleared following the Test mode operation. This bit is
  * used to put the SATA block slave interface into the test mode: The options for this field are:
  *
@@ -2319,9 +2319,9 @@ typedef union _hw_sata_p0is
 /*! @name Register SATA_P0IS, field INFS[26] (RO)
  *
  * Interface Non-fatal Error Status This bit is set when any of the following conditions is
- * detected: • One or more of the following errors are detected during non-data FIS transfer - 10B
+ * detected:  One or more of the following errors are detected during non-data FIS transfer - 10B
  * to 8B Decode Error (SATA_P 0 SERR[DIAG_B]) - Protocol (SATA_P 0 SERR[ERR_P]) - CRC (SATA_P 0
- * SERR[DIAG_C]), - Handshake (SATA_P 0 SERR[DIAG_H]) - PHY Not Ready (SATA_P 0 SERR[ERR_C]); •
+ * SERR[DIAG_C]), - Handshake (SATA_P 0 SERR[DIAG_H]) - PHY Not Ready (SATA_P 0 SERR[ERR_C]); 
  * Command list underflow during read operation (i.e. DMA read) when the software builds command
  * table that has more total bytes than the transaction given to the device.
  */
@@ -2335,12 +2335,12 @@ typedef union _hw_sata_p0is
 
 /*! @name Register SATA_P0IS, field IFS[27] (RO)
  *
- * Interface Fatal Error Status This bit is set when any of the following conditions is detected: •
- * SYNC escape is received from the device during H2D Register or Data FIS transmission; • One or
+ * Interface Fatal Error Status This bit is set when any of the following conditions is detected: 
+ * SYNC escape is received from the device during H2D Register or Data FIS transmission;  One or
  * more of the following errors are detected during Data FIS transfer: - 10B to 8B Decode Error
  * (SATA_P 0 SERR[DIAG_B]) - Protocol (SATA_P 0 SERR[ERR_P]) - CRC (SATA_P 0 SERR[DIAG_C]) -
- * Handshake (SATA_P 0 SERR[DIAG_H]) - PHY Not Ready (SATA_P 0 SERR[ERR_C]) • Unknown FIS is
- * received with good CRC, but the length exceeds 64 bytes; • PRD table byte count is zero. Port DMA
+ * Handshake (SATA_P 0 SERR[DIAG_H]) - PHY Not Ready (SATA_P 0 SERR[ERR_C])  Unknown FIS is
+ * received with good CRC, but the length exceeds 64 bytes;  PRD table byte count is zero. Port DMA
  * transitions to a fatal state until the software clears SATA_P 0 CMD[ST] bit or resets the
  * interface by way of Port or Global reset.
  */
@@ -2456,7 +2456,7 @@ typedef union _hw_sata_p0ie
 /*! @name Register SATA_P0IE, field DHRE[0] (RW)
  *
  * Device to Host Register FIS Interrupt Dependencies: when the following conditions are true, the
- * intrq output signal is asserted: • This bit=1 • SATA_GHC[IE]=1 • SATA_P 0 IS[DHRS]=1
+ * intrq output signal is asserted:  This bit=1  SATA_GHC[IE]=1  SATA_P 0 IS[DHRS]=1
  */
 //@{
 #define BP_SATA_P0IE_DHRE      (0)      //!< Bit position for SATA_P0IE_DHRE.
@@ -2477,7 +2477,7 @@ typedef union _hw_sata_p0ie
 /*! @name Register SATA_P0IE, field PSE[1] (RW)
  *
  * PIO Setup FIS Interrupt Enable Dependencies: when the following conditions are true, the intrq
- * output signal is asserted: • This bit=1 • SATA_GHC[IE]=1 • SATA_P 0 IS[PSS]=1
+ * output signal is asserted:  This bit=1  SATA_GHC[IE]=1  SATA_P 0 IS[PSS]=1
  */
 //@{
 #define BP_SATA_P0IE_PSE      (1)      //!< Bit position for SATA_P0IE_PSE.
@@ -2498,7 +2498,7 @@ typedef union _hw_sata_p0ie
 /*! @name Register SATA_P0IE, field DSE[2] (RW)
  *
  * DMA Setup FIS Interrupt Enable Dependencies: when the following conditions are true, the intrq
- * output signal is asserted: • This bit=1 • SATA_GHC[IE]=1 • SATA_P 0 IS[DSS]=1
+ * output signal is asserted:  This bit=1  SATA_GHC[IE]=1  SATA_P 0 IS[DSS]=1
  */
 //@{
 #define BP_SATA_P0IE_DSE      (2)      //!< Bit position for SATA_P0IE_DSE.
@@ -2519,7 +2519,7 @@ typedef union _hw_sata_p0ie
 /*! @name Register SATA_P0IE, field SDBE[3] (RW)
  *
  * Set Device Bits FIS Interrupt Enable Dependencies: when the following conditions are true, the
- * intrq output signal is asserted: • This bit=1 • SATA_GHC[IE]=1 • SATA_P 0 IS[SDBS]=1
+ * intrq output signal is asserted:  This bit=1  SATA_GHC[IE]=1  SATA_P 0 IS[SDBS]=1
  */
 //@{
 #define BP_SATA_P0IE_SDBE      (3)      //!< Bit position for SATA_P0IE_SDBE.
@@ -2540,7 +2540,7 @@ typedef union _hw_sata_p0ie
 /*! @name Register SATA_P0IE, field UFE[4] (RW)
  *
  * Unknown FIS Interrupt Enable Dependencies: when the following conditions are true, the intrq
- * output signal is asserted: • This bit=1 • SATA_GHC[IE]=1 • SATA_P 0 IS[UFS]=1
+ * output signal is asserted:  This bit=1  SATA_GHC[IE]=1  SATA_P 0 IS[UFS]=1
  */
 //@{
 #define BP_SATA_P0IE_UFE      (4)      //!< Bit position for SATA_P0IE_UFE.
@@ -2561,7 +2561,7 @@ typedef union _hw_sata_p0ie
 /*! @name Register SATA_P0IE, field DPE[5] (RW)
  *
  * Descriptor Processed Interrupt Enable Dependencies: when the following conditions are true, the
- * intrq output signal is asserted: • This bit=1 • SATA_GHC[IE]=1 • SATA_P 0 IS[DPS]=1
+ * intrq output signal is asserted:  This bit=1  SATA_GHC[IE]=1  SATA_P 0 IS[DPS]=1
  */
 //@{
 #define BP_SATA_P0IE_DPE      (5)      //!< Bit position for SATA_P0IE_DPE.
@@ -2582,7 +2582,7 @@ typedef union _hw_sata_p0ie
 /*! @name Register SATA_P0IE, field PCE[6] (RW)
  *
  * Port Change Interrupt Enable Dependencies: when the following conditions are true, the intrq
- * output signal is asserted: • This bit=1 • SATA_GHC[IE]=1 • SATA_P 0 IS[PCS]=1
+ * output signal is asserted:  This bit=1  SATA_GHC[IE]=1  SATA_P 0 IS[PCS]=1
  */
 //@{
 #define BP_SATA_P0IE_PCE      (6)      //!< Bit position for SATA_P0IE_PCE.
@@ -2603,7 +2603,7 @@ typedef union _hw_sata_p0ie
 /*! @name Register SATA_P0IE, field PRCE[22] (RW)
  *
  * PHY Ready Change Enable Dependencies: when the following conditions are true, the intrq output
- * signal is asserted: • This bit=1 • SATA_GHC[IE]=1 • SATA_P 0 IS[PRCS]=1
+ * signal is asserted:  This bit=1  SATA_GHC[IE]=1  SATA_P 0 IS[PRCS]=1
  */
 //@{
 #define BP_SATA_P0IE_PRCE      (22)      //!< Bit position for SATA_P0IE_PRCE.
@@ -2624,7 +2624,7 @@ typedef union _hw_sata_p0ie
 /*! @name Register SATA_P0IE, field IPME[23] (RW)
  *
  * Incorrect Port Multiplier Enable Dependencies: when the following conditions are true, the intrq
- * output signal is asserted: • This bit=1 • SATA_GHC[IE]=1 • SATA_P 0 IS[IPMS]=1
+ * output signal is asserted:  This bit=1  SATA_GHC[IE]=1  SATA_P 0 IS[IPMS]=1
  */
 //@{
 #define BP_SATA_P0IE_IPME      (23)      //!< Bit position for SATA_P0IE_IPME.
@@ -2645,7 +2645,7 @@ typedef union _hw_sata_p0ie
 /*! @name Register SATA_P0IE, field OFE[24] (RW)
  *
  * Overflow Enable Dependencies: when the following conditions are true, the intrq output signal is
- * asserted: • This bit=1 • SATA_GHC[IE]=1 • SATA_P 0 IS[OFS]=1
+ * asserted:  This bit=1  SATA_GHC[IE]=1  SATA_P 0 IS[OFS]=1
  */
 //@{
 #define BP_SATA_P0IE_OFE      (24)      //!< Bit position for SATA_P0IE_OFE.
@@ -2666,7 +2666,7 @@ typedef union _hw_sata_p0ie
 /*! @name Register SATA_P0IE, field INFE[26] (RW)
  *
  * Interface Non-Fatal Error Enable Dependencies: when the following conditions are true, the intrq
- * output signal is asserted: • This bit=1 • SATA_GHC[IE]=1 • SATA_P 0 IS[INFS]=1
+ * output signal is asserted:  This bit=1  SATA_GHC[IE]=1  SATA_P 0 IS[INFS]=1
  */
 //@{
 #define BP_SATA_P0IE_INFE      (26)      //!< Bit position for SATA_P0IE_INFE.
@@ -2686,8 +2686,8 @@ typedef union _hw_sata_p0ie
 
 /*! @name Register SATA_P0IE, field IFE[27] (RW)
  *
- * Dependencies: when the following conditions are true, the intrq output signal is asserted: • This
- * bit=1 • SATA_GHC[IE]=1 • SATA_P 0 IS[IFS]=1
+ * Dependencies: when the following conditions are true, the intrq output signal is asserted:  This
+ * bit=1  SATA_GHC[IE]=1  SATA_P 0 IS[IFS]=1
  */
 //@{
 #define BP_SATA_P0IE_IFE      (27)      //!< Bit position for SATA_P0IE_IFE.
@@ -2708,7 +2708,7 @@ typedef union _hw_sata_p0ie
 /*! @name Register SATA_P0IE, field HBDE[28] (RW)
  *
  * Host Bus Data Error Enable Dependencies: when the following conditions are true, the intrq output
- * signal is asserted: • This bit=1 • SATA_GHC[IE]=1 • SATA_P 0 IS[HBDS]=1
+ * signal is asserted:  This bit=1  SATA_GHC[IE]=1  SATA_P 0 IS[HBDS]=1
  */
 //@{
 #define BP_SATA_P0IE_HBDE      (28)      //!< Bit position for SATA_P0IE_HBDE.
@@ -2729,7 +2729,7 @@ typedef union _hw_sata_p0ie
 /*! @name Register SATA_P0IE, field HBFE[29] (RW)
  *
  * Host Bus Fatal Error Enable Dependencies: when the following conditions are true, the intrq
- * output signal is asserted: • This bit=1 • SATA_GHC[IE]=1 • SATA_P 0 IS[HBFS]=1
+ * output signal is asserted:  This bit=1  SATA_GHC[IE]=1  SATA_P 0 IS[HBFS]=1
  */
 //@{
 #define BP_SATA_P0IE_HBFE      (29)      //!< Bit position for SATA_P0IE_HBFE.
@@ -2750,7 +2750,7 @@ typedef union _hw_sata_p0ie
 /*! @name Register SATA_P0IE, field TFEE[30] (RW)
  *
  * Task File Error Enable Dependencies: when the following conditions are true, the intrq output
- * signal is asserted: • This bit=1 • SATA_GHC[IE]=1 • SATA_P 0 IS[TFES]=1
+ * signal is asserted:  This bit=1  SATA_GHC[IE]=1  SATA_P 0 IS[TFES]=1
  */
 //@{
 #define BP_SATA_P0IE_TFEE      (30)      //!< Bit position for SATA_P0IE_TFEE.
@@ -2978,8 +2978,8 @@ typedef union _hw_sata_p0cmd
 /*! @name Register SATA_P0CMD, field CCS[12:8] (RW)
  *
  * Current Command Slot This field is set to the command slot value value of the command that is
- * currently being issued by the Port. • When SATA_P 0 CMD[ST] transitions from 1 to 0, this field
- * is recleared to 0x00. • After SATA_P 0 CMD[ST] transitions from 0 to 1, the highest priority slot
+ * currently being issued by the Port.  When SATA_P 0 CMD[ST] transitions from 1 to 0, this field
+ * is recleared to 0x00.  After SATA_P 0 CMD[ST] transitions from 0 to 1, the highest priority slot
  * to issue from next is command slot 0. After the first command has been issued, the highest
  * priority slot to issue from next is SATA_P 0 CMD[CCS]+1.For example, after the Port has issued
  * its first command, when CCS=0x00 and SATA_P 0 CI is cleared to 0x3, the next command issued is
@@ -3268,10 +3268,10 @@ typedef union _hw_sata_p0cmd
 
 /*! @name Register SATA_P0CMD, field ASP[27] (RW)
  *
- * Aggressive Slumber/ Partial The options for this field are: • When set to 1, and SATA_P 0
+ * Aggressive Slumber/ Partial The options for this field are:  When set to 1, and SATA_P 0
  * CMD[ALPE]=1, the Port aggressively enters the SLUMBER state when one of the following conditions
  * is true: - The Port clears the SATA_P 0 CI and the SATA_P 0 SACT register is cleared. - The Port
- * clears the SATA_P 0 SACT register and SATA_P 0 CI is cleared. • When cleared to 0, and SATA_P 0
+ * clears the SATA_P 0 SACT register and SATA_P 0 CI is cleared.  When cleared to 0, and SATA_P 0
  * CMD[ALPE]=1, the Port aggressively enters the PARTIAL state when one of the following conditions
  * is true: - The Port clears the SATA_P 0 CI register and the SATA_P 0 SACT register is cleared. -
  * The Port clears the SATA_P 0 SACT register and SATA_P 0 CI is cleared.
@@ -3297,13 +3297,13 @@ typedef union _hw_sata_p0cmd
  * Interface Communication Control This field is used to control power management states of the
  * interface. When the Link layer is currently in the L_IDLE state, writes to this field cause the
  * Port to initiate a transition to the interface power management state requested. When the Link
- * layer is not currently in the L_IDLE state, writes to this field have no effect. • 0xF-0x7:
- * Reserved • 0x6: Slumber. This causes the Port to request a transition of the interface to the
+ * layer is not currently in the L_IDLE state, writes to this field have no effect.  0xF-0x7:
+ * Reserved  0x6: Slumber. This causes the Port to request a transition of the interface to the
  * Slumber state. The SATA device can reject the request and the interface remains in its current
- * state. • 0x5-0x3: Reserved • 0x2: Partial. This causes the Port to request a transition of the
+ * state.  0x5-0x3: Reserved  0x2: Partial. This causes the Port to request a transition of the
  * interface to the Partial state. The SATA device can reject the request and the interface remains
- * in its current state. • 0x1: Active. This causes the Port to request a transition of the
- * interface into the active state. • 0x0: No-Op/ Idle. This value indicates to the software that
+ * in its current state.  0x1: Active. This causes the Port to request a transition of the
+ * interface into the active state.  0x0: No-Op/ Idle. This value indicates to the software that
  * the Port 0 is ready to accept a new interface control command, although the transition to the
  * previously selected state may not yet have occurred. When the software writes a non-reserved
  * value other than No-Op (0x0), the Port performs the action and update this field back to Idle
@@ -3374,9 +3374,9 @@ typedef union _hw_sata_p0tfd
 /*! @name Register SATA_P0TFD, field STS[7:0] (RO)
  *
  * Status This field contains the latest copy of the task file status register. The bits that affect
- * SATA block operation are: • Bit [7] BSY - Indicates the interface is busy • Bits [6:4] cs -
- * Command specific • Bit [3] DRQ - Indicates a data transfer is requested • Bits [2:1] cs - Command
- * specific • Bit [0] ERR - Indicates an error during the transfer The Port updates the entire 8-bit
+ * SATA block operation are:  Bit [7] BSY - Indicates the interface is busy  Bits [6:4] cs -
+ * Command specific  Bit [3] DRQ - Indicates a data transfer is requested  Bits [2:1] cs - Command
+ * specific  Bit [0] ERR - Indicates an error during the transfer The Port updates the entire 8-bit
  * field, not just the bits noted above.
  */
 //@{
@@ -3438,8 +3438,8 @@ typedef union _hw_sata_p0sig
 /*! @name Register SATA_P0SIG, field SIG[31:0] (RO)
  *
  * Signature This field contains the signature received from a device on the first D2H Register FIS.
- * The bit order as follows: • Bits [31:24] - LBA High (Cylinder High) Register • Bits [23:16] - LBA
- * Mid (Cylinder Low) Register • Bits [15:8] - LBA Low (Sector Number) Register • Bits [7:0] -
+ * The bit order as follows:  Bits [31:24] - LBA High (Cylinder High) Register  Bits [23:16] - LBA
+ * Mid (Cylinder Low) Register  Bits [15:8] - LBA Low (Sector Number) Register  Bits [7:0] -
  * Sector Count Register This field is updated once after a reset sequence. Reset on Global or Port
  * reset.
  */
@@ -3499,7 +3499,7 @@ typedef union _hw_sata_p0ssts
  * Indicates the interface device detection and PHY state. The options for this field are: 0x0: No
  * device detected and PHY communication not established 0x1: Device presence detected but PHY
  * communication not established (COMINIT is detected) 0x3: Device presence detected and PHY
- * communication established (“PHY Ready” is detected) 0x4: PHY in offline mode as a result of the
+ * communication established (PHY Ready is detected) 0x4: PHY in offline mode as a result of the
  * interface being disabled or running in a BIST loopback mode. All other values reserved.
  */
 //@{
@@ -3756,7 +3756,7 @@ typedef union _hw_sata_p0serr
 /*! @name Register SATA_P0SERR, field ERR_I[0] (RO)
  *
  * This bit is set when any of the following SATA_P 0 SERR register bits is set during non- Data FIS
- * transfer: • DIAG_C (CRC) • DIAG_H (Handshake) • ERR_C ("PHY Ready" negation)
+ * transfer:  DIAG_C (CRC)  DIAG_H (Handshake)  ERR_C ("PHY Ready" negation)
  */
 //@{
 #define BP_SATA_P0SERR_ERR_I      (0)      //!< Bit position for SATA_P0SERR_ERR_I.
@@ -3783,8 +3783,8 @@ typedef union _hw_sata_p0serr
 /*! @name Register SATA_P0SERR, field ERR_T[8] (RO)
  *
  * Non-Recovered Transient Data Integrity Error This bit is set when any of the following SATA_P 0
- * SERR register bits is set during Data FIS transfer: ERR_P (Protocol) • DIAG_C (CRC) • DIAG_H
- * (Handshake) • ERR_C ("PHY Ready" negation)
+ * SERR register bits is set during Data FIS transfer: ERR_P (Protocol)  DIAG_C (CRC)  DIAG_H
+ * (Handshake)  ERR_C ("PHY Ready" negation)
  */
 //@{
 #define BP_SATA_P0SERR_ERR_T      (8)      //!< Bit position for SATA_P0SERR_ERR_T.
@@ -3810,8 +3810,8 @@ typedef union _hw_sata_p0serr
 
 /*! @name Register SATA_P0SERR, field ERR_P[10] (RO)
  *
- * Protocol Error This bit is set to 1 when any of the following conditions are detected. •
- * Transport state transition error (DIAG_T) • Link sequence error (DIAG_S) • RxFIFO overflow • Link
+ * Protocol Error This bit is set to 1 when any of the following conditions are detected. 
+ * Transport state transition error (DIAG_T)  Link sequence error (DIAG_S)  RxFIFO overflow  Link
  * bad end error (WTRM instead of EOF is received).
  */
 //@{
@@ -4031,11 +4031,11 @@ typedef union _hw_sata_p0sact
  * a native queued command, where bit 0 corresponds to TAG 0 and command slot 0. Software sets this
  * field prior to issuing a native queued command for a particular command slot. Prior to writing
  * SATA_P 0 CI[TAG] to 1, the software sets DS[TAG] to 1 to indicate that a command with that TAG is
- * outstanding. This field is cleared to 0 when: • The software writes SATA_P 0 CMD[ST from a 1 to a
- * 0 . • The device sends a Set Device Bits FIS to the Port. The Port clears bits in this field that
+ * outstanding. This field is cleared to 0 when:  The software writes SATA_P 0 CMD[ST from a 1 to a
+ * 0 .  The device sends a Set Device Bits FIS to the Port. The Port clears bits in this field that
  * are set in the SActive field of the Set Device Bits FIS. The Port clears only bits that
  * correspond to native queued commands that have completed successfully. This field is not cleared
- * by the following: • Port reset (COMRESET). • Software reset. Software must write this field only
+ * by the following:  Port reset (COMRESET).  Software reset. Software must write this field only
  * when SATA_P 0 CMD[ST] bit is set to 1.
  */
 //@{
@@ -4167,8 +4167,8 @@ typedef union _hw_sata_p0sntf
 /*! @name Register SATA_P0SNTF, field PMN[15:0] (W1C)
  *
  * PM Notify This field indicates whether a particular device with the corresponding PM Port number
- * issued a Set Device Bits FIS to the SATA block Port with the Notification bit set: • PM Port 0h
- * sets bit 0, • PM Port 1h sets bit 1, ... • PM Port Fh sets bit 15. Individual bits are cleared by
+ * issued a Set Device Bits FIS to the SATA block Port with the Notification bit set:  PM Port 0h
+ * sets bit 0,  PM Port 1h sets bit 1, ...  PM Port Fh sets bit 15. Individual bits are cleared by
  * the software writing 1s to the corresponding bit positions. This field is reset on Global reset,
  * but it is not reset by Port reset (COMRESET) or software reset.
  */

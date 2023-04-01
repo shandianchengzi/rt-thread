@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fnand_hw.h
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:56:40
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 
@@ -204,25 +204,25 @@ extern "C"
 #define FNAND_FIFO_FREE_MASK BIT(0)
 
 /* FNAND_STATE_OFFSET */
-#define FNAND_STATE_BUSY_OFFSET BIT(0)         /* nandflash控制器忙 */
-#define FNAND_STATE_DMA_BUSY_OFFSET BIT(1)     /* dma控制器忙 */
-#define FNAND_STATE_DMA_PGFINISH_OFFSET BIT(2) /* dma数据操作完成 */
-#define FNAND_STATE_DMA_FINISH_OFFSET BIT(3)   /* dma完成 */
+#define FNAND_STATE_BUSY_OFFSET BIT(0)         /* nandflash */
+#define FNAND_STATE_DMA_BUSY_OFFSET BIT(1)     /* dma */
+#define FNAND_STATE_DMA_PGFINISH_OFFSET BIT(2) /* dma */
+#define FNAND_STATE_DMA_FINISH_OFFSET BIT(3)   /* dma */
 #define FNAND_STATE_FIFO_EMP_OFFSET BIT(4)
 #define FNAND_STATE_FIFO_FULL_OFFSET BIT(5)
 #define FNAND_STATE_FIFO_TIMEOUT_OFFSET BIT(6)
 #define FNAND_STATE_CS_OFFSET GENMASK(10, 7)
-#define FNAND_STATE_CMD_PGFINISH_OFFSET BIT(11) /* nand接口命令操作完成 */
-#define FNAND_STATE_PG_PGFINISH_OFFSET BIT(12)  /* nand接口数据操作完成 */
-#define FNAND_STATE_RE_OFFSET BIT(13)           /* re_n门控状态 */
-#define FNAND_STATE_DQS_OFFSET BIT(14)          /* dqs门控状态 */
-#define FNAND_STATE_RB_OFFSET BIT(15)           /* RB_N接口的状态 */
+#define FNAND_STATE_CMD_PGFINISH_OFFSET BIT(11) /* nand */
+#define FNAND_STATE_PG_PGFINISH_OFFSET BIT(12)  /* nand */
+#define FNAND_STATE_RE_OFFSET BIT(13)           /* re_n */
+#define FNAND_STATE_DQS_OFFSET BIT(14)          /* dqs */
+#define FNAND_STATE_RB_OFFSET BIT(15)           /* RB_N */
 #define FNAND_STATE_ECC_BUSY_OFFSET BIT(16)
 #define FNAND_STATE_ECC_FINISH_OFFSET BIT(17)
 #define FNAND_STATE_ECC_RIGHT_OFFSET BIT(18)
-#define FNAND_STATE_ECC_ERR_OFFSET BIT(19)      /* ECC 校验有错 */
-#define FNAND_STATE_ECC_ERROVER_OFFSET BIT(20) /* 错误超过可校验范围  */
-#define FNAND_STATE_AXI_DSP_ERR_OFFSET BIT(21) /* 描述符错误 */
+#define FNAND_STATE_ECC_ERR_OFFSET BIT(19)      /* ECC  */
+#define FNAND_STATE_ECC_ERROVER_OFFSET BIT(20) /*   */
+#define FNAND_STATE_AXI_DSP_ERR_OFFSET BIT(21) /*  */
 #define FNAND_STATE_AXI_RD_ERR_OFFSET BIT(22)
 #define FNAND_STATE_AXI_WR_ERR_OFFSET BIT(23)
 #define FNAND_STATE_RB_N_OFFSET GENMASK(27, 24)
@@ -232,37 +232,37 @@ extern "C"
 
 /* FNAND_INTRMASK_OFFSET */
 #define FNAND_INTRMASK_ALL_INT_MASK GENMASK(17, 0)
-#define FNAND_INTRMASK_BUSY_MASK BIT(0)         /* nandflash控制器忙状态中断屏蔽位 */
-#define FNAND_INTRMASK_DMA_BUSY_MASK BIT(1)     /* dma控制器忙状态中断屏蔽位 */
-#define FNAND_INTRMASK_DMA_PGFINISH_MASK BIT(2) /* dma页操作完成中断屏蔽位 */
-#define FNAND_INTRMASK_DMA_FINISH_MASK BIT(3)   /* dma操作完成中断完成中断屏蔽位 */
-#define FNAND_INTRMASK_FIFO_EMP_MASK BIT(4)     /* fifo为空中断屏蔽位 */
-#define FNAND_INTRMASK_FIFO_FULL_MASK BIT(5)    /* fifo为满中断屏蔽位 */
-#define FNAND_INTRMASK_FIFO_TIMEOUT_MASK BIT(6) /* fifo超时中断屏蔽位 */
-#define FNAND_INTRMASK_CMD_FINISH_MASK BIT(7)   /* nand接口命令完成中断屏蔽位 */
-#define FNAND_INTRMASK_PGFINISH_MASK BIT(8)     /* nand接口页操作完成中断屏蔽位 */
-#define FNAND_INTRMASK_RE_MASK BIT(9)           /* re_n门控打开中断屏蔽位 */
-#define FNAND_INTRMASK_DQS_MASK BIT(10)         /* dqs门控打开中断屏蔽位 */
-#define FNAND_INTRMASK_RB_MASK BIT(11)          /* rb_n信号busy中断屏蔽位 */
-#define FNAND_INTRMASK_ECC_FINISH_MASK BIT(12)  /* ecc完成中断屏蔽位 */
-#define FNAND_INTRMASK_ECC_ERR_MASK BIT(13)     /* ecc 中断屏蔽位 */
+#define FNAND_INTRMASK_BUSY_MASK BIT(0)         /* nandflash */
+#define FNAND_INTRMASK_DMA_BUSY_MASK BIT(1)     /* dma */
+#define FNAND_INTRMASK_DMA_PGFINISH_MASK BIT(2) /* dma */
+#define FNAND_INTRMASK_DMA_FINISH_MASK BIT(3)   /* dma */
+#define FNAND_INTRMASK_FIFO_EMP_MASK BIT(4)     /* fifo */
+#define FNAND_INTRMASK_FIFO_FULL_MASK BIT(5)    /* fifo */
+#define FNAND_INTRMASK_FIFO_TIMEOUT_MASK BIT(6) /* fifo */
+#define FNAND_INTRMASK_CMD_FINISH_MASK BIT(7)   /* nand */
+#define FNAND_INTRMASK_PGFINISH_MASK BIT(8)     /* nand */
+#define FNAND_INTRMASK_RE_MASK BIT(9)           /* re_n */
+#define FNAND_INTRMASK_DQS_MASK BIT(10)         /* dqs */
+#define FNAND_INTRMASK_RB_MASK BIT(11)          /* rb_nbusy */
+#define FNAND_INTRMASK_ECC_FINISH_MASK BIT(12)  /* ecc */
+#define FNAND_INTRMASK_ECC_ERR_MASK BIT(13)     /* ecc  */
 
 /* FNAND_INTR_OFFSET */
 #define FNAND_INTR_ALL_INT_MASK GENMASK(17, 0)
-#define FNAND_INTR_BUSY_MASK BIT(0)         /* nandflash控制器忙状态中断状态位 */
-#define FNAND_INTR_DMA_BUSY_MASK BIT(1)     /* dma控制器忙状态中断状态位 */
-#define FNAND_INTR_DMA_PGFINISH_MASK BIT(2) /* dma页操作完成中断状态位 */
-#define FNAND_INTR_DMA_FINISH_MASK BIT(3)   /* dma操作完成中断完成中断状态位 */
-#define FNAND_INTR_FIFO_EMP_MASK BIT(4)     /* fifo为空中断状态位 */
-#define FNAND_INTR_FIFO_FULL_MASK BIT(5)    /* fifo为满中断状态位 */
-#define FNAND_INTR_FIFO_TIMEOUT_MASK BIT(6) /* fifo超时中断状态位 */
-#define FNAND_INTR_CMD_FINISH_MASK BIT(7)   /* nand接口命令完成中断状态位 */
-#define FNAND_INTR_PGFINISH_MASK BIT(8)     /* nand接口页操作完成中断状态位 */
-#define FNAND_INTR_RE_MASK BIT(9)           /* re_n门控打开中断状态位 */
-#define FNAND_INTR_DQS_MASK BIT(10)         /* dqs门控打开中断状态位 */
-#define FNAND_INTR_RB_MASK BIT(11)          /* rb_n信号busy中断状态位 */
-#define FNAND_INTR_ECC_FINISH_MASK BIT(12)  /* ecc完成中断状态蔽位 */
-#define FNAND_INTR_ECC_ERR_MASK BIT(13)     /* ecc正确中断状态蔽位 */
+#define FNAND_INTR_BUSY_MASK BIT(0)         /* nandflash */
+#define FNAND_INTR_DMA_BUSY_MASK BIT(1)     /* dma */
+#define FNAND_INTR_DMA_PGFINISH_MASK BIT(2) /* dma */
+#define FNAND_INTR_DMA_FINISH_MASK BIT(3)   /* dma */
+#define FNAND_INTR_FIFO_EMP_MASK BIT(4)     /* fifo */
+#define FNAND_INTR_FIFO_FULL_MASK BIT(5)    /* fifo */
+#define FNAND_INTR_FIFO_TIMEOUT_MASK BIT(6) /* fifo */
+#define FNAND_INTR_CMD_FINISH_MASK BIT(7)   /* nand */
+#define FNAND_INTR_PGFINISH_MASK BIT(8)     /* nand */
+#define FNAND_INTR_RE_MASK BIT(9)           /* re_n */
+#define FNAND_INTR_DQS_MASK BIT(10)         /* dqs */
+#define FNAND_INTR_RB_MASK BIT(11)          /* rb_nbusy */
+#define FNAND_INTR_ECC_FINISH_MASK BIT(12)  /* ecc */
+#define FNAND_INTR_ECC_ERR_MASK BIT(13)     /* ecc */
 
 /* FNAND_ERROR_CLEAR_OFFSET */
 #define FNAND_ERROR_CLEAR_DSP_ERR_CLR_MASK BIT(0)

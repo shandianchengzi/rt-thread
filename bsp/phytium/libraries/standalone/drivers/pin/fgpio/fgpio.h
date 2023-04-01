@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fgpio.h
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:25:35
- * Description:  This files is for GPIO user API definition
+ * Description: This files is for GPIO user API definition
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   zhugengyu  2022-3-1     init commit
  */
 
@@ -45,9 +45,9 @@ extern "C"
 #define FGPIO_ERR_ALREADY_INIT   FT_MAKE_ERRCODE(ErrModBsp, ErrBspGpio, 0x3)
 
 #if defined(CONFIG_TARGET_F2000_4) || defined(CONFIG_TARGET_D2000)
-#define FGPIO_VERSION_1 /* 用于FT2000/4和D2000平台的GPIO 0 ~ 1 */
+#define FGPIO_VERSION_1 /* FT2000/4D2000GPIO 0 ~ 1 */
 #elif defined(CONFIG_TARGET_E2000)
-#define FGPIO_VERSION_2 /* 用于E2000平台的GPIO 3 ~ 5 */
+#define FGPIO_VERSION_2 /* E2000GPIO 3 ~ 5 */
 #else
 #error "Invalid target board !!!"
 #endif
@@ -60,7 +60,7 @@ typedef enum
 #endif
 
     FGPIO_PORT_NUM
-} FGpioPortIndex; /* GPIO引脚所在的组 */
+} FGpioPortIndex; /* GPIO */
 
 typedef enum
 {
@@ -84,7 +84,7 @@ typedef enum
 #endif
 
     FGPIO_PIN_NUM
-} FGpioPinIndex; /* GPIO引脚号 */
+} FGpioPinIndex; /* GPIO */
 
 #if defined(FGPIO_VERSION_1) /* FT2000-4, D2000 */
 FASSERT_STATIC(8 == FGPIO_PIN_NUM); /* pin 0 ~ 7 */
@@ -95,32 +95,32 @@ FASSERT_STATIC(1 == FGPIO_PORT_NUM); /* port a */
 #endif
 typedef enum
 {
-    FGPIO_DIR_INPUT = 0, /* 输入 */
-    FGPIO_DIR_OUTPUT /* 输出 */
-} FGpioDirection; /* GPIO引脚的输入输出方向 */
+    FGPIO_DIR_INPUT = 0, /*  */
+    FGPIO_DIR_OUTPUT /*  */
+} FGpioDirection; /* GPIO */
 
 typedef enum
 {
-    FGPIO_IRQ_TYPE_EDGE_FALLING = 0, /* 上升沿中断，引脚检测到电平从低变高时触发 */
-    FGPIO_IRQ_TYPE_EDGE_RISING, /* 下降沿中断，引脚检测到电平从高变低时触发 */
-    FGPIO_IRQ_TYPE_LEVEL_LOW, /* 低电平中断，引脚电平为低时触发 */
-    FGPIO_IRQ_TYPE_LEVEL_HIGH /* 高电平中断，引脚电平为高时触发 */
-} FGpioIrqType; /* GPIO引脚中断类型 */
+    FGPIO_IRQ_TYPE_EDGE_FALLING = 0, /*  */
+    FGPIO_IRQ_TYPE_EDGE_RISING, /*  */
+    FGPIO_IRQ_TYPE_LEVEL_LOW, /*  */
+    FGPIO_IRQ_TYPE_LEVEL_HIGH /*  */
+} FGpioIrqType; /* GPIO */
 
 typedef enum
 {
-    FGPIO_IRQ_NOT_SUPPORT, /* 不支持引脚中断 */
-    FGPIO_IRQ_BY_CONTROLLER, /* 引脚中断控制器合并上报 */
+    FGPIO_IRQ_NOT_SUPPORT, /*  */
+    FGPIO_IRQ_BY_CONTROLLER, /*  */
 #if defined(FGPIO_VERSION_2) /* E2000 GPIO 0 ~ 5 */
-    FGPIO_IRQ_BY_PIN, /* 引脚中断单独上报 */
+    FGPIO_IRQ_BY_PIN, /*  */
 #endif
 } FGpioIrqSourceType;
 
 typedef enum
 {
-    FGPIO_PIN_LOW = 0, /* 低电平 */
-    FGPIO_PIN_HIGH /* 高电平 */
-} FGpioPinVal; /* GPIO引脚电平类型 */
+    FGPIO_PIN_LOW = 0, /*  */
+    FGPIO_PIN_HIGH /*  */
+} FGpioPinVal; /* GPIO */
 
 /**************************** Type Definitions *******************************/
 typedef struct _FGpioPin FGpioPin;
@@ -128,108 +128,108 @@ typedef struct _FGpio FGpio;
 
 typedef struct
 {
-    u32 instance_id; /* GPIO实例ID */
-    uintptr base_addr; /* GPIO控制器基地址 */
+    u32 instance_id; /* GPIOID */
+    uintptr base_addr; /* GPIO */
 #if defined(FGPIO_VERSION_1) /* FT2000-4, D2000 */
-    u32 irq_num; /* GPIO控制器中断号 */
+    u32 irq_num; /* GPIO */
 #elif defined(FGPIO_VERSION_2) /* E2000 GPIO 0 ~ 5 */
-    u32 irq_num[FGPIO_PIN_NUM]; /* GPIO各引脚的中断号 */
+    u32 irq_num[FGPIO_PIN_NUM]; /* GPIO */
 #endif
-    u32 irq_priority; /* 中断优先级 */
-} FGpioConfig; /* GPIO控制器配置 */
+    u32 irq_priority; /*  */
+} FGpioConfig; /* GPIO */
 
 typedef struct
 {
-    u32 ctrl; /* GPIO控制器号 */
-    FGpioPortIndex port; /* GPIO引脚所在的组 */
-    FGpioPinIndex  pin; /* GPIO引脚号 */
-} FGpioPinId; /* GPIO引脚索引 */
+    u32 ctrl; /* GPIO */
+    FGpioPortIndex port; /* GPIO */
+    FGpioPinIndex  pin; /* GPIO */
+} FGpioPinId; /* GPIO */
 
-typedef void (*FGpioInterruptCallback)(s32 vector, void *param); /* GPIO引脚中断回调函数类型 */
+typedef void (*FGpioInterruptCallback)(s32 vector, void *param); /* GPIO */
 
 typedef struct _FGpioPin
 {
-    FGpioPinId index; /* 索引 */
+    FGpioPinId index; /*  */
     u32 is_ready;
     FGpio *instance;
-    FGpioInterruptCallback irq_cb; /* 中断回调函数, Port-A有效 */
-    void *irq_cb_params; /* 中断回调函数的入参, Port-A有效 */
-    boolean irq_one_time; /* Port-A有效, TRUE: 进入中断后关闭该引脚的中断，用于电平敏感中断，防止一直进入中断 */
-} FGpioPin; /* GPIO引脚实例 */
+    FGpioInterruptCallback irq_cb; /* , Port-A */
+    void *irq_cb_params; /* , Port-A */
+    boolean irq_one_time; /* Port-A, TRUE:  */
+} FGpioPin; /* GPIO */
 
 typedef struct _FGpio
 {
     FGpioConfig config;
     u32 is_ready;
     FGpioPin *pins[FGPIO_PORT_NUM][FGPIO_PIN_NUM];
-} FGpio; /* GPIO控制器实例 */
+} FGpio; /* GPIO */
 
 /************************** Variable Definitions *****************************/
 
 /***************** Macros (Inline Functions) Definitions *********************/
-/* 生成GPIO引脚索引 */
+/* GPIO */
 #define FGPIO_PIN(port, pin)   \
     (FGpioPinId) { \
         (port), (pin) \
     }
 
 /************************** Function Prototypes ******************************/
-/* 获取GPIO控制器的默认配置 */
+/* GPIO */
 const FGpioConfig *FGpioLookupConfig(u32 instance_id);
 
-/* 初始化GPIO控制器实例 */
+/* GPIO */
 FError FGpioCfgInitialize(FGpio *const instance, const FGpioConfig *const config);
 
-/* 初始化GPIO引脚实例 */
+/* GPIO */
 FError FGpioPinInitialize(FGpio *const instance, FGpioPin *const pin,
                           const FGpioPinId pin_id);
 
-/* 去初始化GPIO引脚实例 */
+/* GPIO */
 void FGpioPinDeInitialize(FGpioPin *const pin);
 
-/* 获取引脚中断的上报方式 */
+/*  */
 FGpioIrqSourceType FGpioGetPinIrqSourceType(FGpioPinId pin_id);
 
-/* 去初始化GPIO控制器实例 */
+/* GPIO */
 void FGpioDeInitialize(FGpio *const instance);
 
-/* 设置GPIO引脚的输入输出方向 */
+/* GPIO */
 void FGpioSetDirection(FGpioPin *const pin, FGpioDirection dir);
 
-/* 获取GPIO引脚的输入输出方向 */
+/* GPIO */
 FGpioDirection FGpioGetDirection(FGpioPin *const pin);
 
-/* 设置GPIO引脚的输出值 */
+/* GPIO */
 FError FGpioSetOutputValue(FGpioPin *const pin, const FGpioPinVal output);
 
-/* 获取GPIO引脚的输入值 */
+/* GPIO */
 FGpioPinVal FGpioGetInputValue(FGpioPin *const pin);
 
-/* 获取GPIO A组引脚的中断屏蔽位 */
+/* GPIO A */
 void FGpioGetInterruptMask(FGpio *const instance, u32 *mask, u32 *enabled);
 
-/* 设置GPIO A组引脚的中断屏蔽位 */
+/* GPIO A */
 void FGpioSetInterruptMask(FGpioPin *const pin, boolean enable);
 
-/* 获取GPIO A组引脚的中断类型和中断极性 */
+/* GPIO A */
 void FGpioGetInterruptType(FGpio *const instance, u32 *levels, u32 *polarity);
 
-/* 设置GPIO A组引脚的中断类型 */
+/* GPIO A */
 void FGpioSetInterruptType(FGpioPin *const pin, const FGpioIrqType type);
 
-/* GPIO控制器中断处理函数 */
+/* GPIO */
 void FGpioInterruptHandler(s32 vector, void *param);
 
 #if defined(FGPIO_VERSION_2) /* E2000 GPIO 0 ~ 2 */
-/* GPIO引脚中断处理函数 */
+/* GPIO */
 void FGpioPinInterruptHandler(s32 vector, void *param);
 #endif
 
-/* 注册GPIO A组引脚中断回调函数 */
+/* GPIO A */
 void FGpioRegisterInterruptCB(FGpioPin *const pin, FGpioInterruptCallback cb,
                               void *cb_param, boolean irq_one_time);
 
-/* 打印GPIO控制寄存器信息 */
+/* GPIO */
 void FGpioDumpRegisters(uintptr base_addr);
 
 #ifdef __cplusplus

@@ -6,7 +6,7 @@ MM32x103  std lib version is updated to Ver2.8a
 2016-07-01
 MM32x103  std lib version is updated to Ver2.7
 
-1. 更新了
+1. 
 Device\MM32x103\HAL_lib\src\HAL_adc.c
 
 Device\MM32x103\HAL_lib\src\HAL_can.c

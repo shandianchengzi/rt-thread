@@ -23,14 +23,14 @@
 <div class="sectione dark">
 <center>
 <h1 id="release-notes-for-stm32g4xx-hal-drivers"><small>Release Notes for</small> STM32G4xx HAL Drivers</h1>
-<p>Copyright © 2019 STMicroelectronics<br />
+<p>Copyright  2019 STMicroelectronics<br />
 </p>
 <a href="https://www.st.com" class="logo"><img src="_htmresc/st_logo.png" alt="ST logo" /></a>
 </center>
 </div>
 </div>
 <h1 id="license">License</h1>
-<p>This software component is licensed by ST under BSD 3-Clause license, the “License”; You may not use this component except in compliance with the License. You may obtain a copy of the License at:</p>
+<p>This software component is licensed by ST under BSD 3-Clause license, the License; You may not use this component except in compliance with the License. You may obtain a copy of the License at:</p>
 <p><a href="https://opensource.org/licenses/BSD-3-Clause">https://opensource.org/licenses/BSD-3-Clause</a></p>
 <h1 id="purpose">Purpose</h1>
 <p>The STM32Cube HAL and LL, an STM32 abstraction layer embedded software, ensure maximized portability across STM32 portfolio.</p>
@@ -81,7 +81,7 @@
 <li>HAL_RTC_DST_SetStoreOperation()</li>
 <li>HAL_RTC_DST_ClearStoreOperation()</li>
 </ul></li>
-<li>Fixed executing TimeStamp callback when HAL_RTC_SetTimeStamp is called with “Rising Edge” configuration
+<li>Fixed executing TimeStamp callback when HAL_RTC_SetTimeStamp is called with Rising Edge configuration
 <ul>
 <li>Updated HAL_RTC_SetTimeStamp() API to call __HAL_RTC_TIMESTAMP_EXTI_ENABLE_IT before configuring the TimeStamp.</li>
 </ul></li>
@@ -157,7 +157,7 @@
 </ul></li>
 <li><strong>LL FMC </strong> Update
 <ul>
-<li>Updated FMC_NORSRAM_Extended_Timing_Init() API to manage the “bus turn around duration” parameter availability.</li>
+<li>Updated FMC_NORSRAM_Extended_Timing_Init() API to manage the bus turn around duration parameter availability.</li>
 <li>Updated FMC_NORSRAM_Init() API to resolve compilation issue with Microsoft Visual Studio 2017.</li>
 </ul></li>
 <li><strong>HAL NAND</strong> update
@@ -250,19 +250,19 @@
 <li><strong>HAL/LL GPIO</strong> update
 <ul>
 <li>Enhancement GPIO_TogglePin API to allow the toggling of many pins</li>
-<li>Update GPIO initialization sequence to avoid unwanted pulse on GPIO Pin’s</li>
+<li>Update GPIO initialization sequence to avoid unwanted pulse on GPIO Pins</li>
 </ul></li>
 <li><strong>HAL/LL HRTIM</strong> update
 <ul>
 <li>Constants renaming:
 <ul>
-<li>Rename HAL constants HRTIM_TIMEEVENT_… and HRTIM_TIMEEVENTRESETMODE_… respectively HRTIM_EVENT<strong>COUNTER</strong>_… and HRTIM_EVENT<strong>COUNTER</strong>_RSTMODE_… to reflect their relation to external event <strong>counters</strong>.</li>
-<li>Rename LL constants LL_HRTIM_OUTPUTSET_TIM… and LL_HRTIM_OUTPUTRESET_TIM… to make them compliant to the CMSIS bits definitions they correspond to.</li>
+<li>Rename HAL constants HRTIM_TIMEEVENT_ and HRTIM_TIMEEVENTRESETMODE_ respectively HRTIM_EVENT<strong>COUNTER</strong>_ and HRTIM_EVENT<strong>COUNTER</strong>_RSTMODE_ to reflect their relation to external event <strong>counters</strong>.</li>
+<li>Rename LL constants LL_HRTIM_OUTPUTSET_TIM and LL_HRTIM_OUTPUTRESET_TIM to make them compliant to the CMSIS bits definitions they correspond to.</li>
 <li><strong>Warning:</strong> Possible <strong>compatibility break</strong> with CubeMX 5.6.0 and previous versions!</li>
 </ul></li>
 <li>Constants removal:
 <ul>
-<li>Remove unused HAL constants HRTIM_RSYNCUPDATE_… and HRTIM_TIMEEVENTCOUNTER_….</li>
+<li>Remove unused HAL constants HRTIM_RSYNCUPDATE_ and HRTIM_TIMEEVENTCOUNTER_.</li>
 <li>Remove unused LL constant LL_HRTIM_RESETTRIG_OTHER5_CMP4 as the definition it corresponds to (HRTIM_RSTR_TIMFCMP4) exists neither in the CMSIS nor in the reference manual.</li>
 </ul></li>
 </ul></li>
@@ -348,7 +348,7 @@
 <li>Replace IS_TIM_SYNCHRO_INSTANCE() macro by IS_TIM_MASTER_INSTANCE() macro.</li>
 <li>Add IS_TIM_SLAVE_INSTANCE() macro to check on TIM_SMCR_MSM bit.</li>
 </ul></li>
-<li>Remove ‘register’ storage class specifier from LL TIM driver.</li>
+<li>Remove register storage class specifier from LL TIM driver.</li>
 <li>Add new API HAL_TIM_DMABurst_MultiWriteStart() allowing to configure the DMA Burst to transfer multiple Data from the memory to the TIM peripheral</li>
 <li>Add new API HAL_TIM_DMABurst_MultiReadStart() allowing to configure the DMA Burst to transfer Data from the TIM peripheral to the memory</li>
 </ul></li>
@@ -359,11 +359,11 @@
 <li>Move the process unlock at the top of the HAL_UART_Receive() and HAL_UART_Transmit() API.</li>
 </ul></li>
 <li>Update UART BRR calculation for ROM size gain</li>
-<li>Remove ‘register’ storage class specifier from LL UART driver.</li>
+<li>Remove register storage class specifier from LL UART driver.</li>
 </ul></li>
 <li><strong>HAL/LL USART</strong> driver
 <ul>
-<li>Remove ‘register’ storage class specifier from LL USART driver.</li>
+<li>Remove register storage class specifier from LL USART driver.</li>
 </ul></li>
 <li><strong>HAL/LL USB</strong> driver
 <ul>
@@ -445,7 +445,7 @@
 <li><strong>HAL HRTIM</strong> update
 <ul>
 <li>Update HAL_HRTIM_WaveformCompareConfig() to clear HRTIM_TIMxCR.DELCMP bitfield when the auto-delayed protection mode is disabled.</li>
-<li>Correct some “HRTIM_OUTPUTSET_TIMxx” constant names which are not compliant with Timer Events Mapping specified in the reference manual
+<li>Correct some HRTIM_OUTPUTSET_TIMxx constant names which are not compliant with Timer Events Mapping specified in the reference manual
 <ul>
 <li>Remove HRTIM_OUTPUTSET_TIMCEV1_TIMACMP1, HRTIM_OUTPUTSET_TIMEEV5_TIMDCMP2 , HRTIM_OUTPUTRESET_TIMCEV1_TIMACMP1 and HRTIM_OUTPUTRESET_TIMEEV5_TIMDCMP2</li>
 <li>Add HRTIM_OUTPUTSET_TIMEEV5_TIMCCMP2 and HRTIM_OUTPUTSET_TIMCEV2_TIMACMP3 , HRTIM_OUTPUTRESET_TIMCEV2_TIMACMP3 and HRTIM_OUTPUTRESET_TIMEEV5_TIMCCMP2</li>
@@ -459,7 +459,7 @@
 </ul></li>
 <li><strong>HAL I2C</strong> update
 <ul>
-<li>Update I2C_DMAAbort() APIs to fix hardfault issue when hdmatx and hdmarx parameters in i2c handle aren’t initialized (NULL pointer).
+<li>Update I2C_DMAAbort() APIs to fix hardfault issue when hdmatx and hdmarx parameters in i2c handle arent initialized (NULL pointer).
 <ul>
 <li>Add additional check on hi2c-&gt;hdmtx and hi2c-&gt;hdmarx before resetting DMA Tx/Rx complete callbacks</li>
 </ul></li>
@@ -489,12 +489,12 @@
 </ul></li>
 <li><strong>HAL/LL RTC</strong> update
 <ul>
-<li>Update API HAL_RTC_SetAlarm_IT() to allow changing alarm time “on the fly” simply by calling the API again.</li>
+<li>Update API HAL_RTC_SetAlarm_IT() to allow changing alarm time on the fly simply by calling the API again.</li>
 <li>Update API LL_RTC_BKP_SetRegister() and API LL_RTC_BKP_GetRegister() to comply to rules 2.2 and 13.2 of MISRAC-2012.</li>
 </ul></li>
 <li><strong>HAL SPI</strong> update
 <ul>
-<li>Update the “Rx DMA transfer complete callback” to disable the Tx DMA request only in case of full-duplex mode and not it in half-duplex mode.</li>
+<li>Update the Rx DMA transfer complete callbackto disable the Tx DMA request only in case of full-duplex mode and not it in half-duplex mode.</li>
 </ul></li>
 <li><strong>HAL TIM</strong> update
 <ul>
@@ -650,10 +650,10 @@
 <td style="text-align: left;">HAL: Correct potential issue within HAL_SetTickFreq() function</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">HRTIM: HRTIM_TIMxCR.DELCMP isn’t systematically programmed</td>
+<td style="text-align: left;">HRTIM: HRTIM_TIMxCR.DELCMP isnt systematically programmed</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">HRTIM: Fault source programming isn’t wrong in HAL_HRTIM_FaultConfig</td>
+<td style="text-align: left;">HRTIM: Fault source programming isnt wrong in HAL_HRTIM_FaultConfig</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">HRTIM : Useless Assignment at function HAL_HRTIM_SimpleOCChannelConfig</td>

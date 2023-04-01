@@ -166,7 +166,7 @@ static rt_uint32_t xfer(struct rt_spi_device *device, struct rt_spi_message* mes
         am_hal_gpio_out_bit_clear(am_spi_cs->chip_select);
     }
 
-    // 读数据
+    // 
     if (recv_ptr != RT_NULL)
     {
         while (u32BytesRemaining)
@@ -199,7 +199,7 @@ static rt_uint32_t xfer(struct rt_spi_device *device, struct rt_spi_message* mes
         }
     }
 
-    // 写数据
+    // 
     else
     {
         while (u32BytesRemaining)

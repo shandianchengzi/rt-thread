@@ -94,9 +94,9 @@
 *
 * <b>Code examples (Github)</b>
 * * <a href="https://github.com/infineon/mtb-example-psoc6-i2s" ><b>
-PSoC™ 6 MCU: Inter-IC Sound (I2S)</b></a>
+PSoC 6 MCU: Inter-IC Sound (I2S)</b></a>
 * * <a href="https://github.com/infineon/mtb-example-psoc6-pdm-to-i2s" ><b>
-PSoC™ 6 MCU: PDM to I2S</b></a>
+PSoC 6 MCU: PDM to I2S</b></a>
 */
 
 #pragma once

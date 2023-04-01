@@ -221,7 +221,7 @@ void GPIO_Init(GPIO_TypeDef* GPIOx, GPIO_InitTypeDef* GPIO_InitStruct)
     GPIOx->CRH = tmpreg;
   }
     /*---------------------------- GPIOE_CRH_EXT Configuration ------------------------*/
-  if(GPIO_InitStruct->GPIO_Pin>>16)  //说明是GPIOE的16~23位
+  if(GPIO_InitStruct->GPIO_Pin>>16)  //GPIOE16~23
   {
         GPIO_InitStruct->GPIO_Pin = GPIO_InitStruct->GPIO_Pin>>16;
     tmpreg = GPIOE->CRH_EXT;
@@ -493,39 +493,39 @@ void GPIO_PinAFConfig(GPIO_TypeDef* GPIOx, uint32_t GPIO_Pin, uint8_t GPIO_AF)
   assert_param(IS_GPIO_PIN_SOURCE(GPIO_PinSource));
   assert_param(IS_GPIO_AF(GPIO_AF));
 
-    if(GPIO_Pin>>16)  //说明是GPIOE的16~23位
+    if(GPIO_Pin>>16)  //GPIOE16~23
     {
         temp = GPIO_Pin>>16;
         for(i=0;i<8;i++)
         {
             if(temp&0x01)
             {
-                GPIOE->AFRH_EXT &= ~((uint32_t)0xF << ((uint32_t)(i<<2)));     //AF配置占半字节，要x4,即<<2
+                GPIOE->AFRH_EXT &= ~((uint32_t)0xF << ((uint32_t)(i<<2)));     //AFx4,<<2
                 GPIOE->AFRH_EXT |= ((uint32_t)GPIO_AF << ((uint32_t)(i<<2)));
             }
             temp = temp>>1;
         }
     }
-    if(GPIO_Pin&0XFF00)  //说明是GPIOE的8~15位
+    if(GPIO_Pin&0XFF00)  //GPIOE8~15
         {
             temp = GPIO_Pin>>8;
             for(i=0;i<8;i++)
             {
                 if(temp&0x01)
                 {
-                    GPIOx->AFRH &= ~((uint32_t)0xF << ((uint32_t)(i<<2)));     //AF配置占半字节，要x4,即<<2
+                    GPIOx->AFRH &= ~((uint32_t)0xF << ((uint32_t)(i<<2)));     //AFx4,<<2
                     GPIOx->AFRH |= ((uint32_t)GPIO_AF << ((uint32_t)(i<<2)));
                 }
                 temp = temp>>1;
             }
         }
-    if(GPIO_Pin&0XFF)  //说明是GPIOE的0~7位
+    if(GPIO_Pin&0XFF)  //GPIOE0~7
         {
             for(i=0;i<8;i++)
             {
                 if(temp&0x01)
                 {
-                    GPIOx->AFRL &= ~((uint32_t)0xF << ((uint32_t)(i<<2)));     //AF配置占半字节，要x4,即<<2
+                    GPIOx->AFRL &= ~((uint32_t)0xF << ((uint32_t)(i<<2)));     //AFx4,<<2
                     GPIOx->AFRL |= ((uint32_t)GPIO_AF << ((uint32_t)(i<<2)));
                 }
                 temp = temp>>1;

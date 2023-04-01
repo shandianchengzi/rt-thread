@@ -1,33 +1,33 @@
-# I2C 驱动程序
+# I2C 
 
-## 1. 概述
+## 1. 
 
-- E2000 的 MIO 接口可配置为 UART 或 I2C，具体时序特性要求需满足复用功能的时序特性要求。当需要使用对应的功能时，只需要软件进行相应配置.
-- MIO 仅仅支持E2000系列芯片
+- E2000  MIO  UART  I2C.
+- MIO E2000
 
-## 2. 驱动功能
+## 2. 
 
-MIO 驱动程序管理MIO的功能复用，该驱动程序具备以下功能：
+MIO MIO
 
-- 选择设置I2C模式或者串口模式
-- 获取状态信息和版本信息
+- I2C
+- 
 
-## 3. 使用方法
+## 3. 
 
-以下部分将指导您完成 MIO 驱动的硬件配置：
+ MIO 
 
-- 1. MIO驱动支持 E2000 Q D S，在E2000上完成测试
-- 2. 本驱动仅仅作为IIC、串口的功能开启关闭使用，搭配串口驱动，与IIC驱动去使用，无法单独调用去实现具体功能
+- 1. MIO E2000 Q D SE2000
+- 2. IICIIC
 
-以下部分将指导您完成 MIO 驱动的软件配置：
+ MIO 
 
-- 1. 配置驱动程序，新建应用工程，传入设备ID参数，获取设备参数
-- 2. 得到设备参数，操作设置配置项目
-- 3. 进行I2C或者uart操作配置流程
+- 1. ID
+- 2. 
+- 3. I2Cuart
 
-## 5. API参考
+## 5. API
 
-### 5.1. 用户数据结构
+### 5.1. 
 
 - drivers/mio/fmio/fmio.h
 
@@ -55,126 +55,126 @@ typedef struct
 } FMioConfig;               /*mio configs*/
 
 ```
-- MIO驱动实例
+- MIO
 
-### 5.3 用户API接口
+### 5.3 API
 
 ```c
 const FMioConfig *FMioLookupConfig(u32 instance_id);
 ```
-- 获取MIO驱动的默认配置参数
+- MIO
 
 Note:
     
-    - 用户需要修改配置参数时，可以通过修改返回的FMioConfig副本，作为FMioSelectFunc函数的入参，
+    - FMioConfigFMioSelectFunc
 
 Input:
 
-    - u32 instance_id, 当前控制的MIO控制器实例号    
+    - u32 instance_id, MIO    
 
 Return:
 
-    - const FMioConfig *, 返回驱动默认参数， NULL表示失败
+    - const FMioConfig *,  NULL
 
 
 ```c
 FError FMioSelectFunc(uintptr addr, u32 mio_type);
 ```
-- 设置MIO驱动的功能配置
+- MIO
 
 Note:
-    - 设置Mio功能
+    - Mio
 
 Input:
-    - uintptr addr, 当前控制器的MIO基地址
-    - u32 mio_type, 想要设置的MIO功能
+    - uintptr addr, MIO
+    - u32 mio_type, MIO
 Return:
-    - @return {FError *} 返回错误码
+    - @return {FError *} 
 
 ```c
 u32 FMioGetFunc(uintptr addr);
 ```
-- 获取当前MIO的配置
+- MIO
 
 Note:
-    - 获取Mio功能
+    - Mio
 
 Input:
-    - uintptr addr, 当前控制器的MIO基地址
+    - uintptr addr, MIO
 
 Return:
-    - @return {u32} 返回MIO的状态
+    - @return {u32} MIO
 
 ```c
 u32 FMioGetVersion(uintptr addr);
 ```
-- 获取版本信息
+- 
 
 Note:
-    - 获取Mio版本
+    - Mio
 
 Input:
-    - uintptr addr, 当前控制器的MIO基地址
+    - uintptr addr, MIO
 
 Return:
-    - @return {u32} 返回MIO的版本
+    - @return {u32} MIO
 
 ```c
 FError FMioFuncInit(FMioCtrl *instance_p, u32 mio_type)
 ```
-- 初始化MIO
+- MIO
 
 Note:
-    - 初始化MIO的功能
+    - MIO
 
 Input:
-    - FMioCtrl *instance_p, 当前控制器的结构体
-    - u32 mio_type，需要配置的选项,串口还是IIC
+    - FMioCtrl *instance_p, 
+    - u32 mio_type,IIC
 
 Return:
-    - @return {u32} 返回初始化的状态
+    - @return {u32} 
 
 ```c
 FError FMioFuncDeinit(FMioCtrl *instance_p)
 ```
 
-- 去初始化MIO
+- MIO
 
 Note:
-    - 去初始化MIO的结构体，和相关寄存器
+    - MIO
 
 Input:
-    - FMioCtrl *instance_p, 当前控制器的结构体
+    - FMioCtrl *instance_p, 
 
 Return:
-    - @return {u32} 返回去初始化的状态
+    - @return {u32} 
 
 ```c
 uintptr FMioFuncGetAddress(FMioCtrl *instance_p,u32 mio_type);
 ```
-- 获取功能配置的基地址
+- 
 
 Note:
-    - 获取功能配置的基地址,如果当前配置和目标配置不一致，则失败
+    - ,
 
 Input:
-    - FMioCtrl *instance_p, 当前控制器的结构体
-    - u32 mio_type, 目标配置的类型UART或者I2c
+    - FMioCtrl *instance_p, 
+    - u32 mio_type, UARTI2c
 
 Return:
-    - @return {uintptr} 返回基地址的值
+    - @return {uintptr} 
 
 ```c
 u32 FMioFuncGetIrqNum(FMioCtrl *instance_p,u32 mio_type);
 ```
-- 获取功能的中断号
+- 
 
 Note:
-    - 获取功能配置的中断号,如果当前配置和目标配置不一致，则失败
+    - ,
 
 Input:
-    - FMioCtrl *instance_p, 当前控制器的结构体
-    - u32 mio_type, 目标配置的类型UART或者I2c
+    - FMioCtrl *instance_p, 
+    - u32 mio_type, UARTI2c
 
 Return:
-    - @return {u32} 返回中断号
+    - @return {u32} 

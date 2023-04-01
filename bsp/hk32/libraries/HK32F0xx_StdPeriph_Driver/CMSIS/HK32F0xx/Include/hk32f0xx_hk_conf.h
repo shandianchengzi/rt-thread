@@ -31,7 +31,7 @@
 #include <hk32f0xx_misc.h>
 #include <hk32f0xx_i2c.h>
 #include <hk32f0xx_spi.h>
-// 除法开方模块，如果用到此功能，则把一下宏定义注释去掉即可
+// 
 #define HAL_DIVSQRT_MODULE_ENABLED   
 
 

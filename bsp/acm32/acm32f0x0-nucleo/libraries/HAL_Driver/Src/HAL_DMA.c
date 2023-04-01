@@ -83,7 +83,7 @@ HAL_StatusTypeDef HAL_DMA_Init(DMA_HandleTypeDef *hdma)
     NVIC_ClearPendingIRQ(DMA_IRQn);
     NVIC_EnableIRQ(DMA_IRQn);
 
-    /* Default Little-Endian、Enable DMA */
+    /* Default Little-EndianEnable DMA */
     DMA->CONFIG = DMA_CONFIG_EN;
 
     /* Clear Channel Config */

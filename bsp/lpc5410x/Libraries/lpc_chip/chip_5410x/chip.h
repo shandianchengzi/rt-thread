@@ -163,7 +163,7 @@ extern const uint32_t ExtClockIn;
  * @}
  */
 
-/* 如果不用莫个文件，去掉相应的文件，可以 */
+/*  */
 
 /* Include order is important! */
 #include "romapi_5410x.h"

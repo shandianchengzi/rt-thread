@@ -14,11 +14,11 @@ Major features of the RA series BSP include:
 
 ## 1. BSP Structure
 
-The structure of a BSP：
+The structure of a BSP
 
 ![BSP Structure](./figures_en/frame.png) 
 
-Each BSP consists of two components: general driver libraries and board specific files. We introduce each component using ra6m4-cpk as an example：
+Each BSP consists of two components: general driver libraries and board specific files. We introduce each component using ra6m4-cpk as an example
 
 |Component|Folder|Remark|
 | - | - | :-- |
@@ -27,7 +27,7 @@ Each BSP consists of two components: general driver libraries and board specific
 
 ## 2. Prerequisites
 
-To build a proper BSP, you may need to be familiar with the RT-Thread build system：
+To build a proper BSP, you may need to be familiar with the RT-Thread build system
 
 - Understand how to use RA series BSP
 
@@ -105,7 +105,7 @@ When the RA template project is ready, some modifications are required for basic
 ![image-20220214174740157](figures_en/template_open.png) 
 
 - Modify the MDK project configuration
-> **Debug Options：** You may take a screenshot to record default settings. After changing settings in`Device`, part of the settings in the `Debug` page will change, you can reset them to default after changing the `Device`.
+> **Debug Options** You may take a screenshot to record default settings. After changing settings in`Device`, part of the settings in the `Debug` page will change, you can reset them to default after changing the `Device`.
 
 ![img](figures_en/template_config4.png) 
 
@@ -113,15 +113,15 @@ When the RA template project is ready, some modifications are required for basic
 
 ![img](figures_en/template_config.png) 
 
-> **Output Options：** Change `Name of Exexutable` to be rtthread, and select `Create HEX File` so that it generates the hex file to be flashed.
+> **Output Options** Change `Name of Exexutable` to be rtthread, and select `Create HEX File` so that it generates the hex file to be flashed.
 
 ![image-20220218144358105](figures_en/template_config1.png) 
 
-> **User Options：**If TrustZone is utilized, extra commands are invoked to setup the partition for Secure & Non-Secure . If only the Flat mode is used during development, this can be ignored. Otherwhile please add【cmd /c "start "Renesas" /w cmd /c ""$Slauncher\rasc_launcher.bat" "3.5.0" --gensecurebundle --compiler ARMv6 "$Pconfiguration.xml" "$L%L" 2> "%%TEMP%%\rasc_stderr.out"""】
+> **User Options**If TrustZone is utilized, extra commands are invoked to setup the partition for Secure & Non-Secure . If only the Flat mode is used during development, this can be ignored. Otherwhile please addcmd /c "start "Renesas" /w cmd /c ""$Slauncher\rasc_launcher.bat" "3.5.0" --gensecurebundle --compiler ARMv6 "$Pconfiguration.xml" "$L%L" 2> "%%TEMP%%\rasc_stderr.out"""
 
 ![img](figures_en/template_config2.png) 
 
-> C/C++ Options: Some warnings can be suppressed, such as “-Wextra“, ”-Wconversion“, ”-Wshadow ”.
+> C/C++ Options: Some warnings can be suppressed, such as -Wextra, -Wconversion, -Wshadow .
 >
 > Take ra6m4-cpk as an example, following options are added: -Wno-license-management -Wuninitialized -Wall -Wmissing-declarations -Wpointer-arith -Waggregate-return -Wfloat-equal
 
@@ -135,20 +135,20 @@ When the RA template project is ready, some modifications are required for basic
 
 > **How to open the FSP in MDK:**
 >
-> 1. Open MDK, choose  “Tools -> Customize Tools Menu…”
-> 2. Click on the “new”  icon, then add a customized command: RA Smart Configurator
-> 3. Specify the installation folder of the tool in the Command setting, click on “…” and find the “rasc.exe” in the installation folder (In the folder `setup_fsp_xxxxx`)
+> 1. Open MDK, choose  Tools -> Customize Tools Menu
+> 2. Click on the new  icon, then add a customized command: RA Smart Configurator
+> 3. Specify the installation folder of the tool in the Command setting, click on  and find the rasc.exe in the installation folder (In the folder `setup_fsp_xxxxx`)
 > 4. Initial Folder: $P
 > 5. Arguments: --device $D --compiler ARMv6 configuration.xml
-> 6. Click OK and save the command “Tools -> RA smart Configurator”
+> 6. Click OK and save the command Tools -> RA smart Configurator
   ![img](figures_en/fsp_config.png) 
 > 7. Click on the command to open the configuration tool: **RA Smart Config**
   ![img](figures_en/fsp_config1.png) 
 
 - Add the UART port
-> Choose the Stacks tab，click on New Stack and find UART.
+> Choose the Stacks tabclick on New Stack and find UART.
   ![image](figures_en/fsp_uart.png) 
-> Set the UART channel for MSH, and configure the UART parameters, so that it matches RT-Thread drivers. Set **name**, **channel**, **callback** following the convention: channel = **X**，name = g_uart**X**、callback = user_uart**X**_callback
+> Set the UART channel for MSH, and configure the UART parameters, so that it matches RT-Thread drivers. Set **name**, **channel**, **callback** following the convention: channel = **X**name = g_uart**X**callback = user_uart**X**_callback
   ![image](figures_en/fsp_uart1.png) 
 
 ### 3.4 Modify options in `Kconfig`
@@ -165,7 +165,7 @@ Definitions for the SoC are available in`renesas\libraries\Kconfig`. Check if th
 | SOC_R7FA6M4AF      | SoC Type   | SOC_R7FAxxxxx      |
 | SOC_SERIES_R7FA6M4 | SoC Series | SOC_SERIES_R7FAxxx |
 
-Add the SoC series：
+Add the SoC series
 
 ![image-20220422164816261](figures\Kconfig1.png) 
 
@@ -178,13 +178,13 @@ Available peripheral options for the new BSP only need to include GPIO and UART:
 
 ![image-20220422163750161](figures\drv_config.png) 
 
-​	For instance, you can add configurations for the UART accordingly:
+	For instance, you can add configurations for the UART accordingly:
 
 ![image-20220422164058202](figures\drv_config_uart.png) 
 
 - Modify `startup.c`
 
->  Source code path：**ra6m4-cpk\ra\fsp\src\bsp\cmsis\Device\RENESAS\Source\startup.c**
+>  Source code path**ra6m4-cpk\ra\fsp\src\bsp\cmsis\Device\RENESAS\Source\startup.c**
 
 ```c
 #ifdef __ARMCC_VERSION
@@ -270,7 +270,7 @@ In the `env` tool use `scons --target=mdk5` to re-generate the project:
 
 ![Re-generate BSP project](./figures_en/menuconfig_3.png) 
 
-Successfully re-generated the project：
+Successfully re-generated the project
 
 ![Re-generate BSP project](./figures_en/menuconfig_4.png) 
 
@@ -298,7 +298,7 @@ After creating the project. we need to copy two `xxx.ld` files to the `script` f
 
 - Change the path of the linker script:
 
-> Linker script path：**ra6m4-cpk\script\fsp.ld**
+> Linker script path**ra6m4-cpk\script\fsp.ld**
 
 ![image-20220215182642126](figures_en/linkscript1.png) 
 
@@ -334,7 +334,7 @@ KEEP(*(FalPartTable))
 
 ![image-20220303165348085](figures_en/rtconfig_py.png) 
 
-Besides the kernel type, we need to confirm compiler parameters as well. Related configurations are explained in the documentation center. [link](https://www.rt-thread.org/document/site/#/development-tools/scons/scons?id=编译器选项).
+Besides the kernel type, we need to confirm compiler parameters as well. Related configurations are explained in the documentation center. [link](https://www.rt-thread.org/document/site/#/development-tools/scons/scons?id=).
 
 Eventually, a basic BSP that supports both GCC and MDK is now ready. We can verify the project compiles successfully using MDK or scons.
 
@@ -379,8 +379,8 @@ The guidelines consist of project configuration, ENV configuration, and IDE conf
 
 ### 4.2 BSP Contribution Guidelines
 
-- Please modify the `README.md` carefully before submitting a BSP. The list of supported peripherals in `README.md` should all be supported in this BSP. Other BSP could be a good reference. All the drivers are listed in the [Introduction to RA Series Driver](./RA系列驱动介绍.md).
-- Two steps to submit a BSP：
+- Please modify the `README.md` carefully before submitting a BSP. The list of supported peripherals in `README.md` should all be supported in this BSP. Other BSP could be a good reference. All the drivers are listed in the [Introduction to RA Series Driver](./RA.md).
+- Two steps to submit a BSP
   - Step1: A basic BSP includes drivers for UART and GPIO, and should be able to use the FinSH console. Support for `MDK5`, `IAR` and `GCC` compilers should be complete. You may omit support for MDK4 if the chip itself does not support MDK4. The `README.md` of the BSP should contain all the drivers to be added in the second step.
   - Step 2: Add support for onboard drivers, all onboard peripherals should be ready-to-use with `menuconfig`. Peripherals that are not available on this board can be omitted. Different drivers should be committed separately for future review and merging.
 - Only submit necessary files for the BSP. Temporary files should be removed.

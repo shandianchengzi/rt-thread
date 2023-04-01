@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fxhci_evt.c
  * Date: 2022-02-11 13:33:12
  * LastEditTime: 2022-02-18 09:13:09
- * Description:  This files is for implementation of XHCI event
+ * Description: This files is for implementation of XHCI event
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   Zhugengyu  2022/2/7    init commit
  */
 
@@ -35,9 +35,9 @@
 
 /**
  * @name: FXhciResetEvtRing
- * @msg: 重置Event TRB ring
+ * @msg: Event TRB ring
  * @return {*}
- * @param {FXhciEvtRing} *er, Event TRB ring实例
+ * @param {FXhciEvtRing} *er, Event TRB ring
  */
 void FXhciResetEvtRing(FXhciEvtRing *const er)
 {

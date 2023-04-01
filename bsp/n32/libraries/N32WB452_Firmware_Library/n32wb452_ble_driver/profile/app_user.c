@@ -76,7 +76,7 @@ uint32_t need_rsp_type = 0;
 void app_user_init(void)
 {
     memset(&app_user_env, 0, sizeof(app_user_env));
-    ke_timer_set(GAPM_DEVICE_READY_IND, TASK_APP, 10); //10M后复位
+    ke_timer_set(GAPM_DEVICE_READY_IND, TASK_APP, 10); //10M
 }
 
 

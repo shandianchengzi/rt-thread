@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fwdt_hw.h
  * Date: 2021-08-25 10:27:42
  * LastEditTime: 2022-02-25 11:44:33
- * Description:  This files is for ctrl of watchdog timer functions
+ * Description: This files is for ctrl of watchdog timer functions
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   wangxiaodong 2021/8/25   init
  */
 

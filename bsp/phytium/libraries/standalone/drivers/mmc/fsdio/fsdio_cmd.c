@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fsdio_cmd.c
  * Date: 2022-06-01 14:23:59
  * LastEditTime: 2022-06-01 14:24:00
- * Description:  This files is for SDIO command related function
+ * Description: This files is for SDIO command related function
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.1   zhugengyu  2022/6/6     modify according to tech manual.
  */
 /***************************** Include Files *********************************/
@@ -92,43 +92,43 @@ FError FSdioTransferCmd(FSdio *const instance_p, FSdioCmdData *const cmd_data_p)
     FError ret = FSDIO_SUCCESS;
     uintptr base_addr = instance_p->config.base_addr;
     u32 cmd_flag = cmd_data_p->flag;
-    u32 raw_cmd = FSDIO_CMD_USE_HOLD_REG; /* USE_HOLD_REG必须为1 */
+    u32 raw_cmd = FSDIO_CMD_USE_HOLD_REG; /* USE_HOLD_REG1 */
 
-    /* 命令需要进行卡初始化，如CMD-0 */
+    /* CMD-0 */
     if (FSDIO_CMD_FLAG_NEED_INIT & cmd_flag)
     {
         raw_cmd |= FSDIO_CMD_INIT;
     }
 
-    /* 命令涉及电压切换 */
+    /*  */
     if (FSDIO_CMD_FLAG_SWITCH_VOLTAGE & cmd_flag)
     {
         raw_cmd |= FSDIO_CMD_VOLT_SWITCH;
     }
 
-    /* 命令传输过程伴随数据传输 */
+    /*  */
     if (FSDIO_CMD_FLAG_EXP_DATA & cmd_flag)
     {
         raw_cmd |= FSDIO_CMD_DAT_EXP;
 
-        if (FSDIO_CMD_FLAG_WRITE_DATA & cmd_flag) /* 写卡 */
+        if (FSDIO_CMD_FLAG_WRITE_DATA & cmd_flag) /*  */
         {
             raw_cmd |= FSDIO_CMD_DAT_WRITE;
         }
     }
 
-    /* 命令需要进行CRC校验 */
+    /* CRC */
     if (FSDIO_CMD_FLAG_NEED_RESP_CRC & cmd_flag)
     {
         raw_cmd |= FSDIO_CMD_RESP_CRC;
     }
 
-    /* 命令需要响应回复 */
+    /*  */
     if (FSDIO_CMD_FLAG_EXP_RESP & cmd_flag)
     {
         raw_cmd |= FSDIO_CMD_RESP_EXP;
 
-        if (FSDIO_CMD_FLAG_EXP_LONG_RESP & cmd_flag) /* 命令需要136字节长回复 */
+        if (FSDIO_CMD_FLAG_EXP_LONG_RESP & cmd_flag) /* 136 */
         {
             raw_cmd |= FSDIO_CMD_RESP_LONG;
         }

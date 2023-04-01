@@ -17,7 +17,7 @@
 * Description : Handle EXTI interrupt request.
 * Input       : huart: EXTI handle.
 * Output      : 
-* Author      : Chris_Kyle                         Data : 2020年
+* Author      : Chris_Kyle                         Data : 2020
 **********************************************************************************/ 
 void HAL_EXTI_IRQHandler(EXTI_HandleTypeDef *hexti)
 {
@@ -32,7 +32,7 @@ void HAL_EXTI_IRQHandler(EXTI_HandleTypeDef *hexti)
 * Description : 
 * Input       : 
 * Outpu       : 
-* Author      : Chris_Kyle                         Data : 2020年
+* Author      : Chris_Kyle                         Data : 2020
 **********************************************************************************/
 HAL_StatusTypeDef HAL_EXTI_SetConfigLine(EXTI_HandleTypeDef *hexti)
 {
@@ -117,7 +117,7 @@ HAL_StatusTypeDef HAL_EXTI_SetConfigLine(EXTI_HandleTypeDef *hexti)
 * Description : Software trigger EXTI
 * Input       : 
 * Outpu       : 
-* Author      : Chris_Kyle                         Data : 2020年
+* Author      : Chris_Kyle                         Data : 2020
 **********************************************************************************/
 void HAL_EXTI_SoftTrigger(EXTI_HandleTypeDef *hexti)
 {
@@ -134,7 +134,7 @@ void HAL_EXTI_SoftTrigger(EXTI_HandleTypeDef *hexti)
 * Description : Get interrupt pending bit of a dedicated line.
 * Input       : 
 * Outpu       : 
-* Author      : Chris_Kyle                         Data : 2020年
+* Author      : Chris_Kyle                         Data : 2020
 **********************************************************************************/
 bool HAL_EXTI_GetPending(EXTI_HandleTypeDef *hexti)
 {
@@ -157,7 +157,7 @@ bool HAL_EXTI_GetPending(EXTI_HandleTypeDef *hexti)
 * Description : Clear interrupt pending bit of a dedicated line.
 * Input       : 
 * Outpu       : 
-* Author      : Chris_Kyle                         Data : 2020年
+* Author      : Chris_Kyle                         Data : 2020
 **********************************************************************************/
 void HAL_EXTI_ClearPending(EXTI_HandleTypeDef *hexti)
 {
@@ -174,7 +174,7 @@ void HAL_EXTI_ClearPending(EXTI_HandleTypeDef *hexti)
 * Description : Clear all interrupt pending bit.  
 * Input       : 
 * Outpu       : 
-* Author      : xwl                         Data : 2021年
+* Author      : xwl                         Data : 2021
 **********************************************************************************/
 void HAL_EXTI_ClearAllPending(void)
 {

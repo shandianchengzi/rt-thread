@@ -1,93 +1,93 @@
-# Infineon Psoc6-CY8CKIT-062-WIFI-BT 说明
+# Infineon Psoc6-CY8CKIT-062-WIFI-BT 
 
-## 简介
+## 
 
-本文档为 `RT-Thread` 为 ` Psoc6-CY8CKIT-062-WIFI-BT`开发板提供的 BSP (板级支持包) 说明。
+ `RT-Thread`  ` Psoc6-CY8CKIT-062-WIFI-BT` BSP () 
 
-主要内容如下：
 
-- 开发板资源介绍
-- BSP 快速上手
-- 进阶使用方法
 
-通过阅读快速上手章节开发者可以快速地上手该 BSP，将 RT-Thread 运行在开发板上。在进阶使用指南章节，将会介绍更多高级功能，帮助开发者利用 `RT-Thread` 驱动更多板载资源。
+- 
+- BSP 
+- 
 
-## 开发板介绍
+ BSP RT-Thread  `RT-Thread` 
 
-` Psoc6-CY8CKIT-062-WIFI-BT` 是英飞凌推出的一款32位双核CPU子系统（ ARM Cortex-M4 和 ARM Cortex-M0）的开发板，具有单周期乘法的150-MHz Arm Cortex-M4F CPU (浮点和存储器保护单元)，100-MHz Cortex M0+ CPU，带单周期乘法和MPU，可以充分发挥 PSoC6 双核芯片性能。
+## 
 
-开发板外观详细信息：[CY8CKIT-062-WIFI-BT - Infineon Technologies](https://www.infineon.com/cms/en/product/evaluation-boards/cy8ckit-062-wifi-bt/)
+` Psoc6-CY8CKIT-062-WIFI-BT` 32CPU ARM Cortex-M4  ARM Cortex-M0150-MHz Arm Cortex-M4F CPU ()100-MHz Cortex M0+ CPUMPU PSoC6 
 
-该开发板核心 **板载资源** 如下：
+[CY8CKIT-062-WIFI-BT - Infineon Technologies](https://www.infineon.com/cms/en/product/evaluation-boards/cy8ckit-062-wifi-bt/)
 
-- MCU：CY8C6247BZI_D54，Cortex-M4主频 150MHz，Cortex-M0主频 100MHz，2MB Flash 和 1MB SRAM
-	    MCU手册更多详细信息请参考文档 [PSoC 6 MCU: CY8C62x8, CY8C62xA Datasheet (infineon.com)](https://www.infineon.com/dgdl/Infineon-PSOC_6_MCU_CY8C62X8_CY8C62XA-DataSheet-v17_00-EN.pdf?fileId=8ac78c8c7d0d8da4017d0ee7d03a70b1)
-- 开发环境：ModusToolbox 2.0/MDK V5
-  	PSoC® Creator™ 下载链接 [ModusToolbox™ Software - Infineon Technologies](https://www.infineon.com/cms/en/design-support/tools/sdk/modustoolbox-software/)
+ **** 
 
-## 外设支持
+- MCUCY8C6247BZI_D54Cortex-M4 150MHzCortex-M0 100MHz2MB Flash  1MB SRAM
+	    MCU [PSoC 6 MCU: CY8C62x8, CY8C62xA Datasheet (infineon.com)](https://www.infineon.com/dgdl/Infineon-PSOC_6_MCU_CY8C62X8_CY8C62XA-DataSheet-v17_00-EN.pdf?fileId=8ac78c8c7d0d8da4017d0ee7d03a70b1)
+- ModusToolbox 2.0/MDK V5
+  	PSoC Creator  [ModusToolbox Software - Infineon Technologies](https://www.infineon.com/cms/en/design-support/tools/sdk/modustoolbox-software/)
 
-本 BSP 目前对外设的支持情况如下：
+## 
 
-| **片上外设** | **支持情况** | **备注** |
+ BSP 
+
+| **** | **** | **** |
 | :----------: | :----------: | :------: |
-|  USB 转串口  |     支持     |  UART5   |
-|     GPIO     |     支持     |    —     |
-|     UART     |     支持     | UART0-5  |
+|  USB   |          |  UART5   |
+|     GPIO     |          |         |
+|     UART     |          | UART0-5  |
 
-## 快速上手
+## 
 
-本 BSP 是以 `MDK V5` 和 `RT-Thread Studio` 为开发环境（编译器：ARMClang / GCC），接下来介绍如何将系统运行起来。
+ BSP  `MDK V5`  `RT-Thread Studio` ARMClang / GCC
 
-### 使用 MDK V5 开发
+###  MDK V5 
 
-#### 硬件连接
+#### 
 
-使用数据线连接开发板到 PC。
+ PC
 
-#### 编译下载
+#### 
 
-1、配置工程：
+1
 
-首先打开 MDK ，若没有安装 `Infineon-PSoC6` 的芯片支持包会提示在线安装，根据提示安装即可。若受网络问题，可以进入 [keil](https://www.keil.com/dd2/pack) 官网下载安装包，离线安装。
+ MDK  `Infineon-PSoC6`  [keil](https://www.keil.com/dd2/pack) 
 
 ![mdk_package](./figures/mdk_package.png)
 
-2、 编译此工程：在安装好芯片支持包后，在 `MDK`工程中进行编译。
+2  `MDK`
 
-3、下载此工程：
+3
 
-工程默认配置使用板载 `DAP-LINK` 使用 `SWD` 方式下载程序，使用数据线连接开发板，编译之后直接点击下载按钮即可。
+ `DAP-LINK`  `SWD` 
 
-### 使用 RT-Thread Studio 开发
+###  RT-Thread Studio 
 
-#### 导入工程
+#### 
 
-* 首先打开  `RT-Thread Studio` 开发工具，点加左上角文件—>导入—> RT-Thread Studio项目到工作空间中。
+*   `RT-Thread Studio` >> RT-Thread Studio
 
 ![](./figures/studio1.png)
 
-* 接着选择 `Psoc6-CY8CKIT-062-WIFI-BT` 开发板支持包的目录，进行导入。
+*  `Psoc6-CY8CKIT-062-WIFI-BT` 
 
 ![](./figures/studio2.png)
 
-#### 编译下载
+#### 
 
-* 点击 IDE 左上角的构建选项进行工程的编译。
+*  IDE 
 
 ![](./figures/studio3-build.png)
 
-* 当编译无错误警告时，点击 `Debug` 或 `Download` 选项进行调试/下载。
+*  `Debug`  `Download` /
 
-  注：若点击下载并下载成功后串口终端无显示信息，请手动按下复位按键进行重启运行。
+  
 
   ![](./figures/studio4-download.png)
 
-## 运行结果
+## 
 
-下载程序成功之后，系统会自动运行。打开终端工具串口助手，选择波特率为 115200。复位设备后，LED 将会以 500HZ 的频率闪烁，而且在终端上可以看到 `RT-Thread` 的输出信息：
+ 115200LED  500HZ  `RT-Thread` 
 
-注：推荐使用串口调试助手如：`MobaXterm`
+`MobaXterm`
 
 ```
  \ | /
@@ -97,8 +97,8 @@
 msh >
 ```
 
-## 联系人
+## 
 
-维护人:
+:
 
 - [Rbb666](https://github.com/Rbb666)

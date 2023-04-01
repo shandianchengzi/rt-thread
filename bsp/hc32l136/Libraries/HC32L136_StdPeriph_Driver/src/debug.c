@@ -85,7 +85,7 @@
 
 /**
  *****************************************************************************
- ** \brief 调试模式下模块功能使能
+ ** \brief 
  **
  ** 
  ** \retval TRUE or FALSE                                      
@@ -99,7 +99,7 @@ en_result_t Debug_ActiveEnable(en_debug_module_active_t enModule)
 
 /**
  *****************************************************************************
- ** \brief 调试模式下模块功能暂停
+ ** \brief 
  **
  ** 
  ** \retval TRUE or FALSE                                      

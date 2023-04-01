@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fadc.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:28:45
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 #include <string.h>
 #include "fgeneric_timer.h"
@@ -49,7 +49,7 @@
  * @param {FAdcCtrl} *pctrl, pointer to a FAdcCtrl structure that contains
  *                the configuration information for the specified adc module.
  * @param {u8} power_state, this parameter must be enable or disable.
- * @return err code information, FADC_SUCCESS indicates success，others indicates failed
+ * @return err code information, FADC_SUCCESS indicates successothers indicates failed
  */
 static FError FAdcPowerDownControl(FAdcCtrl *pctrl, u8 power_state)
 {
@@ -132,7 +132,7 @@ void FAdcChannelEnable(FAdcCtrl *pctrl, FAdcChannel channel, boolean state)
  *                the configuration information for the specified adc module.
  * @param {FAdcChannel} channel, adc channel number.
  * @param {FAdcThresholdConfig} *threshold_config, pointer to adc channel threshold value struct.
- * @return err code information, FADC_SUCCESS indicates success，others indicates failed
+ * @return err code information, FADC_SUCCESS indicates successothers indicates failed
  */
 FError FAdcChannelThresholdSet(FAdcCtrl *pctrl, FAdcChannel channel, FAdcThresholdConfig *threshold_config)
 {
@@ -160,9 +160,9 @@ FError FAdcChannelThresholdSet(FAdcCtrl *pctrl, FAdcChannel channel, FAdcThresho
  * @msg: config adc convert parameters.
  * @param {FAdcCtrl} *pctrl, pointer to a FAdcCtrl structure that contains
  *                the configuration information for the specified adc module.
- * @param {FAdcConvertConfig} *convert_config, include convert mode，channel mode，
+ * @param {FAdcConvertConfig} *convert_config, include convert modechannel mode
  *                            clock divider and convert_interval.
- * @return err code information, FADC_SUCCESS indicates success，others indicates failed
+ * @return err code information, FADC_SUCCESS indicates successothers indicates failed
  */
 FError FAdcConvertSet(FAdcCtrl *pctrl, FAdcConvertConfig *convert_config)
 {
@@ -224,7 +224,7 @@ FError FAdcConvertSet(FAdcCtrl *pctrl, FAdcConvertConfig *convert_config)
  *                the configuration information for the specified adc module.
  * @param {FAdcChannel} channel, adc channel number.
  * @param {FAdcIntrEvtType} event_type, interrupt event type
- * @return err code information, FADC_SUCCESS indicates success，others indicates failed
+ * @return err code information, FADC_SUCCESS indicates successothers indicates failed
  */
 FError FAdcInterruptEnable(FAdcCtrl *pctrl, FAdcChannel channel, FAdcIntrEventType event_type)
 {
@@ -268,7 +268,7 @@ FError FAdcInterruptEnable(FAdcCtrl *pctrl, FAdcChannel channel, FAdcIntrEventTy
  *                the configuration information for the specified adc module.
  * @param {FAdcChannel} channel, adc channel number.
  * @param {FAdcIntrEvtType} event_type, interrupt event type
- * @return err code information, FADC_SUCCESS indicates success，others indicates failed
+ * @return err code information, FADC_SUCCESS indicates successothers indicates failed
  */
 FError FAdcInterruptDisable(FAdcCtrl *pctrl, FAdcChannel channel, FAdcIntrEventType event_type)
 {
@@ -350,7 +350,7 @@ void FAdcConvertStop(FAdcCtrl *pctrl)
  * @param {FAdcCtrl} *pctrl, pointer to a FAdcCtrl structure that contains
  *                the configuration information for the specified adc module.
  * @param {FAdcConvertConfig} *convert_config, pointer to adc convert configuration
- * @return err code information, FADC_SUCCESS indicates success，others indicates failed
+ * @return err code information, FADC_SUCCESS indicates successothers indicates failed
  */
 FError FAdcVariableConfig(FAdcCtrl *pctrl, FAdcConvertConfig *convert_config)
 {
@@ -383,7 +383,7 @@ FError FAdcVariableConfig(FAdcCtrl *pctrl, FAdcConvertConfig *convert_config)
  * @msg: Enable single convert signal, when convert mode is set to single conversion.
  * @param {FAdcCtrl} *pctrl, pointer to a FAdcCtrl structure that contains
  *                the configuration information for the specified adc module.
- * @return err code information, FADC_SUCCESS indicates success，others indicates failed
+ * @return err code information, FADC_SUCCESS indicates successothers indicates failed
  */
 static FError FAdcSingleConvertEnable(FAdcCtrl *pctrl)
 {
@@ -405,7 +405,7 @@ static FError FAdcSingleConvertEnable(FAdcCtrl *pctrl)
  *                the configuration information for the specified adc module.
  * @param {FAdcChannel} channel, adc channel number.
  * @param {u16} *val, pointer to adc convert result value.
- * @return err code information, FADC_SUCCESS indicates success，others indicates failed.
+ * @return err code information, FADC_SUCCESS indicates successothers indicates failed.
  */
 FError FAdcReadConvertResult(FAdcCtrl *pctrl, FAdcChannel channel, u16 *val)
 {
@@ -448,7 +448,7 @@ FError FAdcReadConvertResult(FAdcCtrl *pctrl, FAdcChannel channel, u16 *val)
  *                the configuration information for the specified adc module.
  * @param {FAdcChannel} channel, adc channel number.
  * @param {u32} *count, pointer to adc convert finish count.
- * @return err code information, FADC_SUCCESS indicates success，others indicates failed.
+ * @return err code information, FADC_SUCCESS indicates successothers indicates failed.
  */
 FError FAdcReadFinishCnt(FAdcCtrl *pctrl, FAdcChannel channel, u32 *count)
 {
@@ -468,7 +468,7 @@ FError FAdcReadFinishCnt(FAdcCtrl *pctrl, FAdcChannel channel, u32 *count)
  * @param {FAdcChannel} channel, adc channel number.
  * @param {u16} *u_his_limit, pointer to adc convert history upper limit value.
  * @param {u16} *d_his_limit, pointer to adc convert history lower limit value.
- * @return err code information, FADC_SUCCESS indicates success，others indicates failed.
+ * @return err code information, FADC_SUCCESS indicates successothers indicates failed.
  */
 FError FAdcReadHisLimit(FAdcCtrl *pctrl, FAdcChannel channel, u16 *u_his_limit, u16 *d_his_limit)
 {
@@ -506,7 +506,7 @@ void FAdcDeInitialize(FAdcCtrl *pctrl)
  * @msg:  Initializes a specific instance such that it is ready to be used.
  * @param {FAdcCtrl} *pctrl, instance of FADC controller
  * @param {FAdcConfig} *input_config_p, Default configuration parameters of FADC
- * @return err code information, FADC_SUCCESS indicates success，others indicates failed
+ * @return err code information, FADC_SUCCESS indicates successothers indicates failed
  */
 FError FAdcCfgInitialize(FAdcCtrl *pctrl, const FAdcConfig *input_config_p)
 {

@@ -94,7 +94,7 @@ void Chip_SetupIrcClocking(void)
 }
 
 /* Set up and initialize hardware prior to call to main */
-/* 在main()函数之前调用此函数做基本的初始化工作 */
+/* main() */
 void SystemInit(void)
 {
 	Chip_Clock_EnablePeriphClock(SYSCTL_CLOCK_IOCON);

@@ -1,6 +1,6 @@
 # STM32MP157A-DK1 BSP Introduction
 
-[中文页](README_zh.md) |
+[](README_zh.md) |
 
 ## Introduction
 

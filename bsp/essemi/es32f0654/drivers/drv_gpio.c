@@ -25,7 +25,7 @@
 #include "board.h"
 #include "drv_gpio.h"
 
-/*管脚映射在 es_conf_info_map.h 的 pins[] 中*/
+/* es_conf_info_map.h  pins[] */
 
 #ifdef RT_USING_PIN
 

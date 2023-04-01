@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fspim_hw.h
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 09:08:05
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   zhugengyu  2021-12-3   init commit
  * 1.1   zhugengyu  2022-4-15   support test mode
  * 1.2   zhugengyu  2022-5-13   support spi dma
@@ -77,16 +77,16 @@ extern "C"
  */
 
 #define FSPIM_CTRL_R0_DFS_MASK       GENMASK(3, 0)
-#define FSPIM_CTRL_R0_DFS(x)         (FSPIM_CTRL_R0_DFS_MASK & ((x) << 0)) /* 选择数据长度 */
-#define FSPIM_CTRL_R0_FRF(x)         (GENMASK(5, 4) & ((x) << 4)) /* 选择传输模式 */
-#define FSPIM_CTRL_R0_SCPHA(x)        ((x) << 6) /* 串行时钟相位 */
+#define FSPIM_CTRL_R0_DFS(x)         (FSPIM_CTRL_R0_DFS_MASK & ((x) << 0)) /*  */
+#define FSPIM_CTRL_R0_FRF(x)         (GENMASK(5, 4) & ((x) << 4)) /*  */
+#define FSPIM_CTRL_R0_SCPHA(x)        ((x) << 6) /*  */
 #define FSPIM_CTRL_R0_SCPHA_MASK      BIT(6)
 enum
 {
     FSPIM_SCPHA_SWITCH_DATA_MID = 0x0,
     FSPIM_SCPHA_SWITCH_DATA_BEG = 0x1
 };
-#define FSPIM_CTRL_R0_SCPOL(x)       ((x) << 7) /* 串行时钟极性 */
+#define FSPIM_CTRL_R0_SCPOL(x)       ((x) << 7) /*  */
 #define FSPIM_CTRL_R0_SCPOL_MASK     BIT(7)
 enum
 {
@@ -94,7 +94,7 @@ enum
     FSPIM_SCPOL_INACTIVE_HIGH = 1
 };
 #define FSPIM_CTRL_R0_TMOD_MASK      GENMASK(9, 8)
-#define FSPIM_CTRL_R0_TMOD(x)        (FSPIM_CTRL_R0_TMOD_MASK & ((x) << 8)) /* 传输模式控制位 */
+#define FSPIM_CTRL_R0_TMOD(x)        (FSPIM_CTRL_R0_TMOD_MASK & ((x) << 8)) /*  */
 #define FSPIM_CTRL_R0_TMOD_SHIFT     8
 enum
 {
@@ -103,48 +103,48 @@ enum
     FSPIM_TMOD_RX_ONLY = 0b10,
     FSPIM_TMOD_RD_EEPROM = 0b11
 };
-#define FSPIM_CTRL_R0_SLV_OE(x)      ((x) << 10) /* 从机发送逻辑使能位 */
+#define FSPIM_CTRL_R0_SLV_OE(x)      ((x) << 10) /*  */
 #define FSPIM_CTRL_R0_SLV_OE_MASK    BIT(10)
 enum
 {
     FSPIM_SLAVE_TX_ENABLE = 0,
     FSPIM_SLAVE_TX_DISALE = 1
 };
-#define FSPIM_CTRL_R0_SLV_SRL(x)     ((x) << 11) /* 移位寄存器回环 */
+#define FSPIM_CTRL_R0_SLV_SRL(x)     ((x) << 11) /*  */
 enum
 {
     FSPIM_SRL_NORAML = 0,
     FSPIM_SRL_TEST = 1
 };
-#define FSPIM_CTRL_R0_CFS(x)         (GENMASK(5, 12) & ((x) << 12)) /* 数据大小控制位，用于 Microwire 模式 */
+#define FSPIM_CTRL_R0_CFS(x)         (GENMASK(5, 12) & ((x) << 12)) /*  Microwire  */
 
 /** @name FSPIM_CTRL_R1_OFFSET Register
  */
-/* FSPIM_TMOD_RX_ONLY 或 FSPIM_TMOD_RD_EEPROM 该字段设置为 SPI 连续接收的数据量 */
+/* FSPIM_TMOD_RX_ONLY  FSPIM_TMOD_RD_EEPROM  SPI  */
 #define FSPIM_CTRL_R1_NDF(x)         (GENMASK(15, 0) & ((x) << 0))
 #define FSPIM_CTRL_R1_NDF_64KB       0b11
 
 /** @name FSPIM_SSIENR_OFFSET Register
  */
-#define FSPIM_SSIENR_SSI_EN(x)       ((x) << 0) /* SPI 使能启用和禁用所有 SPI 操作 */
+#define FSPIM_SSIENR_SSI_EN(x)       ((x) << 0) /* SPI  SPI  */
 
 /** @name FSPIM_MWCR_OFFSET Register
  */
-#define FSPIM_MWCR_MW_MOD(x)         ((x) << 0) /* Microwire 传输模式 */
+#define FSPIM_MWCR_MW_MOD(x)         ((x) << 0) /* Microwire  */
 enum
 {
-    FSPIM_MWMODE_NO_CONT_TRANS  = 0, /* 非连续传输 */
-    FSPIM_MWMODE_CONT_TRANS     = 1  /* 连续传输 */
+    FSPIM_MWMODE_NO_CONT_TRANS  = 0, /*  */
+    FSPIM_MWMODE_CONT_TRANS     = 1  /*  */
 };
 
-#define FSPIM_MWCR_MDD(x)            ((x) << 1) /* Microwire 控制位 */
+#define FSPIM_MWCR_MDD(x)            ((x) << 1) /* Microwire  */
 enum
 {
-    FSPIM_MWCR_RX_EXT = 0,  /* 从外部串行设备接收数据 */
-    FSPIM_MWCR_TX_EXT       /* 数据发送到外部串行设备 */
+    FSPIM_MWCR_RX_EXT = 0,  /*  */
+    FSPIM_MWCR_TX_EXT       /*  */
 };
 
-#define FSPIM_MWCR_MHS(x)            ((x) << 2) /* Microwire 握手 */
+#define FSPIM_MWCR_MHS(x)            ((x) << 2) /* Microwire  */
 enum
 {
     FSPU_MWCR_DISABLE_HANDSHAKING = 0,
@@ -153,9 +153,9 @@ enum
 
 /** @name FSPIM_SER_OFFSET Register
  */
-#define FSPIM_SER(x)                 (GENMASK(3, 0) & ((x) << 0)) /* 从机选择信号启动标志 */
-/* 寄存器中的每一个位都对应来自 SPI 主机的从选信号(ss_x_n]).当此寄
-    存器中的某个位被置为 1 时,串行口传输开始时 */
+#define FSPIM_SER(x)                 (GENMASK(3, 0) & ((x) << 0)) /*  */
+/*  SPI (ss_x_n]).
+     1 , */
 enum
 {
     FSPIM_SER_UNSELECT = 0x0,
@@ -164,110 +164,110 @@ enum
 
 /** @name FSPIM_BAUD_R_OFFSET Register
  */
-#define FSPIM_BAUD_R_SCKDV(x)        (GENMASK(15, 0) & ((x) << 0)) /* SCKDV 为 2 ~ 65534 之间的任何偶数值 */
+#define FSPIM_BAUD_R_SCKDV(x)        (GENMASK(15, 0) & ((x) << 0)) /* SCKDV  2 ~ 65534  */
 #define FSPIM_BAUD_R_SCKDV_MIN       2
 #define FSPIM_BAUD_R_SCKDV_MAX       65534
 #define FSPIM_BAUD_R_SCKDV_IS_VALID(x)  (0 == (x) % 2)
 
 /** @name FSPIM_TXFTL_R_OFFSET Register
  */
-#define FSPIM_TXFTL_R_TFT(x)         (GENMASK(2, 0) & ((x) << 0)) /* 发送 FIFO 阙值 */
+#define FSPIM_TXFTL_R_TFT(x)         (GENMASK(2, 0) & ((x) << 0)) /*  FIFO  */
 
 /** @name FSPIM_RXFTL_R_OFFSET Register
  */
-#define FSPIM_RXFTL_R_RFT(x)         (GENMASK(3, 0) & ((x) << 0)) /* 接收 FIFO 阙值 */
+#define FSPIM_RXFTL_R_RFT(x)         (GENMASK(3, 0) & ((x) << 0)) /*  FIFO  */
 
 /** @name FSPIM_TXFLR_OFFSET Register
  */
-#define FSPIM_TXFLR_TXTFL(x)         (GENMASK(3, 0) & ((x) << 0)) /* 发送 FIFO 等级 */
+#define FSPIM_TXFLR_TXTFL(x)         (GENMASK(3, 0) & ((x) << 0)) /*  FIFO  */
 
 /** @name FSPIM_RXFLR_OFFSET Register
  */
-#define FSPIM_RXFLR_RXTFL(x)         (GENMASK(3, 0) & ((x) << 0)) /* 接收 FIFO 等级 */
+#define FSPIM_RXFLR_RXTFL(x)         (GENMASK(3, 0) & ((x) << 0)) /*  FIFO  */
 
 /** @name FSPIM_SR_OFFSET Register, RO
  */
-#define FSPIM_SR_BUSY                BIT(0)  /* SPI 总线繁忙标志位 */
-#define FSPIM_SR_TFNF                BIT(1)  /* 发送 FIFO 不满 */
-#define FSPIM_SR_TFE                 BIT(2)  /* 发送 FIFO 为空 */
-#define FSPIM_SR_RFNE                BIT(3)  /* 接收 FIFO 不为空 */
-#define FSPIM_SR_RFF                 BIT(4)  /* 接收 FIFO 满 */
-#define FSPIM_SR_TXE                 BIT(5)  /* 传输错误 */
-#define FSPIM_SR_DCOL                BIT(6)  /* 传输数据冲突错误 */
+#define FSPIM_SR_BUSY                BIT(0)  /* SPI  */
+#define FSPIM_SR_TFNF                BIT(1)  /*  FIFO  */
+#define FSPIM_SR_TFE                 BIT(2)  /*  FIFO  */
+#define FSPIM_SR_RFNE                BIT(3)  /*  FIFO  */
+#define FSPIM_SR_RFF                 BIT(4)  /*  FIFO  */
+#define FSPIM_SR_TXE                 BIT(5)  /*  */
+#define FSPIM_SR_DCOL                BIT(6)  /*  */
 #define FSPIM_SR_ALL_BITS            GENMASK(0, 6)
 
 /** @name FSPIM_IMR_OFFSET Register
  */
-#define FSPIM_IMR_TXEIS              BIT(0) /* 发送 FIFO 空中断 */
-#define FSPIM_IMR_TXOIS              BIT(1) /* 发送 FIFO 上溢中断 */
-#define FSPIM_IMR_RXUIS              BIT(2) /* 接收 FIFO 下溢中断 */
-#define FSPIM_IMR_RXOIS              BIT(3) /* 接收 FIFO 上溢中断 */
-#define FSPIM_IMR_RXFIS              BIT(4) /* 接收 FIFO 满中断 */
+#define FSPIM_IMR_TXEIS              BIT(0) /*  FIFO  */
+#define FSPIM_IMR_TXOIS              BIT(1) /*  FIFO  */
+#define FSPIM_IMR_RXUIS              BIT(2) /*  FIFO  */
+#define FSPIM_IMR_RXOIS              BIT(3) /*  FIFO  */
+#define FSPIM_IMR_RXFIS              BIT(4) /*  FIFO  */
 #define FSPIM_IMR_ALL_BITS           GENMASK(4, 0)
 
 /** @name FSPIM_ISR_OFFSET Register
  */
-#define FSPIM_ISR_TXEIS              BIT(0) /* 发送 FIFO 空中断状态 */
-#define FSPIM_ISR_TXOIS              BIT(1) /* 发送 FIFO 上溢中断状态 */
-#define FSPIM_ISR_RXUIS              BIT(2) /* 接收 FIFO 下溢中断状态 */
-#define FSPIM_ISR_RXOIS              BIT(3) /* 接收 FIFO 上溢中断状态 */
-#define FSPIM_ISR_RXFIS              BIT(4) /* 接收 FIFO 满中断状态 */
-#define FSPIM_ISR_MSTIS              BIT(5) /* 多主机竞争中断状态 */
+#define FSPIM_ISR_TXEIS              BIT(0) /*  FIFO  */
+#define FSPIM_ISR_TXOIS              BIT(1) /*  FIFO  */
+#define FSPIM_ISR_RXUIS              BIT(2) /*  FIFO  */
+#define FSPIM_ISR_RXOIS              BIT(3) /*  FIFO  */
+#define FSPIM_ISR_RXFIS              BIT(4) /*  FIFO  */
+#define FSPIM_ISR_MSTIS              BIT(5) /*  */
 
 /** @name FSPIM_RIS_R_OFFSET Register
  */
-#define FSPIM_RIS_R_TXEIR              BIT(0) /* 传输 FIFO 空生成中断状态 */
-#define FSPIM_RIS_R_TXOIR              BIT(1) /* 传输 FIFO 上溢生成中断状态 */
-#define FSPIM_RIS_R_RXUIR              BIT(2) /* 接收 FIFO 下溢生成中断状态 */
-#define FSPIM_RIS_R_RXOIR              BIT(3) /* 接收 FIFO 上溢生成中断状态 */
-#define FSPIM_RIS_R_RXFIR              BIT(4) /* 接收 FIFO 满生成中断状态 */
-#define FSPIM_RIS_R_MSTIR              BIT(5) /* 多主机冲突生成中断状态 */
+#define FSPIM_RIS_R_TXEIR              BIT(0) /*  FIFO  */
+#define FSPIM_RIS_R_TXOIR              BIT(1) /*  FIFO  */
+#define FSPIM_RIS_R_RXUIR              BIT(2) /*  FIFO  */
+#define FSPIM_RIS_R_RXOIR              BIT(3) /*  FIFO  */
+#define FSPIM_RIS_R_RXFIR              BIT(4) /*  FIFO  */
+#define FSPIM_RIS_R_MSTIR              BIT(5) /*  */
 #define FSPIM_RIS_R_ALL_BITS           GENMASK(5, 0)
 
 /** @name FSPIM_TXOI_CR_OFFSET Register
  */
-#define FSPIM_TXOICR                   BIT(0) /* 清除传输 FIFO 溢出中断 */
+#define FSPIM_TXOICR                   BIT(0) /*  FIFO  */
 
 /** @name FSPIM_RXOI_CR_OFFSET Register
  */
-#define FSPIM_RXOICR                   BIT(0) /* 清除传输 FIFO 溢出中断 */
+#define FSPIM_RXOICR                   BIT(0) /*  FIFO  */
 
 /** @name FSPIM_RXUI_CR_OFFSET Register
  */
-#define FSPIM_RXUICR                   BIT(0) /* 清除传输 FIFO 下溢中断 */
+#define FSPIM_RXUICR                   BIT(0) /*  FIFO  */
 
 /** @name FSPIM_MSTI_CR_OFFSET Register
  */
-#define FSPIM_MSTICR                   BIT(0) /* 清除多主争用中断 */
+#define FSPIM_MSTICR                   BIT(0) /*  */
 
 /** @name FSPIM_ICR_OFFSET Register
  */
-#define FSPIM_ICR                      BIT(0) /* 清除中断 */
+#define FSPIM_ICR                      BIT(0) /*  */
 
 /** @name FSPIM_DMA_CR_OFFSET Register
  */
-#define FSPIM_DMA_CR_RDMAE             BIT(0) /* DMA 接收使能 */
-#define FSPIM_DMA_CR_TDMAE             BIT(1) /* DMA 发送使能 */
+#define FSPIM_DMA_CR_RDMAE             BIT(0) /* DMA  */
+#define FSPIM_DMA_CR_TDMAE             BIT(1) /* DMA  */
 
 /** @name FSPIM_DMA_TDLR_OFFSET Register
  */
-#define FSPIM_DMATDL(x)                (GENMASK(2, 0) & ((x) << 0))     /* 发送数据等级 */
+#define FSPIM_DMATDL(x)                (GENMASK(2, 0) & ((x) << 0))     /*  */
 
 /** @name FSPIM_DMA_RDLR_OFFSET Register
  */
-#define FSPIM_DMARDL(x)                (GENMASK(2, 0) & ((x) << 0))     /* 接收数据等级 */
+#define FSPIM_DMARDL(x)                (GENMASK(2, 0) & ((x) << 0))     /*  */
 
 /** @name FSPIM_IDR_OFFSET Register
  */
-#define FSPIM_IDCODE(x)                (GENMASK(31, 0) & ((x) << 0))    /* 识别码。即外部设备标识代码 */
+#define FSPIM_IDCODE(x)                (GENMASK(31, 0) & ((x) << 0))    /*  */
 
 /** @name FSPIM_DR_OFFSET Register
  */
-#define FSPIM_DR(x)                    (GENMASK(15, 0) & ((x) << 0))    /* 数据寄存器 */
+#define FSPIM_DR(x)                    (GENMASK(15, 0) & ((x) << 0))    /*  */
 
 /** @name FSPIM_RX_SAMPLE_DLY_OFFSET Register
  */
-#define FSPIM_RSD(x)                   (GENMASK(7, 0) & ((x) << 0))     /* 接收数据延时 */
+#define FSPIM_RSD(x)                   (GENMASK(7, 0) & ((x) << 0))     /*  */
 
 /** @name FSPIM_CS_OFFSET Register
  */
@@ -297,7 +297,7 @@ enum
 
 /**
  * @name: FSpimSetCtrlR0
- * @msg: 设置CTRL_R0寄存器
+ * @msg: CTRL_R0
  * @return {*}
  * @param {uintptr} base_addr
  * @param {u32} val
@@ -309,7 +309,7 @@ static inline void FSpimSetCtrlR0(uintptr base_addr, u32 val)
 
 /**
  * @name: FSpimGetCtrlR0
- * @msg: 获取CTRL_R0寄存器的值
+ * @msg: CTRL_R0
  * @return {*}
  * @param {uintptr} base_addr
  */
@@ -320,7 +320,7 @@ static inline u32 FSpimGetCtrlR0(uintptr base_addr)
 
 /**
  * @name: FSpimSetCtrlR0
- * @msg: 设置CTRL_R1寄存器
+ * @msg: CTRL_R1
  * @return {*}
  * @param {uintptr} base_addr
  * @param {u32} val
@@ -332,7 +332,7 @@ static inline void FSpimSetCtrlR1(uintptr base_addr, u32 val)
 
 /**
  * @name: FSpimSetTxFifoThreshold
- * @msg: 设置TX Fifo阈值
+ * @msg: TX Fifo
  * @return {*}
  * @param {uintptr} base_addr
  * @param {u32} val
@@ -344,7 +344,7 @@ static inline void FSpimSetTxFifoThreshold(uintptr base_addr, u32 val)
 
 /**
  * @name: FSpimGetTxFifoThreshold
- * @msg: 获取TX Fifo阈值
+ * @msg: TX Fifo
  * @return {*}
  * @param {uintptr} base_addr
  */
@@ -355,7 +355,7 @@ static inline u32 FSpimGetTxFifoThreshold(uintptr base_addr)
 
 /**
  * @name: FSpimSetRxFifoThreshold
- * @msg: 设置RX Fifo阈值
+ * @msg: RX Fifo
  * @return {*}
  * @param {uintptr} base_addr
  * @param {u32} val
@@ -367,7 +367,7 @@ static inline void FSpimSetRxFifoThreshold(uintptr base_addr, u32 val)
 
 /**
  * @name: FSpimGetRxFifoThreshold
- * @msg: 获取RX Fifo阈值
+ * @msg: RX Fifo
  * @return {*}
  * @param {uintptr} base_addr
  */
@@ -378,7 +378,7 @@ static inline u32 FSpimGetRxFifoThreshold(uintptr base_addr)
 
 /**
  * @name: FSpimGetTxFifoLevel
- * @msg: 获取当前TX Fifo等级
+ * @msg: TX Fifo
  * @return {*}
  * @param {uintptr} base_addr
  */
@@ -389,7 +389,7 @@ static inline u32 FSpimGetTxFifoLevel(uintptr base_addr)
 
 /**
  * @name: FSpimGetRxFifoLevel
- * @msg: 获取当前RX Fifo等级
+ * @msg: RX Fifo
  * @return {*}
  * @param {uintptr} base_addr
  */
@@ -400,7 +400,7 @@ static inline u32 FSpimGetRxFifoLevel(uintptr base_addr)
 
 /**
  * @name: FSpimGetTxDMALevel
- * @msg: 获取当前的TX DMA等级
+ * @msg: TX DMA
  * @return {*}
  * @param {uintptr} base_addr
  */
@@ -411,7 +411,7 @@ static inline u32 FSpimGetTxDMALevel(uintptr base_addr)
 
 /**
  * @name: FSpimGetRxDMALevel
- * @msg: 获取当前的RX DMA等级
+ * @msg: RX DMA
  * @return {*}
  * @param {uintptr} base_addr
  */
@@ -422,10 +422,10 @@ static inline u32 FSpimGetRxDMALevel(uintptr base_addr)
 
 /**
  * @name: FSpimSetTxDMALevel
- * @msg: 设置TX DMA等级
+ * @msg: TX DMA
  * @return {*}
  * @param {uintptr} base_addr
- * @param {u32} level, TX DMA等级, 应该与FIFO阈值保持一致
+ * @param {u32} level, TX DMA, FIFO
  */
 static inline void FSpimSetTxDMALevel(uintptr base_addr, u32 level)
 {
@@ -434,10 +434,10 @@ static inline void FSpimSetTxDMALevel(uintptr base_addr, u32 level)
 
 /**
  * @name: FSpimSetRxDMALevel
- * @msg: 设置RX DMA等级
+ * @msg: RX DMA
  * @return {*}
  * @param {uintptr} base_addr
- * @param {u32} level, RX DMA等级, 应该与FIFO阈值保持一致
+ * @param {u32} level, RX DMA, FIFO
  */
 static inline void FSpimSetRxDMALevel(uintptr base_addr, u32 level)
 {
@@ -447,7 +447,7 @@ static inline void FSpimSetRxDMALevel(uintptr base_addr, u32 level)
 
 /**
  * @name: FSpimGetEnable
- * @msg: 获取FSPIM控制器的使能状态
+ * @msg: FSPIM
  * @return {*}
  * @param {uintptr} base_addr
  */
@@ -458,7 +458,7 @@ static inline boolean FSpimGetEnable(uintptr base_addr)
 
 /**
  * @name: FSpimSetEnable
- * @msg: 使能/去使能FSPIM控制器
+ * @msg: /FSPIM
  * @return {*}
  * @param {uintptr} base_addr
  * @param {boolean} enable
@@ -473,7 +473,7 @@ static inline void FSpimSetEnable(uintptr base_addr, boolean enable)
 
 /**
  * @name: FSpimMaskIrq
- * @msg: 屏蔽指定的中断位，去使能中断
+ * @msg: 
  * @return {*}
  * @param {uintptr} base_addr
  * @param {u32} mask
@@ -481,13 +481,13 @@ static inline void FSpimSetEnable(uintptr base_addr, boolean enable)
 static inline void FSpimMaskIrq(uintptr base_addr, u32 mask)
 {
     u32 curr_mask;
-    curr_mask = FSPIM_READ_REG32(base_addr, FSPIM_IMR_OFFSET) & ~mask; /* = 0 中断不活动*/
+    curr_mask = FSPIM_READ_REG32(base_addr, FSPIM_IMR_OFFSET) & ~mask; /* = 0 */
     FSPIM_WRITE_REG32(base_addr, FSPIM_IMR_OFFSET, curr_mask);
 }
 
 /**
  * @name: FSpimUmaskIrq
- * @msg: 取消屏蔽指定的中断位，使能中断
+ * @msg: 
  * @return {*}
  * @param {uintptr} base_addr
  * @param {u32} mask
@@ -495,14 +495,14 @@ static inline void FSpimMaskIrq(uintptr base_addr, u32 mask)
 static inline void FSpimUmaskIrq(uintptr base_addr, u32 mask)
 {
     u32 curr_mask;
-    curr_mask = FSPIM_READ_REG32(base_addr, FSPIM_IMR_OFFSET) | mask; /* = 1 中断活动 */
+    curr_mask = FSPIM_READ_REG32(base_addr, FSPIM_IMR_OFFSET) | mask; /* = 1  */
     FSPIM_WRITE_REG32(base_addr, FSPIM_IMR_OFFSET, curr_mask);
 }
 
 
 /**
  * @name: FSpimGetMask
- * @msg: 获取当前的中断屏蔽位
+ * @msg: 
  * @return {*}
  * @param {uintptr} base_addr
  */
@@ -513,7 +513,7 @@ static inline u32 FSpimGetMask(uintptr base_addr)
 
 /**
  * @name: FSpimGetTransMode
- * @msg: 获取当前的传输模式
+ * @msg: 
  * @return {*}
  * @param {uintptr} base_addr
  */
@@ -524,7 +524,7 @@ static inline u32 FSpimGetTransMode(uintptr base_addr)
 
 /**
  * @name: FSpimGetStatus
- * @msg: 获取当前的FSPIM控制器状态
+ * @msg: FSPIM
  * @return {*}
  * @param {uintptr} base_addr
  */
@@ -535,7 +535,7 @@ static inline u32 FSpimGetStatus(uintptr base_addr)
 
 /**
  * @name: FSpimWriteData
- * @msg: 写SPI数据
+ * @msg: SPI
  * @return {*}
  * @param {uintptr} base_addr
  * @param {u16} dat
@@ -547,7 +547,7 @@ static inline void FSpimWriteData(uintptr base_addr, u16 dat)
 
 /**
  * @name: FSpimReadData
- * @msg: 读SPI数据
+ * @msg: SPI
  * @return {*}
  * @param {uintptr} base_addr
  */
@@ -557,28 +557,28 @@ static inline u16 FSpimReadData(uintptr base_addr)
 }
 
 /************************** Function Prototypes ******************************/
-/* 使能/去使能和从设备的连接 */
+/* / */
 void FSpimSetSlaveEnable(uintptr base_addr, boolean enable);
 
-/* 获取TX Fifo可以设置的最大深度 */
+/* TX Fifo */
 u32 FSpimGetTxFifoDepth(uintptr base_addr);
 
-/* 获取RX Fifo可以设置的最大深度 */
+/* RX Fifo */
 u32 FSpimGetRxFifoDepth(uintptr base_addr);
 
-/* 选择SPI从设备 */
+/* SPI */
 void FSpimSelSlaveDev(uintptr base_addr, u32 slave_dev_id);
 
-/* 设置SPI传输速度 */
+/* SPI */
 FError FSpimSetSpeed(uintptr base_addr, u32 speed);
 
-/* 设置SPI传输模式 */
+/* SPI */
 void FSpimSetTransMode(uintptr base_addr, u32 trans_mode);
 
-/* 设置串行时钟相位 */
+/*  */
 void FSpimSetCpha(uintptr base_addr, u32 cpha_mode);
 
-/* 设置串行时钟极性 */
+/*  */
 void FSpimSetCpol(uintptr base_addr, u32 cpol_mode);
 
 #ifdef __cplusplus

@@ -1,10 +1,10 @@
 /******************************************************************************************************************************************
-* 文件名称: SWM341_adc.c
-* 功能说明: SWM341单片机的ADC数模转换器功能驱动库
-* 技术支持: http://www.synwit.com.cn/e/tool/gbook/?bid=1
-* 注意事项:
-* 版本日期: V1.0.0      2016年1月30日
-* 升级记录:
+* : SWM341_adc.c
+* : SWM341ADC
+* : http://www.synwit.com.cn/e/tool/gbook/?bid=1
+* :
+* : V1.0.0      2016130
+* :
 *******************************************************************************************************************************************
 * @attention
 *
@@ -21,12 +21,12 @@
 
 
 /******************************************************************************************************************************************
-* 函数名称: ADC_Init()
-* 功能说明: ADC模数转换器初始化
-* 输    入: ADC_TypeDef * ADCx        指定要设置的ADC，有效值包括ADC0、ADC1
-*           ADC_InitStructure * initStruct      包含ADC各相关定值的结构体
-* 输    出: 无
-* 注意事项: 无
+* : ADC_Init()
+* : ADC
+*     : ADC_TypeDef * ADCx        ADCADC0ADC1
+*           ADC_InitStructure * initStruct      ADC
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void ADC_Init(ADC_TypeDef * ADCx, ADC_InitStructure * initStruct)
 {
@@ -49,10 +49,10 @@ void ADC_Init(ADC_TypeDef * ADCx, ADC_InitStructure * initStruct)
         break;
     }
 
-    ADC_Close(ADCx);        //一些关键寄存器只能在ADC关闭时设置
+    ADC_Close(ADCx);        //ADC
 
     ADCx->CR |= (1 <<ADC_CR_RESET_Pos);
-    for(i = 0; i < 120*20; i++) __NOP();    //至少2个采样时钟周期
+    for(i = 0; i < 120*20; i++) __NOP();    //2
     ADCx->CR &= ~(1 << ADC_CR_RESET_Pos);
 
     ADCx->CR |= (0xF << ADC_CR_FFCLR_Pos);
@@ -62,7 +62,7 @@ void ADC_Init(ADC_TypeDef * ADCx, ADC_InitStructure * initStruct)
     ADCx->CR |= (initStruct->samplAvg << ADC_CR_AVG_Pos);
 
     ADCx->IE = 0;
-    ADCx->IF = 0x3F3F3F3F;  //清除中断标志
+    ADCx->IF = 0x3F3F3F3F;  //
 
     ADCx->IE |= (((initStruct->EOC_IEn & ADC_SEQ0) ? 1 : 0) << ADC_IE_SEQ0EOC_Pos) |
                 (((initStruct->EOC_IEn & ADC_SEQ1) ? 1 : 0) << ADC_IE_SEQ1EOC_Pos) |
@@ -102,13 +102,13 @@ static uint32_t ADC_seq2pos(uint32_t seq)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: ADC_SEQ_Init()
-* 功能说明: ADC序列初始化
-* 输    入: ADC_TypeDef * ADCx        指定要设置的ADC，有效值包括ADC0、ADC1
-*           uint32_t seq            指定要设置的序列，有效值包括ADC_SEQ0、ADC_SEQ1、ADC_SEQ2、ADC_SEQ3
-*           ADC_SEQ_InitStructure * initStruct      包含ADC序列设定定值的结构体
-* 输    出: 无
-* 注意事项: 无
+* : ADC_SEQ_Init()
+* : ADC
+*     : ADC_TypeDef * ADCx        ADCADC0ADC1
+*           uint32_t seq            ADC_SEQ0ADC_SEQ1ADC_SEQ2ADC_SEQ3
+*           ADC_SEQ_InitStructure * initStruct      ADC
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void ADC_SEQ_Init(ADC_TypeDef * ADCx, uint32_t seq, ADC_SEQ_InitStructure * initStruct)
 {
@@ -140,13 +140,13 @@ void ADC_SEQ_Init(ADC_TypeDef * ADCx, uint32_t seq, ADC_SEQ_InitStructure * init
 }
 
 /******************************************************************************************************************************************
-* 函数名称: ADC_CMP_Init()
-* 功能说明: ADC比较功能初始化
-* 输    入: ADC_TypeDef * ADCx        指定要设置的ADC，有效值包括ADC0、ADC1
-*           uint32_t seq            指定要设置的序列，有效值包括ADC_SEQ0、ADC_SEQ1、ADC_SEQ2、ADC_SEQ3
-*           ADC_CMP_InitStructure * initStruct      包含ADC比较功能设定定值的结构体
-* 输    出: 无
-* 注意事项: 无
+* : ADC_CMP_Init()
+* : ADC
+*     : ADC_TypeDef * ADCx        ADCADC0ADC1
+*           uint32_t seq            ADC_SEQ0ADC_SEQ1ADC_SEQ2ADC_SEQ3
+*           ADC_CMP_InitStructure * initStruct      ADC
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void ADC_CMP_Init(ADC_TypeDef * ADCx, uint32_t seq, ADC_CMP_InitStructure * initStruct)
 {
@@ -174,11 +174,11 @@ void ADC_CMP_Init(ADC_TypeDef * ADCx, uint32_t seq, ADC_CMP_InitStructure * init
 }
 
 /******************************************************************************************************************************************
-* 函数名称: ADC_Open()
-* 功能说明: ADC开启，可以软件启动、或硬件触发ADC转换
-* 输    入: ADC_TypeDef * ADCx        指定要设置的ADC，有效值包括ADC0、ADC1
-* 输    出: 无
-* 注意事项: 无
+* : ADC_Open()
+* : ADCADC
+*     : ADC_TypeDef * ADCx        ADCADC0ADC1
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void ADC_Open(ADC_TypeDef * ADCx)
 {
@@ -191,18 +191,18 @@ void ADC_Open(ADC_TypeDef * ADCx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: ADC_Calibrate()
-* 功能说明: ADC校准
-* 输    入: ADC_TypeDef * ADCx        指定要设置的ADC，有效值包括ADC0、ADC1
-* 输    出: 无
-* 注意事项: 无
+* : ADC_Calibrate()
+* : ADC
+*     : ADC_TypeDef * ADCx        ADCADC0ADC1
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void ADC_Calibrate(ADC_TypeDef * ADCx)
 {
     uint32_t i;
 
     ADCx->CALIB |= (1 << ADC_CALIB_RESET_Pos);
-    for(i = 0; i < 120 * 20; i++) __NOP();          //2个采样时钟周期
+    for(i = 0; i < 120 * 20; i++) __NOP();          //2
 
     ADCx->CALIB |= (1 << ADC_CALIB_START_Pos);
     for(i = 0; i < 120 * 10; i++) __NOP();
@@ -213,11 +213,11 @@ void ADC_Calibrate(ADC_TypeDef * ADCx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: ADC_Close()
-* 功能说明: ADC关闭，无法软件启动、或硬件触发ADC转换
-* 输    入: ADC_TypeDef * ADCx        指定要设置的ADC，有效值包括ADC0、ADC1
-* 输    出: 无
-* 注意事项: 无
+* : ADC_Close()
+* : ADCADC
+*     : ADC_TypeDef * ADCx        ADCADC0ADC1
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void ADC_Close(ADC_TypeDef * ADCx)
 {
@@ -225,12 +225,12 @@ void ADC_Close(ADC_TypeDef * ADCx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: ADC_Start()
-* 功能说明: 软件触发模式下启动ADC转换
-* 输    入: ADC_TypeDef * ADCx        指定要设置的ADC，有效值包括ADC0、ADC1
-*           uint32_t seq            指定要设置的ADC序列，有效值为ADC_SEQ0、ADC_SEQ1、ADC_SEQ2、ADC_SEQ3及其组合（即“按位或”运算）
-* 输    出: 无
-* 注意事项: 无
+* : ADC_Start()
+* : ADC
+*     : ADC_TypeDef * ADCx        ADCADC0ADC1
+*           uint32_t seq            ADCADC_SEQ0ADC_SEQ1ADC_SEQ2ADC_SEQ3
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void ADC_Start(ADC_TypeDef * ADCx, uint32_t seq)
 {
@@ -238,12 +238,12 @@ void ADC_Start(ADC_TypeDef * ADCx, uint32_t seq)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: ADC_Stop()
-* 功能说明: 软件触发模式下停止ADC转换
-* 输    入: ADC_TypeDef * ADCx        指定要设置的ADC，有效值包括ADC0、ADC1
-*           uint32_t seq            指定要设置的ADC序列，有效值为ADC_SEQ0、ADC_SEQ1、ADC_SEQ2、ADC_SEQ3及其组合（即“按位或”运算）
-* 输    出: 无
-* 注意事项: 无
+* : ADC_Stop()
+* : ADC
+*     : ADC_TypeDef * ADCx        ADCADC0ADC1
+*           uint32_t seq            ADCADC_SEQ0ADC_SEQ1ADC_SEQ2ADC_SEQ3
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void ADC_Stop(ADC_TypeDef * ADCx, uint32_t seq)
 {
@@ -251,13 +251,13 @@ void ADC_Stop(ADC_TypeDef * ADCx, uint32_t seq)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: ADC_Read()
-* 功能说明: 从指定序列读取转换结果
-* 输    入: ADC_TypeDef * ADCx        指定要设置的ADC，有效值包括ADC0、ADC1
-*           uint32_t seq            指定要设置的ADC序列，有效值为ADC_SEQ0、ADC_SEQ1、ADC_SEQ2、ADC_SEQ3
-*           uint32_t *chn           转换结果来自哪个通道，ADC_CH0、ADC_CH1、... ...、ADC_CH10、ADC_CH11
-* 输    出: uint32_t              读取到的转换结果
-* 注意事项: 无
+* : ADC_Read()
+* : 
+*     : ADC_TypeDef * ADCx        ADCADC0ADC1
+*           uint32_t seq            ADCADC_SEQ0ADC_SEQ1ADC_SEQ2ADC_SEQ3
+*           uint32_t *chn           ADC_CH0ADC_CH1... ...ADC_CH10ADC_CH11
+*     : uint32_t              
+* : 
 ******************************************************************************************************************************************/
 uint32_t ADC_Read(ADC_TypeDef * ADCx, uint32_t seq, uint32_t *chn)
 {
@@ -271,12 +271,12 @@ uint32_t ADC_Read(ADC_TypeDef * ADCx, uint32_t seq, uint32_t *chn)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: ADC_DataAvailable()
-* 功能说明: 指定序列是否有数据可读取
-* 输    入: ADC_TypeDef * ADCx        指定要设置的ADC，有效值包括ADC0、ADC1
-*           uint32_t seq            指定要设置的ADC序列，有效值为ADC_SEQ0、ADC_SEQ1、ADC_SEQ2、ADC_SEQ3
-* 输    出: uint32_t              1 有数据可读取    0 无数据
-* 注意事项: 无
+* : ADC_DataAvailable()
+* : 
+*     : ADC_TypeDef * ADCx        ADCADC0ADC1
+*           uint32_t seq            ADCADC_SEQ0ADC_SEQ1ADC_SEQ2ADC_SEQ3
+*     : uint32_t              1     0 
+* : 
 ******************************************************************************************************************************************/
 uint32_t ADC_DataAvailable(ADC_TypeDef * ADCx, uint32_t seq)
 {
@@ -287,14 +287,14 @@ uint32_t ADC_DataAvailable(ADC_TypeDef * ADCx, uint32_t seq)
 
 
 /******************************************************************************************************************************************
-* 函数名称: ADC_INTEn()
-* 功能说明: 中断使能
-* 输    入: ADC_TypeDef * ADCx        指定要设置的ADC，有效值包括ADC0、ADC1
-*           uint32_t seq            指定要设置的ADC序列，有效值为ADC_SEQ0、ADC_SEQ1、ADC_SEQ2、ADC_SEQ3
-*           uint32_t it             interrupt type，有效值包括ADC_IT_EOC、ADC_IT_FIFO_OVF、ADC_IT_FIFO_HALF、ADC_IT_FIFO_FULL、
-*                                           ADC_IT_CMP_MAX、ADC_IT_CMP_MIN 及其“或”
-* 输    出: 无
-* 注意事项: 无
+* : ADC_INTEn()
+* : 
+*     : ADC_TypeDef * ADCx        ADCADC0ADC1
+*           uint32_t seq            ADCADC_SEQ0ADC_SEQ1ADC_SEQ2ADC_SEQ3
+*           uint32_t it             interrupt typeADC_IT_EOCADC_IT_FIFO_OVFADC_IT_FIFO_HALFADC_IT_FIFO_FULL
+*                                           ADC_IT_CMP_MAXADC_IT_CMP_MIN 
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void ADC_INTEn(ADC_TypeDef * ADCx, uint32_t seq, uint32_t it)
 {
@@ -304,14 +304,14 @@ void ADC_INTEn(ADC_TypeDef * ADCx, uint32_t seq, uint32_t it)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: ADC_INTDis()
-* 功能说明: 中断禁止
-* 输    入: ADC_TypeDef * ADCx        指定要设置的ADC，有效值包括ADC0、ADC1
-*           uint32_t seq            指定要设置的ADC序列，有效值为ADC_SEQ0、ADC_SEQ1、ADC_SEQ2、ADC_SEQ3
-*           uint32_t it             interrupt type，有效值包括ADC_IT_EOC、ADC_IT_FIFO_OVF、ADC_IT_FIFO_HALF、ADC_IT_FIFO_FULL、
-*                                           ADC_IT_CMP_MAX、ADC_IT_CMP_MIN 及其“或”
-* 输    出: 无
-* 注意事项: 无
+* : ADC_INTDis()
+* : 
+*     : ADC_TypeDef * ADCx        ADCADC0ADC1
+*           uint32_t seq            ADCADC_SEQ0ADC_SEQ1ADC_SEQ2ADC_SEQ3
+*           uint32_t it             interrupt typeADC_IT_EOCADC_IT_FIFO_OVFADC_IT_FIFO_HALFADC_IT_FIFO_FULL
+*                                           ADC_IT_CMP_MAXADC_IT_CMP_MIN 
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void ADC_INTDis(ADC_TypeDef * ADCx, uint32_t seq, uint32_t it)
 {
@@ -321,14 +321,14 @@ void ADC_INTDis(ADC_TypeDef * ADCx, uint32_t seq, uint32_t it)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: ADC_INTClr()
-* 功能说明: 中断标志清除
-* 输    入: ADC_TypeDef * ADCx        指定要设置的ADC，有效值包括ADC0、ADC1
-*           uint32_t seq            指定要设置的ADC序列，有效值为ADC_SEQ0、ADC_SEQ1、ADC_SEQ2、ADC_SEQ3
-*           uint32_t it             interrupt type，有效值包括ADC_IT_EOC、ADC_IT_FIFO_OVF、ADC_IT_FIFO_HALF、ADC_IT_FIFO_FULL、
-*                                           ADC_IT_CMP_MAX、ADC_IT_CMP_MIN 及其“或”
-* 输    出: 无
-* 注意事项: 无
+* : ADC_INTClr()
+* : 
+*     : ADC_TypeDef * ADCx        ADCADC0ADC1
+*           uint32_t seq            ADCADC_SEQ0ADC_SEQ1ADC_SEQ2ADC_SEQ3
+*           uint32_t it             interrupt typeADC_IT_EOCADC_IT_FIFO_OVFADC_IT_FIFO_HALFADC_IT_FIFO_FULL
+*                                           ADC_IT_CMP_MAXADC_IT_CMP_MIN 
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void ADC_INTClr(ADC_TypeDef * ADCx, uint32_t seq, uint32_t it)
 {
@@ -338,14 +338,14 @@ void ADC_INTClr(ADC_TypeDef * ADCx, uint32_t seq, uint32_t it)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: ADC_INTStat()
-* 功能说明: 中断状态查询
-* 输    入: ADC_TypeDef * ADCx        指定要设置的ADC，有效值包括ADC0、ADC1
-*           uint32_t seq            指定要查询的ADC序列，有效值为ADC_SEQ0、ADC_SEQ1、ADC_SEQ2、ADC_SEQ3
-*           uint32_t it             interrupt type，有效值包括ADC_IT_EOC、ADC_IT_FIFO_OVF、ADC_IT_FIFO_HALF、ADC_IT_FIFO_FULL、
-*                                           ADC_IT_CMP_MAX、ADC_IT_CMP_MIN 及其“或”
-* 输    出: uint32_t                  1 中断发生    0 中断未发生
-* 注意事项: 无
+* : ADC_INTStat()
+* : 
+*     : ADC_TypeDef * ADCx        ADCADC0ADC1
+*           uint32_t seq            ADCADC_SEQ0ADC_SEQ1ADC_SEQ2ADC_SEQ3
+*           uint32_t it             interrupt typeADC_IT_EOCADC_IT_FIFO_OVFADC_IT_FIFO_HALFADC_IT_FIFO_FULL
+*                                           ADC_IT_CMP_MAXADC_IT_CMP_MIN 
+*     : uint32_t                  1     0 
+* : 
 ******************************************************************************************************************************************/
 uint32_t ADC_INTStat(ADC_TypeDef * ADCx, uint32_t seq, uint32_t it)
 {

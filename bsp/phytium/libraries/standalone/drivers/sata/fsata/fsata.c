@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fsata.c
  * Date: 2022-02-10 14:55:11
  * LastEditTime: 2022-02-18 09:05:09
- * Description:  This files is for sata ctrl function implementation
+ * Description: This files is for sata ctrl function implementation
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 #include <string.h>
@@ -138,7 +138,7 @@ static FError FSataAhciInquiry(FSataCtrl *instance_p, u8 port)
     FError ret = FSATA_SUCCESS;
     u16 *idbuf;
 
-    /* 64位需要预留给内存池更大的空间 */
+    /* 64 */
     static u16 tmpid[FSATA_ID_WORDS] __attribute__((aligned(128))) = {0};
 
     u8 fis[20];
@@ -845,7 +845,7 @@ FError FSataReadWrite(FSataCtrl *instance_p, u8 port, u32 start,
         }
         else
         {
-            /* FEATURE：The number of logical sectors to be transferred. */
+            /* FEATUREThe number of logical sectors to be transferred. */
             fis[3] = (now_blocks >> 0) & 0xff; /* features 7:0 */
             fis[11] = (now_blocks >> 8) & 0xff; /* features 15:8 */
 

@@ -23,7 +23,7 @@
 <div class="sectione dark">
 <center>
 <h1 id="release-notes-for-stm32l1xx-cmsis"><small>Release Notes for</small> <mark>STM32L1xx CMSIS</mark></h1>
-<p>Copyright © 2009-2018 ARM Limited - STMicroelectronics<br />
+<p>Copyright  2009-2018 ARM Limited - STMicroelectronics<br />
 </p>
 <a href="https://www.st.com" class="logo"><img src="_htmresc/st_logo.png" alt="ST logo" /></a>
 </center>
@@ -37,12 +37,12 @@
 <li>STM32L152xx devices</li>
 <li>STM32L162xx devices</li>
 </ul>
-<p>This driver is composed of the descriptions of the registers under “Include” directory.</p>
+<p>This driver is composed of the descriptions of the registers under Include directory.</p>
 <p>Various template file are provided to easily build an application. They can be adapted to fit applications requirements.</p>
 <ul>
 <li>Templates/system_stm32l1xx.c contains the initialization code referred as SystemInit.</li>
-<li>Startup files are provided as example for IAR©, KEIL© and SW4STM32©.</li>
-<li>Linker files are provided as example for IAR©, KEIL© and SW4STM32©.</li>
+<li>Startup files are provided as example for IAR, KEIL and SW4STM32.</li>
+<li>Linker files are provided as example for IAR, KEIL and SW4STM32.</li>
 </ul>
 </div>
 <div class="col-sm-12 col-lg-8">
@@ -86,7 +86,7 @@
 </ul></li>
 <li>system_stm32l1xx.c file
 <ul>
-<li>Update SystemInit() API to don’t reset RCC registers to its reset values</li>
+<li>Update SystemInit() API to dont reset RCC registers to its reset values</li>
 </ul></li>
 </ul>
 </div>
@@ -108,7 +108,7 @@
 </ul></li>
 <li>Updated Update CMSIS Devices compliancy with MISRA C 2012 rules
 <ul>
-<li>Rule-10.6: Use ‘UL’ postfix for _Msk definitions and memory/peripheral base addresses</li>
+<li>Rule-10.6: Use UL postfix for _Msk definitions and memory/peripheral base addresses</li>
 </ul></li>
 <li>Update CMSIS device description files according to latest version of HAL/LL drivers
 <ul>
@@ -151,7 +151,7 @@
 <ul>
 <li>Update CMSIS Devices compliancy with MISRA C 2004 rules:
 <ul>
-<li>MISRA C 2004 rule 10.6 (‘U’ suffix applied to all constants of ‘unsigned’ type)</li>
+<li>MISRA C 2004 rule 10.6 (U suffix applied to all constants of unsigned type)</li>
 <li>Update system_stm32l1xx.h/.c files.</li>
 </ul></li>
 <li>Align Bit definitions for SCB_CFSR register to be compliant with CMSIS Core V4.x and V5.x.</li>
@@ -201,14 +201,14 @@
 <li>Add BKP5R to BKP19R for RTC_TypeDef for stm32l151xba.</li>
 <li>Align bits naming on all stm32 families (ex: WWDG_CFR_WDGTB0 -&gt; WWDG_CFR_WDGTB_0).</li>
 <li>Rename RCC_CFGR_MCO_DIVx to RCC_CFGR_MCOPRE_DIVx</li>
-<li>Align Bits naming on all stm32 families (ex: EXTI_IMR_MR0 –&gt; EXTI_IMR_IM0)</li>
+<li>Align Bits naming on all stm32 families (ex: EXTI_IMR_MR0 &gt; EXTI_IMR_IM0)</li>
 <li>Update .icf file to correct empty linker ROM Start/End menu, under IAR, for stm32l151xdx, stm32l152xdx and stm32l162xdx.</li>
 <li>Rename RCC_CFGR_MCO_x to RCC_CFGR_MCOSEL_x to be aligned with Reference Manual.</li>
 <li>Update CMSIS drivers to apply MISRA C 2004 rule 10.6. (Use U postfix)</li>
 <li>Add defines FLASHSIZE_BASE and UID_BASE</li>
 <li>ADC common instance standardization (new define ADC1_COMMON)</li>
 <li>Remove bit GPIO_BRR_BR_x from Cat1 to Cat2 devices</li>
-<li>Literals “ADC_SMPR1_SMP27, ADC_SMPR1_SMP28, ADC_SMPR1_SMP29” are available on Cat4, Cat5 only.</li>
+<li>Literals ADC_SMPR1_SMP27, ADC_SMPR1_SMP28, ADC_SMPR1_SMP29 are available on Cat4, Cat5 only.</li>
 <li>Add DMA_CNDTR_NDT, DMA_CPAR_PA and DMA_CMAR_MA definitions present on other stm32 families.</li>
 <li>Add defines to trig feature inside source code based on CMSIS content:
 <ul>
@@ -222,7 +222,7 @@
 <li>PWR_PVD_SUPPORT</li>
 </ul></li>
 <li>Set CMSIS variables PLLMulTable, AHBPrescTable and APBPrescTable as external in system_stm32l1xx.h.</li>
-<li>Bit 23 of all EXTI registers (IMR, EMR, …) is not supported on Cat 1 &amp; 2.</li>
+<li>Bit 23 of all EXTI registers (IMR, EMR, ) is not supported on Cat 1 &amp; 2.</li>
 <li>Correct a wrong values for RI_ASCR1_CH_27 to RI_ASCR1_CH_30</li>
 <li>Add defines for LCD capacitance</li>
 <li>Suppress SPI1 from I2S_ALL_INSTANCE</li>

@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fmio_hw.c
  * Date: 2022-06-20 21:05:23
  * LastEditTime: 2022-06-20 21:05:23
- * Description:  This file is for mio
+ * Description: This file is for mio
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 0.1.0    liushengming  2022.06.20    init
  */
 
@@ -38,7 +38,7 @@
 
 /**
  * @name: FMioSelectFunc
- * @msg: 设置Mio功能
+ * @msg: Mio
  * @return {*}
  * @param {uintptr} addr
  * @param {u32} mio_type
@@ -64,7 +64,7 @@ FError FMioSelectFunc(uintptr addr, u32 mio_type)
 
 /**
  * @name: FMioGetMioFunc
- * @msg: 获取Mio状态
+ * @msg: Mio
  * @return {*}
  * @param {uintptr} addr
  */
@@ -77,7 +77,7 @@ u32 FMioGetFunc(uintptr addr)
 
 /**
  * @name: FMioGetVersion
- * @msg: 获取版本信息，默认32'h1
+ * @msg: 32'h1
  * @return {*}
  * @param {uintptr} addr
  */

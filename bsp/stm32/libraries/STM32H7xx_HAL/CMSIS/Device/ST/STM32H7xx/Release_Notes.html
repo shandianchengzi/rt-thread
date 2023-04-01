@@ -23,14 +23,14 @@
 <div class="sectione dark">
 <center>
 <h1 id="release-notes-for-stm32h7xx-cmsis"><strong>Release Notes for STM32H7xx CMSIS</strong></h1>
-<p>Copyright © 2017 STMicroelectronics<br />
+<p>Copyright  2017 STMicroelectronics<br />
 </p>
 <a href="https://www.st.com" class="logo"><img src="_htmresc/st_logo.png" alt="ST logo" /></a>
 </center>
 </div>
 </div>
 <h1 id="license"><strong>License</strong></h1>
-This software component is licensed by ST under BSD 3-Clause license, the “License”; You may not use this component except in compliance with the License. You may obtain a copy of the License at:
+This software component is licensed by ST under BSD 3-Clause license, the License; You may not use this component except in compliance with the License. You may obtain a copy of the License at:
 <center>
 <a href="https://opensource.org/licenses/BSD-3-Clause">https://opensource.org/licenses/BSD-3-Clause</a>
 </center>
@@ -44,12 +44,12 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>Fix minor issues related to English typo in comments of registers and fields description</li>
 <li>Update STM32H7 devices header files to add GPV registers definition, base address and instance</li>
-<li>Update “FLASH_SIZE” define in STM32H7 devices header files to retrieve the flash size from the dedicated FLASH_SIZE_DATA_REGISTER register</li>
-<li>Update “IS_TIM_MASTER_INSTANCE” define in STM32H7 devices header files to consider TIM12 that can be a master timer</li>
+<li>Update FLASH_SIZE define in STM32H7 devices header files to retrieve the flash size from the dedicated FLASH_SIZE_DATA_REGISTER register</li>
+<li>Update IS_TIM_MASTER_INSTANCE define in STM32H7 devices header files to consider TIM12 that can be a master timer</li>
 <li>Remove extra fields defines related to Domain D3 in DBGMCU_CR_DBG register</li>
-<li>Remove “FLASH_OPTCR_SWAP_BANK” and “FLASH_OPTSR_SWAP_BANK_OPT” field definitions from STM32H750xx device header file (that is a value line single bank device)</li>
-<li>Fix "__STM32H7xx_CMSIS_DEVICE_VERSION" definition in stm32h7xx.h file by referring to the right “STM32H7xx_CMSIS_DEVICE” defines</li>
-<li>Update “SystemCoreClockUpdate” function implementation in system_stm32h7xx.c files with default system_clock and PLL source set to HIS instead of CSI (as per the product specification)</li>
+<li>Remove FLASH_OPTCR_SWAP_BANK and FLASH_OPTSR_SWAP_BANK_OPT field definitions from STM32H750xx device header file (that is a value line single bank device)</li>
+<li>Fix "__STM32H7xx_CMSIS_DEVICE_VERSION" definition in stm32h7xx.h file by referring to the right STM32H7xx_CMSIS_DEVICE defines</li>
+<li>Update SystemCoreClockUpdate function implementation in system_stm32h7xx.c files with default system_clock and PLL source set to HIS instead of CSI (as per the product specification)</li>
 <li>Update and improve GCC startup files to reduce the number of loads inside of the .data copy</li>
 <li>Update MDK-ARM template scatter files for dual core devices to fix a typo within the IRAM1 section</li>
 </ul>
@@ -62,8 +62,8 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>Add support of stm32h723xx, stm32h725xx, stm32h733xx, stm32h735xx, stm32h730xx and stm32h730xxQ devices:
 <ul>
-<li>Add “stm32h723xx.h” , “stm32h725xx.h”, “stm32h733xx.h”, “stm32h735xx.h”, “stm32h730xx.h” and “stm32h730xxq.h” files</li>
-<li>Add startup files “startup_stm32h723xx.s”, “startup_stm32h725xx.s”, “startup_stm32h733xx.s”, “startup_stm32h735xx.s”, “startup_stm32h730xx.s” and “startup_stm32h730xxq.s” for EWARM , MDK-ARM and GCC toolchains</li>
+<li>Add stm32h723xx.h , stm32h725xx.h, stm32h733xx.h, stm32h735xx.h, stm32h730xx.h and stm32h730xxq.h files</li>
+<li>Add startup files startup_stm32h723xx.s, startup_stm32h725xx.s, startup_stm32h733xx.s, startup_stm32h735xx.s, startup_stm32h730xx.s and startup_stm32h730xxq.s for EWARM , MDK-ARM and GCC toolchains</li>
 <li>Add part numbers list to stm32h7xx.h header file:
 <ul>
 <li>STM32H723xx: STM32H723VGH6, STM32H723VGT6, STM32H723ZGI6, STM32H723ZGT6, STM32H723VET6, STM32H723VEH6, STM32H723ZET6, STM32H723ZEI6 Devices</li>
@@ -106,7 +106,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li>Add EWARM, linker files for STM32H742xG and STM32H743xG devices coming with 1MB flash: 512KB for each bank</li>
 <li><p>Add EWARM, MDK-ARM and GCC linker files for STM32H745xG and STM32H747xG devices coming with 1MB flash: 512KB for each bank</p></li>
-<li>Update GCC startup files for all devices to align sequence to EWARM/MDK-ARM by calling “SystemInit” prior to any memory access
+<li>Update GCC startup files for all devices to align sequence to EWARM/MDK-ARM by calling SystemInit prior to any memory access
 <ul>
 <li>Allowing to avoid issues when using external memories</li>
 </ul></li>
@@ -119,9 +119,9 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <h2 id="main-changes-2">Main Changes</h2>
 <ul>
 <li>General updates to align Bits and registers definitions with the STM32H7 reference manual</li>
-<li>Update “ErrorStatus” enumeration definition in stm32h7xx.h file with SUCCESS set to numerical value zero</li>
+<li>Update ErrorStatus enumeration definition in stm32h7xx.h file with SUCCESS set to numerical value zero</li>
 <li>Add definition of DMA_SxCR_TRBUFF bit field of DMA SxCR register allowing to enabled/disable bufferable transfers</li>
-<li>Remove RCC_AHB2ENR_CRYPEN/RCC_AHB2RSTR_CRYPRST/RCC_AHB2LPENR_CRYPLPEN and RCC_AHB2ENR_HASHEN/RCC_AHB2RSTR_HASHRST/RCC_AHB2LPENR_HASHLPEN from H7 devices that doesn’t support CRYP/HASH (STM32H742/43/45/47/A3)</li>
+<li>Remove RCC_AHB2ENR_CRYPEN/RCC_AHB2RSTR_CRYPRST/RCC_AHB2LPENR_CRYPLPEN and RCC_AHB2ENR_HASHEN/RCC_AHB2RSTR_HASHRST/RCC_AHB2LPENR_HASHLPEN from H7 devices that doesnt support CRYP/HASH (STM32H742/43/45/47/A3)</li>
 <li>Add STM32H7_DEV_ID define allowing to identify the H7 Device ID</li>
 <li>Update OCTOSPIM_TypeDef structure definition with 3 PCR registers instead of 8 (on STM32H7A3/B3/B0 devices supporting OctoSPI)</li>
 <li>Add definition for OCTOSPIM_CR_MUXEN and OCTOSPIM_CR_REQ2ACK_TIME in order to support OctoSPI IO Manager multiplexed mode feature (on STM32H7A3/B3/B0 devices supporting OctoSPI)</li>
@@ -142,8 +142,8 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li><p>General updates to align Bit and registers definition with the STM32H7 reference manual</p></li>
 <li>Add support of stm32h7A3xx, stm32h7A3xxQ, stm32h7B3xx, stm32h7B3xxQ, stm32h7B0xx and stm32h7B0xxQ devices:
 <ul>
-<li>Add “stm32h7a3xx.h”, “stm32h7a3xxq.h”, “stm32h7b3xx.h”, “stm32h7b3xxq.h”, “stm32h7b0xx.h” and “stm32h7b0xxq.h” files</li>
-<li>Add startup files “startup_stm32h7a3xx.s”, “startup_stm32h7a3xxq.s”, “startup_stm32h7b3xx.s”, “startup_stm32h7b3xxq.s”, “startup_stm32h7b0xx.s” and “startup_stm32h7b0xxq.s” for EWARM , MDK-ARM and STM32CubeIDE toolchains</li>
+<li>Add stm32h7a3xx.h, stm32h7a3xxq.h, stm32h7b3xx.h, stm32h7b3xxq.h, stm32h7b0xx.h and stm32h7b0xxq.h files</li>
+<li>Add startup files startup_stm32h7a3xx.s, startup_stm32h7a3xxq.s, startup_stm32h7b3xx.s, startup_stm32h7b3xxq.s, startup_stm32h7b0xx.s and startup_stm32h7b0xxq.s for EWARM , MDK-ARM and STM32CubeIDE toolchains</li>
 <li>Add part numbers list to stm32h7xx.h header file:
 <ul>
 <li>STM32H7A3xx : STM32H7A3IIK6, STM32H7A3IIT6, STM32H7A3NIH6, STM32H7A3RIT6, STM32H7A3VIH6, STM32H7A3VIT6, STM32H7A3ZIT6</li>
@@ -169,13 +169,13 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <div>
 <h2 id="main-changes-4">Main Changes</h2>
 <ul>
-<li>Add definition of “ART_TypeDef” structure: ART accelerator for Cortex-M4 available in Dual Core devices</li>
-<li>Add definition of “ART” instance: pointer to “ART_TypeDef” structure</li>
-<li>Add definition of “ART” bit fields: ART_CTR_EN and ART_CTR_PCACHEADDR<br />
+<li>Add definition of ART_TypeDef structure: ART accelerator for Cortex-M4 available in Dual Core devices</li>
+<li>Add definition of ART instance: pointer to ART_TypeDef structure</li>
+<li>Add definition of ART bit fields: ART_CTR_EN and ART_CTR_PCACHEADDR<br />
 </li>
-<li>Update definitions of “HRTIM1_TIMA” to “HRTIM1_TIME” : pointer to HRTIM_Timerx_TypeDef structure instead of HRTIM_TIM_TypeDef</li>
-<li>Fix Typo in “ETH_TypeDef” definition: use uint32_t for “RESERVED16” registers instead of int32_t</li>
-<li>Remove useless definition of “SDMMC” instance (keep only definitions of “SDMMC1” and “SDMMC2”)</li>
+<li>Update definitions of HRTIM1_TIMA to HRTIM1_TIME : pointer to HRTIM_Timerx_TypeDef structure instead of HRTIM_TIM_TypeDef</li>
+<li>Fix Typo in ETH_TypeDef definition: use uint32_t for RESERVED16 registers instead of int32_t</li>
+<li>Remove useless definition of SDMMC instance (keep only definitions of SDMMC1 and SDMMC2)</li>
 </ul>
 </div>
 </div>
@@ -188,8 +188,8 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>Updates to aligned with STM32H7xx <strong>rev.V</strong> devices</li>
 <li>Add support of stm32h745xx, stm32h747xx, stm32h755xx, stm32h757xx <strong>Dual Core</strong> devices and STM32H742xx (new single core device):
 <ul>
-<li>Add “stm32h745xx.h” , “stm32h747xx.h”, “stm32h755xx.h”, “stm32h757xx.h” and “stm32h742xx.h” files</li>
-<li>Add startup files “startup_stm32h745xx.s”, “startup_stm32h747xx.s”, “startup_stm32h755xx.s”, “startup_stm32h757xx.s” and “startup_stm32h742xx.s” for EWARM , MDK-ARM and SW4STM32 toolchains</li>
+<li>Add stm32h745xx.h , stm32h747xx.h, stm32h755xx.h, stm32h757xx.h and stm32h742xx.h files</li>
+<li>Add startup files startup_stm32h745xx.s, startup_stm32h747xx.s, startup_stm32h755xx.s, startup_stm32h757xx.s and startup_stm32h742xx.s for EWARM , MDK-ARM and SW4STM32 toolchains</li>
 <li>Add part numbers list to stm32h7xx.h header file:
 <ul>
 <li>STM32H742xx: STM32H742VI, STM32H742ZI, STM32H742AI, STM32H742II, STM32H742BI, STM32H742XI</li>
@@ -308,7 +308,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>Add support for stm32h750xx value line devices:
 <ul>
-<li>Add “stm32h750xx.h” file</li>
+<li>Add stm32h750xx.h file</li>
 <li>Add startup files startup_stm32h750xx.s for EWARM, MDK-ARM and SW4STM32</li>
 </ul></li>
 </ul>

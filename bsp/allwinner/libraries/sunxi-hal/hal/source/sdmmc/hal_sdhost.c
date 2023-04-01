@@ -1190,19 +1190,19 @@ static int32_t __mci_check_busy_over(struct mmc_host *host)
         if(i>(SDC_BUSY_WAIT_LOOP/8)) {
             mmc_mdelay(10);
             if(i%8)
-                SDC_LOGW("Waiting reg %x bitmap %x clear v %x，i %x\n",\
+                SDC_LOGW("Waiting reg %x bitmap %x clear v %xi %x\n",\
                         HAL_PR_SZ(HAL_PT_TO_U(host->reg_base)) + SDXC_REG_STAS,\
                          (unsigned int)SDXC_CardBusy,\
                          (unsigned int)mci_readl(host, SDXC_CardBusy),\
                          (unsigned int)i);
         }
-        SDC_LOGD("Waiting reg %x bitmap %x clear v %x，i %x\n",\
+        SDC_LOGD("Waiting reg %x bitmap %x clear v %xi %x\n",\
                          HAL_PR_SZ(HAL_PT_TO_U(host->reg_base)) + SDXC_REG_STAS,\
                          (unsigned int)SDXC_CardBusy,\
                          (unsigned int)mci_readl(host, SDXC_CardBusy),\
                          (unsigned int)i);
     }
-    SDC_LOGE("Wait busy timeout %x，%x\n",
+    SDC_LOGE("Wait busy timeout %x%x\n",
             (unsigned int)mci_readl(host, SDXC_REG_STAS), (unsigned int)i);
     return -1;
 }
@@ -1212,7 +1212,7 @@ int32_t __mci_check_bit_clear(struct mmc_host *host, uint32_t reg_offset, uint32
     uint32_t i;
     for(i = 0; i< SDC_BUSY_WAIT_LOOP; i++){
         if(!(mci_readl(host, reg_offset) & bit_map)){
-            SDC_LOGD("Wait reg %p bitmap %x clear v %lx，i %x ok\n",\
+            SDC_LOGD("Wait reg %p bitmap %x clear v %lxi %x ok\n",\
                      (host->reg_base) + reg_offset,\
                      (unsigned int)bit_map,\
                      HAL_PR_SZ_L(mci_readl(host, reg_offset)),\
@@ -1222,14 +1222,14 @@ int32_t __mci_check_bit_clear(struct mmc_host *host, uint32_t reg_offset, uint32
         if(i>(SDC_BUSY_WAIT_LOOP/8)) {
             mmc_mdelay(10);
             if(i%8)
-                SDC_LOGW("Waiting reg %p bitmap %x clear v %lx，i %x\n",\
+                SDC_LOGW("Waiting reg %p bitmap %x clear v %lxi %x\n",\
                          (host->reg_base) + reg_offset,\
                          (unsigned int)bit_map,\
                          HAL_PR_SZ_L(mci_readl(host, reg_offset)),\
                          (unsigned int)i);
         }
     }
-    SDC_LOGE("Wait reg %p bitmap %x clear timeout v %lx，i %x\n",\
+    SDC_LOGE("Wait reg %p bitmap %x clear timeout v %lxi %x\n",\
              (host->reg_base) + reg_offset,\
              (unsigned int) bit_map,\
              HAL_PR_SZ_L(mci_readl(host, reg_offset)),\
@@ -1502,8 +1502,8 @@ int32_t do_rom_HAL_SDC_Request(struct mmc_host *host, struct mmc_request *mrq)
     if ((ret != HAL_OK && host->present) && \
         (((time1.tv_sec*1000+time1.tv_nsec/1000000) - (time0.tv_sec*1000+time0.tv_nsec/1000000)) < SDC_DMA_TIMEOUT))
     {
-        //增加这里的原因是防止读写sdmmc的task被esKRNL_TimeDlyResume,出现这种情况，会导致信号量提前退出
-        //如果是正常的timeout则不会跑到这里面
+        //sdmmctaskesKRNL_TimeDlyResume,
+        //timeout
         SDC_LOGE("===SDC_SemPend abnormal===\n");
         ret = SDC_SemPend(&host->lock, SDC_DMA_TIMEOUT);
     }

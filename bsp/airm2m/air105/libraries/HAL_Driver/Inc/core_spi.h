@@ -25,11 +25,11 @@
 void SPI_MasterInit(uint8_t SpiID, uint8_t DataBit, uint8_t Mode, uint32_t Speed, CBFuncEx_t CB, void *pUserData);
 int32_t SPI_Transfer(uint8_t SpiID, const uint8_t *TxData, uint8_t *RxData, uint32_t Len, uint8_t UseDMA);
 /*
- * polling传输，不发生线程调度
+ * polling
  */
 int32_t SPI_BlockTransfer(uint8_t SpiID, const uint8_t *TxData, uint8_t *RxData, uint32_t Len);
 /*
- * 类似spiflash的cmd+data型传输用，先发WLen数据，忽略Rx数据，再接收RLen数据
+ * spiflashcmd+dataWLenRxRLen
  */
 int32_t SPI_FlashBlockTransfer(uint8_t SpiID, const uint8_t *TxData, uint32_t WLen, uint8_t *RxData, uint32_t RLen);
 void SPI_DMATxInit(uint8_t SpiID, uint8_t Stream, uint32_t Channel);

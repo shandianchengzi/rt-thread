@@ -51,7 +51,7 @@
 #define ES_C_ADC_SAMPLE_TIME_4       ADC_SAMPLETIME_4
 #define ES_C_ADC_SAMPLE_TIME_15       ADC_SAMPLETIME_15
 
-/* ADC 配置 */
+/* ADC  */
 
 /* codes_main */
 

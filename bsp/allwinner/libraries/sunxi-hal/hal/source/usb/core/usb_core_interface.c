@@ -14,7 +14,7 @@
 * Date : 2008.06.xx
 *
 * Description :
-*       功能驱动reg/unreg接口
+*       reg/unreg
 * History :
 ********************************************************************************************************************
 */
@@ -34,7 +34,7 @@
 #include "usb_core_base.h"
 
 //return
-//  0   :   成功reg
+//  0   :   reg
 s32 usb_host_func_drv_reg(struct usb_host_func_drv *drv)
 {
     if (usb_host_is_enabled() == 0)
@@ -50,7 +50,7 @@ s32 usb_host_func_drv_reg(struct usb_host_func_drv *drv)
 }
 
 //return
-//  0   :   成功unreg
+//  0   :   unreg
 s32 usb_host_func_drv_unreg(struct usb_host_func_drv *drv)
 {
     hal_log_info("[usb bus]: driver \"%s\" disconnect usb bus.", drv->func_drv_name != NULL ? drv->func_drv_name : " ");

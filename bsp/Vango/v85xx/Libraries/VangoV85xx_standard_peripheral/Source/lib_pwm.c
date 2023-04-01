@@ -369,13 +369,13 @@ void PWM_CCRConfig(PWM_TypeDef *PWMx, uint32_t Channel, uint16_t Period)
                 PWM3_OUT0 
                 PWM3_OUT1 
                 PWM3_OUT2 
-            OLine: can use the ¡®|¡¯ operator
+            OLine: can use the | operator
                 PWM_OLINE_0
                 PWM_OLINE_1 
                 PWM_OLINE_2 
                 PWM_OLINE_3 
   * @note    PWM Single channel's output waveform can be output on multiple output lines.
-  *          Multiple-line configuration can be performed by using the ¡®|¡¯ operator.
+  *          Multiple-line configuration can be performed by using the | operator.
   *            ex: PWM_OLineConfig(PWM0_OUT0, PWM_OLINE_0 | PWM_OLINE_2)
   *                PWM0 channel0 output by PWM0&PWM2's lien.
   * @retval  None

@@ -90,82 +90,82 @@
   */
 
 /**
-  * @brief  复位UART外设
-  * @param  UARTx 外设入口地址
-  * @retval 错误状态，可能值:
-  *         -FL_PASS 外设寄存器值恢复复位值
-  *         -FL_FAIL 复位未成功
+  * @brief  UART
+  * @param  UARTx 
+  * @retval :
+  *         -FL_PASS 
+  *         -FL_FAIL 
   */
 FL_ErrorStatus FL_UART_DeInit(UART_Type *UARTx)
 {
     FL_ErrorStatus status = FL_PASS;
-    /* 参数入口合法性 */
+    /*  */
     assert_param(IS_UART_INSTANCE(UARTx));
-    /* 外设复位使能 */
+    /*  */
     FL_RCC_EnablePeripheralReset();
     if(UARTx == UART0)
     {
-        /*复位UART*/
+        /*UART*/
         FL_RCC_EnableResetAPB2Peripheral(FL_RCC_RSTAPB_UART0);
         FL_RCC_DisableResetAPB2Peripheral(FL_RCC_RSTAPB_UART0);
-        /* 外设总线时钟关闭 */
+        /*  */
         FL_RCC_DisableGroup3BusClock(FL_RCC_GROUP3_BUSCLK_UART0);
-        /* 外设操作时钟关闭 */
+        /*  */
         FL_RCC_DisableGroup1OperationClock(FL_RCC_GROUP1_OPCLK_UART0);
     }
     else
         if(UARTx == UART1)
         {
-            /*复位UART*/
+            /*UART*/
             FL_RCC_EnableResetAPB2Peripheral(FL_RCC_RSTAPB_UART1);
             FL_RCC_DisableResetAPB2Peripheral(FL_RCC_RSTAPB_UART1);
-            /* 外设总线时钟关闭 */
+            /*  */
             FL_RCC_DisableGroup3BusClock(FL_RCC_GROUP3_BUSCLK_UART1);
-            /* 外设操作时钟关闭 */
+            /*  */
             FL_RCC_DisableGroup1OperationClock(FL_RCC_GROUP1_OPCLK_UART1);
         }
         else
             if(UARTx == UART4)
             {
-                /*复位UART*/
+                /*UART*/
                 FL_RCC_EnableResetAPB1Peripheral(FL_RCC_RSTAPB_UART4);
                 FL_RCC_DisableResetAPB1Peripheral(FL_RCC_RSTAPB_UART4);
-                /* 外设总线时钟关闭 */
+                /*  */
                 FL_RCC_DisableGroup3BusClock(FL_RCC_GROUP3_BUSCLK_UART4);
             }
             else
                 if(UARTx == UART5)
                 {
-                    /*复位UART*/
+                    /*UART*/
                     FL_RCC_EnableResetAPB1Peripheral(FL_RCC_RSTAPB_UART5);
                     FL_RCC_DisableResetAPB1Peripheral(FL_RCC_RSTAPB_UART5);
-                    /* 外设总线时钟关闭 */
+                    /*  */
                     FL_RCC_DisableGroup3BusClock(FL_RCC_GROUP3_BUSCLK_UART5);
                 }
                 else
                 {
                     status = FL_FAIL;
                 }
-    /* 锁定外设复位功能 */
+    /*  */
     FL_RCC_DisablePeripheralReset();
     return (status);
 }
 
 /**
-  * @brief  配置UART
+  * @brief  UART
   *
-  * @param  UARTx  外设入口地址
-  * @param  initStruct 指向 @ref FL_UART_InitTypeDef 结构体的指针
+  * @param  UARTx  
+  * @param  initStruct  @ref FL_UART_InitTypeDef 
   *
-  * @retval 错误状态，可能值：
-  *         -FL_PASS 配置成功
-  *         -FL_FAIL 配置过程发生错误
+  * @retval 
+  *         -FL_PASS 
+  *         -FL_FAIL 
   */
 FL_ErrorStatus FL_UART_Init(UART_Type *UARTx, FL_UART_InitTypeDef *initStruct)
 {
     FL_ErrorStatus status = FL_FAIL;
     uint32_t Fclk = 0, baudRate = 0;
-    /* 参数合法性检查 */
+    /*  */
     assert_param(IS_UART_INSTANCE(UARTx));
     assert_param(IS_FL_UART_CLKSRC(initStruct->clockSrc));
     assert_param(IS_FL_UART_DATAWIDTH(initStruct->dataWidth));
@@ -174,9 +174,9 @@ FL_ErrorStatus FL_UART_Init(UART_Type *UARTx, FL_UART_InitTypeDef *initStruct)
     assert_param(IS_FL_UART_DIRECTION(initStruct->transferDirection));
     if(UARTx == UART0)
     {
-        /*时钟源选择*/
+        /**/
         FL_RCC_SetUART0ClockSource(initStruct->clockSrc);
-        /* 根据不同的时钟源计算baudrate 寄存器值,并配置 */
+        /* baudrate , */
         switch(initStruct->clockSrc)
         {
             case FL_RCC_UART0_CLK_SOURCE_APB1CLK:
@@ -196,9 +196,9 @@ FL_ErrorStatus FL_UART_Init(UART_Type *UARTx, FL_UART_InitTypeDef *initStruct)
     }
     if(UARTx == UART1)
     {
-        /*时钟源选择*/
+        /**/
         FL_RCC_SetUART1ClockSource(initStruct->clockSrc);
-        /* 根据不同的时钟源计算baudrate 寄存器值,并配置 */
+        /* baudrate , */
         switch(initStruct->clockSrc)
         {
             case FL_RCC_UART1_CLK_SOURCE_APB1CLK:
@@ -218,23 +218,23 @@ FL_ErrorStatus FL_UART_Init(UART_Type *UARTx, FL_UART_InitTypeDef *initStruct)
     }
     if(UARTx == UART0)
     {
-        /*总线时钟使能*/
+        /**/
         FL_RCC_EnableGroup3BusClock(FL_RCC_GROUP3_BUSCLK_UART0);
-        /*操作时钟使能*/
+        /**/
         FL_RCC_EnableGroup1OperationClock(FL_RCC_GROUP1_OPCLK_UART0);
     }
     else
         if(UARTx == UART1)
         {
-            /*总线时钟使能*/
+            /**/
             FL_RCC_EnableGroup3BusClock(FL_RCC_GROUP3_BUSCLK_UART1);
-            /*操作时钟使能*/
+            /**/
             FL_RCC_EnableGroup1OperationClock(FL_RCC_GROUP1_OPCLK_UART1);
         }
         else
             if(UARTx == UART4)
             {
-                /*总线时钟使能*/
+                /**/
                 FL_RCC_EnableGroup3BusClock(FL_RCC_GROUP3_BUSCLK_UART4);
                 Fclk = FL_RCC_GetAPB2ClockFreq();
                 baudRate = Fclk / initStruct->baudRate - 1;
@@ -246,7 +246,7 @@ FL_ErrorStatus FL_UART_Init(UART_Type *UARTx, FL_UART_InitTypeDef *initStruct)
                     Fclk = FL_RCC_GetAPB2ClockFreq();
                     baudRate = Fclk / initStruct->baudRate - 1;
                 }
-    /*发送接收控制*/
+    /**/
     if(initStruct->transferDirection & FL_UART_DIRECTION_TX)
     {
         FL_UART_EnableTX(UARTx);
@@ -255,45 +255,45 @@ FL_ErrorStatus FL_UART_Init(UART_Type *UARTx, FL_UART_InitTypeDef *initStruct)
     {
         FL_UART_EnableRX(UARTx);
     }
-    /*配置波特率*/
+    /**/
     FL_UART_WriteBaudRate(UARTx, baudRate);
-    /*配置停止位长度*/
+    /**/
     FL_UART_SetStopBitsWidth(UARTx, initStruct->stopBits);
-    /*数据长度*/
+    /**/
     FL_UART_SetDataWidth(UARTx, initStruct->dataWidth);
-    /*配置奇偶校验*/
+    /**/
     FL_UART_SetParity(UARTx, initStruct->parity);
     status = FL_PASS;
     return status;
 }
 
 /**
-  * @brief  配置UART红外调制
+  * @brief  UART
   *
-  * @param  UARTx 外设入口地址
+  * @param  UARTx 
   *
-  * @param  initStruct 指向 @ref FL_UART_InfraRed_InitTypeDef 结构体的指针
+  * @param  initStruct  @ref FL_UART_InfraRed_InitTypeDef 
   *
-  * @retval 错误状态，可能值：
-  *         -FL_PASS 配置成功
-  *         -FL_FAIL 配置过程发生错误
+  * @retval 
+  *         -FL_PASS 
+  *         -FL_FAIL 
   */
 FL_ErrorStatus FL_UART_InfraRed_Init(UART_Type *UARTx, FL_UART_InfraRed_InitTypeDef *initStruct)
 {
     FL_ErrorStatus status = FL_FAIL;
     uint32_t  tempTZBRG = 0, tempTH = 0;
-    /* 参数合法性检查 */
+    /*  */
     assert_param(IS_UART_INSTANCE(UARTx));
     assert_param(IS_FL_UART_INFRARED_POLARITY(initStruct->polarity));
     assert_param(IS_FL_UART_INFRARED_MODULATION_DUTY(initStruct->modulationDuty));
     FL_RCC_EnableGroup3BusClock(FL_RCC_GROUP3_BUSCLK_UARTIR);
-    /*红外发送使能*/
+    /**/
     FL_UART_EnableIRModulation(UARTx);
-    /*红外调制极性*/
+    /**/
     FL_UART_SetIRPolarity(UART, initStruct->polarity);
-    /*红外调制频率*/
+    /**/
     tempTZBRG = (uint32_t)((FL_RCC_GetAPB1ClockFreq() * 1.0) / initStruct->modulationFrequency - 1);
-    /* 调制占空比 */
+    /*  */
     if((tempTZBRG >> 4) != 0)
     {
         tempTH = (uint32_t)(((float)initStruct->modulationDuty / 100.0) * ((float)(tempTZBRG + 1) / (float)(tempTZBRG >> 4)) + 0.5);
@@ -302,9 +302,9 @@ FL_ErrorStatus FL_UART_InfraRed_Init(UART_Type *UARTx, FL_UART_InfraRed_InitType
     {
         tempTH = (uint32_t)(((float)initStruct->modulationDuty / 100.0) * (float)(tempTZBRG + 1) + 0.5);
     }
-    /* 占空比限位到小于95%，否则结果会有问题 */
+    /* 95% */
     tempTH = ((float)((tempTZBRG >> 4) * tempTH) / (float)(tempTZBRG + 1)) < 0.95f ? tempTH : tempTH - 1;
-    /* 占空比和调制频率配置 */
+    /*  */
     FL_UART_WriteIRModulationDuty(UART, tempTH);
     FL_UART_WriteIRModulationFrequency(UART, tempTZBRG);
     status = FL_PASS;
@@ -312,8 +312,8 @@ FL_ErrorStatus FL_UART_InfraRed_Init(UART_Type *UARTx, FL_UART_InfraRed_InitType
 }
 
 /**
-  * @brief  将 @ref FL_UART_InfraRed_InitTypeDef 结构体初始化为默认配置
-  * @param  initStruct 指向 @ref FL_UART_InfraRed_InitTypeDef 结构体的指针
+  * @brief   @ref FL_UART_InfraRed_InitTypeDef 
+  * @param  initStruct  @ref FL_UART_InfraRed_InitTypeDef 
   *
   * @retval None
   */
@@ -325,8 +325,8 @@ void FL_UART_InfraRed_StructInit(FL_UART_InfraRed_InitTypeDef *initStruct)
 }
 
 /**
-  * @brief  将 @ref FL_UART_InitTypeDef 结构体初始化为默认配置
-  * @param  initStruct 指向 @ref FL_UART_InitTypeDef 结构体的指针
+  * @brief   @ref FL_UART_InitTypeDef 
+  * @param  initStruct  @ref FL_UART_InitTypeDef 
   *
   * @retval None
   */

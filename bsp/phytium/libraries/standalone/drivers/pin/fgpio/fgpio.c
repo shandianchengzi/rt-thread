@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fgpio.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:25:29
- * Description:  This files is for GPIO user API implmentation
+ * Description: This files is for GPIO user API implmentation
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   zhugengyu  2022-3-1     init commit
  */
 
@@ -48,10 +48,10 @@
 /*****************************************************************************/
 /**
  * @name: FGpioCfgInitialize
- * @msg: 初始化GPIO控制器实例
- * @return {FError} FGPIO_SUCCESS 表示初始化成功
- * @param {FGpio} *instance, GPIO控制器实例
- * @param {FGpioConfig} *config, GPIO控制器配置
+ * @msg: GPIO
+ * @return {FError} FGPIO_SUCCESS 
+ * @param {FGpio} *instance, GPIO
+ * @param {FGpioConfig} *config, GPIO
  */
 FError FGpioCfgInitialize(FGpio *const instance, const FGpioConfig *const config)
 {
@@ -74,9 +74,9 @@ FError FGpioCfgInitialize(FGpio *const instance, const FGpioConfig *const config
 
 /**
  * @name: FGpioDeInitialize
- * @msg: 去初始化GPIO控制器实例
+ * @msg: GPIO
  * @return {*}
- * @param {FGpio} *instance, GPIO控制器实例
+ * @param {FGpio} *instance, GPIO
  */
 void FGpioDeInitialize(FGpio *const instance)
 {
@@ -103,11 +103,11 @@ void FGpioDeInitialize(FGpio *const instance)
 
 /**
  * @name: FGpioPinInitialize
- * @msg: 初始化GPIO引脚实例
- * @return {FError} FGPIO_SUCCESS 表示初始化成功
- * @param {FGpio} *instance, GPIO控制器实例
- * @param {FGpioPin} *pin_instance, GPIO引脚实例
- * @param {FGpioPinId} index, GPIO引脚索引
+ * @msg: GPIO
+ * @return {FError} FGPIO_SUCCESS 
+ * @param {FGpio} *instance, GPIO
+ * @param {FGpioPin} *pin_instance, GPIO
+ * @param {FGpioPinId} index, GPIO
  */
 FError FGpioPinInitialize(FGpio *const instance, FGpioPin *const pin_instance,
                           const FGpioPinId index)
@@ -141,9 +141,9 @@ FError FGpioPinInitialize(FGpio *const instance, FGpioPin *const pin_instance,
 
 /**
  * @name: FGpioPinDeInitialize
- * @msg: 去初始化GPIO引脚实例
+ * @msg: GPIO
  * @return {NONE}
- * @param {FGpioPin} *pin, GPIO引脚实例
+ * @param {FGpioPin} *pin, GPIO
  */
 void FGpioPinDeInitialize(FGpioPin *const pin)
 {
@@ -158,7 +158,7 @@ void FGpioPinDeInitialize(FGpioPin *const pin)
     }
 
     if (FGPIO_DIR_INPUT == FGpioGetDirection(pin))
-        FGpioSetInterruptMask(pin, FALSE); /* 关闭引脚中断 */
+        FGpioSetInterruptMask(pin, FALSE); /*  */
 
     FGpioPinId index = pin->index;
     FASSERT_MSG(instance->pins[index.port][index.pin] == pin, "invalid pin instance");
@@ -171,9 +171,9 @@ void FGpioPinDeInitialize(FGpioPin *const pin)
 
 /**
  * @name: FGpioGetPinIrqSourceType
- * @msg: 获取引脚中断的上报方式
- * @return {FGpioIrqSourceType} 引脚中断的上报方式
- * @param {FGpioPin} *pin, GPIO引脚实例
+ * @msg: 
+ * @return {FGpioIrqSourceType} 
+ * @param {FGpioPin} *pin, GPIO
  */
 FGpioIrqSourceType FGpioGetPinIrqSourceType(FGpioPinId pin_id)
 {
@@ -187,7 +187,7 @@ FGpioIrqSourceType FGpioGetPinIrqSourceType(FGpioPinId pin_id)
     if (FGPIO_PORT_A == pin_id.port)
     {
 #if defined(FGPIO_VERSION_2) /* E2000 GPIO 0 ~ 5 */
-        if (pin_id.ctrl <= FGPIO_WITH_PIN_IRQ) /* 0 ~ 2 中断单独上报 */
+        if (pin_id.ctrl <= FGPIO_WITH_PIN_IRQ) /* 0 ~ 2  */
         {
             return FGPIO_IRQ_BY_PIN;
         }
@@ -201,10 +201,10 @@ FGpioIrqSourceType FGpioGetPinIrqSourceType(FGpioPinId pin_id)
 
 /**
  * @name: FGpioReadRegDir
- * @msg: 从寄存器读取GPIO组的输入输出方向
- * @return {u32} GPIO组的输入输出方向, bit[8:0]有效
- * @param {uintptr} base_addr, GPIO控制器基地址
- * @param {FGpioPortIndex} port, GPIO组, A/B
+ * @msg: GPIO
+ * @return {u32} GPIO, bit[8:0]
+ * @param {uintptr} base_addr, GPIO
+ * @param {FGpioPortIndex} port, GPIO, A/B
  */
 static u32 FGpioReadRegDir(uintptr base_addr, const FGpioPortIndex port)
 {
@@ -230,11 +230,11 @@ static u32 FGpioReadRegDir(uintptr base_addr, const FGpioPortIndex port)
 
 /**
  * @name: FGpioWriteRegDir
- * @msg: 向寄存器写入GPIO组的输入输出方向
+ * @msg: GPIO
  * @return {*}
- * @param {uintptr} base_addr, GPIO控制器基地址
- * @param {FGpioPortIndex} port, GPIO组, A/B
- * @param {u32} reg_val, GPIO组的输入输出方向, bit[8:0]有效
+ * @param {uintptr} base_addr, GPIO
+ * @param {FGpioPortIndex} port, GPIO, A/B
+ * @param {u32} reg_val, GPIO, bit[8:0]
  */
 static void FGpioWriteRegDir(uintptr base_addr, const FGpioPortIndex port, const u32 reg_val)
 {
@@ -258,11 +258,11 @@ static void FGpioWriteRegDir(uintptr base_addr, const FGpioPortIndex port, const
 
 /**
  * @name: FGpioSetDirection
- * @msg: 设置GPIO引脚的输入输出方向
+ * @msg: GPIO
  * @return {*}
- * @param {FGpioPin} *instance, GPIO控制器实例
- * @param {FGpioDirection} dir, 待设置的GPIO的方向
- * @note 初始化 GPIO 实例后使用此函数
+ * @param {FGpioPin} *instance, GPIO
+ * @param {FGpioDirection} dir, GPIO
+ * @note  GPIO 
  */
 void FGpioSetDirection(FGpioPin *const pin, FGpioDirection dir)
 {
@@ -295,10 +295,10 @@ void FGpioSetDirection(FGpioPin *const pin, FGpioDirection dir)
 
 /**
  * @name: FGpioGetDirection
- * @msg: 获取GPIO引脚的输入输出方向
- * @return {FGpioDirection} GPIO引脚方向
- * @param {FGpioPin} *pin, GPIO引脚实例
- * @note 初始化 GPIO 实例后使用此函数
+ * @msg: GPIO
+ * @return {FGpioDirection} GPIO
+ * @param {FGpioPin} *pin, GPIO
+ * @note  GPIO 
  */
 FGpioDirection FGpioGetDirection(FGpioPin *const pin)
 {
@@ -316,10 +316,10 @@ FGpioDirection FGpioGetDirection(FGpioPin *const pin)
 
 /**
  * @name: FGpioReadRegVal
- * @msg: 获取GPIO组的输出寄存器值
- * @return {u32} 输出寄存器值 bit[8:0]有效
- * @param {uintptr} base_addr, GPIO控制器基地址
- * @param {FGpioPortIndex} port, GPIO组
+ * @msg: GPIO
+ * @return {u32}  bit[8:0]
+ * @param {uintptr} base_addr, GPIO
+ * @param {FGpioPortIndex} port, GPIO
  */
 static u32 FGpioReadRegVal(uintptr base_addr, const FGpioPortIndex port)
 {
@@ -345,11 +345,11 @@ static u32 FGpioReadRegVal(uintptr base_addr, const FGpioPortIndex port)
 
 /**
  * @name: FGpioWriteRegVal
- * @msg: 设置GPIO组的输出寄存器值
+ * @msg: GPIO
  * @return {*}
- * @param {uintptr} base_addr, GPIO控制器基地址
- * @param {FGpioPortIndex} port, GPIO组
- * @param {u32} reg_val, 输出寄存器值 bit[8:0]有效
+ * @param {uintptr} base_addr, GPIO
+ * @param {FGpioPortIndex} port, GPIO
+ * @param {u32} reg_val,  bit[8:0]
  */
 void FGpioWriteRegVal(uintptr base_addr, const FGpioPortIndex port, const u32 reg_val)
 {
@@ -373,11 +373,11 @@ void FGpioWriteRegVal(uintptr base_addr, const FGpioPortIndex port, const u32 re
 
 /**
  * @name: FGpioSetOutputValue
- * @msg: 设置GPIO引脚的输出值
- * @return {FError} FGPIO_SUCCESS 表示设置成功
- * @param {FGpioPin} *pin, GPIO引脚实例
- * @param {FGpioPinVal} output, GPIO引脚的输出值
- * @note 初始化 GPIO 实例后使用此函数，先设置 GPIO 引脚为输出后调用此函数
+ * @msg: GPIO
+ * @return {FError} FGPIO_SUCCESS 
+ * @param {FGpioPin} *pin, GPIO
+ * @param {FGpioPinVal} output, GPIO
+ * @note  GPIO  GPIO 
  */
 FError FGpioSetOutputValue(FGpioPin *const pin, const FGpioPinVal output)
 {
@@ -419,10 +419,10 @@ FError FGpioSetOutputValue(FGpioPin *const pin, const FGpioPinVal output)
 
 /**
  * @name: FGpioGetInputValue
- * @msg: 获取GPIO引脚的输入值
- * @return {FGpioPinVal} 获取的输入值，高电平/低电平
- * @param {FGpioPin} *instance, GPIO引脚实例
- * @note 初始化 GPIO 实例后使用此函数，先设置 GPIO 引脚为输入后调用此函数
+ * @msg: GPIO
+ * @return {FGpioPinVal} /
+ * @param {FGpioPin} *instance, GPIO
+ * @note  GPIO  GPIO 
  */
 FGpioPinVal FGpioGetInputValue(FGpioPin *const pin)
 {

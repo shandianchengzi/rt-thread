@@ -1,4 +1,4 @@
-﻿# NuMaker-M032KI
+# NuMaker-M032KI
 
 ## 1. Introduction
 
@@ -44,7 +44,7 @@ Notice: Please install Nu-Link_Keil_Driver or Nu-Link_IAR_Driver for development
 
 ### Step 1:
 
-At first, you need to configure ISW1 switch on the NuMaker-M032KI board. Set the four switches to ‘ON’ position. After the configuration is done, connect the NuMaker-M032KI board and your computer using the USB Micro cable. After that, window manager will show a ‘NuMicro MCU’ virtual disk. Finally, you will use this virtual disk to burn firmware.
+At first, you need to configure ISW1 switch on the NuMaker-M032KI board. Set the four switches to ON position. After the configuration is done, connect the NuMaker-M032KI board and your computer using the USB Micro cable. After that, window manager will show a NuMicro MCU virtual disk. Finally, you will use this virtual disk to burn firmware.
 
 [![NuLinkMe](https://i.imgur.com/us0Fhhu.png "NuLinkMe")](https://i.imgur.com/us0Fhhu.png "NuLinkMe")
 

@@ -32,7 +32,7 @@ struct sound_device
 
 static struct sound_device snd_dev = {0};
 
-//apll = 采样率*ADPLL_DIV*512
+//apll = *ADPLL_DIV*512
 //audio pll init
 void adpll_init(uint8_t out_spr)
 {
@@ -40,7 +40,7 @@ void adpll_init(uint8_t out_spr)
     CLKCON2  &= ~(BIT(4)| BIT(5) | BIT(6) | BIT(7));
 
     PLL1CON &= ~(BIT(3) | BIT(4) | BIT(5));
-    PLL1CON |= BIT(3);                              //Select PLL/VCO frequency band (PLL大于206M vcos = 0x01, 否则为0)
+    PLL1CON |= BIT(3);                              //Select PLL/VCO frequency band (PLL206M vcos = 0x01, 0)
 
     PLL1CON |= BIT(12);                             //enable pll1 ldo
     hal_mdelay(1);
@@ -65,7 +65,7 @@ void dac_start(void)
 {
     AUANGCON0 |= BIT(0) | BIT(1) | BIT(3); // bg ldoh bias enable
 
-    AUANGCON0 &= ~(BIT(6)|BIT(5)|BIT(4));  // LDOH voltage select：3bit
+    AUANGCON0 &= ~(BIT(6)|BIT(5)|BIT(4));  // LDOH voltage select3bit
     AUANGCON0 |= (3<<4); // 2.4/2.5/2.7/2.9/3.1/3.2
 
     AUANGCON0 |= BIT(2);           // LDOL enable
@@ -476,7 +476,7 @@ static int rt_hw_sound_init(void)
     rt_uint8_t *tx_fifo = RT_NULL;
     rt_uint8_t *rx_fifo = RT_NULL;
 
-    /* 分配 DMA 搬运 buffer */
+    /*  DMA  buffer */
     tx_fifo = rt_calloc(1, TX_FIFO_SIZE);
     if(tx_fifo == RT_NULL)
     {
@@ -485,7 +485,7 @@ static int rt_hw_sound_init(void)
 
     snd_dev.tx_fifo = tx_fifo;
 
-    /* 分配 DMA 搬运 buffer */
+    /*  DMA  buffer */
     rx_fifo = rt_calloc(1, TX_FIFO_SIZE);
     if(rx_fifo == RT_NULL)
     {

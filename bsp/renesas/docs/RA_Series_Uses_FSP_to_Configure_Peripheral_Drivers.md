@@ -4,8 +4,8 @@
 
 ###  1.1 Add custom command to start FSP in MDK
 
-1. Open MDK, select “Tools -> Customize Tools Menu…”
-2. Click the “new” icon to add a custom command: RA Smart Configurator
+1. Open MDK, select Tools -> Customize Tools Menu
+2. Click the new icon to add a custom command: RA Smart Configurator
 3. Enter the installation path of the tool in Command, click "**...**" to find the "rasc.exe" file under the installation path and select it (under the rasc installation directory)
 4. Enter parameter in Initial Folder: $P
 5. Enter parameter in Arguments: --device $D --compiler ARMv6 configuration.xml
@@ -17,9 +17,9 @@
 
 ![image.png](figures_en/openrasc.png) 
 
-PS：The above related operations can also be found in the FSP documentation.
+PSThe above related operations can also be found in the FSP documentation.
 
-FSP Document：https://www2.renesas.cn/jp/zh/software-tool/flexible-software-package-fsp#document
+FSP Documenthttps://www2.renesas.cn/jp/zh/software-tool/flexible-software-package-fsp#document
 
 ###  1.2 Precautions
 
@@ -192,7 +192,7 @@ Create ADC/DAC
 
 4. Open the corresponding channel in menuconfig
 
-### PWM（GPT）
+### PWMGPT
 
 The GPT timer can be used as a general-purpose timer in this chip, and can also be used to generate PWM signals. When it is used to generate PWM signals, the GPT timer provides a total of 10 channels gpt0 - gpt9, and each channel can be set to two output ports. The current version of the PWM driver treats each channel as a separate PWM device, each with only one channel. Users can choose to turn on any output port of a channel, or turn on both ports, but when both ports are turned on at the same time, their output waveforms will be exactly the same.
 

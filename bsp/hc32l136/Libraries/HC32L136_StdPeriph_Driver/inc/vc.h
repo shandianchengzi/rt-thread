@@ -77,100 +77,100 @@ extern "C"
 
 /**
  ******************************************************************************
- ** \brief VC通道
+ ** \brief VC
  *****************************************************************************/
 typedef enum en_vc_channel
 {
-    VcChannel0 = 0u,                 ///< 通道0
-    VcChannel1 = 1u,                 ///< 通道1
+    VcChannel0 = 0u,                 ///< 0
+    VcChannel1 = 1u,                 ///< 1
 }en_vc_channel_t;
 
 
 /**
  ******************************************************************************
- ** \brief VC迟滞
+ ** \brief VC
  *****************************************************************************/
 typedef enum en_vc_cmp_delay
 {
-    VcDelayoff  = 0u,            ///< 迟滞关闭
-    VcDelay10mv = 1u,            ///< 迟滞10mv
-    VcDelay20mv = 2u,            ///< 迟滞20mv
-    VcDelay30mv = 3u,            ///< 迟滞30mv
+    VcDelayoff  = 0u,            ///< 
+    VcDelay10mv = 1u,            ///< 10mv
+    VcDelay20mv = 2u,            ///< 20mv
+    VcDelay30mv = 3u,            ///< 30mv
 }en_vc_cmp_delay_t;
 
 /**
  ******************************************************************************
- ** \brief VC偏置电流
+ ** \brief VC
  *****************************************************************************/
 typedef enum en_vc_bias_current
 {
-    VcBias300na  = 0u,            ///< 偏置电流300na
-    VcBias1200na = 1u,            ///< 偏置电流1.2ua
-    VcBias10ua   = 2u,            ///< 偏置电流10ua
-    VcBias20ua   = 3u,            ///< 偏置电流20ua
+    VcBias300na  = 0u,            ///< 300na
+    VcBias1200na = 1u,            ///< 1.2ua
+    VcBias10ua   = 2u,            ///< 10ua
+    VcBias20ua   = 3u,            ///< 20ua
 }en_vc_bias_current_t;
 
 /**
  ******************************************************************************
- ** \brief VC输出滤波时间
+ ** \brief VC
  *****************************************************************************/
 typedef enum en_vc_resp_filter
 {
-    VcFilter7us     = 0u,            ///< 输出滤波时间7us
-    VcFilter14us    = 1u,           ///< 输出滤波时间14us
-    VcFilter28us    = 2u,           ///< 输出滤波时间28us
-    VcFilter112us   = 3u,          ///< 输出滤波时间112us
-    VcFilter450us   = 4u,          ///< 输出滤波时间450us
-    VcFilter1800us  = 5u,         ///< 输出滤波时间1.8ms
-    VcFilter7200us  = 6u,         ///< 输出滤波时间7.2ms
-    VcFilter28800us = 7u,        ///< 输出滤波时间28.8ms
+    VcFilter7us     = 0u,            ///< 7us
+    VcFilter14us    = 1u,           ///< 14us
+    VcFilter28us    = 2u,           ///< 28us
+    VcFilter112us   = 3u,          ///< 112us
+    VcFilter450us   = 4u,          ///< 450us
+    VcFilter1800us  = 5u,         ///< 1.8ms
+    VcFilter7200us  = 6u,         ///< 7.2ms
+    VcFilter28800us = 7u,        ///< 28.8ms
 }en_vc_resp_filter_t;
 
 /**
  ******************************************************************************
- ** \brief VC P端输入
+ ** \brief VC P
  *****************************************************************************/
 typedef enum en_vc_input_p_src
 {																					
                                    //VC0                        //VC1
-    VcInPCh0 = 0u,                ///< 输入通道0 PC0		输入通道0 PA0
-    VcInPCh1 = 1u,                ///< 输入通道1 PC1		输入通道0 PA1
-    VcInPCh2 = 2u,                ///< 输入通道2 PC2		输入通道0 PA2
-    VcInPCh3 = 3u,                ///< 输入通道3 PC3		输入通道0 PA3
-    VcInPCh4 = 4u,                ///< 输入通道4 PA0		输入通道0 PA4
-    VcInPCh5 = 5u,                ///< 输入通道5 PA1		输入通道0 PA5
-    VcInPCh6 = 6u,                ///< 输入通道6 PA2		输入通道0 PB1
-    VcInPCh7 = 7u,                ///< 输入通道7 PA3		输入通道0 PB2
-    VcInPCh8 = 8u,                ///< 输入通道7 PA4		输入通道0 PB10
-    VcInPCh9 = 9u,                ///< 输入通道7 PA5		输入通道0 PB12
-    VcInPCh10 = 10u,                ///< 输入通道7 PA6		输入通道0 PB13
-    VcInPCh11 = 11u,                ///< 输入通道7 PA7		输入通道0 PB14
-    VcInPCh12 = 12u,                ///< 输入通道7 PB4		输入通道0 PB4
-    VcInPCh13 = 13u,                ///< 输入通道7 PB5		输入通道0 PB5
-    VcInPCh14 = 14u,                ///< 输入通道7 PB6		输入通道0 PB6
-    VcInPCh15 = 15u,                ///< 输入通道7 PB7		输入通道0 PB7                           
+    VcInPCh0 = 0u,                ///< 0 PC0		0 PA0
+    VcInPCh1 = 1u,                ///< 1 PC1		0 PA1
+    VcInPCh2 = 2u,                ///< 2 PC2		0 PA2
+    VcInPCh3 = 3u,                ///< 3 PC3		0 PA3
+    VcInPCh4 = 4u,                ///< 4 PA0		0 PA4
+    VcInPCh5 = 5u,                ///< 5 PA1		0 PA5
+    VcInPCh6 = 6u,                ///< 6 PA2		0 PB1
+    VcInPCh7 = 7u,                ///< 7 PA3		0 PB2
+    VcInPCh8 = 8u,                ///< 7 PA4		0 PB10
+    VcInPCh9 = 9u,                ///< 7 PA5		0 PB12
+    VcInPCh10 = 10u,                ///< 7 PA6		0 PB13
+    VcInPCh11 = 11u,                ///< 7 PA7		0 PB14
+    VcInPCh12 = 12u,                ///< 7 PB4		0 PB4
+    VcInPCh13 = 13u,                ///< 7 PB5		0 PB5
+    VcInPCh14 = 14u,                ///< 7 PB6		0 PB6
+    VcInPCh15 = 15u,                ///< 7 PB7		0 PB7                           
 }en_vc_input_p_src_t;
 
 /**
  ******************************************************************************
- ** \brief VC N端输入
+ ** \brief VC N
  *****************************************************************************/
 typedef enum en_vc_input_n_src
 {
                                  //VC0                          //VC1
-    VcInNCh0    = 0u,         ///< 输入通道0  PA0	        输入通道0 PC0
-    VcInNCh1    = 1u,         ///< 输入通道1  PA1		输入通道0 PC1
-    VcInNCh2    = 2u,         ///< 输入通道2  PA2		输入通道0 PC2
-    VcInNCh3    = 3u,         ///< 输入通道3  PA3		输入通道0 PC3
-    VcInNCh4    = 4u,         ///< 输入通道4  PA4		输入通道0 PA0
-    VcInNCh5    = 5u,         ///< 输入通道5  PA5		输入通道0 PA1
-    VcInNCh6    = 6u,         ///< 输入通道6  PA6		输入通道0 PB0
-    VcInNCh7    = 7u,         ///< 输入通道7  PA7		输入通道0 PB1
-    VcInNCh8    = 8u,         ///< 输入通道8  PC4		输入通道0 PB2
-    VcInNCh9    = 9u,         ///< 输入通道9  PC5		输入通道0 PB3
-    VcInNCh10   = 10u,        ///< 输入通道10 PB0 		输入通道0 PB4   
-    ResDivOut   = 11u,        ///< Vcc分压                      Vcc分压
-    AiTs        = 12u,        ///< 温度传感器                  温度传感器
+    VcInNCh0    = 0u,         ///< 0  PA0	        0 PC0
+    VcInNCh1    = 1u,         ///< 1  PA1		0 PC1
+    VcInNCh2    = 2u,         ///< 2  PA2		0 PC2
+    VcInNCh3    = 3u,         ///< 3  PA3		0 PC3
+    VcInNCh4    = 4u,         ///< 4  PA4		0 PA0
+    VcInNCh5    = 5u,         ///< 5  PA5		0 PA1
+    VcInNCh6    = 6u,         ///< 6  PA6		0 PB0
+    VcInNCh7    = 7u,         ///< 7  PA7		0 PB1
+    VcInNCh8    = 8u,         ///< 8  PC4		0 PB2
+    VcInNCh9    = 9u,         ///< 9  PC5		0 PB3
+    VcInNCh10   = 10u,        ///< 10 PB0 		0 PB4   
+    ResDivOut   = 11u,        ///< Vcc                      Vcc
+    AiTs        = 12u,        ///<                   
     AiBg1p2     = 13u,        ///< BGR 1.2V                    BGR 1.2V
     AiAdcVref   = 14u,        ///< ADCVREF                     ADCVREF
     AiLdo       = 15u,        ///< LDO                         LDO
@@ -178,85 +178,85 @@ typedef enum en_vc_input_n_src
 
 /**
  ******************************************************************************
- ** \brief VC中断触发方式
+ ** \brief VC
  *****************************************************************************/
 typedef enum en_vc_irq_sel
 {
-    VcIrqNone = 0u,            ///< 无中断
-    VcIrqRise = 1u,            ///< 上升沿触发
-    VcIrqFall = 2u,            ///< 下降沿触发
-    VcIrqHigh = 3u,            ///< 高电平触发
+    VcIrqNone = 0u,            ///< 
+    VcIrqRise = 1u,            ///< 
+    VcIrqFall = 2u,            ///< 
+    VcIrqHigh = 3u,            ///< 
 
 }en_vc_irq_sel_t;
 
 /**
  ******************************************************************************
- ** \brief VC状态
+ ** \brief VC
  *****************************************************************************/
 typedef enum en_vc_stat
 {
-    VcCmpResult  = 0u,                ///< VC比较输出结果
-    VcIntrResult = 1u,               ///< VC中断状态
+    VcCmpResult  = 0u,                ///< VC
+    VcIntrResult = 1u,               ///< VC
 }en_vc_stat_t;
 
 /**
  ******************************************************************************
- ** \brief VC输出配置
+ ** \brief VC
  *****************************************************************************/
 typedef enum en_vc_output_config
 {
-    VcOutInvTimer = 0u,              ///< 结果输出负向到各Timer0,1,2,3
-    VcOutTIM0RCLR = 1u,              ///< 结果使能输出到TIM0 REFCLR
-    VcOutTIM1RCLR = 2u,              ///< 结果使能输出到TIM1 REFCLR
-    VcOutTIM2RCLR = 3u,              ///< 结果使能输出到TIM2 REFCLR
-    VcOutTIM3RCLR = 4u,              ///< 结果使能输出到TIM3 REFCLR
-    VcOutTIMBK    = 5u,              ///< 结果使能输出到Timer0,1,2,3刹车
-    VcOutInvTIM4  = 9u,              ///< 结果输出负向到Timer4
-    VcOutTIM4     = 10u,             ///< 结果使能输出到Timer4
-    VcOutInvTIM5  = 11u,             ///< 结果输出负向到Timer5
-    VcOutTIM5     = 12u,             ///< 结果使能输出到Timer5
-    VcOutInvTIM6  = 13u,             ///< 结果输出负向到Timer6
-    VcOutTIM6     = 14u,             ///< 结果使能输出到Timer6
-    VcOutBrake    = 15u,             ///< 结果使能输出到Advanced Timer刹车
-    VcOutDisable  = 16u,             ///< 结果输出除能
+    VcOutInvTimer = 0u,              ///< Timer0,1,2,3
+    VcOutTIM0RCLR = 1u,              ///< TIM0 REFCLR
+    VcOutTIM1RCLR = 2u,              ///< TIM1 REFCLR
+    VcOutTIM2RCLR = 3u,              ///< TIM2 REFCLR
+    VcOutTIM3RCLR = 4u,              ///< TIM3 REFCLR
+    VcOutTIMBK    = 5u,              ///< Timer0,1,2,3
+    VcOutInvTIM4  = 9u,              ///< Timer4
+    VcOutTIM4     = 10u,             ///< Timer4
+    VcOutInvTIM5  = 11u,             ///< Timer5
+    VcOutTIM5     = 12u,             ///< Timer5
+    VcOutInvTIM6  = 13u,             ///< Timer6
+    VcOutTIM6     = 14u,             ///< Timer6
+    VcOutBrake    = 15u,             ///< Advanced Timer
+    VcOutDisable  = 16u,             ///< 
 }en_vc_output_config_t;
 
 /**
  ******************************************************************************
- ** \brief VC DIV参考电压Vref选择
+ ** \brief VC DIVVref
  *****************************************************************************/
 typedef enum en_vc_div_vref
 {
     VcDivVrefAvcc = 0u,              ///< AVCC
-    VcDivVrefAdc  = 1u,               ///< ADC_CR0 SREF选择参考电压
+    VcDivVrefAdc  = 1u,               ///< ADC_CR0 SREF
 }en_vc_div_vref_t;
 
 /**
  ******************************************************************************
- ** \brief VC模块配置
+ ** \brief VC
  *****************************************************************************/
 typedef struct stc_vc_dac_config
 {
-    boolean_t           bDivEn;       ///< 使能/除能 6-bit VCC divider
-    uint8_t             u8DivVal;     ///< 6-bit VCC divider设置值
-    en_vc_div_vref_t    enDivVref;    ///< 6-bit VCC divider输入参考电压选择
+    boolean_t           bDivEn;       ///< / 6-bit VCC divider
+    uint8_t             u8DivVal;     ///< 6-bit VCC divider
+    en_vc_div_vref_t    enDivVref;    ///< 6-bit VCC divider
 }stc_vc_dac_config_t;
 
 /**
  ******************************************************************************
- ** \brief VC通道配置
+ ** \brief VC
  *****************************************************************************/
 typedef struct stc_vc_channel_config
 {
-    en_vc_channel_t         enVcChannel;        ///< VC通道选择
-    en_vc_cmp_delay_t       enVcCmpDly;         ///< VC迟滞
-    en_vc_bias_current_t    enVcBiasCurrent;    ///< VC偏转电流
-    en_vc_resp_filter_t     enVcFilterTime;     ///< 输出滤波时间
-    en_vc_input_p_src_t     enVcInPin_P;        ///< P端输入
-    en_vc_input_n_src_t     enVcInPin_N;        ///< N端输入
-    en_vc_output_config_t   enVcOutConfig;      ///< 输出配置
-    en_vc_irq_sel_t         enVcIrqSel;         ///< 中断触发方式
-    func_ptr_t              pfnAnalogCmpCb;     ///< 中断回调函数
+    en_vc_channel_t         enVcChannel;        ///< VC
+    en_vc_cmp_delay_t       enVcCmpDly;         ///< VC
+    en_vc_bias_current_t    enVcBiasCurrent;    ///< VC
+    en_vc_resp_filter_t     enVcFilterTime;     ///< 
+    en_vc_input_p_src_t     enVcInPin_P;        ///< P
+    en_vc_input_n_src_t     enVcInPin_N;        ///< N
+    en_vc_output_config_t   enVcOutConfig;      ///< 
+    en_vc_irq_sel_t         enVcIrqSel;         ///< 
+    func_ptr_t              pfnAnalogCmpCb;     ///< 
 }stc_vc_channel_config_t;
 
 /******************************************************************************

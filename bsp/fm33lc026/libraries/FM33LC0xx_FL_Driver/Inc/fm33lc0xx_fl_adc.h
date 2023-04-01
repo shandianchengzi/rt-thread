@@ -48,9 +48,9 @@ extern "C" {
   */
 typedef  struct
 {
-    /*ADCCLK源选择*/
+    /*ADCCLK*/
     uint32_t clockSource;
-    /*ADCCLK预分频配置*/
+    /*ADCCLK*/
     uint32_t clockPrescaler;
 
 } FL_ADC_CommonInitTypeDef;
@@ -60,40 +60,40 @@ typedef  struct
   */
 typedef struct
 {
-    /*连续转换模式配置*/
+    /**/
     uint32_t conversionMode;
 
-    /*单次自动转换模式配置*/
+    /**/
     uint32_t autoMode;
 
-    /*等待模式配置*/
+    /**/
     FL_FunState waitMode;
 
-    /*覆盖模式配置*/
+    /**/
     FL_FunState overrunMode;
 
-    /*通道扫描顺序配置*/
+    /**/
     uint32_t scanDirection;
 
-    /*触发信号使能配置*/
+    /**/
     uint32_t externalTrigConv;
 
-    /*触发源选择*/
+    /**/
     uint32_t triggerSource;
 
-    /*快速通道采样时间配置*/
+    /**/
     uint32_t fastChannelTime;
 
-    /*慢速通道采样时间配置*/
+    /**/
     uint32_t lowChannelTime;
 
-    /*过采样使能配置*/
+    /**/
     FL_FunState oversamplingMode;
 
-    /*过采样率配置*/
+    /**/
     uint32_t overSampingMultiplier;
 
-    /*过采样移位配置*/
+    /**/
     uint32_t oversamplingShift;
 } FL_ADC_InitTypeDef;
 

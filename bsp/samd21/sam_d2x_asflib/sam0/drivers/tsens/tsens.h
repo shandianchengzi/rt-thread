@@ -86,9 +86,9 @@
  * contents of the OFFSET register.
  *
  * Accurately measures a temperature:
- *  - ±1°C over 0°C ~ 60°C
- *  - ±3°C over -40°C ~ 85°C
- *  - ±5°C over -40°C ~ 105°C
+ *  - 1C over 0C ~ 60C
+ *  - 3C over -40C ~ 85C
+ *  - 5C over -40C ~ 105C
  *
  * The number of periods of GCLK_TSENS used for the measurement is defined by
  * the GAIN register. The width of the resulting pulse is measured using a
@@ -103,22 +103,22 @@
  * and resolution as below:
  * <table>
  *  <tr>
- *	  <th>Resolution (#/°C)</th>
+ *	  <th>Resolution (#/C)</th>
  *	  <th>GAIN@48MHz</th>
  *	  <th>GAIN@40MHz</th>
  *	</tr>
  *	<tr>
- *	  <td>&times;1 (1°C)</td>
+ *	  <td>&times;1 (1C)</td>
  *    <td>960</td>
  *    <td>800</td>
  *  </tr>
  *	<tr>
- *	  <td>&times;10 (0.1°C)</td>
+ *	  <td>&times;10 (0.1C)</td>
  *    <td>9600</td>
  *    <td>8000</td>
  *  </tr>
  *	<tr>
- *	  <td>&times;100 (0.01°C)</td>
+ *	  <td>&times;100 (0.01C)</td>
  *    <td>96000</td>
  *    <td>80000</td>
  *  </tr>

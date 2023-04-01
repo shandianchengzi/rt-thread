@@ -11,11 +11,11 @@
 
 /*******************************************************************************
 * Function Name  : SYS_GetInfoSta
-* Description    : 获取当前系统信息状态
+* Description    : 
 * Input          : i:
                     refer to SYS_InfoStaTypeDef
-* Return         : DISABLE  -  关闭
-                   ENABLE   -  开启
+* Return         : DISABLE  -  
+                   ENABLE   -  
 *******************************************************************************/
 UINT8 SYS_GetInfoSta( SYS_InfoStaTypeDef i )
 {
@@ -27,7 +27,7 @@ UINT8 SYS_GetInfoSta( SYS_InfoStaTypeDef i )
 
 /*******************************************************************************
 * Function Name  : SYS_ResetExecute
-* Description    : 执行系统软件复位
+* Description    : 
 * Input          : None
 * Return         : None
 *******************************************************************************/
@@ -41,8 +41,8 @@ void SYS_ResetExecute( void )
 
 /*******************************************************************************
 * Function Name  : SYS_DisableAllIrq
-* Description    : 关闭所有中断，并保留当前中断值
-* Input          : pirqv：当前保留中断值
+* Description    : 
+* Input          : pirqv
 * Return         : None
 *******************************************************************************/
 void SYS_DisableAllIrq( PUINT32 pirqv)
@@ -53,8 +53,8 @@ void SYS_DisableAllIrq( PUINT32 pirqv)
 
 /*******************************************************************************
 * Function Name  : SYS_RecoverIrq
-* Description    : 恢复之前关闭的中断值
-* Input          : irq_status：当前保留中断值
+* Description    : 
+* Input          : irq_status
 * Return         : None
 *******************************************************************************/
 void SYS_RecoverIrq( UINT32 irq_status )
@@ -64,9 +64,9 @@ void SYS_RecoverIrq( UINT32 irq_status )
 
 /*******************************************************************************
 * Function Name  : SYS_GetSysTickCnt
-* Description    : 获取当前系统(SYSTICK)计数值
+* Description    : (SYSTICK)
 * Input          : None
-* Return         : 当前计数值
+* Return         : 
 *******************************************************************************/
 UINT32 SYS_GetSysTickCnt( void )
 {
@@ -75,8 +75,8 @@ UINT32 SYS_GetSysTickCnt( void )
 
 /*******************************************************************************
 * Function Name  : WWDG_ITCfg
-* Description    : 看门狗定时器溢出中断使能
-* Input          : DISABLE-溢出不中断      ENABLE-溢出中断
+* Description    : 
+* Input          : DISABLE-      ENABLE-
 * Return         : None
 *******************************************************************************/
 void  WWDG_ITCfg( UINT8 s )
@@ -90,8 +90,8 @@ void  WWDG_ITCfg( UINT8 s )
 
 /*******************************************************************************
 * Function Name  : WWDG_ResetCfg
-* Description    : 看门狗定时器复位功能
-* Input          : DISABLE-溢出不复位      ENABLE-溢出系统复位
+* Description    : 
+* Input          : DISABLE-      ENABLE-
 * Return         : None
 *******************************************************************************/
 void WWDG_ResetCfg( UINT8 s )
@@ -105,7 +105,7 @@ void WWDG_ResetCfg( UINT8 s )
 
 /*******************************************************************************
 * Function Name  : WWDG_ClearFlag
-* Description    : 清除看门狗中断标志，重新加载计数值也可清除
+* Description    : 
 * Input          : None
 * Return         : None
 *******************************************************************************/
@@ -120,8 +120,8 @@ void WWDG_ClearFlag( void )
 
 /*******************************************************************************
 * Function Name  : mDelayuS
-* Description    : uS 延时
-* Input          : t: 时间参数
+* Description    : uS 
+* Input          : t: 
 * Return         : None
 *******************************************************************************/
 void mDelayuS( UINT16 t )
@@ -159,8 +159,8 @@ void mDelayuS( UINT16 t )
 
 /*******************************************************************************
 * Function Name  : mDelaymS
-* Description    : mS 延时
-* Input          : t: 时间参数
+* Description    : mS 
+* Input          : t: 
 * Return         : None
 *******************************************************************************/
 void mDelaymS( UINT16 t )
@@ -176,17 +176,17 @@ void mDelaymS( UINT16 t )
 int fputc( int c, FILE *f )
 {
 #if  DEBUG == Debug_UART0
-  while( R8_UART0_TFC == UART_FIFO_SIZE );                        /* 等待数据发送 */
-  R8_UART0_THR = c;                                               /* 发送数据 */
+  while( R8_UART0_TFC == UART_FIFO_SIZE );                        /*  */
+  R8_UART0_THR = c;                                               /*  */
 #elif DEBUG == Debug_UART1
-  while( R8_UART1_TFC == UART_FIFO_SIZE );                        /* 等待数据发送 */
-  R8_UART1_THR = c;                                               /* 发送数据 */
+  while( R8_UART1_TFC == UART_FIFO_SIZE );                        /*  */
+  R8_UART1_THR = c;                                               /*  */
 #elif DEBUG == Debug_UART2
-  while( R8_UART2_TFC == UART_FIFO_SIZE );                        /* 等待数据发送 */
-  R8_UART2_THR = c;                                               /* 发送数据 */
+  while( R8_UART2_TFC == UART_FIFO_SIZE );                        /*  */
+  R8_UART2_THR = c;                                               /*  */
 #elif DEBUG == Debug_UART3
-  while( R8_UART3_TFC == UART_FIFO_SIZE );                        /* 等待数据发送 */
-  R8_UART3_THR = c;                                               /* 发送数据 */
+  while( R8_UART3_TFC == UART_FIFO_SIZE );                        /*  */
+  R8_UART3_THR = c;                                               /*  */
 #endif
   return( c );
 }

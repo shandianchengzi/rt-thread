@@ -71,7 +71,7 @@ typedef struct
 }DMA_InitTypeDef;
 
 /**
- * DMA多块传输内存表
+ * DMA
  *
  */
 typedef struct _lli
@@ -84,7 +84,7 @@ typedef struct _lli
     uint32_t DSTAT;
 }LLI;
 
-/**多块传输模式
+/**
   * @}
   */
 #define  Multi_Block_MODE01        (uint8_t)0x00    /*Single-block or last transfer of multi-block*/

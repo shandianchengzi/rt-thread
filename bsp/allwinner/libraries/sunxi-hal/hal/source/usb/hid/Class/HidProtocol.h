@@ -11,7 +11,7 @@
 *
 * Date          :  2010/06/02
 *
-* Description   :  Hid Ð­Òé
+* Description   :  Hid 
 *
 * Others        :  NULL
 *

@@ -146,7 +146,7 @@ int cpu_get_clk(void)
     else if (cpusrc == CLK_OSC24M_SRC)
         return _24MHZ_ / (HCLKC_DIV(reg) + 1);
     else
-        return _32KHZ_ / (HCLKC_DIV(reg) + 1);  //猜测 内部32KHz时钟
+        return _32KHZ_ / (HCLKC_DIV(reg) + 1);  // 32KHz
 
     return 0;
 }

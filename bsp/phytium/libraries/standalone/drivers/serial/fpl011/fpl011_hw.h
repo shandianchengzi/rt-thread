@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fpl011_hw.h
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 09:06:10
- * Description:  This files is for definition of uart register
+ * Description: This files is for definition of uart register
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 #ifndef BSP_DRIVERS_SERIAL_PL011_UART_HW_H
@@ -221,7 +221,7 @@ extern "C"
  * @name: FUART_ISRECEIVEDATA
  * @msg:  Used to confirm whether data has been received
  * @param addr contains the base address of the device.
- * @return {bool} true 是存在数据 ， false 是不存在数据
+ * @return {bool} true   false 
  *
  */
 #define FUART_ISRECEIVEDATA(addr) (FtIn32(addr + FPL011FTR_OFFSET) & FPL011FTR_RXFE)
@@ -230,7 +230,7 @@ extern "C"
  * @name: FUART_ISTRANSMITFULL
  * @msg:  Used to confirm whether data can be sent
  * @param addr contains the base address of the device.
- * @return {bool} true 是数据已满 ， false 可以发送数据
+ * @return {bool} true   false 
  */
 #define FUART_ISTRANSMITFULL(addr) ((FtIn32(addr + FPL011FTR_OFFSET) & (u32)FPL011FTR_TXFF) == FPL011FTR_TXFF)
 

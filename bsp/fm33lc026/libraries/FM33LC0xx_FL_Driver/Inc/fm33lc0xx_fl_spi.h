@@ -48,21 +48,21 @@ extern "C" {
   */
 typedef struct
 {
-    /*! 传输模式 单双工 */
+    /*!   */
     uint32_t transferMode;
-    /*! 主从模式 */
+    /*!  */
     uint32_t mode;
-    /*! 数据位宽 */
+    /*!  */
     uint32_t dataWidth;
-    /*! 时钟极性 */
+    /*!  */
     uint32_t clockPolarity;
-    /*! 时钟相位 */
+    /*!  */
     uint32_t clockPhase;
-    /*! NSS 脚使能软件控制 */
+    /*! NSS  */
     uint32_t softControl;
-    /*! 通讯速率 */
+    /*!  */
     uint32_t baudRate;
-    /*! Bit方向 */
+    /*! Bit */
     uint32_t bitOrder;
 
 } FL_SPI_InitTypeDef;

@@ -59,7 +59,7 @@ static void uart_console_reconfig(void)
  */
 
 
-/* 注意：进入睡眠前，如果有中断挂起（SYSTICK、PENDSV、UART、EXTI等），睡眠将被瞬间唤醒。*/
+/* SYSTICKPENDSVUARTEXTI*/
 static void sleep(struct rt_pm *pm, uint8_t mode)
 {
 
@@ -136,7 +136,7 @@ static void run(struct rt_pm *pm, uint8_t mode)
         break;
     }
 
-    /* 4. 更新外设时钟 */
+    /* 4.  */
     uart_console_reconfig();
     /* Re-Configure the Systick time */
     SysTick_Config(ald_cmu_get_sys_clock() / RT_TICK_PER_SECOND);

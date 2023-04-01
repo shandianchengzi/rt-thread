@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fpwm.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-25 11:45:05
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 #include <string.h>
 #include "fkernel.h"
@@ -41,7 +41,7 @@
  * @msg:  reset pwm
  * @param {FPwmCtrl} *pctrl, instance of FPWM controller
  * @param {u32} channel, pwm module's channel, 0/1
- * @return err code information, FPWM_SUCCESS indicates success，others indicates failed
+ * @return err code information, FPWM_SUCCESS indicates successothers indicates failed
  */
 FError FPwmReset(FPwmCtrl *pctrl, u32 channel)
 {
@@ -192,7 +192,7 @@ static void FPwmTimInterruptDisable(FPwmCtrl *pctrl, u32 channel)
 
 /**
  * @name: FPwmDivSet
- * @msg:  config pwm div, div range：0~4095, corresponding to 1~4096
+ * @msg:  config pwm div, div range0~4095, corresponding to 1~4096
  * @param {FPwmCtrl} *pctrl, instance of FPWM controller
  * @param {u32} channel, pwm module's channel, 0/1
  * @param {u16} div, div parameters
@@ -213,11 +213,11 @@ static void FPwmDivSet(FPwmCtrl *pctrl, u32 channel, u16 div)
 
 /**
  * @name: FPwmPeriodSet
- * @msg:  config pwm period, range：1~0xffff
+ * @msg:  config pwm period, range1~0xffff
  * @param {FPwmCtrl} *pctrl, instance of FPWM controller
  * @param {u32} channel, pwm module's channel, 0/1
  * @param {u16} pwm_period, period parameters
- * @return err code information, FPWM_SUCCESS indicates success，others indicates failed
+ * @return err code information, FPWM_SUCCESS indicates successothers indicates failed
  */
 static void FPwmPeriodSet(FPwmCtrl *pctrl, u32 channel, u16 pwm_period)
 {
@@ -272,7 +272,7 @@ static void FPwmDutySourceSet(FPwmCtrl *pctrl, u32 channel, FPwmDutySourceMode d
  * @param {FPwmCtrl} *pctrl, instance of FPWM controller
  * @param {u32} channel, pwm module's channel, 0/1
  * @param {u16} pwm_ccr, pwm_ccr parameters
- * @return err code information, FPWM_SUCCESS indicates success，others indicates failed
+ * @return err code information, FPWM_SUCCESS indicates successothers indicates failed
  */
 FError FPwmPulseSet(FPwmCtrl *pctrl, u32 channel, u16 pwm_ccr)
 {
@@ -363,7 +363,7 @@ static void FPwmPolaritySet(FPwmCtrl *pctrl, u32 channel, FPwmPolarity polarity)
  * @name: FPwmDbReset
  * @msg:  reset pwm db
  * @param {FPwmCtrl} *pctrl, instance of FPWM controller
- * @return err code information, FPWM_SUCCESS indicates success，others indicates failed
+ * @return err code information, FPWM_SUCCESS indicates successothers indicates failed
  */
 static FError FPwmDbReset(FPwmCtrl *pctrl)
 {
@@ -397,7 +397,7 @@ static FError FPwmDbReset(FPwmCtrl *pctrl)
  * @msg:  config pwm db polarity
  * @param {FPwmCtrl} *pctrl, instance of FPWM controller
  * @param {FPwmDbPolarity} db_polarity, db polarity parameters
- * @return err code information, FPWM_SUCCESS indicates success，others indicates failed
+ * @return err code information, FPWM_SUCCESS indicates successothers indicates failed
  */
 FError FPwmDbPolaritySet(FPwmCtrl *pctrl, FPwmDbPolarity db_polarity)
 {
@@ -569,7 +569,7 @@ void FPwmInterruptDisable(FPwmCtrl *pctrl, u32 channel, FPwmIntrEventType intr_t
  *             FPwmVariableSet if you want to use deadband function.
  * @param {FPwmCtrl} *pctrl, instance of FPWM controller
  * @param {FPwmDbVariableConfig} db_cfg_p, db config parameters, include mode and cycles
- * @return err code information, FPWM_SUCCESS indicates success，others indicates failed
+ * @return err code information, FPWM_SUCCESS indicates successothers indicates failed
  */
 FError FPwmDbVariableSet(FPwmCtrl *pctrl, FPwmDbVariableConfig *db_cfg_p)
 {
@@ -608,7 +608,7 @@ FError FPwmDbVariableSet(FPwmCtrl *pctrl, FPwmDbVariableConfig *db_cfg_p)
  * @msg:  get pwm deadband variable configuration.
  * @param {FPwmCtrl} *pctrl, instance of FPWM controller
  * @param {FPwmDbVariableConfig} *db_cfg_p, pwm deadband config parameters
- * @return err code information, FPWM_SUCCESS indicates success，others indicates failed
+ * @return err code information, FPWM_SUCCESS indicates successothers indicates failed
  */
 FError FPwmDbVariableGet(FPwmCtrl *pctrl, FPwmDbVariableConfig *db_cfg_p)
 {
@@ -645,7 +645,7 @@ FError FPwmDbVariableGet(FPwmCtrl *pctrl, FPwmDbVariableConfig *db_cfg_p)
  * @param {FPwmCtrl} *pctrl, instance of FPWM controller
  * @param {u32} channel, pwm module's channel, 0/1
  * @param {FPwmVariableConfig} pwm_cfg_p, pwm config parameters, include mode and duty
- * @return err code information, FPWM_SUCCESS indicates success，others indicates failed
+ * @return err code information, FPWM_SUCCESS indicates successothers indicates failed
  */
 FError FPwmVariableSet(FPwmCtrl *pctrl, u32 channel, FPwmVariableConfig *pwm_cfg_p)
 {
@@ -710,7 +710,7 @@ FError FPwmVariableSet(FPwmCtrl *pctrl, u32 channel, FPwmVariableConfig *pwm_cfg
  * @param {FPwmCtrl} *pctrl, instance of FPWM controller
  * @param {u32} channel, pwm module's channel, 0/1
  * @param {FPwmVariableConfig} *pwm_cfg_p, pwm config parameters, include mode and duty
- * @return err code information, FPWM_SUCCESS indicates success，others indicates failed
+ * @return err code information, FPWM_SUCCESS indicates successothers indicates failed
  */
 FError FPwmVariableGet(FPwmCtrl *pctrl, u32 channel, FPwmVariableConfig *pwm_cfg_p)
 {
@@ -772,7 +772,7 @@ void FPwmDeInitialize(FPwmCtrl *pctrl)
  * @msg:  Initializes a specific instance such that it is ready to be used.
  * @param {FPwmCtrl} *pctrl, instance of FPWM controller
  * @param {FPwmConfig} *input_config_p, Configuration parameters of FPWM
- * @return err code information, FPWM_SUCCESS indicates success，others indicates failed
+ * @return err code information, FPWM_SUCCESS indicates successothers indicates failed
  */
 FError FPwmCfgInitialize(FPwmCtrl *pctrl, const FPwmConfig *input_config_p)
 {

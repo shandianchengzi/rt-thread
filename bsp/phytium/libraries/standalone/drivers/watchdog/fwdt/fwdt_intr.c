@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,9 +14,9 @@
  * FilePath: fwdt_intr.c
  * Date: 2021-11-05 10:01:59
  * LastEditTime: 2022-02-25 11:44:02
- * Description:  This files is for intrrupt function of wdt ctrl
+ * Description: This files is for intrrupt function of wdt ctrl
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */

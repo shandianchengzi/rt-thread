@@ -48,22 +48,22 @@ extern "C" {
   */
 typedef struct
 {
-    /** 时钟源选择 */
+    /**  */
     uint32_t clockSrc;
 
-    /** 通信波特率 */
+    /**  */
     uint32_t baudRate;
 
-    /** 数据宽度 */
+    /**  */
     uint32_t dataWidth;
 
-    /** 停止位 */
+    /**  */
     uint32_t stopBits;
 
-    /** 奇偶校验位 */
+    /**  */
     uint32_t parity;
 
-    /** 传输反向 */
+    /**  */
     uint32_t transferDirection;
 
 } FL_UART_InitTypeDef;
@@ -73,11 +73,11 @@ typedef struct
   */
 typedef struct
 {
-    /** 调制极性默认bit1调制 */
+    /** bit1 */
     uint32_t polarity;
-    /** 红外调制占空比 */
+    /**  */
     uint32_t modulationDuty;
-    /** 红外调制频率*/
+    /** */
     uint32_t modulationFrequency;
 
 } FL_UART_InfraRed_InitTypeDef;

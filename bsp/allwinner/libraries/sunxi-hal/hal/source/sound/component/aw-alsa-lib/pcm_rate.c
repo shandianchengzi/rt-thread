@@ -7,12 +7,12 @@
 *
 * DISCLAIMER
 * THIRD PARTY LICENCES MAY BE REQUIRED TO IMPLEMENT THE SOLUTION/PRODUCT.
-* IF YOU NEED TO INTEGRATE THIRD PARTY’S TECHNOLOGY (SONY, DTS, DOLBY, AVS OR MPEGLA, ETC.)
-* IN ALLWINNERS’SDK OR PRODUCTS, YOU SHALL BE SOLELY RESPONSIBLE TO OBTAIN
+* IF YOU NEED TO INTEGRATE THIRD PARTYS TECHNOLOGY (SONY, DTS, DOLBY, AVS OR MPEGLA, ETC.)
+* IN ALLWINNERSSDK OR PRODUCTS, YOU SHALL BE SOLELY RESPONSIBLE TO OBTAIN
 * ALL APPROPRIATELY REQUIRED THIRD PARTY LICENCES.
 * ALLWINNER SHALL HAVE NO WARRANTY, INDEMNITY OR OTHER OBLIGATIONS WITH RESPECT TO MATTERS
 * COVERED UNDER ANY REQUIRED THIRD PARTY LICENSE.
-* YOU ARE SOLELY RESPONSIBLE FOR YOUR USAGE OF THIRD PARTY’S TECHNOLOGY.
+* YOU ARE SOLELY RESPONSIBLE FOR YOUR USAGE OF THIRD PARTYS TECHNOLOGY.
 *
 *
 * THIS SOFTWARE IS PROVIDED BY ALLWINNER"AS IS" AND TO THE MAXIMUM EXTENT
@@ -948,14 +948,14 @@ static int snd_pcm_rate_commit_area(snd_pcm_t *pcm, snd_pcm_rate_t *rate,
 
     areas = snd_pcm_mmap_areas(pcm);
     awalsa_debug("cont=%u, size=%u, slave_size=%u\n", cont, size, slave_size);
-    /* 剩余空间大于要写入的数据 */
+    /*  */
     if (cont >= size) {
         result = snd_pcm_mmap_begin(rate->gen.slave, &slave_areas, &slave_offset, &slave_frames);
         if (result < 0)
             return result;
         if (slave_frames < slave_size) {
             awalsa_debug("slave_frames=%u\n", slave_frames);
-            /* 数据写入到rate->sareas中 */
+            /* rate->sareas */
 #ifdef SND_PCM_RATE_FIX_PERIOD_SIZE
             snd_pcm_rate_write_areas1_fix(pcm, areas, appl_offset, rate->sareas, 0, NULL, &slave_size);
             if (output_frames != NULL)
@@ -965,7 +965,7 @@ static int snd_pcm_rate_commit_area(snd_pcm_t *pcm, snd_pcm_rate_t *rate,
 #endif
             goto __partial;
         }
-        /* 剩余空间大于slave period size,直接把数据写入slave_areas中 */
+        /* slave period size,slave_areas */
 #ifdef SND_PCM_RATE_FIX_PERIOD_SIZE
         snd_pcm_rate_write_areas1_fix(pcm, areas, appl_offset, slave_areas, slave_offset, NULL, &slave_size);
         if (output_frames != NULL)
@@ -985,18 +985,18 @@ static int snd_pcm_rate_commit_area(snd_pcm_t *pcm, snd_pcm_rate_t *rate,
             return 0;
         }
     } else {
-        /* 剩余空间小于要写入的数据,先把剩余空间填充完 */
+        /* , */
         snd_pcm_areas_copy(rate->pareas, 0,
                    areas, appl_offset,
                    pcm->channels, cont,
                    pcm->format);
-        /* 再填充剩余部分size-cont, 均写到rate->pareas中 */
+        /* size-cont, rate->pareas */
         snd_pcm_areas_copy(rate->pareas, cont,
                    areas, 0,
                    pcm->channels, size - cont,
                    pcm->format);
 
-        /* convert并写入到rate->sareas中 */
+        /* convertrate->sareas */
 #ifdef SND_PCM_RATE_FIX_PERIOD_SIZE
         snd_pcm_rate_write_areas1_fix(pcm, rate->pareas, 0, rate->sareas, 0, &size, &slave_size);
         if (input_frames != NULL)
@@ -1017,7 +1017,7 @@ static int snd_pcm_rate_commit_area(snd_pcm_t *pcm, snd_pcm_rate_t *rate,
         cont = slave_frames;
         if (cont > slave_size)
             cont = slave_size;
-        /* 将rate->sareas写入到slave areas中，cont小于等于slave_size */
+        /* rate->sareasslave areascontslave_size */
         snd_pcm_areas_copy(slave_areas, slave_offset,
                    rate->sareas, 0,
                    pcm->channels, cont,
@@ -1033,11 +1033,11 @@ static int snd_pcm_rate_commit_area(snd_pcm_t *pcm, snd_pcm_rate_t *rate,
         }
         xfer = cont;
 
-        /* 如果已经传输了slave_size的数据，则完成 */
+        /* slave_size */
         if (xfer == slave_size)
             goto commit_done;
 
-        /* 传输剩余部分slave_size-cont,  */
+        /* slave_size-cont,  */
         /* commit second fragment */
         cont = slave_size - cont;
         slave_frames = cont;
@@ -1218,7 +1218,7 @@ static int snd_pcm_rate_sync_playback_area(snd_pcm_t *pcm, snd_pcm_uframes_t app
         xfer = appl_ptr - rate->last_commit_ptr + pcm->boundary;
     else
         xfer = appl_ptr - rate->last_commit_ptr;
-    /* 传输的数据要大于等于period_size，并且slave可用空间大于period_size时，才执行commit_next_period */
+    /* period_sizeslaveperiod_sizecommit_next_period */
     /* TODO: maybe slave_size >= (rate->gen.slave->period_size-1) */
     while (xfer >= pcm->period_size &&
            (snd_pcm_uframes_t)slave_size >= rate->gen.slave->period_size) {

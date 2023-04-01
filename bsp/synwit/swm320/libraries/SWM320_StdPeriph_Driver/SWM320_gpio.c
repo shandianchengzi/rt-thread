@@ -1,10 +1,10 @@
 /******************************************************************************************************************************************
-* 文件名称: SWM320_gpio.c
-* 功能说明: SWM320单片机的通用输入输出功能驱动库
-* 技术支持: http://www.synwit.com.cn/e/tool/gbook/?bid=1
-* 注意事项:
-* 版本日期: V1.1.0      2017年10月25日
-* 升级记录:
+* : SWM320_gpio.c
+* : SWM320
+* : http://www.synwit.com.cn/e/tool/gbook/?bid=1
+* :
+* : V1.1.0      20171025
+* :
 *
 *
 *******************************************************************************************************************************************
@@ -23,15 +23,15 @@
 
 
 /******************************************************************************************************************************************
-* 函数名称: GPIO_Init()
-* 功能说明: 引脚初始化，包含引脚方向、上拉电阻、下拉电阻
-* 输    入: GPIO_TypeDef * GPIOx      指定GPIO端口，有效值包括GPIOA、GPIOB、GPIOC、GPIOM、GPION、GPIOP
-*           uint32_t n             指定GPIO引脚，有效值包括PIN0、PIN1、PIN2、... ... PIN22、PIN23
-*           uint32_t dir           引脚方向，0 输入        1 输出
-*           uint32_t pull_up       上拉电阻，0 关闭上拉    1 开启上拉
-*           uint32_t pull_down     下拉电阻，0 关闭下拉    1 开启下拉
-* 输    出: 无
-* 注意事项: GPIOA、GPIOC、GPIOM、GPIOP只有上拉，GPIOB、GPION只有下拉（PN0、PN1、PN2三个引脚有上拉没下拉）
+* : GPIO_Init()
+* : 
+*     : GPIO_TypeDef * GPIOx      GPIOGPIOAGPIOBGPIOCGPIOMGPIONGPIOP
+*           uint32_t n             GPIOPIN0PIN1PIN2... ... PIN22PIN23
+*           uint32_t dir           0         1 
+*           uint32_t pull_up       0     1 
+*           uint32_t pull_down     0     1 
+*     : 
+* : GPIOAGPIOCGPIOMGPIOPGPIOBGPIONPN0PN1PN2
 ******************************************************************************************************************************************/
 void GPIO_Init(GPIO_TypeDef * GPIOx, uint32_t n, uint32_t dir, uint32_t pull_up, uint32_t pull_down)
 {
@@ -40,7 +40,7 @@ void GPIO_Init(GPIO_TypeDef * GPIOx, uint32_t n, uint32_t dir, uint32_t pull_up,
     case ((uint32_t)GPIOA):
         SYS->CLKEN |= (0x01 << SYS_CLKEN_GPIOA_Pos);
 
-        PORT_Init(PORTA, n, 0, 1);          //PORTA.PINn引脚配置为GPIO功能，数字输入开启
+        PORT_Init(PORTA, n, 0, 1);          //PORTA.PINnGPIO
         if(dir == 1)
         {
             GPIOA->DIR |= (0x01 << n);
@@ -59,7 +59,7 @@ void GPIO_Init(GPIO_TypeDef * GPIOx, uint32_t n, uint32_t dir, uint32_t pull_up,
     case ((uint32_t)GPIOB):
         SYS->CLKEN |= (0x01 << SYS_CLKEN_GPIOB_Pos);
 
-        PORT_Init(PORTB, n, 0, 1);          //PORTB.PINn引脚配置为GPIO功能，数字输入开启
+        PORT_Init(PORTB, n, 0, 1);          //PORTB.PINnGPIO
         if(dir == 1)
         {
             GPIOB->DIR |= (0x01 << n);
@@ -78,7 +78,7 @@ void GPIO_Init(GPIO_TypeDef * GPIOx, uint32_t n, uint32_t dir, uint32_t pull_up,
     case ((uint32_t)GPIOC):
         SYS->CLKEN |= (0x01 << SYS_CLKEN_GPIOC_Pos);
 
-        PORT_Init(PORTC, n, 0, 1);          //PORTC.PINn引脚配置为GPIO功能，数字输入开启
+        PORT_Init(PORTC, n, 0, 1);          //PORTC.PINnGPIO
         if(dir == 1)
         {
             GPIOC->DIR |= (0x01 << n);
@@ -97,7 +97,7 @@ void GPIO_Init(GPIO_TypeDef * GPIOx, uint32_t n, uint32_t dir, uint32_t pull_up,
     case ((uint32_t)GPIOM):
         SYS->CLKEN |= (0x01 << SYS_CLKEN_GPIOM_Pos);
 
-        PORT_Init(PORTM, n, 0, 1);          //PORTM.PINn引脚配置为GPIO功能，数字输入开启
+        PORT_Init(PORTM, n, 0, 1);          //PORTM.PINnGPIO
         if(dir == 1)
         {
             GPIOM->DIR |= (0x01 << n);
@@ -116,7 +116,7 @@ void GPIO_Init(GPIO_TypeDef * GPIOx, uint32_t n, uint32_t dir, uint32_t pull_up,
     case ((uint32_t)GPION):
         SYS->CLKEN |= (0x01 << SYS_CLKEN_GPION_Pos);
 
-        PORT_Init(PORTN, n, 0, 1);          //PORTN.PINn引脚配置为GPIO功能，数字输入开启
+        PORT_Init(PORTN, n, 0, 1);          //PORTN.PINnGPIO
         if(dir == 1)
         {
             GPION->DIR |= (0x01 << n);
@@ -135,7 +135,7 @@ void GPIO_Init(GPIO_TypeDef * GPIOx, uint32_t n, uint32_t dir, uint32_t pull_up,
     case ((uint32_t)GPIOP):
         SYS->CLKEN |= (0x01 << SYS_CLKEN_GPIOP_Pos);
 
-        PORT_Init(PORTP, n, 0, 1);          //PORTP.PINn引脚配置为GPIO功能，数字输入开启
+        PORT_Init(PORTP, n, 0, 1);          //PORTP.PINnGPIO
         if(dir == 1)
         {
             GPIOP->DIR |= (0x01 << n);
@@ -154,12 +154,12 @@ void GPIO_Init(GPIO_TypeDef * GPIOx, uint32_t n, uint32_t dir, uint32_t pull_up,
 }
 
 /******************************************************************************************************************************************
-* 函数名称: GPIO_SetBit()
-* 功能说明: 将参数指定的引脚电平置高
-* 输    入: GPIO_TypeDef * GPIOx      指定GPIO端口，有效值包括GPIOA、GPIOB、GPIOC、GPIOM、GPION、GPIOP
-*           uint32_t n             指定GPIO引脚，有效值包括PIN0、PIN1、PIN2、... ... PIN22、PIN23
-* 输    出: 无
-* 注意事项: 无
+* : GPIO_SetBit()
+* : 
+*     : GPIO_TypeDef * GPIOx      GPIOGPIOAGPIOBGPIOCGPIOMGPIONGPIOP
+*           uint32_t n             GPIOPIN0PIN1PIN2... ... PIN22PIN23
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void GPIO_SetBit(GPIO_TypeDef * GPIOx, uint32_t n)
 {
@@ -167,12 +167,12 @@ void GPIO_SetBit(GPIO_TypeDef * GPIOx, uint32_t n)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: GPIO_ClrBit()
-* 功能说明: 将参数指定的引脚电平置低
-* 输    入: GPIO_TypeDef * GPIOx      指定GPIO端口，有效值包括GPIOA、GPIOB、GPIOC、GPIOM、GPION、GPIOP
-*           uint32_t n             指定GPIO引脚，有效值包括PIN0、PIN1、PIN2、... ... PIN22、PIN23
-* 输    出: 无
-* 注意事项: 无
+* : GPIO_ClrBit()
+* : 
+*     : GPIO_TypeDef * GPIOx      GPIOGPIOAGPIOBGPIOCGPIOMGPIONGPIOP
+*           uint32_t n             GPIOPIN0PIN1PIN2... ... PIN22PIN23
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void GPIO_ClrBit(GPIO_TypeDef * GPIOx, uint32_t n)
 {
@@ -180,12 +180,12 @@ void GPIO_ClrBit(GPIO_TypeDef * GPIOx, uint32_t n)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: GPIO_InvBit()
-* 功能说明: 将参数指定的引脚电平反转
-* 输    入: GPIO_TypeDef * GPIOx      指定GPIO端口，有效值包括GPIOA、GPIOB、GPIOC、GPIOM、GPION、GPIOP
-*           uint32_t n             指定GPIO引脚，有效值包括PIN0、PIN1、PIN2、... ... PIN22、PIN23
-* 输    出: 无
-* 注意事项: 无
+* : GPIO_InvBit()
+* : 
+*     : GPIO_TypeDef * GPIOx      GPIOGPIOAGPIOBGPIOCGPIOMGPIONGPIOP
+*           uint32_t n             GPIOPIN0PIN1PIN2... ... PIN22PIN23
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void GPIO_InvBit(GPIO_TypeDef * GPIOx, uint32_t n)
 {
@@ -193,12 +193,12 @@ void GPIO_InvBit(GPIO_TypeDef * GPIOx, uint32_t n)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: GPIO_GetBit()
-* 功能说明: 读取参数指定的引脚的电平状态
-* 输    入: GPIO_TypeDef * GPIOx      指定GPIO端口，有效值包括GPIOA、GPIOB、GPIOC、GPIOM、GPION、GPIOP
-*           uint32_t n             指定GPIO引脚，有效值包括PIN0、PIN1、PIN2、... ... PIN22、PIN23
-* 输    出: 参数指定的引脚的电平状态  0 低电平   1 高电平
-* 注意事项: 无
+* : GPIO_GetBit()
+* : 
+*     : GPIO_TypeDef * GPIOx      GPIOGPIOAGPIOBGPIOCGPIOMGPIONGPIOP
+*           uint32_t n             GPIOPIN0PIN1PIN2... ... PIN22PIN23
+*     :   0    1 
+* : 
 ******************************************************************************************************************************************/
 uint32_t GPIO_GetBit(GPIO_TypeDef * GPIOx, uint32_t n)
 {
@@ -206,13 +206,13 @@ uint32_t GPIO_GetBit(GPIO_TypeDef * GPIOx, uint32_t n)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: GPIO_SetBits()
-* 功能说明: 将参数指定的从n开始的w位连续引脚的电平置高
-* 输    入: GPIO_TypeDef * GPIOx      指定GPIO端口，有效值包括GPIOA、GPIOB、GPIOC、GPIOM、GPION、GPIOP
-*           uint32_t n             指定GPIO引脚，有效值包括PIN0、PIN1、PIN2、... ... PIN22、PIN23
-*           uint32_t w             指定要将引脚电平置高的引脚的个数
-* 输    出: 无
-* 注意事项: 无
+* : GPIO_SetBits()
+* : nw
+*     : GPIO_TypeDef * GPIOx      GPIOGPIOAGPIOBGPIOCGPIOMGPIONGPIOP
+*           uint32_t n             GPIOPIN0PIN1PIN2... ... PIN22PIN23
+*           uint32_t w             
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void GPIO_SetBits(GPIO_TypeDef * GPIOx, uint32_t n, uint32_t w)
 {
@@ -224,13 +224,13 @@ void GPIO_SetBits(GPIO_TypeDef * GPIOx, uint32_t n, uint32_t w)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: GPIO_ClrBits()
-* 功能说明: 将参数指定的从n开始的w位连续引脚的电平置低
-* 输    入: GPIO_TypeDef * GPIOx      指定GPIO端口，有效值包括GPIOA、GPIOB、GPIOC、GPIOM、GPION、GPIOP
-*           uint32_t n             指定GPIO引脚，有效值包括PIN0、PIN1、PIN2、... ... PIN22、PIN23
-*           uint32_t w             指定要将引脚电平置低的引脚的个数
-* 输    出: 无
-* 注意事项: 无
+* : GPIO_ClrBits()
+* : nw
+*     : GPIO_TypeDef * GPIOx      GPIOGPIOAGPIOBGPIOCGPIOMGPIONGPIOP
+*           uint32_t n             GPIOPIN0PIN1PIN2... ... PIN22PIN23
+*           uint32_t w             
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void GPIO_ClrBits(GPIO_TypeDef * GPIOx, uint32_t n, uint32_t w)
 {
@@ -242,13 +242,13 @@ void GPIO_ClrBits(GPIO_TypeDef * GPIOx, uint32_t n, uint32_t w)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: GPIO_InvBits()
-* 功能说明: 将参数指定的从n开始的w位连续引脚的电平反转
-* 输    入: GPIO_TypeDef * GPIOx      指定GPIO端口，有效值包括GPIOA、GPIOB、GPIOC、GPIOM、GPION、GPIOP
-*           uint32_t n             指定GPIO引脚，有效值包括PIN0、PIN1、PIN2、... ... PIN22、PIN23
-*           uint32_t w             指定要将引脚电平反转的引脚的个数
-* 输    出: 无
-* 注意事项: 无
+* : GPIO_InvBits()
+* : nw
+*     : GPIO_TypeDef * GPIOx      GPIOGPIOAGPIOBGPIOCGPIOMGPIONGPIOP
+*           uint32_t n             GPIOPIN0PIN1PIN2... ... PIN22PIN23
+*           uint32_t w             
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void GPIO_InvBits(GPIO_TypeDef * GPIOx, uint32_t n, uint32_t w)
 {
@@ -260,14 +260,14 @@ void GPIO_InvBits(GPIO_TypeDef * GPIOx, uint32_t n, uint32_t w)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: GPIO_GetBits()
-* 功能说明: 读取参数指定的从n开始的w位连续引脚的电平状态
-* 输    入: GPIO_TypeDef * GPIOx      指定GPIO端口，有效值包括GPIOA、GPIOB、GPIOC、GPIOM、GPION、GPIOP
-*           uint32_t n             指定GPIO引脚，有效值包括PIN0、PIN1、PIN2、... ... PIN22、PIN23
-*           uint32_t w             指定要将引脚电平置高的引脚的个数
-* 输    出: 参数指定的从n开始的w位连续引脚的电平状态 0 低电平   1 高电平
-*           返回值的第0位表示引脚n的电平状态、返回值的第1位表示引脚n+1的电平状态... ...返回值的第w位表示引脚n+w的电平状态
-* 注意事项: 无
+* : GPIO_GetBits()
+* : nw
+*     : GPIO_TypeDef * GPIOx      GPIOGPIOAGPIOBGPIOCGPIOMGPIONGPIOP
+*           uint32_t n             GPIOPIN0PIN1PIN2... ... PIN22PIN23
+*           uint32_t w             
+*     : nw 0    1 
+*           0n1n+1... ...wn+w
+* : 
 ******************************************************************************************************************************************/
 uint32_t GPIO_GetBits(GPIO_TypeDef * GPIOx, uint32_t n, uint32_t w)
 {
@@ -279,12 +279,12 @@ uint32_t GPIO_GetBits(GPIO_TypeDef * GPIOx, uint32_t n, uint32_t w)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: GPIO_AtomicSetBit()
-* 功能说明: 将参数指定的引脚电平置高，确保引脚”读-改-写“操作的原子性（不被中断ISR打断）
-* 输    入: GPIO_TypeDef * GPIOx      指定GPIO端口，有效值包括GPIOA、GPIOB、GPIOC、GPIOD
-*           uint32_t n             指定GPIO引脚，有效值包括PIN0、PIN1、PIN2、... ... PIN14、PIN15
-* 输    出: 无
-* 注意事项: 当GPIOx的16个引脚中，有些在主循环中操作，有些在中断ISR中操作时，GPIOx的引脚必须都用GPIO_Atomic类型函数操作
+* : GPIO_AtomicSetBit()
+* : --ISR
+*     : GPIO_TypeDef * GPIOx      GPIOGPIOAGPIOBGPIOCGPIOD
+*           uint32_t n             GPIOPIN0PIN1PIN2... ... PIN14PIN15
+*     : 
+* : GPIOx16ISRGPIOxGPIO_Atomic
 ******************************************************************************************************************************************/
 void GPIO_AtomicSetBit(GPIO_TypeDef * GPIOx, uint32_t n)
 {
@@ -292,12 +292,12 @@ void GPIO_AtomicSetBit(GPIO_TypeDef * GPIOx, uint32_t n)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: GPIO_AtomicClrBit()
-* 功能说明: 将参数指定的引脚电平置低，确保引脚”读-改-写“操作的原子性（不被中断ISR打断）
-* 输    入: GPIO_TypeDef * GPIOx      指定GPIO端口，有效值包括GPIOA、GPIOB、GPIOC、GPIOD
-*           uint32_t n             指定GPIO引脚，有效值包括PIN0、PIN1、PIN2、... ... PIN14、PIN15
-* 输    出: 无
-* 注意事项: 当GPIOx的16个引脚中，有些在主循环中操作，有些在中断ISR中操作时，GPIOx的引脚必须都用GPIO_Atomic类型函数操作
+* : GPIO_AtomicClrBit()
+* : --ISR
+*     : GPIO_TypeDef * GPIOx      GPIOGPIOAGPIOBGPIOCGPIOD
+*           uint32_t n             GPIOPIN0PIN1PIN2... ... PIN14PIN15
+*     : 
+* : GPIOx16ISRGPIOxGPIO_Atomic
 ******************************************************************************************************************************************/
 void GPIO_AtomicClrBit(GPIO_TypeDef * GPIOx, uint32_t n)
 {
@@ -305,12 +305,12 @@ void GPIO_AtomicClrBit(GPIO_TypeDef * GPIOx, uint32_t n)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: GPIO_AtomicInvBit()
-* 功能说明: 将参数指定的引脚电平反转，确保引脚”读-改-写“操作的原子性（不被中断ISR打断）
-* 输    入: GPIO_TypeDef * GPIOx      指定GPIO端口，有效值包括GPIOA、GPIOB、GPIOC、GPIOD
-*           uint32_t n             指定GPIO引脚，有效值包括PIN0、PIN1、PIN2、... ... PIN14、PIN15
-* 输    出: 无
-* 注意事项: 当GPIOx的16个引脚中，有些在主循环中操作，有些在中断ISR中操作时，GPIOx的引脚必须都用GPIO_Atomic类型函数操作
+* : GPIO_AtomicInvBit()
+* : --ISR
+*     : GPIO_TypeDef * GPIOx      GPIOGPIOAGPIOBGPIOCGPIOD
+*           uint32_t n             GPIOPIN0PIN1PIN2... ... PIN14PIN15
+*     : 
+* : GPIOx16ISRGPIOxGPIO_Atomic
 ******************************************************************************************************************************************/
 void GPIO_AtomicInvBit(GPIO_TypeDef * GPIOx, uint32_t n)
 {
@@ -318,13 +318,13 @@ void GPIO_AtomicInvBit(GPIO_TypeDef * GPIOx, uint32_t n)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: GPIO_AtomicSetBits()
-* 功能说明: 将参数指定的从n开始的w位连续引脚的电平置高，确保引脚”读-改-写“操作的原子性（不被中断ISR打断）
-* 输    入: GPIO_TypeDef * GPIOx      指定GPIO端口，有效值包括GPIOA、GPIOB、GPIOC、GPIOD
-*           uint32_t n             指定GPIO引脚，有效值包括PIN0、PIN1、PIN2、... ... PIN14、PIN15
-*           uint32_t w      指定要将引脚电平置高的引脚的个数
-* 输    出: 无
-* 注意事项: 当GPIOx的16个引脚中，有些在主循环中操作，有些在中断ISR中操作时，GPIOx的引脚必须都用GPIO_Atomic类型函数操作
+* : GPIO_AtomicSetBits()
+* : nw--ISR
+*     : GPIO_TypeDef * GPIOx      GPIOGPIOAGPIOBGPIOCGPIOD
+*           uint32_t n             GPIOPIN0PIN1PIN2... ... PIN14PIN15
+*           uint32_t w      
+*     : 
+* : GPIOx16ISRGPIOxGPIO_Atomic
 ******************************************************************************************************************************************/
 void GPIO_AtomicSetBits(GPIO_TypeDef * GPIOx, uint32_t n, uint32_t w)
 {
@@ -338,13 +338,13 @@ void GPIO_AtomicSetBits(GPIO_TypeDef * GPIOx, uint32_t n, uint32_t w)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: GPIO_AtomicClrBits()
-* 功能说明: 将参数指定的从n开始的w位连续引脚的电平置低，确保引脚”读-改-写“操作的原子性（不被中断ISR打断）
-* 输    入: GPIO_TypeDef * GPIOx      指定GPIO端口，有效值包括GPIOA、GPIOB、GPIOC、GPIOD
-*           uint32_t n             指定GPIO引脚，有效值包括PIN0、PIN1、PIN2、... ... PIN14、PIN15
-*           uint32_t w             指定要将引脚电平置低的引脚的个数
-* 输    出: 无
-* 注意事项: 当GPIOx的16个引脚中，有些在主循环中操作，有些在中断ISR中操作时，GPIOx的引脚必须都用GPIO_Atomic类型函数操作
+* : GPIO_AtomicClrBits()
+* : nw--ISR
+*     : GPIO_TypeDef * GPIOx      GPIOGPIOAGPIOBGPIOCGPIOD
+*           uint32_t n             GPIOPIN0PIN1PIN2... ... PIN14PIN15
+*           uint32_t w             
+*     : 
+* : GPIOx16ISRGPIOxGPIO_Atomic
 ******************************************************************************************************************************************/
 void GPIO_AtomicClrBits(GPIO_TypeDef * GPIOx, uint32_t n, uint32_t w)
 {
@@ -358,13 +358,13 @@ void GPIO_AtomicClrBits(GPIO_TypeDef * GPIOx, uint32_t n, uint32_t w)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: GPIO_AtomicInvBits()
-* 功能说明: 将参数指定的从n开始的w位连续引脚的电平反转，确保引脚”读-改-写“操作的原子性（不被中断ISR打断）
-* 输    入: GPIO_TypeDef * GPIOx      指定GPIO端口，有效值包括GPIOA、GPIOB、GPIOC、GPIOD
-*           uint32_t n             指定GPIO引脚，有效值包括PIN0、PIN1、PIN2、... ... PIN14、PIN15
-*           uint32_t w             指定要将引脚电平反转的引脚的个数
-* 输    出: 无
-* 注意事项: 当GPIOx的16个引脚中，有些在主循环中操作，有些在中断ISR中操作时，GPIOx的引脚必须都用GPIO_Atomic类型函数操作
+* : GPIO_AtomicInvBits()
+* : nw--ISR
+*     : GPIO_TypeDef * GPIOx      GPIOGPIOAGPIOBGPIOCGPIOD
+*           uint32_t n             GPIOPIN0PIN1PIN2... ... PIN14PIN15
+*           uint32_t w             
+*     : 
+* : GPIOx16ISRGPIOxGPIO_Atomic
 ******************************************************************************************************************************************/
 void GPIO_AtomicInvBits(GPIO_TypeDef * GPIOx, uint32_t n, uint32_t w)
 {

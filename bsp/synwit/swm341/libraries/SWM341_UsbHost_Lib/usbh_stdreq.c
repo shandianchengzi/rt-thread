@@ -1,10 +1,10 @@
 /******************************************************************************************************************************************
-* 文件名称: usbh_stdreq.c
-* 功能说明:
-* 技术支持: http://www.synwit.com.cn/e/tool/gbook/?bid=1
-* 注意事项:
-* 版本日期: V1.1.0      2020年11月3日
-* 升级记录:
+* : usbh_stdreq.c
+* :
+* : http://www.synwit.com.cn/e/tool/gbook/?bid=1
+* :
+* : V1.1.0      2020113
+* :
 *
 *
 *******************************************************************************************************************************************
@@ -25,11 +25,11 @@
 
 
 /******************************************************************************************************************************************
-* 函数名称: USBH_GetDescriptor()
-* 功能说明: 获取描述符
-* 输    入: 无
-* 输    出: 无
-* 注意事项: 无
+* : USBH_GetDescriptor()
+* : 
+*     : 
+*     : 
+* : 
 ******************************************************************************************************************************************/
 USBH_Status USBH_GetDescriptor(USBH_Info_t *phost, uint8_t type, uint8_t index, uint8_t *buff, int size)
 {
@@ -44,15 +44,15 @@ USBH_Status USBH_GetDescriptor(USBH_Info_t *phost, uint8_t type, uint8_t index, 
 
 
 /******************************************************************************************************************************************
-* 函数名称: USBH_GetDescriptorEx()
-* 功能说明: 获取描述符
-* 输    入: uint8_t reqType           USB_REQ_STANDARD、USB_REQ_CLASS、USB_REQ_VENDOR
-*           uint8_t reqTarget       USB_REQ_TO_DEVICE、USB_REQ_TO_INTERFACE、USB_REQ_TO_ENDPOINT
+* : USBH_GetDescriptorEx()
+* : 
+*     : uint8_t reqType           USB_REQ_STANDARDUSB_REQ_CLASSUSB_REQ_VENDOR
+*           uint8_t reqTarget       USB_REQ_TO_DEVICEUSB_REQ_TO_INTERFACEUSB_REQ_TO_ENDPOINT
 *           uint8_t type
 *           uint8_t index
 *           uint16_t wIndex
-* 输    出: 无
-* 注意事项: 无
+*     : 
+* : 
 ******************************************************************************************************************************************/
 USBH_Status USBH_GetDescriptorEx(USBH_Info_t *phost, uint8_t reqType, uint8_t reqTarget, uint8_t type, uint8_t index, uint16_t wIndex, uint8_t *buff, int size)
 {
@@ -67,11 +67,11 @@ USBH_Status USBH_GetDescriptorEx(USBH_Info_t *phost, uint8_t reqType, uint8_t re
 
 
 /******************************************************************************************************************************************
-* 函数名称: USBH_SetAddress()
-* 功能说明: 设置设备地址
-* 输    入: 无
-* 输    出: 无
-* 注意事项: 无
+* : USBH_SetAddress()
+* : 
+*     : 
+*     : 
+* : 
 ******************************************************************************************************************************************/
 USBH_Status USBH_SetAddress(USBH_Info_t *phost, uint8_t addr)
 {
@@ -86,11 +86,11 @@ USBH_Status USBH_SetAddress(USBH_Info_t *phost, uint8_t addr)
 
 
 /******************************************************************************************************************************************
-* 函数名称: USBH_SetConfiguration()
-* 功能说明: 设置 configuration
-* 输    入: 无
-* 输    出: 无
-* 注意事项: 无
+* : USBH_SetConfiguration()
+* :  configuration
+*     : 
+*     : 
+* : 
 ******************************************************************************************************************************************/
 USBH_Status USBH_SetConfiguration(USBH_Info_t *phost, uint8_t cfg)
 {
@@ -105,11 +105,11 @@ USBH_Status USBH_SetConfiguration(USBH_Info_t *phost, uint8_t cfg)
 
 
 /******************************************************************************************************************************************
-* 函数名称: USBH_SetInterface()
-* 功能说明: 设置 interface altSetting
-* 输    入: 无
-* 输    出: 无
-* 注意事项: 无
+* : USBH_SetInterface()
+* :  interface altSetting
+*     : 
+*     : 
+* : 
 ******************************************************************************************************************************************/
 USBH_Status USBH_SetInterface(USBH_Info_t *phost, uint8_t intf, uint8_t altSetting)
 {
@@ -124,11 +124,11 @@ USBH_Status USBH_SetInterface(USBH_Info_t *phost, uint8_t intf, uint8_t altSetti
 
 
 /******************************************************************************************************************************************
-* 函数名称: USBH_ClrFeature()
-* 功能说明: 清除端点 STALL
-* 输    入: 无
-* 输    出: 无
-* 注意事项: 无
+* : USBH_ClrFeature()
+* :  STALL
+*     : 
+*     : 
+* : 
 ******************************************************************************************************************************************/
 USBH_Status USBH_ClrFeature(USBH_Info_t *phost, uint8_t ep)
 {
@@ -142,11 +142,11 @@ USBH_Status USBH_ClrFeature(USBH_Info_t *phost, uint8_t ep)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: USBH_ParseCfgDesc()
-* 功能说明: 解析配置描述符
-* 输    入: 无
-* 输    出: 无
-* 注意事项: 无
+* : USBH_ParseCfgDesc()
+* : 
+*     : 
+*     : 
+* : 
 ******************************************************************************************************************************************/
 USBH_Status USBH_ParseCfgDesc(USBH_Info_t *phost, uint8_t *buff, uint16_t size)
 {

@@ -344,7 +344,7 @@ typedef struct {
 /*
  * PRESCALE (RW)
  *
- * 0: 1xclock, 1: 2x, 2: 4x, 3: 8x,…,15: 32768x,…,31: 2Gx
+ * 0: 1xclock, 1: 2x, 2: 4x, 3: 8x,,15: 32768x,,31: 2Gx
  */
 #define ADC12_PRD_CFG_PRD_CFG_PRESCALE_MASK (0x1F00U)
 #define ADC12_PRD_CFG_PRD_CFG_PRESCALE_SHIFT (8U)

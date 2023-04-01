@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: ferror_code.h
  * Date: 2021-04-07 09:53:30
  * LastEditTime: 2022-02-17 18:05:27
- * Description:  This files is for error code functions
+ * Description: This files is for error code functions
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 #ifndef _FT_ERROR_CODE_H
 #define _FT_ERROR_CODE_H
@@ -29,7 +29,7 @@ typedef u32 FError;
 
 #define FT_SUCCESS 0
 
-/* 系统错误码模块定义 */
+/*  */
 typedef enum
 {
     ErrorModGeneral = 0,
@@ -41,7 +41,7 @@ typedef enum
 
 } FtErrorCodeModuleMask;
 
-/* COMMON组件的错误码子模块定义 */
+/* COMMON */
 typedef enum
 {
     ErrCommGeneral = 0,
@@ -49,7 +49,7 @@ typedef enum
     ErrInterrupt,
 } FtErrCodeCommMask;
 
-/* BSP模块的错误子模块定义 */
+/* BSP */
 typedef enum
 {
     ErrBspGeneral = 0,
@@ -100,7 +100,7 @@ typedef enum
      ((u32)tail & FT_ERRCODE_TAIL_VALUE_MASK))
 #define FT_CODE_ERR FT_MAKE_ERRCODE
 
-#define ERR_SUCCESS FT_MAKE_ERRCODE(ErrorModGeneral, ErrBspGeneral, 0) /* 成功 */
-#define ERR_GENERAL FT_MAKE_ERRCODE(ErrorModGeneral, ErrBspGeneral, 1) /* 一般错误 */
+#define ERR_SUCCESS FT_MAKE_ERRCODE(ErrorModGeneral, ErrBspGeneral, 0) /*  */
+#define ERR_GENERAL FT_MAKE_ERRCODE(ErrorModGeneral, ErrBspGeneral, 1) /*  */
 
 #endif

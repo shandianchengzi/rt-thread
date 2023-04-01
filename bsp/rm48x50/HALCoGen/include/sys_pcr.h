@@ -192,9 +192,9 @@ typedef uint32 peripheral_MemoryFrame_CS_t;
  * memories. It provides a global reset for all the peripherals. It also supports the
  * capability to selectively enable or disable the clock for each peripheral
  * individually. The PCR also manages the accesses to the system module
- * registers required to configure the device’s clocks, interrupts, and so on. The
+ * registers required to configure the devices clocks, interrupts, and so on. The
  * system module registers also include status flags for indicating exception
- * conditions – resets, aborts, errors, interrupts.
+ * conditions  resets, aborts, errors, interrupts.
  *
  * Related files:
  * - reg_pcr.h

@@ -95,7 +95,7 @@ static rt_err_t es32f3_pwm_control(struct rt_device_pwm *device, int cmd, void *
 
     case PWM_CMD_SET:
 
-          /*当通道没开的时候：关通道，设置输出模式和极性，初始化通道*/
+          /**/
         if(!_ccep_ch_en)
         {
          tim_ocinit.oc_mode      = ES_PWM_OC_MODE;
@@ -110,7 +110,7 @@ static rt_err_t es32f3_pwm_control(struct rt_device_pwm *device, int cmd, void *
 
         bus_speed = (uint64_t)ald_cmu_get_pclk1_clock();
 
-        /*判断外设的计数器最大值*/
+        /**/
 #ifdef ES32F36xx
         if((timer_initstruct->perh == GP32C4T0)||(timer_initstruct->perh == GP32C4T1))
         {
@@ -121,7 +121,7 @@ static rt_err_t es32f3_pwm_control(struct rt_device_pwm *device, int cmd, void *
         _maxcnt = 0xFFFF;
 #endif
 
-        /*当最大分频 <= _maxcnt时：估计大概的分频，加快速度 */
+        /* <= _maxcnt */
         tmp = bus_speed * (cfg->period)/1000000000/_maxcnt;
         timer_initstruct->init.prescaler = (tmp > 2U) ? (tmp - 2U) : 0U ;    /*bus_speed < 500000000*/
 

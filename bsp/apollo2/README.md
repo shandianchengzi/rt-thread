@@ -1,14 +1,14 @@
-Apollo2 MCU是基于Ambiq Micro的Apollo MCU产品系列的第二代控制器。
+Apollo2 MCUAmbiq MicroApollo MCU
 
-Ambiq使用专利亚阈值功率优化技术（Subthreshold Power Optimized Technology， SPOT）平台来实现惊人的功耗降低，其功耗通常比性能相近的其它MCU产品降低5至10倍。
+AmbiqSubthreshold Power Optimized Technology SPOTMCU510
 
-Apollo2 MCU采用32位ARM Cortex-M4F微控制器，集成了高达1 MB的闪存和256 KB的RAM，以适应无线电和传感器开销，同时仍留有足够的应用代码空间。该微控制器还包括串行主机和UART端口，用于与无线电和传感器通信，包括加速度计，陀螺仪和磁力计。
+Apollo2 MCU32ARM Cortex-M4F1 MB256 KBRAMUART
 
 ```
 Features
 Ultra-low supply current
-    10 μA/MHz executing from flash at 3.3 V
-    10 μA/MHz executing from RAM at 3.3 V
+    10 A/MHz executing from flash at 3.3 V
+    10 A/MHz executing from RAM at 3.3 V
 
 High-performance ARM Cortex-M4 Processor
     Up to 48 MHz clock frequency
@@ -34,16 +34,16 @@ Flexible serial peripherals:
 
 Rich set of clock sources:
     32.768 kHz XTAL oscillator
-    Low frequency RC oscillator – 1.024 kHz
-    High frequency RC oscillator – 48 MHz
-    RTC based on Ambiq’s AM08X5/18X5 families
+    Low frequency RC oscillator  1.024 kHz
+    High frequency RC oscillator  48 MHz
+    RTC based on Ambiqs AM08X5/18X5 families
 
-Wide operating range: 1.8-3.6 V, –40 to 85°C
+Wide operating range: 1.8-3.6 V, 40 to 85C
 
 Compact package options:
     2.5 x 2.5 mm 49-pin CSP with 34 GPIO
     4.5 x 4.5 mm 64-pin BGA with 50 GPIO
 
 Board info
-    Apollo2 Evaluation Board（http://ambiqmicro.com/apollo-ultra-low-power-mcu/apollo2-mcu-20170703/）
+    Apollo2 Evaluation Boardhttp://ambiqmicro.com/apollo-ultra-low-power-mcu/apollo2-mcu-20170703/
 ```

@@ -69,67 +69,67 @@
   */
 
 /**
-  * @brief  复位COMP外设
-  * @param  COMPx 外设入口地址
-  * @retval 错误状态，可能值：
-  *         -FL_PASS 外设寄存器值恢复复位值
-  *         -FL_FAIL 未成功执行
+  * @brief  COMP
+  * @param  COMPx 
+  * @retval 
+  *         -FL_PASS 
+  *         -FL_FAIL 
   */
 FL_ErrorStatus FL_COMP_DeInit(COMP_Type *COMPx)
 {
-    /* 入口参数检查 */
+    /*  */
     assert_param(IS_COMP_ALL_INSTANCE(COMPx));
-    /* 恢复寄存器值为默认值 */
+    /*  */
     COMPx->CR = 0x00000000U;
-    /* 关闭外设总线时钟和工作时钟 */
+    /*  */
     FL_RCC_DisableGroup1BusClock(FL_RCC_GROUP1_BUSCLK_ANAC);
-    /* 锁定外设复位 */
+    /*  */
     FL_RCC_DisablePeripheralReset();
     return FL_PASS;
 }
 
 /**
-  * @brief  根据 COMP_InitStruct 的配置信息初始化对应外设.
-  * @param  COMPx 外设入口地址
-  * @param  initStruct 指向 @ref FL_COMP_InitTypeDef 结构体的指针
-  * @retval 错误状态，可能值：
-  *         -FL_PASS 配置成功
-  *         -FL_FAIL 配置过程发生错误
+  * @brief   COMP_InitStruct .
+  * @param  COMPx 
+  * @param  initStruct  @ref FL_COMP_InitTypeDef 
+  * @retval 
+  *         -FL_PASS 
+  *         -FL_FAIL 
   */
 FL_ErrorStatus FL_COMP_Init(COMP_Type *COMPx, FL_COMP_InitTypeDef *initStruct)
 {
-    /* 入口参数检查 */
+    /*  */
     assert_param(IS_COMP_ALL_INSTANCE(COMPx));
     assert_param(IS_FL_COMP_EDGE(initStruct->edge));
     assert_param(IS_FL_COMP_POLARITY(initStruct->polarity));
     assert_param(IS_FL_COMP_POSITIVEINPUT(initStruct->positiveInput));
     assert_param(IS_FL_COMP_NEGATIVEINPUT(initStruct->negativeInput));
     assert_param(IS_FL_COMP_DIGITAL_FILTER(initStruct->digitalFilter));
-    /* 使能时钟总线 */
+    /*  */
     FL_RCC_EnableGroup1BusClock(FL_RCC_GROUP1_BUSCLK_ANAC);
-    /* 比较器输出极性选择 */
+    /*  */
     FL_COMP_SetOutputPolarity(COMPx, initStruct->polarity);
-    /* 比较器正向输入选择 */
+    /*  */
     FL_COMP_SetINPSource(COMPx, initStruct->positiveInput);
-    /* 比较器反向输入选择 */
+    /*  */
     FL_COMP_SetINNSource(COMPx, initStruct->negativeInput);
-    /* 比较器使用vref 打开vref_buf */
+    /* vref vref_buf */
     if((initStruct->negativeInput == FL_COMP_INN_SOURCE_VREF) || (initStruct->negativeInput == FL_COMP_INN_SOURCE_VREF_DIV_2))
     {
-        FL_OPA_EnableVrefBuffer(OPA1);  /* 使能 */
-        FL_OPA_DisableBypassVrefBuffer(OPA1);   /* 不bypass */
+        FL_OPA_EnableVrefBuffer(OPA1);  /*  */
+        FL_OPA_DisableBypassVrefBuffer(OPA1);   /* bypass */
     }
     if(COMPx == COMP1)
     {
-        /* 比较器中断边沿选择 */
+        /*  */
         FL_COMP_SetComparator1InterruptEdge(COMP, initStruct->edge);
     }
     else
     {
-        /* 比较器中断边沿选择 */
+        /*  */
         FL_COMP_SetComparator2InterruptEdge(COMP, initStruct->edge);
     }
-    /* 滤波 */
+    /*  */
     if(initStruct->digitalFilter)
     {
         if(COMPx == COMP1)
@@ -147,14 +147,14 @@ FL_ErrorStatus FL_COMP_Init(COMP_Type *COMPx, FL_COMP_InitTypeDef *initStruct)
     return FL_PASS;
 }
 /**
-  * @brief  将 @ref FL_COMP_InitTypeDef 结构体初始化为默认配置
-  * @param  initStruct 指向 @ref FL_COMP_InitTypeDef 结构体的指针
+  * @brief   @ref FL_COMP_InitTypeDef 
+  * @param  initStruct  @ref FL_COMP_InitTypeDef 
   *
   * @retval None
   */
 void FL_COMP_StructInit(FL_COMP_InitTypeDef *initStruct)
 {
-    /* 复位配置信息 */
+    /*  */
     initStruct->edge             = FL_COMP_INTERRUPT_EDGE_BOTH;
     initStruct->polarity         = FL_COMP_OUTPUT_POLARITY_NORMAL;
     initStruct->negativeInput    = FL_COMP_INN_SOURCE_INN1;

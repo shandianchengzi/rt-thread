@@ -1,10 +1,10 @@
 /******************************************************************************************************************************************
-* 文件名称: usbh_cdc_core.c
-* 功能说明:
-* 技术支持: http://www.synwit.com.cn/e/tool/gbook/?bid=1
-* 注意事项:
-* 版本日期: V1.1.0      2020年11月3日
-* 升级记录:
+* : usbh_cdc_core.c
+* :
+* : http://www.synwit.com.cn/e/tool/gbook/?bid=1
+* :
+* : V1.1.0      2020113
+* :
 *
 *
 *******************************************************************************************************************************************
@@ -40,11 +40,11 @@ volatile USBH_CDC_Info_t USBH_CDC_Info;
 
 
 /******************************************************************************************************************************************
-* 函数名称: USBH_CDC_Init()
-* 功能说明:
-* 输    入: 无
-* 输    出: 无
-* 注意事项: 无
+* : USBH_CDC_Init()
+* :
+*     : 
+*     : 
+* : 
 ******************************************************************************************************************************************/
 USBH_Status USBH_CDC_Init(USBH_Info_t *phost)
 {
@@ -89,11 +89,11 @@ USBH_Status USBH_CDC_Init(USBH_Info_t *phost)
 
 
 /******************************************************************************************************************************************
-* 函数名称: USBH_CDC_DeInit()
-* 功能说明:
-* 输    入: 无
-* 输    出: 无
-* 注意事项: 无
+* : USBH_CDC_DeInit()
+* :
+*     : 
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void USBH_CDC_DeInit(USBH_Info_t *phost)
 {
@@ -112,11 +112,11 @@ void USBH_CDC_DeInit(USBH_Info_t *phost)
 
 
 /******************************************************************************************************************************************
-* 函数名称: USBH_CDC_Request()
-* 功能说明:
-* 输    入: 无
-* 输    出: 无
-* 注意事项: 无
+* : USBH_CDC_Request()
+* :
+*     : 
+*     : 
+* : 
 ******************************************************************************************************************************************/
 USBH_Status USBH_CDC_Request(USBH_Info_t *phost)
 {
@@ -169,11 +169,11 @@ USBH_Status USBH_CDC_Request(USBH_Info_t *phost)
 
 
 /******************************************************************************************************************************************
-* 函数名称: USBH_CDC_Process()
-* 功能说明:
-* 输    入: 无
-* 输    出: 无
-* 注意事项: 无
+* : USBH_CDC_Process()
+* :
+*     : 
+*     : 
+* : 
 ******************************************************************************************************************************************/
 USBH_Status USBH_CDC_Process(USBH_Info_t *phost)
 {
@@ -213,7 +213,7 @@ USBH_Status USBH_CDC_Process(USBH_Info_t *phost)
                 USBH_CDC_Info.OutEpDATAX ^= 1;
 
                 USBH_CDC_Info.TxRdPtr += size;
-                if(USBH_CDC_Info.TxRdPtr == USBH_CDC_Info.TxWrPtr)  // USBH_CDC_Info.TxBuff 中数据已全部发出
+                if(USBH_CDC_Info.TxRdPtr == USBH_CDC_Info.TxWrPtr)  // USBH_CDC_Info.TxBuff 
                 {
                     USBH_CDC_Info.TxRdPtr = 0;
                     USBH_CDC_Info.TxWrPtr = 0;
@@ -262,15 +262,15 @@ USBH_Status USBH_CDC_Process(USBH_Info_t *phost)
 
 
 /******************************************************************************************************************************************
-* 函数名称: USBH_CDC_Process()
-* 功能说明:
-* 输    入: 无
-* 输    出: 无
-* 注意事项: 无
+* : USBH_CDC_Process()
+* :
+*     : 
+*     : 
+* : 
 ******************************************************************************************************************************************/
 uint32_t USBH_CDC_Send(uint8_t *data, uint16_t size)
 {
-    uint16_t space = USBH_CDC_BUFF_SIZE - USBH_CDC_Info.TxWrPtr;    // 可写入数据个数
+    uint16_t space = USBH_CDC_BUFF_SIZE - USBH_CDC_Info.TxWrPtr;    // 
 
     if(space >= size)
     {
@@ -289,11 +289,11 @@ uint32_t USBH_CDC_Send(uint8_t *data, uint16_t size)
 
 
 /******************************************************************************************************************************************
-* 函数名称: USBH_CDC_Process()
-* 功能说明:
-* 输    入: 无
-* 输    出: 无
-* 注意事项: 无
+* : USBH_CDC_Process()
+* :
+*     : 
+*     : 
+* : 
 ******************************************************************************************************************************************/
 uint32_t USBH_CDC_Read(uint8_t *buff, uint16_t size)
 {
@@ -309,7 +309,7 @@ uint32_t USBH_CDC_Read(uint8_t *buff, uint16_t size)
         memcpy(buff, (uint8_t *)&USBH_CDC_Info.RxBuff[USBH_CDC_Info.RxRdPtr], size);
 
         USBH_CDC_Info.RxRdPtr += size;
-        if(USBH_CDC_Info.RxRdPtr == USBH_CDC_Info.RxWrPtr)  // USBH_CDC_Info.RxBuff 中数据已全部读出
+        if(USBH_CDC_Info.RxRdPtr == USBH_CDC_Info.RxWrPtr)  // USBH_CDC_Info.RxBuff 
         {
             USBH_CDC_Info.RxRdPtr = 0;
             USBH_CDC_Info.RxWrPtr = 0;

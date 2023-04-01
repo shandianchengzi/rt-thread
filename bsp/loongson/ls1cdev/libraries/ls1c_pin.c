@@ -5,10 +5,10 @@
  *
  * Change Logs:
  * Date           Author       Notes
- * 2017-09-06     勤为本       first version
+ * 2017-09-06            first version
  */
 
-// 引脚功能(普通gpio，pwm，复用等)相关接口
+// (gpiopwm)
 
 
 #include "ls1c_public.h"
@@ -18,21 +18,21 @@
 
 
 /*
- * 把指定pin设置为指定用途(普通gpio，非gpio)
- * @gpio gpio引脚编号
- * @purpose 用途
+ * pin(gpiogpio)
+ * @gpio gpio
+ * @purpose 
  */
 void pin_set_purpose(unsigned int gpio, pin_purpose_t purpose)
 {
-    volatile unsigned int *gpio_cfgx;           // GPIO_CFGx寄存器
+    volatile unsigned int *gpio_cfgx;           // GPIO_CFGx
     unsigned int pin = GPIO_GET_PIN(gpio);
 
     gpio_cfgx = gpio_get_cfg_reg(gpio);
-    if (PIN_PURPOSE_GPIO == purpose)            // 引脚用作普通gpio
+    if (PIN_PURPOSE_GPIO == purpose)            // gpio
     {
         reg_set_one_bit(gpio_cfgx, pin);
     }
-    else                                        // 引脚用作其它功能(非gpio)
+    else                                        // (gpio)
     {
         reg_clr_one_bit(gpio_cfgx, pin);
     }
@@ -43,22 +43,22 @@ void pin_set_purpose(unsigned int gpio, pin_purpose_t purpose)
 
 
 /*
- * 设置指定pin为第n复用
- * @gpio gpio编号
- * @remap 第n复用
+ * pinn
+ * @gpio gpio
+ * @remap n
  */
 void pin_set_remap(unsigned int gpio, pin_remap_t remap)
 {
-    volatile unsigned int *reg = NULL;          // 复用寄存器
+    volatile unsigned int *reg = NULL;          // 
     unsigned int port = GPIO_GET_PORT(gpio);
     unsigned int pin  = GPIO_GET_PIN(gpio);
     int i;
 
-    /*指定全部pin复用为0*/
+    /*pin0*/
     for (i = 0; i <= 4; i++)
     {
         reg = (volatile unsigned int *)((LS1C_CBUS_FIRST0) + ((port) * 0x04) + ((i) * 0x10));
-        // 置0
+        // 0
         reg_clr_one_bit(reg, pin);
     }
 
@@ -154,7 +154,7 @@ void pin_set_remap(unsigned int gpio, pin_remap_t remap)
         return ;
     }
 
-    // 置1
+    // 1
     reg_set_one_bit(reg, pin);
 
     return ;

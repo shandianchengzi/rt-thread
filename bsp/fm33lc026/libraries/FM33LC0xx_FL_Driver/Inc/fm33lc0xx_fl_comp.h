@@ -48,23 +48,23 @@ extern "C" {
   */
 typedef struct
 {
-    /** 比较器正向输入选择 */
+    /**  */
     uint32_t positiveInput;
 
-    /** 比较器反向输入选择 */
+    /**  */
     uint32_t negativeInput;
 
-    /** 结果输出极性 */
+    /**  */
     uint32_t polarity;
 
-    /** 中断触发边沿选择 */
+    /**  */
     uint32_t edge;
 
-    /** 数字滤波器使能 */
+    /**  */
     uint32_t digitalFilter;
 
-    /** 数字滤波器长度 */
-    uint32_t digitalFilterLen;  /* 此芯片不可设 */
+    /**  */
+    uint32_t digitalFilterLen;  /*  */
 
 } FL_COMP_InitTypeDef;
 

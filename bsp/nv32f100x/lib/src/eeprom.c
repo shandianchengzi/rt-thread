@@ -30,8 +30,8 @@
 
 /******************************************************************************
 *
-* EEPROM 擦除命令，擦掉eeprom
-*输入参数：地址，函数将会擦除adr所在的512bytes eeprom
+* EEPROM eeprom
+*adr512bytes eeprom
 *
 ******************************************************************************/
 uint16_t Adress_Js(uint32_t adr)
@@ -55,8 +55,8 @@ uint16_t Adress_Js(uint32_t adr)
 
 /******************************************************************************
 *
-* EEPROM 擦除命令，擦掉eeprom
-*输入参数：地址，函数将会擦除adr所在的512bytes eeprom
+* EEPROM eeprom
+*adr512bytes eeprom
 *
 ******************************************************************************/
 
@@ -86,8 +86,8 @@ uint16_t EEPROM_Erase(uint32_t adr)
 
 /******************************************************************************
 *
-* EEPROM 读取函数，读取地址所在的eeprom
-*输入参数：地址
+* EEPROM eeprom
+*
 *
 ******************************************************************************/
 uint32_t EEPROM_Read(uint32_t adr)
@@ -115,11 +115,11 @@ uint32_t EEPROM_Read(uint32_t adr)
 }
 /******************************************************************************
 *
-* EEPROM 写函数，写地址所在的eeprom
-*写之前读取出来，判断eeprom是否为空，如果为空，则直接写
-*如果非空，则先把整个512bytes sector读取到sram，修改要写的位置
-*然后再写入到flash，模拟一个eeprom的写过程
-*输入参数：地址
+* EEPROM eeprom
+*eeprom
+*512bytes sectorsram
+*flasheeprom
+*
 *
 ******************************************************************************/
 uint16_t EEPROM_Write(uint32_t adr, uint32_t Data)
@@ -150,32 +150,32 @@ uint16_t EEPROM_Write(uint32_t adr, uint32_t Data)
     
     e_adr=adr+EEPROM_START_ADR;
 
-    if(r_data== EEPROM_BLANK) //如果要写的位置是空的，则直接写
+    if(r_data== EEPROM_BLANK) //
     {
       err= Flash_Program1LongWord(e_adr,Data);
     }
-   else if((r_data&Data) == Data)//如果要写的位置对应的bit，和要写的数据一致，或者是1，也是可以直接写
+   else if((r_data&Data) == Data)//bit1
      {
       err= Flash_Program1LongWord(e_adr,Data);
     }
-    else if(r_data == Data) //如果要写的数据和现有的数据一致，就不进行任何操作，直接返回
+    else if(r_data == Data) //
     {
       return(err);
     }
     else
     {
-        start_adr = e_adr & EEPROM_SECTOR_MASK; //计算出sector的头地址    
+        start_adr = e_adr & EEPROM_SECTOR_MASK; //sector    
         
-        for( i=0;i<128;i++ ) //如果要写的位置不为空，则先把flash内容读取出来，放在sram中，修改
+        for( i=0;i<128;i++ ) //flashsram
         {
           EEPROM_DATA[i] = M32(start_adr + 4*i);
         }
             
-        EEPROM_DATA[(adr&EEPROM_ARRAY_ADR_MASK)>>2] = Data; //修改SRAM 中的数据
+        EEPROM_DATA[(adr&EEPROM_ARRAY_ADR_MASK)>>2] = Data; //SRAM 
         
         err=EEPROM_Erase(adr);
      
-        err=Flash_Program(start_adr,(uint8_t*)EEPROM_DATA,512);//然后写入flash
+        err=Flash_Program(start_adr,(uint8_t*)EEPROM_DATA,512);//flash
     }
     return(err);
     
@@ -183,7 +183,7 @@ uint16_t EEPROM_Write(uint32_t adr, uint32_t Data)
 
 /******************************************************************************
 *
-*Byte 写函数
+*Byte 
 *
 ******************************************************************************/
 uint16_t EEPROM_WriteByte(uint32_t adr, uint8_t Data)
@@ -197,11 +197,11 @@ uint16_t EEPROM_WriteByte(uint32_t adr, uint8_t Data)
     uint32_t  b_sit= adr & 0x3;
     
 
- //先让高位为FF
+ //FF
     data_m0 = Data << b_sit*8;   
     data_mask = 0xFFFFFFFF<<(b_sit+1)*8;    
 //   printf("datam0:=0x%x \n",data_m0);    
-//然后让低位为FF    
+//FF    
      data_m1 = 0xFFFFFFFF >> (32-b_sit*8);
      data_m1 = data_m1 | data_m0 | data_mask ;
      
@@ -209,7 +209,7 @@ uint16_t EEPROM_WriteByte(uint32_t adr, uint8_t Data)
     
     r_data = EEPROM_Read(word_adr);
 //    printf("r_data:=0x%x \n",r_data);        
-//或上原来的数据    
+//    
     data_m1 = data_m1 & r_data;
 		
     
@@ -222,7 +222,7 @@ uint16_t EEPROM_WriteByte(uint32_t adr, uint8_t Data)
 
 /******************************************************************************
 *
-*Byte 读函数
+*Byte 
 *
 ******************************************************************************/
 uint8_t EEPROM_ReadByte(uint32_t adr)
@@ -242,10 +242,10 @@ uint8_t EEPROM_ReadByte(uint32_t adr)
 
 /******************************************************************************
 *
-*写函数，写一个长度为bytesize，到eeprom
-*先把1k的eeprom读取放入sram，然后修改要写的位置，
-*这个函数是还可以再优化的
-*这样更改后，没有考虑2K eeprom 。超过2K 也是完全可以的。
+*bytesizeeeprom
+*1keepromsram
+*
+*2K eeprom 2K 
 ******************************************************************************/
 uint16_t EERPOM_Writeup4byte(uint32_t adr,uint8_t *pData,uint32_t length)
 {
@@ -277,7 +277,7 @@ uint16_t EERPOM_Writeup4byte(uint32_t adr,uint8_t *pData,uint32_t length)
 
 	
 	while (length>0){
-          //如果起始地址不等于0，或者长度小于512 都进入这个循环
+          //0512 
 		if (e_offset||(length<512)){
 			pbuf=buf;
 			a=512-e_offset;
@@ -289,13 +289,13 @@ uint16_t EERPOM_Writeup4byte(uint32_t adr,uint8_t *pData,uint32_t length)
 			length-=a;
 			e_offset=0;
 
-		}else{ //如果起始地址等于0且长度大于512 则简单了
+		}else{ //0512 
 			pbuf=pData;
 			pData+=512;
 			length-=512;
 		}
 		err=Flash_EraseSector(e_sec);
-		err=Flash_Program(e_sec,(uint8_t*)pbuf,512);//然后写入flash
+		err=Flash_Program(e_sec,(uint8_t*)pbuf,512);//flash
 		e_sec+=0x200;
 	}
 	return err;
@@ -315,7 +315,7 @@ uint16_t EERPOM_Writeup4byte(uint32_t adr,uint8_t *pData,uint32_t bytesize)
     
     err=Adress_Js(adr);
     
-    if(adr+bytesize >1024) //如果写入的地址,加上要写的数据的个数大于1024，则报错
+    if(adr+bytesize >1024) //,1024
     {
       err = EEPROM_ADR_OverFlow;
       return(err);
@@ -323,21 +323,21 @@ uint16_t EERPOM_Writeup4byte(uint32_t adr,uint8_t *pData,uint32_t bytesize)
     
     e_adr=adr+EEPROM_START_ADR;
     
-    start_adr = e_adr & EEPROM_SECTOR_MASK; //计算出sector 头地址
+    start_adr = e_adr & EEPROM_SECTOR_MASK; //sector 
 
-    for( i=0;i<256;i++ ) //先把数据读取到sram
+    for( i=0;i<256;i++ ) //sram
       {
         EEPROM_DATA[i] = M32(start_adr + 4*i);
         }
-    for( i=0 ;i<longword ;i++) //然后修改要写的地址
+    for( i=0 ;i<longword ;i++) //
       {
         EEPROM_DATA[(adr>>2)+i] = *pwData++;
       }
-     //先erase掉2个eeprom secoter     
+     //erase2eeprom secoter     
      err=EEPROM_Erase(0x000);
      err=EEPROM_Erase(0x200);   
       
-    err=Flash_Program(start_adr,(uint8_t*)EEPROM_DATA,1024);//然后写入flash
+    err=Flash_Program(start_adr,(uint8_t*)EEPROM_DATA,1024);//flash
     
     return(err);
 }

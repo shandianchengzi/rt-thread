@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: ftacho.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-05-20 09:08:52
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 /***************************** Include Files *********************************/
@@ -34,10 +34,10 @@
 /************************** Function Prototypes ******************************/
 /**
  * @name: FTachoInit
- * @msg: 初始化Tacho，并且使能计数器和tachometer
- * @return {FError} 驱动初始化的错误码信息，FTIMER_TACHO_SUCCESS 表示初始化成功，其它返回值表示初始化失败
- * @param {FTimerTachoCtrl} *instance_p 驱动控制数据结构
- * @param {FTimerTachoConfig} *config_p 驱动配置数据结构
+ * @msg: Tachotachometer
+ * @return {FError} FTIMER_TACHO_SUCCESS 
+ * @param {FTimerTachoCtrl} *instance_p 
+ * @param {FTimerTachoConfig} *config_p 
  */
 FError FTachoInit(FTimerTachoCtrl *instance_p, const FTimerTachoConfig *config_p)
 {
@@ -128,10 +128,10 @@ FError FTachoInit(FTimerTachoCtrl *instance_p, const FTimerTachoConfig *config_p
 
 /**
  * @name: FTachoGetFanRPM
- * @msg: 获取风扇的转速值
- * @return {FError} 驱动初始化的错误码信息，FTIMER_TACHO_SUCCESS 表示初始化成功，其它返回值表示初始化失败
- * @param {FTimerTachoCtrl} *instance_p 驱动控制数据结构
- * @param {u32} *rpm 将获取到的数值写入到此地址
+ * @msg: 
+ * @return {FError} FTIMER_TACHO_SUCCESS 
+ * @param {FTimerTachoCtrl} *instance_p 
+ * @param {u32} *rpm 
  */
 FError FTachoGetFanRPM(FTimerTachoCtrl *instance_p, u32 *rpm)
 {
@@ -184,9 +184,9 @@ FError FTachoGetFanRPM(FTimerTachoCtrl *instance_p, u32 *rpm)
 
 /**
  * @name: FTachoGetCaptureCnt
- * @msg: 获取capture模式下，tacho输入脉冲的个数
- * @return {u32}返回获取到的数值
- * @param {FTimerTachoCtrl} *instance_p 驱动控制数据结构
+ * @msg: capturetacho
+ * @return {u32}
+ * @param {FTimerTachoCtrl} *instance_p 
  */
 u32 FTachoGetCaptureCnt(FTimerTachoCtrl *instance_p)
 {
@@ -208,10 +208,10 @@ u32 FTachoGetCaptureCnt(FTimerTachoCtrl *instance_p)
 
 /**
  * @name: FTimerSwithMode
- * @msg: 切换定时器模式和tachometer-capture模式
- * @return {FError} 驱动初始化的错误码信息，FTIMER_TACHO_SUCCESS 表示初始化成功，其它返回值表示初始化失败
- * @param {FTimerTachoCtrl} *instance_p 驱动控制数据结构
- * @param {FTimerTachoConfig} *pNewConfig 新的驱动配置数据结构
+ * @msg: tachometer-capture
+ * @return {FError} FTIMER_TACHO_SUCCESS 
+ * @param {FTimerTachoCtrl} *instance_p 
+ * @param {FTimerTachoConfig} *pNewConfig 
  */
 FError FTimerSwithMode(FTimerTachoCtrl *instance_p, FTimerTachoConfig *pNewConfig)
 {
@@ -244,10 +244,10 @@ FError FTimerSwithMode(FTimerTachoCtrl *instance_p, FTimerTachoConfig *pNewConfi
 
 /**
  * @name: FTachoSetCntPeriod
- * @msg: 配置 tach计数周期 = pulse_num
+ * @msg:  tach = pulse_num
  * @return {void}
- * @param {FTimerTachoCtrl} *instance_p 驱动控制数据结构
- * @param {u32}计数ticks
+ * @param {FTimerTachoCtrl} *instance_p 
+ * @param {u32}ticks
  */
 void FTachoSetCntPeriod(FTimerTachoCtrl *instance_p, u32 ticks)
 {
@@ -256,10 +256,10 @@ void FTachoSetCntPeriod(FTimerTachoCtrl *instance_p, u32 ticks)
 
 /**
  * @name: FTachoSetOverLimit
- * @msg: 预设tacho的最大值
+ * @msg: tacho
  * @return {void}
- * @param {FTimerTachoCtrl} *instance_p 驱动控制数据结构
- * @param {u32}上限值
+ * @param {FTimerTachoCtrl} *instance_p 
+ * @param {u32}
  */
 void FTachoSetOverLimit(FTimerTachoCtrl *instance_p, u32 overLim)
 {
@@ -268,10 +268,10 @@ void FTachoSetOverLimit(FTimerTachoCtrl *instance_p, u32 overLim)
 
 /**
  * @name: FTachoSetUnderLimit
- * @msg: 预设tacho的最小值
+ * @msg: tacho
  * @return {void}
- * @param {FTimerTachoCtrl} *instance_p 驱动控制数据结构
- * @param {u32}下限值
+ * @param {FTimerTachoCtrl} *instance_p 
+ * @param {u32}
  */
 void FTachoSetUnderLimit(FTimerTachoCtrl *instance_p, u32 underLim)
 {
@@ -280,9 +280,9 @@ void FTachoSetUnderLimit(FTimerTachoCtrl *instance_p, u32 underLim)
 
 /**
  * @name: FTachoDeInit
- * @msg: 去初始化，寄存器复位，结构体参数置0
+ * @msg: 0
  * @return {void}
- * @param {FTimerTachoCtrl} *instance_p 驱动控制数据结构
+ * @param {FTimerTachoCtrl} *instance_p 
  */
 void FTachoDeInit(FTimerTachoCtrl *instance_p)
 {

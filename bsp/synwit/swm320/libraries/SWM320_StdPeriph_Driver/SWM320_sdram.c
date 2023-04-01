@@ -1,10 +1,10 @@
 /******************************************************************************************************************************************
-* 文件名称: SWM320_sdram.c
-* 功能说明: SWM320单片机的SDRAM驱动程序
-* 技术支持: http://www.synwit.com.cn/e/tool/gbook/?bid=1
-* 注意事项:
-* 版本日期: V1.1.0      2017年10月25日
-* 升级记录:
+* : SWM320_sdram.c
+* : SWM320SDRAM
+* : http://www.synwit.com.cn/e/tool/gbook/?bid=1
+* :
+* : V1.1.0      20171025
+* :
 *
 *
 *******************************************************************************************************************************************
@@ -22,11 +22,11 @@
 #include "SWM320_sdram.h"
 
 /******************************************************************************************************************************************
-* 函数名称: SDRAM_Init()
-* 功能说明: SDRAM控制器初始化
-* 输    入: SDRAM_InitStructure * initStruct    包含 SDRAM 控制器相关设定值的结构体
-* 输    出: 无
-* 注意事项: 无
+* : SDRAM_Init()
+* : SDRAM
+*     : SDRAM_InitStructure * initStruct     SDRAM 
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void SDRAM_Init(SDRAM_InitStructure * initStruct)
 {
@@ -35,9 +35,9 @@ void SDRAM_Init(SDRAM_InitStructure * initStruct)
     SYS->CLKEN |= (1 << SYS_CLKEN_SDRAM_Pos);
 
     SYS->CLKDIV &= ~SYS_CLKDIV_SDRAM_Msk;
-    SYS->CLKDIV |= (1 << SYS_CLKDIV_SDRAM_Pos);     //2分频
+    SYS->CLKDIV |= (1 << SYS_CLKDIV_SDRAM_Pos);     //2
 
-    SDRAMC->CR0 = (2 << SDRAMC_CR0_BURSTLEN_Pos) |  //2 Burst Length为4
+    SDRAMC->CR0 = (2 << SDRAMC_CR0_BURSTLEN_Pos) |  //2 Burst Length4
                   (initStruct->CASLatency << SDRAMC_CR0_CASDELAY_Pos);
 
     SDRAMC->CR1 = (initStruct->CellSize << SDRAMC_CR1_CELLSIZE_Pos) |
@@ -69,11 +69,11 @@ void SDRAM_Init(SDRAM_InitStructure * initStruct)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SDRAM_Enable()
-* 功能说明: SDRAM使能，使能后可读写SDRAM
-* 输    入: 无
-* 输    出: 无
-* 注意事项: 无
+* : SDRAM_Enable()
+* : SDRAMSDRAM
+*     : 
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void SDRAM_Enable(void)
 {
@@ -86,11 +86,11 @@ void SDRAM_Enable(void)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SDRAM_Disable()
-* 功能说明: SDRAM禁能，禁能后SDRAM颗粒进入低功耗模式、并自刷新，不可读写
-* 输    入: 无
-* 输    出: 无
-* 注意事项: 无
+* : SDRAM_Disable()
+* : SDRAMSDRAM
+*     : 
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void SDRAM_Disable(void)
 {

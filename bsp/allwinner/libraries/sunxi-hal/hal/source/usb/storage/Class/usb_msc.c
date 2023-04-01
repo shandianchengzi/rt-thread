@@ -45,7 +45,7 @@
 #define  MSC_DRV_AUTHOR     "Host Driver Author"
 
 static struct usb_host_func_drv mscDrv;     /*  */
-static __u32 mscDev_id_array;               /* ��¼��mscDev�ı�� */
+static __u32 mscDev_id_array;               /* mscDev */
 
 static struct usb_drv_dev_match_table msc_match_table [] =
 {
@@ -255,16 +255,16 @@ static struct usb_drv_dev_match_table msc_match_table [] =
 *                     get_mscDev_id
 *
 * Description:
-*    ���²�����豸����ID
+*    ID
 *
 * Parameters:
 *    void
 *
 * Return value:
-*    ���ط����ID
+*    ID
 *
 * note:
-*    ��
+*    
 *
 *******************************************************************************
 */
@@ -288,17 +288,17 @@ static unsigned int get_mscDev_id(void)
 *                     free_mscDev_id
 *
 * Description:
-*    �ͷŷ����ID
+*    ID
 *
 * Parameters:
-*    bit : input.  mscDev��ID��
+*    bit : input.  mscDevID
 *
 * Return value:
-*    0  ���ɹ�
-*   !0  ��ʧ��
+*    0  
+*   !0  
 *
 * note:
-*    ��
+*    
 *
 *******************************************************************************
 */
@@ -310,7 +310,7 @@ static int free_mscDev_id(unsigned int bit)
         return -1;
     }
 
-    /* ���ո�λ */
+    /*  */
     usb_clear_bit(bit, (volatile uint32_t *)&mscDev_id_array);
     return 0;
 }
@@ -323,15 +323,15 @@ static int free_mscDev_id(unsigned int bit)
 *
 *
 * Parameters:
-*    mscDev  �� input. msc�豸��Ϣ
-*    intf    :  input. USB�ӿ�
+*    mscDev   input. msc
+*    intf    :  input. USB
 *
 * Return value:
-*    0  ���ɹ�
-*   !0  ��ʧ��
+*    0  
+*   !0  
 *
 * note:
-*    ��
+*    
 *
 *******************************************************************************
 */
@@ -369,7 +369,7 @@ static int mscDevInit(__mscDev_t *mscDev, struct usb_interface *intf)
         return USB_ERR_ALLOC_URB_FAILED;
     }
 
-    /* һ��Կ�� */
+    /*  */
     mscDev->scan_lock = hal_sem_create(1);
 
     if (mscDev->scan_lock == NULL)
@@ -388,7 +388,7 @@ static int mscDevInit(__mscDev_t *mscDev, struct usb_interface *intf)
         goto error1;
     }
 
-    /* �߳�ͬ�� */
+    /*  */
     mscDev->ThreadSemi = hal_sem_create(0);
 
     if (mscDev->ThreadSemi == NULL)
@@ -463,13 +463,13 @@ error0:
 *
 *
 * Parameters:
-*    mscDev  �� input. msc�豸��Ϣ
+*    mscDev   input. msc
 *
 * Return value:
-*    ��
+*    
 *
 * note:
-*    ��
+*    
 *
 *******************************************************************************
 */
@@ -529,10 +529,10 @@ static void mscDevFree(__mscDev_t *mscDev)
 *
 *
 * Return value:
-*    ��
+*    
 *
 * note:
-*    ��
+*    
 *
 *******************************************************************************
 */
@@ -555,10 +555,10 @@ static void SetMscDevState(__mscDev_t *mscDev, mscDev_state_t state)
 *
 *
 * Return value:
-*    ��/��
+*    /
 *
 * note:
-*    ��
+*    
 *
 *******************************************************************************
 */
@@ -578,10 +578,10 @@ unsigned int mscDevOnline(__mscDev_t *mscDev)
 *
 *
 * Return value:
-*    ��
+*    
 *
 * note:
-*    ��
+*    
 *
 *******************************************************************************
 */
@@ -598,17 +598,17 @@ static void GetDeviceInfo(__mscDev_t *mscDev, unsigned int index)
 *                     GetTransport
 *
 * Description:
-*    ���msc�豸�Ĵ��䷽ʽ
+*    msc
 *
 * Parameters:
-*    mscDev  �� input. msc�豸��Ϣ
+*    mscDev   input. msc
 *
 * Return value:
-*    0  ���ɹ�
-*   !0  ��ʧ��
+*    0  
+*   !0  
 *
 * note:
-*    ��
+*    
 *
 *******************************************************************************
 */
@@ -641,17 +641,17 @@ static int GetTransport(__mscDev_t *mscDev)
 *                     GetTransport
 *
 * Description:
-*    ���msc�豸�Ĵ��䷽ʽ
+*    msc
 *
 * Parameters:
-*    mscDev  �� input. msc�豸��Ϣ
+*    mscDev   input. msc
 *
 * Return value:
-*    0  ���ɹ�
-*   !0  ��ʧ��
+*    0  
+*   !0  
 *
 * note:
-*    ��
+*    
 *
 *******************************************************************************
 */
@@ -702,17 +702,17 @@ static int GetProtocol(__mscDev_t *mscDev)
 *                     CreatePipes
 *
 * Description:
-*    ��������ܵ�
+*    
 *
 * Parameters:
-*    mscDev  �� input. msc�豸��Ϣ
+*    mscDev   input. msc
 *
 * Return value:
-*    0  ���ɹ�
-*   !0  ��ʧ��
+*    0  
+*   !0  
 *
 * note:
-*    ��
+*    
 *
 *******************************************************************************
 */
@@ -789,13 +789,13 @@ static int CreatePipes(__mscDev_t *mscDev)
 *
 *
 * Parameters:
-*    mscDev  �� input. msc�豸��Ϣ
+*    mscDev   input. msc
 *
 * Return value:
-*    ��
+*    
 *
 * note:
-*    ��
+*    
 *
 *******************************************************************************
 */
@@ -827,7 +827,7 @@ static void mscDevAdd(__mscDev_t *mscDev)
         mscLun->mscDev       = mscDev;
         mscLun->LunNo        = i;
         mscLun->DiskSubClass = mscDev->SubClass;
-        mscLun->RemoveAble   = 1;    /* Ĭ�Ͼ��ǿ��ƶ��豸 */
+        mscLun->RemoveAble   = 1;    /*  */
         mscDev->Lun[i]  = mscLun;
         hal_log_info("begin mscLunAdd\n");
         ret = mscLunAdd(mscLun);
@@ -839,7 +839,7 @@ static void mscDevAdd(__mscDev_t *mscDev)
             continue;
         }
 
-        /* ����豸�Ƿ��ƶ��豸, ��delay */
+        /* , delay */
         if (mscLun->RemoveAble == 0)
         {
             mscDev->SuspendTime = 10000; /* 10s */
@@ -863,13 +863,13 @@ static void mscDevAdd(__mscDev_t *mscDev)
 *
 *
 * Parameters:
-*    mscDev  �� input. msc�豸��Ϣ
+*    mscDev   input. msc
 *
 * Return value:
-*    ��
+*    
 *
 * note:
-*    ��
+*    
 *
 *******************************************************************************
 */
@@ -908,16 +908,16 @@ static void mscDevDel(__mscDev_t *mscDev)
 *                     MediaChangeThread
 *
 * Description:
-*    ���ʼ���߳�
+*    
 *
 * Parameters:
-*    p_arg  �� input. ��mscDev, msc�豸��Ϣ
+*    p_arg   input. mscDev, msc
 *
 * Return value:
-*    ��
+*    
 *
 * note:
-*    ��
+*    
 *
 *******************************************************************************
 */
@@ -928,7 +928,7 @@ static void MediaChangeThread(void *p_arg)
     while (1)
     {
         unsigned int i = 0;
-        //--<1>--ɱ���߳�
+        //--<1>--
         //TryTo//KillThreadSelf("MediaChangeThread");
 
         for (i = 0; i < mscDev->MaxLun; i++)
@@ -958,16 +958,16 @@ static void MediaChangeThread(void *p_arg)
 *                     mscDevScanThread
 *
 * Description:
-*    mscDevɨ��
+*    mscDev
 *
 * Parameters:
-*    p_arg  �� input. ��mscDev, msc�豸��Ϣ
+*    p_arg   input. mscDev, msc
 *
 * Return value:
-*    ��
+*    
 *
 * note:
-*    ��
+*    
 *
 *******************************************************************************
 */
@@ -985,18 +985,18 @@ static void mscDevScanThread(void *p_arg)
 *                     QueueCmnd
 *
 * Description:
-*    �������Lun
+*    Lun
 *
 * Parameters:
-*    mscLun     �� input. �����Ӧ��Lun
-*    scsi_cmnd  :  input. ����
+*    mscLun      input. Lun
+*    scsi_cmnd  :  input. 
 *
 * Return value:
-*    0  ���ɹ�
-*   !0  ��ʧ��
+*    0  
+*   !0  
 *
 * note:
-*    ��
+*    
 *
 *******************************************************************************
 */
@@ -1056,18 +1056,18 @@ int mscDevQueueCmnd(__mscLun_t *mscLun, __ScsiCmnd_t *ScsiCmnd)
 *                     mscCmndDone
 *
 * Description:
-*    ���������ȥ���ط��������
+*    
 *
 * Parameters:
-*    mscLun         �� input. �����Ӧ��Lun
-*    scsi_cmnd      :  input. ����
-*    TransStatus    :  input. ����״̬
+*    mscLun          input. Lun
+*    scsi_cmnd      :  input. 
+*    TransStatus    :  input. 
 *
 * Return value:
-*    ��
+*    
 *
 * note:
-*    ��
+*    
 *
 *******************************************************************************
 */
@@ -1105,7 +1105,7 @@ static void mscCmndDone(__mscDev_t *mscDev, __ScsiCmnd_t *ScsiCmnd, int TransSta
         {
             hal_log_err("ERR: ScsiCmnd(%x) retry %d times, maybe device is died",
                        ((__u8 *)(ScsiCmnd->cmnd.CommandBlock))[0], ScsiCmnd->retries);
-            /* ��ʹ����ִ�ж��ʧ��Ҳ������Ϊ�豸����, ��Ϊ�豸���ܲ�֧��������� */
+            /* ,  */
         }
     }
     else
@@ -1132,16 +1132,16 @@ static void mscCmndDone(__mscDev_t *mscDev, __ScsiCmnd_t *ScsiCmnd, int TransSta
 *                     mscMainThread
 *
 * Description:
-*    ���̣߳��������Ĵ���
+*    
 *
 * Parameters:
-*    p_arg  �� input. ��mscDev, msc�豸��Ϣ
+*    p_arg   input. mscDev, msc
 *
 * Return value:
-*    ��
+*    
 *
 * note:
-*    ��
+*    
 *
 *******************************************************************************
 */
@@ -1155,16 +1155,16 @@ static void mscMainThread(void *p_arg)
 
     while (1)
     {
-        //--<1>--ɱ���߳�
+        //--<1>--
         //TryTo//KillThreadSelf("mscMainThread");
         /* sleep */
         //UsbThreadSleep(mscDev->ThreadSemi);
     //      kthread_stop(mscDev->MainThreadId);
         hal_sem_wait(mscDev->ThreadSemi);
         /* cmd_list is empty?
-         * mscDevQueueCmnd��cmd�ӵ�cmd_list���պ�����mscMainThread�������������
-         * forѭ����⵽cmd_list���վͻ�ȥִ����һ�����ִ����Ϻ�cmd_list���ˡ�
-         * ��ʱUsbThreadWakeUp����mscMainThread������cmd_list�Ѿ����ˡ�
+         * mscDevQueueCmndcmdcmd_listmscMainThread
+         * forcmd_listcmd_list
+         * UsbThreadWakeUpmscMainThreadcmd_list
          */
         if (usb_list_empty(&(mscDev->cmd_list)))
         {
@@ -1209,18 +1209,18 @@ static void mscMainThread(void *p_arg)
 *                     mscDevProbe
 *
 * Description:
-*    ��������ܵ�
+*    
 *
 * Parameters:
-*    intf       �� input. USB�ӿ���Ϣ
-*    table_item :  input. ƥ���
+*    intf        input. USB
+*    table_item :  input. 
 *
 * Return value:
-*    0  ���ɹ�
-*   !0  ��ʧ��
+*    0  
+*   !0  
 *
 * note:
-*    ��
+*    
 *
 *******************************************************************************
 */
@@ -1240,9 +1240,9 @@ static int32_t mscDevProbe(struct usb_interface *intf, const struct usb_drv_dev_
     }
 
     //----------------------------------------------------------------
-    //   ��ʼ��mscDev
+    //   mscDev
     //----------------------------------------------------------------
-    /* ��ʼ��һ��mscDev */
+    /* mscDev */
     mscDev = (__mscDev_t *)hal_malloc(sizeof(__mscDev_t));
 
     if (mscDev == NULL)
@@ -1263,7 +1263,7 @@ static int32_t mscDevProbe(struct usb_interface *intf, const struct usb_drv_dev_
     }
 
     GetDeviceInfo(mscDev, match_table_index);
-    /* ���SubClass */
+    /* SubClass */
     ret = GetProtocol(mscDev);
 
     if (ret != USB_ERR_SUCCESS)
@@ -1273,7 +1273,7 @@ static int32_t mscDevProbe(struct usb_interface *intf, const struct usb_drv_dev_
         goto error2;
     }
 
-    /* ���Transport */
+    /* Transport */
     ret = GetTransport(mscDev);
 
     if (ret != USB_ERR_SUCCESS)
@@ -1283,7 +1283,7 @@ static int32_t mscDevProbe(struct usb_interface *intf, const struct usb_drv_dev_
         goto error3;
     }
 
-    /* ��������ܵ� */
+    /*  */
     ret = CreatePipes(mscDev);
     if (ret != USB_ERR_SUCCESS)
     {
@@ -1293,10 +1293,10 @@ static int32_t mscDevProbe(struct usb_interface *intf, const struct usb_drv_dev_
     }
 
     //----------------------------------------------------------------
-    //   ʶ��mscDev
+    //   mscDev
     //----------------------------------------------------------------
     SetMscDevState(mscDev, MSC_DEV_ONLINE);
-    /* ���MaxLun */
+    /* MaxLun */
     mscDev->MaxLun = mscGetMaxLun(mscDev) + 1;
 
     if (mscDev->MaxLun > MSC_MAX_LUN)
@@ -1368,17 +1368,17 @@ error0:
 *                     mscDevSuspend
 *
 * Description:
-*    �����豸
+*    
 *
 * Parameters:
-*    intf  �� input. USB�ӿ���Ϣ
+*    intf   input. USB
 *
 * Return value:
-*    0  ���ɹ�
-*   !0  ��ʧ��
+*    0  
+*   !0  
 *
 * note:
-*    ��
+*    
 *
 *******************************************************************************
 */
@@ -1413,17 +1413,17 @@ static int32_t mscDevSuspend(struct usb_interface *intf)
 *                     mscDevRemove
 *
 * Description:
-*    msc�豸�Ƴ�
+*    msc
 *
 * Parameters:
-*    intf  �� input. USB�ӿ���Ϣ
+*    intf   input. USB
 *
 * Return value:
-*    0  ���ɹ�
-*   !0  ��ʧ��
+*    0  
+*   !0  
 *
 * note:
-*    ��
+*    
 *
 *******************************************************************************
 */
@@ -1447,9 +1447,9 @@ static void mscDevRemove(struct usb_interface *intf)
 
     SetMscDevState(mscDev, MSC_DEV_OFFLINE);
     hal_log_info("mscDevRemove: SetMscDevState MSC_DEV_OFFLINE");
-    /* ֹͣ��ǰ���� */
+    /*  */
     mscDev->StopTransport(mscDev);
-    /* �Ͽ�mscDev��������е�Lun */
+    /* mscDevLun */
     mscDevDel(mscDev);
     /* kill media change thrad */
     kthread_stop(mscDev->MediaChangeId);
@@ -1461,7 +1461,7 @@ static void mscDevRemove(struct usb_interface *intf)
         hal_sem_delete(mscDev->ThreadSemi);
         mscDev->ThreadSemi = NULL;
     }
-    /* �ͷ�mscDev��Դ */
+    /* mscDev */
     mscDevFree(mscDev);
     hal_free(mscDev);
     hal_log_info("mscDevRemove complete");
@@ -1473,17 +1473,17 @@ static void mscDevRemove(struct usb_interface *intf)
 *                     mscDrv_init
 *
 * Description:
-*    msc������ʼ��
+*    msc
 *
 * Parameters:
-*    drv  �� input. msc����
+*    drv   input. msc
 *
 * Return value:
-*    0  ���ɹ�
-*   !0  ��ʧ��
+*    0  
+*   !0  
 *
 * note:
-*    ��
+*    
 *
 *******************************************************************************
 */
@@ -1511,16 +1511,16 @@ static int mscDrvInit(struct usb_host_func_drv *drv)
 *                     scsi_bus_drv_reg
 *
 * Description:
-*    ��scsi����ע������
+*    scsi
 *
 * Parameters:
-*    drv : input.  ����
+*    drv : input.  
 *
 * Return value:
 *    EPDK_OK / EPDK_FAIL
 *
 * note:
-*    ��
+*    
 *
 *******************************************************************************
 */
@@ -1532,7 +1532,7 @@ int mscInit(void)
     mscDev_id_array  = 0;
     init_usbh_buff_manager();
     usbh_disk_time_init();
-    /* ���ݿͻ�������Ҫ��ӳdisk��״̬, ������ǹ���disk��״̬ */
+    /* disk, disk */
     usbh_disk_info_reg();
 
     if (mscDrvInit(&mscDrv) != 0)
@@ -1555,16 +1555,16 @@ int mscInit(void)
 *                     scsi_bus_drv_reg
 *
 * Description:
-*    ��scsi����ע������
+*    scsi
 *
 * Parameters:
-*    drv : input.  ����
+*    drv : input.  
 *
 * Return value:
 *    EPDK_OK / EPDK_FAIL
 *
 * note:
-*    ��
+*    
 *
 *******************************************************************************
 */

@@ -1,15 +1,15 @@
 /*
- * @ : Copyright (c) 2021 Phytium Information Technology, Inc.
- *
- * SPDX-License-Identifier: Apache-2.0.
- *
+*@:Copyright(c)2021PhytiumInformationTechnology,Inc.
+*
+*SPDX-License-Identifier:Apache-2.0.
+*
  * @Date: 2021-04-07 09:53:07
  * @LastEditTime: 2021-04-07 13:25:10
- * @Description:  This files is for gmac register
+ * @Description: This files is for gmac register
  *
- * @Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * @ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 #ifndef GMAC_HW_H
@@ -27,16 +27,16 @@
 #define GMAC_FLOW_CTRL_OFFSET 0x00000018U              /* Flow Control */
 #define GMAC_VLAN_TAG_OFFSET 0x0000001cU               /* VLAN Tag */
 #define GMAC_VERSION_OFFSET 0x00000020U                /* GMAC CORE Version */
-#define GMAC_INTERNAL_MODULE_STATUS_OFFSET 0x00000024U /*  给出各种内部块的状态以进行调试。 */
-#define GMAC_LPI_CONTROL_STATUS_OFFSET 0x00000030U     /* 控制低功耗空闲（LPI）操作并提供内核的 LPI 状态。 */
-#define GMAC_LPI_TIMER_CONTROL_OFFSET 0x00000034U      /* 控制 LPI 状态中的超时值。 */
-#define GMAC_ISR_STATUS_OFFSET 0x00000038U             /* 中断状态。 */
-#define GMAC_ISR_MASK_OFFSET 0x0000003CU               /* 生成中断的掩码 */
-#define GMAC_MAC_ADDR0_UPPER16BIT_OFFSET 0x00000040U   /* 第一个 MAC 地址的高 16 位。 */
-#define GMAC_MAC_ADDR0_LOWER16BIT_OFFSET 0x00000044U   /* 第一个 MAC 地址的低 32 位。。 */
-#define GMAC_MAC_ADDR1_UPPER16BIT_OFFSET 0x00000048U   /* 第二个 MAC 地址的高 16 位。 */
-#define GMAC_MAC_ADDR1_LOWER16BIT_OFFSET 0x0000004CU   /* 第二个 MAC 地址的低 32 位。。 */
-#define GMAC_MAC_MAC_PHY_STATUS 0x000000D8U            /* MAC PHY 状态 */
+#define GMAC_INTERNAL_MODULE_STATUS_OFFSET 0x00000024U /*   */
+#define GMAC_LPI_CONTROL_STATUS_OFFSET 0x00000030U     /* LPI LPI  */
+#define GMAC_LPI_TIMER_CONTROL_OFFSET 0x00000034U      /*  LPI  */
+#define GMAC_ISR_STATUS_OFFSET 0x00000038U             /*  */
+#define GMAC_ISR_MASK_OFFSET 0x0000003CU               /*  */
+#define GMAC_MAC_ADDR0_UPPER16BIT_OFFSET 0x00000040U   /*  MAC  16  */
+#define GMAC_MAC_ADDR0_LOWER16BIT_OFFSET 0x00000044U   /*  MAC  32  */
+#define GMAC_MAC_ADDR1_UPPER16BIT_OFFSET 0x00000048U   /*  MAC  16  */
+#define GMAC_MAC_ADDR1_LOWER16BIT_OFFSET 0x0000004CU   /*  MAC  32  */
+#define GMAC_MAC_MAC_PHY_STATUS 0x000000D8U            /* MAC PHY  */
 
 #define DMA_BUS_MODE_OFFSET 0x00001000U         /* Bus Mode */
 #define DMA_XMT_POLL_DEMAND_OFFSET 0x00001004U  /* Transmit Poll Demand */
@@ -48,8 +48,8 @@
 #define DMA_INTR_ENA_OFFSET 0x0000101cU         /* Interrupt Enable */
 #define DMA_MISSED_FRAME_CTR_OFFSET 0x00001020U /* Missed Frame Counter */
 #define DMA_RX_WATCHDOG_OFFSET 0x1024U          /* Receive Interrupt Watchdog */
-#define DMA_AXI_BUS_MOD_OFFSET 0x1028U          /* 控制 AXI 主行为 */
-#define DMA_AXI_BUS_STATUS_OFFSET 0x102CU       /* 控制 AXI 状态 */
+#define DMA_AXI_BUS_MOD_OFFSET 0x1028U          /*  AXI  */
+#define DMA_AXI_BUS_STATUS_OFFSET 0x102CU       /*  AXI  */
 
 /* MMC control */
 #define MMC_CNTRL 0x0100U        /* MMC Control */
@@ -60,7 +60,7 @@
 #define MMC_RX_IPC_INTR_MASK 0x0200U
 #define MMC_RX_IPC_INTR 0x0208U
 
-/** MAC 配置寄存器 **/
+/** MAC  **/
 #define GMAC_CONTROL_2K 0x08000000U /* IEEE 802.3as 2K packets */
 #define GMAC_CONTROL_CST 0x2000000U
 #define GMAC_CONTROL_TC 0x01000000U         /* Transmit Conf. in RGMII/SGMII */
@@ -68,7 +68,7 @@
 #define GMAC_CONTROL_JD 0x00400000U         /* Jabber disable */
 #define GMAC_CONTROL_BE 0x00200000U         /* Frame Burst Enable */
 #define GMAC_CONTROL_JE 0x00100000U         /* Jumbo frame */
-#define GMAC_CONTROL_IFG(x) ((x & 7) << 17) /* 帧内间隔 ,000 96bit times 001 88bit times 010 80bit times … 111 40bit times*/
+#define GMAC_CONTROL_IFG(x) ((x & 7) << 17) /*  ,000 96bit times 001 88bit times 010 80bit times  111 40bit times*/
 #define GMAC_CONTROL_DCRS 0x00010000U       /* Disable carrier sense */
 #define GMAC_CONTROL_PS 0x00008000U         /* Port Select 0:GMII 1:MII */
 #define GMAC_CONTROL_FES 0x00004000U        /* Speed 0:10 1:100 */
@@ -98,23 +98,23 @@
 #define GMAC_FRAME_FILTER_HPF 0x00000400U
 #define GMAC_FRAME_FILTER_RA 0x80000000U
 
-/**  哈希表高位寄存器 **/
-#define GMAC_HASH_HIGH_HTH 0xffffffffUL /* 该字段包含 Hash 表的高 32 位。 */
+/**   **/
+#define GMAC_HASH_HIGH_HTH 0xffffffffUL /*  Hash  32  */
 
-/** 哈希表低位寄存器 **/
-#define GMAC_HASH_LOW_HTH 0xffffffffUL /* 该字段包含 Hash 表的低 32 位。 */
+/**  **/
+#define GMAC_HASH_LOW_HTH 0xffffffffUL /*  Hash  32  */
 
-/** GMII 地址寄存器  **/
+/** GMII   **/
 #define GMAC_MII_ADDR_GB 0x00000001
 #define GMAC_MII_ADDR_GW 0x00000002
 #define GMAC_MII_ADDR_CR(x) ((x & 0xf) << 2)
 #define GMAC_MII_ADDR_GR(x) ((x & 0x1f) << 6)
 #define GMAC_MII_ADDR_PA(x) ((x & 0x1f) << 11)
 
-/** GMII 数据寄存器  **/
+/** GMII   **/
 #define GMAC_MII_DATA_GD 0x0000ffffU
 
-/**  流控寄存器 **/
+/**   **/
 #define GMAC_FLOW_FCB 0x00000001U
 #define GMAC_FLOW_BPA GMAC_FLOW_FCB
 #define GMAC_FLOW_TFE 0x00000002U
@@ -124,16 +124,16 @@
 #define GMAC_FLOW_DZPQ 0x00000080U
 #define GMAC_FLOW_PT 0xffff0000U
 
-/** VLAN 标记寄存器 **/
+/** VLAN  **/
 // #define GMAC_VLAN_TAG_VL 0x0000ffffU
 #define GMAC_VLAN_TAG_VL(x) (x & 0xffffU)
 #define GMAC_VLAN_TAG_ETV 0x00010000U
 
-/** 版本寄存器 **/
-#define GMAC_VERSION_UDV 0x00FF0000U /* 用户定义版本号 */
-#define GMAC_VERSION_SDV 0x000000ffU /* 硬件定议版本号 */
+/**  **/
+#define GMAC_VERSION_UDV 0x00FF0000U /*  */
+#define GMAC_VERSION_SDV 0x000000ffU /*  */
 
-/** LPI 控制和状态寄存器 **/
+/** LPI  **/
 #define GMAC_LPI_CONTROL_STATUS_TLPIEN 0x00000001U
 #define GMAC_LPI_CONTROL_STATUS_TLPIEX 0x00000002U
 #define GMAC_LPI_CONTROL_STATUS_RLPIEN 0x00000004U
@@ -145,11 +145,11 @@
 #define GMAC_LPI_CONTROL_STATUS_PLSEN 0x00040000U
 #define GMAC_LPI_CONTROL_STATUS_LPITXA 0x00080000U
 
-/**  LPI 定时器控制寄存器 **/
+/**  LPI  **/
 #define GMAC_LPI_TIMER_TWT 0x0000ffffU
 #define GMAC_LPI_TIMER_LIT 0x3FF0000U
 
-/** 中断状态寄存器 **/
+/**  **/
 #define GMAC_ISR_STATUS_RSIS 0x00000001U
 #define GMAC_ISR_STATUS_PCSLSC 0x00000002U
 #define GMAC_ISR_STATUS_PCSANC 0x00000004U
@@ -161,31 +161,31 @@
 #define GMAC_ISR_STATUS_TIS 0x00000200U
 #define GMAC_ISR_STATUS_LPIIS 0x00000400U
 
-/** 中断屏蔽寄存器  **/
-#define GMAC_ISR_MASK_RSIM 0x00000001U /* RGMII/SMII 中断屏蔽 */
+/**   **/
+#define GMAC_ISR_MASK_RSIM 0x00000001U /* RGMII/SMII  */
 #define GMAC_ISR_MASK_PCSLSIM 0x00000002U
 #define GMAC_ISR_MASK_PCSANCIM 0x00000004U
 #define GMAC_ISR_MASK_PMTIM 0x00000008U
 #define GMAC_ISR_MASK_TIM 0x00000020U
 #define GMAC_ISR_MASK_LPIIM 0x00000040U
 
-/**  MAC 地址 0 高寄存器 **/
+/**  MAC  0  **/
 #define GMAC_MAC_ADDR0_UPPER16BIT_A 0x0000ffffU
 
-/** MAC 地址 0 低寄存器 **/
+/** MAC  0  **/
 #define GMAC_MAC_ADDR0_LOWERER16BIT_A 0xffffffffU
 
-/**  MAC 地址 1 高寄存器 **/
+/**  MAC  1  **/
 #define GMAC_MAC_ADDR1_UPPER16BIT_A 0x0000ffffU
 #define GMAC_MAC_ADDR1_UPPER16BIT_MBC 0x3f000000U
 #define GMAC_MAC_ADDR1_UPPER16BIT_SA 0x40000000U
 #define GMAC_MAC_ADDR1_UPPER16BIT_AE 0x80000000U
 
-/** MAC 地址 1 低寄存器 **/
+/** MAC  1  **/
 #define GMAC_MAC_ADDR1_LOWER16BIT_A 0xffffffffU
 
-/*  GMAC DMA 寄存器 */
-/** 总线模式寄存器 **/
+/*  GMAC DMA  */
+/**  **/
 #define DMA_BUS_PRWG 0x030000000U
 #define DMA_BUS_TXPR 0x08000000U
 #define DMA_BUS_MB 0x04000000U
@@ -203,16 +203,16 @@
 
 #define DMA_BUS_INIT (DMA_BUS_FB | DMA_BUS_PBL(16) | DMA_BUS_RPBL(16))
 
-/** 发送轮询请求寄存器 **/
+/**  **/
 #define DMA_XMT_POLL_DEMAND_TPD 0xffffffffU
 
-/** 发送轮询请求寄存器 **/
+/**  **/
 #define DMA_RCV_POLL_DEMAND_RPD 0xffffffffU
 
-/** 接收描述符列表地址寄存器  **/
+/**   **/
 #define DMA_RCV_BASE_ADDR_START_REC_LIST 0xfffffff0U
 
-/** 发送描述符列表地址寄存器 **/
+/**  **/
 #define DMA_TX_BASE_ADDR_START_TRA_LIST 0xfffffff0U
 
 /**
@@ -310,13 +310,13 @@
 #define DMA_STATUS_TI 0x00000001          /* Transmit Interrupt */
 #define DMA_STATUS_INIT 0xFFFFFFFF
 
-/** DMA 操作模式寄存器 **/
+/** DMA  **/
 #define DMA_OP_DT 0x04000000U           /* No Dropping of TCP/IP csum Err Frame */
 #define DMA_OP_RSF 0x02000000U          /* Rx Store and Forward */
 #define DMA_OP_DFF 0x01000000U          /*   */
 #define DMA_OP_TSF 0x000200000U         /* Tx Store and Forward */
 #define DMA_OP_FTF 0x000100000U         /* Flush Tx FIFO */
-#define DMA_OP_TTC(x) ((x & 7) << 14)   /* Tx Threshold Control  ,• 000 64 , 001 128 , 010 192 ,011 256 ,100 40 , 101 32 , 110 24 , 111 16*/
+#define DMA_OP_TTC(x) ((x & 7) << 14)   /* Tx Threshold Control  , 000 64 , 001 128 , 010 192 ,011 256 ,100 40 , 101 32 , 110 24 , 111 16*/
 #define DMA_OP_ST 0x000002000U          /* Start/Stop Tx */
 #define DMA_OP_RFD(x) ((x & 0x3) << 11) /* Threshold for DeActive Flow Control */
 #define DMA_OP_RFA 0x000000600U         /* Threshold for Active Flow Control */
@@ -329,18 +329,18 @@
 #define DMA_OP_CLEAR_MASK ((u32)0xF8DE3F23U)
 #define DMA_OP_INIT (DMA_OP_SR | DMA_OP_RSF)
 
-/** 中断使能寄存器 **/
+/**  **/
 #define DMA_INTR_ENA_TIE 0x00000001U /* Transmit Interrupt */
-#define DMA_INTR_ENA_TSE 0x00000002U /* 传输停止启用 */
+#define DMA_INTR_ENA_TSE 0x00000002U /*  */
 #define DMA_INTR_ENA_TUE 0x00000004U /* Transmit Buffer Unavailable */
-#define DMA_INTR_ENA_THE 0x00000008U /* 发送 Jabber 超时启用 */
-#define DMA_INTR_ENA_OVE 0x00000010U /* 溢出中断使能 */
-#define DMA_INTR_ENA_UNE 0x00000020U /* 下溢中断使能 */
+#define DMA_INTR_ENA_THE 0x00000008U /*  Jabber  */
+#define DMA_INTR_ENA_OVE 0x00000010U /*  */
+#define DMA_INTR_ENA_UNE 0x00000020U /*  */
 #define DMA_INTR_ENA_RIE 0x00000040U /* Receive Interrupt */
-#define DMA_INTR_ENA_RUE 0x00000080U /* 接收缓冲区不可用启用 */
-#define DMA_INTR_ENA_RSE 0x00000100U /* 接收已停止启用 */
-#define DMA_INTR_ENA_RWE 0x00000200U /* 接收看门狗超时使能  */
-#define DMA_INTR_ENA_ETE 0x00000400U /* 早期发送中断使能  */
+#define DMA_INTR_ENA_RUE 0x00000080U /*  */
+#define DMA_INTR_ENA_RSE 0x00000100U /*  */
+#define DMA_INTR_ENA_RWE 0x00000200U /*   */
+#define DMA_INTR_ENA_ETE 0x00000400U /*   */
 #define DMA_INTR_ENA_FBE 0x00002000U /* Fatal Bus Error */
 #define DMA_INTR_ENA_ERE 0x00004000U /* Early Receive */
 #define DMA_INTR_ENA_AIE 0x00008000  /* Abnormal Summary */
@@ -348,27 +348,27 @@
 
 #define DMA_INTR_DEFAULT (DMA_INTR_ENA_TIE | DMA_INTR_ENA_TSE | DMA_INTR_ENA_TUE | DMA_INTR_ENA_THE | DMA_INTR_ENA_OVE | DMA_INTR_ENA_UNE | DMA_INTR_ENA_RIE | DMA_INTR_ENA_RUE | DMA_INTR_ENA_RSE | DMA_INTR_ENA_RWE | DMA_INTR_ENA_ETE | DMA_INTR_ENA_FBE | DMA_INTR_ENA_ERE | DMA_INTR_ENA_AIE | DMA_INTR_ENA_NIE)
 
-/** 丢帧和缓冲区溢出计数器寄存器 **/
+/**  **/
 #define DMA_MISSED_FRAME_CTR_CMIS 0x0000FFFFUDMA_MISSED_FRAME
 #define DMA_MISSED_FRAME_CTR_OVMIS 0x00010000U
 #define DMA_MISSED_FRAME_CTR_CFIFO 0x0ffe0000U
 #define DMA_MISSED_FRAME_CTR_OVFIFO 0x10000000U
 
-/** 接收中断看门狗定时器寄存器 **/
+/**  **/
 #define DMA_RX_WATCHDOG_RIWT 0x0000000fU
 
 /** AXI_BUS_MOD **/
-#define DMA_AXI_BUS_MOD_UNDEF 0x00000001U               /* AXI 未定义的突发长度 */
-#define DMA_AXI_BUS_MOD_BLEN4 0x00000002U               /* AXI 突发长度 4 */
-#define DMA_AXI_BUS_MOD_BLEN8 0x00000004U               /* AXI 突发长度 8 */
-#define DMA_AXI_BUS_MOD_BLEN16 0x00000008U              /* AXI 突发长度 16 */
-#define DMA_AXI_BUS_MOD_BLEN32 0x00000010U              /* AXI 突发长度 32 */
-#define DMA_AXI_BUS_MOD_BLEN64 0x00000020U              /* AXI 突发长度 64 */
-#define DMA_AXI_BUS_MOD_BLEN128 0x00000040U             /* AXI 突发长度 128 */
-#define DMA_AXI_BUS_MOD_BLEN256 0x00000080U             /* AXI 突发长度 256 */
-#define DMA_AXI_BUS_MOD_AXI_AAL 0x00001000U             /* 地址对齐的节拍 */
-#define DMA_AXI_BUS_MOD_RD_OSR_LMT(x) ((x & 0xf) << 16) /* XI 最大读取未决请求限制此值限 制 AXI 读取接口上的最大未完成请求。 */
-#define DMA_AXI_BUS_MOD_WR_OSR_LMT(x) ((x & 0xf) << 20) /* AXI 最大写入未决请求限制此值 限制 AXI 写入接口上的最大未完成请求。 */
+#define DMA_AXI_BUS_MOD_UNDEF 0x00000001U               /* AXI  */
+#define DMA_AXI_BUS_MOD_BLEN4 0x00000002U               /* AXI  4 */
+#define DMA_AXI_BUS_MOD_BLEN8 0x00000004U               /* AXI  8 */
+#define DMA_AXI_BUS_MOD_BLEN16 0x00000008U              /* AXI  16 */
+#define DMA_AXI_BUS_MOD_BLEN32 0x00000010U              /* AXI  32 */
+#define DMA_AXI_BUS_MOD_BLEN64 0x00000020U              /* AXI  64 */
+#define DMA_AXI_BUS_MOD_BLEN128 0x00000040U             /* AXI  128 */
+#define DMA_AXI_BUS_MOD_BLEN256 0x00000080U             /* AXI  256 */
+#define DMA_AXI_BUS_MOD_AXI_AAL 0x00001000U             /*  */
+#define DMA_AXI_BUS_MOD_RD_OSR_LMT(x) ((x & 0xf) << 16) /* XI   AXI  */
+#define DMA_AXI_BUS_MOD_WR_OSR_LMT(x) ((x & 0xf) << 20) /* AXI   AXI  */
 #define DMA_AXI_BUS_MOD_UNLCK_ON_MGK_RWK 0x40000000U
 #define DMA_AXI_BUS_MOD_EN_LPI 0x80000000U
 
@@ -464,113 +464,113 @@
 
 /**
  * @name: FGmac_InitializeHw
- * @msg:  初始化Mac层与Phy层参数 。
- * @param {FGmac_Config_t} *Config 包含Mac层 与Phy层，配置参数。
- * @return {s32} Common_status 参数。
+ * @msg:  MacPhy 
+ * @param {FGmac_Config_t} *Config Mac Phy
+ * @return {s32} Common_status 
  */
 s32 FGmac_InitializeHw(FGmac_Config_t *Config);
 
 /**
  * @name: FGmac_ReadPHYRegister
- * @msg:  读取Phy 中的寄存器
- * @param {FGmac_Config_t} *Config 提供读取的基地址，与Phy读取过程中需要的相关参数。
- * @param {u16} PHYReg  需要读取Phy 芯片的寄存器地址。
- * @param {u32} *RegValue 读取出来的寄存器参数
- * @return {s32} Common_status 参数。
+ * @msg:  Phy 
+ * @param {FGmac_Config_t} *Config Phy
+ * @param {u16} PHYReg  Phy 
+ * @param {u32} *RegValue 
+ * @return {s32} Common_status 
  */
 s32 FGmac_ReadPHYRegister(FGmac_Config_t *Config, u16 PHYReg, u32 *RegValue);
 
 /**
  * @name: Gmac_WritePHYRegister
- * @msg:  向Phy 中的特定寄存器写入参数。
- * @param {FGmac_Config_t} *Config 提供读取的基地址，与Phy读取过程中需要的相关参数。
- * @param {u16} PHYReg 需要读取Phy 芯片的寄存器地址。
- * @param {u32} RegValue 需要写入的寄存器参数
- * @return {s32}  Common_status 参数。
+ * @msg:  Phy 
+ * @param {FGmac_Config_t} *Config Phy
+ * @param {u16} PHYReg Phy 
+ * @param {u32} RegValue 
+ * @return {s32}  Common_status 
  */
 s32 Gmac_WritePHYRegister(FGmac_Config_t *Config, u16 PHYReg, u32 RegValue);
 
 /**
  * @name: FGmac_TransmissionEnable
- * @msg:  使能  Gmac 开始发送功能
- * @param {FGmac_Config_t} *Config  提供Mac的基地址。
+ * @msg:    Gmac 
+ * @param {FGmac_Config_t} *Config  Mac
  * @return {None}
  */
 void FGmac_TransmissionEnable(FGmac_Config_t *Config);
 
 /**
  * @name: FGmac_TransmissionDisable
- * @msg:  禁止  Gmac 开始发送功能
- * @param {FGmac_Config_t} *Config 提供Mac的基地址。
+ * @msg:    Gmac 
+ * @param {FGmac_Config_t} *Config Mac
  * @return {None}
  */
 void FGmac_TransmissionDisable(FGmac_Config_t *Config);
 
 /**
  * @name: FGmac_ReceptionEnable
- * @msg:  使能  Gmac 开始接收功能
- * @param {FGmac_Config_t} *Config 提供Mac的基地址。
+ * @msg:    Gmac 
+ * @param {FGmac_Config_t} *Config Mac
  * @return {None}
  */
 void FGmac_ReceptionEnable(FGmac_Config_t *Config);
 
 /**
  * @name: FGmac_ReceptionDisable
- * @msg:  禁止 Gmac 开始接收功能
- * @param {FGmac_Config_t}  *Config 提供Mac的基地址。
+ * @msg:   Gmac 
+ * @param {FGmac_Config_t}  *Config Mac
  * @return {None}
  */
 void FGmac_ReceptionDisable(FGmac_Config_t *Config);
 
 /**
  * @name: FGmac_DMAReceptionTransmissionEnable
- * @msg:  使能  Gmac  开始DMA描述符接收与写入功能
- * @param {FGmac_Config_t} *Config 提供Mac的基地址。
+ * @msg:    Gmac  DMA
+ * @param {FGmac_Config_t} *Config Mac
  * @return {*}
  */
 void FGmac_DMAReceptionTransmissionEnable(FGmac_Config_t *Config);
 
 /**
  * @name: FGmac_ReceptionTransmissionEnable
- * @msg: 使能  Gmac 开始接收与发送功能
- * @param {FGmac_Config_t} *Config 提供Mac的基地址。
+ * @msg:   Gmac 
+ * @param {FGmac_Config_t} *Config Mac
  * @return {*}
  */
 void FGmac_ReceptionTransmissionEnable(FGmac_Config_t *Config);
 
 /**
  * @name: FGmac_FlushTransmitFIFO
- * @msg:  刷新 Gmac 发送 FIFO
- * @param {FGmac_Config_t} *Config 提供Mac的基地址。
+ * @msg:   Gmac  FIFO
+ * @param {FGmac_Config_t} *Config Mac
  * @return {*}
  */
 void FGmac_FlushTransmitFIFO(FGmac_Config_t *Config);
 
 /**
  * @name: FGmac_DMATransmissionEnable
- * @msg:  使能 DMA描述符发送功能
- * @param {FGmac_Config_t} *Config 提供Mac的基地址。
+ * @msg:   DMA
+ * @param {FGmac_Config_t} *Config Mac
  * @return {*}
  */
 void FGmac_DMATransmissionEnable(FGmac_Config_t *Config);
 /**
  * @name: FGmac_DMATransmissionDisable
- * @msg:  关闭 DMA描述符发送功能
- * @param {FGmac_Config_t} *Config 提供Mac的基地址。
+ * @msg:   DMA
+ * @param {FGmac_Config_t} *Config Mac
  * @return {*}
  */
 void FGmac_DMATransmissionDisable(FGmac_Config_t *Config);
 /**
  * @name: FGmac_DMAReceptionEnable
- * @msg:  使能 DMA描述符接收功能
- * @param {FGmac_Config_t} *Config 提供Mac的基地址。
+ * @msg:   DMA
+ * @param {FGmac_Config_t} *Config Mac
  * @return {*}
  */
 void FGmac_DMAReceptionEnable(FGmac_Config_t *Config);
 /**
  * @name: FGmac_DMAReceptionEnable
- * @msg:  使能 DMA描述符接收功能
- * @param {FGmac_Config_t} *Config 提供Mac的基地址。
+ * @msg:   DMA
+ * @param {FGmac_Config_t} *Config Mac
  * @return {*}
  */
 void FGmac_DMAReceptionDisable(FGmac_Config_t *Config);

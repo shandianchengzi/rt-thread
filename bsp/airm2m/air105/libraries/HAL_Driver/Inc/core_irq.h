@@ -23,17 +23,17 @@
 #define __CORE_IRQ_H__
 
 /**
- * @brief 设置中断回调函数
+ * @brief 
  *
- * @param Irq 中断号 0~IRQ_LINE_MAX
- * @param Handler 中断回调函数，如 void Irq_Handler(uint32_t IrqLine, void *pData); 可以多个中断号对应1个中断函数，回调时传入中断号和用户数据
+ * @param Irq  0~IRQ_LINE_MAX
+ * @param Handler  void Irq_Handler(uint32_t IrqLine, void *pData); 1
  */
 void ISR_SetHandler(int32_t Irq, void *Handler);
 /**
- * @brief 设置中断优先级
+ * @brief 
  *
- * @param Irq 中断号 0~IRQ_LINE_MAX
- * @param PriorityLevel 优先级范围根据芯片实际情况决定
+ * @param Irq  0~IRQ_LINE_MAX
+ * @param PriorityLevel 
  */
 void ISR_SetPriority(int32_t Irq, uint32_t PriorityLevel);
 

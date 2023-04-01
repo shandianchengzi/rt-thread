@@ -1,6 +1,6 @@
 # AXU4EV-E BSP (Board Support Package) Execution Instruction
 
-[中文页](README_zh.md) |
+[](README_zh.md) |
 
 ## **Introduction**
 
@@ -19,7 +19,7 @@ By reading the Quickly Get Started section developers can quickly get their hand
 
 ALINX AXU4EV-E: Xilinx Zynq UltraScale+ MPSOC XCZU4EV-1SFVC784I Ethernet FPGA development board, the SoM Core board is the smallest system, mainly composed of XCZU4EV-1SFVC784I + 5 DDR4 + eMMC + 1 QSPI FLASH. The Carrier board expands a wealth of peripheral interfaces for the core board, including 1 SATA M.2 interface, 1 DP output interface, 4 USB3.0 interfaces, 2 Gigabit Ethernet interfaces, 2 UART interfaces, 1 SD card interface, 2*40-pin Expansion Connectors for Modules, 2 CAN bus interfaces, 2 RS485 interfaces, 1 MIPI interface, Keys and LEDs. High-speed data exchange and transmission, data storage, pre-verification and post-application of data processing, video transmission processing, deep learning, artificial intelligence and industrial control, is a professional ZYNQ development platform. suitable for students, engineers and other groups engaged in the development of MPSoCs.
 
-For more details about this board, please refer to [Alinx Electronic Technology (Shanghai) Co.,Ltd.](http://www.alinx.com/en/)。
+For more details about this board, please refer to [Alinx Electronic Technology (Shanghai) Co.,Ltd.](http://www.alinx.com/en/)
 
 ## **Peripheral Condition**
 
@@ -69,7 +69,7 @@ This BSP only support the GCC development environment. Here's an example to intr
     bootgen -image ./output.bif -arch zynqmp -o ./BOOT.bin -w on
    ```
    
-   And the outpu.bif file could be：
+   And the outpu.bif file could be
    ```
    //arch = zynqmp; split = false; format = BIN
    the_ROM_image:

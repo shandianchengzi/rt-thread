@@ -30,7 +30,7 @@
 #define ES_C_HWTIMER_MODE_UP         HWTIMER_CNTMODE_UP
 #define ES_C_HWTIMER_MODE_DOWN         HWTIMER_CNTMODE_DW
 
-/* HWTIMER 配置 */
+/* HWTIMER  */
 
 /* codes_main */
 

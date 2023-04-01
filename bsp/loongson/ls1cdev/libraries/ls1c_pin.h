@@ -5,47 +5,47 @@
  *
  * Change Logs:
  * Date           Author       Notes
- * 2017-09-06     勤为本       first version
+ * 2017-09-06            first version
  */
 
-// 引脚功能(普通gpio，pwm，复用等)相关接口
+// (gpiopwm)
 
 #ifndef __OPENLOONGSON_PIN_H
 #define __OPENLOONGSON_PIN_H
 
 
-// 引脚用途
+// 
 typedef enum
 {
-    PIN_PURPOSE_GPIO = 0,               // 引脚用作普通gpio
-    PIN_PURPOSE_OTHER,                  // 引脚用作其它功能(非gpio)
+    PIN_PURPOSE_GPIO = 0,               // gpio
+    PIN_PURPOSE_OTHER,                  // (gpio)
 }pin_purpose_t;
 
 
-// 引脚复用
+// 
 typedef enum
 {
-    PIN_REMAP_FIRST = 0,                // 第一复用
-    PIN_REMAP_SECOND,                   // 第二复用
-    PIN_REMAP_THIRD,                    // 第三复用
-    PIN_REMAP_FOURTH,                   // 第四复用
-    PIN_REMAP_FIFTH,                    // 第五复用
-    PIN_REMAP_DEFAULT,                //缺省复用
+    PIN_REMAP_FIRST = 0,                // 
+    PIN_REMAP_SECOND,                   // 
+    PIN_REMAP_THIRD,                    // 
+    PIN_REMAP_FOURTH,                   // 
+    PIN_REMAP_FIFTH,                    // 
+    PIN_REMAP_DEFAULT,                //
 }pin_remap_t;
 
 
 /*
- * 把指定pin设置为指定用途(普通gpio，非gpio)
- * @gpio gpio引脚编号
- * @purpose 用途
+ * pin(gpiogpio)
+ * @gpio gpio
+ * @purpose 
  */
 void pin_set_purpose(unsigned int gpio, pin_purpose_t purpose);
 
 
 /*
- * 设置指定pin为第n复用
- * @gpio gpio编号
- * @remap 第n复用
+ * pinn
+ * @gpio gpio
+ * @remap n
  */
 void pin_set_remap(unsigned int gpio, pin_remap_t remap);
 

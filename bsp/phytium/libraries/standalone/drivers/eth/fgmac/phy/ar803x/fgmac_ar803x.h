@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fgmac_ar803x.h
  * Date: 2022-04-06 14:46:52
  * LastEditTime: 2022-04-06 14:46:58
- * Description:  This file is for
+ * Description: This file is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 
@@ -40,7 +40,7 @@ extern "C"
 /************************** Constant Definitions *****************************/
 
 /* phy id */
-#define FGMAC_AR803X_PHY_ID1             0x4D  /*803xPhy芯片 id1值为4d   8035芯片 id1 为0x004d  id2 为0xd072 */
+#define FGMAC_AR803X_PHY_ID1             0x4D  /*803xPhy id14d   8035 id1 0x004d  id2 0xd072 */
 #define FGMAC_AR803X_PHY_ID2             0x4D
 
 /* address and data port */

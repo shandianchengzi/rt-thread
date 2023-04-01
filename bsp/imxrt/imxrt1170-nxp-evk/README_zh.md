@@ -1,81 +1,81 @@
-# i.MX RT1170 EVK 开发板 BSP 说明
+# i.MX RT1170 EVK  BSP 
 
-## 简介
+## 
 
-本文档为 RT-Thread 开发团队为 NXP i.MX RT1170 EVK 开发板提供的 BSP (板级支持包) 说明。
+ RT-Thread  NXP i.MX RT1170 EVK  BSP () 
 
-主要内容如下：
 
-- 开发板资源介绍
-- BSP 快速上手
-- 进阶使用方法
 
-通过阅读快速上手章节开发者可以快速地上手该 BSP，将 RT-Thread 运行在开发板上。在进阶使用指南章节，将会介绍更多高级功能，帮助开发者利用 RT-Thread 驱动更多板载资源。
+- 
+- BSP 
+- 
 
-## 开发板介绍
+ BSP RT-Thread  RT-Thread 
 
-i.MX RT1170跨界MCU以1GHz的速度刷新了记录。该突破性系列结合了卓越的计算能力、多种媒体功能以及实时功能，易于使用。双核i.MX RT1170采用主频达1GHz的Cortex®-M7内核和主频达400MHz的Arm Cortex-M4，同时提供一流的安全保障。i.MX RT1170 MCU支持宽温度范围，适用于消费电子、工业和汽车市场。
+## 
 
-开发板外观如下图所示：
+i.MX RT1170MCU1GHzi.MX RT11701GHzCortex-M7400MHzArm Cortex-M4i.MX RT1170 MCU
+
+
 
 ![board](figures/board.jpg)
 
 
 
-开发板更多的详细信息请参考 NXP [i.MX RT1170 EVK 开发板介绍](https://www.nxp.com)。
+ NXP [i.MX RT1170 EVK ](https://www.nxp.com)
 
-## 外设支持
+## 
 
-本 BSP 目前对外设的支持情况如下：
+ BSP 
 
-| **板载外设**      | **支持情况** | **备注**                              |
+| ****      | **** | ****                              |
 | :----------------- | :----------: | :------------------------------------|
-| USB 转串口        |     支持     |                                       |
-| SPI Flash         |     支持     |                                       |
-| 以太网            |     支持     |                                       |
-| **片上外设** | **支持情况** | **备注**                              |
-| GPIO         |     支持     |                                       |
-| UART         |     支持     |                                       |
-| SPI          |     支持     |                                       |
-| I2C          |     支持     |                                       |
-| SDIO         |     支持     |                                       |
-| RTC          |     支持     |                                       |
-| PWM          |     支持     |                                       |
-| CAN          |     支持     |                                       |
+| USB         |          |                                       |
+| SPI Flash         |          |                                       |
+|             |          |                                       |
+| **** | **** | ****                              |
+| GPIO         |          |                                       |
+| UART         |          |                                       |
+| SPI          |          |                                       |
+| I2C          |          |                                       |
+| SDIO         |          |                                       |
+| RTC          |          |                                       |
+| PWM          |          |                                       |
+| CAN          |          |                                       |
 
 
-## 使用说明
-
-使用说明分为如下两个章节：
-
-- 快速上手
-
-    本章节是为刚接触 RT-Thread 的新手准备的使用说明，遵循简单的步骤即可将 RT-Thread 操作系统运行在该开发板上，看到实验效果 。
-
-- 进阶使用
-
-    本章节是为需要在 RT-Thread 操作系统上使用更多开发板资源的开发者准备的。通过使用 ENV 工具对 BSP 进行配置，可以开启更多板载资源，实现更多高级功能。
+## 
 
 
-### 快速上手
 
-本 BSP 为开发者提供 MDK5 和 IAR 工程。下面以 IAR 开发环境为例，介绍如何将系统运行起来。
+- 
 
-#### 硬件连接
+     RT-Thread  RT-Thread  
 
-使用数据线连接开发板到 PC，打开电源开关。
+- 
 
-#### 编译下载
+     RT-Thread  ENV  BSP 
 
-双击 project.eww 文件，打开 IAR 工程，编译并下载程序到开发板。
 
-> 工程默认配置使用 CMSIS-DAP 下载程序，在通过 CMSIS-DAP 连接开发板的基础上，点击下载按钮即可下载程序到开发板
+### 
 
-#### 运行结果
+ BSP  MDK5  IAR  IAR 
 
-下载程序成功之后，系统会自动运行。
+#### 
 
-连接开发板对应串口到 PC , 在终端工具里打开相应的串口（115200-8-1-N），复位设备后，可以看到 RT-Thread 的输出信息:
+ PC
+
+#### 
+
+ project.eww  IAR 
+
+>  CMSIS-DAP  CMSIS-DAP 
+
+#### 
+
+
+
+ PC , 115200-8-1-N RT-Thread :
 
 ```
  \ | /
@@ -85,24 +85,24 @@ i.MX RT1170跨界MCU以1GHz的速度刷新了记录。该突破性系列结合�
 ```
 
 
-### 进阶使用
+### 
 
-此 BSP 默认只开启了串口 1 的功能，如果需使用更多高级外设功能，需要利用 ENV 工具对 BSP 进行配置，步骤如下：
+ BSP  1  ENV  BSP 
 
-1. 在 bsp 下打开 env 工具。
+1.  bsp  env 
 
-2. 输入 `menuconfig` 命令配置工程，配置好之后保存退出。
+2.  `menuconfig` 
 
-3. 输入 `pkgs --update` 命令更新软件包。
+3.  `pkgs --update` 
 
-4. 输入 `scons --target=mdk5/iar` 命令重新生成工程。
+4.  `scons --target=mdk5/iar` 
 
-## 注意事项
+## 
 
-暂无
 
-## 联系人信息
 
-维护人:
+## 
+
+:
 
 - [tyustli](https://github.com/tyustli)

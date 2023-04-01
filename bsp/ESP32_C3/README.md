@@ -1,6 +1,6 @@
 # ESP32-C3 BSP Introduction
 
-[中文](README_ZH.md) | English
+[](README_ZH.md) | English
 
 This document records the execution instruction of the BSP (board support package) for the [ESP32-C3](http://luatos.com/t/esp32c3) development board.
 
@@ -17,17 +17,17 @@ We tested 2 development boards, it all works, but due to the different LED pins 
 
 ![LUATOS_ESP32C3](images/luatos_esp32c3.png)
 
-- [HX-DK-商](https://docs.wireless-tech.cn/doc/7/)
+- [HX-DK-](https://docs.wireless-tech.cn/doc/7/)
 
 ![hongxu](images/hx_shang.png)
 
 The mainly-used resources of LUATOS_ESP32C3 are shown as follows:
 
-- MCU: [esp32-c3](https://www.espressif.com/sites/default/files/documentation/esp32-c3_datasheet_en.pdf)，Main Frequency 160MHz, 407.22 CoreMark; 2.55 CoreMark/MHz
+- MCU: [esp32-c3](https://www.espressif.com/sites/default/files/documentation/esp32-c3_datasheet_en.pdf)Main Frequency 160MHz, 407.22 CoreMark; 2.55 CoreMark/MHz
 - Built-in Chip: 384KB ROM, 400KB SRAM
 - Peripherals
-  - Red LED: 2, LED: D4 (IO12), D5（IO13）
-  - Button: 2, K1（BOOT） K2(RST)
+  - Red LED: 2, LED: D4 (IO12), D5IO13
+  - Button: 2, K1BOOT K2(RST)
   - SPI FLASH: 4M
 - Common-used interfaces: USB, UART, etc.
 

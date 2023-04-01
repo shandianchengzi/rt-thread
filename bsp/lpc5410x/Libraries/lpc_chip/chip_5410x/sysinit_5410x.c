@@ -82,7 +82,7 @@ void Chip_SetupIrcClocking(uint32_t iFreq)
 	/* Select the PLL input to the IRC */
 	Chip_Clock_SetSystemPLLSource(SYSCON_PLLCLKSRC_IRC);
 
-	/* Setup FLASH access   Ã»½øÈ¥??*/
+	/* Setup FLASH access   ??*/
 	setupFlashClocks(iFreq);
 
 	/* Power down PLL to change the PLL divider ratio */

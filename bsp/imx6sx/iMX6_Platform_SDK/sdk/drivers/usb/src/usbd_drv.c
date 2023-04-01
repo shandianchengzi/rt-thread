@@ -460,18 +460,18 @@ void usbd_add_dtd(usb_module_t * port, usbdEndpointPair_t * endpointList,
      *  - Case 1: Link list is empty\n
      *      -# Write dQH next pointer AND dQH terminate bit to 0 as a single DWord operation.
      *      -# Clear active & halt bit in dQH (in case set from a previous error).
-     *      -# Prime endpoint by writing ‘1’ to correct bit position in ENDPTPRIME.\n
+     *      -# Prime endpoint by writing 1 to correct bit position in ENDPTPRIME.\n
      *  - Case 2: Link list is not empty
      *      -# Add dTD to end of linked list.
-     *      -# Read correct prime bit in ENDPTPRIME – if ‘1’ DONE.
-     *      -# Set ATDTW bit in USBCMD register to ‘1’.
+     *      -# Read correct prime bit in ENDPTPRIME  if 1 DONE.
+     *      -# Set ATDTW bit in USBCMD register to 1.
      *      -# Read correct status bit in ENDPTSTAT. (store in tmp. variable for later)
      *      -# Read ATDTW bit in USBCMD register.\n
-     *          If ‘0’ goto c.\n
-     *          If ‘1’ continue to f.\n
-     *      -# Write ATDTW bit in USBCMD register to ‘0’.
-     *      -# If status bit read in (d) is ‘1’ DONE.
-     *      -# If status bit read in (d) is ‘0’ then Goto Case 1: Step 1.
+     *          If 0 goto c.\n
+     *          If 1 continue to f.\n
+     *      -# Write ATDTW bit in USBCMD register to 0.
+     *      -# If status bit read in (d) is 1 DONE.
+     *      -# If status bit read in (d) is 0 then Goto Case 1: Step 1.
      */
 
     //! Implementation:

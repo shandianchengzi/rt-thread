@@ -47,11 +47,11 @@
 ********************************************************************************
 *                     get_port_status
 * Description:
-*     获得hub端口的状态
+*     hub
 * Arguments:
 *     hdev  : input.  hub
-*     port1 : input.  端口号
-*     data  : output. 用来记录端口状态
+*     port1 : input.  
+*     data  : output. 
 * Return value:
 *     void
 * note:
@@ -83,12 +83,12 @@ static int get_port_status(struct usb_host_virt_dev *hdev, int port1,
 ********************************************************************************
 *                     get_port_status
 * Description:
-*     获得hub端口的状态
+*     hub
 * Arguments:
 *     hdev    : input.  hub
-*     port1   : input.  端口号
-*     status  : output. 用来记录端口状态
-*     change  : output. 用来记录端口的变化
+*     port1   : input.  
+*     status  : output. 
+*     change  : output. 
 * Return value:
 *     void
 * note:
@@ -135,12 +135,12 @@ s32 hub_port_status(struct usb_hub *hub, s32 port1, u16 *status, u16 *change)
 ********************************************************************************
 *                     hub_port_suspend
 * Description:
-*     获得hub端口的状态
+*     hub
 * Arguments:
 *     hdev    : input.  hub
-*     port1   : input.  端口号
-*     status  : output. 用来记录端口状态
-*     change  : output. 用来记录端口的变化
+*     port1   : input.  
+*     status  : output. 
+*     change  : output. 
 * Return value:
 *     void
 * note:
@@ -849,7 +849,7 @@ int hub_hub_status(struct usb_hub *hub,
 
 
 
-//限制: 只能在thread环境中使用,isr中是禁止的
+//: thread,isr
 int hub_thread_sleep(struct hub_thread_context *thread_cont)
 {
     u8  ret = 0;
@@ -866,7 +866,7 @@ int hub_thread_sleep(struct hub_thread_context *thread_cont)
     return (ret ? -EINTR : 0);
 }
 
-//可以在thead,isr中使用
+//thead,isr
 void hub_thread_wakeup(struct hub_thread_context *thread_cont)
 {
     //USB_OS_SEMI_POST(thread_cont->hub_thread_event);

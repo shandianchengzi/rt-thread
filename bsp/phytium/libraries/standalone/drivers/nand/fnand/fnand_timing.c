@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fnand_timing.c
  * Date: 2022-05-09 14:53:42
  * LastEditTime: 2022-05-09 08:56:27
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 #include "ferror_code.h"
 #include "fnand.h"
@@ -319,7 +319,7 @@ static FError FNandMemcpyToReg16(FNand *instance_p, u32 reg, u32 reg_step, const
 
 /**
  * @name:
- * @msg: 根据inter_mode 与 timing_mode
+ * @msg: inter_mode  timing_mode
  * @note:
  * @return {*}
  * @param {FNand} *instance_p
@@ -450,7 +450,7 @@ const struct FNandSdrTimings *FNandAsyncTimingModeToSdrTimings(FNandAsyncTimint 
  * @return {*}
  * @param {FNand} *instance_p
  * @param {FNandAsyncTimint} mode
- * @Note 当前只支持onfi 模式
+ * @Note onfi 
  */
 FError FNandFillTimingModeTiming(FNand *instance_p, FNandAsyncTimint mode)
 {

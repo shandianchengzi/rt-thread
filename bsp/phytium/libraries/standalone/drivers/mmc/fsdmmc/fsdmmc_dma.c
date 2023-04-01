@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fsdmmc_dma.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:49:31
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   zhugengyu  2021/12/2    init
  */
 
@@ -49,20 +49,20 @@
 /*****************************************************************************/
 /**
  * @name: FSdmmcSetReadDMA
- * @msg: 设置读数据DMA配置
+ * @msg: DMA
  * @return {*}
- * @param {uintptr} base_addr FSDMMC 控制器基地址
- * @param {uintptr} card_addr 读卡地址
- * @param {u32} blk_cnt 读卡的block数
- * @param {void} *buf_p 读卡的目的地址
+ * @param {uintptr} base_addr FSDMMC 
+ * @param {uintptr} card_addr 
+ * @param {u32} blk_cnt block
+ * @param {void} *buf_p 
  */
 void FSdmmcSetReadDMA(uintptr base_addr, uintptr card_addr, u32 blk_cnt, void *buf_p)
 {
     FASSERT(buf_p);
 
-    u32 dsth = UPPER_32_BITS((uintptr)buf_p); /* DMA传输目的地址--> sd read buf */
+    u32 dsth = UPPER_32_BITS((uintptr)buf_p); /* DMA--> sd read buf */
     u32 dstl = LOWER_32_BITS((uintptr)buf_p);
-    u32 srch = UPPER_32_BITS((uintptr)card_addr); /* DMA传输源地址 --> sd card */
+    u32 srch = UPPER_32_BITS((uintptr)card_addr); /* DMA --> sd card */
     u32 srcl = LOWER_32_BITS((uintptr)card_addr);
 
     FSDMMC_INFO("sd card: 0x%x:0x%x ==> mem space: 0x%x:0x%x",
@@ -70,22 +70,22 @@ void FSdmmcSetReadDMA(uintptr base_addr, uintptr card_addr, u32 blk_cnt, void *b
 
     FSDMMC_INFO("read %d blks from 0x%x", blk_cnt, card_addr);
 
-    /* DMA 复位 */
+    /* DMA  */
     FSDMMC_SET_BIT(base_addr, FSDMMC_SOFTWARE_RESET_REG_OFFSET, FSDMMC_SOFTWARE_RESET_BDRST);
     FSDMMC_CLR_BIT(base_addr, FSDMMC_SOFTWARE_RESET_REG_OFFSET, FSDMMC_SOFTWARE_RESET_BDRST);
 
-    /* 设置传输块数目 */
+    /*  */
     FSDMMC_WRITE_REG(base_addr, FSDMMC_BLK_CNT_REG_OFFSET, blk_cnt);
 
-    /* 清除状态寄存器 */
+    /*  */
     FSdmmcClearErrorInterruptStatus(base_addr);
     FSdmmcClearBDInterruptStatus(base_addr);
     FSdmmcClearNormalInterruptStatus(base_addr);
 
     FSDMMC_INFO("base addr: 0x%x buf_p: %p", base_addr, buf_p);
 
-    /* DMA 读卡地址配置：4 个 cycle
-    系统低 4B-系统高 4B-SD 低 4B- SD 高 4B */
+    /* DMA 4  cycle
+     4B- 4B-SD  4B- SD  4B */
     FSDMMC_WRITE_REG(base_addr, FSDMMC_DAT_IN_M_RX_BD_REG_OFFSET, dstl);
     FSDMMC_WRITE_REG(base_addr, FSDMMC_DAT_IN_M_RX_BD_REG_OFFSET, dsth);
     FSDMMC_WRITE_REG(base_addr, FSDMMC_DAT_IN_M_RX_BD_REG_OFFSET, srcl);
@@ -98,19 +98,19 @@ void FSdmmcSetReadDMA(uintptr base_addr, uintptr card_addr, u32 blk_cnt, void *b
 
 /**
  * @name: FSdmmcSetWriteDMA
- * @msg: 设置写数据DMA配置
+ * @msg: DMA
  * @return {*}
- * @param {uintptr} base_addr FSDMMC 控制器基地址
- * @param {uintptr} card_addr 写卡地址
- * @param {u32} blk_cnt 写卡的block数
- * @param {void} *buf_p 写卡的源地址
+ * @param {uintptr} base_addr FSDMMC 
+ * @param {uintptr} card_addr 
+ * @param {u32} blk_cnt block
+ * @param {void} *buf_p 
  */
 void FSdmmcSetWriteDMA(uintptr base_addr, uintptr card_addr, u32 blk_cnt, const void *buf_p)
 {
     FASSERT(buf_p);
-    u32 srch = UPPER_32_BITS((uintptr)buf_p); /* DMA传输源地址--> sd read buf */
+    u32 srch = UPPER_32_BITS((uintptr)buf_p); /* DMA--> sd read buf */
     u32 srcl = LOWER_32_BITS((uintptr)buf_p);
-    u32 dsth = UPPER_32_BITS((uintptr)card_addr); /* DMA传输目的地址 --> sd card */
+    u32 dsth = UPPER_32_BITS((uintptr)card_addr); /* DMA --> sd card */
     u32 dstl = LOWER_32_BITS((uintptr)card_addr);
 
     FSDMMC_INFO("mem space: 0x%x:0x%x ==> sd card: 0x%x:0x%x",
@@ -118,20 +118,20 @@ void FSdmmcSetWriteDMA(uintptr base_addr, uintptr card_addr, u32 blk_cnt, const 
 
     FSDMMC_INFO("write %d blks from 0x%x", blk_cnt, card_addr);
 
-    /* DMA 复位 */
+    /* DMA  */
     FSDMMC_SET_BIT(base_addr, FSDMMC_SOFTWARE_RESET_REG_OFFSET, FSDMMC_SOFTWARE_RESET_BDRST);
     FSDMMC_CLR_BIT(base_addr, FSDMMC_SOFTWARE_RESET_REG_OFFSET, FSDMMC_SOFTWARE_RESET_BDRST);
 
-    /* 设置传输块数目 */
+    /*  */
     FSDMMC_WRITE_REG(base_addr, FSDMMC_BLK_CNT_REG_OFFSET, blk_cnt);
 
-    /* 清除状态寄存器 */
+    /*  */
     FSdmmcClearErrorInterruptStatus(base_addr);
     FSdmmcClearBDInterruptStatus(base_addr);
     FSdmmcClearNormalInterruptStatus(base_addr);
 
-    /* DMA 写卡地址配置：4 个 cycle
-    系统低 4B-系统高 4B-SD 低 4B- SD 高 4B */
+    /* DMA 4  cycle
+     4B- 4B-SD  4B- SD  4B */
     FSDMMC_WRITE_REG(base_addr, FSDMMC_DAT_IN_M_TX_BD_REG_OFFSET, srcl);
     FSDMMC_WRITE_REG(base_addr, FSDMMC_DAT_IN_M_TX_BD_REG_OFFSET, srch);
     FSDMMC_WRITE_REG(base_addr, FSDMMC_DAT_IN_M_TX_BD_REG_OFFSET, dstl);

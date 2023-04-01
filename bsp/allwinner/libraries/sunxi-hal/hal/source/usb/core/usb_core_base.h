@@ -1,17 +1,17 @@
 #ifndef _USB_CORE_BASE_H_
 #define _USB_CORE_BASE_H_
 
-//usb host开启
+//usb host
 u8 usb_host_enable(void);
-//usb host 禁止
+//usb host 
 u8 usb_host_disable(void);
 
-//查询usb host是否开启
-//return    :   非0为enable
+//usb host
+//return    :   0enable
 u8 usb_host_is_enabled(void);
 
 
-//usb_host_virt_dev{}的分配与释放
+//usb_host_virt_dev{}
 struct usb_host_virt_dev *usb_host_alloc_virt_dev(struct usb_host_virt_dev *parent, struct usb_virt_bus *bus, u32 port1);
 void usb_host_free_virt_dev(struct usb_host_virt_dev *virt_dev);
 

@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fspim_intr.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 09:08:10
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   zhugengyu  2021-12-3   init commit
  * 1.1   zhugengyu  2022-4-15   support test mode
  */
@@ -59,10 +59,10 @@ extern FError FSpimReset(FSpim *instance_p);
 /*****************************************************************************/
 /**
  * @name: FSpimInterruptHandler
- * @msg: SPIM中断处理函数
- * @return {无}
- * @param {s32} vector，中断向量号，此处不关心此参数
- * @param {void} *param, 中断输入参数, 指向FSPIM的驱动控制实例
+ * @msg: SPIM
+ * @return {}
+ * @param {s32} vector
+ * @param {void} *param, , FSPIM
  */
 void FSpimInterruptHandler(s32 vector, void *param)
 {
@@ -76,7 +76,7 @@ void FSpimInterruptHandler(s32 vector, void *param)
         return;
     }
 
-    if ((FSPIM_RIS_R_TXOIR | FSPIM_RIS_R_RXOIR | FSPIM_RIS_R_RXUIR) & intr_status) /* 发送FIFO溢出 */
+    if ((FSPIM_RIS_R_TXOIR | FSPIM_RIS_R_RXOIR | FSPIM_RIS_R_RXUIR) & intr_status) /* FIFO */
     {
         FSPIM_WARN("Fifo overflow or underflow");
         if (FSPIM_RIS_R_TXOIR & intr_status)
@@ -98,16 +98,16 @@ void FSpimInterruptHandler(s32 vector, void *param)
         return;
     }
 
-    FSpimFifoRx(instance_p); /* 检查 RX Fifo是否为空，如果不为空则接收数据 */
+    FSpimFifoRx(instance_p); /*  RX Fifo */
 
-    if (instance_p->rx_buff_end == instance_p->rx_buff) /* RX 缓冲区已满，停止填入发送数据 */
+    if (instance_p->rx_buff_end == instance_p->rx_buff) /* RX  */
     {
         FSpimMaskIrq(base_addr, FSPIM_IMR_TXEIS);
         FSPIM_CALL_INTR_EVT_HANDLDER(instance_p, FSPIM_INTR_EVT_RX_DONE);
         return;
     }
 
-    if (FSPIM_RIS_R_TXEIR & intr_status) /* TX Fifo为空，填入待发送数据 */
+    if (FSPIM_RIS_R_TXEIR & intr_status) /* TX Fifo */
     {
         FSpimMaskIrq(base_addr, FSPIM_IMR_TXEIS);
         FSpimFifoTx(instance_p);
@@ -119,7 +119,7 @@ void FSpimInterruptHandler(s32 vector, void *param)
 
 /**
  * @name: FSpimRegisterIntrruptHandler
- * @msg: 注册FSPIM中断事件处理函数
+ * @msg: FSPIM
  * @return {*}
  * @param {FI2c} *instance_p
  * @param {u32} evt

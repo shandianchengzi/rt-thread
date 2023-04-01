@@ -1223,13 +1223,13 @@ void CAN_AutoCfg_BaudParam(CAN_Peli_InitTypeDef  *CAN_Peli_InitStruct, unsigned 
 {
     unsigned int i, value = baud, record = 1;
     unsigned int remain = 0, sumPrescaler = 0;
-    while(( baud == 0 ) || ( SrcClk == 0 )); //防止波特率及时钟为0
-    sumPrescaler = SrcClk / baud; //总分频
+    while(( baud == 0 ) || ( SrcClk == 0 )); //0
+    sumPrescaler = SrcClk / baud; //
     sumPrescaler = sumPrescaler / 2; //
     for( i = 25; i > 3; i -- )
     {
         remain = sumPrescaler - ((sumPrescaler / i) * i);
-        if( remain == 0 )       //整除
+        if( remain == 0 )       //
         {
             record = i;
             break;

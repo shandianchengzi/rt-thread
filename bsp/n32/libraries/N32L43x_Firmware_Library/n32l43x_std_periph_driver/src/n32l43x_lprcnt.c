@@ -707,7 +707,7 @@ uint8_t GetSampleMode(void)
   *     @arg 1: LPRCNT mode, the mode can detect the Circle of rotation
   * @retval None
   */
-//void SetLPRCNTWorkMode(uint8_t mode)//封装成一个宏
+//void SetLPRCNTWorkMode(uint8_t mode)//
 //{
 //  LPRCNT->CTRL |= (uint32_t)(mode << 24);
 //}
@@ -810,7 +810,7 @@ void DAC_CMP_ALWSONCmd(FunctionalState NewState)
 {
   if (NewState != DISABLE)
   {
-     /* Enable the selected LPRCNT AlwaysON，hardware auto turn on MSI clock */
+     /* Enable the selected LPRCNT AlwaysONhardware auto turn on MSI clock */
      LPRCNT->CAL3 |= LPRCNT_CAL3_DAC_CMP_ALWSON;
      RCC_EnableMsi(DISABLE);
   }

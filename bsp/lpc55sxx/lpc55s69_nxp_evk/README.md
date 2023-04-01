@@ -1,6 +1,6 @@
 # LPC55S69-EVK BSP Introduction
 
-**English** | [中文](README_zh.md)
+**English** | [](README_zh.md)
 
 ## 1. Introduction
 
@@ -39,7 +39,7 @@ Includes the following hardware features:
 
 2) Configure the project and prepare the ENV
 
-（Linux/Mac）
+Linux/Mac
 
 ```bash
     cd rt-thread/bsp/lpc55s69_evk
@@ -48,19 +48,19 @@ Includes the following hardware features:
     pkgs --upgrade
 ```
 
-（Windows）
+Windows
 
 >Download the ENV toolkit [RT-Thread][1]
 
 3) Configure the chip model
 
-（Linux/Mac）
+Linux/Mac
 
 ```bash
     scons --menuconfig
 ```
 
-（Windows(use ENV)）
+Windows(use ENV)
 
 ```bash
     menuconfig
@@ -70,14 +70,14 @@ On the menuconfig page, configure and select the corresponding chip model, if th
 
 4) Build Project (please skip this step under Mac/Linux)
 
-（Windows IAR）
+Windows IAR
 
 ```bash
     SET RTT_CC=iar
     scons --target=iar -s
 ```
 
-（Windows MDK5）*
+Windows MDK5*
 
 ```bash
     scons --target=mdk5 -s
@@ -105,21 +105,21 @@ Or you can choose to refer to this forum post:[AC6 compiler error unsupported op
 
 To use the MDK or IAR, see the corresponding tutorial
 
-（Windows arm-none-eabi-gcc）
+Windows arm-none-eabi-gcc
 Use the following command to set the GCC path
 
 ```bash
     SET RTT_EXEC_PATH=[GCC path]
 ```
 
-（Linux/Mac arm-none-eabi-gcc）
+Linux/Mac arm-none-eabi-gcc
 Use the following command to set the GCC path
 
 ```bash
     export RTT_EXEC_PATH=[GCC path]
 ```
 
-Compile（WindowsLinux/Mac arm-none-eabi-gcc）
+CompileWindowsLinux/Mac arm-none-eabi-gcc
 
 ```bash
     scons -j4

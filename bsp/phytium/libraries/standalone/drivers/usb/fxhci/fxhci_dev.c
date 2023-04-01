@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fxhci_dev.c
  * Date: 2022-02-11 13:33:12
  * LastEditTime: 2022-02-18 09:12:46
- * Description:  This files is for implementation of XHCI device
+ * Description: This files is for implementation of XHCI device
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   Zhugengyu  2022/2/7    init commit
  */
 
@@ -145,12 +145,12 @@ static FXhciInputCtx *FXhciMakeInputCtx(FXhci *xhci, const size_t ctxsize)
 
 /**
  * @name: FXhciSetAddress
- * @msg: 设备USB设备的地址
- * @return {FUsbDev *}, USB设备实例
- * @param {FUsbHc} *controller, USB控制器实例
- * @param {FUsbSpeed} speed, USB设备的速度类型
- * @param {int} hubport, USB设备连接的port号
- * @param {int} hubaddr, USB设备连接的hub地址
+ * @msg: USB
+ * @return {FUsbDev *}, USB
+ * @param {FUsbHc} *controller, USB
+ * @param {FUsbSpeed} speed, USB
+ * @param {int} hubport, USBport
+ * @param {int} hubaddr, USBhub
  */
 FUsbDev *FXhciSetAddress(FUsbHc *controller, FUsbSpeed speed, int hubport, int hubaddr)
 {
@@ -439,9 +439,9 @@ static int FXhciFinishEpConfig(const FUsbEndpoint *const ep, FXhciInputCtx *cons
 
 /**
  * @name: FXhciFinishDevConfig
- * @msg: 完成USB设备配置
- * @return {FXhciTransCode} 传输返回码
- * @param {FUsbDev} *dev, USB设备实例
+ * @msg: USB
+ * @return {FXhciTransCode} 
+ * @param {FUsbDev} *dev, USB
  */
 FXhciTransCode FXhciFinishDevConfig(FUsbDev *const dev)
 {
@@ -528,10 +528,10 @@ _free_return:
 
 /**
  * @name: FXhciDestoryDev
- * @msg: 删除指定USB设备实例
+ * @msg: USB
  * @return {*}
- * @param {FUsbHc} *controller, USB控制器实例
- * @param {int} slot_id, USB设备所在的slot号
+ * @param {FUsbHc} *controller, USB
+ * @param {int} slot_id, USBslot
  */
 void FXhciDestoryDev(FUsbHc *const controller, const int slot_id)
 {

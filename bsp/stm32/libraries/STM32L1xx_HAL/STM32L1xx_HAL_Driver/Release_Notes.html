@@ -26,7 +26,7 @@
 <div class="sectione dark">
 <center>
 <h1 id="release-notes-for-stm32l1xx-hal-drivers"><small>Release Notes for</small> <mark>STM32L1xx HAL Drivers</mark></h1>
-<p>Copyright © 2017 STMicroelectronics<br />
+<p>Copyright  2017 STMicroelectronics<br />
 </p>
 <a href="https://www.st.com" class="logo"><img src="_htmresc/st_logo.png" alt="ST logo" /></a>
 </center>
@@ -85,7 +85,7 @@
 </ul></li>
 <li><strong>HAL UART</strong> update
 <ul>
-<li>Correction on UART ReceptionType management in case of ReceptionToIdle API are called from RxEvent callback. Update UART polling and interruption processes to fix issues related to access out of user’s specified buffer. Fix wrong comment related to RX pin configuration within the description section. Enhance reception for idle services (ReceptionToIdle):
+<li>Correction on UART ReceptionType management in case of ReceptionToIdle API are called from RxEvent callback. Update UART polling and interruption processes to fix issues related to access out of users specified buffer. Fix wrong comment related to RX pin configuration within the description section. Enhance reception for idle services (ReceptionToIdle):
 <ul>
 <li>Add a new field (HAL_UART_RxTypeTypeDef) to the UART_HandleTypeDef structure to identify the type of ongoing reception.</li>
 <li>Add UART Reception Event Callback registration.</li>
@@ -117,7 +117,7 @@
 </ul></li>
 <li>Fix the wait for the RSF bit to be cleared in the LL_RTC_WaitForSynchro function.</li>
 <li>Correct month management in IS_LL_RTC_MONTH() macro.</li>
-<li>Update __HAL_RTC_…(__HANDLE__, …) macros to access registers through (__HANDLE__)-&gt;Instance pointer and avoid “unused variable” warnings.</li>
+<li>Update __HAL_RTC_(__HANDLE__, ) macros to access registers through (__HANDLE__)-&gt;Instance pointer and avoid unused variable warnings.</li>
 </ul></li>
 <li><strong>LL FMC_LL</strong> update
 <ul>
@@ -143,7 +143,7 @@
 <li><strong>HAL OPAMP</strong> update
 <ul>
 <li>Fix CodeSonar error.</li>
-<li>Update HAL_OPAMP_SelfCalibrate() API to avoid wrong configuration of trimming value “n” and “p”.</li>
+<li>Update HAL_OPAMP_SelfCalibrate() API to avoid wrong configuration of trimming value n and p.</li>
 </ul></li>
 <li><strong>HAL I2C</strong> update
 <ul>
@@ -156,7 +156,7 @@
 <ul>
 <li>Update I2C_MemoryTransmit_TXE_BTF() API to increment EventCount.</li>
 </ul></li>
-<li>Update to use the right macro to clear I2C ADDR flag inside I2C_Slave_ADDR() API as it’s indicated in the reference manual.</li>
+<li>Update to use the right macro to clear I2C ADDR flag inside I2C_Slave_ADDR() API as its indicated in the reference manual.</li>
 <li>Update HAL_I2C_EV_IRQHandler() and I2C_MasterTransmit_BTF() APIs to fix an issue where the transfer of the first few bytes to an I2C memory fails.</li>
 </ul></li>
 <li><strong>HAL/LL ADC</strong> update
@@ -197,7 +197,7 @@
 <ul>
 <li>Update to fix hardfault issue with HAL_I2C_Mem_Write_DMA() API:
 <ul>
-<li>Abort the right ongoing DMA transfer when memory write access request operation failed: fix typo “hdmarx” replaced by “hdmatx”</li>
+<li>Abort the right ongoing DMA transfer when memory write access request operation failed: fix typo hdmarx replaced by hdmatx</li>
 </ul></li>
 </ul></li>
 </ul>
@@ -248,7 +248,7 @@
 <li><strong>HAL/LL GPIO</strong> driver
 <ul>
 <li>Update HAL_GPIO_TogglePin() API to allow the toggling of many pins</li>
-<li>Update GPIO initialization sequence to avoid unwanted pulse on GPIO Pin’s</li>
+<li>Update GPIO initialization sequence to avoid unwanted pulse on GPIO Pins</li>
 </ul></li>
 <li><strong>HAL EXTI</strong> driver
 <ul>
@@ -264,7 +264,7 @@
 <ul>
 <li>Add stop condition generation when NACK occurs.</li>
 </ul></li>
-<li>Update I2C_DMAXferCplt(), I2C_DMAError() and I2C_DMAAbort() APIs to fix hardfault issue when hdmatx and hdmarx parameters in i2c handle aren’t initialized (NULL pointer).</li>
+<li>Update I2C_DMAXferCplt(), I2C_DMAError() and I2C_DMAAbort() APIs to fix hardfault issue when hdmatx and hdmarx parameters in i2c handle arent initialized (NULL pointer).</li>
 <li>Update HAL_I2C_Init() API to force software reset before setting new I2C configuration</li>
 <li>Update HAL I2C processes to report ErrorCode when wrong I2C start condition occurs
 <ul>
@@ -369,7 +369,7 @@
 <li>Replace IS_TIM_SYNCHRO_INSTANCE() macro by IS_TIM_MASTER_INSTANCE() macro.</li>
 <li>Add IS_TIM_SLAVE_INSTANCE() macro to check on TIM_SMCR_MSM bit.</li>
 </ul></li>
-<li>Remove ‘register’ storage class specifier from LL TIM driver.</li>
+<li>Remove register storage class specifier from LL TIM driver.</li>
 <li>Add new API HAL_TIM_DMABurst_MultiWriteStart() allowing to configure the DMA Burst to transfer multiple Data from the memory to the TIM peripheral</li>
 <li>Add new API HAL_TIM_DMABurst_MultiReadStart() allowing to configure the DMA Burst to transfer Data from the TIM peripheral to the memory</li>
 </ul></li>
@@ -735,14 +735,14 @@
 </ul></li>
 <li>Updated HAL Driver compliancy with MISRA C 2004 rules:
 <ul>
-<li>MISRA C 2004 rule 10.3 (illegal explicit conversion from type “unsigned int” to "uint16_t *)</li>
-<li>MISRA C 2004 rule 10.5 (if the bitwise operators ~ and &lt;&lt; are applied to an operand of underlying type ‘unsigned char’ or ‘unsigned short’, the result shall be immediately cast to the underlying type of the operand)</li>
+<li>MISRA C 2004 rule 10.3 (illegal explicit conversion from type unsigned int to "uint16_t *)</li>
+<li>MISRA C 2004 rule 10.5 (if the bitwise operators ~ and &lt;&lt; are applied to an operand of underlying type unsigned char or unsigned short, the result shall be immediately cast to the underlying type of the operand)</li>
 <li>MISRA C 2004 rule 11.4 (cast should not be performed between a pointer to object type and a different pointer to object type)</li>
 <li>MISRA C 2004 rule 12.6 (logical operators should not be confused with bitwise operators)</li>
 <li>MISRA C 2004 rule 12.7 (bitwise operations not performed on signed integer types)</li>
 <li>MISRA C 2004 rule 14.3 (a null statement shall only occur on a line by itself)</li>
 </ul></li>
-<li>Removed (uint32_t) cast when “U” is used in order to avoid double definitions.</li>
+<li>Removed (uint32_t) cast when U is used in order to avoid double definitions.</li>
 <li>Replaced hard coded POSITION definition in HAL/LL drivers by the associated PPP_xxx_pos CMSIS define.</li>
 </ul></li>
 <li><strong>HAL CORTEX</strong>
@@ -874,7 +874,7 @@
 </ul></li>
 <li><strong>SPI</strong>
 <ul>
-<li>Correct MISRA 5.2 “tmpreg” variable shall not be used inside MACRO.</li>
+<li>Correct MISRA 5.2 tmpreg variable shall not be used inside MACRO.</li>
 <li>In the SPI_HandleTypeDef structure, RxXferCount and TxXferCount are now __IO.</li>
 <li>Clear the OVR flag before a new transfer.</li>
 </ul></li>
@@ -957,7 +957,7 @@
 <ul>
 <li><strong>ADC</strong>
 <ul>
-<li>The ADC internal macro “IS_ADC_RANGE” is modified to take into account the ADC resolution.</li>
+<li>The ADC internal macro IS_ADC_RANGE is modified to take into account the ADC resolution.</li>
 <li>The function HAL_ADC_PollForEvent, in case of timeout, returns HAL_TIMEOUT instead of HAL_ERROR.</li>
 <li>HAL_ADC_Init set the ADC handle in state HAL_ADC_ERROR_INTERNAL if the user try to initialize the ADC in DiscontinuousConvMode and ContinuousConvMode simultaneously, which is not possible.</li>
 <li>Enhance the check for ScanConvMode in HAL_ADC_Init.</li>
@@ -996,7 +996,7 @@
 <li><strong>PCD</strong>
 <ul>
 <li>Corrected issue when using USB Device double-buffering mode for IN endpoints.</li>
-<li>do{ … } while(0) is used for multi statement macros.</li>
+<li>do{  } while(0) is used for multi statement macros.</li>
 </ul></li>
 <li><strong>PWR</strong>
 <ul>
@@ -1016,7 +1016,7 @@
 <li>HAL_RTC_GetTime is updated to take into account the new field RTC_TimeTypeDef.SecondFraction.</li>
 <li>Corrected error in __HAL_RTC_TAMPER_TIMESTAMP_EXTI_GET_FLAG macro.</li>
 <li>Add additionnal checks on WUTWF flag in HAL_RTCEx_SetWakeUpTimer_IT.</li>
-<li>do{ … } while(0) is used for multi statement macros.</li>
+<li>do{  } while(0) is used for multi statement macros.</li>
 </ul></li>
 <li><strong>USART</strong>
 <ul>

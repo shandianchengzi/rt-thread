@@ -112,13 +112,13 @@ void Pcnt_IRQHandler(void)
 
 /**
  * \brief   
- *          PCNT 初始化
+ *          PCNT 
  *
- * \param   无
- * \param   无
+ * \param   
+ * \param   
  *
- * \retval  无
- * \retval  无
+ * \retval  
+ * \retval  
  */
 en_result_t PCNT_Init(stc_pcnt_config_t*  pstcPcntConfig)
 {
@@ -128,7 +128,7 @@ en_result_t PCNT_Init(stc_pcnt_config_t*  pstcPcntConfig)
   
     M0P_PCNT->CR_f.S1P = pstcPcntConfig->bS1Sel; 
     M0P_PCNT->CR_f.S0P = pstcPcntConfig->bS0Sel;
-    M0P_PCNT->CR_f.DIR = pstcPcntConfig->u8Direc;   //计数方式
+    M0P_PCNT->CR_f.DIR = pstcPcntConfig->u8Direc;   //
     M0P_PCNT->CR_f.CLKSEL = pstcPcntConfig->u8Clk;
     M0P_PCNT->CR_f.MODE = pstcPcntConfig->u8Mode;
     
@@ -169,13 +169,13 @@ en_result_t PCNT_Init(stc_pcnt_config_t*  pstcPcntConfig)
 
 /**
  * \brief   
- *          PCNT 去初始化
+ *          PCNT 
  *
- * \param   无
- * \param   无
+ * \param   
+ * \param   
  *
- * \retval  无
- * \retval  无
+ * \retval  
+ * \retval  
  */
 void PCNT_DeInit(void)
 {
@@ -187,19 +187,19 @@ void PCNT_DeInit(void)
 
 /**
  * \brief   
- *          PCNT 脉冲计数设置
+ *          PCNT 
  *
- * \param   [in]  start  开始计数设置
- * \param   [in]  end    结束计数设置
+ * \param   [in]  start  
+ * \param   [in]  end    
  *
- * \retval  无
+ * \retval  
  */
 en_result_t PCNT_Parameter(uint8_t start,uint8_t end)
 {
   uint32_t u32TimeOut;
     
    u32TimeOut = 1000;
-   M0P_PCNT->BUF = end;     //加载结束溢出值
+   M0P_PCNT->BUF = end;     //
 	 M0P_PCNT->CMD_f.B2T = 1;
 	
 	  while(u32TimeOut--)
@@ -215,7 +215,7 @@ en_result_t PCNT_Parameter(uint8_t start,uint8_t end)
     }
 
    u32TimeOut = 1000;
-   M0P_PCNT->BUF = start;     //加载初始值
+   M0P_PCNT->BUF = start;     //
 	 M0P_PCNT->CMD_f.B2C = 1;
 	
 	  while(u32TimeOut--)
@@ -234,10 +234,10 @@ en_result_t PCNT_Parameter(uint8_t start,uint8_t end)
 
 /**
  * \brief   
- *          获取PCNT计数方向
+ *          PCNT
  * \param   [in]  
  *
- * \retval  无
+ * \retval  
  */
 en_pcnt_direcsel_t PCNT_Direction(void)
 {
@@ -246,10 +246,10 @@ en_pcnt_direcsel_t PCNT_Direction(void)
 
 /**
  * \brief   
- *          获取PCNT计数值
+ *          PCNT
  * \param   [in]  
  *
- * \retval  无
+ * \retval  
  */
 uint16_t PCNT_Count(void)
 {
@@ -258,10 +258,10 @@ uint16_t PCNT_Count(void)
 
 /**
  * \brief   
- *          获取PCNT溢出值
+ *          PCNT
  * \param   [in]  
  *
- * \retval  无
+ * \retval  
  */
 uint16_t PCNT_TopCount(void)
 {
@@ -270,10 +270,10 @@ uint16_t PCNT_TopCount(void)
 
 /**
  * \brief   
- *          PCNT使能
+ *          PCNT
  * \param   [in]  
  *
- * \retval  无
+ * \retval  
  */
 void PCNT_Run(boolean_t work)
 {
@@ -282,10 +282,10 @@ void PCNT_Run(boolean_t work)
 
 /**
  * \brief   
- *          PCNT 读取状态
-  * \param  [in]  en_pcnt_status_t  PCNT状态
+ *          PCNT 
+  * \param  [in]  en_pcnt_status_t  PCNT
  *
- * \retval  无
+ * \retval  
  */
 boolean_t PCNT_GetStatus(en_pcnt_status_t enStatus)
 {
@@ -326,10 +326,10 @@ boolean_t PCNT_GetStatus(en_pcnt_status_t enStatus)
 }
 /**
  * \brief   
- *          PCNT 清除状态
-  * \param  [in]  en_pcnt_status_t  PCNT状态
+ *          PCNT 
+  * \param  [in]  en_pcnt_status_t  PCNT
  *
- * \retval  无
+ * \retval  
  */
 void PCNT_ClrStatus(en_pcnt_status_t enStatus)
 {
@@ -368,10 +368,10 @@ void PCNT_ClrStatus(en_pcnt_status_t enStatus)
 }
 /**
  * \brief   
- *          PCNT 中断设置
-  * \param  [in]  en_pcnt_status_t  PCNT状态
+ *          PCNT 
+  * \param  [in]  en_pcnt_status_t  PCNT
  *
- * \retval  无
+ * \retval  
  */
 void PCNT_SetIrqStatus(en_pcnt_status_t enStatus)
 {

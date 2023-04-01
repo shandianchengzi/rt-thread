@@ -80,32 +80,32 @@
   */
 
 /**
-  * @brief  复位SPI
-  * @param  SPIx 外设入口地址
-  * @retval 错误状态，可能值：
-  *         -FL_PASS 外设寄存器值恢复复位值
-  *         -FL_FAIL 未成功执行
+  * @brief  SPI
+  * @param  SPIx 
+  * @retval 
+  *         -FL_PASS 
+  *         -FL_FAIL 
   */
 FL_ErrorStatus FL_SPI_DeInit(SPI_Type *SPIx)
 {
     assert_param(IS_FL_SPI_INSTANCE(SPIx));
-    /* 使能外设复位 */
+    /*  */
     FL_RCC_EnablePeripheralReset();
     if(SPIx == SPI1)
     {
-        /* 复位SPI外设寄存器 */
+        /* SPI */
         FL_RCC_EnableResetAPB2Peripheral(FL_RCC_RSTAPB_SPI1);
         FL_RCC_DisableResetAPB2Peripheral(FL_RCC_RSTAPB_SPI1);
-        /* 关闭外设总线时钟和工作时钟 */
+        /*  */
         FL_RCC_DisableGroup3BusClock(FL_RCC_GROUP3_BUSCLK_SPI1);
     }
     else
         if(SPIx == SPI2)
         {
-            /* 复位SPI外设寄存器 */
+            /* SPI */
             FL_RCC_EnableResetAPB1Peripheral(FL_RCC_RSTAPB_SPI2);
             FL_RCC_DisableResetAPB1Peripheral(FL_RCC_RSTAPB_SPI2);
-            /* 关闭外设总线时钟和工作时钟 */
+            /*  */
             FL_RCC_DisableGroup3BusClock(FL_RCC_GROUP3_BUSCLK_SPI2);
         }
         else
@@ -113,18 +113,18 @@ FL_ErrorStatus FL_SPI_DeInit(SPI_Type *SPIx)
             FL_RCC_DisablePeripheralReset();
             return FL_FAIL;
         }
-    /* 锁定外设复位 */
+    /*  */
     FL_RCC_DisablePeripheralReset();
     return FL_PASS;
 }
 
 /**
-  * @brief  配置SPI
-  * @param  SPIx 外设入口地址
-  * @param  initStruct 指向 @ref FL_SPI_InitTypeDef 结构体的指针
-  * @retval 错误状态，可能值：
-  *         -FL_PASS 配置成功
-  *         -FL_FAIL 配置过程发生错误
+  * @brief  SPI
+  * @param  SPIx 
+  * @param  initStruct  @ref FL_SPI_InitTypeDef 
+  * @retval 
+  *         -FL_PASS 
+  *         -FL_FAIL 
   */
 FL_ErrorStatus FL_SPI_Init(SPI_Type *SPIx, FL_SPI_InitTypeDef *initStruct)
 {
@@ -137,20 +137,20 @@ FL_ErrorStatus FL_SPI_Init(SPI_Type *SPIx, FL_SPI_InitTypeDef *initStruct)
     assert_param(IS_FL_SPI_CLOCK_POLARITY(initStruct->clockPolarity));
     if(SPIx == SPI1)
     {
-        /* 外设总线时钟 */
+        /*  */
         FL_RCC_EnableGroup3BusClock(FL_RCC_GROUP3_BUSCLK_SPI1);
     }
     else
         if(SPIx == SPI2)
         {
-            /* 外设总线时钟 */
+            /*  */
             FL_RCC_EnableGroup3BusClock(FL_RCC_GROUP3_BUSCLK_SPI2);
         }
         else
         {
             return FL_FAIL;
         }
-    /* 选择NSS脚控制模式 */
+    /* NSS */
     if(initStruct->softControl == FL_ENABLE)
     {
         FL_SPI_EnableSSNSoftControl(SPIx);
@@ -159,28 +159,28 @@ FL_ErrorStatus FL_SPI_Init(SPI_Type *SPIx, FL_SPI_InitTypeDef *initStruct)
     {
         FL_SPI_DisableSSNSoftControl(SPIx);
     }
-    /* 外设工作主从模式 */
+    /*  */
     FL_SPI_SetWorkMode(SPIx, initStruct->mode);
-    /* 总线通讯速率 */
+    /*  */
     FL_SPI_SetClockDivision(SPIx, initStruct->baudRate);
-    /* 数据bit方向 */
+    /* bit */
     FL_SPI_SetBitOrder(SPIx, initStruct->bitOrder);
-    /* 总线数据位宽 */
+    /*  */
     FL_SPI_SetDataWidth(SPIx, initStruct->dataWidth);
-    /* 时钟相位 */
+    /*  */
     FL_SPI_SetClockPhase(SPIx, initStruct->clockPhase);
-    /* 传输模式 双工半双工  */
+    /*    */
     FL_SPI_SetTransferMode(SPIx, initStruct->transferMode);
-    /* 时钟极性 */
+    /*  */
     FL_SPI_SetClockPolarity(SPIx, initStruct->clockPolarity);
-    /* 使能 外设*/
+    /*  */
     FL_SPI_Enable(SPIx);
     return FL_PASS;
 }
 
 /**
-  * @brief  将 @ref FL_SPI_InitTypeDef 结构体初始化为默认配置
-  * @param  initStruct 指向 @ref FL_SPI_InitTypeDef 结构体的指针
+  * @brief   @ref FL_SPI_InitTypeDef 
+  * @param  initStruct  @ref FL_SPI_InitTypeDef 
   *
   * @retval None
   */

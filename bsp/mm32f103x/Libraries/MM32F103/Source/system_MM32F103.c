@@ -878,18 +878,18 @@ void SetSysClockTo48_HSI()
 
     RCC->CFGR &= ~RCC_CFGR_PLLSRC;	 //PLLSRC ON
 
-    RCC->CR &= ~(RCC_CR_PLLON);		//清PLL//	RCC->CR &=~(7<<20);		//清PLL
+    RCC->CR &= ~(RCC_CR_PLLON);		//PLL//	RCC->CR &=~(7<<20);		//PLL
 
     RCC->CR &= ~(0x1f << 26);
-    RCC->CR |= (4 - 1) << 26; //设置PLL值 2~16
+    RCC->CR |= (4 - 1) << 26; //PLL 2~16
 
-    FLASH->ACR = FLASH_ACR_LATENCY_1 | FLASH_ACR_PRFTBE;	 //FLASH 2个延时周期
+    FLASH->ACR = FLASH_ACR_LATENCY_1 | FLASH_ACR_PRFTBE;	 //FLASH 2
 
     RCC->CR |= RCC_CR_PLLON; //PLLON
-    while(!(RCC->CR & RCC_CR_PLLRDY)); //等待PLL锁定
+    while(!(RCC->CR & RCC_CR_PLLRDY)); //PLL
     RCC->CFGR &= ~RCC_CFGR_SW;
-    RCC->CFGR |= RCC_CFGR_SW_PLL; //PLL作为系统时钟
-    while(temp != 0x02)   //等待PLL作为系统时钟设置成功
+    RCC->CFGR |= RCC_CFGR_SW_PLL; //PLL
+    while(temp != 0x02)   //PLL
     {
         temp = RCC->CFGR >> 2;
         temp &= 0x03;
@@ -905,18 +905,18 @@ void SetSysClockTo72_HSI()
 
     RCC->CFGR &= ~RCC_CFGR_PLLSRC;	 //PLLSRC ON
 
-    RCC->CR &= ~(RCC_CR_PLLON);		//清PLL//	RCC->CR &=~(7<<20);		//清PLL
+    RCC->CR &= ~(RCC_CR_PLLON);		//PLL//	RCC->CR &=~(7<<20);		//PLL
 
     RCC->CR &= ~(0x1f << 26);
-    RCC->CR |= (6 - 1) << 26; //设置PLL值 2~16
+    RCC->CR |= (6 - 1) << 26; //PLL 2~16
 
-    FLASH->ACR = FLASH_ACR_LATENCY_1 | FLASH_ACR_PRFTBE;	 //FLASH 2个延时周期
+    FLASH->ACR = FLASH_ACR_LATENCY_1 | FLASH_ACR_PRFTBE;	 //FLASH 2
 
     RCC->CR |= RCC_CR_PLLON; //PLLON
-    while(!(RCC->CR & RCC_CR_PLLRDY)); //等待PLL锁定
+    while(!(RCC->CR & RCC_CR_PLLRDY)); //PLL
     RCC->CFGR &= ~RCC_CFGR_SW;
-    RCC->CFGR |= RCC_CFGR_SW_PLL; //PLL作为系统时钟
-    while(temp != 0x02)   //等待PLL作为系统时钟设置成功
+    RCC->CFGR |= RCC_CFGR_SW_PLL; //PLL
+    while(temp != 0x02)   //PLL
     {
         temp = RCC->CFGR >> 2;
         temp &= 0x03;
@@ -932,18 +932,18 @@ void SetSysClockTo96_HSI()
 
     RCC->CFGR &= ~RCC_CFGR_PLLSRC;	 //PLLSRC ON
 
-    RCC->CR &= ~(RCC_CR_PLLON);		//清PLL//	RCC->CR &=~(7<<20);		//清PLL
+    RCC->CR &= ~(RCC_CR_PLLON);		//PLL//	RCC->CR &=~(7<<20);		//PLL
 
     RCC->CR &= ~(0x1f << 26);
-    RCC->CR |= (8 - 1) << 26; //设置PLL值 2~16
+    RCC->CR |= (8 - 1) << 26; //PLL 2~16
 
-    FLASH->ACR = FLASH_ACR_LATENCY_1 | FLASH_ACR_LATENCY_0 | FLASH_ACR_PRFTBE;	 //FLASH 2个延时周期
+    FLASH->ACR = FLASH_ACR_LATENCY_1 | FLASH_ACR_LATENCY_0 | FLASH_ACR_PRFTBE;	 //FLASH 2
 
     RCC->CR |= RCC_CR_PLLON; //PLLON
-    while(!(RCC->CR & RCC_CR_PLLRDY)); //等待PLL锁定
+    while(!(RCC->CR & RCC_CR_PLLRDY)); //PLL
     RCC->CFGR &= ~RCC_CFGR_SW;
-    RCC->CFGR |= RCC_CFGR_SW_PLL; //PLL作为系统时钟
-    while(temp != 0x02)   //等待PLL作为系统时钟设置成功
+    RCC->CFGR |= RCC_CFGR_SW_PLL; //PLL
+    while(temp != 0x02)   //PLL
     {
         temp = RCC->CFGR >> 2;
         temp &= 0x03;

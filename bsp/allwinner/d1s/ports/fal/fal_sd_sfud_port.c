@@ -41,9 +41,9 @@ static int read(long offset, uint8_t *buf, size_t size)
 
     while (remain_size)
     {
-        sector_offset = offset & (SECTOR_SIZE - 1);  //块内偏移
-        sector_pos = offset / SECTOR_SIZE;          //块位置
-        rt_device_read(sd_dev, sector_pos, buffer, SECTOR_SIZE / 512);  //读取一个块
+        sector_offset = offset & (SECTOR_SIZE - 1);  //
+        sector_pos = offset / SECTOR_SIZE;          //
+        rt_device_read(sd_dev, sector_pos, buffer, SECTOR_SIZE / 512);  //
         req_size = (SECTOR_SIZE - sector_offset) > remain_size ? remain_size : (SECTOR_SIZE - sector_offset);
         memcpy(buf, buffer + sector_offset, req_size);
         buf += req_size;
@@ -64,13 +64,13 @@ static int write(long offset, const uint8_t *buf, size_t size)
 
     while (remain_size)
     {
-        sector_offset = offset & (SECTOR_SIZE - 1);  //块内偏移
-        sector_pos = offset / SECTOR_SIZE;          //块位置
+        sector_offset = offset & (SECTOR_SIZE - 1);  //
+        sector_pos = offset / SECTOR_SIZE;          //
 
-        rt_device_read(sd_dev, sector_pos, buffer, SECTOR_SIZE / 512);  //读取一个块
+        rt_device_read(sd_dev, sector_pos, buffer, SECTOR_SIZE / 512);  //
         req_size = (SECTOR_SIZE - sector_offset) > remain_size ? remain_size : (SECTOR_SIZE - sector_offset);
         memcpy(buffer + sector_offset, buf, req_size);
-        rt_device_write(sd_dev, sector_pos, buffer, SECTOR_SIZE / 512); //写回sd卡
+        rt_device_write(sd_dev, sector_pos, buffer, SECTOR_SIZE / 512); //sd
         buf += req_size;
         offset += req_size;
         remain_size -= req_size;

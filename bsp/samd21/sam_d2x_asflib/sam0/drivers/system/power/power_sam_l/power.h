@@ -367,7 +367,7 @@ struct system_battery_backup_power_switch_config {
  * \brief Retrieve the default configuration for voltage regulator.
  *
  * Fills a configuration structure with the default configuration:
- *   - Voltage scaling period is 1μs
+ *   - Voltage scaling period is 1s
  *   - Voltage scaling voltage step is 2*min_step
  *   - The voltage regulator is in low power mode in Standby sleep mode
  *   - The voltage regulator in active mode is an LDO voltage regulator

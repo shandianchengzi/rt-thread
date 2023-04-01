@@ -416,7 +416,7 @@ typedef struct
  * | ------------ | --------------------------------------------------- |
  * | 0xxxxxxx     | DeadAreaCoef * DeadAreaStep                         |
  * | 10xxxxxx     | ( 64 +  DeadAreaCoef[5:0] ) * ( 2 * DeadAreaStep )  |
- * | 110xxxxx     | ( 32 +  DeadAreaCoef[4:0] ) * ( 8 * DeadAreaStep ï¼‰ |
+ * | 110xxxxx     | ( 32 +  DeadAreaCoef[4:0] ) * ( 8 * DeadAreaStep  |
  * | 111xxxxx     | ( 32 +  DeadAreaCoef[4:0] ) * ( 16 * DeadAreaStep ) |
  */
 typedef struct

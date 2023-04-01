@@ -83,7 +83,7 @@
 // 1 13 Reserved
 // 1 14 Reserved
 // 1 15 Reserved
-// // 1 ≥16 Designated for platform use
+// // 1 16 Designated for platform use
 // 0 0 Instruction address misaligned       not support
 // 0 1 Instruction access fault             not support
 // 0 2 Illegal instruction                  support
@@ -101,10 +101,10 @@
 // 0 14 Reserved
 // 0 15 Store/AMO page fault                not support
 // 0 16-23 Reserved
-// // 0 24–31 Designated for custom use
+// // 0 2431 Designated for custom use
 // 0 32-47 Reserved
-// // 0 48–63 Designated for custom use
-// 0 ≥64 Reserved
+// // 0 4863 Designated for custom use
+// 0 64 Reserved
 
 
 // #define mtime_irq_flag        1

@@ -738,12 +738,12 @@ UINT8 InitRootDevice(PUINT8 DataBuf)
 /*********************************************************************
  * @fn      HubGetPortStatus
  *
- * @brief   查询HUB端口状态,返回在Com_Buffer中
+ * @brief   HUB,Com_Buffer
  *
  * @param   UINT8 HubPortIndex
  *
- * @return  ERR_SUCCESS 成功
- *          ERR_USB_BUF_OVER 长度错误
+ * @return  ERR_SUCCESS 
+ *          ERR_USB_BUF_OVER 
  */
 UINT8 HubGetPortStatus(UINT8 HubPortIndex)
 {
@@ -755,14 +755,14 @@ UINT8 HubGetPortStatus(UINT8 HubPortIndex)
     pSetupReq->wValue = 0x0000;
     pSetupReq->wIndex = 0x0000 | HubPortIndex;
     pSetupReq->wLength = 0x0004;
-    s = HostCtrlTransfer(Com_Buffer, &len); // 执行控制传输
+    s = HostCtrlTransfer(Com_Buffer, &len); // 
     if(s != ERR_SUCCESS)
     {
         return (s);
     }
     if(len < 4)
     {
-        return (ERR_USB_BUF_OVER); // 描述符长度错误
+        return (ERR_USB_BUF_OVER); // 
     }
 
     return (ERR_SUCCESS);
@@ -771,12 +771,12 @@ UINT8 HubGetPortStatus(UINT8 HubPortIndex)
 /*********************************************************************
  * @fn      HubSetPortFeature
  *
- * @brief   设置HUB端口特性
+ * @brief   HUB
  *
  * @param   UINT8 HubPortIndex
  *          UINT8 FeatureSelt
  *
- * @return  ERR_SUCCESS 成功
+ * @return  ERR_SUCCESS 
  */
 UINT8 HubSetPortFeature(UINT8 HubPortIndex, UINT8 FeatureSelt)
 {
@@ -785,18 +785,18 @@ UINT8 HubSetPortFeature(UINT8 HubPortIndex, UINT8 FeatureSelt)
     pSetupReq->wValue = 0x0000 | FeatureSelt;
     pSetupReq->wIndex = 0x0000 | HubPortIndex;
     pSetupReq->wLength = 0x0000;
-    return (HostCtrlTransfer(NULL, NULL)); // 执行控制传输
+    return (HostCtrlTransfer(NULL, NULL)); // 
 }
 
 /*********************************************************************
  * @fn      HubClearPortFeature
  *
- * @brief   清除HUB端口特性
+ * @brief   HUB
  *
  * @param   UINT8 HubPortIndex
  *          UINT8 FeatureSelt
  *
- * @return  ERR_SUCCESS 成功
+ * @return  ERR_SUCCESS 
  */
 UINT8 HubClearPortFeature(UINT8 HubPortIndex, UINT8 FeatureSelt)
 {
@@ -805,5 +805,5 @@ UINT8 HubClearPortFeature(UINT8 HubPortIndex, UINT8 FeatureSelt)
     pSetupReq->wValue = 0x0000 | FeatureSelt;
     pSetupReq->wIndex = 0x0000 | HubPortIndex;
     pSetupReq->wLength = 0x0000;
-    return (HostCtrlTransfer(NULL, NULL)); // 执行控制传输
+    return (HostCtrlTransfer(NULL, NULL)); // 
 }

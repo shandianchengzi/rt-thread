@@ -13,7 +13,7 @@
 *
 * Date          : 2009.08.18
 *
-* Description   : host支持海量存储类时候的读写状况获取
+* Description   : host
 *
 * History       :
 *
@@ -44,7 +44,7 @@ static int usbh_disk_GetDeviceInfo(usbh_disk_info_t *disk_info,
 * Returns:
 *    void
 * note:
-*    无
+*    
 *
 *********************************************************************
 */
@@ -67,7 +67,7 @@ void set_usbh_disk_status(unsigned int status)
 * Returns:
 *    void
 * note:
-*    无
+*    
 *
 *********************************************************************
 */
@@ -197,7 +197,7 @@ static int32_t usbh_disk_info_ioctrl(void * hDev, uint32_t Cmd, long Aux, void *
 
     switch (Cmd)
     {
-        case USB_DEVICE_INFO_USER_CMD_GET_DISK_STATUS:  //read读取当前所有lun的读写状态
+        case USB_DEVICE_INFO_USER_CMD_GET_DISK_STATUS:  //readlun
         {
             unsigned int *p_status = (unsigned int *)pBuffer;
 
@@ -338,7 +338,7 @@ static int usbh_disk_GetDeviceInfo(usbh_disk_info_t *disk_info,
 
         if (device_info)
         {
-            /* 找到对应的设备 */
+            /*  */
             if (strcmp(DeviceName, device_info->DeviceName) == 0)
             {
                 memcpy(usbhDeivceInfo, &device_info->DeivceInfo, sizeof(usbhDeivceInfo_t));
@@ -362,7 +362,7 @@ static int usbh_disk_GetDeviceInfo(usbh_disk_info_t *disk_info,
 *                     usbh_disk_info_open
 *
 * Description:
-*     sd信息设备，目前主要用于监测sd设备的读写情况
+*     sdsd
 * Arguments:
 *
 * Returns:
@@ -394,7 +394,7 @@ int usbh_disk_info_reg(void)
 *                     usbh_disk_info_open
 *
 * Description:
-*     sd信息设备，目前主要用于监测sd设备的读写情况
+*     sdsd
 * Arguments:
 *
 * Returns:

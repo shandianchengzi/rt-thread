@@ -29,7 +29,7 @@ static struct esp32_i2c i2c0 = {0};
 
 static rt_size_t _master_xfer(struct rt_i2c_bus_device *bus, struct rt_i2c_msg msgs[], rt_uint32_t num)
 {
-    i2c_cmd_handle_t cmd;//创建流程
+    i2c_cmd_handle_t cmd;//
     rt_size_t ret = (0);
     rt_uint32_t index = 0;
     // struct esp32_i2c *esp32_i2c = RT_NULL;
@@ -49,12 +49,12 @@ static rt_size_t _master_xfer(struct rt_i2c_bus_device *bus, struct rt_i2c_msg m
         if (!(msg->flags & RT_I2C_NO_START))
         {
             /* Start condition and slave address. */
-            cmd = i2c_cmd_link_create();//创建流程
-            i2c_master_start(cmd);//启动流程录入
-            result = i2c_master_write_byte(cmd, msg->addr << 1 | WRITE_BIT, ACK_CHECK_EN);//发送起始信号和从设备地址
-            i2c_master_stop(cmd);//流程录入完毕
-            ret = i2c_master_cmd_begin(I2C_NUMBER(0), cmd, 1000 / portTICK_PERIOD_MS);//执行流程
-            i2c_cmd_link_delete(cmd);//删除流程任务
+            cmd = i2c_cmd_link_create();//
+            i2c_master_start(cmd);//
+            result = i2c_master_write_byte(cmd, msg->addr << 1 | WRITE_BIT, ACK_CHECK_EN);//
+            i2c_master_stop(cmd);//
+            ret = i2c_master_cmd_begin(I2C_NUMBER(0), cmd, 1000 / portTICK_PERIOD_MS);//
+            i2c_cmd_link_delete(cmd);//
             if (ret != ESP_OK) return ret;
         }
 
@@ -63,22 +63,22 @@ static rt_size_t _master_xfer(struct rt_i2c_bus_device *bus, struct rt_i2c_msg m
             if (direction == I2C_MASTER_WRITE)
             {
                 /* Transmit data. */
-                cmd = i2c_cmd_link_create();//创建流程
-                i2c_master_start(cmd);//启动流程录入
+                cmd = i2c_cmd_link_create();//
+                i2c_master_start(cmd);//
                 result = i2c_master_write_byte(cmd, msg->buf, ACK_CHECK_EN);
-                i2c_master_stop(cmd);//流程录入完毕
-                ret = i2c_master_cmd_begin(I2C_MASTER_NUM, cmd, 1000 / portTICK_PERIOD_MS);//执行流程
-                i2c_cmd_link_delete(cmd);//删除流程任务
+                i2c_master_stop(cmd);//
+                ret = i2c_master_cmd_begin(I2C_MASTER_NUM, cmd, 1000 / portTICK_PERIOD_MS);//
+                i2c_cmd_link_delete(cmd);//
             }
             else
             {
                 /* Receive Data. */
-                cmd = i2c_cmd_link_create();//创建流程
-                i2c_master_start(cmd);//启动流程录入
+                cmd = i2c_cmd_link_create();//
+                i2c_master_start(cmd);//
                 result = i2c_master_read_byte(cmd, msg->buf, ACK_VAL);
-                i2c_master_stop(cmd);//流程录入完毕
-                ret = i2c_master_cmd_begin(I2C_MASTER_NUM, cmd, 1000 / portTICK_PERIOD_MS);//执行流程
-                i2c_cmd_link_delete(cmd);//删除流程任务
+                i2c_master_stop(cmd);//
+                ret = i2c_master_cmd_begin(I2C_MASTER_NUM, cmd, 1000 / portTICK_PERIOD_MS);//
+                i2c_cmd_link_delete(cmd);//
             }
         }
     }
@@ -124,8 +124,8 @@ int rt_hw_i2c_init(void)
         // .clk_flags = 0,          /*!< Optional, you can use I2C_SCLK_SRC_FLAG_* flags to choose i2c source clock here. */
     };
 
-    i2c_param_config(i2c_master_port, &conf);//配置完成
-    i2c_driver_install(i2c_master_port, conf.mode, 0, 0, 0);// I2C 设备的初始化
+    i2c_param_config(i2c_master_port, &conf);//
+    i2c_driver_install(i2c_master_port, conf.mode, 0, 0, 0);// I2C 
     rt_i2c_bus_device_register(&i2c0.bus, i2c0.device_name);
     return RT_EOK;
 }

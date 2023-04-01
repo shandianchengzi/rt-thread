@@ -88,16 +88,16 @@ static void delay_us(rt_uint32_t us)
 }
 
 /*******************************************************************************************************
-** 函数名称: calculate_freq_for_card()
-** 功能描述: 此函数用于计算设置SD卡频率所需的分频数
+** : calculate_freq_for_card()
+** : SD
 **
-** 输　入: host            ->  DM365 MMC host句柄
-**         mmc_req_freq ->  MMC工作频率
+** : host            ->  DM365 MMC host
+**         mmc_req_freq ->  MMC
 **
-** 输　出: 分频值
+** : 
 **
-** 全局变量:
-** 调用模块: 无
+** :
+** : 
 **
 ********************************************************************************************************/
 static rt_uint32_t calculate_freq_for_card(struct mmc_dm365_host *host, rt_uint32_t mmc_req_freq)
@@ -128,16 +128,16 @@ static rt_uint32_t calculate_freq_for_card(struct mmc_dm365_host *host, rt_uint3
 }
 
 /*******************************************************************************************************
-** 函数名称: calculate_freq_for_card()
-** 功能描述: 此函数用于计算MMC clock分频数
+** : calculate_freq_for_card()
+** : MMC clock
 **
-** 输　入: host            ->  DM365 MMC host句柄
-**         ios          ->  MMC 操作句柄
+** : host            ->  DM365 MMC host
+**         ios          ->  MMC 
 **
-** 输　出: 读取到的PHY寄存器值
+** : PHY
 **
-** 全局变量:
-** 调用模块: 无
+** :
+** : 
 **
 ********************************************************************************************************/
 static void calculate_clk_divider(struct rt_mmcsd_host *mmc, struct rt_mmcsd_io_cfg *ios)
@@ -191,16 +191,16 @@ static void calculate_clk_divider(struct rt_mmcsd_host *mmc, struct rt_mmcsd_io_
 }
 
 /*******************************************************************************************************
-** 函数名称: mmc_dm365_set_ios()
-** 功能描述: 此函数是mmc设置设置
+** : mmc_dm365_set_ios()
+** : mmc
 **
-** 输　入: mmc         ->  mmc host 句柄
-**         ios          ->  mmc 操作句柄
+** : mmc         ->  mmc host 
+**         ios          ->  mmc 
 **
-** 输　出: 无
+** : 
 **
-** 全局变量:
-** 调用模块: 无
+** :
+** : 
 **
 ********************************************************************************************************/
 static void mmc_dm365_set_ios(struct rt_mmcsd_host *mmc, struct rt_mmcsd_io_cfg *ios)
@@ -252,16 +252,16 @@ static void mmc_dm365_set_ios(struct rt_mmcsd_host *mmc, struct rt_mmcsd_io_cfg 
 }
 
 /*******************************************************************************************************
-** 函数名称: dm365_fifo_data_trans()
-** 功能描述: 此函数是fifo模式传输
+** : dm365_fifo_data_trans()
+** : fifo
 **
-** 输　入: host            ->  DM365 mmc host 句柄
-**         n            ->  传输字节数
+** : host            ->  DM365 mmc host 
+**         n            ->  
 **
-** 输　出: 无
+** : 
 **
-** 全局变量:
-** 调用模块: 无
+** :
+** : 
 **
 ********************************************************************************************************/
 static void dm365_fifo_data_trans(struct mmc_dm365_host *host, rt_uint32_t n)
@@ -312,16 +312,16 @@ static void dm365_fifo_data_trans(struct mmc_dm365_host *host, rt_uint32_t n)
 }
 
 /*******************************************************************************************************
-** 函数名称: mmc_dm365_start_command()
-** 功能描述: 此函数是开始发送SD命令
+** : mmc_dm365_start_command()
+** : SD
 **
-** 输　入: host            ->  DM365 mmc host 句柄
-**         cmd          ->  SD命令句柄
+** : host            ->  DM365 mmc host 
+**         cmd          ->  SD
 **
-** 输　出: 无
+** : 
 **
-** 全局变量:
-** 调用模块: 无
+** :
+** : 
 **
 ********************************************************************************************************/
 static void mmc_dm365_start_command(struct mmc_dm365_host *host, struct rt_mmcsd_cmd *cmd)
@@ -422,15 +422,15 @@ static void mmc_dm365_start_command(struct mmc_dm365_host *host, struct rt_mmcsd
 }
 
 /*******************************************************************************************************
-** 函数名称: dm365_abort_dma()
-** 功能描述: 此函数终止DMA传输
+** : dm365_abort_dma()
+** : DMA
 **
-** 输　入: host            ->  DM365 mmc host 句柄
+** : host            ->  DM365 mmc host 
 **
-** 输　出: 无
+** : 
 **
-** 全局变量:
-** 调用模块: 无
+** :
+** : 
 **
 ********************************************************************************************************/
 static void dm365_abort_dma(struct mmc_dm365_host *host)
@@ -448,16 +448,16 @@ static void dm365_abort_dma(struct mmc_dm365_host *host)
 }
 
 /*******************************************************************************************************
-** 函数名称: mmc_request_done()
-** 功能描述: 此函数用于结束处理一个MMC请求
+** : mmc_request_done()
+** : MMC
 **
-** 输　入: host            ->  DM365 mmc host 句柄
-**         mrq          ->  request 句柄
+** : host            ->  DM365 mmc host 
+**         mrq          ->  request 
 **
-** 输　出: 无
+** : 
 **
-** 全局变量:
-** 调用模块: 无
+** :
+** : 
 **
 ********************************************************************************************************/
 void mmc_request_done(struct rt_mmcsd_host *host, struct rt_mmcsd_req *mrq)
@@ -501,16 +501,16 @@ void mmc_request_done(struct rt_mmcsd_host *host, struct rt_mmcsd_req *mrq)
 }
 
 /*******************************************************************************************************
-** 函数名称: mmc_dm365_xfer_done()
-** 功能描述: 数据传送结束调用此函数
+** : mmc_dm365_xfer_done()
+** : 
 **
-** 输　入: host            ->  DM365 mmc host 句柄
-**         data         ->  data 句柄
+** : host            ->  DM365 mmc host 
+**         data         ->  data 
 **
-** 输　出: 无
+** : 
 **
-** 全局变量:
-** 调用模块: 无
+** :
+** : 
 **
 ********************************************************************************************************/
 static void mmc_dm365_xfer_done(struct mmc_dm365_host *host, struct rt_mmcsd_data *data)
@@ -581,17 +581,17 @@ static void mmc_dm365_dma_cb(unsigned channel, rt_uint16_t ch_status, void *data
 
 
 /*******************************************************************************************************
-** 函数名称: mmc_dm365_dma_setup()
-** 功能描述: DMA 设置函数
+** : mmc_dm365_dma_setup()
+** : DMA 
 **
-** 输　入: host            ->  DM365 mmc host 句柄
-**         tx           ->  布尔变量，用于判断Tx或者是Rx
-**         template     ->  用于保存EDMA3CCPaRAMEntry机构数据
+** : host            ->  DM365 mmc host 
+**         tx           ->  TxRx
+**         template     ->  EDMA3CCPaRAMEntry
 **
-** 输　出: 无
+** : 
 **
-** 全局变量:
-** 调用模块: 无
+** :
+** : 
 **
 ********************************************************************************************************/
 static void mmc_dm365_dma_setup(struct mmc_dm365_host *host, rt_bool_t tx, struct edmacc_param *template)
@@ -694,16 +694,16 @@ static void mmc_dm365_dma_setup(struct mmc_dm365_host *host, rt_bool_t tx, struc
 }
 
 /*******************************************************************************************************
-** 函数名称: mmc_dm365_send_dma_request()
-** 功能描述: 发送DMA请求
+** : mmc_dm365_send_dma_request()
+** : DMA
 **
-** 输　入: host            ->  DM365 mmc host 句柄
-**         data         ->  DMA传送数据结构句柄
+** : host            ->  DM365 mmc host 
+**         data         ->  DMA
 **
-** 输　出: 无
+** : 
 **
-** 全局变量:
-** 调用模块: 无
+** :
+** : 
 **
 ********************************************************************************************************/
 static void mmc_dm365_send_dma_request(struct mmc_dm365_host *host, struct rt_mmcsd_data *data)
@@ -756,16 +756,16 @@ static void mmc_dm365_send_dma_request(struct mmc_dm365_host *host, struct rt_mm
 }
 
 /*******************************************************************************************************
-** 函数名称: mmc_dm365_start_dma_transfer()
-** 功能描述: 开始DMA传输
+** : mmc_dm365_start_dma_transfer()
+** : DMA
 **
-** 输　入: host            ->  DM365 mmc host 句柄
-**         data         ->  DMA传送数据结构句柄
+** : host            ->  DM365 mmc host 
+**         data         ->  DMA
 **
-** 输　出: DMA传输字节数
+** : DMA
 **
-** 全局变量:
-** 调用模块: 无
+** :
+** : 
 **
 ********************************************************************************************************/
 static int mmc_dm365_start_dma_transfer(struct mmc_dm365_host *host, struct rt_mmcsd_data *data)
@@ -806,15 +806,15 @@ static int mmc_dm365_start_dma_transfer(struct mmc_dm365_host *host, struct rt_m
 
 #if 0
 /*******************************************************************************************************
-** 函数名称: acquire_dma_channels()
-** 功能描述: 获取DMA channel
+** : acquire_dma_channels()
+** : DMA channel
 **
-** 输　入: host            ->  DM365 mmc host 句柄
+** : host            ->  DM365 mmc host 
 **
-** 输　出: DMA 通道号
+** : DMA 
 **
-** 全局变量:
-** 调用模块: 无
+** :
+** : 
 **
 ********************************************************************************************************/
 static int acquire_dma_channels(struct mmc_dm365_host *host)
@@ -899,16 +899,16 @@ free_master_write:
 
 
 /*******************************************************************************************************
-** 函数名称: mmc_dm365_prepare_data()
-** 功能描述: 准备 DMA 数据
+** : mmc_dm365_prepare_data()
+** :  DMA 
 **
-** 输　入: host            ->  DM365 mmc host 句柄
-**         req          ->  SD request 结构句柄
+** : host            ->  DM365 mmc host 
+**         req          ->  SD request 
 **
-** 输　出: 无
+** : 
 **
-** 全局变量:
-** 调用模块: 无
+** :
+** : 
 **
 ********************************************************************************************************/
 static void mmc_dm365_prepare_data(struct mmc_dm365_host *host, struct rt_mmcsd_req *req)
@@ -983,16 +983,16 @@ static void mmc_dm365_prepare_data(struct mmc_dm365_host *host, struct rt_mmcsd_
 }
 
 /*******************************************************************************************************
-** 函数名称: mmc_dm365_request()
-** 功能描述: 此函数实现SD request操作
+** : mmc_dm365_request()
+** : SD request
 **
-** 输　入: host            ->  DM365 mmc host 句柄
-**         req          ->  SD request 结构句柄
+** : host            ->  DM365 mmc host 
+**         req          ->  SD request 
 **
-** 输　出: 无
+** : 
 **
-** 全局变量:
-** 调用模块: 无
+** :
+** : 
 **
 ********************************************************************************************************/
 static void mmc_dm365_request(struct rt_mmcsd_host *mmc, struct rt_mmcsd_req *req)
@@ -1057,16 +1057,16 @@ static const struct rt_mmcsd_host_ops mmc_dm365_ops =
 };
 
 /*******************************************************************************************************
-** 函数名称: mmc_dm365_reset_ctrl()
-** 功能描述: 此函数用于reset mmc控制器
+** : mmc_dm365_reset_ctrl()
+** : reset mmc
 **
-** 输　入: host            ->  DM365 mmc host 句柄
-**         val          ->  判断做reset还是enable
+** : host            ->  DM365 mmc host 
+**         val          ->  resetenable
 **
-** 输　出: 无
+** : 
 **
-** 全局变量:
-** 调用模块: 无
+** :
+** : 
 **
 ********************************************************************************************************/
 static void mmc_dm365_reset_ctrl(struct mmc_dm365_host *host, int val)
@@ -1086,15 +1086,15 @@ static void mmc_dm365_reset_ctrl(struct mmc_dm365_host *host, int val)
 }
 
 /*******************************************************************************************************
-** 函数名称: init_mmcsd_host()
-** 功能描述: 此函数用于初始化DM365 MMCSD控制器
+** : init_mmcsd_host()
+** : DM365 MMCSD
 **
-** 输　入: host            ->  DM365 mmc host 句柄
+** : host            ->  DM365 mmc host 
 **
-** 输　出: 无
+** : 
 **
-** 全局变量:
-** 调用模块: 无
+** :
+** : 
 **
 ********************************************************************************************************/
 static void init_mmcsd_host(struct mmc_dm365_host *host)
@@ -1111,16 +1111,16 @@ static void init_mmcsd_host(struct mmc_dm365_host *host)
 }
 
 /*******************************************************************************************************
-** 函数名称: mmc_dm365_cmd_done()
-** 功能描述: 结束SD 命令后调用此函数
+** : mmc_dm365_cmd_done()
+** : SD 
 **
-** 输　入: host            ->  DM365 mmc host 句柄
-**         cmd          ->  SD 命令结构句柄
+** : host            ->  DM365 mmc host 
+**         cmd          ->  SD 
 **
-** 输　出: 无
+** : 
 **
-** 全局变量:
-** 调用模块: 无
+** :
+** : 
 **
 ********************************************************************************************************/
 static void mmc_dm365_cmd_done(struct mmc_dm365_host *host, struct rt_mmcsd_cmd *cmd)
@@ -1154,16 +1154,16 @@ static void mmc_dm365_cmd_done(struct mmc_dm365_host *host, struct rt_mmcsd_cmd 
 }
 
 /*******************************************************************************************************
-** 函数名称: dm365_abort_data()
-** 功能描述: 此函数用于终止数据传输
+** : dm365_abort_data()
+** : 
 **
-** 输　入: host            ->  DM365 mmc host 句柄
-**         data         ->  data 结构句柄
+** : host            ->  DM365 mmc host 
+**         data         ->  data 
 **
-** 输　出: 无
+** : 
 **
-** 全局变量:
-** 调用模块: 无
+** :
+** : 
 **
 ********************************************************************************************************/
 static void dm365_abort_data(struct mmc_dm365_host *host, struct rt_mmcsd_data *data)
@@ -1188,15 +1188,15 @@ static void mmc_dm365_sdio_irq(int irq, void *param)
 
 
 /*******************************************************************************************************
-** 函数名称: mmc_dm365_irq()
-** 功能描述: MMCSD的中断处理程序
+** : mmc_dm365_irq()
+** : MMCSD
 **
-** 输　入: irq ->中断向量号
+** : irq ->
 **
-** 输　出: 无
+** : 
 **
-** 全局变量:
-** 调用模块: 无
+** :
+** : 
 **
 ********************************************************************************************************/
 static void mmc_dm365_irq(int irq, void *param)
@@ -1339,15 +1339,15 @@ static void mmc_dm365_irq(int irq, void *param)
 #if 0
 
 /*******************************************************************************************************
-** 函数名称: rt_hw_edma_init()
-** 功能描述: 此函数用于初始化EDMA3
+** : rt_hw_edma_init()
+** : EDMA3
 **
-** 输　入: 无
+** : 
 **
-** 输　出: 无
+** : 
 **
-** 全局变量:
-** 调用模块: 无
+** :
+** : 
 **
 ********************************************************************************************************/
 static void rt_hw_edma_init(void)
@@ -1363,15 +1363,15 @@ static void rt_hw_edma_init(void)
 }
 #endif
 /*******************************************************************************************************
-** 函数名称: rt_hw_mmcsd_init()
-** 功能描述: 此函数用于初始化MMC驱动模块
+** : rt_hw_mmcsd_init()
+** : MMC
 **
-** 输　入: 无
+** : 
 **
-** 输　出: 如果初始化成功，返回0；如果初始化失败，返回-RT_ENOMEM
+** : 0-RT_ENOMEM
 **
-** 全局变量:
-** 调用模块: 无
+** :
+** : 
 **
 ********************************************************************************************************/
 int rt_hw_mmcsd_init(void)

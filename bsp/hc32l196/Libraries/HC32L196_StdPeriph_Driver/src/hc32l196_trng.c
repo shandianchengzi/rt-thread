@@ -85,38 +85,38 @@
 
 /**
  *****************************************************************************
- ** \brief 随机数初始化(上电第一次生成随机数）
+ ** \brief (
  **
  ** 
  ** \retval TRUE or FALSE                                      
  *****************************************************************************/
 en_result_t Trng_Init(void)
 {
-    //==>>生成64bits随机数（上电第一次）
+    //==>>64bits
     M0P_TRNG->CR_f.RNGCIR_EN = 1;
-    //模式配置0
+    //0
     M0P_TRNG->MODE_f.LOAD    = 1;
     M0P_TRNG->MODE_f.FDBK    = 1;
     M0P_TRNG->MODE_f.CNT     = 6;
-    //生成随机数0
+    //0
     M0P_TRNG->CR_f.RNG_RUN  = 1;
     while(M0P_TRNG->CR_f.RNG_RUN)
     {
         ;
     }
     
-    //模式配置1
+    //1
     M0P_TRNG->MODE_f.LOAD    = 0;
     M0P_TRNG->MODE_f.FDBK    = 0;
     M0P_TRNG->MODE_f.CNT     = 4;
-    //生成随机数1
+    //1
     M0P_TRNG->CR_f.RNG_RUN  = 1;
     while(M0P_TRNG->CR_f.RNG_RUN)
     {
         ;
     }
 
-    //关闭随机源电路，节省功耗
+    //
     M0P_TRNG->CR_f.RNGCIR_EN = 0;
     
     return Ok;
@@ -124,39 +124,39 @@ en_result_t Trng_Init(void)
 
 /**
  *****************************************************************************
- ** \brief 生成随机数（非上电第一次生成随机数）
+ ** \brief 
  **
  ** 
  ** \retval TRUE or FALSE                                      
  *****************************************************************************/
 en_result_t Trng_Generate(void)
 {
-    //==>>生成64bits随机数（非上电第一次生成）
+    //==>>64bits
     M0P_TRNG->CR_f.RNGCIR_EN = 1;
     
-    //模式配置0
+    //0
     M0P_TRNG->MODE_f.LOAD    = 0;
     M0P_TRNG->MODE_f.FDBK    = 1;
     M0P_TRNG->MODE_f.CNT     = 6;
-    //生成随机数0
+    //0
     M0P_TRNG->CR_f.RNG_RUN  = 1;
     while(M0P_TRNG->CR_f.RNG_RUN)
     {
         ;
     }
     
-    //模式配置1
+    //1
     M0P_TRNG->MODE_f.FDBK    = 0;
     M0P_TRNG->MODE_f.CNT     = 4;
     M0P_TRNG->MODE_f.CNT     = 4;
-    //生成随机数1
+    //1
     M0P_TRNG->CR_f.RNG_RUN  = 1;
     while(M0P_TRNG->CR_f.RNG_RUN)
     {
         ;
     }
 
-    //关闭随机源电路，节省功耗
+    //
     M0P_TRNG->CR_f.RNGCIR_EN = 0;    
     
     return Ok;
@@ -164,7 +164,7 @@ en_result_t Trng_Generate(void)
 
 /**
  *****************************************************************************
- ** \brief 随机数获取
+ ** \brief 
  ** 
  ** \retval data0                                     
  *****************************************************************************/
@@ -175,7 +175,7 @@ uint32_t Trng_GetData0(void)
 
 /**
  *****************************************************************************
- ** \brief 随机数获取
+ ** \brief 
  ** 
  ** \retval data1                                     
  *****************************************************************************/

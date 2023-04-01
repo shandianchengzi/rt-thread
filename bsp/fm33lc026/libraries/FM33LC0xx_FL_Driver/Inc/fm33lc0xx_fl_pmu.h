@@ -49,15 +49,15 @@ extern "C" {
 typedef struct
 {
 
-    /*! 低功耗模式下内核电压降低与否 */
+    /*!  */
     FL_FunState coreVoltageScaling;
-    /*! 睡眠模式配置 */
+    /*!  */
     uint32_t deepSleep;
-    /*! 唤醒后的系统频率，仅对RCHF */
+    /*! RCHF */
     uint32_t wakeupFrequency;
-    /*! 芯片LDO是否进入低功耗 */
+    /*! LDO */
     uint32_t LDOLowPowerMode;
-    /*! 额外唤醒延迟 */
+    /*!  */
     uint32_t wakeupDelay;
 } FL_PMU_SleepInitTypeDef;
 /**

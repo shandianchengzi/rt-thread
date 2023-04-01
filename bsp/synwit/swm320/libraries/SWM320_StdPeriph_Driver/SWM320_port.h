@@ -1,7 +1,7 @@
 #ifndef __SWM320_PORT_H__
 #define __SWM320_PORT_H__
 
-void PORT_Init(uint32_t PORTx, uint32_t n, uint32_t func, uint32_t digit_in_en);    //端口引脚功能选择，其可取值如下：
+void PORT_Init(uint32_t PORTx, uint32_t n, uint32_t func, uint32_t digit_in_en);    //
 
 #define PORTA   0
 #define PORTB   1
@@ -425,8 +425,8 @@ void PORT_Init(uint32_t PORTx, uint32_t n, uint32_t func, uint32_t digit_in_en);
 
 
 
-/* 下面宏定义的取值全部在正确值的基础上“加100”，以区分上面宏定义的值，从而方便库函数的编写*/
-/* 下面这些值是偶数编号引脚的功能取值，如PIN0、PIN2、... */
+/* 100*/
+/* PIN0PIN2... */
 #define FUNMUX0_UART0_RXD       100
 #define FUNMUX0_UART1_RXD       101
 #define FUNMUX0_UART2_RXD       102
@@ -452,7 +452,7 @@ void PORT_Init(uint32_t PORTx, uint32_t n, uint32_t func, uint32_t digit_in_en);
 #define FUNMUX0_UART2_CTS       123
 #define FUNMUX0_UART3_CTS       124
 
-/* 下面这些值是奇数编号引脚的功能取值，如PIN1、PIN3、... */
+/* PIN1PIN3... */
 #define FUNMUX1_UART0_TXD       100
 #define FUNMUX1_UART1_TXD       101
 #define FUNMUX1_UART2_TXD       102

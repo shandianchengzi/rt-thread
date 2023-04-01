@@ -84,10 +84,10 @@
 
 /**
 ******************************************************************************
-    ** \brief  PCNT的启动和停止控制
-    ** @param  NewState : Run_Enable 或者 Run_Disable
-    ** @param  NewState : FALSE或者TRUE
-    ** \retval 无
+    ** \brief  PCNT
+    ** @param  NewState : Run_Enable  Run_Disable
+    ** @param  NewState : FALSETRUE
+    ** \retval 
     **
 ******************************************************************************/
 boolean_t Pcnt_Cmd(boolean_t NewState)
@@ -99,9 +99,9 @@ boolean_t Pcnt_Cmd(boolean_t NewState)
 
 /**
 ******************************************************************************
-    ** \brief  将BUF中的值同步到CNT
-    ** @param  value : 要同步到TOP的数值
-    ** \retval ok 或 ErrorTimeout
+    ** \brief  BUFCNT
+    ** @param  value : TOP
+    ** \retval ok  ErrorTimeout
     **
 ******************************************************************************/
 en_result_t Pcnt_SetB2T(uint16_t value)
@@ -128,9 +128,9 @@ en_result_t Pcnt_SetB2T(uint16_t value)
 
 /**
 ******************************************************************************
-    ** \brief  将BUF中的值同步到CNT
-    ** @param  value : 要同步到CNT的数值
-    ** \retval ok 或 ErrorTimeout
+    ** \brief  BUFCNT
+    ** @param  value : CNT
+    ** \retval ok  ErrorTimeout
     **
 ******************************************************************************/
 en_result_t Pcnt_SetB2C(uint16_t value)
@@ -156,9 +156,9 @@ en_result_t Pcnt_SetB2C(uint16_t value)
 
 /**
 ******************************************************************************
-    ** \brief  将TOP中的值同步到CNT
-    ** @param  value : 要同步到CNT的数值
-    ** \retval ok 或 ErrorTimeout
+    ** \brief  TOPCNT
+    ** @param  value : CNT
+    ** \retval ok  ErrorTimeout
     **
 ******************************************************************************/
 en_result_t Pcnt_SetT2C(void)
@@ -183,9 +183,9 @@ en_result_t Pcnt_SetT2C(void)
 
 /**
 ******************************************************************************
-    ** \brief  赋值BUF
-    ** @param  value : 要赋值给BUF的数值
-    ** \retval 无
+    ** \brief  BUF
+    ** @param  value : BUF
+    ** \retval 
     **
 ******************************************************************************/
 void Pcnt_SetBuf(uint16_t value)
@@ -195,10 +195,10 @@ void Pcnt_SetBuf(uint16_t value)
 
 /**
 ******************************************************************************
-    ** \brief  初始化
-    ** @param  start : 要同步到TOP的数值
-    ** @param  end   : 要同步到CNT的数值
-    ** \retval ok 或 ErrorTimeout
+    ** \brief  
+    ** @param  start : TOP
+    ** @param  end   : CNT
+    ** \retval ok  ErrorTimeout
     **
 ******************************************************************************/
 void Pcnt_Init(stc_pcnt_initstruct_t*  InitStruct)
@@ -207,7 +207,7 @@ void Pcnt_Init(stc_pcnt_initstruct_t*  InitStruct)
     M0P_PCNT->CTRL_f.S0P = InitStruct->Pcnt_S0Sel;
     M0P_PCNT->CTRL_f.CLKSEL = InitStruct->Pcnt_Clk;
     M0P_PCNT->CTRL_f.MODE = InitStruct->Pcnt_Mode;
-    if(InitStruct->Pcnt_Mode == PcntDoubleMode)//如果是双通道正交脉冲计数模式
+    if(InitStruct->Pcnt_Mode == PcntDoubleMode)//
     {
         M0P_PCNT->SR1_f.DIR = InitStruct->Pcnt_Dir;
     }
@@ -226,10 +226,10 @@ void Pcnt_Init(stc_pcnt_initstruct_t*  InitStruct)
 
 /**
 ******************************************************************************
-    ** \brief  配置中断源的使能
-    ** @param  IT_Src : 中断源再PCNT_IEN内部的位位置
-    ** @param  NewState   : FALSE 或TRUE
-    ** \retval 无
+    ** \brief  
+    ** @param  IT_Src : PCNT_IEN
+    ** @param  NewState   : FALSE TRUE
+    ** \retval 
     **
 ******************************************************************************/
 void Pcnt_ItCfg(en_pcnt_itfce_t IT_Src, boolean_t NewState)
@@ -250,9 +250,9 @@ void Pcnt_ItCfg(en_pcnt_itfce_t IT_Src, boolean_t NewState)
 
 /**
 ******************************************************************************
-    ** \brief  获取中断源的标志位
-    ** @param  IT_Src : 中断源标志位
-    ** \retval FALSE 或TRUE
+    ** \brief  
+    ** @param  IT_Src : 
+    ** \retval FALSE TRUE
     **
 ******************************************************************************/
 boolean_t Pcnt_GetItStatus(en_pcnt_itfce_t IT_Src)
@@ -262,9 +262,9 @@ boolean_t Pcnt_GetItStatus(en_pcnt_itfce_t IT_Src)
 
 /**
 ******************************************************************************
-    ** \brief  清除中断源的标志位
-    ** @param  IT_Src : 中断源标志位
-    ** \retval 无
+    ** \brief  
+    ** @param  IT_Src : 
+    ** \retval 
     **
 ******************************************************************************/
 void Pcnt_ClrItStatus(en_pcnt_itfce_t IT_Src)
@@ -275,9 +275,9 @@ void Pcnt_ClrItStatus(en_pcnt_itfce_t IT_Src)
 
 /**
 ******************************************************************************
-    ** \brief  获取PCNT_CNT寄存器的数值
-    ** @param  无
-    ** \retval PCNT_CNT数值
+    ** \brief  PCNT_CNT
+    ** @param  
+    ** \retval PCNT_CNT
     **
 ******************************************************************************/
 uint16_t Pcnt_GetCnt(void)
@@ -287,9 +287,9 @@ uint16_t Pcnt_GetCnt(void)
 
 /**
 ******************************************************************************
-    ** \brief  获取PCNT_TOP寄存器的数值
-    ** @param  无
-    ** \retval PCNT_TOP数值
+    ** \brief  PCNT_TOP
+    ** @param  
+    ** \retval PCNT_TOP
     **
 ******************************************************************************/
 uint16_t Pcnt_GetTop(void)
@@ -299,9 +299,9 @@ uint16_t Pcnt_GetTop(void)
 
 /**
 ******************************************************************************
-    ** \brief  获取PCNT_BUF寄存器的数值
-    ** @param  无
-    ** \retval PCNT_BUF数值
+    ** \brief  PCNT_BUF
+    ** @param  
+    ** \retval PCNT_BUF
     **
 ******************************************************************************/
 uint16_t Pcnt_GetBuf(void)

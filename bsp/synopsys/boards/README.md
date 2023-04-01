@@ -7,23 +7,23 @@ the development and evaluation of embedded systems based on ARCv2 processors, wh
 designed to provide a minimal board support package for ARC users by defining
 consistent and simple software interfaces to the processors and onboard devices.
 
-The embARC BSP is a new generation embARC software development package. ​
-It is designed to be the inter-layer between hardware and operating system. ​
-BSP could hide the difference of hardware/boards, provide a unified interface to upper-layer. ​
+The embARC BSP is a new generation embARC software development package. 
+It is designed to be the inter-layer between hardware and operating system. 
+BSP could hide the difference of hardware/boards, provide a unified interface to upper-layer. 
 In the scenarios that no OS is required, embARC BSP can also standalone and work in baremetal.
 
 embARC_BSP features:
 
-* Support MetaWare & GNU toolchains​
-* Support all development boards and tcf​
+* Support MetaWare & GNU toolchains
+* Support all development boards and tcf
 * Support various build systems and compiling environments,
-  such as ARC MetaWare & GNU IDE, makefile​
-* Designware and Subsystem drivers, including UART and GPIO, I2C, SPI, etc. ​
-* No middleware, no OS​
-* Easy to port to different platform / OS​
-* One example (UART, GPIO, timer)​
-* Code coverage reach 100% in test. ​
-* MISRA-C compliance​
+  such as ARC MetaWare & GNU IDE, makefile
+* Designware and Subsystem drivers, including UART and GPIO, I2C, SPI, etc. 
+* No middleware, no OS
+* Easy to port to different platform / OS
+* One example (UART, GPIO, timer)
+* Code coverage reach 100% in test. 
+* MISRA-C compliance
 * C & C++ support, assembly support
 
 ## Supported Boards
@@ -74,7 +74,7 @@ Here, the ARC GNU toolchain is installed to `c:\arc_gnu`. If not, please change 
 When you use GNU Toolchain, you need to install [Zadig](http://zadig.akeo.ie) to replace the default FTDI driver with WinUSB driver. See [How to Use OpenOCD on Windows](https://github.com/foss-for-synopsys-dwc-arc-processors/arc_gnu_eclipse/wiki/How-to-Use-OpenOCD-on-Windows>) for more information.
 
 #### MetaWare
-The [DesignWare ARC MetaWare Development Toolkit](https://www.synopsys.com/dw/ipdir.php?ds=sw_metaware) builds on a long legacy of industry-leading compiler and debugger products for embedded applications. It is a complete solution that contains all the components needed to support the development, debugging, and tuning of embedded applications for the DesignWare® ARC® processors.
+The [DesignWare ARC MetaWare Development Toolkit](https://www.synopsys.com/dw/ipdir.php?ds=sw_metaware) builds on a long legacy of industry-leading compiler and debugger products for embedded applications. It is a complete solution that contains all the components needed to support the development, debugging, and tuning of embedded applications for the DesignWare ARC processors.
 
 Here, the ARC MetaWare toolchain is installed to `C:\ARC\MetaWare`. If not, please change the path configuration in rtconfig.py.
 

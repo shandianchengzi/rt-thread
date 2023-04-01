@@ -1,8 +1,8 @@
 /*""FILE COMMENT""*******************************************************
-* System Name	: I²C API for RX62Nxx
+* System Name	: IC API for RX62Nxx
 * File Name		: r_pdl_iic.h
 * Version		: 1.02
-* Contents		: I²C API header
+* Contents		: IC API header
 * Customer		:
 * Model			:
 * Order			:

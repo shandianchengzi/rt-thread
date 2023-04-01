@@ -10,14 +10,14 @@
 
 /*******************************************************************************
 * Function Name  : UART0_DefInit
-* Description    : 串口默认初始化配置
+* Description    : 
 * Input          : None
 * Return         : None
 *******************************************************************************/
 void UART0_DefInit( void )
 {
     UART0_BaudRateCfg( 115200 );
-    R8_UART0_FCR = (2<<6) | RB_FCR_TX_FIFO_CLR | RB_FCR_RX_FIFO_CLR | RB_FCR_FIFO_EN;       // FIFO打开，触发点4字节
+    R8_UART0_FCR = (2<<6) | RB_FCR_TX_FIFO_CLR | RB_FCR_RX_FIFO_CLR | RB_FCR_FIFO_EN;       // FIFO4
     R8_UART0_LCR = RB_LCR_WORD_SZ;
     R8_UART0_IER = RB_IER_TXD_EN;
     R8_UART0_DIV = 1;
@@ -25,7 +25,7 @@ void UART0_DefInit( void )
 
 /*******************************************************************************
 * Function Name  : UART0_BaudRateCfg
-* Description    : 串口波特率配置
+* Description    : 
 * Input          :
 * Return         :
 *******************************************************************************/
@@ -40,8 +40,8 @@ void UART0_BaudRateCfg( UINT32 baudrate )
 
 /*******************************************************************************
 * Function Name  : UART0_ByteTrigCfg
-* Description    : 串口字节触发中断配置
-* Input          : b: 触发字节数
+* Description    : 
+* Input          : b: 
                     refer to UARTByteTRIGTypeDef
 * Return         :
 *******************************************************************************/
@@ -52,15 +52,15 @@ void UART0_ByteTrigCfg( UARTByteTRIGTypeDef b )
 
 /*******************************************************************************
 * Function Name  : UART0_INTCfg
-* Description    : 串口中断配置
-* Input          : s:  中断控制状态
-                    ENABLE  - 使能相应中断
-                    DISABLE - 关闭相应中断
-                   i:  中断类型
-                    RB_IER_MODEM_CHG  - 调制解调器输入状态变化中断使能位（仅 UART0 支持）
-                    RB_IER_LINE_STAT  - 接收线路状态中断
-                    RB_IER_THR_EMPTY  - 发送保持寄存器空中断
-                    RB_IER_RECV_RDY   - 接收数据中断
+* Description    : 
+* Input          : s:  
+                    ENABLE  - 
+                    DISABLE - 
+                   i:  
+                    RB_IER_MODEM_CHG  -  UART0 
+                    RB_IER_LINE_STAT  - 
+                    RB_IER_THR_EMPTY  - 
+                    RB_IER_RECV_RDY   - 
 * Return         : None
 *******************************************************************************/
 void UART0_INTCfg( UINT8 s,  UINT8 i )
@@ -78,7 +78,7 @@ void UART0_INTCfg( UINT8 s,  UINT8 i )
 
 /*******************************************************************************
 * Function Name  : UART0_Reset
-* Description    : 串口软件复位
+* Description    : 
 * Input          : None
 * Return         : None
 *******************************************************************************/
@@ -89,9 +89,9 @@ void UART0_Reset( void )
 
 /*******************************************************************************
 * Function Name  : UART0_SendString
-* Description    : 串口多字节发送
-* Input          : buf - 待发送的数据内容首地址
-                     l - 待发送的数据长度
+* Description    : 
+* Input          : buf - 
+                     l - 
 * Return         : None
 *******************************************************************************/
 void UART0_SendString( PUINT8 buf, UINT16 l )
@@ -110,9 +110,9 @@ void UART0_SendString( PUINT8 buf, UINT16 l )
 
 /*******************************************************************************
 * Function Name  : UART0_RecvString
-* Description    : 串口读取多字节
-* Input          : buf - 读取数据存放缓存区首地址
-* Return         : 读取数据长度
+* Description    : 
+* Input          : buf - 
+* Return         : 
 *******************************************************************************/
 UINT16 UART0_RecvString( PUINT8 buf )
 {

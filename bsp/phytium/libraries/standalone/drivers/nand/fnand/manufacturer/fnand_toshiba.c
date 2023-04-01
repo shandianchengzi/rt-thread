@@ -79,10 +79,10 @@ static FError TC58NVM9S3ETAI0_CHECK(FNand *instance_p, FNandId *id_p, u32 chip_a
         FNAND_T_NAND_DEBUG_D("device_size %d ", geometry_p->device_size) ;            /* Total device size in bytes */
         FNAND_T_NAND_DEBUG_D("rowaddr_cycles %d ", geometry_p->rowaddr_cycles) ;          /* Row address cycles */
         FNAND_T_NAND_DEBUG_D("coladdr_cycles %d ", geometry_p->coladdr_cycles) ;          /* Column address cycles */
-        FNAND_T_NAND_DEBUG_D("hw_ecc_length %d ", geometry_p->hw_ecc_length) ;          /* 产生硬件ecc校验参数的个数 */
-        FNAND_T_NAND_DEBUG_D("ecc_offset %d ", geometry_p->ecc_offset) ;          /* obb存放硬件ecc校验参数页位置的偏移 */
+        FNAND_T_NAND_DEBUG_D("hw_ecc_length %d ", geometry_p->hw_ecc_length) ;          /* ecc */
+        FNAND_T_NAND_DEBUG_D("ecc_offset %d ", geometry_p->ecc_offset) ;          /* obbecc */
         FNAND_T_NAND_DEBUG_D("hw_ecc_steps %d ", geometry_p->hw_ecc_steps) ;          /* number of ECC steps per page */
-        FNAND_T_NAND_DEBUG_D("ecc_step_size %d ", geometry_p->ecc_step_size) ;       /* 进行读写操作时，单次ecc 的步骤的跨度 */
+        FNAND_T_NAND_DEBUG_D("ecc_step_size %d ", geometry_p->ecc_step_size) ;       /* ecc  */
     }
     else
     {

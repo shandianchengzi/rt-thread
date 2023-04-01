@@ -1,10 +1,10 @@
 /******************************************************************************************************************************************
-* 文件名称: SWM341_timr.c
-* 功能说明: SWM341单片机的计数器/定时器功能驱动库
-* 技术支持: http://www.synwit.com.cn/e/tool/gbook/?bid=1
-* 注意事项:
-* 版本日期: V1.0.0      2016年1月30日
-* 升级记录:
+* : SWM341_timr.c
+* : SWM341/
+* : http://www.synwit.com.cn/e/tool/gbook/?bid=1
+* :
+* : V1.0.0      2016130
+* :
 *
 *
 *******************************************************************************************************************************************
@@ -23,16 +23,16 @@
 
 
 /******************************************************************************************************************************************
-* 函数名称: TIMR_Init()
-* 功能说明: TIMR定时器/计数器初始化
-* 输    入: TIMR_TypeDef * TIMRx  指定要被设置的定时器，有效值包括TIMR0、TIMR1、TIMR2、TIMR3、TIMR4、BTIMR0、BTIMR1、...、BTIMR11
-*           uint32_t mode           对于TIMR0~4: TIMR_MODE_TIMER、TIMR_MODE_COUNTER、TIMR_MODE_OC、TIMR_MODE_IC
-*                                   对于BTIMR0~11: TIMR_MODE_TIMER、TIMR_MODE_OC
-*           uint16_t prediv         预分频，取值1-256
-*           uint32_t period         定时/计数周期，取值1-16777216
-*           uint32_t int_en         中断使能
-* 输    出: 无
-* 注意事项: 无
+* : TIMR_Init()
+* : TIMR/
+*     : TIMR_TypeDef * TIMRx  TIMR0TIMR1TIMR2TIMR3TIMR4BTIMR0BTIMR1...BTIMR11
+*           uint32_t mode           TIMR0~4: TIMR_MODE_TIMERTIMR_MODE_COUNTERTIMR_MODE_OCTIMR_MODE_IC
+*                                   BTIMR0~11: TIMR_MODE_TIMERTIMR_MODE_OC
+*           uint16_t prediv         1-256
+*           uint32_t period         /1-16777216
+*           uint32_t int_en         
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void TIMR_Init(TIMR_TypeDef * TIMRx, uint32_t mode, uint16_t prediv, uint32_t period, uint32_t int_en)
 {
@@ -45,7 +45,7 @@ void TIMR_Init(TIMR_TypeDef * TIMRx, uint32_t mode, uint16_t prediv, uint32_t pe
         SYS->CLKEN1 |= (0x01 << SYS_CLKEN1_BTIMR_Pos);
     }
 
-    TIMR_Stop(TIMRx);   //一些关键寄存器只能在定时器停止时设置
+    TIMR_Stop(TIMRx);   //
 
     TIMRx->CR &= ~(TIMR_CR_MODE_Msk | TIMR_CR_CLKSRC_Msk);
     TIMRx->CR |= (mode << TIMR_CR_CLKSRC_Pos);
@@ -54,7 +54,7 @@ void TIMR_Init(TIMR_TypeDef * TIMRx, uint32_t mode, uint16_t prediv, uint32_t pe
 
     TIMRx->LOAD = period - 1;
 
-    TIMRx->IF = (1 << TIMR_IF_TO_Pos);      //清除中断标志
+    TIMRx->IF = (1 << TIMR_IF_TO_Pos);      //
     if(int_en) TIMRx->IE |=  (1 << TIMR_IE_TO_Pos);
     else       TIMRx->IE &= ~(1 << TIMR_IE_TO_Pos);
 
@@ -131,11 +131,11 @@ void TIMR_Init(TIMR_TypeDef * TIMRx, uint32_t mode, uint16_t prediv, uint32_t pe
 }
 
 /******************************************************************************************************************************************
-* 函数名称: TIMR_Start()
-* 功能说明: 启动定时器，从初始值开始计时/计数
-* 输    入: TIMR_TypeDef * TIMRx  指定要被设置的定时器，可取值包括TIMR0、TIMR1、TIMR2、TIMR3、TIMR4、BTIMR0、BTIMR1、...、BTIMR11
-* 输    出: 无
-* 注意事项: 无
+* : TIMR_Start()
+* : /
+*     : TIMR_TypeDef * TIMRx  TIMR0TIMR1TIMR2TIMR3TIMR4BTIMR0BTIMR1...BTIMR11
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void TIMR_Start(TIMR_TypeDef * TIMRx)
 {
@@ -212,11 +212,11 @@ void TIMR_Start(TIMR_TypeDef * TIMRx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: TIMR_Stop()
-* 功能说明: 停止定时器
-* 输    入: TIMR_TypeDef * TIMRx  指定要被设置的定时器，可取值包括TIMR0、TIMR1、TIMR2、TIMR3、TIMR4、BTIMR0、BTIMR1、...、BTIMR11
-* 输    出: 无
-* 注意事项: 无
+* : TIMR_Stop()
+* : 
+*     : TIMR_TypeDef * TIMRx  TIMR0TIMR1TIMR2TIMR3TIMR4BTIMR0BTIMR1...BTIMR11
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void TIMR_Stop(TIMR_TypeDef * TIMRx)
 {
@@ -293,11 +293,11 @@ void TIMR_Stop(TIMR_TypeDef * TIMRx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: TIMR_Halt()
-* 功能说明: 暂停定时器，计数值保持不变
-* 输    入: TIMR_TypeDef * TIMRx  指定要被设置的定时器，可取值包括TIMR0、TIMR1、TIMR2、TIMR3、TIMR4
-* 输    出: 无
-* 注意事项: 无
+* : TIMR_Halt()
+* : 
+*     : TIMR_TypeDef * TIMRx  TIMR0TIMR1TIMR2TIMR3TIMR4
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void TIMR_Halt(TIMR_TypeDef * TIMRx)
 {
@@ -305,11 +305,11 @@ void TIMR_Halt(TIMR_TypeDef * TIMRx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: TIMR_Resume()
-* 功能说明: 恢复定时器，从暂停处继续计数
-* 输    入: TIMR_TypeDef * TIMRx  指定要被设置的定时器，可取值包括TIMR0、TIMR1、TIMR2、TIMR3、TIMR4
-* 输    出: 无
-* 注意事项: 无
+* : TIMR_Resume()
+* : 
+*     : TIMR_TypeDef * TIMRx  TIMR0TIMR1TIMR2TIMR3TIMR4
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void TIMR_Resume(TIMR_TypeDef * TIMRx)
 {
@@ -317,11 +317,11 @@ void TIMR_Resume(TIMR_TypeDef * TIMRx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: TIMR_GetCurValue()
-* 功能说明: 获取当前计数值
-* 输    入: TIMR_TypeDef * TIMRx  指定要被设置的定时器，可取值包括TIMR0、TIMR1、TIMR2、TIMR3、TIMR4、BTIMR0、BTIMR1、...、BTIMR11
-* 输    出: uint32_t              当前计数值
-* 注意事项: 无
+* : TIMR_GetCurValue()
+* : 
+*     : TIMR_TypeDef * TIMRx  TIMR0TIMR1TIMR2TIMR3TIMR4BTIMR0BTIMR1...BTIMR11
+*     : uint32_t              
+* : 
 ******************************************************************************************************************************************/
 uint32_t TIMR_GetCurValue(TIMR_TypeDef * TIMRx)
 {
@@ -329,11 +329,11 @@ uint32_t TIMR_GetCurValue(TIMR_TypeDef * TIMRx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: TIMR_INTEn()
-* 功能说明: 使能中断
-* 输    入: TIMR_TypeDef * TIMRx  指定要被设置的定时器，可取值包括TIMR0、TIMR1、TIMR2、TIMR3、TIMR4、BTIMR0、BTIMR1、...、BTIMR11
-* 输    出: 无
-* 注意事项: 无
+* : TIMR_INTEn()
+* : 
+*     : TIMR_TypeDef * TIMRx  TIMR0TIMR1TIMR2TIMR3TIMR4BTIMR0BTIMR1...BTIMR11
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void TIMR_INTEn(TIMR_TypeDef * TIMRx)
 {
@@ -341,11 +341,11 @@ void TIMR_INTEn(TIMR_TypeDef * TIMRx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: TIMR_INTDis()
-* 功能说明: 禁能中断
-* 输    入: TIMR_TypeDef * TIMRx  指定要被设置的定时器，可取值包括TIMR0、TIMR1、TIMR2、TIMR3、TIMR4、BTIMR0、BTIMR1、...、BTIMR11
-* 输    出: 无
-* 注意事项: 无
+* : TIMR_INTDis()
+* : 
+*     : TIMR_TypeDef * TIMRx  TIMR0TIMR1TIMR2TIMR3TIMR4BTIMR0BTIMR1...BTIMR11
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void TIMR_INTDis(TIMR_TypeDef * TIMRx)
 {
@@ -353,11 +353,11 @@ void TIMR_INTDis(TIMR_TypeDef * TIMRx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: TIMR_INTClr()
-* 功能说明: 清除中断标志
-* 输    入: TIMR_TypeDef * TIMRx  指定要被设置的定时器，可取值包括TIMR0、TIMR1、TIMR2、TIMR3、TIMR4、BTIMR0、BTIMR1、...、BTIMR11
-* 输    出: 无
-* 注意事项: 无
+* : TIMR_INTClr()
+* : 
+*     : TIMR_TypeDef * TIMRx  TIMR0TIMR1TIMR2TIMR3TIMR4BTIMR0BTIMR1...BTIMR11
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void TIMR_INTClr(TIMR_TypeDef * TIMRx)
 {
@@ -365,11 +365,11 @@ void TIMR_INTClr(TIMR_TypeDef * TIMRx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: TIMR_INTStat()
-* 功能说明: 获取中断状态
-* 输    入: TIMR_TypeDef * TIMRx  指定要被设置的定时器，可取值包括TIMR0、TIMR1、TIMR2、TIMR3、TIMR4、BTIMR0、BTIMR1、...、BTIMR11
-* 输    出: uint32_t              0 TIMRx未产生中断    1 TIMRx产生了中断
-* 注意事项: 无
+* : TIMR_INTStat()
+* : 
+*     : TIMR_TypeDef * TIMRx  TIMR0TIMR1TIMR2TIMR3TIMR4BTIMR0BTIMR1...BTIMR11
+*     : uint32_t              0 TIMRx    1 TIMRx
+* : 
 ******************************************************************************************************************************************/
 uint32_t TIMR_INTStat(TIMR_TypeDef * TIMRx)
 {
@@ -378,14 +378,14 @@ uint32_t TIMR_INTStat(TIMR_TypeDef * TIMRx)
 
 
 /******************************************************************************************************************************************
-* 函数名称: TIMR_OC_Init()
-* 功能说明: 输出比较功能初始化
-* 输    入: TIMR_TypeDef * TIMRx  指定要被设置的定时器，可取值包括TIMR0、TIMR1、TIMR2、TIMR3、TIMR4、BTIMR0、BTIMR1、...、BTIMR11
-*           uint32_t match          当计数器的值递减到match时引脚输出电平翻转
-*           uint32_t match_int_en   当计数器的值递减到match时是否产生中断
-*           uint32_t init_lvl       初始输出电平
-* 输    出: 无
-* 注意事项: 无
+* : TIMR_OC_Init()
+* : 
+*     : TIMR_TypeDef * TIMRx  TIMR0TIMR1TIMR2TIMR3TIMR4BTIMR0BTIMR1...BTIMR11
+*           uint32_t match          match
+*           uint32_t match_int_en   match
+*           uint32_t init_lvl       
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void TIMR_OC_Init(TIMR_TypeDef * TIMRx, uint32_t match, uint32_t match_int_en, uint32_t init_lvl)
 {
@@ -393,7 +393,7 @@ void TIMR_OC_Init(TIMR_TypeDef * TIMRx, uint32_t match, uint32_t match_int_en, u
     if(init_lvl) TIMRx->OCCR |=  (1 << TIMR_OCCR_INITLVL_Pos);
     else         TIMRx->OCCR &= ~(1 << TIMR_OCCR_INITLVL_Pos);
 
-    TIMRx->IF = (1 << TIMR_IF_OC0_Pos);     //清除中断标志
+    TIMRx->IF = (1 << TIMR_IF_OC0_Pos);     //
     if(match_int_en) TIMRx->IE |=  (1 << TIMR_IE_OC0_Pos);
     else             TIMRx->IE &= ~(1 << TIMR_IE_OC0_Pos);
 
@@ -470,11 +470,11 @@ void TIMR_OC_Init(TIMR_TypeDef * TIMRx, uint32_t match, uint32_t match_int_en, u
 }
 
 /******************************************************************************************************************************************
-* 函数名称: TIMR_OC_OutputEn()
-* 功能说明: 使能输出比较功能的波形输出
-* 输    入: TIMR_TypeDef * TIMRx  指定要被设置的定时器，可取值包括TIMR0、TIMR1、TIMR2、TIMR3、TIMR4、BTIMR0、BTIMR1、...、BTIMR11
-* 输    出: 无
-* 注意事项: 无
+* : TIMR_OC_OutputEn()
+* : 
+*     : TIMR_TypeDef * TIMRx  TIMR0TIMR1TIMR2TIMR3TIMR4BTIMR0BTIMR1...BTIMR11
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void TIMR_OC_OutputEn(TIMR_TypeDef * TIMRx)
 {
@@ -482,12 +482,12 @@ void TIMR_OC_OutputEn(TIMR_TypeDef * TIMRx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: TIMR_OC_OutputDis()
-* 功能说明: 禁止输出比较功能的波形输出，且让输出比较功能引脚保持level电平
-* 输    入: TIMR_TypeDef * TIMRx  指定要被设置的定时器，可取值包括TIMR0、TIMR1、TIMR2、TIMR3、TIMR4、BTIMR0、BTIMR1、...、BTIMR11
-*           uint32_t level          禁止输出波形后在引脚上保持的电平
-* 输    出: 无
-* 注意事项: 无
+* : TIMR_OC_OutputDis()
+* : level
+*     : TIMR_TypeDef * TIMRx  TIMR0TIMR1TIMR2TIMR3TIMR4BTIMR0BTIMR1...BTIMR11
+*           uint32_t level          
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void TIMR_OC_OutputDis(TIMR_TypeDef * TIMRx, uint32_t level)
 {
@@ -498,12 +498,12 @@ void TIMR_OC_OutputDis(TIMR_TypeDef * TIMRx, uint32_t level)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: TIMR_OC_SetMatch()
-* 功能说明: 设置输出比较功能的比较值
-* 输    入: TIMR_TypeDef * TIMRx  指定要被设置的定时器，可取值包括TIMR0、TIMR1、TIMR2、TIMR3、TIMR4、BTIMR0、BTIMR1、...、BTIMR11
-*           uint32_t match          输出比较功能的比较值
-* 输    出: 无
-* 注意事项: 无
+* : TIMR_OC_SetMatch()
+* : 
+*     : TIMR_TypeDef * TIMRx  TIMR0TIMR1TIMR2TIMR3TIMR4BTIMR0BTIMR1...BTIMR11
+*           uint32_t match          
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void TIMR_OC_SetMatch(TIMR_TypeDef * TIMRx, uint32_t match)
 {
@@ -511,11 +511,11 @@ void TIMR_OC_SetMatch(TIMR_TypeDef * TIMRx, uint32_t match)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: TIMR_OC_GetMatch()
-* 功能说明: 获取输出比较功能的比较值
-* 输    入: TIMR_TypeDef * TIMRx  指定要被设置的定时器，可取值包括TIMR0、TIMR1、TIMR2、TIMR3、TIMR4、BTIMR0、BTIMR1、...、BTIMR11
-* 输    出: uint32_t              输出比较功能的比较值
-* 注意事项: 无
+* : TIMR_OC_GetMatch()
+* : 
+*     : TIMR_TypeDef * TIMRx  TIMR0TIMR1TIMR2TIMR3TIMR4BTIMR0BTIMR1...BTIMR11
+*     : uint32_t              
+* : 
 ******************************************************************************************************************************************/
 uint32_t TIMR_OC_GetMatch(TIMR_TypeDef * TIMRx)
 {
@@ -523,11 +523,11 @@ uint32_t TIMR_OC_GetMatch(TIMR_TypeDef * TIMRx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: TIMR_OC_INTEn()
-* 功能说明: 使能输出比较中断
-* 输    入: TIMR_TypeDef * TIMRx  指定要被设置的定时器，可取值包括TIMR0、TIMR1、TIMR2、TIMR3、TIMR4、BTIMR0、BTIMR1、...、BTIMR11
-* 输    出: 无
-* 注意事项: 无
+* : TIMR_OC_INTEn()
+* : 
+*     : TIMR_TypeDef * TIMRx  TIMR0TIMR1TIMR2TIMR3TIMR4BTIMR0BTIMR1...BTIMR11
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void TIMR_OC_INTEn(TIMR_TypeDef * TIMRx)
 {
@@ -535,11 +535,11 @@ void TIMR_OC_INTEn(TIMR_TypeDef * TIMRx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: TIMR_OC_INTDis()
-* 功能说明: 禁能输出比较中断
-* 输    入: TIMR_TypeDef * TIMRx  指定要被设置的定时器，可取值包括TIMR0、TIMR1、TIMR2、TIMR3、TIMR4、BTIMR0、BTIMR1、...、BTIMR11
-* 输    出: 无
-* 注意事项: 无
+* : TIMR_OC_INTDis()
+* : 
+*     : TIMR_TypeDef * TIMRx  TIMR0TIMR1TIMR2TIMR3TIMR4BTIMR0BTIMR1...BTIMR11
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void TIMR_OC_INTDis(TIMR_TypeDef * TIMRx)
 {
@@ -547,11 +547,11 @@ void TIMR_OC_INTDis(TIMR_TypeDef * TIMRx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: TIMR_OC_INTClr()
-* 功能说明: 清除输出比较中断标志
-* 输    入: TIMR_TypeDef * TIMRx  指定要被设置的定时器，可取值包括TIMR0、TIMR1、TIMR2、TIMR3、TIMR4、BTIMR0、BTIMR1、...、BTIMR11
-* 输    出: 无
-* 注意事项: 无
+* : TIMR_OC_INTClr()
+* : 
+*     : TIMR_TypeDef * TIMRx  TIMR0TIMR1TIMR2TIMR3TIMR4BTIMR0BTIMR1...BTIMR11
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void TIMR_OC_INTClr(TIMR_TypeDef * TIMRx)
 {
@@ -559,11 +559,11 @@ void TIMR_OC_INTClr(TIMR_TypeDef * TIMRx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: TIMR_OC_INTStat()
-* 功能说明: 获取输出比较中断状态
-* 输    入: TIMR_TypeDef * TIMRx  指定要被设置的定时器，可取值包括TIMR0、TIMR1、TIMR2、TIMR3、TIMR4、BTIMR0、BTIMR1、...、BTIMR11
-* 输    出: uint32_t              0 输出比较match未发生   1 输出比较match发生
-* 注意事项: 无
+* : TIMR_OC_INTStat()
+* : 
+*     : TIMR_TypeDef * TIMRx  TIMR0TIMR1TIMR2TIMR3TIMR4BTIMR0BTIMR1...BTIMR11
+*     : uint32_t              0 match   1 match
+* : 
 ******************************************************************************************************************************************/
 uint32_t TIMR_OC_INTStat(TIMR_TypeDef * TIMRx)
 {
@@ -571,13 +571,13 @@ uint32_t TIMR_OC_INTStat(TIMR_TypeDef * TIMRx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: TIMR_IC_Init()
-* 功能说明: 输入捕获功能初始化
-* 输    入: TIMR_TypeDef * TIMRx  指定要被设置的定时器，可取值包括TIMR0、TIMR1、TIMR2、TIMR3、TIMR4
-*           uint32_t captureH_int_en    测量高电平长度完成中断使能
-*           uint32_t captureL_int_en    测量低电平长度完成中断使能
-* 输    出: 无
-* 注意事项: 无
+* : TIMR_IC_Init()
+* : 
+*     : TIMR_TypeDef * TIMRx  TIMR0TIMR1TIMR2TIMR3TIMR4
+*           uint32_t captureH_int_en    
+*           uint32_t captureL_int_en    
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void TIMR_IC_Init(TIMR_TypeDef * TIMRx, uint32_t captureH_int_en, uint32_t captureL_int_en)
 {
@@ -612,11 +612,11 @@ void TIMR_IC_Init(TIMR_TypeDef * TIMRx, uint32_t captureH_int_en, uint32_t captu
 }
 
 /******************************************************************************************************************************************
-* 函数名称: TIMR_IC_GetCaptureH()
-* 功能说明: 获取高电平长度测量结果
-* 输    入: TIMR_TypeDef * TIMRx  指定要被设置的定时器，可取值包括TIMR0、TIMR1、TIMR2、TIMR3、TIMR4
-* 输    出: uint32_t              高电平长度测量结果
-* 注意事项: 无
+* : TIMR_IC_GetCaptureH()
+* : 
+*     : TIMR_TypeDef * TIMRx  TIMR0TIMR1TIMR2TIMR3TIMR4
+*     : uint32_t              
+* : 
 ******************************************************************************************************************************************/
 uint32_t TIMR_IC_GetCaptureH(TIMR_TypeDef * TIMRx)
 {
@@ -624,11 +624,11 @@ uint32_t TIMR_IC_GetCaptureH(TIMR_TypeDef * TIMRx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: TIMR_IC_GetCaptureL()
-* 功能说明: 获取低电平长度测量结果
-* 输    入: TIMR_TypeDef * TIMRx  指定要被设置的定时器，可取值包括TIMR0、TIMR1、TIMR2、TIMR3、TIMR4
-* 输    出: uint32_t              低电平长度测量结果
-* 注意事项: 无
+* : TIMR_IC_GetCaptureL()
+* : 
+*     : TIMR_TypeDef * TIMRx  TIMR0TIMR1TIMR2TIMR3TIMR4
+*     : uint32_t              
+* : 
 ******************************************************************************************************************************************/
 uint32_t TIMR_IC_GetCaptureL(TIMR_TypeDef * TIMRx)
 {
@@ -636,11 +636,11 @@ uint32_t TIMR_IC_GetCaptureL(TIMR_TypeDef * TIMRx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: TIMR_IC_CaptureH_INTEn()
-* 功能说明: 使能输入捕获高电平长度测量完成中断
-* 输    入: TIMR_TypeDef * TIMRx  指定要被设置的定时器，可取值包括TIMR0、TIMR1、TIMR2、TIMR3、TIMR4
-* 输    出: 无
-* 注意事项: 无
+* : TIMR_IC_CaptureH_INTEn()
+* : 
+*     : TIMR_TypeDef * TIMRx  TIMR0TIMR1TIMR2TIMR3TIMR4
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void TIMR_IC_CaptureH_INTEn(TIMR_TypeDef * TIMRx)
 {
@@ -648,11 +648,11 @@ void TIMR_IC_CaptureH_INTEn(TIMR_TypeDef * TIMRx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: TIMR_IC_CaptureH_INTDis()
-* 功能说明: 禁能输入捕获高电平长度测量完成中断
-* 输    入: TIMR_TypeDef * TIMRx  指定要被设置的定时器，可取值包括TIMR0、TIMR1、TIMR2、TIMR3、TIMR4
-* 输    出: 无
-* 注意事项: 无
+* : TIMR_IC_CaptureH_INTDis()
+* : 
+*     : TIMR_TypeDef * TIMRx  TIMR0TIMR1TIMR2TIMR3TIMR4
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void TIMR_IC_CaptureH_INTDis(TIMR_TypeDef * TIMRx)
 {
@@ -660,11 +660,11 @@ void TIMR_IC_CaptureH_INTDis(TIMR_TypeDef * TIMRx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: TIMR_IC_CaptureH_INTClr()
-* 功能说明: 清除输入捕获高电平长度测量完成中断标志
-* 输    入: TIMR_TypeDef * TIMRx  指定要被设置的定时器，可取值包括TIMR0、TIMR1、TIMR2、TIMR3、TIMR4
-* 输    出: 无
-* 注意事项: 无
+* : TIMR_IC_CaptureH_INTClr()
+* : 
+*     : TIMR_TypeDef * TIMRx  TIMR0TIMR1TIMR2TIMR3TIMR4
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void TIMR_IC_CaptureH_INTClr(TIMR_TypeDef * TIMRx)
 {
@@ -672,11 +672,11 @@ void TIMR_IC_CaptureH_INTClr(TIMR_TypeDef * TIMRx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: TIMR_IC_CaptureH_INTStat()
-* 功能说明: 获取输入捕获高电平长度测量完成中断状态
-* 输    入: TIMR_TypeDef * TIMRx  指定要被设置的定时器，可取值包括TIMR0、TIMR1、TIMR2、TIMR3、TIMR4
-* 输    出: uint32_t              0 高电平长度测量未完成    1 高电平长度测量完成
-* 注意事项: 无
+* : TIMR_IC_CaptureH_INTStat()
+* : 
+*     : TIMR_TypeDef * TIMRx  TIMR0TIMR1TIMR2TIMR3TIMR4
+*     : uint32_t              0     1 
+* : 
 ******************************************************************************************************************************************/
 uint32_t TIMR_IC_CaptureH_INTStat(TIMR_TypeDef * TIMRx)
 {
@@ -684,11 +684,11 @@ uint32_t TIMR_IC_CaptureH_INTStat(TIMR_TypeDef * TIMRx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: TIMR_IC_CaptureL_INTEn()
-* 功能说明: 使能输入捕获低电平长度测量完成中断
-* 输    入: TIMR_TypeDef * TIMRx  指定要被设置的定时器，可取值包括TIMR0、TIMR1、TIMR2、TIMR3、TIMR4
-* 输    出: 无
-* 注意事项: 无
+* : TIMR_IC_CaptureL_INTEn()
+* : 
+*     : TIMR_TypeDef * TIMRx  TIMR0TIMR1TIMR2TIMR3TIMR4
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void TIMR_IC_CaptureL_INTEn(TIMR_TypeDef * TIMRx)
 {
@@ -696,11 +696,11 @@ void TIMR_IC_CaptureL_INTEn(TIMR_TypeDef * TIMRx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: TIMR_IC_CaptureL_INTDis()
-* 功能说明: 禁能输入捕获低电平长度测量完成中断
-* 输    入: TIMR_TypeDef * TIMRx  指定要被设置的定时器，可取值包括TIMR0、TIMR1、TIMR2、TIMR3、TIMR4
-* 输    出: 无
-* 注意事项: 无
+* : TIMR_IC_CaptureL_INTDis()
+* : 
+*     : TIMR_TypeDef * TIMRx  TIMR0TIMR1TIMR2TIMR3TIMR4
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void TIMR_IC_CaptureL_INTDis(TIMR_TypeDef * TIMRx)
 {
@@ -708,11 +708,11 @@ void TIMR_IC_CaptureL_INTDis(TIMR_TypeDef * TIMRx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: TIMR_IC_CaptureL_INTClr()
-* 功能说明: 清除输入捕获低电平长度测量完成中断标志
-* 输    入: TIMR_TypeDef * TIMRx  指定要被设置的定时器，可取值包括TIMR0、TIMR1、TIMR2、TIMR3、TIMR4
-* 输    出: 无
-* 注意事项: 无
+* : TIMR_IC_CaptureL_INTClr()
+* : 
+*     : TIMR_TypeDef * TIMRx  TIMR0TIMR1TIMR2TIMR3TIMR4
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void TIMR_IC_CaptureL_INTClr(TIMR_TypeDef * TIMRx)
 {
@@ -720,11 +720,11 @@ void TIMR_IC_CaptureL_INTClr(TIMR_TypeDef * TIMRx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: TIMR_IC_CaptureL_INTStat()
-* 功能说明: 获取输入捕获低电平长度测量完成中断状态
-* 输    入: TIMR_TypeDef * TIMRx  指定要被设置的定时器，可取值包括TIMR0、TIMR1、TIMR2、TIMR3、TIMR4
-* 输    出: uint32_t              0 低电平长度测量未完成    1 低电平长度测量完成
-* 注意事项: 无
+* : TIMR_IC_CaptureL_INTStat()
+* : 
+*     : TIMR_TypeDef * TIMRx  TIMR0TIMR1TIMR2TIMR3TIMR4
+*     : uint32_t              0     1 
+* : 
 ******************************************************************************************************************************************/
 uint32_t TIMR_IC_CaptureL_INTStat(TIMR_TypeDef * TIMRx)
 {

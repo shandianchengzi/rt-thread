@@ -50,44 +50,44 @@
   */
 
 /**
-  * @brief  复位DIVAS外设
+  * @brief  DIVAS
   *
-  * @param  DIVx 外设入口地址
+  * @param  DIVx 
   *
-  * @retval 错误状态，可能值：
-  *         -FL_PASS 外设寄存器值恢复复位值
-  *         -FL_FAIL 未成功执行
+  * @retval 
+  *         -FL_PASS 
+  *         -FL_FAIL 
   */
 FL_ErrorStatus FL_DIVAS_DeInit(DIV_Type *DIVx)
 {
-    /* 入口参数检查 */
+    /*  */
     assert_param(IS_DIVAS_ALL_INSTANCE(DIVx));
-    /* 外设复位使能 */
+    /*  */
     FL_RCC_EnablePeripheralReset();
-    /* 恢复寄存器值为默认值 */
+    /*  */
     FL_RCC_EnableResetAPB2Peripheral(FL_RCC_RSTAPB_DIVAS);
     FL_RCC_DisableResetAPB2Peripheral(FL_RCC_RSTAPB_DIVAS);
-    /* 关闭总线时钟 */
+    /*  */
     FL_RCC_DisableGroup2BusClock(FL_RCC_GROUP2_BUSCLK_HDIV);
-    /* 锁定外设复位功能 */
+    /*  */
     FL_RCC_DisablePeripheralReset();
     return FL_PASS;
 }
 
 /**
-  * @brief  配置DIVAS外设的DIV模块
+  * @brief  DIVASDIV
   *
-  * @param  DIVx 外设入口地址
+  * @param  DIVx 
   *
-  * @retval 错误状态，可能值：
-  *         -FL_PASS 配置成功
-  *         -FL_FAIL 配置过程发生错误
+  * @retval 
+  *         -FL_PASS 
+  *         -FL_FAIL 
   */
 FL_ErrorStatus FL_DIVAS_Init(DIV_Type *DIVx)
 {
-    /* 入口参数检查 */
+    /*  */
     assert_param(IS_DIVAS_ALL_INSTANCE(DIVx));
-    /* 使能时钟总线 */
+    /*  */
     FL_RCC_EnableGroup2BusClock(FL_RCC_GROUP2_BUSCLK_HDIV);
     return FL_PASS;
 }
@@ -101,17 +101,17 @@ FL_ErrorStatus FL_DIVAS_Init(DIV_Type *DIVx)
   */
 
 /**
-  * @brief 硬件除法器计算
+  * @brief 
   *
-  * @param  DIVx        外设入口地址
-  * @param  DivisorEnd  32位有符号被除数
-  * @param  Divisor     16位有符号除数，注意不能为0
-  * @param  Quotient    指向 @ref int32_t 指针 保存商的地址
-  * @param  Residue     指向 @ref int16_t 指针 保存余数的地址
+  * @param  DIVx        
+  * @param  DivisorEnd  32
+  * @param  Divisor     160
+  * @param  Quotient     @ref int32_t  
+  * @param  Residue      @ref int16_t  
   *
-  * @retval 计算正确性与否
-  *         -0   计算结果正确
-  *         -非0 计算过程发生错误
+  * @retval 
+  *         -0   
+  *         -0 
   */
 uint32_t FL_DIVAS_Hdiv_Calculation(DIV_Type *DIVx, int32_t DivisorEnd, int16_t Divisor, int32_t *Quotient, int16_t *Residue)
 {
@@ -120,7 +120,7 @@ uint32_t FL_DIVAS_Hdiv_Calculation(DIV_Type *DIVx, int32_t DivisorEnd, int16_t D
     FL_DIV_WriteDivisor_S16(DIVx, Divisor);
     if(FL_DIV_IsActiveFlag_DividedZero(DIVx))
     {
-        /*除数为0 */
+        /*0 */
         *Quotient = 0;
         *Residue  = 0;
         return 1;
@@ -131,7 +131,7 @@ uint32_t FL_DIVAS_Hdiv_Calculation(DIV_Type *DIVx, int32_t DivisorEnd, int16_t D
         TimeOut--;
         if(TimeOut == 0)
         {
-            /* 计算超时*/
+            /* */
             *Quotient = 0;
             *Residue  = 0;
             return 3;

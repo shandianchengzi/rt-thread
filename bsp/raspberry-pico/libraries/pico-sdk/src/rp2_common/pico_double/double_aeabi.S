@@ -730,7 +730,7 @@ dsincos_shim_v2:
      push {r4-r7,r14}
      bl push_r8_r11
      bl v2_rom_dsincos_internal
-     mov r12,r0                    @ save ε
+     mov r12,r0                    @ save 
      bl v2_rom_dcos_finish
      push {r0,r1}
      mov r0,r12

@@ -93,10 +93,10 @@ int get_color_supported()
 //		Send this to query: "\033[>0c"
 //
 //		A terminal emulator should respond with one of:
-//		CSI ? 1 ; 2 c (‘‘VT100 with Advanced Video Option’’)
-//		CSI ? 1 ; 0 c (‘‘VT101 with No Options’’)
-//		CSI ? 6 c (‘‘VT102’’)
-//		CSI ? 6 0 ; 1 ; 2 ; 6 ; 8 ; 9 ; 1 5 ; c (‘‘VT220’’)
+//		CSI ? 1 ; 2 c (VT100 with Advanced Video Option)
+//		CSI ? 1 ; 0 c (VT101 with No Options)
+//		CSI ? 6 c (VT102)
+//		CSI ? 6 0 ; 1 ; 2 ; 6 ; 8 ; 9 ; 1 5 ; c (VT220)
 //
 //		The first response is what I get from Terminal.app on OS X. The equivalent string in C is "\033[?1;2c". (CSI is "ESC[".)
 //

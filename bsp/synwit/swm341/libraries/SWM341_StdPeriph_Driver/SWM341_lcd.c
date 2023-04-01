@@ -1,10 +1,10 @@
 /******************************************************************************************************************************************
-* 文件名称: SWM341_lcd.c
-* 功能说明: SWM341单片机的LCD功能驱动库
-* 技术支持: http://www.synwit.com.cn/e/tool/gbook/?bid=1
-* 注意事项:
-* 版本日期: V1.1.0      2017年10月25日
-* 升级记录:
+* : SWM341_lcd.c
+* : SWM341LCD
+* : http://www.synwit.com.cn/e/tool/gbook/?bid=1
+* :
+* : V1.1.0      20171025
+* :
 *
 *
 *******************************************************************************************************************************************
@@ -25,12 +25,12 @@
 
 
 /******************************************************************************************************************************************
-* 函数名称: LCD_Init()
-* 功能说明: LCD初始化
-* 输    入: LCD_TypeDef * LCDx    指定要被设置的LCD，有效值包括LCD
-*           LCD_InitStructure * initStruct    包含LCD相关设定值的结构体
-* 输    出: 无
-* 注意事项: 无
+* : LCD_Init()
+* : LCD
+*     : LCD_TypeDef * LCDx    LCDLCD
+*           LCD_InitStructure * initStruct    LCD
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void LCD_Init(LCD_TypeDef * LCDx, LCD_InitStructure * initStruct)
 {
@@ -76,7 +76,7 @@ void LCD_Init(LCD_TypeDef * LCDx, LCD_InitStructure * initStruct)
 
     LCDx->L[0].LLEN = (initStruct->HnPixel - 1);
 
-    LCDx->IF = 1;   //清除标志
+    LCDx->IF = 1;   //
     LCDx->IE = initStruct->IntEOTEn;
 
     switch((uint32_t)LCDx)
@@ -88,13 +88,13 @@ void LCD_Init(LCD_TypeDef * LCDx, LCD_InitStructure * initStruct)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: LCD_LayerInit()
-* 功能说明: LCD层初始化
-* 输    入: LCD_TypeDef * LCDx    指定要被设置的LCD，有效值包括LCD
-*           uint32_t layerx     要初始化的LCD层，取值LCD_LAYER_1、LCD_LAYER_2
-*           LCD_LayerInitStructure * initStruct    包含LCD层相关设定值的结构体
-* 输    出: 无
-* 注意事项: 无
+* : LCD_LayerInit()
+* : LCD
+*     : LCD_TypeDef * LCDx    LCDLCD
+*           uint32_t layerx     LCDLCD_LAYER_1LCD_LAYER_2
+*           LCD_LayerInitStructure * initStruct    LCD
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void LCD_LayerInit(LCD_TypeDef * LCDx, uint32_t layerx, LCD_LayerInitStructure * initStruct)
 {
@@ -116,13 +116,13 @@ void LCD_LayerInit(LCD_TypeDef * LCDx, uint32_t layerx, LCD_LayerInitStructure *
 }
 
 /******************************************************************************************************************************************
-* 函数名称: LCD_SetLayerPos()
-* 功能说明: LCD层位置设定
-* 输    入: LCD_TypeDef * LCDx    指定要被设置的LCD，有效值包括LCD
-*           uint32_t layerx     要设置的LCD层，取值LCD_LAYER_1、LCD_LAYER_2
-*           uint16_t hstart, uint16_t hstop, uint16_t vstart, uint16_t vstop，详细说明见 LCD_LayerInitStructure
-* 输    出: 无
-* 注意事项: 无
+* : LCD_SetLayerPos()
+* : LCD
+*     : LCD_TypeDef * LCDx    LCDLCD
+*           uint32_t layerx     LCDLCD_LAYER_1LCD_LAYER_2
+*           uint16_t hstart, uint16_t hstop, uint16_t vstart, uint16_t vstop LCD_LayerInitStructure
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void LCD_SetLayerPos(LCD_TypeDef * LCDx, uint32_t layerx, uint16_t hstart, uint16_t hstop, uint16_t vstart, uint16_t vstop)
 {
@@ -136,11 +136,11 @@ void LCD_SetLayerPos(LCD_TypeDef * LCDx, uint32_t layerx, uint16_t hstart, uint1
 }
 
 /******************************************************************************************************************************************
-* 函数名称: LCD_Start()
-* 功能说明: 启动一次数据传输
-* 输    入: LCD_TypeDef * LCDx    指定要被设置的LCD，有效值包括LCD
-* 输    出: 无
-* 注意事项: 无
+* : LCD_Start()
+* : 
+*     : LCD_TypeDef * LCDx    LCDLCD
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void LCD_Start(LCD_TypeDef * LCDx)
 {
@@ -148,11 +148,11 @@ void LCD_Start(LCD_TypeDef * LCDx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: LCD_IsBusy()
-* 功能说明: 是否正在进行数据传输
-* 输    入: LCD_TypeDef * LCDx    指定要被设置的LCD，有效值包括LCD
-* 输    出: uint32_t          1 正在传输数据    0 数据传输已完成
-* 注意事项: 无
+* : LCD_IsBusy()
+* : 
+*     : LCD_TypeDef * LCDx    LCDLCD
+*     : uint32_t          1     0 
+* : 
 ******************************************************************************************************************************************/
 uint32_t LCD_IsBusy(LCD_TypeDef * LCDx)
 {
@@ -160,11 +160,11 @@ uint32_t LCD_IsBusy(LCD_TypeDef * LCDx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: LCD_INTEn()
-* 功能说明: LCD中断使能，完成指定长度的数据传输时触发中断
-* 输    入: LCD_TypeDef * LCDx    指定要被设置的LCD，有效值包括LCD
-* 输    出: 无
-* 注意事项: 无
+* : LCD_INTEn()
+* : LCD
+*     : LCD_TypeDef * LCDx    LCDLCD
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void LCD_INTEn(LCD_TypeDef * LCDx)
 {
@@ -172,11 +172,11 @@ void LCD_INTEn(LCD_TypeDef * LCDx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: LCD_INTDis()
-* 功能说明: LCD中断禁止，完成指定长度的数据传输时不触发中断
-* 输    入: LCD_TypeDef * LCDx    指定要被设置的LCD，有效值包括LCD
-* 输    出: 无
-* 注意事项: 无
+* : LCD_INTDis()
+* : LCD
+*     : LCD_TypeDef * LCDx    LCDLCD
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void LCD_INTDis(LCD_TypeDef * LCDx)
 {
@@ -184,11 +184,11 @@ void LCD_INTDis(LCD_TypeDef * LCDx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: LCD_INTClr()
-* 功能说明: LCD中断标志清除
-* 输    入: LCD_TypeDef * LCDx    指定要被设置的LCD，有效值包括LCD
-* 输    出: 无
-* 注意事项: 无
+* : LCD_INTClr()
+* : LCD
+*     : LCD_TypeDef * LCDx    LCDLCD
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void LCD_INTClr(LCD_TypeDef * LCDx)
 {
@@ -196,11 +196,11 @@ void LCD_INTClr(LCD_TypeDef * LCDx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: LCD_INTStat()
-* 功能说明: LCD中断状态查询
-* 输    入: LCD_TypeDef * LCDx    指定要被设置的LCD，有效值包括LCD
-* 输    出: uint32_t          0 未完成指定长度的数据传输   非0 完成指定长度的数据传输
-* 注意事项: 无
+* : LCD_INTStat()
+* : LCD
+*     : LCD_TypeDef * LCDx    LCDLCD
+*     : uint32_t          0    0 
+* : 
 ******************************************************************************************************************************************/
 uint32_t LCD_INTStat(LCD_TypeDef * LCDx)
 {
@@ -209,12 +209,12 @@ uint32_t LCD_INTStat(LCD_TypeDef * LCDx)
 
 
 /******************************************************************************************************************************************
-* 函数名称: MPULCD_Init()
-* 功能说明: MPU LCD初始化
-* 输    入: LCD_TypeDef * LCDx    指定要被设置的LCD，有效值包括LCD
-*           MPULCD_InitStructure * initStruct    包含MPU LCD相关设定值的结构体
-* 输    出: 无
-* 注意事项: 无
+* : MPULCD_Init()
+* : MPU LCD
+*     : LCD_TypeDef * LCDx    LCDLCD
+*           MPULCD_InitStructure * initStruct    MPU LCD
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void MPULCD_Init(LCD_TypeDef * LCDx, MPULCD_InitStructure * initStruct)
 {
@@ -227,9 +227,9 @@ void MPULCD_Init(LCD_TypeDef * LCDx, MPULCD_InitStructure * initStruct)
     }
 
     LCDx->CR  = (1              << LCD_CR_MPUEN_Pos) |
-                (LCD_FMT_RGB565 << LCD_CR_FORMAT_Pos);  //MPU模式只支持RGB565
+                (LCD_FMT_RGB565 << LCD_CR_FORMAT_Pos);  //MPURGB565
 
-    LCDx->L[0].LCR |= (1 << LCD_LCR_EN_Pos);            //MPU模式下需要使能Layer1
+    LCDx->L[0].LCR |= (1 << LCD_LCR_EN_Pos);            //MPULayer1
 
     LCDx->MPUCR = ((initStruct->RDHoldTime    - 1) << LCD_MPUCR_RDHOLD_Pos) |
                   ((initStruct->WRHoldTime    - 1) << LCD_MPUCR_WRHOLD_Pos) |
@@ -269,14 +269,14 @@ uint16_t LCD_ReadReg(LCD_TypeDef * LCDx, uint16_t reg)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: MPULCD_DMAStart()
-* 功能说明: MPU LCD DMA搬运显示数据
-* 输    入: LCD_TypeDef * LCDx    指定要被设置的LCD，有效值包括LCD
-*           uint32_t * buff     要搬运的显示数据
-*           uint16_t hpix       横向像素数，即每行像素数，必须是偶数
-*           uint16_t vpix       纵向像素数，即行数
-* 输    出: 无
-* 注意事项: 无
+* : MPULCD_DMAStart()
+* : MPU LCD DMA
+*     : LCD_TypeDef * LCDx    LCDLCD
+*           uint32_t * buff     
+*           uint16_t hpix       
+*           uint16_t vpix       
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void MPULCD_DMAStart(LCD_TypeDef * LCDx, uint32_t * buff, uint16_t hpix, uint16_t vpix)
 {
@@ -289,11 +289,11 @@ void MPULCD_DMAStart(LCD_TypeDef * LCDx, uint32_t * buff, uint16_t hpix, uint16_
 }
 
 /******************************************************************************************************************************************
-* 函数名称: MPULCD_DMABusy()
-* 功能说明: MPU LCD DMA搬运显示数据忙查询
-* 输    入: LCD_TypeDef * LCDx    指定要被设置的LCD，有效值包括LCD
-* 输    出: uint32_t          1 搬运中   0 搬运完成
-* 注意事项: 无
+* : MPULCD_DMABusy()
+* : MPU LCD DMA
+*     : LCD_TypeDef * LCDx    LCDLCD
+*     : uint32_t          1    0 
+* : 
 ******************************************************************************************************************************************/
 uint32_t MPULCD_DMABusy(LCD_TypeDef * LCDx)
 {

@@ -85,9 +85,9 @@
   */
 
 /**
-  * @brief  获取LCD工作频率寄存器值
-  * @param  freq 工作频率
-  * @retval 工作频率寄存器值
+  * @brief  LCD
+  * @param  freq 
+  * @retval 
   */
 static uint32_t FL_LCD_DisplayFreq(uint32_t freq)
 {
@@ -111,9 +111,9 @@ static uint32_t FL_LCD_DisplayFreq(uint32_t freq)
 }
 
 /**
-  * @brief  获取LCD闪烁时间寄存器值
-  * @param  time 闪烁时间
-  * @retval 闪烁时间寄存器值
+  * @brief  LCD
+  * @param  time 
+  * @retval 
   */
 static uint32_t FL_LCD_FlickTime(uint32_t time)
 {
@@ -143,36 +143,36 @@ static uint32_t FL_LCD_FlickTime(uint32_t time)
   */
 
 /**
-  * @brief  复位LCD
+  * @brief  LCD
   *
-  * @param  LCDx 外设入口地址
-  * @retval 错误状态，可能值：
-  *         -FL_PASS 外设寄存器值恢复复位值
-  *         -FL_FAIL 未成功执行
+  * @param  LCDx 
+  * @retval 
+  *         -FL_PASS 
+  *         -FL_FAIL 
   */
 FL_ErrorStatus FL_LCD_DeInit(LCD_Type *LCDx)
 {
     assert_param(IS_FL_LCD_INSTANCE(LCDx));
-    /* 使能外设复位 */
+    /*  */
     FL_RCC_EnablePeripheralReset();
-    /* 复位LCD外设寄存器 */
+    /* LCD */
     FL_RCC_EnableResetAPB1Peripheral(FL_RCC_RSTAPB_LCD);
     FL_RCC_DisableResetAPB1Peripheral(FL_RCC_RSTAPB_LCD);
-    /* 关闭外设总线始时钟和工作时钟 */
+    /*  */
     FL_RCC_DisableGroup2BusClock(FL_RCC_GROUP2_BUSCLK_LCD);
-    /* 锁定外设复位 */
+    /*  */
     FL_RCC_DisablePeripheralReset();
     return FL_PASS;
 }
 
 /**
-  * @brief  配置LCD
-  * @param  LCDx 外设入口地址
-  * @param  initStruct 指向 @ref FL_LPTIM32_InitTypeDef 结构体的指针
+  * @brief  LCD
+  * @param  LCDx 
+  * @param  initStruct  @ref FL_LPTIM32_InitTypeDef 
   *
-  * @retval 错误状态，可能值：
-  *         -FL_PASS 配置成功
-  *         -FL_FAIL 配置过程发生错误
+  * @retval 
+  *         -FL_PASS 
+  *         -FL_FAIL 
   */
 FL_ErrorStatus FL_LCD_Init(LCD_Type *LCDx, FL_LCD_InitTypeDef *initStruct)
 {
@@ -183,33 +183,33 @@ FL_ErrorStatus FL_LCD_Init(LCD_Type *LCDx, FL_LCD_InitTypeDef *initStruct)
     assert_param(IS_FL_LCD_BIASMD(initStruct->biasMode));
     assert_param(IS_FL_LCD_BWFT(initStruct->waveform));
     assert_param(IS_FL_LCD_LMUX(initStruct->COMxNum));
-    /* 外设总线始时钟 */
+    /*  */
     FL_RCC_EnableGroup2BusClock(FL_RCC_GROUP2_BUSCLK_LCD);
-    /* 电流源电流控制 */
+    /*  */
     FL_LCD_SetBiasCurrent(LCD, initStruct->biasCurrent);
-    /* LCD驱动模式 */
+    /* LCD */
     FL_LCD_SetDriverMode(LCD, initStruct->mode);
-    /* 偏执电压设置 */
+    /*  */
     FL_LCD_SetBiasVoltage(LCD, initStruct->biasVoltage);
-    /* 偏执模式选择 */
+    /*  */
     FL_LCD_SetBiasMode(LCD, initStruct->biasMode);
-    /* 驱动波形设置 */
+    /*  */
     FL_LCD_SetWaveform(LCD, initStruct->waveform);
-    /* COMx口选择 */
+    /* COMx */
     FL_LCD_SetCOMNumber(LCD, initStruct->COMxNum);
-    /* 设置工作频率 */
+    /*  */
     FL_LCD_WriteDisplayFrequency(LCD, FL_LCD_DisplayFreq(initStruct->displayFreq));
-    /* 设置闪烁频率 */
+    /*  */
     FL_LCD_WriteDisplayOnTime(LCD, FL_LCD_FlickTime(initStruct->flickOnTime));
     FL_LCD_WriteDisplayOffTime(LCD, FL_LCD_FlickTime(initStruct->flickOffTime));
-    /* 使能外设 */
+    /*  */
     FL_LCD_Enable(LCD);
     return FL_PASS;
 }
 
 /**
-  * @brief  将 @ref FL_LCD_InitTypeDef 结构体初始化为默认配置
-  * @param  initStruct 指向 @ref FL_LCD_InitTypeDef 结构体的指针
+  * @brief   @ref FL_LCD_InitTypeDef 
+  * @param  initStruct  @ref FL_LCD_InitTypeDef 
   *
   * @retval None
   */
@@ -235,11 +235,11 @@ void FL_LCD_StructInit(FL_LCD_InitTypeDef *initStruct)
   */
 
 /**
-  * @brief  设置 LCD 4COM显示字端
-  * @param  display 指向显示信息的缓存区域，可直接指向LCD的DATAx寄存器。
-  * @param  com 待显示字段所在COM。范围0-4。
-  * @param  seg 待显示字段所在SEG。范围0-31。
-  * @param  state 待显示字段状态。0，熄灭；否则，点亮。
+  * @brief   LCD 4COM
+  * @param  display LCDDATAx
+  * @param  com COM0-4
+  * @param  seg SEG0-31
+  * @param  state 0
   *
   * @retval None
   */
@@ -253,11 +253,11 @@ void FL_LCD_4COMDisplay(uint32_t *display, uint8_t com, uint8_t seg, uint8_t sta
 }
 
 /**
-  * @brief  设置 LCD 6COM显示字端
-  * @param  display 指向显示信息的缓存区域，可直接指向LCD的DATAx寄存器。
-  * @param  com 待显示字段所在COM。范围0-6。
-  * @param  seg 待显示字段所在SEG。范围0-29。
-  * @param  state 待显示字段状态。0，熄灭；否则，点亮。
+  * @brief   LCD 6COM
+  * @param  display LCDDATAx
+  * @param  com COM0-6
+  * @param  seg SEG0-29
+  * @param  state 0
   *
   * @retval None
   */
@@ -271,11 +271,11 @@ void FL_LCD_6COMDisplay(uint32_t *display, uint8_t com, uint8_t seg, uint8_t sta
 }
 
 /**
-  * @brief  设置 LCD 8COM显示字端
-  * @param  display 指向显示信息的缓存区域，可直接指向LCD的DATAx寄存器。
-  * @param  com 待显示字段所在COM。范围0-8。
-  * @param  seg 待显示字段所在SEG。范围0-27。
-  * @param  state 待显示字段状态。0，熄灭；否则，点亮。
+  * @brief   LCD 8COM
+  * @param  display LCDDATAx
+  * @param  com COM0-8
+  * @param  seg SEG0-27
+  * @param  state 0
   *
   * @retval None
   */

@@ -1,12 +1,12 @@
 # STM32F410-Nucleo BSP Introduction
 
-[中文](README_zh.md) 
+[](README_zh.md) 
 
 ## MCU: STM32F410RB @100MHz, 128KB FLASH,  32KB RAM
 
-The STM32F410x8/B devices are based on the high-performance ARM®Cortex® -M4 32-bit RISC core operating at a frequency of up to 100 MHz. Their Cortex®-M4 core features a Floating point unit (FPU) single precision which supports all ARM single-precision data-processing instructions and data types. It also implements a full set of DSP instructions and a memory protection unit (MPU) which enhances application security.
+The STM32F410x8/B devices are based on the high-performance ARMCortex -M4 32-bit RISC core operating at a frequency of up to 100 MHz. Their Cortex-M4 core features a Floating point unit (FPU) single precision which supports all ARM single-precision data-processing instructions and data types. It also implements a full set of DSP instructions and a memory protection unit (MPU) which enhances application security.
 
-The STM32F410x8/B belong to the STM32 Dynamic Efficiency™ product line (with products combining power efficiency, performance and integration) while adding a new innovative feature called Batch Acquisition Mode (BAM) allowing to save even more power consumption during data batching.
+The STM32F410x8/B belong to the STM32 Dynamic Efficiency product line (with products combining power efficiency, performance and integration) while adding a new innovative feature called Batch Acquisition Mode (BAM) allowing to save even more power consumption during data batching.
 
 The STM32F410x8/B incorporate high-speed embedded memories (up to 128 Kbytes of Flash memory, 32 Kbytes of SRAM), and an extensive range of enhanced I/Os and peripherals connected to two APB buses, one AHB bus and a 32-bit multi-AHB bus matrix.
 
@@ -15,7 +15,7 @@ All devices offer one 12-bit ADC, one 12-bit DAC, a low-power RTC, three general
 #### KEY FEATURES
 
 - Dynamic Efficiency Line with BAM (Batch Acquisition Mode)
-- Core: ARM®32-bit Cortex®-M4 CPU with FPU, Adaptive real-time accelerator (ART Accelerator™) allowing 0-wait state execution from Flash memory, frequency up to 100 MHz, memory protection unit, 125 DMIPS/1.25 DMIPS/MHz (Dhrystone 2.1), and DSP instructions
+- Core: ARM32-bit Cortex-M4 CPU with FPU, Adaptive real-time accelerator (ART Accelerator) allowing 0-wait state execution from Flash memory, frequency up to 100 MHz, memory protection unit, 125 DMIPS/1.25 DMIPS/MHz (Dhrystone 2.1), and DSP instructions
 - Memories
   - Up to 128 Kbytes of Flash memory
   - 512 bytes of OTP memory
@@ -28,13 +28,13 @@ All devices offer one 12-bit ADC, one 12-bit DAC, a low-power RTC, three general
   - 32 kHz oscillator for RTC with calibration
   - Internal 32 kHz RC with calibration
 - Power consumption
-  - Run: 89 μA/MHz (peripheral off)
-  - Stop (Flash in Stop mode, fast wakeup time): 40 μA Typ @ 25 °C; 49 μA max @25 °C
-  - Stop (Flash in Deep power down mode, fast wakeup time): down to 6 μA @ 25 °C; 14 μA max @25 °C
-  - Standby: 2.4 μA @25 °C / 1.7 V without RTC; 12 μA @85 °C @1.7 V
-  - VBATsupply for RTC: 1 μA @25 °C
-- 1×12-bit, 2.4 MSPS ADC: up to 16 channels
-- 1×12-bit D/A converter
+  - Run: 89 A/MHz (peripheral off)
+  - Stop (Flash in Stop mode, fast wakeup time): 40 A Typ @ 25 C; 49 A max @25 C
+  - Stop (Flash in Deep power down mode, fast wakeup time): down to 6 A @ 25 C; 14 A max @25 C
+  - Standby: 2.4 A @25 C / 1.7 V without RTC; 12 A @85 C @1.7 V
+  - VBATsupply for RTC: 1 A @25 C
+- 112-bit, 2.4 MSPS ADC: up to 16 channels
+- 112-bit D/A converter
 - General-purpose DMA: 16-stream DMA controllers with FIFOs and burst support
 - Up to 9 timers
   - One 16-bit advanced motor-control timer
@@ -46,7 +46,7 @@ All devices offer one 12-bit ADC, one 12-bit DAC, a low-power RTC, three general
 
 - Debug mode
   - Serial wire debug (SWD) & JTAG interfaces
-  - Cortex®-M4 Embedded Trace Macrocell™
+  - Cortex-M4 Embedded Trace Macrocell
 - Up to 50 I/O ports with interrupt capability
   - Up to 45 fast I/Os up to 100 MHz
   - Up to 49 5 V-tolerant I/Os
@@ -58,7 +58,7 @@ All devices offer one 12-bit ADC, one 12-bit DAC, a low-power RTC, three general
 - CRC calculation unit
 - 96-bit unique ID
 - RTC: subsecond accuracy, hardware calendar
-- All packages are ECOPACK®2
+- All packages are ECOPACK2
 
 
 

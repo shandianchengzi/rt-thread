@@ -262,7 +262,7 @@ void GPIO_WriteBit(GPIO_DATInitType* DATx, uint8_t PinNum, uint8_t val)
 /**
   * @brief  Write output data register bit.
   * @param  GPIOx: GPIOB~GPIOF
-            GPIO_Pin: can use the ‘|’ operator
+            GPIO_Pin: can use the | operator
                 GPIO_Pin_0~GPIO_Pin_15 or GPIO_Pin_All
             val:value write to register bit.
   * @retval None.
@@ -287,7 +287,7 @@ void GPIOBToF_WriteBit(GPIO_Type* GPIOx, uint16_t GPIO_Pin, uint8_t val)
 /**
   * @brief  Write output data register bit.
   * @param  GPIOx: GPIOA
-            GPIO_Pin: can use the ‘|’ operator
+            GPIO_Pin: can use the | operator
                  GPIO_Pin_0~GPIO_Pin_15 or GPIO_Pin_All
             val:value write to register bit.
   * @retval None.

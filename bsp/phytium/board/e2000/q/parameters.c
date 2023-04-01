@@ -20,7 +20,7 @@
 
 /**
  * @name: GetCpuMaskToAffval
- * @msg:  参考 GetCpuMaskToAffval 进行参数的重新定义 ，两个小核心定义的id 为0，1 ，两个大核的id 为 2，3
+ * @msg:   GetCpuMaskToAffval  id 01 id  23
  * @return {*}
  * @note:
  * @param {u32} *cpu_mask

@@ -72,9 +72,9 @@ void bt_handler(void)
 
 /***************************************************************************************
 declaraction: int32_t bt_ware_init(bt_attr_param *pinit, bt_event_callback_handler_t pcallback)
-function    : 初始化蓝牙模??
-parameter   : 蓝牙初始化数??
-parameter   : 蓝牙事件回调函数
+function    : ??
+parameter   : ??
+parameter   : 
 return      : NONE
 ***************************************************************************************/
 int32_t bt_ware_init(bt_attr_param *pinit, bt_event_callback_handler_t pcallback)
@@ -131,7 +131,7 @@ int32_t bt_ware_init(bt_attr_param *pinit, bt_event_callback_handler_t pcallback
 
 /***************************************************************************************
 declaraction: void bt_run_thread(void)
-function    : 蓝牙运行的主线程，用于蓝牙接收、发送、通知等处??
+function    : ??
 parameter   : void
 return      : NONE
 ***************************************************************************************/
@@ -143,11 +143,11 @@ void bt_run_thread(void)
 
 /***************************************************************************************
 declaraction: uint32_t bt_rcv_data(uint8_t *data, uint32_t size, uint32_t character)
-function    : 根据BT_EVENT_RCV_DATA事件，读取相应服务特征字的数??
-parameter   : uint8_t *data 接收数据buf
-parameter   : uint32_t size buf大小(最大不超过512Bytes)
-parameter   : uint32_t character 发生数据通知对应的特征字ID
-return      : 返回实际读取大小
+function    : BT_EVENT_RCV_DATA??
+parameter   : uint8_t *data buf
+parameter   : uint32_t size buf(512Bytes)
+parameter   : uint32_t character ID
+return      : 
 ***************************************************************************************/
 uint32_t bt_rcv_data(uint8_t *data, uint32_t size, uint32_t character)
 {
@@ -160,11 +160,11 @@ uint32_t bt_rcv_data(uint8_t *data, uint32_t size, uint32_t character)
 
 /***************************************************************************************
 declaraction: uint32_t bt_rcv_data(const uint8_t *data, uint32_t size, uint32_t character)
-function    : 发送数据到对应的特征字
-parameter   : uint8_t *data 发送数据buf
-parameter   : uint32_t 发送数据大??最大不超过512Bytes)
-parameter   : uint32_t character 对应特征字ID
-return      : 返回值0
+function    : 
+parameter   : uint8_t *data buf
+parameter   : uint32_t ??512Bytes)
+parameter   : uint32_t character ID
+return      : 0
 ***************************************************************************************/
 uint32_t bt_snd_data(const uint8_t *data, uint32_t size, uint32_t character)
 {
@@ -179,7 +179,7 @@ uint32_t bt_snd_data(const uint8_t *data, uint32_t size, uint32_t character)
 
 /***************************************************************************************
 declaraction: void bt_disconnect(void)
-function    : slave主动断开蓝牙连接
+function    : slave
 parameter   : NULL
 return      : NULL
 ***************************************************************************************/
@@ -190,7 +190,7 @@ void bt_disconnect(void)
 
 /***************************************************************************************
 declaraction: uint32_t bluetooth_state_get(void)
-function    : 获取蓝牙连接状态,不对外开放
+function    : ,
 parameter   : NULL
 return      : NULL
 ***************************************************************************************/

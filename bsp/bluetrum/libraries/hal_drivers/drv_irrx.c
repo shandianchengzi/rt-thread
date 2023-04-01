@@ -21,19 +21,19 @@
 #endif
 
 #ifdef BSP_USING_IRRX_HW
-///硬件IR receiver参数
+///IR receiver
 #define IR32KSEL_EN         0                     //IR clock source select 32K
 #if IR32KSEL_EN
-    #define RPTERR_CNT      33                    //配置11.25ms ± (RPTERR_CNT + 1)*32K的repeat code允许范围
-    #define DATERR_CNT      33                    //配置13.5ms ± (DATERR_CNT + 1)*32K引导码允许范围
-    #define ONEERR_CNT      7                     //配置2.25ms ± (ONEERR_CNT + 1)*32K的logic "1"允许范围
-    #define ZEROERR_CNT     3                     //配置1.12ms ± (ONEERR_CNT + 1)*32K数logic "0"允许范围
+    #define RPTERR_CNT      33                    //11.25ms  (RPTERR_CNT + 1)*32Krepeat code
+    #define DATERR_CNT      33                    //13.5ms  (DATERR_CNT + 1)*32K
+    #define ONEERR_CNT      7                     //2.25ms  (ONEERR_CNT + 1)*32Klogic "1"
+    #define ZEROERR_CNT     3                     //1.12ms  (ONEERR_CNT + 1)*32Klogic "0"
     #define TOPR_CNT        55                    //IR time out length = (TOPR + 1) * 64 *32K
 #else
-    #define RPTERR_CNT      1000                  //配置11.25ms ± (RPTERR_CNT + 1)us的repeat code允许范围
-    #define DATERR_CNT      1000                  //配置13.5ms ± (DATERR_CNT + 1)us引导码允许范围
-    #define ONEERR_CNT      250                   //配置2.25ms ± (ONEERR_CNT + 1)us的logic "1"允许范围
-    #define ZEROERR_CNT     125                   //配置1.12ms ± (ONEERR_CNT + 1)us数logic "0"允许范围
+    #define RPTERR_CNT      1000                  //11.25ms  (RPTERR_CNT + 1)usrepeat code
+    #define DATERR_CNT      1000                  //13.5ms  (DATERR_CNT + 1)us
+    #define ONEERR_CNT      250                   //2.25ms  (ONEERR_CNT + 1)uslogic "1"
+    #define ZEROERR_CNT     125                   //1.12ms  (ONEERR_CNT + 1)uslogic "0"
     #define TOPR_CNT        1718                  //IR time out length = (TOPR + 1) * 64 us
 #endif // IR32KSEL_EN
 #endif // BSP_USING_IRRX_HW
@@ -118,7 +118,7 @@ static void _irrx_hw_init(void)
 
 #if IR32KSEL_EN
     CLKCON1 &= ~BIT(5);
-    CLKCON1 |= BIT(4);                              //enable 26M分频32K
+    CLKCON1 |= BIT(4);                              //enable 26M32K
     IRRXCON |= BIT(3);                              //ir clock source select 32K
 #endif // IR32KSEL_EN
 

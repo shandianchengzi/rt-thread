@@ -113,42 +113,42 @@ static const pSetTrigEdgeFunc setTrigEdgeFuncs[] =
   */
 
 /**
-  * @brief  EXTI通用配置设置
+  * @brief  EXTI
   *
-  * @param  EXTI_CommonInitStruct 指向 @ref FL_EXTI_CommonInitTypeDef 类型的结构体，它包含EXTI外设通用配置信息
+  * @param  EXTI_CommonInitStruct  @ref FL_EXTI_CommonInitTypeDef EXTI
   *
-  * @retval ErrorStatus枚举值
-  *         -FL_FAIL 配置过程发生错误
-  *         -FL_PASS EXTI配置成功
+  * @retval ErrorStatus
+  *         -FL_FAIL 
+  *         -FL_PASS EXTI
   */
 FL_ErrorStatus FL_EXTI_CommonInit(FL_EXTI_CommonInitTypeDef *EXTI_CommonInitStruct)
 {
     assert_param(IS_EXTI_CLK_SOURCE(EXTI_CommonInitStruct->clockSource));
-    /* 使能IO时钟寄存器总线时钟 */
+    /* IO */
     FL_RCC_EnableGroup1BusClock(FL_RCC_GROUP1_BUSCLK_PAD);
-    /* 使能并配置外部中断时钟源 */
+    /*  */
     FL_RCC_EnableGroup1OperationClock(FL_RCC_GROUP1_OPCLK_EXTI);
     FL_RCC_SetEXTIClockSource(EXTI_CommonInitStruct->clockSource);
     return FL_PASS;
 }
 
 /**
-  * @brief  复位EXTI通用配置设置
+  * @brief  EXTI
   *
-  * @retval 执行结果
-  *         -FL_PASS 外设寄存器值恢复复位值
-  *         -FL_FAIL 未成功执行
+  * @retval 
+  *         -FL_PASS 
+  *         -FL_FAIL 
   */
 FL_ErrorStatus FL_EXTI_CommonDeinit(void)
 {
-    /* 关闭外部中断时钟源 */
+    /*  */
     FL_RCC_DisableGroup1OperationClock(FL_RCC_GROUP1_OPCLK_EXTI);
     return FL_PASS;
 }
 
 /**
-  * @brief  设置 EXTI_CommonInitStruct 为默认配置
-  * @param  EXTI_CommonInitStruct 指向需要将值设置为默认配置的结构体 @ref FL_EXTI_CommonInitTypeDef 结构体
+  * @brief   EXTI_CommonInitStruct 
+  * @param  EXTI_CommonInitStruct  @ref FL_EXTI_CommonInitTypeDef 
   *
   * @retval None
   */
@@ -158,73 +158,73 @@ void FL_EXTI_CommonStructInit(FL_EXTI_CommonInitTypeDef *EXTI_CommonInitStruct)
 }
 
 /**
-  * @brief  EXTI配置设置
+  * @brief  EXTI
   *
-  * @param  extiLineX 外设入口地址
-  * @param  EXTI_InitStruct 指向 @ref FL_EXTI_InitTypeDef 类型的结构体，它包含EXTI外设配置信息
+  * @param  extiLineX 
+  * @param  EXTI_InitStruct  @ref FL_EXTI_InitTypeDef EXTI
   *
-  * @retval ErrorStatus枚举值
-  *         -FL_FAIL 配置过程发生错误
-  *         -FL_PASS EXTI配置成功
+  * @retval ErrorStatus
+  *         -FL_FAIL 
+  *         -FL_PASS EXTI
   */
 FL_ErrorStatus FL_EXTI_Init(uint32_t extiLineX, FL_EXTI_InitTypeDef *EXTI_InitStruct)
 {
     uint8_t extiLineId;
     uint32_t tmpExtiLineX;
-    /* 检查参数合法性 */
+    /*  */
     assert_param(IS_EXTI_ALL_INSTANCE(extiLineX));
     assert_param(IS_EXTI_INPUT_GROUP(EXTI_InitStruct->input));
     assert_param(IS_EXTI_TRIG_EDGE(EXTI_InitStruct->triggerEdge));
     assert_param(IS_EXTI_FILTER(EXTI_InitStruct->filter));
-    /* 获取EXTI中断线对应id号 */
+    /* EXTIid */
     tmpExtiLineX = extiLineX;
     for(extiLineId = 0; tmpExtiLineX != FL_GPIO_EXTI_LINE_0; tmpExtiLineX >>= 1, extiLineId++);
-    /* 设置中断线连接的IO */
+    /* IO */
     setExtiLineFuncs[extiLineId](GPIO, EXTI_InitStruct->input << (2 * extiLineId));
-    /* 设置数字滤波 */
+    /*  */
     EXTI_InitStruct->filter == FL_ENABLE ? FL_GPIO_EnableDigitalFilter(GPIO, extiLineX) : FL_GPIO_DisableDigitalFilter(GPIO, extiLineX);
-    /* 设置中断线触发边沿 */
+    /*  */
     setTrigEdgeFuncs[extiLineId / 16](GPIO, extiLineX, EXTI_InitStruct->triggerEdge);
-    /* 延时需要大于3个32K的周期 */
+    /* 332K */
         for(uint16_t i;i<1000;++i)
         {
             __NOP();
         }
-    /* 清除外部中断标志 */
+    /*  */
     FL_GPIO_ClearFlag_EXTI(GPIO, extiLineX);
-    /* 清除中断挂起 */
+    /*  */
     NVIC_ClearPendingIRQ(GPIO_IRQn);
     return FL_PASS;
 }
 
 /**
-  * @brief  复位EXTI配置设置
+  * @brief  EXTI
   *
-  * @retval ErrorStatus枚举值
-  *         -FL_FAIL 发生错误
-  *         -FL_PASS EXTI设置复位成功
+  * @retval ErrorStatus
+  *         -FL_FAIL 
+  *         -FL_PASS EXTI
   */
 FL_ErrorStatus FL_EXTI_DeInit(uint32_t extiLineX)
 {
     uint8_t extiLineId;
     uint32_t tmpExtiLineX;
-    /* 检查参数合法性 */
+    /*  */
     assert_param(IS_EXTI_ALL_INSTANCE(extiLineX));
-    /* 获取EXTI中断线对应id号 */
+    /* EXTIid */
     tmpExtiLineX = extiLineX;
     for(extiLineId = 0; tmpExtiLineX != FL_GPIO_EXTI_LINE_0; tmpExtiLineX >>= 1, extiLineId++);
-    /* 清除外部中断标志 */
+    /*  */
     FL_GPIO_ClearFlag_EXTI(GPIO, extiLineX);
-    /* 中断线触发边沿禁止 */
+    /*  */
     setTrigEdgeFuncs[extiLineId / 16](GPIO, extiLineX, FL_GPIO_EXTI_TRIGGER_EDGE_DISABLE);
-    /* 禁止数字滤波 */
+    /*  */
     FL_GPIO_DisableDigitalFilter(GPIO, extiLineX);
     return FL_PASS;
 }
 
 /**
-  * @brief  设置 EXTI_InitStruct 为默认配置
-  * @param  EXTI_InitStruct 指向需要将值设置为默认配置的结构体 @ref FL_EXTI_InitTypeDef 结构体
+  * @brief   EXTI_InitStruct 
+  * @param  EXTI_InitStruct  @ref FL_EXTI_InitTypeDef 
   *
   * @retval None
   */

@@ -77,7 +77,7 @@ static uint8_t _cyhal_read_mux_input_idx(uint8_t mux_group, uint8_t mux_output_i
     if(cyhal_is_mux_1to1[mux_group])
     {
         // There are up to 16 regular mux groups and up to 16 1to1 mux groups
-        // (in PSoC™ 6).  PERI_TR_GR_TR_CTL starts at the first regular mux so
+        // (in PSoC 6).  PERI_TR_GR_TR_CTL starts at the first regular mux so
         // offset by 16 if reading a 1to1 mux.
         mux_reg = PERI_TR_GR_TR_CTL(mux_group - MUX_GROUP_1TO1_OFFSET + FIRST_1TO1_MUX_GROUP_IDX, mux_output_idx);
     }
@@ -293,7 +293,7 @@ static cy_rslt_t _cyhal_interconnect_check_connection(cyhal_source_t source, cyh
         }
     }
 
-    // Since PSoC™ 6 BLE devices w/ trigmux vers1 have a 1to1 relationship
+    // Since PSoC 6 BLE devices w/ trigmux vers1 have a 1to1 relationship
     // between peripheral sources and reduction trigger muxes (besides DW which
     // connects to trig mux 9 and 10, handled above) it is possible to search
     // through source mux tables to find the idx required.

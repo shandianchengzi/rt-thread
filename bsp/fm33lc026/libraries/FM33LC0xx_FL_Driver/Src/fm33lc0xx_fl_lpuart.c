@@ -77,66 +77,66 @@
   */
 
 /**
-  * @brief  复位LPUART
-  * @param  LPUARTx 外设入口地址
-  * @retval 错误状态，可能值：
-  *         -FL_PASS 外设寄存器值恢复复位值
-  *         -FL_FAIL 未成功执行
+  * @brief  LPUART
+  * @param  LPUARTx 
+  * @retval 
+  *         -FL_PASS 
+  *         -FL_FAIL 
   */
 FL_ErrorStatus FL_LPUART_DeInit(LPUART_Type *LPUARTx)
 {
     FL_ErrorStatus status = FL_PASS;
-    /* 入口参数合法性断言 */
+    /*  */
     assert_param(IS_LPUART_INSTANCE(LPUARTx));
-    /* 外设复位使能 */
+    /*  */
     FL_RCC_EnablePeripheralReset();
     if(LPUARTx == LPUART0)
     {
-        /*复位LPUART*/
+        /*LPUART*/
         FL_RCC_EnableResetAPB1Peripheral(FL_RCC_RSTAPB_LPUART0);
         FL_RCC_DisableResetAPB1Peripheral(FL_RCC_RSTAPB_LPUART0);
-        /* 外设总线时钟关闭 */
+        /*  */
         FL_RCC_IsEnabledGroup3BusClock(FL_RCC_GROUP3_BUSCLK_LPUART0);
-        /* 外设工作时钟关闭 */
+        /*  */
         FL_RCC_DisableGroup1OperationClock(FL_RCC_GROUP1_OPCLK_LPUART0);
     }
     else
         if(LPUARTx == LPUART1)
         {
-            /*复位LPUART*/
+            /*LPUART*/
             FL_RCC_EnableResetAPB2Peripheral(FL_RCC_RSTAPB_LPUART1);
             FL_RCC_DisableResetAPB2Peripheral(FL_RCC_RSTAPB_LPUART1);
-            /* 外设总线时钟关闭 */
+            /*  */
             FL_RCC_IsEnabledGroup3BusClock(FL_RCC_GROUP3_BUSCLK_LPUART1);
-            /* 外设工作时钟关闭 */
+            /*  */
             FL_RCC_DisableGroup1OperationClock(FL_RCC_GROUP1_OPCLK_LPUART1);
         }
         else
         {
             status = FL_FAIL;
         }
-    /* 锁定外设复位功能 */
+    /*  */
     FL_RCC_DisablePeripheralReset();
     return (status);
 }
 
 /**
-  * @brief  配置LPUART
+  * @brief  LPUART
   *
-  * @note   波特率调制寄存器中的MCTL值，默认为工作时钟为32768Hz的频率下的调制值，用户如果外设工作时钟不是此前
-  *         提则可能需要手动调整这个寄存器的值，以达到更好的通信效果。
-  * @param  LPUARTx  外设入口地址
-  * @param  initStruct 指向 @ref FL_LPUART_InitTypeDef 结构体的指针
+  * @note   MCTL32768Hz
+  *         
+  * @param  LPUARTx  
+  * @param  initStruct  @ref FL_LPUART_InitTypeDef 
   *
-  * @retval 错误状态，可能值：
-  *         -FL_PASS 配置成功
-  *         -FL_FAIL 配置过程发生错误
+  * @retval 
+  *         -FL_PASS 
+  *         -FL_FAIL 
   */
 FL_ErrorStatus FL_LPUART_Init(LPUART_Type *LPUARTx, FL_LPUART_InitTypeDef *initStruct)
 {
     FL_ErrorStatus status = FL_FAIL;
     uint16_t  MCTLVel = 0;
-    /* 参数合法性检查 */
+    /*  */
     assert_param(IS_LPUART_INSTANCE(LPUARTx));
     assert_param(IS_FL_LPUART_CLKSRC(initStruct->clockSrc));
     assert_param(IS_FL_LPUART_BAUDRATE(initStruct->baudRate));
@@ -146,11 +146,11 @@ FL_ErrorStatus FL_LPUART_Init(LPUART_Type *LPUARTx, FL_LPUART_InitTypeDef *initS
     assert_param(IS_FL_LPUART_DIRECTION(initStruct->transferDirection));
     if(LPUARTx == LPUART0)
     {
-        /*总线时钟使能*/
+        /**/
         FL_RCC_EnableGroup3BusClock(FL_RCC_GROUP3_BUSCLK_LPUART0);
-        /*操作时钟使能*/
+        /**/
         FL_RCC_EnableGroup1OperationClock(FL_RCC_GROUP1_OPCLK_LPUART0);
-        /*时钟源选择*/
+        /**/
         FL_RCC_SetLPUART0ClockSource(initStruct->clockSrc << RCC_OPCCR1_LPUART0CKS_Pos);
         if(initStruct->clockSrc == FL_RCC_LPUART0_CLK_SOURCE_RCMF)
         {
@@ -159,18 +159,18 @@ FL_ErrorStatus FL_LPUART_Init(LPUART_Type *LPUARTx, FL_LPUART_InitTypeDef *initS
     }
     else
     {
-        /*总线时钟使能*/
+        /**/
         FL_RCC_EnableGroup3BusClock(FL_RCC_GROUP3_BUSCLK_LPUART1);
-        /*操作时钟使能*/
+        /**/
         FL_RCC_EnableGroup1OperationClock(FL_RCC_GROUP1_OPCLK_LPUART1);
-        /*时钟源选择*/
+        /**/
         FL_RCC_SetLPUART1ClockSource(initStruct->clockSrc << RCC_OPCCR1_LPUART1CKS_Pos);
         if(initStruct->clockSrc == FL_RCC_LPUART1_CLK_SOURCE_RCMF)
         {
             FL_RCC_RCMF_Enable();
         }
     }
-    /*发送接收配置*/
+    /**/
     if(initStruct->transferDirection & FL_LPUART_DIRECTION_TX)
     {
         do
@@ -185,15 +185,15 @@ FL_ErrorStatus FL_LPUART_Init(LPUART_Type *LPUARTx, FL_LPUART_InitTypeDef *initS
             FL_LPUART_EnableRX(LPUARTx);
         } while(FL_LPUART_IsEnabledRX(LPUARTx) != FL_SET);
     }
-    /*配置波特率*/
+    /**/
     FL_LPUART_SetBaudRate(LPUARTx, initStruct->baudRate);
-    /*配置停止位*/
+    /**/
     FL_LPUART_SetStopBitsWidth(LPUARTx, initStruct->stopBits);
-    /*配置数据位宽*/
+    /**/
     FL_LPUART_SetDataWidth(LPUARTx, initStruct->dataWidth);
-    /*配置波特率*/
+    /**/
     FL_LPUART_SetParity(LPUARTx, initStruct->parity);
-    /*根据波特率配置MCTL值*/
+    /*MCTL*/
     switch(initStruct->baudRate)
     {
         case FL_LPUART_BAUDRATE_9600:
@@ -224,8 +224,8 @@ FL_ErrorStatus FL_LPUART_Init(LPUART_Type *LPUARTx, FL_LPUART_InitTypeDef *initS
 }
 
 /**
-  * @brief  将 @ref FL_LPUART_InitTypeDef 结构体初始化为默认配置
-  * @param  initStruct 指向 @ref FL_LPUART_InitTypeDef 结构体的指针
+  * @brief   @ref FL_LPUART_InitTypeDef 
+  * @param  initStruct  @ref FL_LPUART_InitTypeDef 
   *
   * @retval None
   */

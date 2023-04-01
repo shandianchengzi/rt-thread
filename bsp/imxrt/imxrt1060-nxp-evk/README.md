@@ -1,6 +1,6 @@
 # NXP MIMXRT1060-EVK BSP Introduction
 
-[中文页](README_zh.md) |
+[](README_zh.md) |
 
 This document records the instruction of the BSP (board support package) that provided by the RT-Thread development team for the MIMXRT1060-EVK development board.
 
@@ -24,7 +24,7 @@ Features:
 - Common-used Peripherals:
   - LED: One, D18(Green)
   - Button: One
-- Common-used Interfaces: USB 、SD Card、Ethernet、LCD, etc
+- Common-used Interfaces: USB SD CardEthernetLCD, etc
 - Debugging interface, standard JTAG/SWD
 
 ### For more details about these boards, please refer to [NXP Official Website](https://www.nxp.com/part/MIMXRT1060-EVK#/)
@@ -39,12 +39,12 @@ Each peripheral supporting condition for this BSP is as follows:
 
 | **On-board Peripherals** | **Support** | **Remark**                            |
 | ------------------------ | ----------- | ------------------------------------- |
-| USB                      | √           |                                       |
-| SPI Flash                | √           |                                       |
-| Ethernet                 | √           |                                       |
+| USB                      |            |                                       |
+| SPI Flash                |            |                                       |
+| Ethernet                 |            |                                       |
 | **On-chip Peripherals**  | **Support** | **Remark**                            |
-| GPIO                     | √           | PA0, PA1... PK15 ---> PIN: 0, 1...176 |
-| UART                     | √           | UART1                                 |
+| GPIO                     |            | PA0, PA1... PK15 ---> PIN: 0, 1...176 |
+| UART                     |            | UART1                                 |
 | SPI                      |             | Coming Soon                           |
 | I2C                      |             | Coming Soon                           |
 | SDIO                     |             | Coming Soon                           |
@@ -54,7 +54,7 @@ Each peripheral supporting condition for this BSP is as follows:
 | USB Host                 |             | Coming Soon                           |
 | IWG                      |             | Coming Soon                           |
 | **Expansion Module**     | **Support** | **Remark**                            |
-| LVGL                     | √           |                                       |
+| LVGL                     |            |                                       |
 
 ## Quickly Get Started
 

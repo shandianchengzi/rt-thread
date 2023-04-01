@@ -122,7 +122,7 @@ typedef struct {
 	uint32_t tWTR;						/*!< tWTR */
 	uint32_t tRTP;						/*!< tRTP */
 	uint32_t tFAW;						/*!< tFAW */
-} DDR2MEM;								/*!< DDR2时序定义 */
+} DDR2MEM;								/*!< DDR2 */
 /**
   * @}
   */
@@ -144,7 +144,7 @@ typedef struct {
 	uint32_t tRTP;						/*!< tRTP */
 	uint32_t tZQoper;					/*!< tZQCL */
 	uint32_t tZQCS;						/*!< tZQCS */
-} DDR3MEM;								/*!< DDR3时序定义 */
+} DDR3MEM;								/*!< DDR3 */
 /**
   * @}
   */

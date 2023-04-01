@@ -29,7 +29,7 @@
 * Date : 2008.06.12
 *
 * Description :
-*           对list_head的extention
+*           list_headextention
 * History :
 *================================================================================================
 */
@@ -37,23 +37,23 @@
 #define __LIST_HEAD_UTILS_H__
 #include "usb_list.h"
 
-//从list_header_input中删除某个node
-//return :  0   //表示找到了改node，且成功删除了
-//对list的操作有critical保护
+//list_header_inputnode
+//return :  0   //node
+//listcritical
 //int list_head_ext_remov_node_from_list(void *node_data, struct usb_list_head *list_header_input);
 
-//遍历的init，先申明两个变量。
+//init
 #define list_head_ext_for_each_entry_init()     \
     struct usb_list_head * list_head_ext_start_ = NULL;     \
     struct usb_list_head *  list_head_ext_now_ = NULL ;
 
-//遍历的主体,当前的为list_head_ext_now_
+//,list_head_ext_now_
 #define list_head_ext_for_each_entry_process( p_start_list_head)        \
     for(list_head_ext_start_ = (p_start_list_head),list_head_ext_now_ = (p_start_list_head)->next;\
         list_head_ext_now_ != list_head_ext_start_ ;\
         list_head_ext_now_ = list_head_ext_now_->next)
 
-/* 遍历list, 看是否存在值为data的node */
+/* list, datanode */
 int32_t list_node_exist(void *data, struct usb_list_head *list_head);
 int32_t list_del_node_by_data(void *data, struct usb_list_head  *list);
 int32_t list_destroy_whole_list(struct usb_list_head  *list);

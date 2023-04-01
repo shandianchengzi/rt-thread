@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fusb_hub.h
  * Date: 2022-02-11 13:33:09
  * LastEditTime: 2022-02-17 17:49:20
- * Description:  This files is for definition of USB hub device function
+ * Description: This files is for definition of USB hub device function
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   Zhugengyu  2022/2/7    init commit
  */
 
@@ -54,7 +54,7 @@ enum
 /***************** Macros (Inline Functions) Definitions *********************/
 
 /************************** Function Prototypes ******************************/
-/* USB Hub的初始化函数，由应用程序注册到FUSB框架中 */
+/* USB HubFUSB */
 void FUsbHubInit(FUsbDev *dev);
 
 #ifdef __cplusplus

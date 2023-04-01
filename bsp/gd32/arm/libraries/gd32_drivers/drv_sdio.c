@@ -19,7 +19,7 @@
 #define LOG_TAG  "drv.sdio"
 #include "drv_log.h"
 
-#define SDIO_DMA_USE_IPC     0//1:使用ipc做同步
+#define SDIO_DMA_USE_IPC     0//1:ipc
 
 /* card status of R1 definitions */
 #define SD_R1_OUT_OF_RANGE                  BIT(31)                   /* command's argument was out of the allowed range */

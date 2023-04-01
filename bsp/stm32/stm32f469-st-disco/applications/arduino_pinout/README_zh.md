@@ -1,14 +1,14 @@
-# STM32F469 Discovery开发板的Arduino生态兼容说明
+# STM32F469 DiscoveryArduino
 
-[English](README.md) | **中文**
+[English](README.md) | ****
 
-## 1 RTduino - RT-Thread的Arduino生态兼容层
+## 1 RTduino - RT-ThreadArduino
 
-STM32F469 Discovery开发板已经完整适配了[RTduino软件包](https://github.com/RTduino/RTduino)，即RT-Thread的Arduino生态兼容层。用户可以按照Arduino的编程习惯来操作该BSP，并且可以使用大量Arduino社区丰富的库，是对RT-Thread生态的极大增强。更多信息，请参见[RTduino软件包说明文档](https://github.com/RTduino/RTduino)。
+STM32F469 Discovery[RTduino](https://github.com/RTduino/RTduino)RT-ThreadArduinoArduinoBSPArduinoRT-Thread[RTduino](https://github.com/RTduino/RTduino)
 
-### 1.1 如何开启针对本BSP的Arduino生态兼容层
+### 1.1 BSPArduino
 
-Env 工具下敲入 menuconfig 命令，或者 RT-Thread Studio IDE 下选择 RT-Thread Settings：
+Env  menuconfig  RT-Thread Studio IDE  RT-Thread Settings
 
 ```Kconfig
 Hardware Drivers Config --->
@@ -16,69 +16,69 @@ Hardware Drivers Config --->
         [*] Compatible with Arduino Ecosystem (RTduino)
 ```
 
-## 2 Arduino引脚排布
+## 2 Arduino
 
 ![disco-f469-pinout](disco-f469-pinout.png)
 
-该BSP遵照Arduino UNO板的引脚排列方式，详见 [pins_arduino.c](pins_arduino.c) 和 [pins_arduino.h](pins_arduino.h)。
+BSPArduino UNO [pins_arduino.c](pins_arduino.c)  [pins_arduino.h](pins_arduino.h)
 
-| Arduino引脚编号           | STM32引脚编号 | 5V容忍 | 备注                                            |
+| Arduino           | STM32 | 5V |                                             |
 | --------------------- | --------- | ---- | --------------------------------------------- |
-| 0 (D0)                | PG9       | 是    | Serial-Rx，默认被RT-Thread的UART设备框架uart3接管        |
-| 1 (D1)                | PG14      | 是    | Serial-Tx，默认被RT-Thread的UART设备框架uart3接管        |
-| 2 (D2)                | PG13      | 是    |                                               |
-| 3 (D3)                | PA1       | 是    | PWM2-CH2，默认被RT-Thread的PWM设备框架pwm2接管           |
-| 4 (D4)                | PG12      | 是    |                                               |
-| 5 (D5)                | PA2       | 是    | PWM2-CH3，默认被RT-Thread的PWM设备框架pwm2接管           |
-| 6 (D6)                | PA6       | 是    | PWM3-CH1，默认被RT-Thread的PWM设备框架pwm3接管           |
-| 7 (D7)                | PG11      | 是    |                                               |
-| 8 (D8)                | PG10      | 是    |                                               |
-| 9 (D9)                | PA7       | 是    | PWM3-CH2，默认被RT-Thread的PWM设备框架pwm3接管           |
-| 10 (D10)              | PH6       | 是    | PWM12-CH1，默认被RT-Thread的PWM设备框架pwm12接管         |
-| 11 (D11)              | PB15      | 是    | PWM12-CH2，默认被RT-Thread的PWM设备框架pwm12接管         |
-| 12 (D12)              | PB14      | 是    |                                               |
-| 13 (D13, LED_BUILTIN) | PD3       | 是    | 板载用户LED1                                      |
-| 14 (D14)              | PB9       | 是    | I2C-SDA，被RT-Thread的I2C设备框架i2c1总线接管            |
-| 15 (D15)              | PB8       | 是    | I2C-SCL，被RT-Thread的I2C设备框架i2c1总线接管            |
-| 16 (D16)              | PA0       | 是    | 板载用户按键                                        |
-| 17（D17）               | PG6       | 是    | 板载用户LED2                                      |
-| 18（D18）               | PD4       | 是    | 板载用户LED3                                      |
-| 19（D19）               | PD5       | 是    | 板载用户LED4                                      |
-| 20（D20）               | PK3       | 是    | 板载用户LED5                                      |
-| A0                    | PB1       | 是    | ADC1-CH9，默认被RT-Thread的ADC设备框架adc1接管           |
-| A1                    | PC2       | 是    | ADC1-CH12，默认被RT-Thread的ADC设备框架adc1接管          |
-| A2                    | PC3       | 是    | ADC1-CH13，默认被RT-Thread的ADC设备框架adc1接管          |
-| A3                    | PC4       | 是    | ADC1-CH14，默认被RT-Thread的ADC设备框架adc1接管          |
-| A4                    | PC5       | 是    | ADC1-CH15，默认被RT-Thread的ADC设备框架adc1接管          |
-| A5                    | PA4       | 是    | ADC1-CH4，默认被RT-Thread的ADC设备框架adc1接管           |
-| A6                    | --        |      | 芯片内部参考电压 ADC1-CH17，默认被RT-Thread的ADC设备框架adc1接管 |
-| A7                    | --        |      | 芯片内部温度 ADC1-CH16，默认被RT-Thread的ADC设备框架adc1接管   |
+| 0 (D0)                | PG9       |     | Serial-RxRT-ThreadUARTuart3        |
+| 1 (D1)                | PG14      |     | Serial-TxRT-ThreadUARTuart3        |
+| 2 (D2)                | PG13      |     |                                               |
+| 3 (D3)                | PA1       |     | PWM2-CH2RT-ThreadPWMpwm2           |
+| 4 (D4)                | PG12      |     |                                               |
+| 5 (D5)                | PA2       |     | PWM2-CH3RT-ThreadPWMpwm2           |
+| 6 (D6)                | PA6       |     | PWM3-CH1RT-ThreadPWMpwm3           |
+| 7 (D7)                | PG11      |     |                                               |
+| 8 (D8)                | PG10      |     |                                               |
+| 9 (D9)                | PA7       |     | PWM3-CH2RT-ThreadPWMpwm3           |
+| 10 (D10)              | PH6       |     | PWM12-CH1RT-ThreadPWMpwm12         |
+| 11 (D11)              | PB15      |     | PWM12-CH2RT-ThreadPWMpwm12         |
+| 12 (D12)              | PB14      |     |                                               |
+| 13 (D13, LED_BUILTIN) | PD3       |     | LED1                                      |
+| 14 (D14)              | PB9       |     | I2C-SDART-ThreadI2Ci2c1            |
+| 15 (D15)              | PB8       |     | I2C-SCLRT-ThreadI2Ci2c1            |
+| 16 (D16)              | PA0       |     |                                         |
+| 17D17               | PG6       |     | LED2                                      |
+| 18D18               | PD4       |     | LED3                                      |
+| 19D19               | PD5       |     | LED4                                      |
+| 20D20               | PK3       |     | LED5                                      |
+| A0                    | PB1       |     | ADC1-CH9RT-ThreadADCadc1           |
+| A1                    | PC2       |     | ADC1-CH12RT-ThreadADCadc1          |
+| A2                    | PC3       |     | ADC1-CH13RT-ThreadADCadc1          |
+| A3                    | PC4       |     | ADC1-CH14RT-ThreadADCadc1          |
+| A4                    | PC5       |     | ADC1-CH15RT-ThreadADCadc1          |
+| A5                    | PA4       |     | ADC1-CH4RT-ThreadADCadc1           |
+| A6                    | --        |      |  ADC1-CH17RT-ThreadADCadc1 |
+| A7                    | --        |      |  ADC1-CH16RT-ThreadADCadc1   |
 
-> 注意：
 > 
-> 1. 驱动舵机和analogWrite函数要选择不同定时器发生的PWM信号引脚，由于STM32的定时器4个通道需要保持相同的频率，如果采用相同的定时器发生的PWM分别驱动舵机和analogWrite，可能会导致舵机失效。
-
-> 参考资料
 > 
-> 1. [STM32F469 Discovery官方资料](https://www.st.com/zh/evaluation-tools/32f469idiscovery.html#documentation)
+> 1. analogWritePWMSTM324PWManalogWrite
 
-## 3 通信
+> 
+> 
+> 1. [STM32F469 Discovery](https://www.st.com/zh/evaluation-tools/32f469idiscovery.html#documentation)
 
-### 3.1 I2C总线
+## 3 
 
-本BSP的I2C总线是板上丝印的 `SCL/D15` 和 `SDA/D14` 引脚，这两个引脚是被RT-Thread I2C设备框架接管的，不需要直接操控这两个引脚，直接引用`#include <Wire.h>`（Arduino官方I2C头文件）即可使用。
+### 3.1 I2C
 
-### 3.2 SPI总线
+BSPI2C `SCL/D15`  `SDA/D14` RT-Thread I2C`#include <Wire.h>`ArduinoI2C
 
-目前本BSP不支持使用Arduino的SPI功能。
+### 3.2 SPI
 
-### 3.3 串口
+BSPArduinoSPI
 
-本BSP通过 `Serial.` 方法调用 `uart3` 串口设备。详见[例程](https://github.com/RTduino/RTduino/blob/master/examples/Basic/helloworld.cpp)。
+### 3.3 
 
-### 3.4 USB虚拟串口
+BSP `Serial.`  `uart3` [](https://github.com/RTduino/RTduino/blob/master/examples/Basic/helloworld.cpp)
 
-本BSP支持USB虚拟串口，如果需要使用，可以手动使能。详见[例程](https://github.com/RTduino/RTduino/tree/master/examples/USBSerial)。
+### 3.4 USB
+
+BSPUSB[](https://github.com/RTduino/RTduino/tree/master/examples/USBSerial)
 
 ```Kconfig
 RT-Thread online packages --->

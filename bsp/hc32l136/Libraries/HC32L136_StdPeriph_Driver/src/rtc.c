@@ -115,9 +115,9 @@ static stc_rtc_intern_cb_t* RtcGetInternDataCb(void);
 static stc_rtc_intern_cb_t stcRtcIrqCb = {NULL, NULL};
 /**
  ******************************************************************************
- ** \brief  RTC计数时钟选择
+ ** \brief  RTC
  **
- ** \param [in] enClk时钟源
+ ** \param [in] enClk
  **
  ** \retval Ok
  **
@@ -132,9 +132,9 @@ en_result_t Rtc_SelClk(en_rtc_clk_t enClk)
 }
 /**
  ******************************************************************************
- ** \brief  RTC周期中断方式选择
+ ** \brief  RTC
  **
- ** \param [in] pstccCyc周期中断方式及周期间隔选择
+ ** \param [in] pstccCyc
  **
  ** \retval Ok
  **
@@ -158,12 +158,12 @@ en_result_t Rtc_SetCyc(stc_rtc_cyc_sel_t* pstcCyc)
 }
 /**
  ******************************************************************************
- ** \brief  RTC时制选择
+ ** \brief  RTC
  **
- ** \param [in] bmode是12时制or24时制
+ ** \param [in] bmode12or24
  **
- ** \retval Ok  设置正常
- ** \retval ErrorInvalidParameter 设置异常
+ ** \retval Ok  
+ ** \retval ErrorInvalidParameter 
  ******************************************************************************/
 en_result_t Rtc_SetAmPm(en_rtc_ampm_t enMode)
 {
@@ -182,11 +182,11 @@ en_result_t Rtc_SetAmPm(en_rtc_ampm_t enMode)
 }
 /**
  ******************************************************************************
- ** \brief  RTC时制获取
+ ** \brief  RTC
  **
- ** \param [in] 无
+ ** \param [in] 
  **
- ** \retval 时制
+ ** \retval 
  ******************************************************************************/
 boolean_t Rtc_GetHourMode(void)
 {
@@ -194,11 +194,11 @@ boolean_t Rtc_GetHourMode(void)
 }
 /**
  ******************************************************************************
- ** \brief  RTC闹钟中断设置
+ ** \brief  RTC
  **
- ** \param [in] pstcAlarmTime闹钟时间时、分、周 
+ ** \param [in] pstcAlarmTime 
  **
- ** \retval Ok  设置正常
+ ** \retval Ok  
  ** 
  ******************************************************************************/
 en_result_t Rtc_SetAlarmTime(stc_rtc_alarmset_t* pstcAlarmTime)
@@ -235,11 +235,11 @@ en_result_t Rtc_SetAlarmTime(stc_rtc_alarmset_t* pstcAlarmTime)
 }
 /**
  ******************************************************************************
- ** \brief  RTC闹钟中断时间获取
+ ** \brief  RTC
  **
- ** \param [in] pstcAlarmTime闹钟时间时、分、周 
+ ** \param [in] pstcAlarmTime 
  **
- ** \retval Ok  设置正常
+ ** \retval Ok  
  ** 
  ******************************************************************************/
 en_result_t Rtc_GetAlarmTime(stc_rtc_alarmset_t* pstcAlarmTime)
@@ -254,11 +254,11 @@ en_result_t Rtc_GetAlarmTime(stc_rtc_alarmset_t* pstcAlarmTime)
 }
 /**
  ******************************************************************************
- ** \brief  RTC 1hz模式选择
+ ** \brief  RTC 1hz
  **
- ** \param [in] bmode 高精度和普通精度
+ ** \param [in] bmode 
  **
- ** \retval Ok  设置正常
+ ** \retval Ok  
  ** 
  ******************************************************************************/
 en_result_t Rtc_Set1HzMode(boolean_t bMode)
@@ -270,11 +270,11 @@ en_result_t Rtc_Set1HzMode(boolean_t bMode)
 }
 /**
  ******************************************************************************
- ** \brief  RTC 1hz补偿值设置
+ ** \brief  RTC 1hz
  **
- ** \param [in] u16Cr 补偿值
+ ** \param [in] u16Cr 
  **
- ** \retval Ok  设置正常
+ ** \retval Ok  
  ** 
  ******************************************************************************/
 en_result_t Rtc_SetCompCr(uint16_t u16Cr)
@@ -286,12 +286,12 @@ en_result_t Rtc_SetCompCr(uint16_t u16Cr)
 }
 /**
  ******************************************************************************
- ** \brief  RTC 功能使能设置
+ ** \brief  RTC 
  **
- ** \param [in] enFunc 功能选择
+ ** \param [in] enFunc 
  **
- ** \retval Ok  设置正常
- ** \retval ErrorInvalidParameter 设置异常
+ ** \retval Ok  
+ ** \retval ErrorInvalidParameter 
  ******************************************************************************/
 en_result_t Rtc_EnableFunc(en_rtc_func_t enFunc)
 {
@@ -317,12 +317,12 @@ en_result_t Rtc_EnableFunc(en_rtc_func_t enFunc)
 }
 /**
  ******************************************************************************
- ** \brief  RTC 功能禁止设置
+ ** \brief  RTC 
  **
- ** \param [in] enFunc 功能选择
+ ** \param [in] enFunc 
  **
- ** \retval Ok  设置正常
- ** \retval ErrorInvalidParameter 设置异常
+ ** \retval Ok  
+ ** \retval ErrorInvalidParameter 
  ******************************************************************************/
 en_result_t Rtc_DisableFunc(en_rtc_func_t enFunc)
 {
@@ -359,12 +359,12 @@ uint8_t Change_DateTimeFormat(uint8_t u8sr)
 }
 /**
  ******************************************************************************
- ** \brief  RTC 平、闰年检测
+ ** \brief  RTC 
  **
- ** \param [in] u8year 年十进制低两位
+ ** \param [in] u8year 
  **
- ** \retval 1  闰年
- ** \retval 0 平年
+ ** \retval 1  
+ ** \retval 0 
  ******************************************************************************/
 uint8_t Rtc_CheckLeapYear(uint8_t u8year)
 {
@@ -382,11 +382,11 @@ uint8_t Rtc_CheckLeapYear(uint8_t u8year)
 }
 /**
  ******************************************************************************
- ** \brief  RTC根据日期计算周数
+ ** \brief  RTC
  **
- ** \param [in] pu8Date日期
+ ** \param [in] pu8Date
  **
- ** \retval week  周数
+ ** \retval week  
  ** 
  ******************************************************************************/
 uint8_t Rtc_CalWeek(uint8_t* pu8Date)
@@ -404,11 +404,11 @@ uint8_t Rtc_CalWeek(uint8_t* pu8Date)
 }
 /**
  ******************************************************************************
- ** \brief  RTC根据年月获取天数
+ ** \brief  RTC
  **
- ** \param [in] u8month月份，u8year年份
+ ** \param [in] u8monthu8year
  **
- ** \retval u8day天数
+ ** \retval u8day
  ** 
  ******************************************************************************/
 uint8_t Get_Month_Max_Day(uint8_t u8month, uint8_t u8year)
@@ -420,15 +420,15 @@ uint8_t Get_Month_Max_Day(uint8_t u8month, uint8_t u8year)
     {
         u8day++;
     }
-    return(u8day);//day的格式是bcd码，例如；日为31天，day=0x31
+    return(u8day);//daybcd31day=0x31
 }
 /**
  ******************************************************************************
- ** \brief  RTC根据日期计算周数
+ ** \brief  RTC
  **
- ** \param [in] pu8buf日期时间数据，u8len检查数据长度，u8limit_min最小值，u8limit_max最大值
+ ** \param [in] pu8bufu8lenu8limit_minu8limit_max
  **
- ** \retval Error 错误，Ok校验正确
+ ** \retval Error Ok
  ** 
  ******************************************************************************/
 en_result_t Check_BCD_Format(uint8_t u8data,uint8_t u8limit_min, uint8_t u8limit_max)
@@ -443,11 +443,11 @@ en_result_t Check_BCD_Format(uint8_t u8data,uint8_t u8limit_min, uint8_t u8limit
 }
 /**
  ******************************************************************************
- ** \brief  RTC时间格式检测
+ ** \brief  RTC
  **
- ** \param [in] pu8TimeDate日期时间数据，u8Mode检测模式
+ ** \param [in] pu8TimeDateu8Mode
  **
- ** \retval enRet校验结果
+ ** \retval enRet
  ** 
  ******************************************************************************/
 en_result_t Rtc_CheckDateTimeFormat(uint8_t* pu8TimeDate,uint8_t u8Mode)
@@ -464,16 +464,16 @@ en_result_t Rtc_CheckDateTimeFormat(uint8_t* pu8TimeDate,uint8_t u8Mode)
             switch(u8i)
             {
                 case 0:
-                    enRet = Check_BCD_Format(*pu8TimeDate,0x00,0x59);//秒
+                    enRet = Check_BCD_Format(*pu8TimeDate,0x00,0x59);//
                     break;
                 case 1:
-                    enRet = Check_BCD_Format(*pu8TimeDate,0x00,0x59);//分
+                    enRet = Check_BCD_Format(*pu8TimeDate,0x00,0x59);//
                     break;
                 case 2:
                     if(Rtc12h == M0P_RTC->CR0_f.AMPM)
                     {
                         u8Hour = *pu8TimeDate&0x1f;
-                        enRet = Check_BCD_Format(u8Hour,0x00,0x12);//时
+                        enRet = Check_BCD_Format(u8Hour,0x00,0x12);//
                     }
                     else
                     {
@@ -533,12 +533,12 @@ en_result_t Rtc_CheckDateTimeFormat(uint8_t* pu8TimeDate,uint8_t u8Mode)
 }
 /**
  ******************************************************************************
- ** \brief  RTC设置时间函数
+ ** \brief  RTC
  **
- ** \param [in] pstcTimeDate日期时间数据、bUpdateTime是否更改时间、bUpdateDate是否更改日期
+ ** \param [in] pstcTimeDatebUpdateTimebUpdateDate
  **
- ** \retval Ok  设置正常
- ** \retval ErrorTimeout 时间溢出错误
+ ** \retval Ok  
+ ** \retval ErrorTimeout 
  ******************************************************************************/
 en_result_t Rtc_WriteDateTime(stc_rtc_time_t* pstcTimeDate,boolean_t bUpdateTime,
                             boolean_t bUpdateDate)
@@ -597,11 +597,11 @@ en_result_t Rtc_WriteDateTime(stc_rtc_time_t* pstcTimeDate,boolean_t bUpdateTime
 }
 /**
  ******************************************************************************
-** \brief  RTC 12小时上午或下午获取
+** \brief  RTC 12
  **
- ** \param [in] 无
+ ** \param [in] 
  **
-** \retval 上午或下午
+** \retval 
  ******************************************************************************/
 boolean_t Rtc_RDAmPm(void)
 {
@@ -613,12 +613,12 @@ boolean_t Rtc_RDAmPm(void)
 }
 /**
  ******************************************************************************
- ** \brief  RTC获取时间函数
+ ** \brief  RTC
  **
- ** \param [in] pstcTimeDate日期时间数据
+ ** \param [in] pstcTimeDate
  **
- ** \retval Ok  获取正常
- ** \retval ErrorTimeout 时间溢出错误
+ ** \retval Ok  
+ ** \retval ErrorTimeout 
  ******************************************************************************/
 en_result_t Rtc_ReadDateTime(stc_rtc_time_t* pstcTimeDate)
 {
@@ -676,11 +676,11 @@ en_result_t Rtc_ReadDateTime(stc_rtc_time_t* pstcTimeDate)
 }
 /**
  ******************************************************************************
- ** \brief  RTC计数or读写状态获取
+ ** \brief  RTCor
  **
- ** \param [in] 无
+ ** \param [in] 
  **
- ** \retval 计数or读写状态
+ ** \retval or
  ** 
  ******************************************************************************/
 boolean_t Rtc_RDStatus(void)
@@ -691,28 +691,28 @@ boolean_t Rtc_RDStatus(void)
 }
 /**
  ******************************************************************************
- ** \brief  RTC闹钟中断使能
+ ** \brief  RTC
  **
- ** \param [in] enordis中断使能or禁止
+ ** \param [in] enordisor
  **
- ** \retval Ok设置成功
+ ** \retval Ok
  ** 
  ******************************************************************************/
 en_result_t Rtc_EnAlarmIrq(en_rtc_alarmirq_t enIrqEn)
 {
     en_result_t enRet = Error;
     M0P_RTC->CR1_f.ALMIE = enIrqEn;
-    Rtc_ClrIrqStatus(RtcAlmf);//使能中断后清除中断请求标记
+    Rtc_ClrIrqStatus(RtcAlmf);//
     enRet = Ok;
     return enRet;
 }
 /**
  ******************************************************************************
- ** \brief  RTC中断请求状态获取
+ ** \brief  RTC
  **
- ** \param [in] enIrqSel获取哪种中断请求
+ ** \param [in] enIrqSel
  **
- ** \retval 中断请求状态
+ ** \retval 
  ** 
  ******************************************************************************/
 boolean_t Rtc_GetIrqStatus(en_rtc_status_irq_t enIrqSel)
@@ -734,12 +734,12 @@ boolean_t Rtc_GetIrqStatus(en_rtc_status_irq_t enIrqSel)
 }
 /**
  ******************************************************************************
- ** \brief  RTC中断请求清除
+ ** \brief  RTC
  **
- ** \param [in] enIrqSel清除哪种中断请求
+ ** \param [in] enIrqSel
  **
- ** \retval Ok 清除成功
- ** \retval ErrorInvalidParameter 清除失败
+ ** \retval Ok 
+ ** \retval ErrorInvalidParameter 
  ******************************************************************************/
 en_result_t Rtc_ClrIrqStatus(en_rtc_status_irq_t enIrqSel)
 {
@@ -760,11 +760,11 @@ en_result_t Rtc_ClrIrqStatus(en_rtc_status_irq_t enIrqSel)
 
 /**
  ******************************************************************************
- ** \brief  RTC中断处理函数接口获取
+ ** \brief  RTC
  **
- ** \param [in] 无
+ ** \param [in] 
  **
- ** \retval 接口函数地址
+ ** \retval 
  ** 
  ******************************************************************************/
 static stc_rtc_intern_cb_t* RtcGetInternDataCb(void) 
@@ -773,12 +773,12 @@ static stc_rtc_intern_cb_t* RtcGetInternDataCb(void)
 }
 /**
  ******************************************************************************
- ** \brief  RTC总体初始化函数
+ ** \brief  RTC
  **
- ** \param [in] pstcRtcConfig初始化结构
+ ** \param [in] pstcRtcConfig
  **
- ** \retval Ok初始化成功
- ** \retval ErrorInvalidParameter 初始化错误
+ ** \retval Ok
+ ** \retval ErrorInvalidParameter 
  ******************************************************************************/
 en_result_t Rtc_Init(stc_rtc_config_t* pstcRtcConfig)
 {
@@ -826,11 +826,11 @@ en_result_t Rtc_Init(stc_rtc_config_t* pstcRtcConfig)
 }
 /**
  ******************************************************************************
- ** \brief  RTC计数禁止函数
+ ** \brief  RTC
  **
- ** \param [in] 无
+ ** \param [in] 
  **
- ** \retval Ok禁止设置成功
+ ** \retval Ok
  ** 
  ******************************************************************************/
 en_result_t Rtc_DeInit(void)
@@ -844,11 +844,11 @@ en_result_t Rtc_DeInit(void)
 }
 /**
  ******************************************************************************
- ** \brief  RTC中断处理函数
+ ** \brief  RTC
  **
- ** \param [in] 无
+ ** \param [in] 
  **
- ** \retval 无
+ ** \retval 
  ** 
  ******************************************************************************/
 void Rtc_IRQHandler(void)

@@ -290,7 +290,7 @@ static rt_err_t rt_lcd_init(rt_device_t dev)
 
     CLOCK_SetClkDiv(kCLOCK_DivLcdClk, 1, true);
 
-    /*LCD管脚配置*/
+    /*LCD*/
     lcd_gpio_init();
 
     /* Set the back light PWM. */
@@ -360,10 +360,10 @@ static rt_err_t rt_lcd_control(rt_device_t dev, int cmd, void *args)
     {
         struct rt_device_rect_info *rect_info = (struct rt_device_rect_info *)args;
 
-        /* 先指向绘图 buff 显示 */
+        /*  buff  */
         LCD->UPBASE = (rt_uint32_t)_rt_framebuffer;
 
-        /* 从绘图 buff copy 数据到显示 buff */
+        /*  buff copy  buff */
         if (rect_info->width * rect_info->height < RT_HW_LCD_WIDTH * RT_HW_LCD_HEIGHT / 5 * 3)
         {
             int index = 0;
@@ -384,7 +384,7 @@ static rt_err_t rt_lcd_control(rt_device_t dev, int cmd, void *args)
         {
             memcpy((void *)lcd_framebuffer, _rt_framebuffer, sizeof(rt_uint16_t)*RT_HW_LCD_HEIGHT * RT_HW_LCD_WIDTH);
         }
-        /* 指回显示 buff */
+        /*  buff */
         LCD->UPBASE = (rt_uint32_t)lcd_framebuffer;
         rt_kprintf("====> rect_info : %d %d %d %d\n", rect_info->x, rect_info->y, rect_info->width, rect_info->height);
     }

@@ -23,21 +23,21 @@
 #define __CORE_UART_H__
 #include "bsp_common.h"
 /**
- * @brief 对串口做基本的初始化工作，不开启任何中断和DMA
+ * @brief DMA
  *
- * @param UartID 串口号 0~MAX，对应USART1~UARTX，0默认用于log输出
- * @param BaudRate 波特率
- * @param IsRxCacheEnable 是否打开RX缓存功能，打开后，只有接收超时中断才会返回，否则每次数据到来都会返回
- * @param DataBits 数据位5~8
- * @param Parity 奇偶校验，可选下列
+ * @param UartID  0~MAXUSART1~UARTX0log
+ * @param BaudRate 
+ * @param IsRxCacheEnable RX
+ * @param DataBits 5~8
+ * @param Parity 
  *  UART_PARITY_NONE,
     UART_PARITY_ODD,
     UART_PARITY_EVEN,
- * @param StopBits 停止位
+ * @param StopBits 
  *  UART_STOP_BIT1,
     UART_STOP_BIT1_5,
     UART_STOP_BIT2,
- * @param CB 回调函数，用于通知是否有新数据达到，DMA TX或者RX完成，是否有错误
+ * @param CB DMA TXRX
  */
 void Uart_BaseInit(uint8_t UartID, uint32_t BaudRate, uint8_t IsRxCacheEnable, uint8_t DataBits, uint8_t Parity, uint8_t StopBits, CBFuncEx_t CB);
 
@@ -46,9 +46,9 @@ void Uart_SetCb(uint8_t UartID, CBFuncEx_t CB);
 
 void Uart_DeInit(uint8_t UartID);
 /**
- * @brief 串口做阻塞输出，一般用于bootloader或者紧急场合
+ * @brief bootloader
  *
- * @param UartID 串口号 0~MAX，对应USART1~UARTX，0默认用于log输出
+ * @param UartID  0~MAXUSART1~UARTX0log
  * @param Data
  * @param Len
  */
@@ -60,22 +60,22 @@ void Uart_EnableRxIrq(uint8_t UartID);
 
 void Uart_EnableTxDoneIrq(uint8_t UartID);
 /**
- * @brief 串口的DMA配置
+ * @brief DMA
  *
- * @param UartID 串口号 0~5
- * @param Stream DMA流序号
- * @param Channel DMA通道
- * @return >0 成功返回中断号，其他失败
+ * @param UartID  0~5
+ * @param Stream DMA
+ * @param Channel DMA
+ * @return >0 
  */
 int Uart_DMATxInit(uint8_t UartID, uint8_t Stream, uint32_t Channel);
 
 int Uart_DMARxInit(uint8_t UartID, uint8_t Stream, uint32_t Channel);
 
 /**
- * @brief 串口做DMA非阻塞输出，只能用于APP
+ * @brief DMAAPP
  *
- * @param UartID 串口号 0~5
- * @param Stream DMA流序号
+ * @param UartID  0~5
+ * @param Stream DMA
  * @param Data
  * @param Len
  */
@@ -89,12 +89,12 @@ void Uart_RxBufferCB(uint8_t UartID, CBFuncEx_t CB);
 
 uint32_t Uart_FifoRead(uint8_t UartID, uint8_t *Data);
 /**
- * @brief 串口做FIFO非阻塞输出
+ * @brief FIFO
  *
- * @param UartID 串口号 0~5
+ * @param UartID  0~5
  * @param Data
  * @param Len
- * @return <0 失败 =0 所有数据传入fifo，不再回调buffer_done，直接回调all_done >0 还有数据没有传入fifo
+ * @return <0  =0 fifobuffer_doneall_done >0 fifo
  */
 int32_t Uart_BufferTx(uint8_t UartID, const uint8_t *Data, uint32_t Len);
 void Uart_BufferTxStop(uint8_t UartID);

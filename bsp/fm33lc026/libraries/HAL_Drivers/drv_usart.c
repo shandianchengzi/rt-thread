@@ -185,7 +185,7 @@ static int uart_putc(struct rt_serial_device *serial, char c)
     RT_ASSERT(serial != RT_NULL);
 
     uart = rt_container_of(serial, struct _uart, serial);
-    FL_UART_WriteTXBuff(uart->config->InitTypeDef, c); //发送一个数据
+    FL_UART_WriteTXBuff(uart->config->InitTypeDef, c); //
     while (FL_SET != FL_UART_IsActiveFlag_TXShiftBuffEmpty(uart->config->InitTypeDef));
     return 1;
 }
@@ -200,7 +200,7 @@ static int uart_getc(struct rt_serial_device *serial)
     ch = -1;
     if (FL_SET == FL_UART_IsActiveFlag_RXBuffFull(uart->config->InitTypeDef))
     {
-        ch = FL_UART_ReadRXBuff(uart->config->InitTypeDef);//接收中断标志可通过读取rxreg寄存器清除
+        ch = FL_UART_ReadRXBuff(uart->config->InitTypeDef);//rxreg
     }
     return ch;
 }

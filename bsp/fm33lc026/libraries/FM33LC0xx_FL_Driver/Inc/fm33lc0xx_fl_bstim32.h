@@ -49,16 +49,16 @@ extern "C" {
 
 typedef struct
 {
-    /* 预分频系数 */
+    /*  */
     uint32_t prescaler;
 
-    /* 自动重装载值 */
+    /*  */
     uint32_t autoReload;
 
-    /* 自动重装载值 */
+    /*  */
     uint32_t autoReloadState;
 
-    /* 时钟源 */
+    /*  */
     uint32_t clockSource;
 
 } FL_BSTIM32_InitTypeDef;

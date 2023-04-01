@@ -26,11 +26,11 @@
 * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 * ****************************************************************************/
 /*****************************************************************************
-* 文件名   :app_batt.c
-* 功能描述:
-* 版本:V 1.0.0
-* 作者:
-* 日期:
+*    :app_batt.c
+* :
+* :V 1.0.0
+* :
+* :
 * ****************************************************************************/
 
 
@@ -87,7 +87,7 @@ void app_batt_add_bas(void)
     struct gapm_profile_task_add_cmd *req = KE_MSG_ALLOC_DYN(GAPM_PROFILE_TASK_ADD_CMD,TASK_GAPM, TASK_APP,gapm_profile_task_add_cmd, sizeof(struct bass_db_cfg));
     // Fill message
     req->operation   = GAPM_PROFILE_TASK_ADD;
-    req->sec_lvl     = PERM(SVC_AUTH, DISABLE);  //设置权限
+    req->sec_lvl     = PERM(SVC_AUTH, DISABLE);  //
     req->prf_task_id = TASK_ID_BASS;
     req->app_task    = TASK_APP;
     req->start_hdl   = 0;

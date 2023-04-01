@@ -1483,7 +1483,7 @@ function generate_hash_test_array()
     LEN=$2
     STR=`echo $HASH | tr 'a-z' 'A-Z'`
 
-    # generate random source data、key and iv
+    # generate random source datakey and iv
     if [ ! -f hash_src_${LEN}.bin ]; then
         dd if=/dev/urandom of=hash_src_${LEN}.bin bs=1 count=${LEN} > /dev/null 2>&1
         SRC_ALIGN_LEN=$(((${LEN} + 15)/16*16))
@@ -1503,7 +1503,7 @@ function generate_rsa_test_array()
     COUNT=`expr $LEN / 8`
     COUNT_1=`expr $COUNT - 1`
 
-    # generate random source data，set the first byte to 0x00 to reduce the probability of "data too large for modulus" errors
+    # generate random source dataset the first byte to 0x00 to reduce the probability of "data too large for modulus" errors
     dd if=/dev/zero of=rsa_src_${LEN}.bin bs=1 count=1 > /dev/null 2>&1
     dd if=/dev/urandom of=rsa_src_${LEN}.bin seek=1 bs=1 count=${COUNT_1} > /dev/null 2>&1
 

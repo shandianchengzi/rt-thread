@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fsdio_intr.c
  * Date: 2022-06-01 15:08:58
  * LastEditTime: 2022-06-01 15:08:58
- * Description:  This files is for SDIO interrupt related function implementation
+ * Description: This files is for SDIO interrupt related function implementation
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.1   zhugengyu  2022/6/6     modify according to tech manual.
  */
 /***************************** Include Files *********************************/

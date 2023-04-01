@@ -35,18 +35,18 @@ static rt_uint32_t get_can_baud_index(rt_uint32_t baud,can_init_t * init)
     double target,temp,min;
     uint32_t i,j,j_max,near = 0;
     target = (double)(ald_cmu_get_pclk1_clock());
-    target/= baud;                               /*计算误差1*/
+    target/= baud;                               /*1*/
 
     min = 0xFFFFFFFF;
 
     for(i = 1 + 16 + 8 ;i > 2;i--)     /*SYNC_SEG + SEG1 + SEG2*/
     {
-        j_max = target/i/(0.98) + 1;                          /*缩小范围*/
+        j_max = target/i/(0.98) + 1;                          /**/
         j_max = (j_max > 1024) ? (1024) : (j_max);
 
         for(j = target/i/1.02 ;j < j_max;j++)
         {
-            temp = target/i/j;                      /*计算误差2*/
+            temp = target/i/j;                      /*2*/
             temp = (temp > 1) ? (temp - 1) : (1 - temp);
             temp+= ((1.0 * i * j) / 0xFFFFFFFF) ;
 
@@ -118,7 +118,7 @@ static rt_err_t _can_config(struct rt_can_device *can_device, struct can_configu
         drv_can->CanHandle.init.mode = CAN_MODE_SILENT_LOOPBACK;
         break;
     }
-    /*配置参数*/
+    /**/
     if(get_can_baud_index(cfg->baud_rate,&(drv_can->CanHandle.init)))
     {
         return -RT_ERROR;
@@ -231,7 +231,7 @@ static rt_err_t _can_control(struct rt_can_device *can_device, int cmd, void *ar
             for (int i = 0; i < filter_cfg->count; i++)
             {
 
-                /*默认过滤表判断*/
+                /**/
                 if(filter_cfg->items[i].hdr_bank < drv_can->device.config.maxhdr)
                     drv_can->FilterConfig.number = filter_cfg->items[i].hdr_bank;
                 else
@@ -239,17 +239,17 @@ static rt_err_t _can_control(struct rt_can_device *can_device, int cmd, void *ar
 
                if(filter_cfg->items[i].mode)
                {
-                    /*标识符列表模式： 类型匹配 ，id匹配为：接收的id = 配置的id
-                                                                或者 = 配置的mask ，通过*/
-                    /*扩展帧*/
+                    /*  idid = id
+                                                                 = mask */
+                    /**/
                     if(filter_cfg->items[i].ide)
                     {
-//                         filter_cfg->items[i].id =  filter_cfg->items[i].id ;    /*id 29 位*/
+//                         filter_cfg->items[i].id =  filter_cfg->items[i].id ;    /*id 29 */
                          filter_cfg->items[i].mask = ((filter_cfg->items[i].mask << 3) |
                                                     (filter_cfg->items[i].ide << 2) |
                                                     (filter_cfg->items[i].rtr << 1));
                     }
-                    else  /*标准帧*/
+                    else  /**/
                     {
                          filter_cfg->items[i].id = (filter_cfg->items[i].id << 18);
                          filter_cfg->items[i].mask = ((filter_cfg->items[i].mask << 21) |
@@ -259,20 +259,20 @@ static rt_err_t _can_control(struct rt_can_device *can_device, int cmd, void *ar
                 }
                 else
                 {
-                    /*标识符掩码模式*/
-                    /*扩展帧*/
+                    /**/
+                    /**/
                     if(filter_cfg->items[i].ide)
                     {
                          filter_cfg->items[i].mask = (filter_cfg->items[i].mask)<<3;
                     }
-                    else  /*标准帧*/
+                    else  /**/
                     {
                          filter_cfg->items[i].id = (filter_cfg->items[i].id)<<18;
                          filter_cfg->items[i].mask = (filter_cfg->items[i].mask)<<21;
                     }
 
 #if   ES_C_CAN_FILTER_FRAME_TYPE
-                    /*匹配类型*/
+                    /**/
                     filter_cfg->items[i].mask |= 0x6;
 #endif
 

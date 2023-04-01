@@ -67,8 +67,8 @@
 /******************************************************************************/
 /* Global pre-processor symbols/macros ('#define')                            */
 /******************************************************************************/
-#define LCDFULLWRITE  0XFFFFFFFF ///<LCD全显
-#define LCDFULLCLEAR  0X00000000 ///<LCD全清 
+#define LCDFULLWRITE  0XFFFFFFFF ///<LCD
+#define LCDFULLCLEAR  0X00000000 ///<LCD 
 #define LCDRAM0_7SIZE 31 
 #define LCDRAM8_FSIZE 7
 #define LCDRAMSIZE    0x0F
@@ -77,23 +77,23 @@
  ******************************************************************************/
  /**
  ******************************************************************************
- ** \brief LCD bias源选择
+ ** \brief LCD bias
  *****************************************************************************/
  typedef enum en_lcd_biassrc
  {
-    LcdInRes_High = 6,///<内部电阻分压，大功耗模式
-    LcdInRes_Low  = 4,///<内部电阻分压，小功耗模式 
-    LcdInRes_Mid  = 2,///<内部电阻分压，中功耗模式 
-    LcdExtCap     = 1,///<外部电容分压模式
-    LcdExtRes     = 0,///<外部电阻模式
+    LcdInRes_High = 6,///<
+    LcdInRes_Low  = 4,///< 
+    LcdInRes_Mid  = 2,///< 
+    LcdExtCap     = 1,///<
+    LcdExtRes     = 0,///<
  }en_lcd_biassrc_t;
   /**
  ******************************************************************************
- ** \brief LCD duty源选择
+ ** \brief LCD duty
  *****************************************************************************/
  typedef enum en_lcd_duty
  {
-    LcdStatic   = 0,///<静态
+    LcdStatic   = 0,///<
     LcdDuty2  = 1,///<1/2duty
     LcdDuty3  = 2,///<1/3duty 
     LcdDuty4  = 3,///<1/4duty
@@ -102,7 +102,7 @@
  }en_lcd_duty_t;
 /**
  ******************************************************************************
- ** \brief LCD bias配置
+ ** \brief LCD bias
  *****************************************************************************/
  typedef enum en_lcd_bias
  {
@@ -111,7 +111,7 @@
  }en_lcd_bias_t;
  /**
  ******************************************************************************
- ** \brief LCD 电压泵时钟频率配置
+ ** \brief LCD 
  *****************************************************************************/
  typedef enum en_lcd_cpclk
  {
@@ -122,7 +122,7 @@
  }en_lcd_cpclk_t;
   /**
  ******************************************************************************
- ** \brief LCD 扫描频率配置
+ ** \brief LCD 
  *****************************************************************************/
  typedef enum en_lcd_scanclk
  {
@@ -133,41 +133,41 @@
  }en_lcd_scanclk_t;
 /**
  ******************************************************************************
- ** \brief LCD功能使能
+ ** \brief LCD
  *****************************************************************************/
  typedef enum en_lcd_func
  {
-    LcdEn      = 0,///<模块使能
-    LcdBlinkEn = 1,///<LCD闪屏使能
+    LcdEn      = 0,///<
+    LcdBlinkEn = 1,///<LCD
  }en_lcd_func_t;
 /**
  ******************************************************************************
- ** \brief LCD显示模式
+ ** \brief LCD
  *****************************************************************************/
  typedef enum en_lcd_dispmode
  {
-    LcdMode0 = 0,///<模式0
-    LcdMode1 = 1,///<模式1
+    LcdMode0 = 0,///<0
+    LcdMode1 = 1,///<1
  }en_lcd_dispmode_t;
 /**
  ******************************************************************************
- ** \brief LCD时钟源选择
+ ** \brief LCD
  *****************************************************************************/
  typedef enum en_lcd_clk
  {
-    LcdXTL = 1,///<外部32k
-    LcdRCL = 0,///<内部32k
+    LcdXTL = 1,///<32k
+    LcdRCL = 0,///<32k
  }en_lcd_clk_t;
 /**
  ******************************************************************************
- ** \brief LCD显示SEG COM端口配置
+ ** \brief LCDSEG COM
  *****************************************************************************/
 typedef struct stc_lcd_segcom
 {
-    uint32_t u32Seg0_31;      ///<SEG0-31配置
+    uint32_t u32Seg0_31;      ///<SEG0-31
     boolean_t bMux;           ///<SEG32-35
-    uint8_t u8Com0_3;         ///<COM0-3配置
-    union Seg32_39VLcdCom7_4  ///<Seg32_39/Com7_4配置
+    uint8_t u8Com0_3;         ///<COM0-3
+    union Seg32_39VLcdCom7_4  ///<Seg32_39/Com7_4
     {
         uint8_t SegVLcdCom;
         struct
@@ -186,28 +186,28 @@ typedef struct stc_lcd_segcom
 }stc_lcd_segcom_t;
 /**
  ******************************************************************************
- ** \brief LCD端口配置参数
+ ** \brief LCD
  *****************************************************************************/
 typedef struct stc_lcd_segcompara
 {
-    en_lcd_duty_t enDuty;       ///<占空比
-    en_lcd_biassrc_t enBiasSrc; ///<时钟源
-    uint8_t u8MaxSeg;           ///<最大SEG口
+    en_lcd_duty_t enDuty;       ///<
+    en_lcd_biassrc_t enBiasSrc; ///<
+    uint8_t u8MaxSeg;           ///<SEG
 }stc_lcd_segcompara_t;
 /**
  ******************************************************************************
- ** \brief I2C初始化配置结构
+ ** \brief I2C
  *****************************************************************************/
 typedef struct stc_lcd_config
 {
-    en_lcd_biassrc_t enBiasSrc;  ///<Bias源选择
-    en_lcd_duty_t  enDuty;       ///<占空比选择
-    en_lcd_bias_t enBias;        ///bias配置
-    en_lcd_cpclk_t enCpClk;      ///<电压泵时钟频率选择
-    en_lcd_scanclk_t enScanClk;  ///<扫描频率选择
-    en_lcd_dispmode_t enDispMode;///<显示模式选择
-    en_lcd_clk_t enClk;          ///<模块clk选择
-    boolean_t       bTouchNvic;  ///<是否使能NVIC
+    en_lcd_biassrc_t enBiasSrc;  ///<Bias
+    en_lcd_duty_t  enDuty;       ///<
+    en_lcd_bias_t enBias;        ///bias
+    en_lcd_cpclk_t enCpClk;      ///<
+    en_lcd_scanclk_t enScanClk;  ///<
+    en_lcd_dispmode_t enDispMode;///<
+    en_lcd_clk_t enClk;          ///<clk
+    boolean_t       bTouchNvic;  ///<NVIC
 }stc_lcd_config_t;
 
 /******************************************************************************
@@ -217,41 +217,41 @@ typedef struct stc_lcd_config
 /******************************************************************************
  * Global function prototypes (definition in C source)
  *****************************************************************************/
- //LCD初始化函数
+ //LCD
  en_result_t LCD_Init(stc_lcd_config_t *pstcLcdCfg);
-  //lcd模块关闭函数
+  //lcd
  en_result_t LCD_DeInit(void);
-  //lcd 时钟源选择函数
+  //lcd 
  en_result_t LCD_SetClkSrc(en_lcd_clk_t enLcdClk);
- //lcd bias源选择函数
+ //lcd bias
  en_result_t LCD_SelBiasSrc(en_lcd_biassrc_t enBiasSrc);
- //lcd duty配置函数
+ //lcd duty
  en_result_t LCD_SetDuty(en_lcd_duty_t enDuty);
- //lcd bias配置函数
+ //lcd bias
  en_result_t LCD_SetBias(en_lcd_bias_t enBias);
- //lcd电压泵时钟频率选择
+ //lcd
  en_result_t LCD_SelCpClk(en_lcd_cpclk_t enCpClk);
- //lcd扫描频率选择
+ //lcd
  en_result_t LCD_SelScanClk(en_lcd_scanclk_t enScanClk);
- //lcd 功能使能禁止函数
+ //lcd 
  en_result_t LCD_EnFunc(en_lcd_func_t enFunc,boolean_t bFlag);
- //lcd显示模式函数
+ //lcd
  en_result_t LCD_SetDispMode(en_lcd_dispmode_t enDispMode);
- //lcd对比度设置
+ //lcd
  en_result_t LCD_SetContrast(uint8_t u8Contrast);
- //lcd闪屏计数器设置
+ //lcd
  en_result_t LCD_SetBlinkCnt(uint8_t u8BlinkCnt);
-  //lcd中断清除
+  //lcd
  en_result_t LCD_ClrIntState(void);
- //LCD运行模式获取端口配置
+ //LCD
  en_result_t LCD_GetSegCom(stc_lcd_segcompara_t *pstcSegComPara,stc_lcd_segcom_t *pstcSegCom);
- //lcd segcom端口配置
+ //lcd segcom
  en_result_t LCD_SetSegCom(stc_lcd_segcom_t *pstcSegCom);
- //lcd全显
+ //lcd
  en_result_t LCD_FullDisp(void);
- //lcd全清
+ //lcd
  en_result_t LCD_ClearDisp(void);
- //lcd写RAM函数
+ //lcdRAM
  en_result_t LCD_WriteRam(uint16_t u16Row, uint32_t u32List, boolean_t bData);
  en_result_t LCD_WriteRam0_7Int32(uint8_t u8Row,uint32_t u32Data);
  en_result_t LCD_WriteRam8_FInt8(uint8_t u8Row,uint8_t u8Data);

@@ -1,6 +1,6 @@
 # The Arduino Compatible for STM32F469 Discovery Board
 
-**English** | [中文](README_zh.md)
+**English** | [](README_zh.md)
 
 ## 1 RTduino - Arduino Ecosystem Compatibility Layer for RT-Thread
 
@@ -41,10 +41,10 @@ This board complies with Arduino UNO pins layout. For more details, please take 
 | 14 (D14)              | PB9       | Yes         | I2C-SDA. Token over by RT-Thread I2C device by default                                        |
 | 15 (D15)              | PB8       | Yes         | I2C-SCL. Token over by RT-Thread I2C device by default                                        |
 | 16 (D16)              | PA0       | Yes         | USER Button                                                                                   |
-| 17（D17）               | PG6       | Yes         | USER LED2                                                                                     |
-| 18（D18）               | PD4       | Yes         | USER LED3                                                                                     |
-| 19（D19）               | PD5       | Yes         | USER LED4                                                                                     |
-| 20（D20）               | PK3       | Yes         | USER LED5                                                                                     |
+| 17D17               | PG6       | Yes         | USER LED2                                                                                     |
+| 18D18               | PD4       | Yes         | USER LED3                                                                                     |
+| 19D19               | PD5       | Yes         | USER LED4                                                                                     |
+| 20D20               | PK3       | Yes         | USER LED5                                                                                     |
 | A0                    | PB1       | Yes         | ADC1-CH9. Token over by RT-Thread ADC device by default                                       |
 | A1                    | PC2       | Yes         | ADC1-CH12. Token over by RT-Thread ADC device by default                                      |
 | A2                    | PC3       | Yes         | ADC1-CH13. Token over by RT-Thread ADC device by default                                      |

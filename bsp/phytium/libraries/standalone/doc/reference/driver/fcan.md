@@ -1,44 +1,44 @@
-# FCAN 驱动程序
+# FCAN 
 
-## 1. 概述
+## 1. 
 
-CAN 是控制器局域网络(Controller Area Network)的缩写，由以研发和生产汽车电子产品著称的德国BOSCH公司开发，并最终成为国际标准(ISO 11898)，是国际上应用最广泛的现场总线之一。
+CAN (Controller Area Network)BOSCH(ISO 11898)
 
-## 2. 功能
+## 2. 
 
-CAN控制器驱动提供了CAN的控制访问方法，
-- 初始化CAN控制器
-- 以轮询方式发送/接收数据
-- 发送/接收数据的中断触发
+CANCAN
+- CAN
+- /
+- /
 
-驱动相关的源文件包括，
+
 ```
 .
-├── fcan_g.c
-├── fcan_hw.c
-├── fcan_hw.h
-├── fcan_intr.c
-├── fcan_sinit.c
-├── fcan.c
-└── fcan.h
+ fcan_g.c
+ fcan_hw.c
+ fcan_hw.h
+ fcan_intr.c
+ fcan_sinit.c
+ fcan.c
+ fcan.h
 ```
 
-## 3. 配置方法
+## 3. 
 
-以下部分将指导您完成 fcan 驱动的软件配置:
+ fcan :
 
-- 初始化CAN控制器
-- 设置CAN的中断处理函数，包括收发中断
+- CAN
+- CAN
 
-## 4 应用示例
+## 4 
 
-### [can收发数据](../../../baremetal/example/peripheral/can)
+### [can](../../../baremetal/example/peripheral/can)
 
-## 5. API参考
+## 5. API
 
-### 5.1. 用户数据结构
+### 5.1. 
 
-- fcan控制数据
+- fcan
 
 ```c
 typedef struct
@@ -51,7 +51,7 @@ typedef struct
 } FCanCtrl;
 ```
 
-- fcan配置数据，FCanConfig主要是can控制器id、基地址和中断号，FCanIntrEventConfig主要包括中断处理函数
+- fcanFCanConfigcanidFCanIntrEventConfig
 
 ```c
 typedef struct
@@ -63,7 +63,7 @@ typedef struct
 }FCanConfig;
 ```
 
-- fcan波特率配置
+- fcan
 ```c
 typedef struct
 {
@@ -79,7 +79,7 @@ typedef struct
 }FCanBaudrateConfig;
 ```
 
-- fcan报文
+- fcan
 ```c
 typedef struct
 {
@@ -90,7 +90,7 @@ typedef struct
 }FCanFrame;
 ```
 
-- fcan中断事件类型
+- fcan
 ```c
 typedef enum
 {
@@ -101,18 +101,18 @@ typedef enum
 } FCanIntrEventType;
 ```
 
-### 5.2  错误码定义
+### 5.2  
 
-- FCAN_SUCCESS      执行成功
-- FCAN_NOT_READY    驱动未初始化
-- FCAN_FAILURE      执行失败
-- FCAN_INVAL_PARAM  参数无效
+- FCAN_SUCCESS      
+- FCAN_NOT_READY    
+- FCAN_FAILURE      
+- FCAN_INVAL_PARAM  
 
-### 5.3. 用户API接口
+### 5.3. API
 
 #### FCanLookupConfig
 
-- 获取Fata控制器默认配置
+- Fata
 
 ```c
 const FCanConfig *FCanLookupConfig(FCanInstance instance_id);
@@ -120,19 +120,19 @@ const FCanConfig *FCanLookupConfig(FCanInstance instance_id);
 
 Note:
 
-- 获取默认配置参数，包括基地址、中断号等
+- 
 
 Input:
 
-- {FCanInstance} instance_id，控制器id号
+- {FCanInstance} instance_idid
 
 Return:
 
-- {const FCanConfig *} fcan默认配置，返回NULL如果找不到默认配置
+- {const FCanConfig *} fcanNULL
 
 #### FCanCfgInitialize
 
-- 初始化fcan控制器, 使之可以使用
+- fcan, 
 
 ```c
 FError FCanCfgInitialize(FCanCtrl *instance_p, const FCanConfig *input_config_p);
@@ -140,20 +140,20 @@ FError FCanCfgInitialize(FCanCtrl *instance_p, const FCanConfig *input_config_p)
 
 Note:
 
-- 输入配置通过FCanLookupConfig获取，用户按照需要修改后传入此函数
+- FCanLookupConfig
 
 Input:
 
-- {FCanCtrl} *instance_p fcan驱动控制数据
-- {FCanConfig} *input_config_p fcan用户输入配置
+- {FCanCtrl} *instance_p fcan
+- {FCanConfig} *input_config_p fcan
 
 Return:
 
-- {FError} 驱动初始化的错误码信息，FCAN_SUCCESS 表示初始化成功，其它返回值表示初始化失败
+- {FError} FCAN_SUCCESS 
 
 #### FCanSend
 
-- 发送can数据
+- can
 
 ```c
 FError FCanSend(FCanCtrl *instance_p, FCanFrame *frame_p);
@@ -161,20 +161,20 @@ FError FCanSend(FCanCtrl *instance_p, FCanFrame *frame_p);
 
 Note:
 
-- 指定can控制器发送can数据
+- cancan
 
 Input:
 
-- {FCanCtrl} *instance_p，fcan驱动控制数据
-- {FCanFrame} *frame_p，can数据
+- {FCanCtrl} *instance_pfcan
+- {FCanFrame} *frame_pcan
 
 Return:
 
-- {FError} 驱动初始化的错误码信息，FCAN_SUCCESS 表示初始化成功，其它返回值表示初始化失败
+- {FError} FCAN_SUCCESS 
 
 #### FCanRecv
 
-- 接收can数据
+- can
 
 ```c
 FError FCanRecv(FCanCtrl *instance_p, FCanFrame *frame_p);
@@ -182,67 +182,67 @@ FError FCanRecv(FCanCtrl *instance_p, FCanFrame *frame_p);
 
 Note:
 
-- 指定can控制器接收can数据
+- cancan
 
 Input:
 
-- {FCanCtrl} *instance_p，fcan驱动控制数据
-- {FCanFrame} *frame_p，can数据
+- {FCanCtrl} *instance_pfcan
+- {FCanFrame} *frame_pcan
 
 Return:
 
-- {FError} 驱动初始化的错误码信息，FCAN_SUCCESS 表示初始化成功，其它返回值表示初始化失败
+- {FError} FCAN_SUCCESS 
 
 #### FCanRegisterInterruptHandler
 
-- 注册can中断事件函数
+- can
 
 ```c
 void FCanRegisterInterruptHandler(FCanCtrl *instance_p, FCanIntrEventConfig *intr_event_p);
 ```
 
 Note:
-- 无
+- 
 
 Input:
-- {FCanCtrl} *instance_p，fcan驱动控制数据
-- {FCanIntrEventConfig} *intr_event_p，中断事件类型，回调函数，回调函数参数
+- {FCanCtrl} *instance_pfcan
+- {FCanIntrEventConfig} *intr_event_p
 
 Return:
-- 无
+- 
 
 #### FCanIntrHandler
 
-- can中断处理函数入口
+- can
 
 ```c
 void FCanIntrHandler(s32 vector, void *args);
 ```
 
 Note:
-- 根据中断类型，设置对应的回调函数和参数传入
+- 
 
 Input:
 - {s32} vector
-- {void} *param, 输入参数，指向fcan驱动控制数据
+- {void} *param, fcan
 
 Return:
-- 无
+- 
 
 #### FCanIdMaskFilterSet
 
-- can id过滤设置
+- can id
 
 ```c
 FError FCanIdMaskFilterSet(FCanCtrl *instance_p, FCanIdMaskConfig *id_mask_p);
 ```
 
 Note:
-- 设置可接收帧id值和掩码
+- id
 
 Input:
-- {FCanCtrl} *instance_p, fcan驱动控制数据
-- {FCanIdMaskConfig} *id_mask_p, 过滤寄存器序号，可接收帧id，可接收帧id掩码
+- {FCanCtrl} *instance_p, fcan
+- {FCanIdMaskConfig} *id_mask_p, idid
 
 Return:
-- {FError} 驱动初始化的错误码信息，FCAN_SUCCESS 表示初始化成功，其它返回值表示初始化失败
+- {FError} FCAN_SUCCESS 

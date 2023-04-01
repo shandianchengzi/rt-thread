@@ -1,15 +1,15 @@
 /*
- * @ : Copyright (c) 2021 Phytium Information Technology, Inc.
- *
- * SPDX-License-Identifier: Apache-2.0.
- *
+*@:Copyright(c)2021PhytiumInformationTechnology,Inc.
+*
+*SPDX-License-Identifier:Apache-2.0.
+*
  * @Date: 2021-04-07 09:53:07
  * @LastEditTime: 2021-04-07 15:29:06
- * @Description:  This files is for general reigster io functions
+ * @Description: This files is for general reigster io functions
  *
- * @Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * @ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 #ifndef FT_IO_H
@@ -31,7 +31,7 @@ extern "C"
     /**
      * @name: Ft_in8
      * @msg:  Read byte value
-     * @in param {UINTPTR}: Addr 需要读取的地址
+     * @in param {UINTPTR}: Addr 
      * @return {u8} Byte Value
      */
     static INLINE u8 Ft_in8(FT_IN UINTPTR Addr)
@@ -42,7 +42,7 @@ extern "C"
     /**
      * @name: Ft_in16
      * @msg:  Read half-word value
-     * @in param {UINTPTR}: Addr 需要读取的地址
+     * @in param {UINTPTR}: Addr 
      * @return {u16} Half-word Value
      */
     static INLINE u16 Ft_in16(FT_IN UINTPTR Addr)
@@ -53,7 +53,7 @@ extern "C"
     /**
      * @name: Ft_in32
      * @msg:  Read word value
-     * @in param {UINTPTR}: Addr 需要读取的地址
+     * @in param {UINTPTR}: Addr 
      * @return {u16} Word Value
      */
     static INLINE u32 Ft_in32(FT_IN UINTPTR Addr)
@@ -64,7 +64,7 @@ extern "C"
     /**
      * @name: Ft_in64
      * @msg:  Read u64 value
-     * @in param {UINTPTR}: Addr 需要读取的地址
+     * @in param {UINTPTR}: Addr 
      * @return {u16} u64 Value
      */
     static INLINE u64 Ft_in64(FT_IN UINTPTR Addr)
@@ -75,7 +75,7 @@ extern "C"
     /**
      * @name: Ft_out8
      * @msg:  write byte value
-     * @in param {UINTPTR}: Addr 需要写入的地址
+     * @in param {UINTPTR}: Addr 
      * @in param {u8}: Need write value
      * @return {*}
      */
@@ -88,7 +88,7 @@ extern "C"
     /**
      * @name: Ft_out16
      * @msg: write half-word value
-     * @in param {UINTPTR}: Addr 需要写入的地址
+     * @in param {UINTPTR}: Addr 
      * @in param {u16}: Need write value
      * @return {*}
      */
@@ -101,7 +101,7 @@ extern "C"
     /**
      * @name: Ft_out32
      * @msg: write half-word value
-     * @in param {UINTPTR}: Addr 需要写入的地址
+     * @in param {UINTPTR}: Addr 
      * @in param {u32}: Need write value
      * @return {*}
      */
@@ -114,7 +114,7 @@ extern "C"
     /**
      * @name: Ft_out64
      * @msg: write u64 value
-     * @in param {UINTPTR}: Addr 需要写入的地址
+     * @in param {UINTPTR}: Addr 
      * @in param {u64}: Need write value
      * @return {*}
      */

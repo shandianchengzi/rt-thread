@@ -21,7 +21,7 @@ extern "C" {
 #define OV2640_PID              0X2642
 
 
-//褰撻�夋嫨DSP鍦板潃(0XFF=0X00)鏃�,OV2640鐨凞SP瀵勫瓨鍣ㄥ湴鍧�鏄犲皠琛�
+//DSP(0XFF=0X00),OV2640SP
 #define OV2640_DSP_R_BYPASS     0x05
 #define OV2640_DSP_Qs           0x44
 #define OV2640_DSP_CTRL         0x50
@@ -57,7 +57,7 @@ extern "C" {
 #define OV2640_DSP_P_STATUS     0xFE
 #define OV2640_DSP_RA_DLMT      0xFF
 
-//褰撻�夋嫨浼犳劅鍣ㄥ湴鍧�(0XFF=0X01)鏃�,OV2640鐨凞SP瀵勫瓨鍣ㄥ湴鍧�鏄犲皠琛�
+//(0XFF=0X01),OV2640SP
 #define OV2640_SENSOR_GAIN       0x00
 #define OV2640_SENSOR_COM1       0x03
 #define OV2640_SENSOR_REG04      0x04

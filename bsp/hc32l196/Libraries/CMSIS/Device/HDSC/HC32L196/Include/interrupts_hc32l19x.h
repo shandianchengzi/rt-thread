@@ -67,10 +67,10 @@ extern "C"
 /******************************************************************************/
 #define DDL_IRQ_LEVEL_DEFAULT                   3u
 
-//<<此选项会打开interrupt_hc32xxx.c中的中断回调函数，用户如果需要实现中断服务函数，
-//<<可在源码文件中定义该文件中用"__WEAK"声明的同名中断服务函数即可。
-#define INT_CALLBACK_ON                                  1u  //<<(默认值)
-//<<此选项会关闭interrupt_hc32xxx.c中的中断回调函数，此时用户可在该文件中自行定义中断服务函数的实现。
+//<<interrupt_hc32xxx.c
+//<<"__WEAK"
+#define INT_CALLBACK_ON                                  1u  //<<()
+//<<interrupt_hc32xxx.c
 #define INT_CALLBACK_OFF                                 0u
 /******************************************************************************
  * Global type definitions
@@ -119,22 +119,22 @@ extern "C"
  
 /**
  *******************************************************************************
- ** \brief 中断优先级数据类型定义
+ ** \brief 
  ** \note
  ******************************************************************************/
 typedef enum en_irq_level
 {
-    IrqLevel0  = 0u,               ///< 优先级0
-    IrqLevel1  = 1u,               ///< 优先级1
-    IrqLevel2  = 2u,               ///< 优先级2
-    IrqLevel3  = 3u,               ///< 优先级3
+    IrqLevel0  = 0u,               ///< 0
+    IrqLevel1  = 1u,               ///< 1
+    IrqLevel2  = 2u,               ///< 2
+    IrqLevel3  = 3u,               ///< 3
 } en_irq_level_t; 
 
 
 /******************************************************************************
  * Global function prototypes (definition in C source)
  ******************************************************************************/
-///< 系统中断使能开关
+///< 
 extern void EnableNvic(IRQn_Type enIrq, en_irq_level_t enLevel, boolean_t bEn);
 
 

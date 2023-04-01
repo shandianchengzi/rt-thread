@@ -12,10 +12,10 @@
 
 typedef struct _sys_t {
     uint8_t cnt_1us;             //delay 1us cnt
-    uint8_t main_start;          //Main是否已启动
+    uint8_t main_start;          //Main
     uint8_t clk_sel;             //system clock select
     uint8_t sys_clk;
-//    uint8_t aupll_type;          //区分AUPLL的频率
+//    uint8_t aupll_type;          //AUPLL
     uint16_t rand_seed;
     uint32_t uart0baud;          //UART0BAUD
 } sys_t;
@@ -94,7 +94,7 @@ uint8_t set_sd_baud(uint8_t sd_rate)
 {
     uint8_t sd0baud=0;
     uint8_t sys_clk=0;
-    if(sd_rate > 14){//不支持超过14M
+    if(sd_rate > 14){//14M
         return 0;
     }
     if (sys.sys_clk <= SYSCLK_26M) {
@@ -158,7 +158,7 @@ uint8_t sysclk_update_baud(uint8_t baud)
     return baud;
 }
 
-//客户可能用到UART0(使用26M时钟源)做通信,这里可选设置系统时钟时不改波特率
+//UART0(26M),
 WEAK void update_uart0baud_in_sysclk(uint32_t uart_baud)
 {
     if(UART0CON & BIT(0)) {
@@ -172,7 +172,7 @@ void set_sys_uart0baud(uint32_t baud)
     sys.uart0baud = baud;
 }
 
-//切系统时钟前，先设置模块时钟分频较大值，保证模块不会超频的情况
+//
 void set_peripherals_clkdiv_safety(void)
 {
     uint32_t clkcon3 = CLKCON3;
@@ -182,11 +182,11 @@ void set_peripherals_clkdiv_safety(void)
     clkcon3 &= ~0xf0;                               //reset src clkdiv
     clkcon3 |= (1 << 4);                            //src clk = sys_clk / (n+1)
 
-    //sbcenc硬件要小于48M
+    //sbcenc48M
     clkcon3 &= ~(0x0f << 12);                       //reset sbcenc clkdiv
     clkcon3 |= (2 << 12);                           //src clk = sys_clk / (n+1)
 
-    //aec ram硬件要小于50M
+    //aec ram50M
     clkcon3 &= ~0x0f;                               //reset aec clkdiv
     clkcon3 &= ~(0x0f << 19);                       //reset plc clkdiv
     clkcon3 &= ~(0x0f << 23);                       //reset cvsd clkdiv
@@ -194,7 +194,7 @@ void set_peripherals_clkdiv_safety(void)
     clkcon3 |= (2 << 19);                           //plc clk = sys_clk / (n+1)
     clkcon3 |= (2 << 23);                           //cvsd clk = sys_clk / (n+1)
 
-    //audec硬件要小于48M
+    //audec48M
     clkcon2 &= ~(0x0f << 13);                       //reset audec clkdiv
     clkcon2 |= (2 << 13);                           //audec clk = sys_clk / (n+1)
 
@@ -202,7 +202,7 @@ void set_peripherals_clkdiv_safety(void)
     CLKCON2 = clkcon2;
 }
 
-//根据实际系统时钟，设置合适的模块时钟分频
+//
 void set_peripherals_clkdiv(void)
 {
     uint32_t clkcon3 = CLKCON3;
@@ -216,7 +216,7 @@ void set_peripherals_clkdiv(void)
         clkcon3 |= (1 << 4);                        //src clk = sys_clk / (n+1)
     }
 
-    //sbcec硬件要小于48M
+    //sbcec48M
     clkcon3 &= ~(0x0f << 12);
     if (sys_clk > SYSCLK_80M) {
         clkcon3 |= (2 << 12);
@@ -224,7 +224,7 @@ void set_peripherals_clkdiv(void)
         clkcon3 |= (1 << 12);
     }
 
-    //aec ram硬件要小于50M
+    //aec ram50M
     clkcon3 &= ~0x0f;                               //reset aec clkdiv
     clkcon3 &= ~(0x0f << 19);                       //reset plc clkdiv
     clkcon3 &= ~(0x0f << 23);                       //reset cvsd clkdiv
@@ -239,7 +239,7 @@ void set_peripherals_clkdiv(void)
     clkcon3 |= (clkdiv << 19);                      //plc clk = sys_clk / (n+1)
     clkcon3 |= (clkdiv << 23);                      //cvsd clk = sys_clk / (n+1)
 
-    //audec硬件要小于48M
+    //audec48M
     clkcon2 &= ~(0x0f << 13);                       //reset audec clkdiv
     if (sys_clk > SYSCLK_80M) {
         clkdiv = 2;
@@ -254,35 +254,35 @@ void set_peripherals_clkdiv(void)
     CLKCON2 = clkcon2;
 
 //    if (sys_clk <= SYS_48M) {
-//        PWRCON0 = (PWRCON0 & ~0xf) | (sys_trim.vddcore);                //VDDCORE减一档
+//        PWRCON0 = (PWRCON0 & ~0xf) | (sys_trim.vddcore);                //VDDCORE
 //    }
 //    vddcore_other_offset();
 }
 
-ALIGN(512)  //注意：超过512byte时，要用lock cache
+ALIGN(512)  //512bytelock cache
 static void set_sysclk_do(uint32_t sys_clk, uint32_t clk_sel, uint32_t spll_div, uint32_t spi_baud, uint32_t spi1baud)
 {
     uint32_t cpu_ie;
     cpu_ie = PICCON & BIT(0);
-    PICCONCLR = BIT(0);                             //关中断，切换系统时钟
+    PICCONCLR = BIT(0);                             //
     set_peripherals_clkdiv_safety();
 
     CLKCON0 &= ~(BIT(2) | BIT(3));                  //sysclk sel rc2m
     CLKCON2 &= ~(0x1f << 8);                        //reset spll div
 
     if(clk_sel <= PLL0DIV_120M) {
-        //sys_clk来源PLL0的分频配置
+        //sys_clkPLL0
         CLKCON0 &= ~(BIT(4) | BIT(5) | BIT(6));     //sys_pll select pll0out
         if (PLL0DIV != (240 * 65536 / 26)) {
             PLL0DIV = 240 * 65536 / 26;             //pll: 240M, XOSC: 26M
             PLL0CON &= ~(BIT(3) | BIT(4) | BIT(5));
-            PLL0CON |= BIT(3);                      //Select PLL/VCO frequency band (PLL大于206M vcos = 0x01, 否则为0)
+            PLL0CON |= BIT(3);                      //Select PLL/VCO frequency band (PLL206M vcos = 0x01, 0)
             PLL0CON |= BIT(20);                     //update pll0div to pll0_clk
             CLKCON3 &= ~(7 << 16);
             CLKCON3 |= (4 << 16);                   //USB CLK 48M
         }
     } else if (clk_sel <= OSCDIV_26M) {
-        //sys_clk来源于XOSC26M时钟分频, 无USB时关闭PLL0
+        //sys_clkXOSC26M, USBPLL0
 //        if (!is_usb_support()) {
 //            PLL0CON &= ~BIT(18);
 //            PLL0CON &= ~(BIT(12) | BIT(6));         //close pll0
@@ -314,7 +314,7 @@ void set_sysclk(uint32_t sys_clk)
         return;
     }
 //    if (sys_clk > SYSCLK_48M) {
-//        PWRCON0 = (PWRCON0 & ~0xf) | (sys_trim.vddcore + 1);            //VDDCORE加一档
+//        PWRCON0 = (PWRCON0 & ~0xf) | (sys_trim.vddcore + 1);            //VDDCORE
 //    }
 //    vddcore_other_offset();
 
@@ -394,11 +394,11 @@ void set_sysclk(uint32_t sys_clk)
         return;
     }
 
-    //先判断PLL0是否打开
+    //PLL0
     if(clk_sel <= PLL0DIV_120M) {
         if (!(PLL0CON & BIT(12))) {
             PLL0CON &= ~(BIT(3) | BIT(4) | BIT(5));
-            PLL0CON |= BIT(3);                     //Select PLL/VCO frequency band (PLL大于206M vcos = 0x01, 否则为0)
+            PLL0CON |= BIT(3);                     //Select PLL/VCO frequency band (PLL206M vcos = 0x01, 0)
             PLL0CON |= BIT(12);                    //enable pll0 ldo
             delay_us(100);                         //delay 100us
             PLL0DIV = 240 * 65536 / 26;            //pll0: 240M, XOSC: 26M
@@ -416,6 +416,6 @@ void set_sysclk(uint32_t sys_clk)
 
     set_sysclk_do(sys_clk, clk_sel,spll_div, spi_baud, spi1baud);
     set_peripherals_clkdiv();
-    update_sd0baud();       //更新下SD0BAUD
+    update_sd0baud();       //SD0BAUD
     update_uart0baud_in_sysclk(uart_baud);
 }

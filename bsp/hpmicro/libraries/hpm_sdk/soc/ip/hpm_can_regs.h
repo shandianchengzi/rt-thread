@@ -75,8 +75,8 @@ typedef struct {
  * SACK (RW)
  *
  * Self-ACKnowledge
- * 0 – no self-ACK
- * 1 – self-ACK when LBME=1
+ * 0  no self-ACK
+ * 1  self-ACK when LBME=1
  */
 #define CAN_CMD_STA_CMD_CTRL_SACK_MASK (0x80000000UL)
 #define CAN_CMD_STA_CMD_CTRL_SACK_SHIFT (31U)
@@ -88,8 +88,8 @@ typedef struct {
  *
  * Receive buffer Overflow Mode
  * In case of a full RBUF when a new message is received, then ROM selects the following:
- * 1 – The new message will not be stored.
- * 0 – The oldest message will be overwritten.
+ * 1  The new message will not be stored.
+ * 0  The oldest message will be overwritten.
  */
 #define CAN_CMD_STA_CMD_CTRL_ROM_MASK (0x40000000UL)
 #define CAN_CMD_STA_CMD_CTRL_ROM_SHIFT (30U)
@@ -100,8 +100,8 @@ typedef struct {
  * ROV (RO)
  *
  * Receive buffer OVerflow
- * 1 – Overflow. At least one message is lost.
- * 0 – No Overflow.
+ * 1  Overflow. At least one message is lost.
+ * 0  No Overflow.
  * ROV is cleared by setting RREL=1.
  */
 #define CAN_CMD_STA_CMD_CTRL_ROV_MASK (0x20000000UL)
@@ -114,8 +114,8 @@ typedef struct {
  * Receive buffer RELease
  * The host controller has read the actual RB slot and releases it. Afterwards the CAN-CTRL
  * core points to the next RB slot. RSTAT gets updated.
- * 1 – Release: The host has read the RB.
- * 0 – No release
+ * 1  Release: The host has read the RB.
+ * 0  No release
  */
 #define CAN_CMD_STA_CMD_CTRL_RREL_MASK (0x10000000UL)
 #define CAN_CMD_STA_CMD_CTRL_RREL_SHIFT (28U)
@@ -126,8 +126,8 @@ typedef struct {
  * RBALL (RW)
  *
  * Receive Buffer stores ALL data frames
- * 0 – normal operation
- * 1 – RB stores correct data frames as well as data frames with error
+ * 0  normal operation
+ * 1  RB stores correct data frames as well as data frames with error
  */
 #define CAN_CMD_STA_CMD_CTRL_RBALL_MASK (0x8000000UL)
 #define CAN_CMD_STA_CMD_CTRL_RBALL_SHIFT (27U)
@@ -140,8 +140,8 @@ typedef struct {
  * Receive buffer STATus
  * 00 - empty
  * 01 - > empty and < almost full (AFWL)
- * 10 -  almost full (programmable threshold by AFWL) but not full and no overflow
- * 11 - full (stays set in case of overflow – for overflow signaling see ROV)
+ * 10 -  almost full (programmable threshold by AFWL) but not full and no overflow
+ * 11 - full (stays set in case of overflow  for overflow signaling see ROV)
  */
 #define CAN_CMD_STA_CMD_CTRL_RSTAT_MASK (0x3000000UL)
 #define CAN_CMD_STA_CMD_CTRL_RSTAT_SHIFT (24U)
@@ -230,15 +230,15 @@ typedef struct {
  *
  * Transmission Secondary STATus bits
  * If TTEN=0 or TTTBM=0:
- * 00 – STB is empty
- * 01 – STB is less than or equal to half full
- * 10 – STB is more than half full
- * 11 – STB is full
+ * 00  STB is empty
+ * 01  STB is less than or equal to half full
+ * 10  STB is more than half full
+ * 11  STB is full
  * If the STB is disabled using STB_DISABLE, then TSSTAT=00.
  * If TTEN=1 and TTTBM=1:
- * 00 – PTB and STB are empty
- * 01 – PTB and STB are not empty and not full
- * 11 – PTB and STB are full
+ * 00  PTB and STB are empty
+ * 01  PTB and STB are not empty and not full
+ * 11  PTB and STB are full
  */
 #define CAN_CMD_STA_CMD_CTRL_TSSTAT_MASK (0x30000UL)
 #define CAN_CMD_STA_CMD_CTRL_TSSTAT_SHIFT (16U)
@@ -319,9 +319,9 @@ typedef struct {
  * TPA (RW)
  *
  * Transmit Primary Abort
- * 1 – Aborts a transmission from PTB which has been requested by TPE=1 but not
+ * 1  Aborts a transmission from PTB which has been requested by TPE=1 but not
  * started yet. (The data bytes of the message remains in the PTB.)
- * 0 – no abort
+ * 0  no abort
  * The bit has to be set by the host controller and will be reset by CAN-CTRL. Setting TPA
  * automatically de-asserts TPE.
  * The host controller can set TPA to 1 but can not reset it to 0.
@@ -339,13 +339,13 @@ typedef struct {
  * TSONE (RW)
  *
  * Transmit Secondary ONE frame
- * 1 – Transmission enable of one in the STB. In FIFO mode this is the oldest message
+ * 1  Transmission enable of one in the STB. In FIFO mode this is the oldest message
  * and in priority mode this is the one with the highest priority.
  * TSONE in priority mode is difficult to handle, because it is not always clear which
  * message will be transmitted if new messages are written to the STB meanwhile.
  * The controller starts the transmission as soon as the bus becomes vacant and
  * no request of the PTB (bit TPE) is pending.
- * 0 – No transmission for the STB.
+ * 0  No transmission for the STB.
  * TSONE stays set until the message has been transmitted successfully or it is aborted
  * using TSA.
  * The host controller can set TSONE to 1 but can not reset it to 0. This would only be
@@ -362,10 +362,10 @@ typedef struct {
  * TSALL (RW)
  *
  * Transmit Secondary ALL frames
- * 1 – Transmission enable of all messages in the STB.
+ * 1  Transmission enable of all messages in the STB.
  * The controller starts the transmission as soon as the bus becomes vacant and
  * no request of the PTB (bit TPE) is pending.
- * 0 – No transmission for the STB.
+ * 0  No transmission for the STB.
  * TSALL stays set until all messages have been transmitted successfully or they are aborted
  * using TSA.
  * The host controller can set TSALL to 1 but can not reset it to 0. This would only be
@@ -385,14 +385,14 @@ typedef struct {
  * TSA (RW)
  *
  * Transmit Secondary Abort
- * 1 – Aborts a transmission from STB which has been requested but not started yet.
+ * 1  Aborts a transmission from STB which has been requested but not started yet.
  * For a TSONE transmission, only one frame is aborted while for a TSALL
  * Transmission, all frames are aborted.
  * One or all message slots will be released which updates TSSTAT.
  * All aborted messages are lost because they are not accessible any more.
  * If in priority mode a TSONE transmission is aborted, then it is not clear which
  * frame will be aborted if new frames are written to the STB meanwhile.
- * 0 – no abort
+ * 0  no abort
  * The bit has to be set by the host controller and will be reset by CAN-CTRL. Setting TSA,automatically de-asserts TSONE or TSALL respectively.
  * The host controller can set TSA to 1 but can not reset it to 0.
  * The bit will be reset to the hardware reset value if RESET=1.
@@ -410,7 +410,7 @@ typedef struct {
  * 1 - The host controller performs a local reset of CAN-CTRL.
  * 0 - no local reset of CAN-CTRLThe some register (e.g for node configuration) can only be modified if RESET=1.
  * Bit RESET forces several components to a reset state.
- * RESET is automatically set if the node enters “bus off” state.
+ * RESET is automatically set if the node enters bus off state.
  * Note that a CAN node will participate in CAN communication after RESET is switched to 0after 11 CAN bit times.
  * This delay is required by the CAN standard (bus idle time).If RESET is set to 1 and immediately set to 0, then it takes some time until RESET can beread as 0 and becomes inactive.
  * The reason is clock domain crossing from host to CAN clockdomain. RESET is held active as long as needed depending on the relation between host andCAN clock.
@@ -493,8 +493,8 @@ typedef struct {
  * BUSOFF (RW)
  *
  * Bus Off (Bus Status bit)
- * 1 - The controller status is “bus off”.
- * 0 - The controller status is “bus on”.
+ * 1 - The controller status is bus off.
+ * 0 - The controller status is bus on.
  * Writing a 1 to BUSOFF will reset TECNT and RECNT. This should be done only for debugging.
  * See Chapter 3.9.10.6 for details.
  */
@@ -508,7 +508,7 @@ typedef struct {
  * RIE (RW)
  *
  * Receive Interrupt Enable
- * 0 – Disabled, 1 – Enabled
+ * 0  Disabled, 1  Enabled
  */
 #define CAN_RTIE_RIE_MASK (0x80U)
 #define CAN_RTIE_RIE_SHIFT (7U)
@@ -519,7 +519,7 @@ typedef struct {
  * ROIE (RW)
  *
  * RB Overrun Interrupt Enable
- * 0 – Disabled, 1 – Enabled
+ * 0  Disabled, 1  Enabled
  */
 #define CAN_RTIE_ROIE_MASK (0x40U)
 #define CAN_RTIE_ROIE_SHIFT (6U)
@@ -530,7 +530,7 @@ typedef struct {
  * RFIE (RW)
  *
  * RB Full Interrupt Enable
- * 0 – Disabled, 1 – Enabled
+ * 0  Disabled, 1  Enabled
  */
 #define CAN_RTIE_RFIE_MASK (0x20U)
 #define CAN_RTIE_RFIE_SHIFT (5U)
@@ -541,7 +541,7 @@ typedef struct {
  * RAFIE (RW)
  *
  * RB Almost Full Interrupt Enable
- * 0 – Disabled, 1 – Enabled
+ * 0  Disabled, 1  Enabled
  */
 #define CAN_RTIE_RAFIE_MASK (0x10U)
 #define CAN_RTIE_RAFIE_SHIFT (4U)
@@ -552,7 +552,7 @@ typedef struct {
  * TPIE (RW)
  *
  * Transmission Primary Interrupt Enable
- * 0 – Disabled, 1 – Enabled
+ * 0  Disabled, 1  Enabled
  */
 #define CAN_RTIE_TPIE_MASK (0x8U)
 #define CAN_RTIE_TPIE_SHIFT (3U)
@@ -563,7 +563,7 @@ typedef struct {
  * TSIE (RW)
  *
  * Transmission Secondary Interrupt Enable
- * 0 – Disabled, 1 – Enabled
+ * 0  Disabled, 1  Enabled
  */
 #define CAN_RTIE_TSIE_MASK (0x4U)
 #define CAN_RTIE_TSIE_SHIFT (2U)
@@ -574,7 +574,7 @@ typedef struct {
  * EIE (RW)
  *
  * Error Interrupt Enable
- * 0 – Disabled, 1 – Enabled
+ * 0  Disabled, 1  Enabled
  */
 #define CAN_RTIE_EIE_MASK (0x2U)
 #define CAN_RTIE_EIE_SHIFT (1U)
@@ -804,7 +804,7 @@ typedef struct {
 /*
  * EWL (RW)
  *
- * Programmable Error Warning Limit = (EWL+1)*8. Possible Limit values: 8, 16, … 128.
+ * Programmable Error Warning Limit = (EWL+1)*8. Possible Limit values: 8, 16,  128.
  * The value of EWL controls EIF.
  */
 #define CAN_LIMIT_EWL_MASK (0xFU)
@@ -973,7 +973,7 @@ typedef struct {
  *
  * Transmit Error CouNT (number of errors during transmission)
  * TECNT is incremented and decremented as defined in the CAN specification.
- * In case of the “bus off state” TECNT may overflow.
+ * In case of the bus off state TECNT may overflow.
  * If TXB=1, then the error counters are frozen.
  */
 #define CAN_TECNT_TECNT_MASK (0xFFU)
@@ -1014,7 +1014,7 @@ typedef struct {
  * TIMEPOS (RW)
  *
  * TIME-stamping POSition
- * 0 – SOF1 – EOF (see Chapter 7)TIMEPOS can only be changed if TIMEEN=0, but it is possible to modify TIMPOS withthe same write access that sets TIMEEN=1.
+ * 0  SOF1  EOF (see Chapter 7)TIMEPOS can only be changed if TIMEEN=0, but it is possible to modify TIMPOS withthe same write access that sets TIMEEN=1.
  */
 #define CAN_TIMECFG_TIMEPOS_MASK (0x2U)
 #define CAN_TIMECFG_TIMEPOS_SHIFT (1U)
@@ -1025,8 +1025,8 @@ typedef struct {
  * TIMEEN (RW)
  *
  * TIME-stamping ENable
- * 0 – disabled
- * 1 – enabled
+ * 0  disabled
+ * 1  enabled
  */
 #define CAN_TIMECFG_TIMEEN_MASK (0x1U)
 #define CAN_TIMECFG_TIMEEN_SHIFT (0U)
@@ -1116,8 +1116,8 @@ typedef struct {
 /*
  * TBE (RW)
  *
- * set TB slot to “Empty”
- * 1 - slot selected by TBPTR shall be marked as “empty”
+ * set TB slot to Empty
+ * 1 - slot selected by TBPTR shall be marked as empty
  * 0 - no actionTBE is automatically reset to 0 as soon as the slot is marked as empty and TSFF=0.
  * If atransmission from this slot is active, then TBE stays set as long as either the transmission completes or after a transmission error or arbitration loss the
  *  transmissionis not active any more.
@@ -1131,8 +1131,8 @@ typedef struct {
 /*
  * TBF (RW)
  *
- * set TB slot to “Filled”
- * 1 - slot selected by TBPTR shall be marked as “filled”
+ * set TB slot to Filled
+ * 1 - slot selected by TBPTR shall be marked as filled
  * 0 - no actionTBF is automatically reset to 0 as soon as the slot is marked as filled and TSFF=1.
  * If both TBF and TBE are set, then TBE wins.
  */

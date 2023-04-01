@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,17 +14,17 @@
  * FilePath: fi2c_sinit.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:36:52
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 
 
 /* - This file contains the implementation of driver's static initialization functionality.
-- 驱动静态初始化  */
+-   */
 
 /***************************** Include Files *********************************/
 
@@ -44,9 +44,9 @@ extern const FI2cConfig FI2C_CONFIG_TBL[I2C_INSTANCE_NUM];
 /************************** Function Prototypes ******************************/
 /**
  * @name: FI2cLookupConfig
- * @msg: 获取I2C驱动的默认配置参数
- * @return {const FI2cConfig*} 驱动默认参数
- * @param {u32} instance_id, 当前控制的I2C控制器实例号
+ * @msg: I2C
+ * @return {const FI2cConfig*} 
+ * @param {u32} instance_id, I2C
  */
 const FI2cConfig *FI2cLookupConfig(u32 instance_id)
 {

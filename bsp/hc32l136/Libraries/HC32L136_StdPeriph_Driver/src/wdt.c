@@ -67,11 +67,11 @@
 static func_ptr_t pfnWdtCallback = NULL;
 /**
  ******************************************************************************
- ** \brief  WDT溢出时间设置函数
+ ** \brief  WDT
  **
- ** \param [in] u8LoadValue 溢出时间
+ ** \param [in] u8LoadValue 
  **
- ** \retval 无
+ ** \retval 
  **
  ******************************************************************************/
 void Wdt_WriteWdtLoad(uint8_t u8LoadValue)
@@ -80,9 +80,9 @@ void Wdt_WriteWdtLoad(uint8_t u8LoadValue)
 }
 /**
  ******************************************************************************
- ** \brief  WDT初始化函数
+ ** \brief  WDT
  **
- ** \param [in] stcConfig 初始化结构
+ ** \param [in] stcConfig 
  **
  ** \retval Ok
  **
@@ -103,9 +103,9 @@ en_result_t Wdt_Init(stc_wdt_config_t* pstcConfig)
 }
 /**
  ******************************************************************************
- ** \brief  WDT复位及启动函数
+ ** \brief  WDT
  **
- ** \param [in] 无
+ ** \param [in] 
  **
  ** \retval Ok
  **
@@ -120,9 +120,9 @@ en_result_t Wdt_Start(void)
 }
 /**
  ******************************************************************************
- ** \brief  WDT复位及启动函数
+ ** \brief  WDT
  **
- ** \param [in] 无
+ ** \param [in] 
  **
  ** \retval Ok
  **
@@ -134,11 +134,11 @@ void Wdt_Feed(void)
 }
 /**
  ******************************************************************************
- ** \brief  WDT读取当前计数值函数
+ ** \brief  WDT
  **
- ** \param [in] 无
+ ** \param [in] 
  **
- ** \retval 计数值
+ ** \retval 
  **
  ******************************************************************************/
 uint8_t Wdt_ReadWdtValue(void)
@@ -149,11 +149,11 @@ uint8_t Wdt_ReadWdtValue(void)
 }
 /**
  ******************************************************************************
- ** \brief  WDT读取当前运行状态
+ ** \brief  WDT
  **
- ** \param [in] 无
+ ** \param [in] 
  **
- ** \retval 状态值
+ ** \retval 
  **
  ******************************************************************************/
 uint8_t Wdt_ReadwdtStatus(void)
@@ -162,18 +162,18 @@ uint8_t Wdt_ReadwdtStatus(void)
 }
 /**
  ******************************************************************************
- ** \brief  WDT中断处理函数
+ ** \brief  WDT
  **
- ** \param [in] 无
+ ** \param [in] 
  **
- ** \retval 无
+ ** \retval 
  **
  ******************************************************************************/
 void Wdt_IRQHandler(void)
 {
     if(M0P_WDT->CON_f.WDINT)
     {
-        Wdt_Start();//clr wdt 标记
+        Wdt_Start();//clr wdt 
         if(NULL != pfnWdtCallback)
         {
             pfnWdtCallback();

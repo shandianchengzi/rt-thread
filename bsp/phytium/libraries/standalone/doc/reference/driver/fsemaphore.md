@@ -1,88 +1,88 @@
-# FSemaphore 驱动程序
+# FSemaphore 
 
-## 1. 概述
+## 1. 
 
-硬件信号量（Semaphore）是E2000提供的一个二值信号量模块，支持 32 个硬件信号量。每个信号量包括 UNLOCK 和 LOCKED 两个状态
+SemaphoreE2000 32  UNLOCK  LOCKED 
 
-## 2. 功能
+## 2. 
 
-FSemaphore 驱动程序主要完成 Semaphore 模块的初始化，锁的分配、获取与释放，
-相关源文件为：
+FSemaphore  Semaphore 
+
 ```
 fsemaphore
     .
-    ├── fsemaphore.c
-    ├── fsemaphore.h
-    ├── fsemaphore_g.c
-    ├── fsemaphore_hw.h
-    └── fsemaphore_sinit.c
+     fsemaphore.c
+     fsemaphore.h
+     fsemaphore_g.c
+     fsemaphore_hw.h
+     fsemaphore_sinit.c
 ```
 
-## 3. 配置方法
+## 3. 
 
-以下部分将指导您完成 FSemaphore 驱动的软件配置:
+ FSemaphore :
 
-- 初始化 Semaphore 控制器
-- 获取 Semaphore 锁
-- 加锁/解锁操作
+-  Semaphore 
+-  Semaphore 
+- /
 
-## 4. 应用示例
+## 4. 
 
-### [Semaphore加锁解锁测试](../../../baremetal/example/peripheral/ipc/fsemaphore_test)
+### [Semaphore](../../../baremetal/example/peripheral/ipc/fsemaphore_test)
 
-## 5. API参考
+## 5. API
 
 
-### 5.1. 用户数据结构
+### 5.1. 
 
 #### FSemaConfig
 
-- Semaphore控制器配置
+- Semaphore
 
 ```c
 typedef struct 
 {
-    u32 id;             /* Semaphore控制器id */
-    uintptr base_addr;  /* Semaphore控制器基地址 */
-} FSemaConfig; /* Semaphore控制器配置 */
+    u32 id;             /* Semaphoreid */
+    uintptr base_addr;  /* Semaphore */
+} FSemaConfig; /* Semaphore */
 ```
 
 #### FSemaLocker
 
-- Semaphore锁实例
+- Semaphore
 
 ```c
 typedef struct
 {
-    u32 index;                              /* Semaphore锁id */
+    u32 index;                              /* Semaphoreid */
 #define FSEMA_LOCKER_NAME_LEN       32U
-    char name[FSEMA_LOCKER_NAME_LEN];       /* Semaphore锁的名字 */
-    u32 owner;                              /* Semaphore锁的拥有者 */
-    FSema *sema;                            /* Semaphore控制器实例 */
-} FSemaLocker; /* Semaphore锁实例 */
+    char name[FSEMA_LOCKER_NAME_LEN];       /* Semaphore */
+    u32 owner;                              /* Semaphore */
+    FSema *sema;                            /* Semaphore */
+} FSemaLocker; /* Semaphore */
 ```
 
 #### FSema
 
-- Semaphore控制器实例
+- Semaphore
 
 ```c
 typedef struct _FSema
 {
-    FSemaConfig config;                       /* Semaphore控制器配置 */
-    u32 is_ready;                             /* Semaphore控制器初始化是否完成 */
-    FSemaLocker *locker[FSEMA_NUM_OF_LOCKER]; /* Semaphore锁实例，locker[i] == NULL 表示锁尚未分配 */
-} FSema; /* Semaphore控制器实例 */
+    FSemaConfig config;                       /* Semaphore */
+    u32 is_ready;                             /* Semaphore */
+    FSemaLocker *locker[FSEMA_NUM_OF_LOCKER]; /* Semaphorelocker[i] == NULL  */
+} FSema; /* Semaphore */
 ```
-### 5.2  错误码定义
+### 5.2  
 
-FSEMA_SUCCESS                   ：成功 
-FSEMA_ERR_NOT_INIT              ：控制器未初始化
-FSEMA_ERR_NO_AVAILABLE_LOCKER   ：没有空闲的锁可以分配
-FSEMA_ERR_LOCK_TIMEOUT          ：锁被占用，获取锁失败
-FSEMA_ERR_NO_PERMISSION         ：当前角色没有权限操作
+FSEMA_SUCCESS                    
+FSEMA_ERR_NOT_INIT              
+FSEMA_ERR_NO_AVAILABLE_LOCKER   
+FSEMA_ERR_LOCK_TIMEOUT          
+FSEMA_ERR_NO_PERMISSION         
 
-### 5.3. 用户API接口
+### 5.3. API
 
 #### FSemaLoopkupConfig
 
@@ -92,15 +92,15 @@ const FSemaConfig *FSemaLoopkupConfig(u32 instance_id)
 
 Note:
 
-- 获取Semaphore的默认配置
+- Semaphore
 
 Input:
 
-- {u32} instance_id, Semaphore的实例id
+- {u32} instance_id, Semaphoreid
 
 Return:
 
-- {const FSemaConfig *} Semaphore的默认配置
+- {const FSemaConfig *} Semaphore
 
 #### FSemaCfgInitialize
 
@@ -110,16 +110,16 @@ FError FSemaCfgInitialize(FSema *const instance, const FSemaConfig *input_config
 
 Note:
 
-- 初始化Semaphore控制器
+- Semaphore
 
 Input:
 
-- {FSema} *instance, Semaphore控制器实例
-- {FSemaConfig} *input_config, Semaphore控制器配置
+- {FSema} *instance, Semaphore
+- {FSemaConfig} *input_config, Semaphore
 
 Return:
 
-- {FError} FSEMA_SUCCESS 表示初始化成功
+- {FError} FSEMA_SUCCESS 
 
 #### FSemaDeInitialize
 
@@ -129,15 +129,15 @@ void FSemaDeInitialize(FSema *const instance)
 
 Note:
 
-- 去初始化Semaphore控制器
+- Semaphore
 
 Input:
 
-- {FSema} *instance, Semaphore控制器实例
+- {FSema} *instance, Semaphore
 
 Return:
 
-- 无
+- 
 
 #### FSemaCreateLocker
 
@@ -147,16 +147,16 @@ FError FSemaCreateLocker(FSema *const instance, FSemaLocker *const locker)
 
 Note:
 
-- 分配和创建Semaphore锁
+- Semaphore
 
 Input:
 
-- {FSema} *instance, Semaphore控制器实例
-- {FSemaLocker} *locker, Semaphore锁的实例
+- {FSema} *instance, Semaphore
+- {FSemaLocker} *locker, Semaphore
 
 Return:
 
-- {FError} FSEMA_SUCCESS 表示分配成功
+- {FError} FSEMA_SUCCESS 
 
 #### FSemaDeleteLocker
 
@@ -166,15 +166,15 @@ FError FSemaDeleteLocker(FSemaLocker *const locker)
 
 Note:
 
-- 强制解除Semaphore锁并删除锁实例
+- Semaphore
 
 Input:
 
-- {FSemaLocker} *locker, Semaphore锁实例
+- {FSemaLocker} *locker, Semaphore
 
 Return:
 
-- {FError} FSEMA_SUCCESS 表示删除锁成功
+- {FError} FSEMA_SUCCESS 
 
 #### FSemaTryLock
 
@@ -184,18 +184,18 @@ FError FSemaTryLock(FSemaLocker *const locker, u32 owner, u32 try_times, FSemaRe
 
 Note:
 
-- 尝试获取Semaphore锁
+- Semaphore
 
 Input:
 
-- {FSemaLocker} *locker, Semaphore锁的实例
-- {u32} owner, 当前尝试获取锁的是谁
-- {u32} try_times, 尝试获取的次数
-- {FSemaRelaxHandler} relax_handler, 每次尝试获取锁失败后的relax函数
+- {FSemaLocker} *locker, Semaphore
+- {u32} owner, 
+- {u32} try_times, 
+- {FSemaRelaxHandler} relax_handler, relax
 
 Return:
 
-- {FError} FSEMA_SUCCESS 表示成功获取锁，FSEMA_ERR_LOCK_TIMEOUT 表示锁已经被占用
+- {FError} FSEMA_SUCCESS FSEMA_ERR_LOCK_TIMEOUT 
 
 #### FSemaUnlock
 
@@ -205,16 +205,16 @@ FError FSemaUnlock(FSemaLocker *const locker, u32 owner)
 
 Note:
 
-- 尝试释放Semaphore锁
+- Semaphore
 
 Input:
 
-- {FSemaLocker} *locker, Semaphore锁实例
-- {u32} owner, 当前尝试释放锁的身份
+- {FSemaLocker} *locker, Semaphore
+- {u32} owner, 
 
 Return:
 
-- {FError} FSEMA_SUCCESS释放锁成功
+- {FError} FSEMA_SUCCESS
 
 #### FSemaUnlockAll
 
@@ -224,15 +224,15 @@ FError FSemaUnlockAll(FSema *const instance)
 
 Note:
 
-- 强制解除所有Semaphore锁
+- Semaphore
 
 Input:
 
-- {FSema} *instance, Semaphore控制器实例
+- {FSema} *instance, Semaphore
 
 Return:
 
-- {FError} FSEMA_SUCCESS表示强制解锁成功
+- {FError} FSEMA_SUCCESS
 
 #### FSemaIsLocked
 
@@ -242,13 +242,13 @@ boolean FSemaIsLocked(FSemaLocker *locker)
 
 Note:
 
-- 检查指定Semaphore锁是否处于锁定状态
+- Semaphore
 
 Input:
 
-- {FSemaLocker} *locker, Semaphore锁实例
+- {FSemaLocker} *locker, Semaphore
 
 Return:
 
-- {boolean} TRUE: 处于锁定状态
+- {boolean} TRUE: 
 

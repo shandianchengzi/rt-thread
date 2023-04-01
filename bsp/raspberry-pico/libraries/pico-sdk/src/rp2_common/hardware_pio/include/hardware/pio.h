@@ -32,9 +32,9 @@
  * purpose processor, PIO state machines are highly specialised for IO, with a focus on determinism,
  * precise timing, and close integration with fixed-function hardware. Each state machine is equipped
  * with:
- *  * Two 32-bit shift registers – either direction, any shift count
+ *  * Two 32-bit shift registers  either direction, any shift count
  *  * Two 32-bit scratch registers
- *  * 4×32 bit bus FIFO in each direction (TX/RX), reconfigurable as 8×32 in a single direction
+ *  * 432 bit bus FIFO in each direction (TX/RX), reconfigurable as 832 in a single direction
  *  * Fractional clock divider (16 integer, 8 fractional bits)
  *  * Flexible GPIO mapping
  *  * DMA interface, sustained throughput up to 1 word per clock from system DMA

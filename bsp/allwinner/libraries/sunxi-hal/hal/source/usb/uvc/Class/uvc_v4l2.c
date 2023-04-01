@@ -11,7 +11,7 @@
 *
 * Date          :  2013/03/26
 *
-* Description   :  USB VIDEO CONTROL Driver中对USB接口设备的处理
+* Description   :  USB VIDEO CONTROL DriverUSB
 *
 * Others        :  NULL
 *
@@ -416,7 +416,7 @@ static int uvc_has_privileges(struct uvc_fh *handle)
 /* ------------------------------------------------------------------------
  * V4L2 file operations
  */
-//1.打开设备文件
+//1.
 struct uvc_fh * uvc_v4l2_open(struct uvc_streaming *stream)
 {
     struct uvc_fh *handle;
@@ -435,7 +435,7 @@ struct uvc_fh * uvc_v4l2_open(struct uvc_streaming *stream)
     return handle;
 }
 
-//11.关闭视频设备
+//11.
 __s32 uvc_v4l2_release(struct uvc_fh *handle)
 {
     struct uvc_streaming *stream = handle->stream;
@@ -462,7 +462,7 @@ __s32 uvc_v4l2_do_ioctl(struct uvc_fh *handle, unsigned int cmd, void *arg)
 
     switch (cmd) {
     /* Query capabilities */
-    case VIDIOC_QUERYCAP://2.取得设备的capability，看看设备具有什么功能，比如是否具有视频输入,或者音频输入输出等。
+    case VIDIOC_QUERYCAP://2.capability,
     {
 //      struct v4l2_capability *cap = arg;
 //
@@ -481,7 +481,7 @@ __s32 uvc_v4l2_do_ioctl(struct uvc_fh *handle, unsigned int cmd, void *arg)
         break;
     }
 
-    //获取当前驱动支持的视频格式
+    //
     /* Try, Get, Set & Enum format */
     case VIDIOC_ENUM_FMT:
     {
@@ -508,7 +508,7 @@ __s32 uvc_v4l2_do_ioctl(struct uvc_fh *handle, unsigned int cmd, void *arg)
         fmt->pixelformat = format->fcc;
         break;
     }
-    //验证当前驱动的显示格式
+    //
     case VIDIOC_TRY_FMT:
     {
         struct uvc_streaming_control probe;
@@ -516,12 +516,12 @@ __s32 uvc_v4l2_do_ioctl(struct uvc_fh *handle, unsigned int cmd, void *arg)
         return uvc_v4l2_try_format(stream, arg, &probe, NULL, NULL);
     }
 
-    case VIDIOC_S_FMT://3.设置视频帧的格式个包括宽度和高度等
+    case VIDIOC_S_FMT://3.
         if ((ret = uvc_acquire_privileges(handle)) < 0)
             return ret;
 
         return uvc_v4l2_set_format(stream, arg);
-    //读取视频帧的格式个包括宽度和高度等
+    //
     case VIDIOC_G_FMT:
         return uvc_v4l2_get_format(stream, arg);
 
@@ -535,7 +535,7 @@ __s32 uvc_v4l2_do_ioctl(struct uvc_fh *handle, unsigned int cmd, void *arg)
             return ret;
 
         return uvc_v4l2_set_streamparm(stream, arg);
-    //查询驱动的修剪能力
+    //
     /* Cropping and scaling */
     case VIDIOC_CROPCAP:
     {
@@ -558,13 +558,13 @@ __s32 uvc_v4l2_do_ioctl(struct uvc_fh *handle, unsigned int cmd, void *arg)
         ccap->pixelaspect.denominator = 1;
         break;
     }
-    //设置视频信号的边框
+    //
     case VIDIOC_G_CROP:
     case VIDIOC_S_CROP:
         return -EINVAL;
 
     /* Buffers & streaming */
-    case VIDIOC_REQBUFS://4.向驱动申请帧缓冲，一般不超过5个
+    case VIDIOC_REQBUFS://4.5
     {
         struct v4l2_requestbuffers *rb = arg;
 
@@ -590,14 +590,14 @@ __s32 uvc_v4l2_do_ioctl(struct uvc_fh *handle, unsigned int cmd, void *arg)
         break;
     }
 
-    case VIDIOC_QBUF://6.将申请到的帧缓冲全部入队列，以便存放采集到的数据; 9.将缓冲重新入队列尾,这样可以循环采集
+    case VIDIOC_QBUF://6.; 9.,
 //      if (!uvc_has_privileges(handle))
 //          return -EBUSY;
 //
 //      return uvc_queue_buffer(&stream->queue, arg);
         break;
 
-    case VIDIOC_DQBUF://8.出队列以取得已采集数据的帧缓冲，取得原始采集数据
+    case VIDIOC_DQBUF://8.
 //      if (!uvc_has_privileges(handle))
 //          return -EBUSY;
 //
@@ -605,7 +605,7 @@ __s32 uvc_v4l2_do_ioctl(struct uvc_fh *handle, unsigned int cmd, void *arg)
 //          file->f_flags & O_NONBLOCK);
         break;
 
-    case VIDIOC_STREAMON://7.开始视频的采集
+    case VIDIOC_STREAMON://7.
     {
         int type = (int)arg;
 
@@ -629,7 +629,7 @@ __s32 uvc_v4l2_do_ioctl(struct uvc_fh *handle, unsigned int cmd, void *arg)
         break;
     }
 
-    case VIDIOC_STREAMOFF://10.停止视频的采集
+    case VIDIOC_STREAMOFF://10.
     {
         int type = (int)arg;
 

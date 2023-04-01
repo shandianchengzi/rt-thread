@@ -396,15 +396,15 @@ index 9b868280db..23236f3d8d 100644
      .size  _interrupt_handler, .-_interrupt_handler
 +#else
 +_interrupt_handler:
-+    /* 此时CPU的sp = from_thread->sp */
-+    /* 注意： 在这里，并没有将mepc的值赋值为from_thread栈中的epc，但后面会赋值 */
-+    addi sp, sp, -32 * REGBYTES             /* sp = sp - 32 * 4 栈指针向下偏移32个寄存器长度，用来将CPU的寄存器保存到from_thread的栈中*/
-+    STORE x1,   1 * REGBYTES(sp)            /* 将CPU的x1寄存器，即ra寄存器，保存到from_thread->栈中 */
++    /* CPUsp = from_thread->sp */
++    /*  mepcfrom_threadepc */
++    addi sp, sp, -32 * REGBYTES             /* sp = sp - 32 * 4 32CPUfrom_thread*/
++    STORE x1,   1 * REGBYTES(sp)            /* CPUx1rafrom_thread-> */
 +
 +    li    t0,   0x80                        /* t0 = 0x80 */
-+    STORE t0,   2 * REGBYTES(sp)            /* mstatus = t0, 即关闭全局中断 */
++    STORE t0,   2 * REGBYTES(sp)            /* mstatus = t0,  */
 +
-+    /* 将 CPU 的其他寄存器的值，保存到from_thread的任务栈中 */
++    /*  CPU from_thread */
 +    STORE x4,   4 * REGBYTES(sp)
 +    STORE x5,   5 * REGBYTES(sp)
 +    STORE x6,   6 * REGBYTES(sp)
@@ -434,16 +434,16 @@ index 9b868280db..23236f3d8d 100644
 +    STORE x30, 30 * REGBYTES(sp)
 +    STORE x31, 31 * REGBYTES(sp)
 +
-+    /* 备份 CPU 的 sp (这时，CPU的sp其实就是from thread的sp指针) 寄存器的值到 s0 寄存器中，下面会使用s0，恢复 CPU 的寄存器 */
++    /*  CPU  sp (CPUspfrom threadsp)  s0 s0 CPU  */
 +    move  s0, sp    /* s0 = sp */
 +
-+    /* 在中断函数中，中断函数中调用的C函数，需要使用 sp， 这里，在中断函数中，使用的 sp 为，系统的栈资源 */
++    /* C sp  sp  */
 +    /* switch to interrupt stack */
 +    la    sp, __stack_end__   /* sp = _sp */
 +
 +    /* interrupt handle */
-+    /* 注意： 在调用C函数之前,比如sp的值为0x30001000, 在执行完C函数后，sp的值还是会变成 0x30001000 */
-+    call  rt_interrupt_enter    /* 执行所有的中断函数前，调用该函数 */
++    /*  C,sp0x30001000, Csp 0x30001000 */
++    call  rt_interrupt_enter    /*  */
 +
 +    csrr s1, mcause
 +	csrr s2, mstatus
@@ -481,48 +481,48 @@ index 9b868280db..23236f3d8d 100644
 +	sw s3, 0(t0)
 +	fence
 +
-+    call  rt_interrupt_leave    /* 执行所有的中断函数后，调用该函数 */
++    call  rt_interrupt_leave    /*  */
 +
-+    /* 上面，将保存执行中断服务函数之前的CPU的sp寄存器到了s0所指向的位置处，当执行完中断服务函数，需要将之前的CPU寄存器，恢复一下,此时sp又变成了from thread的sp了 */
++    /* CPUsps0CPU,spfrom threadsp */
 +    move  sp, s0    /* sp = s0 */
 +
-+    /* 下面两句话，相当于将 rt_thread_switch_interrupt_flag 值，赋值给了s2  */
-+    /* 将 rt_thread_switch_interrupt_flag 的地址值，赋值给 s0 寄存器*/
++    /*  rt_thread_switch_interrupt_flag s2  */
++    /*  rt_thread_switch_interrupt_flag  s0 */
 +    la    s0, rt_thread_switch_interrupt_flag       /* s0 = &rt_thread_switch_interrupt_flag */
-+    /* 将 s0 所指向的地址处的内容，取出来，赋值给 s2 寄存器，其实就是将  rt_thread_switch_interrupt_flag 的值，赋值给了 s2 寄存器*/
++    /*  s0  s2   rt_thread_switch_interrupt_flag  s2 */
 +    lw    s2, 0(s0)                 /* s2 = *s0 = rt_thread_switch_interrupt_flag */
 +
-+    /* 如果 s2的值，即 rt_thread_switch_interrupt_flag 值，如果不为0，则需要继续执行下一条指令，如果为0，则需要跳转到 spurious_interrupt 标号处 执行 */
-+    /* 如果 s2的值等于0，rt_thread_switch_interrupt_flag等于0， 则不需要在中断处理函数中，进行上下文切换，反之则需要 */
-+    /* 如果不需要上下文切换， */
++    /*  s2 rt_thread_switch_interrupt_flag 00 spurious_interrupt   */
++    /*  s20rt_thread_switch_interrupt_flag0  */
++    /*  */
 +
-+    /* 在这里，跳转到 spurious_interrupt的话，是不会进行上下文切换的，因为，此时CPU的sp指针还是from线程的*/
-+    beqz  s2, spurious_interrupt    /* if (s2 == 0) goto spurious_interrupt; else 执行下一条语句*/
++    /*  spurious_interruptCPUspfrom*/
++    beqz  s2, spurious_interrupt    /* if (s2 == 0) goto spurious_interrupt; else */
 +
-+    /* 需要上下文切换： 主要目的是将CPU的sp指针，赋值为to_thread的sp */
++    /*  CPUspto_threadsp */
 +
-+    /* 将 s0 所执向的地址的内容设置为0， 也就是，将变量 rt_thread_switch_interrupt_flag 赋值为了 0 */
-+    /* s0存放的值是 rt_thread_switch_interrupt_flag 变量的地址*/
-+    sw    zero, 0(s0)       /* *s0 = 0; 也就是 rt_thread_switch_interrupt_flag = 0 */
-+    /* 将 mepc 的值，赋值给 a0 寄存器，mepc 的值是，跳转到中断函数执行之前的 PC 指针 */
-+    /* 这时的mpec其实，还是from线程，在跳转到中断执行前的一个PC地址 */
++    /*  s0 0  rt_thread_switch_interrupt_flag  0 */
++    /* s0 rt_thread_switch_interrupt_flag */
++    sw    zero, 0(s0)       /* *s0 = 0;  rt_thread_switch_interrupt_flag = 0 */
++    /*  mepc  a0 mepc  PC  */
++    /* mpecfromPC */
 +    csrr  a0, mepc  /* a0 = mepc */
 +
-+    /* 将 mpec 的值写回到freom thread任务栈中的 epc 中,待后续，恢复from线程时，使用 */
-+    STORE a0, 0 * REGBYTES(sp)  /* from_thread->sp->epc = a0 ，中断入口处*/
++    /*  mpec freom thread epc ,from */
++    STORE a0, 0 * REGBYTES(sp)  /* from_thread->sp->epc = a0 */
 +
-+    /* 将from_thread的sp指针，赋值为CPU的sp指针 */
-+    la    s0, rt_interrupt_from_thread  /* s0 = &rt_interrupt_from_thread 注意： rt_interrupt_from_thread = &(from_thread->sp) */
-+    LOAD  s1, 0(s0)                     /* s1 = rt_interrupt_from_thread，也就是s1 = &(from_thread->sp) */
++    /* from_threadspCPUsp */
++    la    s0, rt_interrupt_from_thread  /* s0 = &rt_interrupt_from_thread  rt_interrupt_from_thread = &(from_thread->sp) */
++    LOAD  s1, 0(s0)                     /* s1 = rt_interrupt_from_threads1 = &(from_thread->sp) */
 +    STORE sp, 0(s1)                     /* from_thread->sp = sp*/
 +
-+    /* 接下来，需要开始恢复CPU的sp为to_thread的sp了 */
-+    la    s0, rt_interrupt_to_thread    /* s0 = &rt_interrupt_to_thread 注意： rt_interrupt_to_thread = &(to_thred->sp)*/
-+    LOAD  s1, 0(s0)                     /* s1 = rt_interrupt_to_thread, 也就是s1 = &(to_thred->sp) */
++    /* CPUspto_threadsp */
++    la    s0, rt_interrupt_to_thread    /* s0 = &rt_interrupt_to_thread  rt_interrupt_to_thread = &(to_thred->sp)*/
++    LOAD  s1, 0(s0)                     /* s1 = rt_interrupt_to_thread, s1 = &(to_thred->sp) */
 +    LOAD  sp, 0(s1)                     /* sp = (to_thred->sp)*/
 +
-+    /* 将CPU的 mepc设置为to_thred的mepc，待中断退出，执行mret指令后，将从该地址开始执行 */
-+    LOAD  a0,  0 * REGBYTES(sp)         /* a0 = to_thread的mepc的值*/
++    /* CPU mepcto_thredmepcmret */
++    LOAD  a0,  0 * REGBYTES(sp)         /* a0 = to_threadmepc*/
 +    csrw  mepc, a0                      /* mepc = a0 */
 +
 +

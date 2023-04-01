@@ -11,7 +11,7 @@
 *
 * Date          :  2010/06/02
 *
-* Description   :  Hid功能驱动相关函数的定义
+* Description   :  Hid
 *
 * Others        :  NULL
 *

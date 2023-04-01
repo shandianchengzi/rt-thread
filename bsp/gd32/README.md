@@ -1,29 +1,29 @@
 
-# GD32 系列BSP 说明
+# GD32 BSP 
 
-GD32 系列 BSP 目前支持情况如下表所示：
+GD32  BSP 
 
-| **BSP 文件夹名称**       | **开发板名称**                 |
+| **BSP **       | ****                 |
 |:------------------------- |:-------------------------- |
-| **ARM 系列** |  |
-| **F1 系列** |  |
-| [gd32103c-eval](arm/gd32103c-eval) | 兆易创新 官方 GD32103C-EVAL 开发板 |
-| [gd32105c-eval](arm/gd32105c-eval) | 兆易创新 官方 GD32105C-EVAL 开发板 |
-| [gd32105r-start](arm/gd32105r-start) | 兆易创新 官方 GD32105R-START 开发板 |
-| [gd32107c-eval](arm/gd32107c-eval) | 兆易创新 官方 GD32107C-EVAL 开发板 |
-| **F2 系列** |  |
-| [gd32205r-start](arm/gd32205r-start) | 兆易创新 官方 GD32205R-START 开发板 |
-| [gd32207i-eval](arm/gd32207i-eval) | 兆易创新 官方 GD32207I-EVAL 开发板 |
-| **F3 系列** |  |
-| [gd32303e-eval](arm/gd32303e-eval) | 兆易创新 官方 GD32303E-EVAL 开发板 |
-| [gd32305r-start](arm/gd32305r-start) | 兆易创新 官方 GD32305R-START 开发板 |
-| [gd32307e-start](arm/gd32307e-start) | 兆易创新 官方 GD32307E-START 开发板 |
-| **F4 系列** |  |
-| [gd32407v-start](arm/gd32407v-start) | 兆易创新 官方 GD32407V-START 开发板 |
-| [gd32450z-eval](arm/gd32450z-eval) | 兆易创新 官方 GD32450Z-EVAL 开发板 |
-| [gd32470z-lckfb](arm/gd32470z-lckfb) | 立创梁山派  GD32F470ZGT6 开发板 |
-| **RISC-V 系列** |  |
-| **VF1 系列** |  |
-| [gd32vf103v-eval](risc-v/gd32vf103v-eval) | 兆易创新 官方 GGD32VF103V-EVAL 开发板 |
-| [gd32vf103r-start](risc-v/gd32vf103r-start) | 兆易创新 官方 GD32VF103R-START 开发板 |
+| **ARM ** |  |
+| **F1 ** |  |
+| [gd32103c-eval](arm/gd32103c-eval) |   GD32103C-EVAL  |
+| [gd32105c-eval](arm/gd32105c-eval) |   GD32105C-EVAL  |
+| [gd32105r-start](arm/gd32105r-start) |   GD32105R-START  |
+| [gd32107c-eval](arm/gd32107c-eval) |   GD32107C-EVAL  |
+| **F2 ** |  |
+| [gd32205r-start](arm/gd32205r-start) |   GD32205R-START  |
+| [gd32207i-eval](arm/gd32207i-eval) |   GD32207I-EVAL  |
+| **F3 ** |  |
+| [gd32303e-eval](arm/gd32303e-eval) |   GD32303E-EVAL  |
+| [gd32305r-start](arm/gd32305r-start) |   GD32305R-START  |
+| [gd32307e-start](arm/gd32307e-start) |   GD32307E-START  |
+| **F4 ** |  |
+| [gd32407v-start](arm/gd32407v-start) |   GD32407V-START  |
+| [gd32450z-eval](arm/gd32450z-eval) |   GD32450Z-EVAL  |
+| [gd32470z-lckfb](arm/gd32470z-lckfb) |   GD32F470ZGT6  |
+| **RISC-V ** |  |
+| **VF1 ** |  |
+| [gd32vf103v-eval](risc-v/gd32vf103v-eval) |   GGD32VF103V-EVAL  |
+| [gd32vf103r-start](risc-v/gd32vf103r-start) |   GD32VF103R-START  |
 

@@ -24,7 +24,7 @@ _start:
     la      a2, __ram1_size
     call    _memcpy
 
-    la      a0, __irq_stack_start           //Stack清成0x23
+    la      a0, __irq_stack_start           //Stack0x23
     li      a1, 0x23
     la      a2, __irq_stack_size
     call    rt_memset
@@ -51,7 +51,7 @@ _start:
 .section .vector, "ax"
     .org    0x10
 __exception:
-    li      sp, 0x10600                     //出错后，不破坏错误点的堆栈数据
+    li      sp, 0x10600                     //
     jal     exception_isr
     1: j       1b
     mret

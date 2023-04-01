@@ -81,13 +81,13 @@
 *
 * <b>Peripheral Driver Library (PDL)</b>
 * * <a href="https://infineon.github.io/psoc6pdl/pdl_api_reference_manual/html/group__group__scb.html"><b>
-PSoC™ 6 PDL: SCB (Serial Communication Block)</b></a>
+PSoC 6 PDL: SCB (Serial Communication Block)</b></a>
 *
 * <b>Code examples (Github)</b>
 * * <a href="https://github.com/infineon/mtb-example-psoc6-i2c-master" ><b>
-PSoC™ 6 MCU: I2C Master</b></a>
+PSoC 6 MCU: I2C Master</b></a>
 * * <a href="https://github.com/infineon/mtb-example-psoc6-i2c-slave-callback" ><b>
-PSoC™ 6 MCU: I2C Slave Using Callbacks</b></a>
+PSoC 6 MCU: I2C Slave Using Callbacks</b></a>
 */
 
 #pragma once
@@ -268,7 +268,7 @@ cy_rslt_t cyhal_i2c_master_read(cyhal_i2c_t *obj, uint16_t dev_addr, uint8_t *da
  * The function configures the write buffer on an I2C Slave. This is the buffer to which the master writes data to.
  * The user needs to setup a new buffer every time (i.e. call \ref cyhal_i2c_slave_config_write_buffer and \ref cyhal_i2c_slave_config_read_buffer
  * every time the buffer has been used up)<br>
- * See related code example: <a href="https://github.com/infineon/mtb-example-psoc6-i2c-master" ><b>PSoC™ 6 MCU: I2C Master</b></a>
+ * See related code example: <a href="https://github.com/infineon/mtb-example-psoc6-i2c-master" ><b>PSoC 6 MCU: I2C Master</b></a>
  *
  * @param[in]  obj      The I2C object
  * @param[in]  data     I2C slave send data
@@ -282,7 +282,7 @@ cy_rslt_t cyhal_i2c_slave_config_write_buffer(cyhal_i2c_t *obj, const uint8_t *d
  * The function configures the read buffer on an I2C Slave. This is the buffer from which the master reads data from.
  * The user needs to setup a new buffer every time (i.e. call \ref cyhal_i2c_slave_config_write_buffer and \ref cyhal_i2c_slave_config_read_buffer
  * every time the buffer has been used up)<br>
- * See related code example: <a href="https://github.com/infineon/mtb-example-psoc6-i2c-master" ><b>PSoC™ 6 MCU: I2C Master</b></a>
+ * See related code example: <a href="https://github.com/infineon/mtb-example-psoc6-i2c-master" ><b>PSoC 6 MCU: I2C Master</b></a>
  *
  * @param[in]   obj      The I2C object
  * @param[out]  data     I2C slave receive data

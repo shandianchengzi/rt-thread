@@ -108,7 +108,7 @@ rt_weak void rt_hw_board_init(void)
     SystemClock_Config();
 
     RCC_ClocksTypeDef clocks;
-    RCC_GetClocksFreq(&clocks); //获取时钟频率
+    RCC_GetClocksFreq(&clocks); //
     SysTick_Config(clocks.SYSCLK_Frequency/RT_TICK_PER_SECOND);
 
     /* Heap initialization */

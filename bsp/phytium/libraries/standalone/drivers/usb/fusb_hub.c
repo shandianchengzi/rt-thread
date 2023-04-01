@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,12 +14,12 @@
  * FilePath: fusb_hub.c
  * Date: 2022-02-11 13:33:07
  * LastEditTime: 2022-02-17 17:48:52
- * Description:  This files is for implmentation of USB hub function
+ * Description: This files is for implmentation of USB hub function
  *  you may refer to chapter 11 Hub specification for details
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   Zhugengyu  2022/2/7    init commit
  */
 
@@ -72,9 +72,9 @@
 
 /**
  * @name: FUsbHubIntrEp
- * @msg: 获取USB Hub的中断端点
- * @return {FUsbEndpoint *} 中断类型的功能端点
- * @param {FUsbDev} *dev, Hub实例
+ * @msg: USB Hub
+ * @return {FUsbEndpoint *} 
+ * @param {FUsbDev} *dev, Hub
  */
 static FUsbEndpoint *FUsbHubIntrEp(FUsbDev *const dev)
 {
@@ -93,10 +93,10 @@ static FUsbEndpoint *FUsbHubIntrEp(FUsbDev *const dev)
 
 /**
  * @name: FUsbHubPortStatusChange
- * @msg: Usb Hub的Port状态变化回调函数
- * @return {FUsbTransCode} USB请求返回值
- * @param {FUsbDev} *dev, Hub实例
- * @param {int} port, Port号
+ * @msg: Usb HubPort
+ * @return {FUsbTransCode} USB
+ * @param {FUsbDev} *dev, Hub
+ * @param {int} port, Port
  */
 static FUsbTransCode FUsbHubPortStatusChange(FUsbDev *const dev, const int port)
 {
@@ -118,10 +118,10 @@ static FUsbTransCode FUsbHubPortStatusChange(FUsbDev *const dev, const int port)
 
 /**
  * @name: FUsbHubPortConnected
- * @msg: Usb Hub的Port连接回调函数
- * @return {FUsbTransCode} USB请求返回值
- * @param {FUsbDev} *dev, Hub实例
- * @param {int} port, Port号
+ * @msg: Usb HubPort
+ * @return {FUsbTransCode} USB
+ * @param {FUsbDev} *dev, Hub
+ * @param {int} port, Port
  */
 static FUsbTransCode FUsbHubPortConnected(FUsbDev *const dev, const int port)
 {
@@ -139,10 +139,10 @@ static FUsbTransCode FUsbHubPortConnected(FUsbDev *const dev, const int port)
 
 /**
  * @name: FUsbHubPortInReset
- * @msg: 检查Hub port是否处于Reset状态
- * @return {FUsbTransCode} USB请求返回值
- * @param {FUsbDev} *dev, Hub实例
- * @param {int} port, Port号
+ * @msg: Hub portReset
+ * @return {FUsbTransCode} USB
+ * @param {FUsbDev} *dev, Hub
+ * @param {int} port, Port
  */
 static FUsbTransCode FUsbHubPortInReset(FUsbDev *const dev, const int port)
 {
@@ -158,10 +158,10 @@ static FUsbTransCode FUsbHubPortInReset(FUsbDev *const dev, const int port)
 
 /**
  * @name: FUsbHubPortEnabled
- * @msg: 检查Hub port是否已使能
- * @return {FUsbTransCode} USB请求返回值
- * @param {FUsbDev} *dev, Hub实例
- * @param {int} port, Port号
+ * @msg: Hub port
+ * @return {FUsbTransCode} USB
+ * @param {FUsbDev} *dev, Hub
+ * @param {int} port, Port
  */
 static FUsbTransCode FUsbHubPortEnabled(FUsbDev *const dev, const int port)
 {
@@ -177,10 +177,10 @@ static FUsbTransCode FUsbHubPortEnabled(FUsbDev *const dev, const int port)
 
 /**
  * @name: FUsbHubPortSpeed
- * @msg: 获取Hub port的速度类型
- * @return {FUsbSpeed} Port的速度类型，支持SuperSpeed和HighSpeed
- * @param {FUsbDev} *dev, Hub实例
- * @param {int} port, Port号
+ * @msg: Hub port
+ * @return {FUsbSpeed} PortSuperSpeedHighSpeed
+ * @param {FUsbDev} *dev, Hub
+ * @param {int} port, Port
  */
 static FUsbSpeed FUsbHubPortSpeed(FUsbDev *const dev, const int port)
 {
@@ -211,10 +211,10 @@ static FUsbSpeed FUsbHubPortSpeed(FUsbDev *const dev, const int port)
 
 /**
  * @name: FUsbHubEnablePort
- * @msg: 使能Hub port
- * @return {FUsbTransCode} USB请求返回值
- * @param {FUsbDev} *dev, Hub实例
- * @param {int} port, port号
+ * @msg: Hub port
+ * @return {FUsbTransCode} USB
+ * @param {FUsbDev} *dev, Hub
+ * @param {int} port, port
  */
 static FUsbTransCode FUsbHubEnablePort(FUsbDev *const dev, const int port)
 {
@@ -224,10 +224,10 @@ static FUsbTransCode FUsbHubEnablePort(FUsbDev *const dev, const int port)
 
 /**
  * @name: FUsbHubStartPortReset
- * @msg: 开始Reset Hub port
- * @return {FUsbTransCode} USB请求返回值
- * @param {FUsbDev} *dev, Hub实例
- * @param {int} port, port号
+ * @msg: Reset Hub port
+ * @return {FUsbTransCode} USB
+ * @param {FUsbDev} *dev, Hub
+ * @param {int} port, port
  */
 static FUsbTransCode FUsbHubStartPortReset(FUsbDev *const dev, const int port)
 {
@@ -306,7 +306,7 @@ static void FUsbHubPortInit(FUsbDev *const dev, const int port)
 
 /**
  * @name: FUsbHubHandlePortChange
- * @msg: Hub端口状态变化的处理回调函数
+ * @msg: Hub
  * @return {*}
  * @param {FUsbDev} *dev
  * @param {int} port
@@ -369,9 +369,9 @@ static FUsbTransCode FUsbHubHandlePortChange(FUsbDev *const dev, const int port)
 
 /**
  * @name: FUsbHubPoll
- * @msg: 轮询Hub的所有端口，检查端口状态变化
+ * @msg: Hub
  * @return {*}
- * @param {FUsbDev} *dev, Hub设备实例
+ * @param {FUsbDev} *dev, Hub
  */
 static void FUsbHubPoll(FUsbDev *const dev)
 {
@@ -405,9 +405,9 @@ static void FUsbHubPoll(FUsbDev *const dev)
 
 /**
  * @name: FUsbHubDestory
- * @msg: USB Hub的去初始化函数
+ * @msg: USB Hub
  * @return {*}
- * @param {FUsbDev} *dev, Hub设备实例
+ * @param {FUsbDev} *dev, Hub
  */
 static void FUsbHubDestory(FUsbDev *const dev)
 {
@@ -420,9 +420,9 @@ static void FUsbHubDestory(FUsbDev *const dev)
 
 /**
  * @name: FUsbHubInit
- * @msg: USB Hub的初始化函数，由应用程序注册到FUSB框架中
+ * @msg: USB HubFUSB
  * @return {*}
- * @param {FUsbDev} *dev, Hub设备实例
+ * @param {FUsbDev} *dev, Hub
  */
 void FUsbHubInit(FUsbDev *dev)
 {

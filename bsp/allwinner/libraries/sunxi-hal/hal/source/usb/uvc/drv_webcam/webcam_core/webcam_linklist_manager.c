@@ -20,19 +20,19 @@
 #include "hal_log.h"
 #include "webcam_linklist_manager.h"
 
-//链表实现方式2
+//2
 /*******************************************************************************
-关于 链表实现方式2 的说明:
-(1). 一个线程vdrv_task() 和一个中断处理程序webcam_irq_handle()会操作2个链表full2和free2
-     因此需要做互斥。
-(2). 考虑到ISR是不会被打断的，所以只需要对vdrv_task()操作涉及的函数做互斥处理就行了
+ 2 :
+(1). vdrv_task() webcam_irq_handle()2full2free2
+     
+(2). ISRvdrv_task()
     full2_insert( isr ), wt
     full2_delete( vdrv_task ), rd
     free2_insert( vdrv_task ), wt
     free2_delete( isr ), rd
 
-    所以，只需要对full2_delete()和free2_insert()做互斥处理就行了。所谓互斥，也就是
-    在处理前，把一些可能会被改变的变量记下来而已。
+    full2_delete()free2_insert()
+    
 *******************************************************************************/
 void Impl_initial_webcam_linklist_manager(__webcam_linklist_manager_t *thiz, WEBCAM_LINKLIST_TYPE type)
 {
@@ -52,12 +52,12 @@ __s32 Impl_webcam_linklist_manager_exit(__webcam_linklist_manager_t *thiz)
 /*******************************************************************************
 Function name: full2_insert
 Description:
-    针对装满帧的数组做插入操作。
-    isr调用
-    修改wt
-    rd由vdrv_task()修改
+    
+    isr
+    wt
+    rdvdrv_task()
 Parameters:
-    1. idx:就是数组__webcam_frame_t webcam_frame[WEBCAM_BUFFER_NUM]的 frame_id
+    1. idx:__webcam_frame_t webcam_frame[WEBCAM_BUFFER_NUM] frame_id
 Return:
 
 Time: 2010/7/12
@@ -85,15 +85,15 @@ __s32 Impl_webcam_linklist_manager_insert(__webcam_linklist_manager_t *thiz, __s
 /*******************************************************************************
 Function name: full2_delete
 Description:
-    取一个元素出来，
-    vdrv_task()调用。可能会没有元素。
-    修改rd,
-    wt由ISR修改
+    
+    vdrv_task()
+    rd,
+    wtISR
 Parameters:
 
 Return:
-    1.如果没有元素, 返回-1
-    2.如果有，返回id号。
+    1., -1
+    2.id
 Time: 2010/7/12
 *******************************************************************************/
 __s32 Impl_webcam_linklist_manager_delete(__webcam_linklist_manager_t *thiz)

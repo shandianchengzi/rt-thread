@@ -58,52 +58,52 @@
 #define CAN_MODE_LOOPBACK            2
 #define CAN_MODE_LOOPBACKANLISTEN     3
 
-/*!< CAN 控制状态寄存器 */
-/************************** CAN_MOD 寄存器位定义*******************************/
-#define CAN_Mode_RM                 ((unsigned char)0x01)  /*!< 复位模式 */
-#define CAN_Mode_LOM                ((unsigned char)0x02)  /*!< 只听模式 1:只听  0:正常  */
-#define CAN_Mode_STM                ((unsigned char)0x04)  /*!< 正常工作模式1:自检测  0:正常  */
-#define CAN_Mode_AFM                ((unsigned char)0x08)  /*!< 单/双滤波模式 1:单 0: 双*/
-#define CAN_Mode_SM                 ((unsigned char)0x10)  /*!< 睡眠模式1: 睡眠 0: 唤醒 */
+/*!< CAN  */
+/************************** CAN_MOD *******************************/
+#define CAN_Mode_RM                 ((unsigned char)0x01)  /*!<  */
+#define CAN_Mode_LOM                ((unsigned char)0x02)  /*!<  1:  0:  */
+#define CAN_Mode_STM                ((unsigned char)0x04)  /*!< 1:  0:  */
+#define CAN_Mode_AFM                ((unsigned char)0x08)  /*!< / 1: 0: */
+#define CAN_Mode_SM                 ((unsigned char)0x10)  /*!< 1:  0:  */
 
-/************************** CAN_CMR 寄存器位定义*******************************/
- #define  CAN_CMR_TR                         ((unsigned char)0x01)         /*!< 发送请求 1: 当前信息被发送  0: 空 */
- #define  CAN_CMR_AT                         ((unsigned char)0x02)         /*!< 中止发送 1: 等待发送的信息取消  0: 空缺  */
- #define  CAN_CMR_RRB                        ((unsigned char)0x04)         /*!< 释放接收缓冲器  1:释放  0: 无动作 */
- #define  CAN_CMR_CDO                        ((unsigned char)0x08)         /*!< 清除数据溢出  1:清除  0: 无动作    */
-//#define  CAN_CMR_GTS                        ((unsigned char)0x10)        /*!< STD模式< 睡眠: 1:进入睡眠  0: 唤醒  */
- #define  CAN_CMR_SRR                        ((unsigned char)0x10)         /*!< 自接收请求  1:  0:   */
- #define  CAN_CMR_EFF                        ((unsigned char)0x80)         /*!< 扩展模式 1:扩展帧 0: 标准帧  */
+/************************** CAN_CMR *******************************/
+ #define  CAN_CMR_TR                         ((unsigned char)0x01)         /*!<  1:   0:  */
+ #define  CAN_CMR_AT                         ((unsigned char)0x02)         /*!<  1:   0:   */
+ #define  CAN_CMR_RRB                        ((unsigned char)0x04)         /*!<   1:  0:  */
+ #define  CAN_CMR_CDO                        ((unsigned char)0x08)         /*!<   1:  0:     */
+//#define  CAN_CMR_GTS                        ((unsigned char)0x10)        /*!< STD< : 1:  0:   */
+ #define  CAN_CMR_SRR                        ((unsigned char)0x10)         /*!<   1:  0:   */
+ #define  CAN_CMR_EFF                        ((unsigned char)0x80)         /*!<  1: 0:   */
 
-/************************** CAN_SR 寄存器位定义********************************/
- #define  CAN_SR_BBS                         ((unsigned char)0x01)         /*!< 接收缓存器状态1: 满  0: 空 */
- #define  CAN_SR_DOS                         ((unsigned char)0x02)         /*!< 数据溢出状态 1: 溢出  0: 空缺  */
- #define  CAN_SR_TBS                         ((unsigned char)0x04)         /*!< 发送缓存器状态1: 释放  0: 锁定 */
- #define  CAN_SR_TCS                         ((unsigned char)0x08)         /*!< 发送完毕状态1: 完毕  0: 未完毕    */
- #define  CAN_SR_RS                          ((unsigned char)0x10)         /*!< 接收状态1: 接收  0: 空闲  */
- #define  CAN_SR_TS                          ((unsigned char)0x20)         /*!< 发送状态1:  发送 0:  空闲*/
- #define  CAN_SR_ES                          ((unsigned char)0x40)         /*!< 出错状态1:出错 0: 正常 */
- #define  CAN_SR_BS                          ((unsigned char)0x80)         /*!< 总线状态1: 关闭  0: 开启  */
+/************************** CAN_SR ********************************/
+ #define  CAN_SR_BBS                         ((unsigned char)0x01)         /*!< 1:   0:  */
+ #define  CAN_SR_DOS                         ((unsigned char)0x02)         /*!<  1:   0:   */
+ #define  CAN_SR_TBS                         ((unsigned char)0x04)         /*!< 1:   0:  */
+ #define  CAN_SR_TCS                         ((unsigned char)0x08)         /*!< 1:   0:     */
+ #define  CAN_SR_RS                          ((unsigned char)0x10)         /*!< 1:   0:   */
+ #define  CAN_SR_TS                          ((unsigned char)0x20)         /*!< 1:   0:  */
+ #define  CAN_SR_ES                          ((unsigned char)0x40)         /*!< 1: 0:  */
+ #define  CAN_SR_BS                          ((unsigned char)0x80)         /*!< 1:   0:   */
 
-/************************** CAN_IR 中断寄存器位定义****************************/
- #define  CAN_IR_RI                          ((unsigned char)0x01)         /*!< 接收中断 */
- #define  CAN_IR_TI                          ((unsigned char)0x02)         /*!< 发送中断 */
- #define  CAN_IR_EI                          ((unsigned char)0x04)         /*!< 错误中断 */
- #define  CAN_IR_DOI                         ((unsigned char)0x08)         /*!< 数据溢出中断  */
- #define  CAN_IR_WUI                         ((unsigned char)0x10)         /*!< 唤醒中断 */
- #define  CAN_IR_EPI                         ((unsigned char)0x20)         /*!< 错误消极中断 */
- #define  CAN_IR_ALI                         ((unsigned char)0x40)         /*!< 仲裁丢失中断 */
- #define  CAN_IR_BEI                         ((unsigned char)0x80)         /*!< 总线错误中断  */
+/************************** CAN_IR ****************************/
+ #define  CAN_IR_RI                          ((unsigned char)0x01)         /*!<  */
+ #define  CAN_IR_TI                          ((unsigned char)0x02)         /*!<  */
+ #define  CAN_IR_EI                          ((unsigned char)0x04)         /*!<  */
+ #define  CAN_IR_DOI                         ((unsigned char)0x08)         /*!<   */
+ #define  CAN_IR_WUI                         ((unsigned char)0x10)         /*!<  */
+ #define  CAN_IR_EPI                         ((unsigned char)0x20)         /*!<  */
+ #define  CAN_IR_ALI                         ((unsigned char)0x40)         /*!<  */
+ #define  CAN_IR_BEI                         ((unsigned char)0x80)         /*!<   */
 
-/************************* CAN_IER 中断使能寄存器位定义************************/
- #define  CAN_IER_RIE                         ((unsigned char)0x01)        /*!< 接收中断使能 */
- #define  CAN_IER_TIE                         ((unsigned char)0x02)        /*!< 发送中断使能 */
- #define  CAN_IER_EIE                         ((unsigned char)0x04)        /*!< 错误中断使能 */
- #define  CAN_IER_DOIE                        ((unsigned char)0x08)        /*!< 数据溢出中断使能  */
- #define  CAN_IER_WUIE                        ((unsigned char)0x10)        /*!< 唤醒中断使能 */
- #define  CAN_IER_EPIE                        ((unsigned char)0x20)        /*!< 错误消极中断使能 */
- #define  CAN_IER_ALIE                        ((unsigned char)0x40)        /*!< 仲裁丢失中断使能 */
- #define  CAN_IER_BEIE                        ((unsigned char)0x80)        /*!< 总线错误中断使能  */
+/************************* CAN_IER ************************/
+ #define  CAN_IER_RIE                         ((unsigned char)0x01)        /*!<  */
+ #define  CAN_IER_TIE                         ((unsigned char)0x02)        /*!<  */
+ #define  CAN_IER_EIE                         ((unsigned char)0x04)        /*!<  */
+ #define  CAN_IER_DOIE                        ((unsigned char)0x08)        /*!<   */
+ #define  CAN_IER_WUIE                        ((unsigned char)0x10)        /*!<  */
+ #define  CAN_IER_EPIE                        ((unsigned char)0x20)        /*!<  */
+ #define  CAN_IER_ALIE                        ((unsigned char)0x40)        /*!<  */
+ #define  CAN_IER_BEIE                        ((unsigned char)0x80)        /*!<   */
 
 typedef enum
 {
@@ -143,59 +143,59 @@ typedef struct
 
 typedef struct
 {
-  unsigned char  CAN_Prescaler;    /* 波特率分频系数1 to 31. */
-  unsigned char  CAN_Mode;         /*0x10:睡眠0x08:单,双滤波 0x40:正常工作0x20:只听 0x01:复位*/
-  unsigned char  CAN_SJW;          /*同步跳转宽度 */
-  unsigned char  CAN_BS1;          /*时间段1计数值*/
-  unsigned char  CAN_BS2;          /*时间段2计数值*/
+  unsigned char  CAN_Prescaler;    /* 1 to 31. */
+  unsigned char  CAN_Mode;         /*0x10:0x08:, 0x40:0x20: 0x01:*/
+  unsigned char  CAN_SJW;          /* */
+  unsigned char  CAN_BS1;          /*1*/
+  unsigned char  CAN_BS2;          /*2*/
 
 } CAN_InitTypeDef;
 
 typedef struct
 {
-  unsigned char  IDE;        /*0: 使用标准标识符1: 使用扩展标识符*/
-  unsigned char  RTR;    /*0: 数据帧     1: 远程帧*/
-  unsigned char  MODE;        /* 0- 双滤波器模式;1-单滤波器模式*/
-  unsigned long  First_Data;    /*双滤波器模式下信息第一个数据字节*/
-  unsigned long  Data_Mask;    /*双滤波器模式下信息第一个数据字节屏蔽*/
-  unsigned long  ID;        /*验收代码*/
+  unsigned char  IDE;        /*0: 1: */
+  unsigned char  RTR;    /*0:      1: */
+  unsigned char  MODE;        /* 0- ;1-*/
+  unsigned long  First_Data;    /**/
+  unsigned long  Data_Mask;    /**/
+  unsigned long  ID;        /**/
   /*
- 双滤波器-  扩展帧: 2个滤波器的前16位,分别放在ID 的前16位和 ID的后16位.
- 双滤波器-  标准帧: 2个滤波器的11位,分别放在ID 的前16位和 ID的后16位,第1个滤波器同时使用First_Data和Data_Mask
- 单滤波器-  扩展帧: 使用29位, 放在ID 的后29位.
- 单滤波器-  标准帧: 使用11位, 放在ID 的后11位.
+ -  : 216,ID 16 ID16.
+ -  : 211,ID 16 ID16,1First_DataData_Mask
+ -  : 29, ID 29.
+ -  : 11, ID 11.
   */
-  unsigned long  IDMASK;    /*验收屏蔽*/
+  unsigned long  IDMASK;    /**/
 } CAN_FilterInitTypeDef;
 
 typedef struct
 {
-  unsigned long StdId;  /* 11位ID*/
-  unsigned long ExtId;  /*29位ID**/
-  unsigned char IDE;    /*IDE: 标识符选择
-                                     该位决定发送邮箱中报文使用的标识符类型
-                                     0: 使用标准标识符
-                                     1: 使用扩展标识符*/
-  unsigned char RTR;     /*远程发送请求
-                                       0: 数据帧
-                                       1: 远程帧*/
-  unsigned char DLC;     /*数据帧长度*/
-  unsigned char Data[8]; /*8字节数据*/
+  unsigned long StdId;  /* 11ID*/
+  unsigned long ExtId;  /*29ID**/
+  unsigned char IDE;    /*IDE: 
+                                     
+                                     0: 
+                                     1: */
+  unsigned char RTR;     /*
+                                       0: 
+                                       1: */
+  unsigned char DLC;     /**/
+  unsigned char Data[8]; /*8*/
 } CanRxMsg;
 
 typedef struct
 {
-  unsigned long StdId;  /* 11位ID*/
-  unsigned long ExtId;  /*29位ID**/
-  unsigned char IDE;    /*IDE: 标识符选择
-                                     该位决定发送邮箱中报文使用的标识符类型
-                                     0: 使用标准标识符
-                                     1: 使用扩展标识符*/
-  unsigned char RTR;     /*远程发送请求
-                                       0: 数据帧
-                                       1: 远程帧*/
-  unsigned char DLC;     /*数据帧长度*/
-  unsigned char Data[8]; /*8字节数据*/
+  unsigned long StdId;  /* 11ID*/
+  unsigned long ExtId;  /*29ID**/
+  unsigned char IDE;    /*IDE: 
+                                     
+                                     0: 
+                                     1: */
+  unsigned char RTR;     /*
+                                       0: 
+                                       1: */
+  unsigned char DLC;     /**/
+  unsigned char Data[8]; /*8*/
 } CanTxMsg;
 
 unsigned char CAN_Init(CAN_TypeDef* CANx, CAN_InitTypeDef* CAN_InitStruct);

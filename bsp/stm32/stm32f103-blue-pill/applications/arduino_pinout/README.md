@@ -1,6 +1,6 @@
 # The Arduino Compatible for STM32F103 Blue Pill Board
 
-**English** | [中文](README_zh.md)
+**English** | [](README_zh.md)
 
 ## 1 RTduino - Arduino Ecosystem Compatibility Layer for RT-Thread
 

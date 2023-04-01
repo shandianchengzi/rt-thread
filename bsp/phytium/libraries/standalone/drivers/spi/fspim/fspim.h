@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fspim.h
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 09:08:38
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   zhugengyu  2021-12-3   init commit
  * 1.1   zhugengyu  2022-4-15   support test mode
  * 1.2   zhugengyu  2022-5-13   support spi dma
@@ -53,9 +53,9 @@ extern "C"
 #define FSPIM_ERR_DMA_INIT      FT_MAKE_ERRCODE(ErrModBsp, ErrBspSpi, 6)
 
 #if defined(CONFIG_TARGET_F2000_4) || defined(CONFIG_TARGET_D2000)
-#define FSPIM_VERSION_1 /* 用于FT2000/4和D2000平台的SPIM */
+#define FSPIM_VERSION_1 /* FT2000/4D2000SPIM */
 #elif defined(CONFIG_TARGET_E2000)
-#define FSPIM_VERSION_2 /* 用于E2000平台的SPIM */
+#define FSPIM_VERSION_2 /* E2000SPIM */
 #else
 #error "Invalid target board !!!"
 #endif
@@ -113,10 +113,10 @@ typedef enum
 
 typedef enum
 {
-    FSPIM_INTR_EVT_RX_DONE = 0, /* 接收完成事件 */
-    FSPIM_INTR_EVT_TX_OVERFLOW, /* 发送FIFO上溢事件 */
-    FSPIM_INTR_EVT_RX_UNDERFLOW, /* 接收FIFO下溢事件 */
-    FSPIM_INTR_EVT_RX_OVERFLOW, /* 接收FIFO上溢事件 */
+    FSPIM_INTR_EVT_RX_DONE = 0, /*  */
+    FSPIM_INTR_EVT_TX_OVERFLOW, /* FIFO */
+    FSPIM_INTR_EVT_RX_UNDERFLOW, /* FIFO */
+    FSPIM_INTR_EVT_RX_OVERFLOW, /* FIFO */
 
     FSPIM_INTR_EVT_NUM
 } FSpimIntrEvtType;
@@ -169,41 +169,41 @@ typedef struct
 
 /************************** Function Prototypes ******************************/
 /* fspim_sinit.c */
-/* 获取FSPIM驱动的默认配置参数 */
+/* FSPIM */
 const FSpimConfig *FSpimLookupConfig(u32 instance_id);
 
 /* fspim.c */
-/* 完成FSPIM驱动实例的初始化，使之可以使用*/
+/* FSPIM*/
 FError FSpimCfgInitialize(FSpim *instance_p, const FSpimConfig *cofig_p);
 
-/* 完成I2C驱动实例去使能，清零实例数据 */
+/* I2C */
 void FSpimDeInitialize(FSpim *instance_p);
 
-/* 先发送后接收数据 (阻塞处理)，利用Fifo进行处理 */
+/*  ()Fifo */
 FError FSpimTransferPollFifo(FSpim *instance_p, const void *tx_buf, void *rx_buf, fsize_t len);
 
 #ifdef FSPIM_VERSION_2 /* E2000 */
-/* 启动SPIM DMA数据传输 */
+/* SPIM DMA */
 FError FSpimTransferDMA(FSpim *instance_p, boolean tx, boolean rx);
 
-/* 设置片选信号 */
+/*  */
 void FSpimSetChipSelection(FSpim *instance_p, boolean on);
 #endif
 
-/* 获取FSPIM模块错误码对应的错误信息 */
+/* FSPIM */
 const char *FSpimErrorToMessage(FError error);
 
 /* fspim_intr.c */
-/* 先发送后接收数据 (中断处理)，利用Fifo进行处理  */
+/*  ()Fifo  */
 FError FSpimTransferByInterrupt(FSpim *instance_p, const void *tx_buf, void *rx_buf, fsize_t len);
 
-/* SPIM中断处理函数 */
+/* SPIM */
 void FSpimInterruptHandler(s32 vector, void *param);
 
-/* 注册FSPIM中断事件处理函数 */
+/* FSPIM */
 void FSpimRegisterIntrruptHandler(FSpim *instance_p, FSpimIntrEvtType evt, FSpimEvtHandler handler, void *param);
 
-/* 打印SPIM控制寄存器信息 */
+/* SPIM */
 void FSpimDumpRegister(uintptr base_addr);
 
 #ifdef __cplusplus

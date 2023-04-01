@@ -191,61 +191,61 @@ static FL_ErrorStatus  OCConfig(GPTIM_Type *TIMx, uint32_t Channel, FL_GPTIM_OC_
   */
 
 /**
-  * @brief  复位GPTIM外设
-  * @param  TIMx 外设入口地址
-  * @retval 错误状态，可能值：
-  *         -FL_PASS 外设寄存器值恢复复位值
-  *         -FL_FAIL 未成功执行
+  * @brief  GPTIM
+  * @param  TIMx 
+  * @retval 
+  *         -FL_PASS 
+  *         -FL_FAIL 
   */
 FL_ErrorStatus FL_GPTIM_DeInit(GPTIM_Type *TIMx)
 {
     FL_ErrorStatus result = FL_PASS;
     /* Check the parameters */
     assert_param(IS_GPTIM_INSTANCE(TIMx));
-    /* 使能外设复位 */
+    /*  */
     FL_RCC_EnablePeripheralReset();
     if(TIMx == GPTIM0)
     {
-        /* 使能外设复位 */
+        /*  */
         FL_RCC_EnableResetAPB1Peripheral(FL_RCC_RSTAPB_GPTIM0);
         FL_RCC_DisableResetAPB1Peripheral(FL_RCC_RSTAPB_GPTIM0);
-        /* 关闭外设时钟 */
+        /*  */
         FL_RCC_DisableGroup4BusClock(FL_RCC_GROUP4_BUSCLK_GPTIM0);
     }
     else
         if(TIMx == GPTIM1)
         {
-            /* 使能外设复位 */
+            /*  */
             FL_RCC_EnableResetAPB1Peripheral(FL_RCC_RSTAPB_GPTIM1);
             FL_RCC_DisableResetAPB1Peripheral(FL_RCC_RSTAPB_GPTIM1);
-            /* 关闭外设时钟 */
+            /*  */
             FL_RCC_DisableGroup4BusClock(FL_RCC_GROUP4_BUSCLK_GPTIM1);
         }
         else
         {
             result = FL_FAIL;
         }
-    /* 锁定外设复位 */
+    /*  */
     FL_RCC_DisablePeripheralReset();
     return result;
 }
 
 /**
-  * @brief  配置GPTIM基本定时器时基单元（内部时钟源）
-  * @param  TIMx 外设入口地址
-  * @param  init 指向 @ref FL_GPTIM_InitTypeDef 结构体的指针
-  * @retval 错误状态，可能值：
-  *         -FL_PASS 配置成功
-  *         -FL_FAIL 配置过程发生错误
+  * @brief  GPTIM
+  * @param  TIMx 
+  * @param  init  @ref FL_GPTIM_InitTypeDef 
+  * @retval 
+  *         -FL_PASS 
+  *         -FL_FAIL 
   */
 FL_ErrorStatus FL_GPTIM_Init(GPTIM_Type *TIMx, FL_GPTIM_InitTypeDef *init)
 {
     uint32_t i = 5;
-    /* 参数检查 */
+    /*  */
     assert_param(IS_GPTIM_INSTANCE(TIMx));
     assert_param(IS_FL_GPTIM_COUNTERMODE(init->counterMode));
     assert_param(IS_FL_GPTIM_CLOCKDIVISION(init->clockDivision));
-    /* 时钟总线使能配置 */
+    /*  */
     if(TIMx == GPTIM0)
     {
         FL_RCC_EnableGroup4BusClock(FL_RCC_GROUP4_BUSCLK_GPTIM0);
@@ -255,28 +255,28 @@ FL_ErrorStatus FL_GPTIM_Init(GPTIM_Type *TIMx, FL_GPTIM_InitTypeDef *init)
         {
             FL_RCC_EnableGroup4BusClock(FL_RCC_GROUP4_BUSCLK_GPTIM1);
         }
-    /* 计数器计数模式配置 */
+    /*  */
     switch(init->counterMode)
     {
-        /* 中心对称模式 */
+        /*  */
         case FL_GPTIM_COUNTER_ALIGNED_CENTER_DOWN   :
         case FL_GPTIM_COUNTER_ALIGNED_CENTER_UP     :
         case FL_GPTIM_COUNTER_ALIGNED_CENTER_UP_DOWN:
             FL_GPTIM_SetCounterAlignedMode(TIMx, init->counterMode);
             break;
         default:
-            /* 边沿模式 */
+            /*  */
             FL_GPTIM_SetCounterDirection(TIMx, init->counterMode);
             FL_GPTIM_SetCounterAlignedMode(TIMx, FL_GPTIM_COUNTER_ALIGNED_EDGE);
             break;
     }
-    /* 自动重装载值 */
+    /*  */
     FL_GPTIM_WriteAutoReload(TIMx, init->autoReload);
-    /* 定时器分频系数与数字滤波器所使用的采样时钟分频比 */
+    /*  */
     FL_GPTIM_SetClockDivision(TIMx, init->clockDivision);
-    /* 时钟分频 */
+    /*  */
     FL_GPTIM_WritePrescaler(TIMx, init->prescaler);
-    /* 预装载配置 */
+    /*  */
     if(init->autoReloadState == FL_ENABLE)
     {
         FL_GPTIM_EnableARRPreload(TIMx);
@@ -285,20 +285,20 @@ FL_ErrorStatus FL_GPTIM_Init(GPTIM_Type *TIMx, FL_GPTIM_InitTypeDef *init)
     {
         FL_GPTIM_DisableARRPreload(TIMx);
     }
-    /* 手动触发更新事件，将配置值写入 */
+    /*  */
     FL_GPTIM_GenerateUpdateEvent(TIMx);
     while((!FL_GPTIM_IsActiveFlag_Update(TIMx))&&i)
     {
         i--;
     }
-    /*清除UIF标志，防止产生UG事件中断*/
+    /*UIFUG*/
     FL_GPTIM_ClearFlag_Update(TIMx);
     return FL_PASS;
 }
 
 /**
-  * @brief  将 @ref FL_GPTIM_InitTypeDef 结构体初始化为默认配置
-  * @param  TIM_InitStruct 指向 @ref FL_GPTIM_InitTypeDef 结构体的指针
+  * @brief   @ref FL_GPTIM_InitTypeDef 
+  * @param  TIM_InitStruct  @ref FL_GPTIM_InitTypeDef 
   *
   * @retval None
   */
@@ -313,21 +313,21 @@ void FL_GPTIM_StructInit(FL_GPTIM_InitTypeDef *TIM_InitStruct)
 }
 
 /**
-  * @brief  配置GPTIM基本定时器外部时钟源模式，包括编码器模式.
-  * @param  TIMx 外设入口地址
-  * @param  slave_init 指向 @ref FL_GPTIM_SlaveInitTypeDef 结构体的指针
-  * @retval 错误状态，可能值：
-  *         -FL_PASS 配置成功
-  *         -FL_FAIL 配置过程发生错误
+  * @brief  GPTIM.
+  * @param  TIMx 
+  * @param  slave_init  @ref FL_GPTIM_SlaveInitTypeDef 
+  * @retval 
+  *         -FL_PASS 
+  *         -FL_FAIL 
   */
 FL_ErrorStatus FL_GPTIM_SlaveMode_Init(GPTIM_Type *TIMx, FL_GPTIM_SlaveInitTypeDef *slave_init)
 {
-    /* 参数检查 */
+    /*  */
     assert_param(IS_GPTIM_INSTANCE(TIMx));
     assert_param(IS_FL_GPTIM_SLAVE_MODE(slave_init->slaveMode));
     assert_param(IS_FL_GPTIM_TRIGGER_SRC(slave_init->triggerSrc));
     assert_param(IS_FL_GPTIM_TRIGGER_DELAY(slave_init->triggerDelay));
-    /* 时钟总线使能配置 */
+    /*  */
     if(TIMx == GPTIM0)
     {
         FL_RCC_EnableGroup4BusClock(FL_RCC_GROUP4_BUSCLK_GPTIM0);
@@ -337,21 +337,21 @@ FL_ErrorStatus FL_GPTIM_SlaveMode_Init(GPTIM_Type *TIMx, FL_GPTIM_SlaveInitTypeD
         {
             FL_RCC_EnableGroup4BusClock(FL_RCC_GROUP4_BUSCLK_GPTIM1);
         }
-    /* 触发延迟默认关闭 */
+    /*  */
     FL_GPTIM_DisableMasterSlaveMode(TIMx);
-    /* 关闭从模式以能写入TS */
+    /* TS */
     FL_GPTIM_SetSlaveMode(TIMx, 0);
-    /* 从模式输入源选择 */
+    /*  */
     FL_GPTIM_SetTriggerInput(TIMx, slave_init->triggerSrc);
-    /* ITRx 输入源选择 */
+    /* ITRx  */
     if(slave_init->triggerSrc <= FL_GPTIM_TIM_TS_ITR3)
     {
-        /* 内部触发ITRx源选择 */
+        /* ITRx */
         FL_GPTIM_SetITRInput(TIMx, (1U << (slave_init->triggerSrc >> GPTIM_SMCR_TS_Pos)), slave_init->ITRSourceGroup);
     }
-    /* 从模式选择 */
+    /*  */
     FL_GPTIM_SetSlaveMode(TIMx, slave_init->slaveMode);
-    /* 触发延迟默认关闭 */
+    /*  */
     if(slave_init->triggerDelay == FL_ENABLE)
     {
         FL_GPTIM_EnableMasterSlaveMode(TIMx);
@@ -360,8 +360,8 @@ FL_ErrorStatus FL_GPTIM_SlaveMode_Init(GPTIM_Type *TIMx, FL_GPTIM_SlaveInitTypeD
 }
 
 /**
-  * @brief  将 @ref FL_GPTIM_SlaveInitTypeDef 结构体初始化为默认配置
-  * @param  slave_init 指向 @ref FL_GPTIM_SlaveInitTypeDef 结构体的指针
+  * @brief   @ref FL_GPTIM_SlaveInitTypeDef 
+  * @param  slave_init  @ref FL_GPTIM_SlaveInitTypeDef 
   *
   * @retval None
   */
@@ -374,19 +374,19 @@ void FL_GPTIM_SlaveMode_StructInit(FL_GPTIM_SlaveInitTypeDef *slave_init)
 }
 
 /**
-  * @brief  配置GPTIM触发输入捕获通道ETR.
-  * @param  TIMx 外设入口地址
-  * @param  etr_init 指向 @ref FL_GPTIM_ETR_InitTypeDef 结构体的指针
-  * @retval 错误状态，可能值：
-  *         -FL_PASS 配置成功
-  *         -FL_FAIL 配置过程发生错误
+  * @brief  GPTIMETR.
+  * @param  TIMx 
+  * @param  etr_init  @ref FL_GPTIM_ETR_InitTypeDef 
+  * @retval 
+  *         -FL_PASS 
+  *         -FL_FAIL 
   */
 FL_ErrorStatus  FL_GPTIM_ETR_Init(GPTIM_Type *TIMx, FL_GPTIM_ETR_InitTypeDef *etr_init)
 {
     assert_param(IS_FL_GPTIM_ETR_FILTER(etr_init->ETRFilter));
     assert_param(IS_FL_GPTIM_ETR_PSC(etr_init->ETRClockDivision));
     assert_param(IS_FL_GPTIM_ETR_POLARITY(etr_init->ETRPolarity));
-    /* 时钟总线使能配置 */
+    /*  */
     if(TIMx == GPTIM0)
     {
         FL_RCC_EnableGroup4BusClock(FL_RCC_GROUP4_BUSCLK_GPTIM0);
@@ -396,11 +396,11 @@ FL_ErrorStatus  FL_GPTIM_ETR_Init(GPTIM_Type *TIMx, FL_GPTIM_ETR_InitTypeDef *et
         {
             FL_RCC_EnableGroup4BusClock(FL_RCC_GROUP4_BUSCLK_GPTIM1);
         }
-    /* 外部时钟极性 */
+    /*  */
     FL_GPTIM_SetETRPolarity(TIMx, etr_init->ETRPolarity);
-    /* 外部时钟滤波 */
+    /*  */
     FL_GPTIM_SetETRFilter(TIMx, etr_init->ETRFilter);
-    /* 外部时钟分频 */
+    /*  */
     FL_GPTIM_SetETRPrescaler(TIMx, etr_init->ETRClockDivision);
     if(etr_init->useExternalTrigger == FL_ENABLE)
     {
@@ -414,8 +414,8 @@ FL_ErrorStatus  FL_GPTIM_ETR_Init(GPTIM_Type *TIMx, FL_GPTIM_ETR_InitTypeDef *et
 }
 
 /**
-  * @brief  将 @ref FL_GPTIM_ETR_InitTypeDef 结构体初始化为默认配置
-  * @param  etr_init 指向 @ref FL_GPTIM_ETR_InitTypeDef 结构体的指针
+  * @brief   @ref FL_GPTIM_ETR_InitTypeDef 
+  * @param  etr_init  @ref FL_GPTIM_ETR_InitTypeDef 
   *
   * @retval None
   */
@@ -428,77 +428,77 @@ void FL_GPTIM_ETR_StructInit(FL_GPTIM_ETR_InitTypeDef *etr_init)
 }
 
 /**
-  * @brief  配置GPTIM的比较输出通道.
-  * @param  TIMx 外设入口地址
-  * @param  channel GPTIM通道
-  *         此参数可取以下值：
+  * @brief  GPTIM.
+  * @param  TIMx 
+  * @param  channel GPTIM
+  *         
   *         @arg @ref FL_GPTIM_CHANNEL_1
   *         @arg @ref FL_GPTIM_CHANNEL_2
   *         @arg @ref FL_GPTIM_CHANNEL_3
   *         @arg @ref FL_GPTIM_CHANNEL_4
-  * @param  oc_init 指向 @ref FL_GPTIM_OC_InitTypeDef 结构体的指针
-  * @retval 错误状态，可能值：
-  *         -FL_PASS 配置成功
-  *         -FL_FAIL 配置过程发生错误
+  * @param  oc_init  @ref FL_GPTIM_OC_InitTypeDef 
+  * @retval 
+  *         -FL_PASS 
+  *         -FL_FAIL 
   */
 FL_ErrorStatus FL_GPTIM_OC_Init(GPTIM_Type *TIMx, uint32_t channel, FL_GPTIM_OC_InitTypeDef *oc_init)
 {
     FL_ErrorStatus result = FL_PASS;
-    /* 参数检查 */
+    /*  */
     assert_param(IS_GPTIM_INSTANCE(TIMx));
     assert_param(IS_FL_GPTIM_OC_MODE(oc_init->OCMode));
     assert_param(IS_FL_GPTIM_OC_PRELOAD(oc_init->OCPreload));
     assert_param(IS_FL_GPTIM_OC_POLARITY(oc_init->OCPolarity));
     assert_param(IS_FL_GPTIM_OC_FASTMODE(oc_init->OCFastMode));
     assert_param(IS_FL_GPTIM_OC_ETR_CLEARN(oc_init->OCETRFStatus));
-    /* 通道关闭 */
+    /*  */
     FL_GPTIM_OC_DisableChannel(TIMx, channel);
-    /* 通道极性 */
+    /*  */
     FL_GPTIM_OC_SetChannelPolarity(TIMx, oc_init->OCPolarity, channel);
-    /* 捕获映射到输出通道 */
+    /*  */
     FL_GPTIM_CC_SetChannelMode(TIMx, FL_GPTIM_CHANNEL_MODE_OUTPUT, channel);
-    /* 输出比较模式寄存器配置 */
+    /*  */
     OCConfig(TIMx, channel, oc_init);
-    /* 通道使能 */
+    /*  */
     FL_GPTIM_OC_EnableChannel(TIMx, channel);
     return result;
 }
 
 /**
-  * @brief  配置输出通道
-  * @param  TIMx 外设入口地址
-  * @param  channel GPTIM通道
-  *         此参数可取以下值：
+  * @brief  
+  * @param  TIMx 
+  * @param  channel GPTIM
+  *         
   *         @arg @ref FL_GPTIM_CHANNEL_1
   *         @arg @ref FL_GPTIM_CHANNEL_2
   *         @arg @ref FL_GPTIM_CHANNEL_3
   *         @arg @ref FL_GPTIM_CHANNEL_4
-  * @param  oc_init 指向 @ref FL_GPTIM_OC_InitTypeDef 结构体的指针.
-  * @retval 错误状态，可能值：
-  *         -FL_PASS 配置成功
-  *         -FL_FAIL 配置过程发生错误
+  * @param  oc_init  @ref FL_GPTIM_OC_InitTypeDef .
+  * @retval 
+  *         -FL_PASS 
+  *         -FL_FAIL 
   */
 static FL_ErrorStatus OCConfig(GPTIM_Type *TIMx, uint32_t channel, FL_GPTIM_OC_InitTypeDef *oc_init)
 {
     FL_ErrorStatus result = FL_PASS;
-    /* 配置比较输出通道模式 */
+    /*  */
     FL_GPTIM_OC_SetMode(TIMx, oc_init->OCMode, channel);
-    /* 配置ETRF清零使能 */
+    /* ETRF */
     if(oc_init->OCETRFStatus == FL_ENABLE)
     {
         FL_GPTIM_OC_EnableClear(TIMx, channel);
     }
-    /* 比较输出通道快速模式 */
+    /*  */
     if(oc_init->OCFastMode == FL_ENABLE)
     {
         FL_GPTIM_OC_EnableFastMode(TIMx, channel);
     }
-    /* 比较输出通道缓冲模式 */
+    /*  */
     if(oc_init->OCPreload == FL_ENABLE)
     {
         FL_GPTIM_OC_EnablePreload(TIMx, channel);
     }
-    /* 设置比较值 */
+    /*  */
     switch(channel)
     {
         case FL_GPTIM_CHANNEL_1:
@@ -521,8 +521,8 @@ static FL_ErrorStatus OCConfig(GPTIM_Type *TIMx, uint32_t channel, FL_GPTIM_OC_I
 }
 
 /**
-  * @brief  将 @ref FL_GPTIM_OC_InitTypeDef 结构体初始化为默认配置
-  * @param  oc_init 指向 @ref FL_GPTIM_OC_InitTypeDef 结构体的指针
+  * @brief   @ref FL_GPTIM_OC_InitTypeDef 
+  * @param  oc_init  @ref FL_GPTIM_OC_InitTypeDef 
   *
   * @retval None
   */
@@ -538,30 +538,30 @@ void FL_GPTIM_OC_StructInit(FL_GPTIM_OC_InitTypeDef *oc_init)
 }
 
 /**
-  * @brief  配置GPTIM的输入捕获通道.
-  * @param  TIMx 外设入口地址
-  * @param  channel GPTIM通道
-  *         此参数可取以下值：
+  * @brief  GPTIM.
+  * @param  TIMx 
+  * @param  channel GPTIM
+  *         
   *         @arg @ref FL_GPTIM_CHANNEL_1
   *         @arg @ref FL_GPTIM_CHANNEL_2
   *         @arg @ref FL_GPTIM_CHANNEL_3
   *         @arg @ref FL_GPTIM_CHANNEL_4
-  * @param  ic_init 指向 @ref FL_GPTIM_IC_InitTypeDef 结构体的指针
-  * @retval ErrorStatus枚举值
-  *         -FL_FAIL 配置过程发生错误
-  *         -FL_PASS 成功
+  * @param  ic_init  @ref FL_GPTIM_IC_InitTypeDef 
+  * @retval ErrorStatus
+  *         -FL_FAIL 
+  *         -FL_PASS 
   */
 FL_ErrorStatus FL_GPTIM_IC_Init(GPTIM_Type *TIMx, uint32_t channel, FL_GPTIM_IC_InitTypeDef *ic_init)
 {
     FL_ErrorStatus result = FL_PASS;
-    /* 参数检查 */
+    /*  */
     assert_param(IS_FL_GPTIM_CHANNEL(channel));
     assert_param(IS_FL_GPTIM_IC_CAPTURE_STATE(ic_init->captureState));
     assert_param(IS_FL_GPTIM_IC_POLARITY(ic_init->ICPolarity));
     assert_param(IS_FL_GPTIM_CHANNEL_MODE(ic_init->ICActiveInput));
     assert_param(IS_FL_GPTIM_IC_PSC(ic_init->ICPrescaler));
     assert_param(IS_FL_GPTIM_IC_FILTER(ic_init->ICFilter));
-    /* 时钟总线使能配置 */
+    /*  */
     if(TIMx == GPTIM0)
     {
         FL_RCC_EnableGroup4BusClock(FL_RCC_GROUP4_BUSCLK_GPTIM0);
@@ -571,15 +571,15 @@ FL_ErrorStatus FL_GPTIM_IC_Init(GPTIM_Type *TIMx, uint32_t channel, FL_GPTIM_IC_
         {
             FL_RCC_EnableGroup4BusClock(FL_RCC_GROUP4_BUSCLK_GPTIM1);
         }
-    /* 通道关闭 */
+    /*  */
     FL_GPTIM_IC_DisableChannel(TIMx, channel);
-    /*捕获极性 */
+    /* */
     FL_GPTIM_IC_SetChannelPolarity(TIMx, ic_init->ICPolarity, channel);
-    /* 捕获映射通道 */
+    /*  */
     FL_GPTIM_CC_SetChannelMode(TIMx, ic_init->ICActiveInput, channel);
-    /* 捕获预分频 */
+    /*  */
     FL_GPTIM_IC_SetPrescaler(TIMx, ic_init->ICPrescaler, channel);
-    /* 捕获滤波器 */
+    /*  */
     FL_GPTIM_IC_SetFilter(TIMx, ic_init->ICFilter, channel);
     if(ic_init->captureState == FL_ENABLE)
     {
@@ -589,8 +589,8 @@ FL_ErrorStatus FL_GPTIM_IC_Init(GPTIM_Type *TIMx, uint32_t channel, FL_GPTIM_IC_
 }
 
 /**
-  * @brief  将 @ref FL_GPTIM_IC_InitTypeDef 结构体初始化为默认配置
-  * @param  ic_init 指向 @ref FL_GPTIM_IC_InitTypeDef 结构体的指针
+  * @brief   @ref FL_GPTIM_IC_InitTypeDef 
+  * @param  ic_init  @ref FL_GPTIM_IC_InitTypeDef 
   *
   * @retval None
   */

@@ -17,15 +17,15 @@ static struct usb_list_head hub_event_list;
 #define USB_HUB_THREAD_EXIT_FLAG_FALSE  0x00
 #define USB_HUB_THREAD_EXIT_FLAG_TRUE   0x01
 
-//用来控制hub thread的
+//hub thread
 struct hub_thread_context
 {
-    //USB_OS_KERNEL_EVENT    *hub_thread_complete;    //hub thread的 create,exit的complete
-   // USB_OS_KERNEL_EVENT   *hub_thread_event;        //只是用来控制thread的sleep/wakeup
-    hal_sem_t   hub_thread_complete;    //hub thread的 create,exit的complete
-    hal_sem_t   hub_thread_event;        //只是用来控制thread的sleep/wakeup
-    volatile    u32 hub_thread_exit_flag ;                  //hub thread 退出flag
-    //如USB_HUB_THREAD_EXIT_FLAG_TRUE
+    //USB_OS_KERNEL_EVENT    *hub_thread_complete;    //hub thread create,exitcomplete
+   // USB_OS_KERNEL_EVENT   *hub_thread_event;        //threadsleep/wakeup
+    hal_sem_t   hub_thread_complete;    //hub thread create,exitcomplete
+    hal_sem_t   hub_thread_event;        //threadsleep/wakeup
+    volatile    u32 hub_thread_exit_flag ;                  //hub thread flag
+    //USB_HUB_THREAD_EXIT_FLAG_TRUE
 };
 
 static struct hub_thread_context hub_thread_cont;

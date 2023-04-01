@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fusb_dev.c
  * Date: 2022-02-11 13:33:11
  * LastEditTime: 2022-02-18 09:18:45
- * Description:  This files is for USB device function implementation
+ * Description: This files is for USB device function implementation
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   Zhugengyu  2022/2/7    init commit
  */
 
@@ -54,9 +54,9 @@ static void FUsbNopDevPoll(FUsbDev *dev)
 
 /**
  * @name: FUsbNopDevInit
- * @msg: 默认的USB设备初始化函数
+ * @msg: USB
  * @return {*}
- * @param {FUsbDev} *dev, USB设备实例
+ * @param {FUsbDev} *dev, USB
  */
 void FUsbNopDevInit(FUsbDev *dev)
 {
@@ -167,11 +167,11 @@ err_handle:
 
 /**
  * @name: FUsbSetupConfigParser
- * @msg: 配置USB配置描述符解析器
+ * @msg: USB
  * @return {*}
- * @param {FUsbDev} *dev, USB设备实例
- * @param {void} *buf, 配置描述符缓冲区
- * @param {u32} buf_len, 配置描述符缓冲区长度
+ * @param {FUsbDev} *dev, USB
+ * @param {void} *buf, 
+ * @param {u32} buf_len, 
  */
 FError FUsbSetupConfigParser(FUsbDev *dev, const void *buf, u32 buf_len)
 {
@@ -216,9 +216,9 @@ FError FUsbSetupConfigParser(FUsbDev *dev, const void *buf, u32 buf_len)
 
 /**
  * @name: FUsbRevokeConfigParser
- * @msg: 去初始化USB配置描述符解析器
+ * @msg: USB
  * @return {*}
- * @param {FUsbDev} *dev, USB设备实例
+ * @param {FUsbDev} *dev, USB
  */
 void FUsbRevokeConfigParser(FUsbDev *dev)
 {
@@ -229,10 +229,10 @@ void FUsbRevokeConfigParser(FUsbDev *dev)
 
 /**
  * @name: FUsbGetDescriptorFromParser
- * @msg: 从配置描述符解析器中获取指定类型的描述符（端点描述符/接口描述符）
- * @return {const FUsbDescriptor *} 获取的描述符
- * @param {FUsbConfigParser} *parser, 配置描述符解析器
- * @param {FUsbDescriptorType} type, 获取描述符的类型
+ * @msg: /
+ * @return {const FUsbDescriptor *} 
+ * @param {FUsbConfigParser} *parser, 
+ * @param {FUsbDescriptorType} type, 
  */
 const FUsbDescriptor *FUsbGetDescriptorFromParser(FUsbConfigParser *parser, FUsbDescriptorType type)
 {
@@ -284,9 +284,9 @@ const FUsbDescriptor *FUsbGetDescriptorFromParser(FUsbConfigParser *parser, FUsb
 
 /**
  * @name: FUsbSetupStringParser
- * @msg: 初始化字符串描述符解析器
+ * @msg: 
  * @return {*}
- * @param {FUsbDev} *dev, USB设备实例
+ * @param {FUsbDev} *dev, USB
  */
 void FUsbSetupStringParser(FUsbDev *dev)
 {
@@ -306,9 +306,9 @@ void FUsbSetupStringParser(FUsbDev *dev)
 
 /**
  * @name: FUsbRevokeStringParser
- * @msg: 去初始化字符串描述符解析器
+ * @msg: 
  * @return {*}
- * @param {FUsbDev} *dev, USB设备实例
+ * @param {FUsbDev} *dev, USB
  */
 void FUsbRevokeStringParser(FUsbDev *dev)
 {
@@ -328,11 +328,11 @@ void FUsbRevokeStringParser(FUsbDev *dev)
 
 /**
  * @name: FUsbSearchStringDescriptor
- * @msg: 检索字符串描述符，保存在FUsbStringParser结构中
+ * @msg: FUsbStringParser
  * @return {*}
- * @param {FUsb} *instance, USB实例
- * @param {FUsbDev} *dev, USB设备实例
- * @param {u8} id, 要获取字符串描述符的ID
+ * @param {FUsb} *instance, USB
+ * @param {FUsbDev} *dev, USB
+ * @param {u8} id, ID
  */
 FError FUsbSearchStringDescriptor(FUsb *instance, FUsbDev *dev, u8 id)
 {
@@ -428,9 +428,9 @@ FError FUsbSearchStringDescriptor(FUsb *instance, FUsbDev *dev, u8 id)
 
 /**
  * @name: FUsbGetString
- * @msg: 获取刚刚检索到的字符串描述符内容
- * @return {const char *}, 字符串描述符中的内容
- * @param {FUsbDev} *dev, USB设备实例
+ * @msg: 
+ * @return {const char *}, 
+ * @param {FUsbDev} *dev, USB
  */
 const char *FUsbGetString(const FUsbDev *const dev)
 {

@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fmio.c
  * Date: 2022-07-06 15:01:30
  * LastEditTime: 2022-07-06 15:01:30
- * Description:  This file is for
+ * Description: This file is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 #include <string.h>
 #include "fmio_hw.h"
@@ -32,7 +32,7 @@
 
 /**
  * @name: FMioFuncInit
- * @msg: 初始化
+ * @msg: 
  * @return {*}
  * @param {FMioCtrl} *instance_p
  * @param {u32} mio_type
@@ -65,7 +65,7 @@ FError FMioFuncInit(FMioCtrl *instance_p, u32 mio_type)
 
 /**
  * @name: FMioFuncDeinit
- * @msg: 去初始化
+ * @msg: 
  * @return {*}
  * @param {FMioCtrl} *instance_p
  */
@@ -76,7 +76,7 @@ FError FMioFuncDeinit(FMioCtrl *instance_p)
 
     instance_p->is_ready = 0;
 
-    /* 重新配置成默认IIC模式 */
+    /* IIC */
     ret = FMioSelectFunc(instance_p->config.mio_base_addr, FMIO_FUNC_SET_I2C);
 
     memset(instance_p, 0, sizeof(*instance_p));
@@ -86,7 +86,7 @@ FError FMioFuncDeinit(FMioCtrl *instance_p)
 
 /**
  * @name: FMioFuncGetAddress
- * @msg: 获取功能设置的基地址
+ * @msg: 
  * @return {uintptr}
  * @param {FMioCtrl} *instance_p
  */
@@ -112,8 +112,8 @@ uintptr FMioFuncGetAddress(FMioCtrl *instance_p, u32 mio_type)
 
 /**
  * @name: FMioFuncGetIrqNum
- * @msg: 获取MIO的中断号
- * @return {u32}中断号
+ * @msg: MIO
+ * @return {u32}
  * @param {FMioCtrl} *instance_p
  */
 u32 FMioFuncGetIrqNum(FMioCtrl *instance_p, u32 mio_type)

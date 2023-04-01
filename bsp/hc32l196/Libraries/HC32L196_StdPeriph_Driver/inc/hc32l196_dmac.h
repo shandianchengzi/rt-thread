@@ -74,134 +74,134 @@ extern "C"
   ******************************************************************************/
   /**
   *******************************************************************************
-  ** \brief DMA 通道
+  ** \brief DMA 
   **
   ******************************************************************************/
   typedef enum en_dma_channel
   {
-    DmaCh0                          = 0x00,    ///< DMA 通道0
-    DmaCh1                          = 0x04,    ///< DMA 通道1 
+    DmaCh0                          = 0x00,    ///< DMA 0
+    DmaCh1                          = 0x04,    ///< DMA 1 
   } en_dma_channel_t;
   /**
   *******************************************************************************
-  ** \brief DMA 优先级
+  ** \brief DMA 
   **
   ******************************************************************************/
   typedef enum en_dma_priority
   {
-    DmaMskPriorityFix                          = 0x00000000,    ///< DMA 各通道优先级固定 (CH0>CH1)
-    DmaMskPriorityLoop                         = 0x10000000,    ///< DMA 各通道优先级采用轮询方式
+    DmaMskPriorityFix                          = 0x00000000,    ///< DMA  (CH0>CH1)
+    DmaMskPriorityLoop                         = 0x10000000,    ///< DMA 
   } en_dma_priority_t;
   
   /**
   *******************************************************************************
-  ** \brief DMA 传输数据宽度
+  ** \brief DMA 
   **
   ******************************************************************************/
   typedef enum en_dma_transfer_width
   {
-    DmaMsk8Bit                         = 0x00000000,    ///< 8 bit  字节传输
-    DmaMsk16Bit                        = 0x04000000,    ///< 16 bit 半字传输
-    DmaMsk32Bit                        = 0x08000000     ///< 32 bit 字传输
+    DmaMsk8Bit                         = 0x00000000,    ///< 8 bit  
+    DmaMsk16Bit                        = 0x04000000,    ///< 16 bit 
+    DmaMsk32Bit                        = 0x08000000     ///< 32 bit 
   } en_dma_transfer_width_t;
   
   /**
   *******************************************************************************
-  ** \brief DMA 传输模式：块(Block)传输或者突发(Burst)传输
+  ** \brief DMA (Block)(Burst)
   **
   ******************************************************************************/
   typedef enum en_dma_transfer_mode
   {
-    DmaMskBlock                        = 0x00000000,    ///< 块(Block)传输
-    DmaMskBurst                        = 0x10000000,    ///< 突发(Burst)传输
+    DmaMskBlock                        = 0x00000000,    ///< (Block)
+    DmaMskBurst                        = 0x10000000,    ///< (Burst)
   } en_dma_transfer_mode_t;
   
   /**
   *******************************************************************************
-  ** \brief DMA传输当前状态
+  ** \brief DMA
   **
   ******************************************************************************/
   typedef enum en_dma_stat
   {
-    DmaDefault                      = 0U,    ///< 初始值
-    DmaAddOverflow                  = 1U,    ///< 传输错误引起中止（地址溢出）
-    DmaHALT                         = 2U,    ///< 传输停止请求引起中止（外设停止请求引起的停止或者EB/DE位引起的禁止传输）
-    DmaAccSCRErr                    = 3U,    ///< 传输错误引起中止（传输源地址访问错误）
-    DmaAccDestErr                   = 4U,    ///< 传输错误引起中止（传输目的地址访问错误）
-    DmaTransferComplete             = 5U,    ///< 成功传输完成
-    DmaTransferPause                = 7U,    ///< 传输暂停      
+    DmaDefault                      = 0U,    ///< 
+    DmaAddOverflow                  = 1U,    ///< 
+    DmaHALT                         = 2U,    ///< EB/DE
+    DmaAccSCRErr                    = 3U,    ///< 
+    DmaAccDestErr                   = 4U,    ///< 
+    DmaTransferComplete             = 5U,    ///< 
+    DmaTransferPause                = 7U,    ///<       
   } en_dma_stat_t;
   
   /**
   *******************************************************************************
-  ** \brief DMA源地址控制模式：自增或固定
+  ** \brief DMA
   **
   ******************************************************************************/
   typedef enum en_src_address_mode
   {    
-    DmaMskSrcAddrInc                 = 0x00000000,    ///< 地址自增
-    DmaMskSrcAddrFix                 = 0x02000000,    ///< 地址固定
+    DmaMskSrcAddrInc                 = 0x00000000,    ///< 
+    DmaMskSrcAddrFix                 = 0x02000000,    ///< 
   } en_src_address_mode_t;
   
   /**
   *******************************************************************************
-  ** \brief DMA目的地址控制模式：自增或固定
+  ** \brief DMA
   **
   ******************************************************************************/
   typedef enum en_dst_address_mode
   {    
-    DmaMskDstAddrInc                 = 0x00000000,    ///< 地址自增
-    DmaMskDstAddrFix                 = 0x01000000,    ///< 地址固定
+    DmaMskDstAddrInc                 = 0x00000000,    ///< 
+    DmaMskDstAddrFix                 = 0x01000000,    ///< 
   } en_dst_address_mode_t;
   
   /**
   *******************************************************************************
-  ** \brief DMA CONFA:BC[3:0]和CONFA:TC[15:0]的重载功能
+  ** \brief DMA CONFA:BC[3:0]CONFA:TC[15:0]
   **
   ******************************************************************************/
   typedef enum en_bc_tc_reload_mode
   {    
-    DmaMskBcTcReloadDisable                = 0x00000000,    ///< 禁止重载
-    DmaMskBcTcReloadEnable                 = 0x00800000,    ///< 使能重载
+    DmaMskBcTcReloadDisable                = 0x00000000,    ///< 
+    DmaMskBcTcReloadEnable                 = 0x00800000,    ///< 
   } en_bc_tc_reload_mode_t;
   
   /**
   *******************************************************************************
-  ** \brief DMA源地址重载功能：使能或禁止
+  ** \brief DMA
   **
   ******************************************************************************/
   typedef enum en_src_address_reload_mode
   {    
-    DmaMskSrcAddrReloadDisable                = 0x00000000,    ///< 禁止DMA源地址重载
-    DmaMskSrcAddrReloadEnable                 = 0x00400000,    ///< 使能DMA源地址重载
+    DmaMskSrcAddrReloadDisable                = 0x00000000,    ///< DMA
+    DmaMskSrcAddrReloadEnable                 = 0x00400000,    ///< DMA
   } en_src_address_reload_mode_t;
   
   /**
   *******************************************************************************
-  ** \brief DMA目的地址重载功能：使能或禁止
+  ** \brief DMA
   **
   ******************************************************************************/
   typedef enum en_dst_address_reload_mode
   {    
-    DmaMskDstAddrReloadDisable                = 0x00000000,    ///< 禁止DMA目的地址重载
-    DmaMskDstAddrReloadEnable                 = 0x00200000,    ///< 使能DMA目的地址重载
+    DmaMskDstAddrReloadDisable                = 0x00000000,    ///< DMA
+    DmaMskDstAddrReloadEnable                 = 0x00200000,    ///< DMA
   } en_dst_address_reload_mode_t;
 
   
   
   /**
   *******************************************************************************
-  ** \brief DMA 连续传输设置
+  ** \brief DMA 
   **
   ******************************************************************************/
   typedef enum en_dma_msk
   {
-    DmaMskOneTransfer                      = 0x00000000,    ///< 传输一次，DMAC传输完成时清除CONFA:ENS位
-    DmaMskContinuousTransfer               = 0x00000001,    ///< 连续传输，DMAC传输完成时不清除CONFA:ENS位
+    DmaMskOneTransfer                      = 0x00000000,    ///< DMACCONFA:ENS
+    DmaMskContinuousTransfer               = 0x00000001,    ///< DMACCONFA:ENS
   } en_dma_msk_t;
   /**
   *******************************************************************************
-  ** \brief DMA 触发源选择
+  ** \brief DMA 
   **
   ******************************************************************************/  
   typedef enum stc_dma_trig_sel
@@ -246,30 +246,30 @@ extern "C"
   
   /**
   *******************************************************************************
-  ** \brief DMA通道初始化配置结构体
+  ** \brief DMA
   **
   ******************************************************************************/
   typedef struct stc_dma_cfg
   {
     en_dma_transfer_mode_t enMode;
     
-    uint16_t u16BlockSize;                           ///< 块传输个数
-    uint16_t u16TransferCnt;                         ///< 传输块次数
-    en_dma_transfer_width_t enTransferWidth;         ///< 传输数据字节宽度 具体参考枚举定义:en_dma_transfer_width_t
+    uint16_t u16BlockSize;                           ///< 
+    uint16_t u16TransferCnt;                         ///< 
+    en_dma_transfer_width_t enTransferWidth;         ///<  :en_dma_transfer_width_t
     
-    en_src_address_mode_t enSrcAddrMode;             ///< DMA源地址控制模式：自增或固定
-    en_dst_address_mode_t enDstAddrMode;             ///< DMA目的地址控制模式：自增或固定  
+    en_src_address_mode_t enSrcAddrMode;             ///< DMA
+    en_dst_address_mode_t enDstAddrMode;             ///< DMA  
     
-    en_src_address_reload_mode_t enSrcAddrReloadCtl; ///< 源地址重载  具体参考枚举定义:en_src_address_reload_mode_t
-    en_dst_address_reload_mode_t enDestAddrReloadCtl;///< 目的地址重载 具体参考枚举定义:en_dst_address_reload_mode_t
-    en_bc_tc_reload_mode_t enSrcBcTcReloadCtl;       ///< Bc/Tc值重载功能 具体参考枚举定义:en_bc_tc_reload_mode_t
+    en_src_address_reload_mode_t enSrcAddrReloadCtl; ///<   :en_src_address_reload_mode_t
+    en_dst_address_reload_mode_t enDestAddrReloadCtl;///<  :en_dst_address_reload_mode_t
+    en_bc_tc_reload_mode_t enSrcBcTcReloadCtl;       ///< Bc/Tc :en_bc_tc_reload_mode_t
         
-    uint32_t u32SrcAddress;                          ///< 源地址>
-    uint32_t u32DstAddress;                          ///< 目的地址>
+    uint32_t u32SrcAddress;                          ///< >
+    uint32_t u32DstAddress;                          ///< >
         
-    en_dma_msk_t enTransferMode;                     ///DMA 连续传输设置 具体参考枚举定义:en_dma_msk_t
-    en_dma_priority_t enPriority;                    ///DMA 优先级设定 具体参考枚举定义:en_dma_priority_t
-    en_dma_trig_sel_t enRequestNum;                  ///<DMA 触发源选择 具体参考枚举定义:en_dma_trig_sel_t
+    en_dma_msk_t enTransferMode;                     ///DMA  :en_dma_msk_t
+    en_dma_priority_t enPriority;                    ///DMA  :en_dma_priority_t
+    en_dma_trig_sel_t enRequestNum;                  ///<DMA  :en_dma_trig_sel_t
   } stc_dma_cfg_t;
 
   /*******************************************************************************
@@ -283,65 +283,65 @@ extern "C"
   /*******************************************************************************
   * Global function prototypes (definition in C source)
   ******************************************************************************/
-  ///< 初始化DMAC通道
+  ///< DMAC
   en_result_t Dma_InitChannel(en_dma_channel_t enCh, stc_dma_cfg_t* pstcCfg);  
     
-  ///< DMA模块使能函数，使能所有通道的操作，每个通道按照各自设置工作
+  ///< DMA
   void Dma_Enable(void);   
-  ///< DMA模块功能禁止函数，所有通道禁止工作.
+  ///< DMA.
   void Dma_Disable(void);  
   
-  ///< 触发指定DMA通道软件传输功能.
+  ///< DMA.
   void Dma_SwStart(en_dma_channel_t enCh);  
-  ///< 停止指定DMA通道软件传输功能.
+  ///< DMA.
   void Dma_SwStop(en_dma_channel_t enCh);
 
-  ///< 使能指定dma通道的（传输完成）中断.
+  ///< dma.
   void Dma_EnableChannelIrq(en_dma_channel_t enCh);
-  ///< 禁用指定dma通道的（传输完成）中断.
+  ///< dma.
   void Dma_DisableChannelIrq(en_dma_channel_t enCh);
-  ///< 使能指定dma通道的（传输错误）中断..
+  ///< dma..
   void Dma_EnableChannelErrIrq(en_dma_channel_t enCh);
-  ///< 禁用指定dma通道的（传输错误）中断..
+  ///< dma..
   void Dma_DisableChannelErrIrq(en_dma_channel_t enCh);
   
-  ///< 使能指定dma通道
+  ///< dma
   void Dma_EnableChannel(en_dma_channel_t enCh);
-  ///< 禁用指定dma通道
+  ///< dma
   void Dma_DisableChannel(en_dma_channel_t enCh);
   
-  ///< 设定指定通道的块(Block)尺寸
+  ///< (Block)
   void Dma_SetBlockSize(en_dma_channel_t enCh, uint16_t u16BlkSize);
-  ///< 设定指定通道块(Block)传输次数
+  ///< (Block)
   void Dma_SetTransferCnt(en_dma_channel_t enCh, uint16_t u16TrnCnt);
   
-  ///< 允许指定通道可连续传输，即DMAC在传输完成时不清除CONFA:ENS位.
+  ///< DMACCONFA:ENS.
   void Dma_EnableContinusTranfer(en_dma_channel_t enCh);
-  ///< 禁止指定通道连续传输，即DMAC在传输完成时清除.
+  ///< DMAC.
   void Dma_DisableContinusTranfer(en_dma_channel_t enCh);
 
-  ///< 暂停所有dma通道.
+  ///< dma.
   void Dma_HaltTranfer(void);
-  ///< 恢复（之前暂停的）所有dma通道.
+  ///< dma.
   void Dma_RecoverTranfer(void);
-  ///< 暂停指定dma通道.
+  ///< dma.
   void Dma_PauseChannelTranfer(en_dma_channel_t enCh);
-  ///< 恢复（之前暂定的）指定dma通道.
+  ///< dma.
   void Dma_RecoverChannelTranfer(en_dma_channel_t enCh);
 
-  ///< 设定指定通道传输数据宽度.
+  ///< .
   void Dma_SetTransferWidth(en_dma_channel_t enCh, en_dma_transfer_width_t enWidth);  
-  ///< 设定dma通道优先级.
+  ///< dma.
   void Dma_SetChPriority(en_dma_priority_t enPrio);
   
-  ///< 获取指定DMA通道的状态.
+  ///< DMA.
   en_dma_stat_t Dma_GetStat(en_dma_channel_t enCh);  
-  ///< 清除指定DMA通道的状态值.
+  ///< DMA.
   void Dma_ClrStat(en_dma_channel_t enCh);
   
-  ///<设定指定通道源地址
+  ///<
   void Dma_SetSourceAddress(en_dma_channel_t enCh, uint32_t u32Address);
-  ///<设定指定通道目标地址.
+  ///<.
   void Dma_SetDestinationAddress(en_dma_channel_t enCh, uint32_t u32Address);
   //@} // DmacGroup
   

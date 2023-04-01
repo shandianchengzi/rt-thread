@@ -1,15 +1,15 @@
 /*
- * @ : Copyright (c) 2021 Phytium Information Technology, Inc.
- *
- * SPDX-License-Identifier: Apache-2.0.
- *
+*@:Copyright(c)2021PhytiumInformationTechnology,Inc.
+*
+*SPDX-License-Identifier:Apache-2.0.
+*
  * @Date: 2021-04-07 09:53:07
  * @LastEditTime: 2021-05-18 13:43:19
- * @Description:  This files is for assert function
+ * @Description: This files is for assert function
  *
- * @Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * @ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 #ifndef Ft_assert_H
@@ -33,7 +33,7 @@ extern "C"
 
 /**
  * @name: Ft_assertVoid
- * @msg:  断言函数不带返回值
+ * @msg:  
  * @param {*}
  * @return {*}
  */
@@ -75,7 +75,7 @@ extern "C"
 
 /**
  * @name: Ft_assertZeroNum
- * @msg:  断言函数带返回值0
+ * @msg:  0
  * @param {*}
  * @return {*}
  */
@@ -95,7 +95,7 @@ extern "C"
 
 /**
  * @name: Ft_assertNonvoid
- * @msg:  断言函数带返回值FST_ASSERT_RETURN
+ * @msg:  FST_ASSERT_RETURN
  * @param {*}
  * @return {*}
  */
@@ -115,7 +115,7 @@ extern "C"
 
 /**
  * @name: Ft_assertNoneReturn
- * @msg:  断言函数不返回
+ * @msg:  
  * @param {*}
  * @return {*}
  */

@@ -20,7 +20,7 @@ typedef enum {
     USBR_BUFFER_OVERRUN,
     USBR_BUFFER_UNDERRUN,
     USBR_ERROR = 0xFE,
-    USBR_NO = 0xFF          // 还未收到设备响应
+    USBR_NO = 0xFF          // 
 } USBH_Resp;
 
 

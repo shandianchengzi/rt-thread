@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fsdmmc_hw.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:54:02
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   zhugengyu  2021/12/2    init
  */
 
@@ -45,10 +45,10 @@
 /************************** Function Prototypes ******************************/
 /**
  * @name: FSdmmcSoftwareReset
- * @msg: 完成软复位
+ * @msg: 
  * @return {*}
- * @param {uintptr} base_addr FSDMMC控制器基地址
- * @param {int} retries 重试次数
+ * @param {uintptr} base_addr FSDMMC
+ * @param {int} retries 
  */
 FError FSdmmcSoftwareReset(uintptr base_addr, int retries)
 {
@@ -76,10 +76,10 @@ FError FSdmmcSoftwareReset(uintptr base_addr, int retries)
 
 /**
  * @name: FSdmmcSetCardClk
- * @msg: 设置FSDMMC的时钟
+ * @msg: FSDMMC
  * @return {*}
- * @param {uintptr} base_addr FSDMMC控制器基地址
- * @param {u32} clk_freq_hz 时钟频率，HZ
+ * @param {uintptr} base_addr FSDMMC
+ * @param {u32} clk_freq_hz HZ
  */
 FError FSdmmcSetCardClk(uintptr base_addr, u32 clk_freq_hz)
 {
@@ -117,23 +117,23 @@ static const char *FSdmmcGetRespTypeStr(u32 hw_cmd)
 
 /**
  * @name: FSdmmcSendPrivateCmd
- * @msg: 发送命令
+ * @msg: 
  * @return {*}
- * @param {uintptr} base_addr FSDMMC控制器基地址
- * @param {u32} cmd 待发送的命令
- * @param {u32} arg 待发送命令的参数
+ * @param {uintptr} base_addr FSDMMC
+ * @param {u32} cmd 
+ * @param {u32} arg 
  */
 void FSdmmcSendPrivateCmd(uintptr base_addr, u32 cmd, u32 arg)
 {
-    /* 清空状态寄存器 */
+    /*  */
     FSdmmcClearNormalInterruptStatus(base_addr);
     FSdmmcClearErrorInterruptStatus(base_addr);
     FSdmmcClearBDInterruptStatus(base_addr);
 
-    /* 设置命令 */
+    /*  */
     FSDMMC_WRITE_REG(base_addr, FSDMMC_CMD_SETTING_REG_OFFSET, cmd);
 
-    /* 设置参数，同时触发发送命令 */
+    /*  */
     FSDMMC_WRITE_REG(base_addr, FSDMMC_ARGUMENT_REG_OFFSET, FSDMMC_ARGUMENT_MASK & arg);
 
     FSDMMC_INFO("CMD: 0x%08x ", FSDMMC_READ_REG(base_addr, FSDMMC_CMD_SETTING_REG_OFFSET));
@@ -143,9 +143,9 @@ void FSdmmcSendPrivateCmd(uintptr base_addr, u32 cmd, u32 arg)
 
 /**
  * @name: FSdmmcReset
- * @msg: 重置FSDMMC控制器
+ * @msg: FSDMMC
  * @return {*}
- * @param {uintptr} base_addr FSDMMC控制器基地址
+ * @param {uintptr} base_addr FSDMMC
  */
 FError FSdmmcReset(uintptr base_addr)
 {
@@ -188,15 +188,15 @@ FError FSdmmcReset(uintptr base_addr)
 
 /**
  * @name: FSdmmcWaitStatus
- * @msg: 等待命令完成或者命令错误状态
+ * @msg: 
  * @return {*}
- * @param {uintptr} base_addr FSDMMC控制器基地址
- * @param {int} retries 重试次数
+ * @param {uintptr} base_addr FSDMMC
+ * @param {int} retries 
  */
 FError FSdmmcWaitStatus(uintptr base_addr, int retries)
 {
     FASSERT(retries > 1);
-    const u32 status_mask = FSDMMC_NORMAL_INT_STATUS_CC | FSDMMC_NORMAL_INT_STATUS_EI; /* 等待命令完成或者发生错误 */
+    const u32 status_mask = FSDMMC_NORMAL_INT_STATUS_CC | FSDMMC_NORMAL_INT_STATUS_EI; /*  */
     u32 status;
 
     do
@@ -222,20 +222,20 @@ FError FSdmmcWaitStatus(uintptr base_addr, int retries)
 
 /**
  * @name: FSdmmcWaitDMAStatus
- * @msg: 等待数据传输完成或者传输错误状态
+ * @msg: 
  * @return {*}
- * @param {uintptr} base_addr FSDMMC控制器基地址
- * @param {boolean} read TRUE: 当前是读数据 FALSE: 当前是写数据
- * @param {int} retries 重试次数
+ * @param {uintptr} base_addr FSDMMC
+ * @param {boolean} read TRUE:  FALSE: 
+ * @param {int} retries 
  */
 FError FSdmmcWaitDMAStatus(uintptr base_addr, boolean read, int retries)
 {
     const u32 status_mask = read ?
-                            (FSDMMC_BD_ISR_REG_RESPE | FSDMMC_BD_ISR_REG_DAIS) : /* 等待DMA传输完成或者发生错误 */
-                            (FSDMMC_BD_ISR_REG_TRS | FSDMMC_BD_ISR_REG_DAIS); /* 等待DMA传输完成或者发生错误 */
+                            (FSDMMC_BD_ISR_REG_RESPE | FSDMMC_BD_ISR_REG_DAIS) : /* DMA */
+                            (FSDMMC_BD_ISR_REG_TRS | FSDMMC_BD_ISR_REG_DAIS); /* DMA */
     u32 status;
 
-    /* 等待DMA传输完成或者发生错误 */
+    /* DMA */
     do
     {
         status = status_mask & FSDMMC_READ_REG(base_addr, FSDMMC_BD_ISR_REG_OFFSET);

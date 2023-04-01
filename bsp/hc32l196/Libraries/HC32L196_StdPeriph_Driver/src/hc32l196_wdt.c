@@ -67,11 +67,11 @@
 
 /**
  ******************************************************************************
- ** \brief  WDT溢出时间设置函数
+ ** \brief  WDT
  **
- ** \param [in] u8LoadValue 溢出时间
+ ** \param [in] u8LoadValue 
  **
- ** \retval 无
+ ** \retval 
  **
  ******************************************************************************/
 void Wdt_WriteWdtLoad(uint8_t u8LoadValue)
@@ -80,7 +80,7 @@ void Wdt_WriteWdtLoad(uint8_t u8LoadValue)
 }
 /**
  ******************************************************************************
- ** \brief  WDT初始化函数
+ ** \brief  WDT
  **
  ** \param [in] enFunc @ref en_wdt_func_t
  ** \param [in] enTime @ref en_wdt_time_t
@@ -99,11 +99,11 @@ en_result_t Wdt_Init(en_wdt_func_t enFunc, en_wdt_time_t enTime)
 }
 /**
  ******************************************************************************
- ** \brief  WDT复位及启动函数
+ ** \brief  WDT
  **
- ** \param [in] 无
+ ** \param [in] 
  **
- ** \retval 无
+ ** \retval 
  **
  ******************************************************************************/
 void Wdt_Start(void)
@@ -114,9 +114,9 @@ void Wdt_Start(void)
 
 /**
  ******************************************************************************
- ** \brief  WDT喂狗
+ ** \brief  WDT
  **
- ** \param [in] 无
+ ** \param [in] 
  **
  ** \retval Ok
  **
@@ -129,9 +129,9 @@ void Wdt_Feed(void)
 
 /**
  ******************************************************************************
- ** \brief  WDT中断标志清除
+ ** \brief  WDT
  **
- ** \param [in] 无
+ ** \param [in] 
  **
  ** \retval Ok
  **
@@ -144,11 +144,11 @@ void Wdt_IrqClr(void)
 
 /**
  ******************************************************************************
- ** \brief  WDT读取当前计数值函数
+ ** \brief  WDT
  **
- ** \param [in] 无
+ ** \param [in] 
  **
- ** \retval 计数值
+ ** \retval 
  **
  ******************************************************************************/
 uint8_t Wdt_ReadWdtValue(void)
@@ -161,11 +161,11 @@ uint8_t Wdt_ReadWdtValue(void)
 }
 /**
  ******************************************************************************
- ** \brief  WDT读取当前运行状态
+ ** \brief  WDT
  **
- ** \param [in] 无
+ ** \param [in] 
  **
- ** \retval 状态值
+ ** \retval 
  **
  ******************************************************************************/
 boolean_t Wdt_ReadwdtStatus(void)
@@ -182,10 +182,10 @@ boolean_t Wdt_ReadwdtStatus(void)
 
 /**
  *******************************************************************************
- ** \brief WDT 中断状态标记获取
+ ** \brief WDT 
  **
  **
- ** \retval  中断状态
+ ** \retval  
  ******************************************************************************/
 boolean_t Wdt_GetIrqStatus(void)
 {

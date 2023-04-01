@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fgic.c
  * Date: 2022-03-28 09:30:23
  * LastEditTime: 2022-03-28 09:30:24
- * Description:  This file is for
+ * Description: This file is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 #include "fgic.h"
@@ -47,7 +47,7 @@
 #define FGIC_GICD_16_PER_REG    16
 #define FGIC_GICD_4_PER_REG     4
 
-#define FGIC_INT_DEFAULT_PRI_X4     0xa0a0a0a0 /* 考虑到当前一般程序工作于EL1，对于NS 或 S 安全状态 ，0x80 - 0xff 的优先级都有存在的可能性 */
+#define FGIC_INT_DEFAULT_PRI_X4     0xa0a0a0a0 /* EL1NS  S  0x80 - 0xff  */
 #define FGIC_CPU_INTERFACE_DEFAULT_FLITER 0xFF
 
 typedef enum
@@ -116,7 +116,7 @@ void FGicDistrubutiorInit(FGic *instance_p)
         FASSERT(FGIC_READREG32(dis_base, FGIC_GICD_CTLR_OFFSET) & FGIC_GICD_CTLR_DS_MASK);
     }
 
-    /* 关闭所有中断，并将中断分组默认为group 1 */
+    /* group 1 */
     for (int_id = FGIC_SPI_START_ID; int_id < max_ints_mun; int_id += FGIC_GICD_32_PER_REG)
     {
         int_index = int_id / FGIC_GICD_32_PER_REG;
@@ -206,7 +206,7 @@ FError FGicRedistrubutiorInit(FGic *instance_p)
     }
     FGIC_GICR_IGRPMODR0_WRITE(sgi_base, FGIC_GICR_IGRPMODR0_DEFAULT_MASK);
 
-    /* 默认所有优先级为0xa0 */
+    /* 0xa0 */
     for (int_id = 0; int_id < FGIC_SPI_START_ID; int_id += FGIC_GICD_4_PER_REG)
     {
         FGIC_GICR_IPRIORITYR_WRITE(sgi_base, int_id, FGIC_INT_DEFAULT_PRI_X4);
@@ -488,7 +488,7 @@ u32 FGicGetTriggerLevel(FGic *instance_p, s32 int_id)
  * @param {FGic} *instance_p is a pointer to the FGic instance.
  * @param {u32} int_id is interrupt vector for spi
  * @param {SPI_ROUTING_MODE} route_mode is the interrupt routing mode.
- * @param {u64} affinity  is the affinity level ，format is
+ * @param {u64} affinity  is the affinity level format is
  * |--------[bit39-32]-------[bit23-16]-------------[bit15-8]--------[bit7-0]
  * |--------Affinity level3-----Affinity level2-----Affinity level1---Affinity level0
  * @return {*}

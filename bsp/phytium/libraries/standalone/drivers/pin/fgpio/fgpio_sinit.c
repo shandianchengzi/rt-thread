@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fgpio_sinit.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:25:29
- * Description:  This files is for GPIO static variables
+ * Description: This files is for GPIO static variables
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   zhugengyu  2022-3-1     init commit
  */
 
@@ -49,9 +49,9 @@
 #if defined(FGPIO_VERSION_1) /* FT2000-4, D2000 */
 /**
  * @name: FGpioLookupConfig
- * @msg: 获取GPIO控制器的默认配置
- * @return {const FGpioConfig *} GPIO控制器的默认配置
- * @param {u32} instance_id, GPIO控制器实例号
+ * @msg: GPIO
+ * @return {const FGpioConfig *} GPIO
+ * @param {u32} instance_id, GPIO
  */
 const FGpioConfig *FGpioLookupConfig(u32 instance_id)
 {
@@ -72,10 +72,10 @@ const FGpioConfig *FGpioLookupConfig(u32 instance_id)
 #elif defined(FGPIO_VERSION_2) /* E2000 GPIO 0 ~ 5 */
 /**
  * @name: FGpioSetIrqNum
- * @msg: 设置GPIO控制器各引脚的中断号
+ * @msg: GPIO
  * @return {NONE}
- * @param {u32} instance_id, GPIO控制器实例号
- * @param {FGpioConfig} *ptr, GPIO控制器的默认配置
+ * @param {u32} instance_id, GPIO
+ * @param {FGpioConfig} *ptr, GPIO
  */
 static void FGpioSetIrqNum(u32 instance_id, FGpioConfig *ptr)
 {
@@ -117,9 +117,9 @@ static void FGpioSetIrqNum(u32 instance_id, FGpioConfig *ptr)
 
 /**
  * @name: FGpioLookupConfig
- * @msg: 获取GPIO控制器的默认配置
- * @return {const FGpioConfig *} GPIO控制器的默认配置
- * @param {u32} instance_id, GPIO控制器实例号
+ * @msg: GPIO
+ * @return {const FGpioConfig *} GPIO
+ * @param {u32} instance_id, GPIO
  */
 const FGpioConfig *FGpioLookupConfig(u32 instance_id)
 {

@@ -87,10 +87,10 @@ static void run(struct rt_pm *pm, uint8_t mode)
         return;
     last_mode = mode;
 
-    /* 1. 设置 MSI 作为 SYSCLK 时钟源,以修改 PLL */
+    /* 1.  MSI  SYSCLK , PLL */
     SystemClock_MSI_ON();
 
-    /* 2. 根据RUN模式切换时钟频率(HSI) */
+    /* 2. RUN(HSI) */
     switch (mode)
     {
     case PM_RUN_MODE_HIGH_SPEED:
@@ -115,10 +115,10 @@ static void run(struct rt_pm *pm, uint8_t mode)
         break;
     }
 
-    /* 3. 关闭 MSI 时钟 */
+    /* 3.  MSI  */
     // SystemClock_MSI_OFF();
 
-    /* 4. 更新外设时钟 */
+    /* 4.  */
     uart_console_reconfig();
     /* Re-Configure the Systick time */
     HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq() / RT_TICK_PER_SECOND);

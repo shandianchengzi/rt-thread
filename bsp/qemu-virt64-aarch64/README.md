@@ -1,6 +1,6 @@
 # QEMU/AArch64 VIRT BSP Introduction
 
-[中文页](README_zh.md) | English
+[](README_zh.md) | English
 
 ## 1. Introduction
 
@@ -12,7 +12,7 @@ Usage ARM Developer GNU ToolChain, it support Linux and Windows:
 ```
 https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-a/downloads/
 ```
-Download the `xxx-aarch64-none-elf` of x86_64 hosted platform，set the `RTT_EXEC_PATH` is system environment after decompress the binary.
+Download the `xxx-aarch64-none-elf` of x86_64 hosted platformset the `RTT_EXEC_PATH` is system environment after decompress the binary.
 
 Enter directory `rt-thread/bsp/qemu-virt64-aarch64` and input:
 ```

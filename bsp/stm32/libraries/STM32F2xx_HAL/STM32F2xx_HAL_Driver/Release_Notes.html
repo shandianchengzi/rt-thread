@@ -23,14 +23,14 @@
 <div class="sectione dark">
 <center>
 <h1 id="release-notes-for-stm32f2xx-hal-drivers"><strong>Release Notes for STM32F2xx HAL Drivers</strong></h1>
-<p>Copyright © 2017 STMicroelectronics<br />
+<p>Copyright  2017 STMicroelectronics<br />
 </p>
 <a href="https://www.st.com" class="logo"><img src="_htmresc/st_logo.png" alt="ST logo" /></a>
 </center>
 </div>
 </div>
 <h1 id="license"><strong>License</strong></h1>
-This software component is licensed by ST under BSD 3-Clause license, the “License”; You may not use this component except in compliance with the License. You may obtain a copy of the License at:
+This software component is licensed by ST under BSD 3-Clause license, the License; You may not use this component except in compliance with the License. You may obtain a copy of the License at:
 <center>
 <a href="https://opensource.org/licenses/BSD-3-Clause">https://opensource.org/licenses/BSD-3-Clause</a>
 </center>
@@ -56,7 +56,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>Update HAL_CAN_Init() API to be aligned with reference manual and to avoid timeout error:
 <ul>
-<li>Update CAN Initialization sequence to set “request initialization” bit before exit from sleep mode.</li>
+<li>Update CAN Initialization sequence to set request initialization bit before exit from sleep mode.</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL GPIO</strong> driver
@@ -69,7 +69,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li><strong>HAL NAND</strong> driver
 <ul>
-<li>Update implementation of “HAL_NAND_Write_Page_16b” and “HAL_NAND_Read_Page_16b” APIs implementation to fix an issue with the page calculation of 8 bits memories.</li>
+<li>Update implementation of HAL_NAND_Write_Page_16b and HAL_NAND_Read_Page_16b APIs implementation to fix an issue with the page calculation of 8 bits memories.</li>
 <li>Update functions HAL_NAND_Read_SpareArea_16b() and HAL_NAND_Write_SpareArea_16b() to fix column address calculation issue.</li>
 </ul></li>
 <li><strong>HAL SDMMC</strong> driver
@@ -105,7 +105,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>HAL_RTC_DST_ClearStoreOperation()</li>
 <li>HAL_RTC_DST_ReadStoreOperation()</li>
 </ul></li>
-<li>Update __HAL_RTC_…(__HANDLE__, …) macros to access registers through (__HANDLE__)-&gt;Instance pointer and avoid “unused variable” warnings.</li>
+<li>Update __HAL_RTC_(__HANDLE__, ) macros to access registers through (__HANDLE__)-&gt;Instance pointer and avoid unused variable warnings.</li>
 <li>Correct month management in IS_LL_RTC_MONTH() macro.</li>
 </ul></li>
 <li><strong>HAL DMA</strong> driver
@@ -139,7 +139,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>Update HAL_I2C_Master_Transmit_IT(), HAL_I2C_Master_Receive_IT(), HAL_I2C_Master_Transmit_DMA() and HAL_I2C_Master_Receive_DMA() APIs to unlock the I2C peripheral before generating the start.</li>
 </ul></li>
-<li>Update to use the right macro to clear I2C ADDR flag inside I2C_Slave_ADDR() API as it’s indicated in the reference manual.</li>
+<li>Update to use the right macro to clear I2C ADDR flag inside I2C_Slave_ADDR() API as its indicated in the reference manual.</li>
 <li>Update HAL_I2C_EV_IRQHandler() and I2C_MasterTransmit_BTF() APIs to fix an issue where the transfer of the first few bytes to an I2C memory fails.</li>
 </ul></li>
 <li><strong>HAL RNG</strong> driver
@@ -183,7 +183,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>Update to fix hardfault issue with HAL_I2C_Mem_Write_DMA() API:
 <ul>
-<li>Abort the right ongoing DMA transfer when memory write access request operation failed: fix typo “hdmarx” replaced by “hdmatx”</li>
+<li>Abort the right ongoing DMA transfer when memory write access request operation failed: fix typo hdmarx replaced by hdmatx</li>
 </ul></li>
 </ul></li>
 </ul>
@@ -231,7 +231,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li><strong>HAL/LL GPIO</strong> driver
 <ul>
-<li>Update HAL_GPIO_TogglePin() API to allow multi Pin’s toggling.</li>
+<li>Update HAL_GPIO_TogglePin() API to allow multi Pins toggling.</li>
 <li>Update LL_GPIO_TogglePin() API to improve robustness: use BSRR register instead of ODR register.</li>
 </ul></li>
 <li><strong>HAL/LL RCC</strong> driver
@@ -431,7 +431,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>Replace IS_TIM_SYNCHRO_INSTANCE() macro by IS_TIM_MASTER_INSTANCE() macro.</li>
 <li>Add IS_TIM_SLAVE_INSTANCE() macro to check on TIM_SMCR_MSM bit.</li>
 </ul></li>
-<li>Remove ‘register’ storage class specifier from LL TIM driver.</li>
+<li>Remove register storage class specifier from LL TIM driver.</li>
 <li>Add new API HAL_TIM_DMABurst_MultiWriteStart() allowing to configure the DMA Burst to transfer multiple Data from the memory to the TIM peripheral</li>
 <li>Add new API HAL_TIM_DMABurst_MultiReadStart() allowing to configure the DMA Burst to transfer Data from the TIM peripheral to the memory</li>
 </ul></li>
@@ -459,7 +459,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>General updates to fix known defects and enhancements implementation</li>
 <li><strong>HAL/LL GPIO</strong> update
 <ul>
-<li>Update GPIO initialization sequence to avoid unwanted pulse on GPIO Pin’s</li>
+<li>Update GPIO initialization sequence to avoid unwanted pulse on GPIO Pins</li>
 </ul></li>
 <li><strong>HAL I2C</strong> update
 <ul>
@@ -477,7 +477,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>Add new ErrorCode define: HAL_I2C_WRONG_START</li>
 <li>Set ErrorCode parameter in I2C handle to HAL_I2C_WRONG_START</li>
 </ul></li>
-<li>Update I2C_DMAXferCplt(), I2C_DMAError() and I2C_DMAAbort() APIs to fix hardfault issue when hdmatx and hdmarx parameters in i2c handle aren’t initialized (NULL pointer).
+<li>Update I2C_DMAXferCplt(), I2C_DMAError() and I2C_DMAAbort() APIs to fix hardfault issue when hdmatx and hdmarx parameters in i2c handle arent initialized (NULL pointer).
 <ul>
 <li>Add additional check on hi2c-&gt;hdmtx and hi2c-&gt;hdmarx before resetting DMA Tx/Rx complete callbacks.</li>
 </ul></li>
@@ -523,7 +523,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <h2 id="main-changes-4">Main Changes</h2>
 <ul>
 <li>General updates to fix known defects and enhancements implementation</li>
-<li>HAL drivers clean up: remove double casting ‘uint32_t’ and ‘U’</li>
+<li>HAL drivers clean up: remove double casting uint32_t and U</li>
 <li>General updates to fix CodeSonar compilation warnings</li>
 <li>General updates to fix the user manual .chm files</li>
 <li>Add support of HAL callback registration feature</li>
@@ -545,7 +545,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li><strong>Rework of HAL CRYP driver (compatibility break)</strong>
 <ul>
-<li>HAL CRYP driver has been redesigned with new API’s, to bypass limitations on data Encryption/Decryption management present with previous HAL CRYP driver version.</li>
+<li>HAL CRYP driver has been redesigned with new APIs, to bypass limitations on data Encryption/Decryption management present with previous HAL CRYP driver version.</li>
 <li>The new HAL CRYP driver is the recommended version. It is located as usual in Drivers/STM32F2xx_HAL_Driver/Src and Drivers/STM32f2xx_HAL_Driver/Inc folders. It can be enabled through switch HAL_CRYP_MODULE_ENABLED in stm32f2xx_hal_conf.h</li>
 <li>The legacy HAL CRYP driver is no longer supported.</li>
 </ul></li>
@@ -560,7 +560,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>Update HAL driver to allow user to change systick period to 1ms, 10 ms or 100 ms :
 <ul>
-<li>Add the following API’s :
+<li>Add the following APIs :
 <ul>
 <li>HAL_GetTickPrio(): Returns a tick priority.</li>
 <li>HAL_SetTickFreq(): Sets new tick frequency.</li>
@@ -575,7 +575,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>General updates to fix MISRA 2012 compilation errors
 <ul>
 <li>HAL_IS_BIT_SET()/HAL_IS_BIT_CLR() macros implementation update</li>
-<li>“stdio.h” include updated with “stddef.h”</li>
+<li>stdio.h include updated with stddef.h</li>
 </ul></li>
 <li>Add HAL_GetUIDw0(), HAL_GetUIDw1() and HAL_GetUIDw2() API in order to returns the unique device identifier</li>
 </ul></li>
@@ -604,7 +604,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>CAN_FILTER_ENABLE instead of ENABLE</li>
 <li>CAN_FILTER_DISABLE instead of DISABLE</li>
 </ul></li>
-<li>HAL_CAN_Init() is split into both HAL_CAN_Init() and HAL_CAN_Start() API’s</li>
+<li>HAL_CAN_Init() is split into both HAL_CAN_Init() and HAL_CAN_Start() APIs</li>
 <li>HAL_CAN_Transmit() is replaced by HAL_CAN_AddTxMessage() to place Tx Request, then HAL_CAN_GetTxMailboxesFreeLevel() for polling until completion.</li>
 <li>HAL_CAN_Transmit_IT() is replaced by HAL_CAN_ActivateNotification() to enable transmit IT, then HAL_CAN_AddTxMessage() for place Tx request.</li>
 <li>HAL_CAN_Receive() is replaced by HAL_CAN_GetRxFifoFillLevel() for polling until reception, then HAL_CAN_GetRxMessage()</li>
@@ -614,7 +614,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>HAL_CAN_Slepp() is renamed as HAL_CAN_RequestSleep()</li>
 <li>HAL_CAN_TxCpltCallback() is split into HAL_CAN_TxMailbox0CompleteCallback(), HAL_CAN_TxMailbox1CompleteCallback() and HAL_CAN_TxMailbox2CompleteCallback().</li>
 <li>HAL_CAN_RxCpltCallback is split into HAL_CAN_RxFifo0MsgPendingCallback() and HAL_CAN_RxFifo1MsgPendingCallback().</li>
-<li>More complete “How to use the new driver” is detailed in the driver header section itself.</li>
+<li>More complete How to use the new driver is detailed in the driver header section itself.</li>
 <li><em>Refer to the following example to identify the changes</em></li>
 </ul></li>
 <li><strong>HAL CRC</strong> update
@@ -625,7 +625,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>Be able to return HAL status when CRC is is already busy</li>
 <li>DeInit the low level hardware after reset IDR register content</li>
 </ul></li>
-<li>Remove extra call to HAL_LOCK/HAL_UNLOCK from the followings API’s:
+<li>Remove extra call to HAL_LOCK/HAL_UNLOCK from the followings APIs:
 <ul>
 <li>HAL_CRC_Accumulate()</li>
 <li>HAL_CRC_Calculate()</li>
@@ -651,7 +651,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>HAL_CRYP_Encypt_DMA()</li>
 <li>HAL_CRYP_Decypt_DMA()</li>
 </ul></li>
-<li>More complete “How to use the new driver” is detailed in the driver header section itself.</li>
+<li>More complete How to use the new driver is detailed in the driver header section itself.</li>
 <li><em>Refer to the following example to identify the changes</em></li>
 </ul></li>
 <li><strong>HAL DAC</strong> update
@@ -686,7 +686,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li><strong>HAL DMA</strong> update
 <ul>
 <li>Add clean of callbacks in HAL_DMA_DeInit() API</li>
-<li>Remove FIFO error enabling in “HAL_DMA_Start_IT”
+<li>Remove FIFO error enabling in HAL_DMA_Start_IT
 <ul>
 <li>when FIFO error monitoring is requested in IT model, the macro __HAL_DMA_ENABLE_IT can be used to enable the FIFO error IT at the user Msp functio</li>
 </ul></li>
@@ -718,7 +718,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>Rename HAL_I2C_Slave_Sequentiel_Transmit_IT() to HAL_I2C_Slave_Seq_Transmit_IT()</li>
 <li>Rename HAL_I2C_Slave_Sequentiel_Receive_DMA() to HAL_I2C_Slave_Seq_Receive_DMA()</li>
 </ul></li>
-<li>Add support of I2C repeated start feature in DMA Mode With the following new API’s
+<li>Add support of I2C repeated start feature in DMA Mode With the following new APIs
 <ul>
 <li>HAL_I2C_Master_Seq_Transmit_DMA()</li>
 <li>HAL_I2C_Master_Seq_Receive_DMA()</li>
@@ -790,7 +790,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li>Update HAL_SPI_StateTypeDef structure to add new state: HAL_SPI_STATE_ABORT</li>
 <li>Add HAL_SPI_Abort() to manage abort issue in SPI TX or Rx mode only</li>
-<li>Update HAL_SPI_Transmit()/HAL_SPI_Receive() API’s to fix memory overflow issue.</li>
+<li>Update HAL_SPI_Transmit()/HAL_SPI_Receive() APIs to fix memory overflow issue.</li>
 <li>Update HAL_SPI_Transmit_DMA : checking hmdtx instead of hdmrx.</li>
 <li>Update HAL_SPI_IRQHandler() function to
 <ul>
@@ -809,13 +809,13 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>I2S_CHECK_FLAG()</li>
 <li>I2S_CHECK_IT_SOURCE()</li>
 </ul></li>
-<li>Update HAL_I2S_Transmit()/HAL_I2S_Receive() API’s to fix memory overflow issue</li>
+<li>Update HAL_I2S_Transmit()/HAL_I2S_Receive() APIs to fix memory overflow issue</li>
 <li>Update HAL_SPI_IRQHandler() function to
 <ul>
 <li>Add error management in case DMA errors through HAL_DMA_Abort_IT() and ErrorCallback()</li>
 <li>Optimize code by using direct register read</li>
 </ul></li>
-<li>Add extra call to HAL_LOCK/HAL_UNLOCK to the followings API’s:
+<li>Add extra call to HAL_LOCK/HAL_UNLOCK to the followings APIs:
 <ul>
 <li>HAL_I2S_Transmit()</li>
 <li>HAL_I2S_Receive()</li>
@@ -834,7 +834,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>TIM_MasterConfigTypeDef()</li>
 <li>TIM_BreakDeadTimeConfigTypeDef()</li>
 </ul></li>
-<li>Add new TIM Callbacks API’s:
+<li>Add new TIM Callbacks APIs:
 <ul>
 <li>HAL_TIM_PeriodElapsedHalfCpltCallback()</li>
 <li>HAL_TIM_IC_CaptureHalfCpltCallback()</li>
@@ -980,7 +980,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li>General updates to fix known defects and enhancements implementation</li>
 <li>Fix extra warnings with GCC compiler</li>
-<li>HAL drivers clean up: remove double casting ‘uint32_t’ and ‘U’</li>
+<li>HAL drivers clean up: remove double casting uint32_t and U</li>
 <li>Add new <strong>HAL MMC</strong> driver</li>
 <li><strong>The following changes done on the HAL drivers require an update on the application code based on older HAL versions</strong>
 <ul>
@@ -1056,7 +1056,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li><strong>HAL I2C</strong> update
 <ul>
 <li>Update HAL_I2C_Master_Transmit() and HAL_I2C_Slave_Transmit() to avoid sending extra bytes at the end of the transmit processes</li>
-<li>UpdateHAL_I2C_Mem_Read() API to fix wrong check on misused parameter “Size”</li>
+<li>UpdateHAL_I2C_Mem_Read() API to fix wrong check on misused parameter Size</li>
 <li>UpdateI2C_MasterReceive_RXNE() and I2C_MasterReceive_BTF() static APIs toenhance Master sequential reception process.</li>
 </ul></li>
 <li><strong>HAL SPI</strong> update
@@ -1071,7 +1071,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li><strong>HAL USB PCD</strong> update
 <ul>
 <li>Flush all TX FIFOs on USB Reset</li>
-<li>Remove Lock mechanism from HAL_PCD_EP_Transmit() and HAL_PCD_EP_Receive() API’s</li>
+<li>Remove Lock mechanism from HAL_PCD_EP_Transmit() and HAL_PCD_EP_Receive() APIs</li>
 </ul></li>
 <li><strong>LL USB</strong> update
 <ul>
@@ -1105,7 +1105,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>In stm32f2xx_it.c file, PPP_IRQHandler() function: add a call to HAL_PPP_IRQHandler() function</li>
 <li>Add and customize the Error Callback API: HAL_PPP_ErrorCallback()</li>
 </ul></li>
-<li>HAL I2C driver:◾Update to avoid waiting on STOPF/BTF/AF flag under DMA ISR by using the PPP end of transfer interrupt in theDMA transfer process. This requires the following updates on user application:
+<li>HAL I2C driver:Update to avoid waiting on STOPF/BTF/AF flag under DMA ISR by using the PPP end of transfer interrupt in theDMA transfer process. This requires the following updates on user application:
 <ul>
 <li>Configure and enable the PPP IRQ in HAL_PPP_MspInit() function</li>
 <li>In stm32f2xx_it.c file, PPP_IRQHandler() function: add a call to HAL_PPP_IRQHandler() function</li>
@@ -1119,7 +1119,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>HAL WWDG driver: rework overall driver for better implementation
 <ul>
 <li>Remove HAL_WWDG_Start(), HAL_WWDG_Start_IT(), HAL_WWDG_MspDeInit() and HAL_WWDG_GetState() APIs</li>
-<li>Update the HAL_WWDG_Refresh(WWDG_HandleTypeDef *hwwdg, uint32_t counter) function and API by removing the “counter” parameter</li>
+<li>Update the HAL_WWDG_Refresh(WWDG_HandleTypeDef *hwwdg, uint32_t counter) function and API by removing the counter parameter</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL Generic</strong> update
@@ -1177,7 +1177,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>Add support of I2C repeated start feature:
 <ul>
-<li>With the following new API’s
+<li>With the following new APIs
 <ul>
 <li>HAL_I2C_Master_Sequential_Transmit_IT()</li>
 <li>HAL_I2C_Master_Sequential_Receive_IT()</li>
@@ -1220,7 +1220,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>In stm32f2xx_it.c file, I2C_IRQHandler() function: add a call to HAL_I2C_IRQHandler() function</li>
 <li>Add and customize the Error Callback API: HAL_I2C_ErrorCallback()</li>
 </ul></li>
-<li>NACK error during addressing phase is returned through interrupt instead of previously through I2C transfer API’s</li>
+<li>NACK error during addressing phase is returned through interrupt instead of previously through I2C transfer APIs</li>
 <li>I2C addressing phase is updated to be managed using interrupt instead of polling (Only for HAL I2C driver)
 <ul>
 <li>Add new static functions to manage I2C SB, ADDR and ADD10 flags</li>
@@ -1230,8 +1230,8 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>Several update on HAL IRDA driver to implement the new UART state machine:
 <ul>
-<li>Add new field in IRDA_HandleTypeDef structure: “rxState”, IRDA state information related to Rx Operations</li>
-<li>Rename “state” field in UART_HandleTypeDef structure by “gstate”: IRDA state information related to global Handle management and Tx Operations</li>
+<li>Add new field in IRDA_HandleTypeDef structure: rxState, IRDA state information related to Rx Operations</li>
+<li>Rename state field in UART_HandleTypeDef structure by gstate: IRDA state information related to global Handle management and Tx Operations</li>
 <li>Update IRDA process to manage the new UART states.</li>
 <li>Update __HAL_IRDA_RESET_HANDLE_STATE() macro to handle the new IRDA state parameters (gState, rxState)</li>
 </ul></li>
@@ -1279,7 +1279,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li><strong>HAL RCC</strong> update
 <ul>
-<li>Add new default define value for HSI calibration “RCC_HSICALIBRATION_DEFAULT”</li>
+<li>Add new default define value for HSI calibration RCC_HSICALIBRATION_DEFAULT</li>
 <li>Optimize Internal oscillators and PLL startup timeout</li>
 <li>Update to avoid the disable for HSE/LSE oscillators before setting the new RCC HSE/LSE configuration and add the following notes in HAL_RCC_OscConfig() API description:
 <ul>
@@ -1299,7 +1299,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>supported by this API. User should request a transition to HSE Off</li>
 </ul></li>
 <li><ul>
-<li>first and then HSE On or HSE Bypass.◦Optimize the HAL_RCC_ClockConfig() API implementation</li>
+<li>first and then HSE On or HSE Bypass.Optimize the HAL_RCC_ClockConfig() API implementation</li>
 </ul></li>
 </ul></li>
 <li>Update HAL_RCC_ClockConfig() function to adjust the SystemCoreClock</li>
@@ -1313,8 +1313,8 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>Several update on HAL SMARTCARD driver to implement the new UART state machine:
 <ul>
-<li>Add new field in SMARTCARD_HandleTypeDef structure: “rxState”, SMARTCARDstate information related to Rx Operations</li>
-<li>Rename “state” field in UART_HandleTypeDef structure by “gstate”: SMARTCARDstate information related to global Handle management and Tx Operations</li>
+<li>Add new field in SMARTCARD_HandleTypeDef structure: rxState, SMARTCARDstate information related to Rx Operations</li>
+<li>Rename state field in UART_HandleTypeDef structure by gstate: SMARTCARDstate information related to global Handle management and Tx Operations</li>
 <li>Update SMARTCARD process to manage the new UART states.</li>
 <li>Update __HAL_SMARTCARD_RESET_HANDLE_STATE() macro to handle the new SMARTCARD state parameters (gState, rxState)</li>
 </ul></li>
@@ -1339,9 +1339,9 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>Polling mode:
 <ul>
-<li>Replace use of SPI_WaitOnFlagUnitTimeout() funnction by “if” statement to check on RXNE/TXE flags while transferring data</li>
+<li>Replace use of SPI_WaitOnFlagUnitTimeout() funnction by if statement to check on RXNE/TXE flags while transferring data</li>
 <li>Use API data pointer instead of SPI handle data pointer</li>
-<li>Use a Goto implementation instead of “if..else” statements</li>
+<li>Use a Goto implementation instead of if..else statements</li>
 </ul></li>
 </ul></li>
 <li>Interrupt mode:
@@ -1359,7 +1359,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>Update Timeout management to check on global process</li>
 <li>Update Error code management in all processes</li>
-<li>Update DMA process:◾Add the management of SPI peripheral errors during DMA process. This requires the following updates in the user application:</li>
+<li>Update DMA process:Add the management of SPI peripheral errors during DMA process. This requires the following updates in the user application:</li>
 <li>Configure and enable the SPI IRQ in HAL_SPI_MspInit() function</li>
 <li>In stm32f2xx_it.c file, SPI_IRQHandler() function: add a call to HAL_SPI_IRQHandler() function</li>
 <li>Add and customize the Error Callback API: HAL_SPI_ErrorCallback()</li>
@@ -1371,8 +1371,8 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>Several update on HAL UART driver to implement the new UART state machine:
 <ul>
-<li>Add new field in UART_HandleTypeDef structure: “rxState”, UART state information related to Rx Operations</li>
-<li>Rename “state” field in UART_HandleTypeDef structure by “gstate”: UART state information related to global Handle management and Tx Operations</li>
+<li>Add new field in UART_HandleTypeDef structure: rxState, UART state information related to Rx Operations</li>
+<li>Rename state field in UART_HandleTypeDef structure by gstate: UART state information related to global Handle management and Tx Operations</li>
 <li>Update UART process to manage the new UART states.</li>
 <li>Update __HAL_UART_RESET_HANDLE_STATE() macro to handle the new UART state parameters (gState, rxState)</li>
 </ul></li>
@@ -1428,7 +1428,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>HAL_WWDG_Refresh()
 <ul>
 <li>This function insures the reload of the counter</li>
-<li>The “counter” parameter has been removed</li>
+<li>The counter parameter has been removed</li>
 </ul></li>
 <li>HAL_WWDG_IRQHandler()</li>
 <li>HAL_WWDG_EarlyWakeupCallback() is the new prototype of HAL_WWDG_WakeUpCallback()</li>
@@ -1505,7 +1505,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li><strong>HAL CAN</strong> update
 <ul>
-<li>Update to use “=” instead of “|=” to clear flags in the MSR, TSR, RF0R and RF1R registers</li>
+<li>Update to use = instead of |= to clear flags in the MSR, TSR, RF0R and RF1R registers</li>
 </ul></li>
 <li><strong>HAL PCD</strong> update
 <ul>
@@ -1527,7 +1527,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li><strong>Macros and literals renaming to ensure compatibles across STM32 series</strong>, backward compatibility maintained thanks to new added file stm32_hal_legacy.h under /Inc/Legacy</li>
 <li>Add *.chm UM for all drivers</li>
 <li>Update drivers to be C++ compliant</li>
-<li>Several update on source code formatting, for better UM generation (i.e. Doxygen tags updated)</li>
+<li>Several update on source code formatting, for better UM generation (i.e.Doxygen tags updated)</li>
 <li><strong>Four changes done on the HAL requires an update on the application code based on HAL V1.0.1</strong>
 <ul>
 <li>LSI_VALUE constant has been corrected in stm32f2xx_hal_conf.h file, its value changed from 40 KHz to 32 KHz</li>
@@ -1558,7 +1558,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>Systick timer is used by default as source of time base, but user can eventually implement his proper time base source (a general purpose timer for example or other time source)</li>
 <li>Functions affecting time base configurations are declared as __Weak to make override possible in case of other implementations in user file, for more details please refer to HAL_TimeBase example</li>
 </ul></li>
-<li>Fix flag clear procedure: use atomic write operation “=” instead of ready-modify-write operation “|=” or “&amp;=”</li>
+<li>Fix flag clear procedure: use atomic write operation = instead of ready-modify-write operation |= or &amp;=</li>
 <li>Fix on Timeout management, Timeout value set to 0 passed to API automatically exits the function after checking the flag without any wait</li>
 <li>Common update for the following communication peripherals: SPI, UART, USART and IRDA
 <ul>
@@ -1585,7 +1585,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>HAL_ADC_StateTypeDef enum fields are replaced by respective defines</li>
 </ul></li>
 <li>Add new literal: ADC_SOFTWARE_START to be used as possible value for the ExternalTrigConv parameter in the ADC_InitTypeDef structure to select the ADC software trigger mode.</li>
-<li>IS_ADC_CHANNEL() macro update to don’t assert stop the ADC_CHANNEL_TEMPSENSOR value</li>
+<li>IS_ADC_CHANNEL() macro update to dont assert stop the ADC_CHANNEL_TEMPSENSOR value</li>
 <li>HAL_ADC_PollForConversion(): update to manage particular case when ADC configured in DMA mode and ADC sequencer with several ranks and polling for end of each conversion</li>
 <li>HAL_ADC_Start()/HAL_ADC_Start_IT() /HAL_ADC_Start_DMA() update:
 <ul>
@@ -1593,7 +1593,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>Optimize the ADC stabilization delays</li>
 </ul></li>
 <li>__HAL_ADC_GET_IT_SOURCE() update macro implementation</li>
-<li>Add more details in ‘How to use this driver’ section</li>
+<li>Add more details in How to use this driver section</li>
 <li>Add new literal: ADC_INJECTED_SOFTWARE_START to be used as possible value for the ExternalTrigInjecConvEdge parameter in the ADC_InitTypeDef structure to select the ADC software trigger mode.</li>
 </ul></li>
 <li><strong>HAL DAC</strong> update
@@ -1628,7 +1628,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li><strong>HAL CRYP</strong> update
 <ul>
 <li>HAL_CRYP_DESECB_Decrypt_DMA(): fix the inverted pPlainData and pCypherData parameters issue</li>
-<li>Add restriction for the CCM Encrypt/Decrypt API’s that only DataType equal to 8bits is supported</li>
+<li>Add restriction for the CCM Encrypt/Decrypt APIs that only DataType equal to 8bits is supported</li>
 <li>Update to manage multi instance:
 <ul>
 <li>Add new parameter Instance in the CRYP_HandleTypeDef Handle structure.</li>
@@ -1668,19 +1668,19 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>update HAL_FLASH_Program_IT() function by removing the pending flag clear</li>
 <li>update HAL_FLASH_IRQHandler() function to improve erase operation procedure</li>
 <li>update FLASH_WaitForLastOperation() function by checking on end of operation flag</li>
-<li>Add “HAL_” prefix in the defined values for the FLASH error code</li>
+<li>Add HAL_ prefix in the defined values for the FLASH error code</li>
 <li>Example: FLASH_ERROR_PGP renamed by <strong>HAL</strong>_FLASH_ERROR_PGP</li>
 <li>Clear the Flash ErrorCode in the FLASH_WaitForLastOperation() function</li>
-<li>Update FLASH_SetErrorCode() function to use “|=” operant to update the Flash ErrorCode parameter in the FLASH handle</li>
-<li>IS_FLASH_ADDRESS(): Update the macro check using ‘&lt;=’ condition instead of ‘&lt;’</li>
-<li>IS_OPTIONBYTE(): Update the macro check using ‘&lt;=’ condition instead of ‘&lt;’</li>
-<li>Add “FLASH_” prefix in the defined values of FLASH Type Program parameter</li>
+<li>Update FLASH_SetErrorCode() function to use |= operant to update the Flash ErrorCode parameter in the FLASH handle</li>
+<li>IS_FLASH_ADDRESS(): Update the macro check using &lt;= condition instead of &lt;</li>
+<li>IS_OPTIONBYTE(): Update the macro check using &lt;= condition instead of &lt;</li>
+<li>Add FLASH_ prefix in the defined values of FLASH Type Program parameter</li>
 <li>Example: TYPEPROGRAM_BYTE renamed by <strong>FLASH</strong>_TYPEPROGRAM_BYTE</li>
-<li>Add “FLASH_” prefix in the defined values of FLASH Type Erase parameter</li>
+<li>Add FLASH_ prefix in the defined values of FLASH Type Erase parameter</li>
 <li>Example: TYPEERASE_SECTORS renamed by <strong>FLASH</strong>_TYPEERASE_SECTORS</li>
-<li>Add “FLASH_” prefix in the defined values of FLASH Voltage Range parameter</li>
+<li>Add FLASH_ prefix in the defined values of FLASH Voltage Range parameter</li>
 <li>Example: VOLTAGE_RANGE_1 renamed by <strong>FLASH</strong>_VOLTAGE_RANGE_1</li>
-<li>Add “OB_” prefix in the defined values of FLASH WRP State parameter</li>
+<li>Add OB_ prefix in the defined values of FLASH WRP State parameter</li>
 <li>Example: WRPSTATE_ENABLE renamed by <strong>OB</strong>_WRPSTATE_ENABLE</li>
 <li>__HAL_FLASH_INSTRUCTION_CACHE_RESET() macro: update to reset ICRST bit in the ACR register after setting it.</li>
 <li>__HAL_FLASH_DATA_CACHE_RESET() macro: update to reset DCRST bit in the ACR register after setting it.</li>
@@ -1887,7 +1887,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li><strong>HAL IrDA</strong> update
 <ul>
-<li>Add specific macros to manage the flags cleared only by a software sequence ◾__HAL_IRDA_CLEAR_PEFLAG()
+<li>Add specific macros to manage the flags cleared only by a software sequence __HAL_IRDA_CLEAR_PEFLAG()
 <ul>
 <li>__HAL_ IRDA _CLEAR_FEFLAG()</li>
 <li>__HAL_ IRDA _CLEAR_NEFLAG()</li>
@@ -1899,7 +1899,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>Remove the check on RXNE set after reading the Data in the DR register</li>
 <li>Update HAL_IRDA_Transmit_IT() to enable IRDA_IT_TXE instead of IRDA_IT_TC</li>
 </ul></li>
-<li>Add the following APIs used within DMA process ◾HAL_StatusTypeDef HAL_IRDA_DMAPause(IRDA_HandleTypeDef *hirda);
+<li>Add the following APIs used within DMA process HAL_StatusTypeDef HAL_IRDA_DMAPause(IRDA_HandleTypeDef *hirda);
 <ul>
 <li>HAL_StatusTypeDef HAL_IRDA_DMAResume(IRDA_HandleTypeDef *hirda);</li>
 <li>HAL_StatusTypeDef HAL_IRDA_DMAStop(IRDA_HandleTypeDef *hirda);<br />
@@ -1925,7 +1925,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li>HAL_IRDA_Transmit_IT(): update to remove the enable of the parity error interrupt</li>
 <li>Add use of tmpreg variable in __HAL_IRDA_CLEAR_PEFLAG() macro for compliance with C++</li>
-<li>HAL_IRDA_Transmit_DMA() update to follow the right procedure “Transmission using DMA” in the reference manual
+<li>HAL_IRDA_Transmit_DMA() update to follow the right procedure Transmission using DMA in the reference manual
 <ul>
 <li>Add clear the TC flag in the SR register before enabling the DMA transmit request</li>
 </ul></li>
@@ -1946,8 +1946,8 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>void HAL_SPI_TxRxHalfCpltCallback(SPI_HandleTypeDef *hspi);</li>
 </ul></li>
 <li>HAL_SPI_TransmitReceive_DMA() update to remove the DMA Tx Error Callback initialization when SPI RxOnly mode is selected</li>
-<li>Add use of UNUSED(tmpreg) in __HAL_SPI_CLEAR_MODFFLAG(), __HAL_SPI_CLEAR_OVRFLAG(), __HAL_SPI_CLEAR_FREFLAG() to fix “Unused variable” warning with TrueSTUDIO.</li>
-<li>Rename Literals: remove “D” from “DISABLED” and “ENABLED”
+<li>Add use of UNUSED(tmpreg) in __HAL_SPI_CLEAR_MODFFLAG(), __HAL_SPI_CLEAR_OVRFLAG(), __HAL_SPI_CLEAR_FREFLAG() to fix Unused variable warning with TrueSTUDIO.</li>
+<li>Rename Literals: remove D from DISABLED and ENABLED
 <ul>
 <li>SPI_TIMODE_DISABLE<strong>D</strong> by SPI_TIMODE_DISABLE</li>
 <li>SPI_TIMODE_ENABLE<strong>D</strong> by SPI_TIMODE_ENABLE</li>
@@ -2008,7 +2008,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>CF_ERROR by HAL_PCCARD_STATUS_ERROR</li>
 <li>CF_TIMEOUT by HAL_PCCARD_STATUS_TIMEOUT</li>
 </ul></li>
-<li>Update “CF” by “PCCARD” in functions, literals and macros</li>
+<li>Update CF by PCCARD in functions, literals and macros</li>
 <li><strong>HAL HCD</strong> update
 <ul>
 <li>HCD_StateTypeDef structure members renamed</li>
@@ -2146,7 +2146,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li><strong>HAL SMARTCARD</strong> update
 <ul>
-<li>Add specific macros to manage the flags cleared only by a software sequence ◾__HAL_SMARTCARD_CLEAR_PEFLAG()
+<li>Add specific macros to manage the flags cleared only by a software sequence __HAL_SMARTCARD_CLEAR_PEFLAG()
 <ul>
 <li>__HAL_SMARTCARD_CLEAR_FEFLAG()</li>
 <li>__HAL_SMARTCARD_CLEAR_NEFLAG()</li>
@@ -2173,7 +2173,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>__SMARTCARD_DMA_REQUEST_ENABLE() by __HAL_SMARTCARD_DMA_REQUEST_ENABLE()</li>
 <li>__SMARTCARD_DMA_REQUEST_DISABLE() by __HAL_SMARTCARD_DMA_REQUEST_DISABLE()</li>
 </ul></li>
-<li>Rename literals: remove “D” from “DISABLED” and “ENABLED”
+<li>Rename literals: remove D from DISABLED and ENABLED
 <ul>
 <li>SMARTCARD_NACK_ENABLED by SMARTCARD_NACK_ENABLE</li>
 <li>SMARTCARD_NACK_DISABLED by SMARTCARD_NACK_DISABLE</li>
@@ -2184,12 +2184,12 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>__HAL_SMARTCARD_ONE_BIT_SAMPLE_DISABLE()</li>
 </ul></li>
 <li>Add use of tmpreg variable in __HAL_SMARTCARD_CLEAR_PEFLAG() macro for compliance with C++</li>
-<li>HAL_SMARTCARD_Transmit_DMA() update to follow the right procedure “Transmission using DMA” in the reference manual
+<li>HAL_SMARTCARD_Transmit_DMA() update to follow the right procedure Transmission using DMA in the reference manual
 <ul>
 <li>Add clear the TC flag in the SR register before enabling the DMA transmit request</li>
 <li>HAL_SMARTCARD_Transmit_IT() update to force the disable for the ERR interrupt to avoid the OVR interrupt</li>
 <li>HAL_SMARTCARD_IRQHandler() update check condition for transmission end</li>
-<li>Clean up: remove the following literals that aren’t used in smartcard mode
+<li>Clean up: remove the following literals that arent used in smartcard mode
 <ul>
 <li>SMARTCARD_PARITY_NONE</li>
 <li>SMARTCARD_WORDLENGTH_8B</li>
@@ -2201,7 +2201,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li><strong>HAL TIM</strong> update
 <ul>
 <li>HAL_TIM_IRQHandler(): update to check the input capture channel 3 and 4 in CCMR2 instead of CCMR1</li>
-<li>__HAL_TIM_SET_PRESCALER() updated to use ‘=’ instead of ‘|=’</li>
+<li>__HAL_TIM_SET_PRESCALER() updated to use = instead of |=</li>
 <li>Add thefollowing macro in TIM HAL driver</li>
 <li>__HAL_TIM_GET_COMPARE()</li>
 <li>__HAL_TIM_GET_COUNTER()</li>
@@ -2228,7 +2228,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li><strong>HAL UART</strong> update
 <ul>
 <li>Add new macros to control CTS and RTS</li>
-<li>Add specific macros to manage the flags cleared only by a software sequence ◾__HAL_UART_CLEAR_PEFLAG()
+<li>Add specific macros to manage the flags cleared only by a software sequence __HAL_UART_CLEAR_PEFLAG()
 <ul>
 <li>__HAL_UART_CLEAR_FEFLAG()</li>
 <li>__HAL_UART_CLEAR_NEFLAG()</li>
@@ -2254,14 +2254,14 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>UART_WAKEUPMETHODE_ADDRESSMARK by UART_WAKEUPMETHOD_ADDRESSMARK</li>
 </ul></li>
 <li>Add use of tmpreg variable in __HAL_UART_CLEAR_PEFLAG() macro for compliance with C++</li>
-<li>HAL_UART_Transmit_DMA() update to follow the right procedure “Transmission using DMA” in the reference manual
+<li>HAL_UART_Transmit_DMA() update to follow the right procedure Transmission using DMA in the reference manual
 <ul>
 <li>Add clear the TC flag in the SR register before enabling the DMA transmit request</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL USART</strong> update
 <ul>
-<li>Add specific macros to manage the flags cleared only by a software sequence ◾__HAL_USART_CLEAR_PEFLAG()
+<li>Add specific macros to manage the flags cleared only by a software sequence __HAL_USART_CLEAR_PEFLAG()
 <ul>
 <li>__HAL_USART_CLEAR_FEFLAG()</li>
 <li>__HAL_USART_CLEAR_NEFLAG()</li>
@@ -2277,7 +2277,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>IT transmit process; the code has been updated to avoid waiting on TC flag under USART ISR, USART TC interrupt is used instead. No impact on user application</li>
 <li>HAL_USART_Init() update to enable the USART oversampling by 8 by default in order to reach max USART frequencies</li>
 <li>USART_DMAReceiveCplt() update to set the new USART state after checking on the old state</li>
-<li>HAL_USART_Transmit_DMA()/HAL_USART_TransmitReceive_DMA() update to follow the right procedure “Transmission using DMA” in the reference manual
+<li>HAL_USART_Transmit_DMA()/HAL_USART_TransmitReceive_DMA() update to follow the right procedure Transmission using DMA in the reference manual
 <ul>
 <li>Add clear the TC flag in the SR register before enabling the DMA transmit request</li>
 </ul></li>
@@ -2288,7 +2288,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>__USART_ENABLE_IT() by __HAL_USART_ENABLE_IT()</li>
 <li>__USART_DISABLE_IT() by __HAL_USART_DISABLE_IT()</li>
 </ul></li>
-<li>Rename literals: remove “D” from “DISABLED” and “ENABLED”
+<li>Rename literals: remove D from DISABLED and ENABLED
 <ul>
 <li>USART_CLOCK_DISABLED by USART_CLOCK_DISABLE</li>
 <li>USART_CLOCK_ENABLED by USART_CLOCK_ENABLE</li>

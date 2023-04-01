@@ -174,7 +174,7 @@ static FError FNandIdDetect(FNand *instance_p, u32 chip_addr)
 
     nand_id.len = FNandIdLen(id_data, ARRAY_SIZE(nand_id.data));
 
-    /* step 6 通过maf_id获取对应的参数 */
+    /* step 6 maf_id */
     manufacturer_p = FNandGetManuFacturer(maf_id);
 
     if (manufacturer_p == NULL)
@@ -253,7 +253,7 @@ FError FNandDetect(FNand *instance_p)
                 FNAND_ID_DEBUG_E("FNandTimingInterfaceUpdate is error");
                 return ret;
             }
-            /* open ecc length config ,需要确保 ecc 校验的空间必须小于oob 的空间*/
+            /* open ecc length config , ecc oob */
             FNandFlashFuncRegister(instance_p) ;
             FNAND_ID_DEBUG_I("Onfi flash is found");
             continue;

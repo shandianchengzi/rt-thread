@@ -1,63 +1,63 @@
-# FQSPI 驱动程序
+# FQSPI 
 
-## 1. 概述
+## 1. 
 
-- QSPI是Motorola公司推出的SPI接口的扩展，比SPI应用更加广泛。在SPI协议的基础上，Motorola公司对其功能进行了增强，大幅提升了数据交换能力。QSPI 是一种专用的通信接口，连接单、双或四（条数据线） SPI Flash 存储介质。
+- QSPIMotorolaSPISPISPIMotorolaQSPI  SPI Flash 
 
-- 本驱动程序提供了FT2000/4、D2000、E2000平台的QSPI功能
+- FT2000/4D2000E2000QSPI
 
-- FT2000/4、D2000上包含 1 个通用 QSPI 接口控制器，作为QSPI Flash接口使用，片最大支持 2Gb（256MB）的容量，最大支持连接四个相同容量的Flash
-
-
-## 2. 功能
+- FT2000/4D2000 1  QSPI QSPI Flash 2Gb256MBFlash
 
 
-- 驱动相关的源文件如下，
+## 2. 
+
+
+- 
 - drivers/qspi/fqspi
 
 ```
 .
-├── fqspi_norflash.c
-├── fqspi_norflash.h
-├── fqspi_g.c
-├── fqspi_hw.c
-├── fqspi_hw.h
-├── fqspi_sinit.c
-├── fqspi.h
-└── fqspi.c
+ fqspi_norflash.c
+ fqspi_norflash.h
+ fqspi_g.c
+ fqspi_hw.c
+ fqspi_hw.h
+ fqspi_sinit.c
+ fqspi.h
+ fqspi.c
 ```
 
 
-## 3. 配置方法
+## 3. 
 
 
-以下部分将指导您完成 FQSPI 驱动的软件配置:
+ FQSPI :
 
-### 3.1 使用 SFUD 通用SPI协议框架
+### 3.1  SFUD SPI
 
-- 使能 CONFIG_USE_QSPI 和 CONFIG_USE_SFUD 配置
-- 初始化 SFUD 框架
-- 调用 SFUD 提供的 API 读写 QSPI 设备
+-  CONFIG_USE_QSPI  CONFIG_USE_SFUD 
+-  SFUD 
+-  SFUD  API  QSPI 
 
-关于 SFUD 框架的使用，可以参考[sfud.md](./sfud.md)
+ SFUD [sfud.md](./sfud.md)
 
-### 3.2 不使用 SFUD 通用SPI协议框架
+### 3.2  SFUD SPI
 
-- 使能 CONFIG_USE_QSPI 配置
-- 初始 QSPI 驱动
-- 调用 QSPI 提供的 API 读写 QSPI 设备，需要按照 QSPI 设备的手册实现相关的命令和协议
+-  CONFIG_USE_QSPI 
+-  QSPI 
+-  QSPI  API  QSPI  QSPI 
 
-## 4 应用示例
+## 4 
 
 ### [fqspi_nor_flash](../../../baremetal/example/peripheral/qspi/qspi_nor_flash/README.md)
 
 ### [qspi_sfud](../../../baremetal/example/storage/qspi_sfud/README.md)
 
-## 4. API参考
+## 4. API
 
-### 4.1 用户数据结构
+### 4.1 
 
-- QSPI 驱动配置数据
+- QSPI 
 ```c
 typedef struct
 {
@@ -70,7 +70,7 @@ typedef struct
 } FQspiConfig;
 ```
 
-- QSPI 驱动控制数据
+- QSPI 
 ```c
 typedef struct
 {
@@ -84,7 +84,7 @@ typedef struct
 } FQspiCtrl;
 ```
 
-- QSPI 传输命令协议，指定传输的指令、地址和修饰符、数据三者的宽度
+- QSPI 
 ```c
 typedef enum
 {
@@ -98,7 +98,7 @@ typedef enum
 }FQspiTransferMode;
 ```
 
-- QSPI Flash的容量大小
+- QSPI Flash
 ```c
 typedef enum
 {
@@ -112,7 +112,7 @@ typedef enum
 } FQspiFlashCapcityType;
 ```
 
-- QSPI的SCK分频系数
+- QSPISCK
 ```c
 typedef enum
 {
@@ -126,7 +126,7 @@ typedef enum
 }FQspiSckDivType;
 ```
 
-- QSPI的地址长度格式
+- QSPI
 ```c
 typedef enum
 {
@@ -135,7 +135,7 @@ typedef enum
 }FQspiAddrType;
 ```
 
-### 4.2 错误码定义
+### 4.2 
 
 - FQSPI_SUCCESS : fqspi success
 - FQSPI_INVAL_PARAM : fqspi invalid input parameters
@@ -144,11 +144,11 @@ typedef enum
 - FQSPI_NOT_SUPPORT : fqspi not support operation
 - FQSPI_TIMEOUT : fqspi wait timeout
 
-### 4.3 用户API接口
+### 4.3 API
 
 #### FQspiLookupConfig
 
-- 获取FQSPI驱动的默认配置参数
+- FQSPI
 
 ```c
 const FQspiConfig *FQspiLookupConfig(u32 instance_id)
@@ -156,20 +156,20 @@ const FQspiConfig *FQspiLookupConfig(u32 instance_id)
 
 Note:
 
-- 用户可以通过此接口获取驱动默认配置的副本，进行修改后，作为`FQspiCfgInitialize`函数的入参使用
+- `FQspiCfgInitialize`
 
 Input:
 
-- u32 instance_id, 选择的FQSPI控制器实例号
+- u32 instance_id, FQSPI
 
 Return:
 
-- const FQspiConfig *, 返回的默认驱动配置，返回NULL表示失败
+- const FQspiConfig *, NULL
 
 
 #### FQspiCfgInitialize
 
-- 完成FQSPI驱动实例的初始化，使之可以使用
+- FQSPI
 
 ```c
 FError FQspiCfgInitialize(FQspiCtrl *instance_p, const FQspiConfig *input_config_p);
@@ -177,22 +177,22 @@ FError FQspiCfgInitialize(FQspiCtrl *instance_p, const FQspiConfig *input_config
 
 Note:
 
-- 此函数会重置FQSPI控制器和FQSPI控制数据
+- FQSPIFQSPI
 
 Input:
 
-- FQspiCtrl *instance_p, FQSPI驱动控制数据
+- FQspiCtrl *instance_p, FQSPI
 
-- const FQspiConfig *input_config_p, FQSPI驱动配置数据
+- const FQspiConfig *input_config_p, FQSPI
 
 Return:
 
-- FError, 错误码信息，FQSPI_SUCCESS 表示初始化成功，其它返回值表示初始化失败
+- FError, FQSPI_SUCCESS 
 
 
 #### FQspiDeInitialize
 
-- 完成FQSPI驱动实例去初始化，之后不能使用
+- FQSPI
 
 ```c
 void FQspiDeInitialize(FQspiCtrl *instance_p)
@@ -200,19 +200,19 @@ void FQspiDeInitialize(FQspiCtrl *instance_p)
 
 Note:
 
-- 此函数会重置FQSPI控制数据
+- FQSPI
 
 Input:
 
-- FQspiCtrl *instance_p, FQSPI驱动控制数据
+- FQspiCtrl *instance_p, FQSPI
 
 Return:
 
-无
+
 
 
 #### FQspiCommandPortConfig
-- 配置FQSPI命令端口寄存器的值
+- FQSPI
 
 ```c
 FError FQspiCommandPortConfig(FQspiCtrl *pctrl)
@@ -220,21 +220,21 @@ FError FQspiCommandPortConfig(FQspiCtrl *pctrl)
 
 Note:
 
-- 使用此函数前需要确保FQSPI驱动初始化成功
-- 配置FQSPI命令端口寄存器
+- FQSPI
+- FQSPI
 
 Input:
  
-- FQspiCtrl *pctrl, FQSPI驱动控制数据
+- FQspiCtrl *pctrl, FQSPI
 
 Return:
 
-- FError, 错误码信息，FQSPI_SUCCESS 表示数据读取成功，其它返回值表示读取失败
+- FError, FQSPI_SUCCESS 
 
 
 #### FQspiRdCfgConfig
 
-- 配置FQSPI地址访问读配置寄存器的值
+- FQSPI
 
 ```c
 FError FQspiRdCfgConfig(FQspiCtrl *pctrl)
@@ -242,21 +242,21 @@ FError FQspiRdCfgConfig(FQspiCtrl *pctrl)
 
 Note:
 
-- 使用此函数前需要确保FQSPI驱动初始化成功
-- 配置QSPI地址访问读配置寄存器
+- FQSPI
+- QSPI
 
 Input:
  
-- FQspiCtrl *pctrl, FQSPI驱动控制数据
+- FQspiCtrl *pctrl, FQSPI
 
 Return:
 
-- FError, 错误码信息，FQSPI_SUCCESS 表示数据读取成功，其它返回值表示读取失败
+- FError, FQSPI_SUCCESS 
 
 
 #### FQspiSetLdPortData
 
-- 写FQSPI低位数据端口寄存器的值
+- FQSPI
 
 ```c
 FError FQspiSetLdPortData(FQspiCtrl *pctrl, const u8 *buf, size_t len)
@@ -264,23 +264,23 @@ FError FQspiSetLdPortData(FQspiCtrl *pctrl, const u8 *buf, size_t len)
 
 Note:
 
-- 使用此函数前需要确保FQSPI驱动初始化成功
-- 设置寄存器的值，可用于向flash传送数据
+- FQSPI
+- flash
 
 Input:
  
-- FQspiCtrl *pctrl, FQSPI驱动控制数据
+- FQspiCtrl *pctrl, FQSPI
 
-- const u8 *buf, 写缓存，存储要写入的数据
+- const u8 *buf, 
 
-- size_t len, 要读取的buf长度
+- size_t len, buf
 
 Return:
 
-- FError, 错误码信息，FQSPI_SUCCESS 表示数据写入成功，其它返回值表示写入失败
+- FError, FQSPI_SUCCESS 
 
 #### FQspiFlashSpecialInstruction
-- 读flash某些状态寄存器的值，此函数适配的flash型号为S25FS256S NorFlash芯片
+- flashflashS25FS256S NorFlash
 
 ```c
 FError FQspiFlashSpecialInstruction(FQspiCtrl *pctrl, u8 cmd, u8 *buf, size_t len);
@@ -288,25 +288,25 @@ FError FQspiFlashSpecialInstruction(FQspiCtrl *pctrl, u8 cmd, u8 *buf, size_t le
 
 Note:
 
-- 使用此函数前需要确保FQSPI驱动初始化成功
-- 读取flash寄存器的值，主要支持RDID, RDSR1, RDSR2, RDCR指令
+- FQSPI
+- flashRDID, RDSR1, RDSR2, RDCR
 
 Input:
  
-- FQspiCtrl *pctrl, FQSPI驱动控制数据
+- FQspiCtrl *pctrl, FQSPI
 
-- u8 cmd, 读寄存器状态的指令，具体参见flash芯片手册
+- u8 cmd, flash
 
-- u8 *buf, 读缓存，存储读到的寄存器值
+- u8 *buf, 
 
-- size_t len, 要读取的buf长度
+- size_t len, buf
 
 Return:
 
-- FError, 错误码信息，FQSPI_SUCCESS 表示数据读取成功，其它返回值表示读取失败
+- FError, FQSPI_SUCCESS 
 
 #### FQspiFlashWriteReg
-- 写flash寄存器的值
+- flash
 
 ```c
 FError FQspiFlashWriteReg(FQspiCtrl *pctrl, u8 command, const u8 *buf, size_t len)
@@ -314,25 +314,25 @@ FError FQspiFlashWriteReg(FQspiCtrl *pctrl, u8 command, const u8 *buf, size_t le
 
 Note:
 
-- 使用此函数前需要确保FQSPI驱动初始化成功
+- FQSPI
 
 Input:
 
-- FQspiCtrl *pctrl, FQSPI驱动控制数据
+- FQspiCtrl *pctrl, FQSPI
 
-- u8 command, 写寄存器的指令
+- u8 command, 
 
-- const u8 *buf, 写缓存，存储写入的寄存器值
+- const u8 *buf, 
 
-- size_t len, 要写入的buf长度
+- size_t len, buf
 
 Return:
 
-- FError, 错误码信息，FQSPI_SUCCESS 表示数据写入成功，其它返回值表示写入失败
+- FError, FQSPI_SUCCESS 
 
 #### FQspiFlashReadDataConfig
 
-- 读flash配置
+- flash
 
 ```c
 FError FQspiFlashReadDataConfig(FQspiCtrl *pctrl, u8 command)
@@ -340,22 +340,22 @@ FError FQspiFlashReadDataConfig(FQspiCtrl *pctrl, u8 command)
 
 Note:
 
-- 使用此函数前需要确保FQSPI驱动初始化成功
-- 配置采用何种方式读flash中的数据，read、fast read、quad read
+- FQSPI
+- flashreadfast readquad read
 
 Input:
 
-- FQspiCtrl *pctrl, FQSPI驱动控制数据
+- FQspiCtrl *pctrl, FQSPI
 
-- u8 command 读flash数据的指令，具体参见flash芯片手册
+- u8 command flashflash
 
 Return:
 
-- FError, 错误码信息，FQSPI_SUCCESS 表示读配置成功，其它返回值表示读配置失败
+- FError, FQSPI_SUCCESS 
 
 #### FQspiFlashReadData
 
-- 读取norflash的数据
+- norflash
 
 ```c
 size_t FQspiFlashReadData(FQspiCtrl *pctrl, u32 chip_addr, u8 *buf, size_t len)
@@ -363,26 +363,26 @@ size_t FQspiFlashReadData(FQspiCtrl *pctrl, u32 chip_addr, u8 *buf, size_t len)
 
 Note:
 
-- 使用此函数前需要确保FQSPI驱动初始化成功
-- 使用此函数前需要使用FQspiFlashReadDataConfig函数配置读方式
+- FQSPI
+- FQspiFlashReadDataConfig
 
 Input:
 
-- FQspiCtrl *pctrl, FQSPI驱动控制数据
+- FQspiCtrl *pctrl, FQSPI
 
-- u32 chip_addr, 读数据的起始地址
+- u32 chip_addr, 
 
-- u8 *buf 读缓存, 存储读到的数据
+- u8 *buf , 
 
-- size_t len, 要读取的buf长度
+- size_t len, buf
 
 Return:
 
-- FError, 错误码信息，FQSPI_SUCCESS 表示数据读取成功，其它返回值表示读取失败
+- FError, FQSPI_SUCCESS 
 
 #### FQspiNorFlashWrite
 
-- 写norflash数据函数 
+- norflash 
 
 ```c
 FError FQspiFlashWriteData(FQspiCtrl *pctrl, u8 command, u32 chip_addr, const u8 *buf, size_t len)
@@ -390,20 +390,20 @@ FError FQspiFlashWriteData(FQspiCtrl *pctrl, u8 command, u32 chip_addr, const u8
 
 Note:
 
-- 使用此函数前需要确保FQSPI驱动初始化成功
+- FQSPI
 
 Input:
 
-- FQspiCtrl *pctrl, FQSPI驱动控制数据
+- FQspiCtrl *pctrl, FQSPI
 
-- u8 command 写flash数据的指令，具体参见flash手册
+- u8 command flashflash
 
-- u32 chip_addr, 写数据的起始地址
+- u32 chip_addr, 
 
-- u8 *buf 写缓存, 存储要写入的数据
+- u8 *buf , 
 
-- size_t len, 要写入的buf长度
+- size_t len, buf
 
 Return:
 
-- FError, 错误码信息，FQSPI_SUCCESS 表示数据写入成功，其它返回值表示写入失败
+- FError, FQSPI_SUCCESS 

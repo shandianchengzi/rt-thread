@@ -27,9 +27,9 @@ void RNG_Init(void)
     TRNG->RNG_CSR = 0;
 }
 /**
- * @brief 获取随机数
+ * @brief 
  *
- * @param Buf，一次获取4个32bit数据
+ * @param Buf432bit
  */
 void RNG_GetData(uint32_t Buf[4])
 {

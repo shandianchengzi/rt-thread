@@ -1162,7 +1162,7 @@ extern "C" {
 #define  RB_LCD_BIAS        0x04                      // RW, LCD bias select:  0=1/2 bias,  1=1/3 bias
 #define  RB_LCD_DUTY        0x18                      // RW, LCD duty select:  00=1/2 duty,  01=1/3 duty,  10=1/4 duty
 #define  RB_LCD_SCAN_CLK    0x60                      // RW, LCD scan clock select: 00=256Hz, 01=512Hz, 10=1KHz, 11=128Hz
-#define  RB_LCD_V_SEL       0x80                      // RW, LCD drive voltage：0=VIO33*100%(3.3V),1=VIO33*76%(2.5V)
+#define  RB_LCD_V_SEL       0x80                      // RW, LCD drive voltage0=VIO33*100%(3.3V),1=VIO33*76%(2.5V)
 
 #define R32_LCD_RAM0        (*((PUINT32V)(0x40006004))) // RW, LCD driver data0, address 0-3
 #define R32_LCD_RAM1        (*((PUINT32V)(0x40006008))) // RW, LCD driver data1, address 4-7
@@ -1291,45 +1291,45 @@ extern "C" {
 #define ETH_BASE_ADDR           (0x40009000)
 
 /* ETH register */
-#define R8_ETH_EIE              (*((PUINT8V)(0x40009003))) /* 中断使能寄存器 */
-#define  RB_ETH_EIE_INTIE       0x80                  /* RW 中断使能 */
-#define  RB_ETH_EIE_RXIE        0x40                  /* RW 接收完成中断使能 */
-#define  RB_ETH_EIE_LINKIE      0x10                  /* RW Link 变化中断使能 */
-#define  RB_ETH_EIE_TXIE        0x08                  /* RW 发送完成中断使能 */
-#define  RB_ETH_EIE_R_EN50      0x04                  /* RW TX 50Ω电阻调节。1：片内 50Ω连接 0：片内 50Ω断开 */
-#define  RB_ETH_EIE_TXERIE      0x02                  /* RW 发送错误中断使能 */
-#define  RB_ETH_EIE_RXERIE      0x01                  /* RW1 接收错误标志 */
+#define R8_ETH_EIE              (*((PUINT8V)(0x40009003))) /*  */
+#define  RB_ETH_EIE_INTIE       0x80                  /* RW  */
+#define  RB_ETH_EIE_RXIE        0x40                  /* RW  */
+#define  RB_ETH_EIE_LINKIE      0x10                  /* RW Link  */
+#define  RB_ETH_EIE_TXIE        0x08                  /* RW  */
+#define  RB_ETH_EIE_R_EN50      0x04                  /* RW TX 501 50 0 50 */
+#define  RB_ETH_EIE_TXERIE      0x02                  /* RW  */
+#define  RB_ETH_EIE_RXERIE      0x01                  /* RW1  */
 #define R32_ETH_CON             (*((PUINT32V)(0x40009004)))
-#define R8_ETH_EIR              (*((PUINT8V)(0x40009004))) /* 中断标志寄存器 */
-#define  RB_ETH_EIR_RXIF        0x40                  /* RW1 接收完成标志 */
-#define  RB_ETH_EIR_LINKIF      0x10                  /* RW1 Link 变化标志 */
-#define  RB_ETH_EIR_TXIF        0x08                  /* RW1 发送完成标志 */
-#define  RB_ETH_EIR_TXERIF      0x02                  /* RW1 发送错误标志 */
+#define R8_ETH_EIR              (*((PUINT8V)(0x40009004))) /*  */
+#define  RB_ETH_EIR_RXIF        0x40                  /* RW1  */
+#define  RB_ETH_EIR_LINKIF      0x10                  /* RW1 Link  */
+#define  RB_ETH_EIR_TXIF        0x08                  /* RW1  */
+#define  RB_ETH_EIR_TXERIF      0x02                  /* RW1  */
 #define  RB_ETH_EIR_RXERIF      0x01
-#define R8_ETH_ESTAT            (*((PUINT8V)(0x40009005))) /* 状态寄存器 */
-#define  RB_ETH_ESTAT_INT       0x80                  /* RW1 中断 */
-#define  RB_ETH_ESTAT_BUFER     0x40                  /* RW1 Buffer 错误，理论上 mcu 主频太低才会发生 */
-#define  RB_ETH_ESTAT_RXCRCER   0x20                  /* RO 接收 crc 出错 */
-#define  RB_ETH_ESTAT_RXNIBBLE  0x10                  /* RO 接收 nibble 错误 */
-#define  RB_ETH_ESTAT_RXMORE    0x08                  /* RO 接收超过最大数据包 */
-#define  RB_ETH_ESTAT_RXBUSY    0x04                  /* RO 接收进行中 */
-#define  RB_ETH_ESTAT_TXABRT    0x02                  /* RO 发送被 mcu 打断 */
-#define R8_ETH_ECON2            (*((PUINT8V)(0x40009006))) /* ETH PHY模拟模块控制寄存器 */
-#define  RB_ETH_ECON2_RX        0x0E                  /* 必须写入011 */
+#define R8_ETH_ESTAT            (*((PUINT8V)(0x40009005))) /*  */
+#define  RB_ETH_ESTAT_INT       0x80                  /* RW1  */
+#define  RB_ETH_ESTAT_BUFER     0x40                  /* RW1 Buffer  mcu  */
+#define  RB_ETH_ESTAT_RXCRCER   0x20                  /* RO  crc  */
+#define  RB_ETH_ESTAT_RXNIBBLE  0x10                  /* RO  nibble  */
+#define  RB_ETH_ESTAT_RXMORE    0x08                  /* RO  */
+#define  RB_ETH_ESTAT_RXBUSY    0x04                  /* RO  */
+#define  RB_ETH_ESTAT_TXABRT    0x02                  /* RO  mcu  */
+#define R8_ETH_ECON2            (*((PUINT8V)(0x40009006))) /* ETH PHY */
+#define  RB_ETH_ECON2_RX        0x0E                  /* 011 */
 #define  RB_ETH_ECON2_TX        0x01
-#define  RB_ETH_ECON2_MUST      0x06                  /* 必须写入011 */
-#define R8_ETH_ECON1            (*((PUINT8V)(0x40009007))) /* 收发控制寄存器 */
-#define  RB_ETH_ECON1_TXRST     0x80                  /* RW 发送模块复位 */
-#define  RB_ETH_ECON1_RXRST     0x40                  /* RW 接收模块复位 */
-#define  RB_ETH_ECON1_TXRTS     0x08                  /* RW 发送开始，发送完成后自动清零，如主动清零会使发送错误标志TXERIF和TXABRT变1 */
-#define  RB_ETH_ECON1_RXEN      0x04                  /* RW 接收使能，清零时如正在接受则错误标志RXERIF变1 */
+#define  RB_ETH_ECON2_MUST      0x06                  /* 011 */
+#define R8_ETH_ECON1            (*((PUINT8V)(0x40009007))) /*  */
+#define  RB_ETH_ECON1_TXRST     0x80                  /* RW  */
+#define  RB_ETH_ECON1_RXRST     0x40                  /* RW  */
+#define  RB_ETH_ECON1_TXRTS     0x08                  /* RW TXERIFTXABRT1 */
+#define  RB_ETH_ECON1_RXEN      0x04                  /* RW RXERIF1 */
 
-#define R32_ETH_TX              (*((PUINT32V)(0x40009008))) /* 发送控制 */
-#define R16_ETH_ETXST           (*((PUINT16V)(0x40009008))) /* RW 发送 DMA 缓冲区起始地址 */
-#define R16_ETH_ETXLN           (*((PUINT16V)(0x4000900A))) /* RW 发送长度 */
-#define R32_ETH_RX              (*((PUINT32V)(0x4000900C))) /* 接收控制 */
-#define R16_ETH_ERXST           (*((PUINT16V)(0x4000900C))) /* RW 接收 DMA 缓冲区起始地址 */
-#define R16_ETH_ERXLN           (*((PUINT16V)(0x4000900E))) /* RO 接收长度 */
+#define R32_ETH_TX              (*((PUINT32V)(0x40009008))) /*  */
+#define R16_ETH_ETXST           (*((PUINT16V)(0x40009008))) /* RW  DMA  */
+#define R16_ETH_ETXLN           (*((PUINT16V)(0x4000900A))) /* RW  */
+#define R32_ETH_RX              (*((PUINT32V)(0x4000900C))) /*  */
+#define R16_ETH_ERXST           (*((PUINT16V)(0x4000900C))) /* RW  DMA  */
+#define R16_ETH_ERXLN           (*((PUINT16V)(0x4000900E))) /* RO  */
 
 #define R32_ETH_HTL             (*((PUINT32V)(0x40009010)))
 #define R8_ETH_EHT0             (*((PUINT8V)(0x40009010))) /* RW Hash Table Byte0 */
@@ -1343,40 +1343,40 @@ extern "C" {
 #define R8_ETH_EHT7             (*((PUINT8V)(0x40009017))) /* RW Hash Table Byte7 */
 
 #define R32_ETH_MACON           (*((PUINT32V)(0x40009018)))
-#define R8_ETH_ERXFCON          (*((PUINT8V)(0x40009018))) /* 接收包过滤控制寄存器 */
-#define  RB_ETH_ERXFCON_UCEN    0x80                  /* RW 0=不启用该过滤条件，1=当ANDOR=1，目标地址不匹配将被过滤，当ANDOR=0，目标地址匹配将被接收 */
-#define  RB_ETH_ERXFCON_ANDOR   0x40                  /* RW 1=AND，所有过滤条件都满足包才被接收 0=OR，任一过滤条件满足包均被接收 */
-#define  RB_ETH_ERXFCON_CRCEN   0x20                  /* RW 0=不启用该过滤条件，1=当ANDOR=1，CRC校验错将被过滤，当ANDOR=0，CRC校验正确将被接收 */
-#define  RB_ETH_ERXFCON_MPEN    0x08                  /* RW 0=不启用该过滤条件，1=当ANDOR=1，非魔法包将被过滤，当ANDOR=0，魔法包将被接收 */
-#define  RB_ETH_ERXFCON_HTEN    0x04                  /* RW 0=不启用该过滤条件，1=当ANDOR=1，hash table不匹配将被过滤，当ANDOR=0，hash table匹配将被接收 */
-#define  RB_ETH_ERXFCON_MCEN    0x02                  /* RW 0=不启用该过滤条件，1=当ANDOR=1，组播包不匹配将被过滤，当ANDOR=0，组播包匹配将被接收 */
-#define  RB_ETH_ERXFCON_BCEN    0x01                  /* RW 0=不启用该过滤条件，1=当ANDOR=1，非广播包将被过滤，当ANDOR=0，广播包将被接收 */
-#define R8_ETH_MACON1           (*((PUINT8V)(0x40009019))) /* Mac 层流控制寄存器 */
-#define  RB_ETH_MACON1_FCEN     0x30                  /* RW 当FULDPX=0均无效，当FULDPX=1，11=发送0 timer暂停帧，然后停止发送，10=周期性发送暂停帧，01=发送一次暂停帧，然后停止发送，00=停止发送暂停帧 */
-#define  RB_ETH_MACON1_TXPAUS   0x08                  /* RW 发送pause帧使能 */
-#define  RB_ETH_MACON1_RXPAUS   0x04                  /* RW 接收pause帧使能 */
-#define  RB_ETH_MACON1_PASSALL  0x02                  /* RW 1=没被过滤的控制帧将写入缓存，0=控制帧将被过滤 */
-#define  RB_ETH_MACON1_MARXEN   0x01                  /* RW MAC层接收使能 */
-#define R8_ETH_MACON2           (*((PUINT8V)(0x4000901A))) /* Mac 层封包控制寄存器 */
-#define  RB_ETH_MACON2_PADCFG   0xE0                  /* RW 短包填充设置 */
-#define  RB_ETH_MACON2_TXCRCEN  0x10                  /* RW 发送添加crc，PADCFG中如需要添加crc，该位置1 */
-#define  RB_ETH_MACON2_PHDREN   0x08                  /* RW 特殊4字节不参与crc校验 */
-#define  RB_ETH_MACON2_HFRMEN   0x04                  /* RW 允许接收巨型帧 */
-#define  RB_ETH_MACON2_FULDPX   0x01                  /* RW 全双工 */
-#define R8_ETH_MABBIPG          (*((PUINT8V)(0x4000901B))) /* 最小包间间隔寄存器 */
-#define  RB_ETH_MABBIPG_MABBIPG 0x7F                  /* RW 最小包间间隔字节数 */
+#define R8_ETH_ERXFCON          (*((PUINT8V)(0x40009018))) /*  */
+#define  RB_ETH_ERXFCON_UCEN    0x80                  /* RW 0=1=ANDOR=1ANDOR=0 */
+#define  RB_ETH_ERXFCON_ANDOR   0x40                  /* RW 1=AND 0=OR */
+#define  RB_ETH_ERXFCON_CRCEN   0x20                  /* RW 0=1=ANDOR=1CRCANDOR=0CRC */
+#define  RB_ETH_ERXFCON_MPEN    0x08                  /* RW 0=1=ANDOR=1ANDOR=0 */
+#define  RB_ETH_ERXFCON_HTEN    0x04                  /* RW 0=1=ANDOR=1hash tableANDOR=0hash table */
+#define  RB_ETH_ERXFCON_MCEN    0x02                  /* RW 0=1=ANDOR=1ANDOR=0 */
+#define  RB_ETH_ERXFCON_BCEN    0x01                  /* RW 0=1=ANDOR=1ANDOR=0 */
+#define R8_ETH_MACON1           (*((PUINT8V)(0x40009019))) /* Mac  */
+#define  RB_ETH_MACON1_FCEN     0x30                  /* RW FULDPX=0FULDPX=111=0 timer10=01=00= */
+#define  RB_ETH_MACON1_TXPAUS   0x08                  /* RW pause */
+#define  RB_ETH_MACON1_RXPAUS   0x04                  /* RW pause */
+#define  RB_ETH_MACON1_PASSALL  0x02                  /* RW 1=0= */
+#define  RB_ETH_MACON1_MARXEN   0x01                  /* RW MAC */
+#define R8_ETH_MACON2           (*((PUINT8V)(0x4000901A))) /* Mac  */
+#define  RB_ETH_MACON2_PADCFG   0xE0                  /* RW  */
+#define  RB_ETH_MACON2_TXCRCEN  0x10                  /* RW crcPADCFGcrc1 */
+#define  RB_ETH_MACON2_PHDREN   0x08                  /* RW 4crc */
+#define  RB_ETH_MACON2_HFRMEN   0x04                  /* RW  */
+#define  RB_ETH_MACON2_FULDPX   0x01                  /* RW  */
+#define R8_ETH_MABBIPG          (*((PUINT8V)(0x4000901B))) /*  */
+#define  RB_ETH_MABBIPG_MABBIPG 0x7F                  /* RW  */
 
 #define R32_ETH_TIM             (*((PUINT32V)(0x4000901C)))
-#define R16_ETH_EPAUS           (*((PUINT16V)(0x4000901C))) /* RW 流控制暂停帧时间寄存器 */
-#define R16_ETH_MAMXFL          (*((PUINT16V)(0x4000901E))) /* RW 最大接收包长度寄存器 */
-#define R16_ETH_MIRD            (*((PUINT16V)(0x40009020))) /* RW MII 读数据寄存器 */
+#define R16_ETH_EPAUS           (*((PUINT16V)(0x4000901C))) /* RW  */
+#define R16_ETH_MAMXFL          (*((PUINT16V)(0x4000901E))) /* RW  */
+#define R16_ETH_MIRD            (*((PUINT16V)(0x40009020))) /* RW MII  */
 
 #define R32_ETH_MIWR            (*((PUINT32V)(0x40009024)))
-#define R8_ETH_MIREGADR         (*((PUINT8V)(0x40009024))) /* MII 地址寄存器 */
-#define  RB_ETH_MIREGADR_MASK   0x1F                  /* RW PHY 寄存器地址掩码 */
-#define R8_ETH_MISTAT           (*((PUINT8V)(0x40009025))) /* MII 状态寄存器 */
-//#define  RB_ETH_MIREGADR_MIIWR  0x20                  /* WO MII 写命令 */
-#define R16_ETH_MIWR            (*((PUINT16V)(0x40009026))) /* WO MII 写数据寄存器 */
+#define R8_ETH_MIREGADR         (*((PUINT8V)(0x40009024))) /* MII  */
+#define  RB_ETH_MIREGADR_MASK   0x1F                  /* RW PHY  */
+#define R8_ETH_MISTAT           (*((PUINT8V)(0x40009025))) /* MII  */
+//#define  RB_ETH_MIREGADR_MIIWR  0x20                  /* WO MII  */
+#define R16_ETH_MIWR            (*((PUINT16V)(0x40009026))) /* WO MII  */
 #define R32_ETH_MAADRL          (*((PUINT32V)(0x40009028))) /* RW MAC 1-4 */
 #define R16_ETH_MAADRH          (*((PUINT16V)(0x4000902C))) /* RW MAC 5-6 */
 
@@ -1785,7 +1785,7 @@ extern "C" {
 #endif
 
 #ifndef USB_DEVICE_ADDR
-#define USB_DEVICE_ADDR         0x02    /* 默认的USB设备地址 */
+#define USB_DEVICE_ADDR         0x02    /* USB */
 #endif
 #ifndef DEFAULT_ENDP0_SIZE
 #define DEFAULT_ENDP0_SIZE      8       /* default maximum packet size for endpoint 0 */
@@ -1794,12 +1794,12 @@ extern "C" {
 #define MAX_PACKET_SIZE         64      /* maximum packet size */
 #endif
 #ifndef USB_BO_CBW_SIZE
-#define USB_BO_CBW_SIZE         0x1F    /* 命令块CBW的总长度 */
-#define USB_BO_CSW_SIZE         0x0D    /* 命令状态块CSW的总长度 */
+#define USB_BO_CBW_SIZE         0x1F    /* CBW */
+#define USB_BO_CSW_SIZE         0x0D    /* CSW */
 #endif
 #ifndef USB_BO_CBW_SIG
-#define USB_BO_CBW_SIG          0x43425355    /* 命令块CBW识别标志'USBC' */
-#define USB_BO_CSW_SIG          0x53425355    /* 命令状态块CSW识别标志'USBS' */
+#define USB_BO_CBW_SIG          0x43425355    /* CBW'USBC' */
+#define USB_BO_CSW_SIG          0x53425355    /* CSW'USBS' */
 #endif
 
 //#define __PACKED

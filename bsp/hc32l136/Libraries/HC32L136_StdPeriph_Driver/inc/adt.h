@@ -77,7 +77,7 @@ extern "C"
 
  /**
  ******************************************************************************
- ** \brief 高性能定时器选择
+ ** \brief 
  *****************************************************************************/
 typedef enum en_adt_unit
 {
@@ -88,43 +88,43 @@ typedef enum en_adt_unit
 
  /**
  ******************************************************************************
- ** \brief ADT CHx端口定义
+ ** \brief ADT CHx
  *****************************************************************************/
 typedef enum en_adt_CHxX_port
 {
-    AdtCHxA    = 0u,            ///< CHx A端口
-    AdtCHxB    = 1u,            ///< CHx B端口
+    AdtCHxA    = 0u,            ///< CHx A
+    AdtCHxB    = 1u,            ///< CHx B
 }en_adt_CHxX_port_t;
 
  /**
  ******************************************************************************
- ** \brief ADT TRIG端口定义
+ ** \brief ADT TRIG
  *****************************************************************************/
 typedef enum en_adt_trig_port
 {
-    AdtTrigA    = 0u,            ///< TIMx 触发A端口
-    AdtTrigB    = 1u,            ///< TIMx 触发B端口
-    AdtTrigC    = 2u,            ///< TIMx 触发C端口
-    AdtTrigD    = 3u,            ///< TIMx 触发D端口
+    AdtTrigA    = 0u,            ///< TIMx A
+    AdtTrigB    = 1u,            ///< TIMx B
+    AdtTrigC    = 2u,            ///< TIMx C
+    AdtTrigD    = 3u,            ///< TIMx D
 }en_adt_trig_port_t;
 
 /**
  ******************************************************************************
- ** \brief ADT通用控制 - Z相输入屏蔽周期数
+ ** \brief ADT - Z
  **
  ** \note
  ******************************************************************************/
 typedef enum en_adt_gconr_zmsk
 {
-    AdtZMaskDis   = 0u,      ///< Z相输入屏蔽功能无效
-    AdtZMask4Cyl  = 1u,      ///< 位置计数上溢后或下溢后的4个计数周期内的Z相输入被屏蔽
-    AdtZMask8Cyl  = 2u,      ///< 位置计数上溢后或下溢后的8个计数周期内的Z相输入被屏蔽
-    AdtZMask16Cyl = 3u,      ///< 位置计数上溢后或下溢后的16个计数周期内的Z相输入被屏蔽
+    AdtZMaskDis   = 0u,      ///< Z
+    AdtZMask4Cyl  = 1u,      ///< 4Z
+    AdtZMask8Cyl  = 2u,      ///< 8Z
+    AdtZMask16Cyl = 3u,      ///< 16Z
 }en_adt_gconr_zmsk_t;
 
 /**
  ******************************************************************************
- ** \brief ADT通用控制 - 计数时钟选择
+ ** \brief ADT - 
  **
  ** \note
  ******************************************************************************/
@@ -142,162 +142,162 @@ typedef enum en_adt_cnt_ckdiv
 
 /**
  ******************************************************************************
- ** \brief ADT计数模式
+ ** \brief ADT
  **
  ** \note
  ******************************************************************************/
 typedef enum en_adt_cnt_mode
 {
-    AdtSawtoothMode  = 0u,          ///< 锯齿波模式
-    AdtTriangleModeA = 4u,          ///< 三角波A模式
-    AdtTriangleModeB = 5u,          ///< 三角波B模式
+    AdtSawtoothMode  = 0u,          ///< 
+    AdtTriangleModeA = 4u,          ///< A
+    AdtTriangleModeB = 5u,          ///< B
 }en_adt_cnt_mode_t;
 
 /**
  ******************************************************************************
- ** \brief ADT计数方向
+ ** \brief ADT
  **
  ** \note
  ******************************************************************************/
 typedef enum en_adt_cnt_dir
 {
-    AdtCntDown = 0u,      ///< 递减计数
-    AdtCntUp   = 1u,      ///< 递加计数
+    AdtCntDown = 0u,      ///< 
+    AdtCntUp   = 1u,      ///< 
 }en_adt_cnt_dir_t;
 
 /**
  ******************************************************************************
- ** \brief ADT通用比较基准
+ ** \brief ADT
  **
  ** \note
  ******************************************************************************/
 typedef enum en_adt_compare
 {
-    AdtCompareA = 0u,            ///< 通用比较基准A
-    AdtCompareB = 1u,            ///< 通用比较基准B
-    AdtCompareC = 2u,            ///< 通用比较基准C
-    AdtCompareD = 3u,            ///< 通用比较基准D
+    AdtCompareA = 0u,            ///< A
+    AdtCompareB = 1u,            ///< B
+    AdtCompareC = 2u,            ///< C
+    AdtCompareD = 3u,            ///< D
 }en_adt_compare_t;
 
 /**
  ******************************************************************************
- ** \brief ADT专用比较基准
+ ** \brief ADT
  **
  ** \note
  ******************************************************************************/
 typedef enum en_adt_special_compare
 {
-    AdtSpclCompA = 0u,            ///< 专用比较基准A
-    AdtSpclCompB = 1u,            ///< 专用比较基准B
+    AdtSpclCompA = 0u,            ///< A
+    AdtSpclCompB = 1u,            ///< B
 }en_adt_special_compare_t;
 
 /**
  ******************************************************************************
- ** \brief ADT端口控制 - TIMx输出状态控制
+ ** \brief ADT - TIMx
  **
  ** \note
  ******************************************************************************/
 typedef enum en_adt_pconr_disval
 {
-    AdtTIMxDisValNorm = 0u,     ///< 强制输出无效条件0~3中被选择的条件成立时，CHx端口正常输出
-    AdtTIMxDisValHiZ  = 1u,     ///< 强制输出无效条件0~3中被选择的条件成立时，CHx端口输出高阻态
-    AdtTIMxDisValLow  = 2u,     ///< 强制输出无效条件0~3中被选择的条件成立时，CHx端口输出低电平
-    AdtTIMxDisValHigh = 3u,     ///< 强制输出无效条件0~3中被选择的条件成立时，CHx端口输出高电平
+    AdtTIMxDisValNorm = 0u,     ///< 0~3CHx
+    AdtTIMxDisValHiZ  = 1u,     ///< 0~3CHx
+    AdtTIMxDisValLow  = 2u,     ///< 0~3CHx
+    AdtTIMxDisValHigh = 3u,     ///< 0~3CHx
 }en_adt_pconr_disval_t;
 
 /**
  ******************************************************************************
- ** \brief ADT端口控制 - CHx强制输出无效条件选择
+ ** \brief ADT - CHx
  **
  ** \note
  ******************************************************************************/
 typedef enum en_adt_pconr_dissel
 {
-    AdtCHxDisSel0 = 0u,        ///< 选择强制输出无效条件0
-    AdtCHxDisSel1 = 1u,        ///< 选择强制输出无效条件1
-    AdtCHxDisSel2 = 2u,        ///< 选择强制输出无效条件2
-    AdtCHxDisSel3 = 3u,        ///< 选择强制输出无效条件3
+    AdtCHxDisSel0 = 0u,        ///< 0
+    AdtCHxDisSel1 = 1u,        ///< 1
+    AdtCHxDisSel2 = 2u,        ///< 2
+    AdtCHxDisSel3 = 3u,        ///< 3
 }en_adt_pconr_dissel_t;
 
 /**
  ******************************************************************************
- ** \brief ADT端口控制 - CHx周期值匹配时端口状态设定
+ ** \brief ADT - CHx
  **
  ** \note
  ******************************************************************************/
 typedef enum en_adt_pconr_perc
 {
-    AdtCHxPeriodLow  = 0u,      ///< 计数器计数值与周期值相等时，CHx端口输出保持为低电平
-    AdtCHxPeriodHigh = 1u,      ///< 计数器计数值与周期值相等时，CHx端口输出设定为高电平
-    AdtCHxPeriodKeep = 2u,      ///< 计数器计数值与周期值相等时，CHx端口输出设定为先前状态
-    AdtCHxPeriodInv  = 3u,      ///< 计数器计数值与周期值相等时，CHx端口输出设定为反转电平
+    AdtCHxPeriodLow  = 0u,      ///< CHx
+    AdtCHxPeriodHigh = 1u,      ///< CHx
+    AdtCHxPeriodKeep = 2u,      ///< CHx
+    AdtCHxPeriodInv  = 3u,      ///< CHx
 }en_adt_pconr_perc_t;
 
 /**
  ******************************************************************************
- ** \brief ADT端口控制 - CHx比较值匹配时端口状态设定
+ ** \brief ADT - CHx
  **
  ** \note
  ******************************************************************************/
 typedef enum en_adt_pconr_cmpc
 {
-    AdtCHxCompareLow  = 0u,     ///< 计数器计数值与GCMxR相等时，CHx端口输出保持为低电平
-    AdtCHxCompareHigh = 1u,     ///< 计数器计数值与GCMxR相等时，CHx端口输出设定为高电平
-    AdtCHxCompareKeep = 2u,     ///< 计数器计数值与GCMxR相等时，CHx端口输出设定为先前状态
-    AdtCHxCompareInv  = 3u,     ///< 计数器计数值与GCMxR相等时，CHx端口输出设定为反转电平
+    AdtCHxCompareLow  = 0u,     ///< GCMxRCHx
+    AdtCHxCompareHigh = 1u,     ///< GCMxRCHx
+    AdtCHxCompareKeep = 2u,     ///< GCMxRCHx
+    AdtCHxCompareInv  = 3u,     ///< GCMxRCHx
 }en_adt_pconr_cmpc_t;
 
 /**
  ******************************************************************************
- ** \brief ADT端口控制 - CHx端口输出
+ ** \brief ADT - CHx
  **
  ** \note
  ******************************************************************************/
 typedef enum en_adt_pconr_port_out
 {
-    AdtCHxPortOutLow  = 0u,  ///< CHx端口输出设定为低电平
-    AdtCHxPortOutHigh = 1u,  ///< CHx端口输出设定为高电平
+    AdtCHxPortOutLow  = 0u,  ///< CHx
+    AdtCHxPortOutHigh = 1u,  ///< CHx
 }en_adt_pconr_port_out_t;
 
 /**
  ******************************************************************************
- ** \brief ADT端口控制 - CHx端口功能模式选择
+ ** \brief ADT - CHx
  **
  ** \note
  ******************************************************************************/
 typedef enum en_adt_pconr_capc
 {
-    AdtCHxCompareOutput = 0u,   ///< CHx端口设定为比较输出功能
-    AdtCHxCompareInput  = 1u,   ///< CHx端口设定为捕获输入功能
+    AdtCHxCompareOutput = 0u,   ///< CHx
+    AdtCHxCompareInput  = 1u,   ///< CHx
 }en_adt_pconr_capc_t;
 
 /**
  ******************************************************************************
- ** \brief ADT端口控制 - CHx计数开始停止端口状态选择
+ ** \brief ADT - CHx
  **
  ** \note
  ******************************************************************************/
 typedef enum en_adt_pconr_stastps
 {
-    AdtCHxStateSelSS   = 0u,    ///< 计数开始或停止时，CHx端口输出由STACB、STPCB决定
-    AdtCHxStateSelKeep = 1u,    ///< 计数开始或停止时，CHx端口输出设定为先前状态
+    AdtCHxStateSelSS   = 0u,    ///< CHxSTACBSTPCB
+    AdtCHxStateSelKeep = 1u,    ///< CHx
 }en_adt_pconr_stastps_t;
 
 /**
  ******************************************************************************
- ** \brief ADT死区控制 - CHx死区分离设定
+ ** \brief ADT - CHx
  **
  ** \note
  ******************************************************************************/
 typedef enum en_adt_dconr_sepa
 {
-    AdtCHxDtSeperate = 0u,      ///< DTUAR和DTDAR分别设定
-    AdtCHxDtEqual    = 1u,      ///< DTDAR的值和DTUAR的值自动相等
+    AdtCHxDtSeperate = 0u,      ///< DTUARDTDAR
+    AdtCHxDtEqual    = 1u,      ///< DTDARDTUAR
 }en_adt_dconr_sepa_t;
 
 /**
  ******************************************************************************
- ** \brief ADT滤波控制 - TRIx/TIMxIx端口滤波采样基准时钟选择
+ ** \brief ADT - TRIx/TIMxIx
  **
  ** \note
  ******************************************************************************/
@@ -311,39 +311,39 @@ typedef enum en_adt_fconr_nofick
 
 /**
  ******************************************************************************
- ** \brief ADT有效周期 - TIMx有效周期选择
+ ** \brief ADT - TIMx
  **
  ** \note
  ******************************************************************************/
 typedef enum en_adt_vperr_pcnts
 {
-    AdtPeriodCnts0 = 0u,         ///< 有效周期选择功能无效
-    AdtPeriodCnts1 = 1u,         ///< 每隔1个周期有效一次
-    AdtPeriodCnts2 = 2u,         ///< 每隔2个周期有效一次
-    AdtPeriodCnts3 = 3u,         ///< 每隔3个周期有效一次
-    AdtPeriodCnts4 = 4u,         ///< 每隔4个周期有效一次
-    AdtPeriodCnts5 = 5u,         ///< 每隔5个周期有效一次
-    AdtPeriodCnts6 = 6u,         ///< 每隔6个周期有效一次
-    AdtPeriodCnts7 = 7u,         ///< 每隔7个周期有效一次
+    AdtPeriodCnts0 = 0u,         ///< 
+    AdtPeriodCnts1 = 1u,         ///< 1
+    AdtPeriodCnts2 = 2u,         ///< 2
+    AdtPeriodCnts3 = 3u,         ///< 3
+    AdtPeriodCnts4 = 4u,         ///< 4
+    AdtPeriodCnts5 = 5u,         ///< 5
+    AdtPeriodCnts6 = 6u,         ///< 6
+    AdtPeriodCnts7 = 7u,         ///< 7
 }en_adt_vperr_pcnts_t;
 
 /**
  ******************************************************************************
- ** \brief ADT有效周期 - 计数条件选择
+ ** \brief ADT - 
  **
  ** \note
  ******************************************************************************/
 typedef enum en_adt_vperr_pcnte
 {
-    AdtPeriodCnteDisable = 0u,     ///< 有效周期选择功能无效
-    AdtPeriodCnteMin     = 1u,     ///< 锯齿波计数上、下溢点或三角波波谷做为计数条件
-    AdtPeriodCnteMax     = 2u,     ///< 锯齿波计数上、下溢点或三角波波峰做为计数条件
-    AdtPeriodCnteBoth    = 3u,     ///< 锯齿波计数上、下溢点或三角波波峰，波谷做为计数条件
+    AdtPeriodCnteDisable = 0u,     ///< 
+    AdtPeriodCnteMin     = 1u,     ///< 
+    AdtPeriodCnteMax     = 2u,     ///< 
+    AdtPeriodCnteBoth    = 3u,     ///< 
 }en_adt_vperr_pcnte_t;
 
 /**
  ******************************************************************************
- ** \brief ADT端口触发控制 - 触发源选择
+ ** \brief ADT - 
  **
  ** \note
  ******************************************************************************/
@@ -369,7 +369,7 @@ typedef enum en_adt_ttrig_trigxs
 
 /**
  ******************************************************************************
- ** \brief ADT AOS触发控制 - AOSx触发源选择
+ ** \brief ADT AOS - AOSx
  **
  ** \note
  ******************************************************************************/
@@ -395,111 +395,111 @@ typedef enum en_adt_itrig_iaosxs
 
 /**
  ******************************************************************************
- ** \brief ADT硬件(启动/停止/清零/捕获)事件触发选择
+ ** \brief ADT(///)
  **
  ** \note
  ******************************************************************************/
 
 typedef enum en_adt_hw_trig
 {
-    AdtHwTrigAos0        = 0u,       ///< 从AOS来的事件触发0有效
-    AdtHwTrigAos1        = 1u,       ///< 从AOS来的事件触发1有效
-    AdtHwTrigAos2        = 2u,       ///< 从AOS来的事件触发2有效
-    AdtHwTrigAos3        = 3u,       ///< 从AOS来的事件触发3有效
-    AdtHwTrigCHxARise    = 4u,       ///< CHxA端口上采样到上升沿
-    AdtHwTrigCHxAFall    = 5u,       ///< CHxA端口上采样到下降沿
-    AdtHwTrigCHxBRise    = 6u,       ///< CHxB端口上采样到上升沿
-    AdtHwTrigCHxBFall    = 7u,       ///< CHxB端口上采样到下降沿
-    AdtHwTrigTimTriARise = 8u,       ///< TIMTRIA端口上采样到上升沿
-    AdtHwTrigTimTriAFall = 9u,       ///< TIMTRIA端口上采样到下降沿
-    AdtHwTrigTimTriBRise = 10u,      ///< TIMTRIB端口上采样到上升沿
-    AdtHwTrigTimTriBFall = 11u,      ///< TIMTRIB端口上采样到下降沿
-    AdtHwTrigTimTriCRise = 12u,      ///< TIMTRIC端口上采样到上升沿
-    AdtHwTrigTimTriCFall = 13u,      ///< TIMTRIC端口上采样到下降沿
-    AdtHwTrigTimTriDRise = 14u,      ///< TIMTRID端口上采样到上升沿
-    AdtHwTrigTimTriDFall = 15u,      ///< TIMTRID端口上采样到下降沿
+    AdtHwTrigAos0        = 0u,       ///< AOS0
+    AdtHwTrigAos1        = 1u,       ///< AOS1
+    AdtHwTrigAos2        = 2u,       ///< AOS2
+    AdtHwTrigAos3        = 3u,       ///< AOS3
+    AdtHwTrigCHxARise    = 4u,       ///< CHxA
+    AdtHwTrigCHxAFall    = 5u,       ///< CHxA
+    AdtHwTrigCHxBRise    = 6u,       ///< CHxB
+    AdtHwTrigCHxBFall    = 7u,       ///< CHxB
+    AdtHwTrigTimTriARise = 8u,       ///< TIMTRIA
+    AdtHwTrigTimTriAFall = 9u,       ///< TIMTRIA
+    AdtHwTrigTimTriBRise = 10u,      ///< TIMTRIB
+    AdtHwTrigTimTriBFall = 11u,      ///< TIMTRIB
+    AdtHwTrigTimTriCRise = 12u,      ///< TIMTRIC
+    AdtHwTrigTimTriCFall = 13u,      ///< TIMTRIC
+    AdtHwTrigTimTriDRise = 14u,      ///< TIMTRID
+    AdtHwTrigTimTriDFall = 15u,      ///< TIMTRID
     AdtHwTrigEnd         = 16u,
 }en_adt_hw_trig_t;
 
 /**
  ******************************************************************************
- ** \brief ADT硬件(递加/递减)事件触发选择
+ ** \brief ADT(/)
  **
  ** \note
  ******************************************************************************/
 
 typedef enum en_adt_hw_cnt
 {
-    AdtHwCntCHxALowCHxBRise   = 0u,      ///< CHxA端口为低电平时，CHxB端口上采样到上升沿
-    AdtHwCntCHxALowCHxBFall   = 1u,      ///< CHxA端口为低电平时，CHxB端口上采样到下降沿
-    AdtHwCntCHxAHighCHxBRise  = 2u,      ///< CHxA端口为高电平时，CHxB端口上采样到上升沿
-    AdtHwCntCHxAHighCHxBFall  = 3u,      ///< CHxA端口为高电平时，CHxB端口上采样到下降沿
-    AdtHwCntCHxBLowCHxARise   = 4u,      ///< CHxB端口为低电平时，CHxA端口上采样到上升沿
-    AdtHwCntCHxBLowCHxAFall   = 5u,      ///< CHxB端口为低电平时，CHxA端口上采样到下降沿
-    AdtHwCntCHxBHighChxARise  = 6u,      ///< CHxB端口为高电平时，CHxA端口上采样到上升沿
-    AdtHwCntCHxBHighCHxAFall  = 7u,      ///< CHxB端口为高电平时，CHxA端口上采样到下降沿
-    AdtHwCntTimTriARise       = 8u,      ///< TIMTRIA端口上采样到上升沿
-    AdtHwCntTimTriAFall       = 9u,      ///< TIMTRIA端口上采样到下降沿
-    AdtHwCntTimTriBRise       = 10u,     ///< TIMTRIB端口上采样到上升沿
-    AdtHwCntTimTriBFall       = 11u,     ///< TIMTRIB端口上采样到下降沿
-    AdtHwCntTimTriCRise       = 12u,     ///< TIMTRIC端口上采样到上升沿
-    AdtHwCntTimTriCFall       = 13u,     ///< TIMTRIC端口上采样到下降沿
-    AdtHwCntTimTriDRise       = 14u,     ///< TIMTRID端口上采样到上升沿
-    AdtHwCntTimTriDFall       = 15u,     ///< TIMTRID端口上采样到下降沿
-    AdtHwCntAos0              = 16u,     ///< 从AOS来的事件触发0有效
-    AdtHwCntAos1              = 17u,     ///< 从AOS来的事件触发1有效
-    AdtHwCntAos2              = 18u,     ///< 从AOS来的事件触发2有效
-    AdtHwCntAos3              = 19u,     ///< 从AOS来的事件触发3有效
+    AdtHwCntCHxALowCHxBRise   = 0u,      ///< CHxACHxB
+    AdtHwCntCHxALowCHxBFall   = 1u,      ///< CHxACHxB
+    AdtHwCntCHxAHighCHxBRise  = 2u,      ///< CHxACHxB
+    AdtHwCntCHxAHighCHxBFall  = 3u,      ///< CHxACHxB
+    AdtHwCntCHxBLowCHxARise   = 4u,      ///< CHxBCHxA
+    AdtHwCntCHxBLowCHxAFall   = 5u,      ///< CHxBCHxA
+    AdtHwCntCHxBHighChxARise  = 6u,      ///< CHxBCHxA
+    AdtHwCntCHxBHighCHxAFall  = 7u,      ///< CHxBCHxA
+    AdtHwCntTimTriARise       = 8u,      ///< TIMTRIA
+    AdtHwCntTimTriAFall       = 9u,      ///< TIMTRIA
+    AdtHwCntTimTriBRise       = 10u,     ///< TIMTRIB
+    AdtHwCntTimTriBFall       = 11u,     ///< TIMTRIB
+    AdtHwCntTimTriCRise       = 12u,     ///< TIMTRIC
+    AdtHwCntTimTriCFall       = 13u,     ///< TIMTRIC
+    AdtHwCntTimTriDRise       = 14u,     ///< TIMTRID
+    AdtHwCntTimTriDFall       = 15u,     ///< TIMTRID
+    AdtHwCntAos0              = 16u,     ///< AOS0
+    AdtHwCntAos1              = 17u,     ///< AOS1
+    AdtHwCntAos2              = 18u,     ///< AOS2
+    AdtHwCntAos3              = 19u,     ///< AOS3
     AdtHwCntMax               = 20u,
 }en_adt_hw_cnt_t;
 
 /**
  ******************************************************************************
- ** \brief ADT端口刹车极性控制
+ ** \brief ADT
  **
  ** \note
  ******************************************************************************/
 typedef enum en_adt_ptbrk_polarity
 {
-    AdtPtBrkHigh = 0u,     ///< 端口刹车极性高电平有效
-    AdtPtBrkLow  = 1u,     ///< 端口刹车极性低电平有效
+    AdtPtBrkHigh = 0u,     ///< 
+    AdtPtBrkLow  = 1u,     ///< 
 }en_adt_ptbrk_polarity_t;
 
 /**
  ******************************************************************************
- ** \brief ADT PWM展频计数选择
+ ** \brief ADT PWM
  **
  ** \note
  ******************************************************************************/
 typedef enum en_adt_pwm_dither_type
 {
-    AdtPwmDitherUnderFlow = 0u,    ///< PWM展频计数下溢出
-    AdtPwmDitherOverFlow  = 1u,    ///< PWM展频计数上溢出
+    AdtPwmDitherUnderFlow = 0u,    ///< PWM
+    AdtPwmDitherOverFlow  = 1u,    ///< PWM
 }en_adt_pwm_dither_type_t;
 
 /**
  ******************************************************************************
- ** \brief ADT中断类型
+ ** \brief ADT
  **
  ** \note
  ******************************************************************************/
 
 typedef enum en_adt_irq_type
 {
-    AdtCMAIrq  = 0u,     ///< 计数匹配A（或捕获输入）中断
-    AdtCMBIrq  = 1u,     ///< 计数匹配B（或捕获输入）中断
-    AdtCMCIrq  = 2u,     ///< 计数匹配C中断
-    AdtCMDIrq  = 3u,     ///< 计数匹配D中断
-    AdtOVFIrq  = 6u,     ///< 上溢匹配中断
-    AdtUDFIrq  = 7u,     ///< 下溢匹配中断
-    AdtDTEIrq  = 8u,     ///< 死区时间错误中断
-    AdtSAMLIrq = 14u,    ///< 同低中断
-    AdtSAMHIrq = 15u,    ///< 同高中断
+    AdtCMAIrq  = 0u,     ///< A
+    AdtCMBIrq  = 1u,     ///< B
+    AdtCMCIrq  = 2u,     ///< C
+    AdtCMDIrq  = 3u,     ///< D
+    AdtOVFIrq  = 6u,     ///< 
+    AdtUDFIrq  = 7u,     ///< 
+    AdtDTEIrq  = 8u,     ///< 
+    AdtSAMLIrq = 14u,    ///< 
+    AdtSAMHIrq = 15u,    ///< 
 }en_adt_irq_type_t;
 
 /**
  ******************************************************************************
- ** \brief ADT软件同步配置
+ ** \brief ADT
  ** \note
  ******************************************************************************/
 typedef struct stc_adt_sw_sync
@@ -512,186 +512,186 @@ typedef struct stc_adt_sw_sync
 
 /**
  ******************************************************************************
- ** \brief ADT AOS触发配置
+ ** \brief ADT AOS
  ** \note
  ******************************************************************************/
 typedef struct stc_adt_aos_trig_cfg
 {
-    en_adt_itrig_iaosxs_t   enAos0TrigSrc;      ///< AOS0触发源选择
-    en_adt_itrig_iaosxs_t   enAos1TrigSrc;      ///< AOS1触发源选择
-    en_adt_itrig_iaosxs_t   enAos2TrigSrc;      ///< AOS2触发源选择
-    en_adt_itrig_iaosxs_t   enAos3TrigSrc;      ///< AOS3触发源选择
+    en_adt_itrig_iaosxs_t   enAos0TrigSrc;      ///< AOS0
+    en_adt_itrig_iaosxs_t   enAos1TrigSrc;      ///< AOS1
+    en_adt_itrig_iaosxs_t   enAos2TrigSrc;      ///< AOS2
+    en_adt_itrig_iaosxs_t   enAos3TrigSrc;      ///< AOS3
 }stc_adt_aos_trig_cfg_t;
 
 /**
  ******************************************************************************
- ** \brief ADT 中断触发配置
+ ** \brief ADT 
  ** \note
  ******************************************************************************/
 typedef struct stc_adt_irq_trig_cfg
 {
-    boolean_t   bAdtSpecilMatchBTrigDmaEn;  ///< 专用比较基准值匹配B使能触发DMA
-    boolean_t   bAdtSpecilMatchATrigDmaEn;  ///< 专用比较基准值匹配A使能触发DMA
-    boolean_t   bAdtUnderFlowTrigDmaEn;     ///< 下溢匹配使能触发DMA
-    boolean_t   bAdtOverFlowTrigDmaEn;      ///< 上溢匹配使能触发DMA
-    boolean_t   bAdtCntMatchDTrigDmaEn;     ///< 计数匹配D使能触发DMA
-    boolean_t   bAdtCntMatchCTrigDmaEn;     ///< 计数匹配C使能触发DMA
-    boolean_t   bAdtCntMatchBTrigDmaEn;     ///< 计数匹配B使能触发DMA
-    boolean_t   bAdtCntMatchATrigDmaEn;     ///< 计数匹配A使能触发DMA
-    boolean_t   bAdtSpecilMatchBTrigEn;     ///< 专用比较基准值匹配B使能触发ADC
-    boolean_t   bAdtSpecilMatchATrigEn;     ///< 专用比较基准值匹配A使能触发ADC
-    boolean_t   bAdtUnderFlowTrigEn;        ///< 下溢匹配使能触发ADC
-    boolean_t   bAdtOverFlowTrigEn;         ///< 上溢匹配使能触发ADC
-    boolean_t   bAdtCntMatchDTrigEn;        ///< 计数匹配D使能触发ADC
-    boolean_t   bAdtCntMatchCTrigEn;        ///< 计数匹配C使能触发ADC
-    boolean_t   bAdtCntMatchBTrigEn;        ///< 计数匹配B使能触发ADC
-    boolean_t   bAdtCntMatchATrigEn;        ///< 计数匹配A使能触发ADC
+    boolean_t   bAdtSpecilMatchBTrigDmaEn;  ///< BDMA
+    boolean_t   bAdtSpecilMatchATrigDmaEn;  ///< ADMA
+    boolean_t   bAdtUnderFlowTrigDmaEn;     ///< DMA
+    boolean_t   bAdtOverFlowTrigDmaEn;      ///< DMA
+    boolean_t   bAdtCntMatchDTrigDmaEn;     ///< DDMA
+    boolean_t   bAdtCntMatchCTrigDmaEn;     ///< CDMA
+    boolean_t   bAdtCntMatchBTrigDmaEn;     ///< BDMA
+    boolean_t   bAdtCntMatchATrigDmaEn;     ///< ADMA
+    boolean_t   bAdtSpecilMatchBTrigEn;     ///< BADC
+    boolean_t   bAdtSpecilMatchATrigEn;     ///< AADC
+    boolean_t   bAdtUnderFlowTrigEn;        ///< ADC
+    boolean_t   bAdtOverFlowTrigEn;         ///< ADC
+    boolean_t   bAdtCntMatchDTrigEn;        ///< DADC
+    boolean_t   bAdtCntMatchCTrigEn;        ///< CADC
+    boolean_t   bAdtCntMatchBTrigEn;        ///< BADC
+    boolean_t   bAdtCntMatchATrigEn;        ///< AADC
 }stc_adt_irq_trig_cfg_t;
 
 /**
  ******************************************************************************
- ** \brief ADT Trig端口配置
+ ** \brief ADT Trig
  ** \note
  ******************************************************************************/
 typedef struct stc_adt_port_trig_cfg
 {
-    en_adt_ttrig_trigxs_t   enTrigSrc;      ///< 触发源选择
-    boolean_t               bFltEn;         ///< 触发源捕获输入滤波使能
-    en_adt_fconr_nofick_t   enFltClk;       ///< 滤波采样基准时钟
+    en_adt_ttrig_trigxs_t   enTrigSrc;      ///< 
+    boolean_t               bFltEn;         ///< 
+    en_adt_fconr_nofick_t   enFltClk;       ///< 
 }stc_adt_port_trig_cfg_t;
 
 /**
  ******************************************************************************
- ** \brief ADT Z相输入屏蔽功能配置
+ ** \brief ADT Z
  ** \note
  ******************************************************************************/
 typedef struct stc_adt_zmask_cfg
 {
-    en_adt_gconr_zmsk_t     enZMaskCycle;              ///< Z相输入屏蔽计数周期选择
-    boolean_t               bFltPosCntMaksEn;          ///< Z相输入时的屏蔽周期内，位置计数器的清零功能不屏蔽（FALSE）或屏蔽(TRUE)
-    boolean_t               bFltRevCntMaksEn;          ///< Z相输入时的屏蔽周期内，公转计数器的计数功能不屏蔽（FALSE）或屏蔽(TRUE)
+    en_adt_gconr_zmsk_t     enZMaskCycle;              ///< Z
+    boolean_t               bFltPosCntMaksEn;          ///< ZFALSE(TRUE)
+    boolean_t               bFltRevCntMaksEn;          ///< ZFALSE(TRUE)
 }stc_adt_zmask_cfg_t;
 
 /**
  ******************************************************************************
- ** \brief ADT TIMxX端口配置
+ ** \brief ADT TIMxX
  ** \note
  ******************************************************************************/
 typedef struct stc_adt_TIMxX_port_cfg
 {
-    en_adt_pconr_capc_t     enCap;      ///< 端口功能模式
-    boolean_t               bOutEn;     ///< 输出使能
-    en_adt_pconr_perc_t     enPerc;     ///< 周期值匹配时端口状态
-    en_adt_pconr_cmpc_t     enCmpc;     ///< 比较值匹配时端口状态
-    en_adt_pconr_stastps_t  enStaStp;   ///< 计数开始停止端口状态选择
-    en_adt_pconr_port_out_t enStaOut;   ///< 计数开始端口输出状态
-    en_adt_pconr_port_out_t enStpOut;   ///< 计数停止端口输出状态
-    en_adt_pconr_disval_t   enDisVal;   ///< 强制输出无效时输出状态控制
-    en_adt_pconr_dissel_t   enDisSel;   ///< 强制输出无效条件选择
-    boolean_t               bFltEn;     ///< 端口捕获输入滤波使能
-    en_adt_fconr_nofick_t   enFltClk;   ///< 端口滤波采样基准时钟
+    en_adt_pconr_capc_t     enCap;      ///< 
+    boolean_t               bOutEn;     ///< 
+    en_adt_pconr_perc_t     enPerc;     ///< 
+    en_adt_pconr_cmpc_t     enCmpc;     ///< 
+    en_adt_pconr_stastps_t  enStaStp;   ///< 
+    en_adt_pconr_port_out_t enStaOut;   ///< 
+    en_adt_pconr_port_out_t enStpOut;   ///< 
+    en_adt_pconr_disval_t   enDisVal;   ///< 
+    en_adt_pconr_dissel_t   enDisSel;   ///< 
+    boolean_t               bFltEn;     ///< 
+    en_adt_fconr_nofick_t   enFltClk;   ///< 
 }stc_adt_CHxX_port_cfg_t;
 
 /**
  ******************************************************************************
- ** \brief ADT刹车端口配置
+ ** \brief ADT
  ** \note
  ******************************************************************************/
 typedef struct stc_adt_break_port_cfg
 {
-    boolean_t               bPortEn;    ///< 端口使能
-    en_adt_ptbrk_polarity_t enPol;      ///< 极性选择
+    boolean_t               bPortEn;    ///< 
+    en_adt_ptbrk_polarity_t enPol;      ///< 
 }stc_adt_break_port_cfg_t;
 
 /**
  ******************************************************************************
- ** \brief ADT无效条件3配置
+ ** \brief ADT3
  ** \note
  ******************************************************************************/
 typedef struct stc_adt_disable_3_cfg
 {
-    stc_adt_break_port_cfg_t    stcBrkPtCfg[16];    ///< 刹车端口配置
-    boolean_t                   bFltEn;             ///< 刹车端口滤波使能
-    en_adt_fconr_nofick_t       enFltClk;           ///< 滤波采样基准时钟
-    boolean_t                   bSwBrk;             ///< 软件刹车
+    stc_adt_break_port_cfg_t    stcBrkPtCfg[16];    ///< 
+    boolean_t                   bFltEn;             ///< 
+    en_adt_fconr_nofick_t       enFltClk;           ///< 
+    boolean_t                   bSwBrk;             ///< 
 }stc_adt_disable_3_cfg_t;
 
 /**
  ******************************************************************************
- ** \brief ADT无效条件1配置
+ ** \brief ADT1
  ** \note
  ******************************************************************************/
 typedef struct stc_adt_disable_1_cfg
 {
-    boolean_t   bTim6OutSH;     ///< TIM6输出同高
-    boolean_t   bTim5OutSH;     ///< TIM5输出同高
-    boolean_t   bTim4OutSH;     ///< TIM4输出同高
-    boolean_t   bTim6OutSL;     ///< TIM6输出同低
-    boolean_t   bTim5OutSL;     ///< TIM5输出同低
-    boolean_t   bTim4OutSL;     ///< TIM4输出同低
+    boolean_t   bTim6OutSH;     ///< TIM6
+    boolean_t   bTim5OutSH;     ///< TIM5
+    boolean_t   bTim4OutSH;     ///< TIM4
+    boolean_t   bTim6OutSL;     ///< TIM6
+    boolean_t   bTim5OutSL;     ///< TIM5
+    boolean_t   bTim4OutSL;     ///< TIM4
 }stc_adt_disable_1_cfg_t;
 
 /**
  ******************************************************************************
- ** \brief ADT PWM展频计数配置
+ ** \brief ADT PWM
  ** \note
  ******************************************************************************/
 typedef struct stc_adt_pwm_dither_cfg
 {
-    en_adt_pwm_dither_type_t    enAdtPDType;    ///< PWM展频计数选择
-    boolean_t   bTimxBPDEn;                     ///< PWM通道B展频使能
-    boolean_t   bTimxAPDEn;                     ///< PWM通道A展频使能
+    en_adt_pwm_dither_type_t    enAdtPDType;    ///< PWM
+    boolean_t   bTimxBPDEn;                     ///< PWMB
+    boolean_t   bTimxAPDEn;                     ///< PWMA
 }stc_adt_pwm_dither_cfg_t;
 
 
 /**
  ******************************************************************************
- ** \brief ADT基本计数配置
+ ** \brief ADT
  ** \note
  ******************************************************************************/
 typedef struct stc_adt_basecnt_cfg
 {
-    en_adt_cnt_mode_t       enCntMode;      ///< 计数模式
-    en_adt_cnt_dir_t        enCntDir;       ///< 计数方向
-    en_adt_cnt_ckdiv_t      enCntClkDiv;    ///< 计数时钟选择
+    en_adt_cnt_mode_t       enCntMode;      ///< 
+    en_adt_cnt_dir_t        enCntDir;       ///< 
+    en_adt_cnt_ckdiv_t      enCntClkDiv;    ///< 
 }stc_adt_basecnt_cfg_t;
 
 /**
  ******************************************************************************
- ** \brief ADT计数状态
+ ** \brief ADT
  ** \note
  ******************************************************************************/
 typedef struct stc_adt_cntstate_cfg
 {
-    uint16_t         u16Counter;      ///< 当前计数器的计数值
-    boolean_t        enCntDir;        ///< 计数方向
-    uint8_t          u8ValidPeriod;   ///< 有效周期计数
-    boolean_t        bCMSBDF;         ///< 向下计数专用比较基准值匹配B标志
-    boolean_t        bCMSBUF;         ///< 向上计数专用比较基准值匹配A标志
-    boolean_t        bCMSADF;         ///< 向下计数专用比较基准值匹配B标志
-    boolean_t        bCMSAUF;         ///< 向上计数专用比较基准值匹配A标志
-    boolean_t        bDTEF;           ///< 死区时间错误标志
-    boolean_t        bUDFF;           ///< 下溢匹配标志
-    boolean_t        bOVFF;           ///< 上溢匹配标志
-    boolean_t        bCMDF;           ///< 计数匹配D标志
-    boolean_t        bCMCF;           ///< 计数匹配C标志
-    boolean_t        bCMBF;           ///< 计数匹配B标志
-    boolean_t        bCMAF;           ///< 计数匹配A标志
+    uint16_t         u16Counter;      ///< 
+    boolean_t        enCntDir;        ///< 
+    uint8_t          u8ValidPeriod;   ///< 
+    boolean_t        bCMSBDF;         ///< B
+    boolean_t        bCMSBUF;         ///< A
+    boolean_t        bCMSADF;         ///< B
+    boolean_t        bCMSAUF;         ///< A
+    boolean_t        bDTEF;           ///< 
+    boolean_t        bUDFF;           ///< 
+    boolean_t        bOVFF;           ///< 
+    boolean_t        bCMDF;           ///< D
+    boolean_t        bCMCF;           ///< C
+    boolean_t        bCMBF;           ///< B
+    boolean_t        bCMAF;           ///< A
 }stc_adt_cntstate_cfg_t;
 
 /**
  ******************************************************************************
- ** \brief ADT有效计数周期
+ ** \brief ADT
  ** \note
  ******************************************************************************/
 typedef struct stc_adt_validper_cfg
 {
-    en_adt_vperr_pcnts_t    enValidCnt;     ///< 有效周期选择
-    en_adt_vperr_pcnte_t    enValidCdt;     ///< 有效周期计数条件
-    boolean_t               bPeriodD;       ///< 通用信号有效周期选择D
-    boolean_t               bPeriodC;       ///< 通用信号有效周期选择C
-    boolean_t               bPeriodB;       ///< 通用信号有效周期选择B
-    boolean_t               bPeriodA;       ///< 通用信号有效周期选择A
+    en_adt_vperr_pcnts_t    enValidCnt;     ///< 
+    en_adt_vperr_pcnte_t    enValidCdt;     ///< 
+    boolean_t               bPeriodD;       ///< D
+    boolean_t               bPeriodC;       ///< C
+    boolean_t               bPeriodB;       ///< B
+    boolean_t               bPeriodA;       ///< A
 }stc_adt_validper_cfg_t;
 
 /******************************************************************************

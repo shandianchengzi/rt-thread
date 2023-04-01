@@ -125,41 +125,41 @@
 #define DMA_PRIORITY_Msk                    (0x01U << DMA_PRIORITY_Pos)            /*!< DMAC_CONF: TRISEL Mask 0x10000000 */
 
 
-/*! Dmac通道参数有效性检查. */
+/*! Dmac. */
 #define IS_VALID_CH(x)                      \
 (   (DmaCh0 == (x))                      || \
   (DmaCh1 == (x)))
 
-/*! DMA 传输数据宽度，参数有效性检查. */
+/*! DMA . */
 #define IS_VALID_TRN_WIDTH(x)               \
 (   (DmaMsk8Bit == (x))                     || \
   (DmaMsk16Bit == (x))                    || \
     (DmaMsk32Bit == (x)))
 
-/*! DMA源地址控制模式，参数有效性检查. */
+/*! DMA. */
 #define IS_VALID_SRC_ADDR_MODE(x)               \
 (   (DmaMskSrcAddrFix == (x))                  || \
   (DmaMskSrcAddrInc == (x)))
 
-/*! DMA目的地址控制模式，参数有效性检查. */
+/*! DMA. */
 #define IS_VALID_DST_ADDR_MODE(x)               \
 (   (DmaMskDstAddrFix == (x))                  || \
   (DmaMskDstAddrInc == (x)))
 
-/*! DMA 优先级, 参数有效性检查. */
+/*! DMA , . */
 #define IS_VALID_PRIO_MODE(x)               \
 (   (DmaMskPriorityFix == (x))                  || \
   (DmaMskPriorityLoop == (x)))
 
-/*! DMA 传输模式，参数有效性检查. */
+/*! DMA . */
 #define IS_VALID_TRANSFER_MODE(x)           \
 (   (DmaMskOneTransfer == (x))                  || \
     (DmaMskContinuousTransfer == (x)))
 
-/*! 块传输大小，参数有效性检查.  */
+/*! .  */
 #define IS_VALID_BLKSIZE(x)                 ((!((x) & ~(DMA_BC_SEL_Msk >> DMA_BC_SEL_Pos)))&&((x)>0))
 
-/*! 块传输次数，参数有效性检查.  */
+/*! .  */
 #define IS_VALID_TRNCNT(x)                  (!((x) & ~(DMA_TC_SEL_Msk >> DMA_TC_SEL_Pos)))
 
 /*******************************************************************************
@@ -180,13 +180,13 @@
 
 /**
 *******************************************************************************
-** \brief 初始化DMAC通道
+** \brief DMAC
 **
-** \param  [in] enCh                   指定通道.
-** \param  [in] pstcCfg             DMAC通道初始化配置结构体指针.
+** \param  [in] enCh                   .
+** \param  [in] pstcCfg             DMAC.
 **
-** \retval Ok                          初始化成功.
-** \retval ErrorInvalidParameter       pstcCfg是空指针.
+** \retval Ok                          .
+** \retval ErrorInvalidParameter       pstcCfg.
 **
 ** \note   None
 **
@@ -203,7 +203,7 @@ en_result_t Dma_InitChannel(en_dma_channel_t enCh, stc_dma_cfg_t* pstcCfg)
     ASSERT(IS_VALID_PRIO_MODE(pstcCfg->enPriority));
     ASSERT(IS_VALID_TRANSFER_MODE(pstcCfg->enTransferMode));
       
-    /* 检查通道值有效性和pstcCfg是否空指针 */
+    /* pstcCfg */
     if (NULL == pstcCfg)
     {
       return ErrorInvalidParameter;
@@ -219,7 +219,7 @@ en_result_t Dma_InitChannel(en_dma_channel_t enCh, stc_dma_cfg_t* pstcCfg)
                                   (uint32_t)pstcCfg->enSrcBcTcReloadCtl |
                                   (uint32_t)pstcCfg->enTransferMode;
 
-    /*首先把TRI_SEL[6:0]     BC[3:0] TC[15:0]这些位清零，然后再赋值*/
+    /*TRI_SEL[6:0]     BC[3:0] TC[15:0]*/
     *(&M0P_DMAC->CONFA0+enCh) &= ((uint32_t)~(DMA_TRI_SEL_Msk | DMA_BC_SEL_Msk | DMA_TC_SEL_Msk));
     *(&M0P_DMAC->CONFA0+enCh)    |= (uint32_t)(pstcCfg->u16TransferCnt - 1)    |
                                    ((uint32_t)(pstcCfg->u16BlockSize - 1)<<16)|
@@ -234,7 +234,7 @@ en_result_t Dma_InitChannel(en_dma_channel_t enCh, stc_dma_cfg_t* pstcCfg)
 }
 /**
 *******************************************************************************
-** \brief  DMA模块使能函数，使能所有通道的操作，每个通道按照各自设置工作.
+** \brief  DMA.
 **
 ** \param  None
 **
@@ -250,7 +250,7 @@ void Dma_Enable(void)
 
 /**
 *******************************************************************************
-** \brief  DMA模块功能禁止函数，所有通道禁止工作.
+** \brief  DMA.
 **
 ** \param  None
 **
@@ -265,9 +265,9 @@ void Dma_Disable(void)
 }
 /**
 *******************************************************************************
-** \brief  触发指定DMA通道软件传输功能.
+** \brief  DMA.
 **
-** \param  [输入] enCh                     指定dma通道.
+** \param  [] enCh                     dma.
 **
 ** \retval None
 **
@@ -281,9 +281,9 @@ void Dma_SwStart(en_dma_channel_t enCh)
 
 /**
 *******************************************************************************
-** \brief  停止指定DMA通道软件传输功能.
+** \brief  DMA.
 **
-** \param  [输入] enCh                   指定dma通道.
+** \param  [] enCh                   dma.
 **
 ** \retval None
 **
@@ -296,9 +296,9 @@ void Dma_SwStop(en_dma_channel_t enCh)
 }
 /**
 *******************************************************************************
-** \brief  使能指定dma通道的（传输完成）中断.
+** \brief  dma.
 **
-** \param  [输入] enCh                 指定dma通道.
+** \param  [] enCh                 dma.
 **
 ** \retval None
 **
@@ -312,9 +312,9 @@ void Dma_EnableChannelIrq(en_dma_channel_t enCh)
 
 /**
 *******************************************************************************
-** \brief  禁用指定dma通道的（传输完成）中断.
+** \brief  dma.
 **
-** \param  [输入] enCh                 指定dma通道.
+** \param  [] enCh                 dma.
 **
 ** \retval None
 **
@@ -327,9 +327,9 @@ void Dma_DisableChannelIrq(en_dma_channel_t enCh)
 }
 /**
 *******************************************************************************
-** \brief  使能指定dma通道的（传输错误）中断..
+** \brief  dma..
 **
-** \param  [输入] enCh                 指定dma通道.
+** \param  [] enCh                 dma.
 **
 ** \retval None
 **
@@ -343,9 +343,9 @@ void Dma_EnableChannelErrIrq(en_dma_channel_t enCh)
 
 /**
 *******************************************************************************
-** \brief  禁用指定dma通道的（传输错误）中断..
+** \brief  dma..
 **
-** \param  [输入] enCh                 指定dma通道.
+** \param  [] enCh                 dma.
 **
 ** \retval None
 **
@@ -359,9 +359,9 @@ void Dma_DisableChannelErrIrq(en_dma_channel_t enCh)
 
 /**
 *******************************************************************************
-** \brief  使能指定dma通道
+** \brief  dma
 **
-** \param  [输入] enCh                 指定dma通道.
+** \param  [] enCh                 dma.
 **
 ** \retval None
 **
@@ -375,9 +375,9 @@ void Dma_EnableChannel(en_dma_channel_t enCh)
 
 /**
 *******************************************************************************
-** \brief  禁用指定dma通道
+** \brief  dma
 **
-** \param  [输入] enCh                 指定dma通道.
+** \param  [] enCh                 dma.
 **
 ** \retval None
 **
@@ -391,10 +391,10 @@ void Dma_DisableChannel(en_dma_channel_t enCh)
 
 /**
 *******************************************************************************
-** \brief  设定指定通道的块(Block)尺寸
+** \brief  (Block)
 **
-** \param  [输入] enCh                 指定通道
-** \param  [输入] u16BlkSize           块(Block)尺寸.
+** \param  [] enCh                 
+** \param  [] u16BlkSize           (Block).
 **
 ** \retval None
 **
@@ -410,10 +410,10 @@ void Dma_SetBlockSize(en_dma_channel_t enCh, uint16_t u16BlkSize)
 
 /**
 *******************************************************************************
-** \brief  设定指定通道块(Block)传输次数
+** \brief  (Block)
 **
-** \param  [in] enCh                   指定通道.
-** \param  [in] u16TrnCnt              块(Block)传输次数.
+** \param  [in] enCh                   .
+** \param  [in] u16TrnCnt              (Block).
 **
 ** \retval None
 **
@@ -429,9 +429,9 @@ void Dma_SetTransferCnt(en_dma_channel_t enCh, uint16_t u16TrnCnt)
 
 /**
 *******************************************************************************
-** \brief  允许指定通道可连续传输，即DMAC在传输完成时不清除CONFA:ENS位.
+** \brief  DMACCONFA:ENS.
 **
-** \param  [in] enCh                   指定通道.
+** \param  [in] enCh                   .
 **
 ** \retval None
 **
@@ -445,9 +445,9 @@ void Dma_EnableContinusTranfer(en_dma_channel_t enCh)
 
 /**
 *******************************************************************************
-** \brief  禁止指定通道连续传输，即DMAC在传输完成时清除.
+** \brief  DMAC.
 **
-** \param  [输入] enCh                 指定通道.
+** \param  [] enCh                 .
 **
 ** \retval None
 **
@@ -460,7 +460,7 @@ void Dma_DisableContinusTranfer(en_dma_channel_t enCh)
 }
 /**
 *******************************************************************************
-** \brief  暂停所有dma通道.
+** \brief  dma.
 **
 ** \param  None
 **
@@ -475,7 +475,7 @@ void Dma_HaltTranfer(void)
 }
 /**
 *******************************************************************************
-** \brief  恢复（之前暂停的）所有dma通道.
+** \brief  dma.
 **
 ** \param  None
 **
@@ -490,9 +490,9 @@ void Dma_RecoverTranfer(void)
 }
 /**
 *******************************************************************************
-** \brief  暂停指定dma通道.
+** \brief  dma.
 **
-** \param  [输入] enCh                 指定通道.
+** \param  [] enCh                 .
 **
 ** \retval void
 **
@@ -505,9 +505,9 @@ void Dma_PauseChannelTranfer(en_dma_channel_t enCh)
 }
 /**
 *******************************************************************************
-** \brief  恢复（之前暂定的）指定dma通道.
+** \brief  dma.
 **
-** \param  [输入] enCh                 指定通道.
+** \param  [] enCh                 .
 **
 ** \retval None
 **
@@ -520,10 +520,10 @@ void Dma_RecoverChannelTranfer(en_dma_channel_t enCh)
 }
 /**
 *******************************************************************************
-** \brief  设定指定通道传输数据宽度.
+** \brief  .
 **
-** \param  [输入] enCh                 指定dma通道.
-** \param  [输入] enWidth              指定数据宽度.
+** \param  [] enCh                 dma.
+** \param  [] enWidth              .
 **
 ** \retval None
 **
@@ -538,9 +538,9 @@ void Dma_SetTransferWidth(en_dma_channel_t enCh, en_dma_transfer_width_t enWidth
 }
 /**
 *******************************************************************************
-** \brief  设定dma通道优先级.
+** \brief  dma.
 **
-** \param  [输入] enPrio               通道优先级设定参数.
+** \param  [] enPrio               .
 **
 ** \retval None
 **
@@ -553,11 +553,11 @@ void Dma_SetChPriority(en_dma_priority_t enPrio)
 }
 /**
 *******************************************************************************
-** \brief  获取指定DMA通道的状态.
+** \brief  DMA.
 **
-** \param  [输入] enCh                 指定dma通道.
+** \param  [] enCh                 dma.
 **
-** \retval en_dma_stat_t               DMA传输当前状态
+** \retval en_dma_stat_t               DMA
 **
 ** \note   None
 **
@@ -568,9 +568,9 @@ en_dma_stat_t Dma_GetStat(en_dma_channel_t enCh)
 }
 /**
 *******************************************************************************
-** \brief  清除指定DMA通道的状态值.
+** \brief  DMA.
 **
-** \param  [输入] enCh                 指定dma通道.
+** \param  [] enCh                 dma.
 **
 ** \retval None
 **
@@ -585,10 +585,10 @@ void Dma_ClrStat(en_dma_channel_t enCh)
 
 /**
 *******************************************************************************
-** \brief  设定指定通道源地址
+** \brief  
 **
-** \param  [输入] enCh                  指定dma通道.
-** \param  [输入] u32Address            传输源地址.
+** \param  [] enCh                  dma.
+** \param  [] u32Address            .
 **
 ** \retval None
 **
@@ -602,10 +602,10 @@ void Dma_SetSourceAddress(en_dma_channel_t enCh, uint32_t u32Address)
 
 /**
 *******************************************************************************
-** \brief  设定指定通道目标地址.
+** \brief  .
 **
-** \param  [输入] enCh                  指定dma通道.
-** \param  [输入] u32Address            传输目标地址.
+** \param  [] enCh                  dma.
+** \param  [] u32Address            .
 **
 ** \retval None
 **

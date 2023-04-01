@@ -1,45 +1,45 @@
-# FDDMA 驱动程序
+# FDDMA 
 
-## 1. 概述
+## 1. 
 
-DDMA(Device Direct Memory Access)是E2000提供的一个通用DMA控制模块，支持典型的DMA操作，提供多个DMA通道，多个通道可以同时工作，独立配置给不同外设使用
+DDMA(Device Direct Memory Access)E2000DMADMADMA
 
-## 2. 功能
+## 2. 
 
-FDDMA 驱动程序主要完成 DDMA 模块的初始化，DDMA通道的分配与释放，
-相关源文件为：
+FDDMA  DDMA DDMA
+
 ```
 fddma
     .
-    ├── fddma.c
-    ├── fddma.h
-    ├── fddma_g.c
-    ├── fddma_hw.c
-    ├── fddma_hw.h
-    ├── fddma_intr.c
-    ├── fddma_selftest.c
-    └── fddma_sinit.c
+     fddma.c
+     fddma.h
+     fddma_g.c
+     fddma_hw.c
+     fddma_hw.h
+     fddma_intr.c
+     fddma_selftest.c
+     fddma_sinit.c
 ```
 
-## 3. 配置方法
+## 3. 
 
-以下部分将指导您完成 FDDMA 驱动的软件配置:
+ FDDMA :
 
-- 初始化 DDMA 控制器
-- 配置 DDMA 通道，与外设完成绑定
-- 启动 DDMA 通道 
+-  DDMA 
+-  DDMA 
+-  DDMA  
 
-## 4 应用示例
+## 4 
 
-### [通过DDMA搬运SPI数据完成回环测试](../../../baremetal/example/peripheral/dma/fddma_spi)
+### [DDMASPI](../../../baremetal/example/peripheral/dma/fddma_spi)
 
-## 5. API参考
+## 5. API
 
-### 5.1. 用户数据结构
+### 5.1. 
 
 #### FDdmaConfig
 
-- DDMA 实例配置
+- DDMA 
 
 ```c
 typedef struct
@@ -53,7 +53,7 @@ typedef struct
 
 #### FDdmaChanConfig
 
-- DDMA 通道配置
+- DDMA 
 
 ```c
 typedef struct
@@ -72,7 +72,7 @@ typedef struct
 
 #### FDdmaChan
 
-- DDMA 通道实例
+- DDMA 
 
 ```c
 typedef struct FDdmaChan_
@@ -87,7 +87,7 @@ typedef struct FDdmaChan_
 
 #### FDdma
 
-- DDMA 控制器实例
+- DDMA 
 
 ```c
 typedef struct FDdma_
@@ -99,18 +99,18 @@ typedef struct FDdma_
 } FDdma; /* DDMA instance */
 ```
 
-### 5.2  错误码定义
+### 5.2  
 
 
-- FDDMA_SUCCESS                   : 成功  
-- FDDMA_ERR_NOT_INIT              ：驱动未初始化
-- FDDMA_ERR_CHAN_BINDED           ：通道已经绑定无法分配
-- FDDMA_ERR_CHAN_RUNNING          : 通道正在工作无法分配
-- FDDMA_ERR_INVALID_TRANS_SIZE    : DMA传输字节数不合法
-- FDDMA_ERR_WAIT_TIMEOUT          : DMA等待超时
-- FDDMA_ERR_INVALID_DDR_ADDR      : DMA传输地址不合法
+- FDDMA_SUCCESS                   :   
+- FDDMA_ERR_NOT_INIT              
+- FDDMA_ERR_CHAN_BINDED           
+- FDDMA_ERR_CHAN_RUNNING          : 
+- FDDMA_ERR_INVALID_TRANS_SIZE    : DMA
+- FDDMA_ERR_WAIT_TIMEOUT          : DMA
+- FDDMA_ERR_INVALID_DDR_ADDR      : DMA
 
-### 5.3. 用户API接口
+### 5.3. API
 
 #### FDdmaLookupConfig
 
@@ -121,15 +121,15 @@ const FDdmaConfig *FDdmaLookupConfig(u32 instance_id);
 
 Note:
 
-- 获取DDMA实例默认配置 
+- DDMA 
 
 Input:
 
-- {u32} instance_id, DDMA实例号
+- {u32} instance_id, DDMA
 
 Return:
 
-- {const FDdmaConfig *} DDMA控制器默认配置
+- {const FDdmaConfig *} DDMA
 
 #### FDdmaCfgInitialization
 
@@ -140,16 +140,16 @@ FError FDdmaCfgInitialization(FDdma *const instance, const FDdmaConfig *input_co
 
 Note:
 
-- 初始化DDMA控制器
+- DDMA
 
 Input:
 
-- {FDdma} *instance, DDMA控制器实例
-- {FDdmaConfig} *input_config, DDMA控制器配置
+- {FDdma} *instance, DDMA
+- {FDdmaConfig} *input_config, DDMA
 
 Return:
 
-- {FError} FDDMA_SUCCESS表示初始化成功，其它返回值表示初始化失败
+- {FError} FDDMA_SUCCESS
 
 #### FDdmaDeInitialization
 
@@ -160,15 +160,15 @@ void FDdmaDeInitialization(FDdma *const instance);
 
 Note:
 
-- 去初始化DDMA控制器
+- DDMA
 
 Input:
 
-- {FDdma} *instance, DDMA控制器实例
+- {FDdma} *instance, DDMA
 
 Return:
 
-- 无
+- 
 
 #### FDdmaAllocateChan
 
@@ -178,17 +178,17 @@ FError FDdmaAllocateChan(FDdma *const instance, FDdmaChan *const dma_chan, const
 
 Note:
 
-- 按照配置分配并使能DDMA通道
+- DDMA
 
 Input:
 
-- {FDdma} *instance, DDMA控制器实例
-- {FDdmaChan} *dma_chan, DDMA通道实例
-- {FDdmaChanConfig} *dma_chan_config, DDMA通道配置
+- {FDdma} *instance, DDMA
+- {FDdmaChan} *dma_chan, DDMA
+- {FDdmaChanConfig} *dma_chan_config, DDMA
 
 Return:
 
-- {FError} FDDMA_SUCCESS表示分配成功，其它返回值表示分配失败
+- {FError} FDDMA_SUCCESS
 
 #### FDdmaDellocateChan
 
@@ -198,15 +198,15 @@ FError FDdmaDellocateChan(FDdmaChan *const dma_chan);
 
 Note:
 
-- 释放之前分配的DDMA通道
+- DDMA
 
 Input:
 
-- {FDdmaChan} *dma_chan, DDMA控制器实例
+- {FDdmaChan} *dma_chan, DDMA
 
 Return:
 
-- {FError} FDDMA_SUCCESS表示释放成功，其它返回值表示释放失败
+- {FError} FDDMA_SUCCESS
 
 #### FDdmaStart
 
@@ -216,15 +216,15 @@ FError FDdmaStart(FDdma *const instance);
 
 Note:
 
-- 启动DDMA控制器，开始传输
+- DDMA
 
 Input:
 
-- {FDdma} *instance, DDMA控制器实例
+- {FDdma} *instance, DDMA
 
 Return:
 
-- {FError} FDDMA_SUCCESS表示启动成功，其它返回值表示启动失败
+- {FError} FDDMA_SUCCESS
 
 #### FDdmaStop
 
@@ -234,15 +234,15 @@ FError FDdmaStop(FDdma *const instance);
 
 Note:
 
-- 停止DDMA控制器
+- DDMA
 
 Input:
 
-- {FDdma} *instance, DDMA控制器实例
+- {FDdma} *instance, DDMA
 
 Return:
 
-- {FError} FDDMA_SUCCESS表示停止成功，其它返回值表示停止失败
+- {FError} FDDMA_SUCCESS
 
 #### FDdmaIrqHandler
 
@@ -252,16 +252,16 @@ void FDdmaIrqHandler(s32 vector, void *args)
 
 Note:
 
-- DDMA中断处理函数 
+- DDMA 
 
 Input:
 
 - {s32} vector
-- {void} *param, 输入参数
+- {void} *param, 
 
 Return:
 
-- 无
+- 
 
 #### FDdmaRegisterChanEvtHandler
 
@@ -274,15 +274,15 @@ void FDdmaRegisterChanEvtHandler(FDdmaChan *const dma_chan,
 
 Note:
 
-- 注册DDMA通道中断响应事件函数 
+- DDMA 
 
 Input:
 
-- {FDdmaChan} *dma_chan, DDMA通道
-- {FDdmaChanEvt} evt, 中断事件
-- {FDdmaChanEvtHandler} handler, 中断响应事件函数
-- {void} *handler_arg, 中断响应事件函数输入参数
+- {FDdmaChan} *dma_chan, DDMA
+- {FDdmaChanEvt} evt, 
+- {FDdmaChanEvtHandler} handler, 
+- {void} *handler_arg, 
 
 Return:
 
-- 无
+- 

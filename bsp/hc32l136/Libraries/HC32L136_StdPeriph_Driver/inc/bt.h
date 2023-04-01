@@ -42,7 +42,7 @@
 /******************************************************************************/
 /** \file bt.h
  **
- ** 基本定时器数据结构及API声明
+ ** API
  ** @link BT Group Some description @endlink
  **
  ** History:
@@ -81,7 +81,7 @@ extern "C"
 
 /**
  ******************************************************************************
- ** \brief 定时器选择数据类型重定义
+ ** \brief 
  *****************************************************************************/
 typedef enum en_bt_unit
 {
@@ -92,29 +92,29 @@ typedef enum en_bt_unit
 
 /**
  ******************************************************************************
- ** \brief 工作模式选择数据类型重定义 (MODE)(模式0/1/23)
+ ** \brief  (MODE)(0/1/23)
  *****************************************************************************/
 typedef enum en_bt_work_mode
 {
-    BtWorkMode0  = 0u,         ///< 定时器模式
-    BtWorkMode1  = 1u,         ///< PWC模式
-    BtWorkMode2  = 2u,         ///< 锯齿波模式
-    BtWorkMode3  = 3u,         ///< 三角波模式
+    BtWorkMode0  = 0u,         ///< 
+    BtWorkMode1  = 1u,         ///< PWC
+    BtWorkMode2  = 2u,         ///< 
+    BtWorkMode3  = 3u,         ///< 
 }en_bt_work_mode_t;
 
 /**
  ******************************************************************************
- ** \brief 极性控制数据类型重定义 (GATE_P)(模式0)
+ ** \brief  (GATE_P)(0)
  *****************************************************************************/
 typedef enum en_bt_m0_gatep
 {
-    BtGatePositive = 0u,            ///< 高电平有效
-    BtGateOpposite = 1u,            ///< 低电平有效
+    BtGatePositive = 0u,            ///< 
+    BtGateOpposite = 1u,            ///< 
 }en_bt_m0_gatep_t;
 
 /**
  ******************************************************************************
- ** \brief TIM 预除频选择 (PRS)(模式0/1/23)
+ ** \brief TIM  (PRS)(0/1/23)
  *****************************************************************************/
 typedef enum en_bt_cr_timclkdiv
 {
@@ -130,513 +130,513 @@ typedef enum en_bt_cr_timclkdiv
 
 /**
  ******************************************************************************
- ** \brief 计数/定时器功能选择数据类型重定义 (CT)(模式0/1/23)
+ ** \brief / (CT)(0/1/23)
  *****************************************************************************/
 typedef enum en_bt_cr_ct
 {
-    BtTimer   = 0u,            ///< 定时器功能，计数时钟为内部PCLK
-    BtCounter = 1u,            ///< 计数器功能，计数时钟为外部ETR
+    BtTimer   = 0u,            ///< PCLK
+    BtCounter = 1u,            ///< ETR
 }en_bt_cr_ct_t;
 
 
 /**
  ******************************************************************************
- ** \brief 定时器工作模式数据类型重定义 (MD)(模式0)
+ ** \brief  (MD)(0)
  *****************************************************************************/
 typedef enum en_bt_m0cr_md
 {
-    Bt32bitFreeMode  = 0u,         ///< 32位计数器/定时器
-    Bt16bitArrMode  = 1u,         ///< 自动重载16位计数器/定时器
+    Bt32bitFreeMode  = 0u,         ///< 32/
+    Bt16bitArrMode  = 1u,         ///< 16/
 }en_bt_m0cr_md_t;
 
 /**
  ******************************************************************************
-** \brief BT0/BT1/BT2中断类型数据类型重定义(模式0/1/23)
+** \brief BT0/BT1/BT2(0/1/23)
  *****************************************************************************/
 typedef enum en_bt_irq_type
 {
-    BtUevIrq   = 0u,         ///< 溢出/事件更新中断
-    BtCA0Irq   = 2u,         ///< 捕获/比较中断A(仅模式1/23存在)
-    BtCB0Irq   = 5u,         ///< 捕获/比较中断B(仅模式23存在)
-    BtCA0E     = 8u,         ///< CH0A捕获数据丢失标志(仅模式23存在),不是中断
-    BtCB0E     = 11u,        ///< CH0B捕获数据丢失标志(仅模式23存在),不是中断
-    BtBkIrq    = 14u,        ///< 刹车中断(仅模式23存在)
-    BtTrigIrq  = 15u,        ///< 触发中断(仅模式23存在)   
+    BtUevIrq   = 0u,         ///< /
+    BtCA0Irq   = 2u,         ///< /A(1/23)
+    BtCB0Irq   = 5u,         ///< /B(23)
+    BtCA0E     = 8u,         ///< CH0A(23),
+    BtCB0E     = 11u,        ///< CH0B(23),
+    BtBkIrq    = 14u,        ///< (23)
+    BtTrigIrq  = 15u,        ///< (23)   
 }en_bt_irq_type_t;
 
 /**
  ******************************************************************************
- ** \brief 测量开始结束数据类型重定义 (Edg1stEdg2nd)(模式1)
+ ** \brief  (Edg1stEdg2nd)(1)
  *****************************************************************************/
 typedef enum en_bt_m1cr_Edge
 {
-    BtPwcRiseToRise  = 0u,            ///< 上升沿到上升沿(周期)
-    BtPwcFallToRise  = 1u,            ///< 下降沿到上升沿(低电平)
-    BtPwcRiseToFall  = 2u,            ///< 上升沿到下降沿(高电平)
-    BtPwcFallToFall  = 3u,            ///< 下降沿到下降沿(周期)
+    BtPwcRiseToRise  = 0u,            ///< ()
+    BtPwcFallToRise  = 1u,            ///< ()
+    BtPwcRiseToFall  = 2u,            ///< ()
+    BtPwcFallToFall  = 3u,            ///< ()
 }en_bt_m1cr_Edge_t;
 
 /**
  ******************************************************************************
- ** \brief PWC测量测试模式选择数据类型重定义 (Oneshot)(模式1)
+ ** \brief PWC (Oneshot)(1)
  *****************************************************************************/
 typedef enum en_bt_m1cr_oneshot
 {
-    BtPwcCycleDetect    = 0u,         ///< PWC循环测量
-    BtPwcOneShotDetect  = 1u,         ///< PWC单次测量
+    BtPwcCycleDetect    = 0u,         ///< PWC
+    BtPwcOneShotDetect  = 1u,         ///< PWC
 }en_bt_m1cr_oneshot_t;
 
 /**
  ******************************************************************************
- ** \brief PWC IA0选择数据类型重定义 (IA0S)(模式1)
+ ** \brief PWC IA0 (IA0S)(1)
  *****************************************************************************/
 typedef enum en_bt_m1_mscr_ia0s
 {
-    BtIA0Input    = 0u,         ///< IAO输入
+    BtIA0Input    = 0u,         ///< IAO
     BtXORInput    = 1u,         ///< IA0 ETR GATE XOR(TIM0/1/2)/IA0 IA1 IA2 XOR(TIM3)
 }en_bt_m1_mscr_ia0s_t;
 
 /**
  ******************************************************************************
- ** \brief PWC IB0选择数据类型重定义 (IA0S)(模式1)
+ ** \brief PWC IB0 (IA0S)(1)
  *****************************************************************************/
 typedef enum en_bt_m1_mscr_ib0s
 {
-    BtIB0Input    = 0u,         ///< IBO输入
-    BtTsInput     = 1u,         ///< 内部触发TS选择信号
+    BtIB0Input    = 0u,         ///< IBO
+    BtTsInput     = 1u,         ///< TS
 }en_bt_m1_mscr_ib0s_t;
 
 /**
  ******************************************************************************
- ** \brief 输出极性、输入相位 数据类型重定义 (CCPA0/CCPB0/ETP/BKP)(模式1/23)
+ ** \brief   (CCPA0/CCPB0/ETP/BKP)(1/23)
  *****************************************************************************/
 typedef enum en_bt_port_polarity
 {
-    BtPortPositive      = 0u,         ///< 正常输入输出
-    BtPortOpposite      = 1u,         ///< 反向输入输出
+    BtPortPositive      = 0u,         ///< 
+    BtPortOpposite      = 1u,         ///< 
 }en_bt_port_polarity_t;
 
 /**
  ******************************************************************************
- ** \brief 滤波选择数据类型重定义 (FLTET/FLTA0/FLAB0)(模式1/23)
+ ** \brief  (FLTET/FLTA0/FLAB0)(1/23)
  *****************************************************************************/
 typedef enum en_bt_flt
 {
-    BtFltNone          = 0u,         ///< 无滤波
-    BtFltPCLKCnt3      = 4u,         ///< PCLK 3个连续有效
-    BtFltPCLKDiv4Cnt3  = 5u,         ///< PCLK/4 3个连续有效
-    BtFltPCLKDiv16Cnt3 = 6u,         ///< PCLK/16 3个连续有效
-    BtFltPCLKDiv64Cnt3 = 7u,         ///< PCLK/64 3个连续有效
+    BtFltNone          = 0u,         ///< 
+    BtFltPCLKCnt3      = 4u,         ///< PCLK 3
+    BtFltPCLKDiv4Cnt3  = 5u,         ///< PCLK/4 3
+    BtFltPCLKDiv16Cnt3 = 6u,         ///< PCLK/16 3
+    BtFltPCLKDiv64Cnt3 = 7u,         ///< PCLK/64 3
 }en_bt_flt_t;
 
 /**
  ******************************************************************************
- ** \brief 通道比较控制 数据类型重定义 (OCMA/OCMB)(模式23)
+ ** \brief   (OCMA/OCMB)(23)
  *****************************************************************************/
 typedef enum en_bt_m23_fltr_ocm
 {
-    BtForceLow      = 0u,         ///< 强制为0
-    BtForceHigh     = 1u,         ///< 强制为1
-    BtCMPForceLow   = 2u,         ///< 比较匹配时强制为0
-    BtCMPForceHigh  = 3u,         ///< 比较匹配时强制为1
-    BtCMPInverse    = 4u,         ///< 比较匹配时翻转电平
-    BtCMPOnePrdHigh = 5u,         ///< 比较匹配时输出一个计数周期的高电平
-    BtPWMMode1      = 6u,         ///< 通道控制为PWM mode 1
-    BtPWMMode2      = 7u,         ///< 通道控制为PWM mode 2
+    BtForceLow      = 0u,         ///< 0
+    BtForceHigh     = 1u,         ///< 1
+    BtCMPForceLow   = 2u,         ///< 0
+    BtCMPForceHigh  = 3u,         ///< 1
+    BtCMPInverse    = 4u,         ///< 
+    BtCMPOnePrdHigh = 5u,         ///< 
+    BtPWMMode1      = 6u,         ///< PWM mode 1
+    BtPWMMode2      = 7u,         ///< PWM mode 2
 }en_bt_m23_fltr_ocm_t;
 
 /**
  ******************************************************************************
- ** \brief 主从模式TS数据类型重定义 (TS)(模式1/23)
+ ** \brief TS (TS)(1/23)
  *****************************************************************************/
 typedef enum en_bt_mscr_ts
 {
-    BtTs0ETR        = 0u,         ///< ETR外部输入滤波后的相位选择信号
-    BtTs1TIM0TRGO   = 1u,         ///< Timer0的TRGO输出信号
-    BtTs2TIM1TRGO   = 2u,         ///< Timer1的TRGO输出信号
-    BtTs3TIM2TRGO   = 3u,         ///< Timer2的TRGO输出信号
-    BtTs4TIM3TRGO   = 4u,         ///< Timer3的TRGO输出信号
-    //BtTs5IA0ED    = 5u,         ///< 无效
-    BtTs6IAFP       = 6u,         ///< CH0A 外部输输入滤波后的相位选择信号
-    BtTs7IBFP       = 7u,         ///< CH0B 外部输输入滤波后的相位选择信
+    BtTs0ETR        = 0u,         ///< ETR
+    BtTs1TIM0TRGO   = 1u,         ///< Timer0TRGO
+    BtTs2TIM1TRGO   = 2u,         ///< Timer1TRGO
+    BtTs3TIM2TRGO   = 3u,         ///< Timer2TRGO
+    BtTs4TIM3TRGO   = 4u,         ///< Timer3TRGO
+    //BtTs5IA0ED    = 5u,         ///< 
+    BtTs6IAFP       = 6u,         ///< CH0A 
+    BtTs7IBFP       = 7u,         ///< CH0B 
 }en_bt_mscr_ts_t;
 
 /**
  ******************************************************************************
- ** \brief PWM输出模式选择数据类型重定义 (COMP)(模式23)
+ ** \brief PWM (COMP)(23)
  *****************************************************************************/
 typedef enum en_bt_m23cr_comp
 {
-    BtIndependentPWM      = 0u,         ///< 独立PWM输出
-    BtComplementaryPWM    = 1u,         ///< 互补PWM输出
+    BtIndependentPWM      = 0u,         ///< PWM
+    BtComplementaryPWM    = 1u,         ///< PWM
 }en_bt_m23cr_comp_t;
 
 /**
  ******************************************************************************
- ** \brief 计数方向选择数据类型重定义 (DIR)(模式23)
+ ** \brief  (DIR)(23)
  *****************************************************************************/
 typedef enum en_bt_m23cr_dir
 {
-    BtCntUp      = 0u,         ///< 向上计数
-    BtCntDown    = 1u,         ///< 向下计数
+    BtCntUp      = 0u,         ///< 
+    BtCntDown    = 1u,         ///< 
 }en_bt_m23cr_dir_t;
 
 /**
  ******************************************************************************
- ** \brief 计数方向选择数据类型重定义 (PWM2S)(模式23)
+ ** \brief  (PWM2S)(23)
  *****************************************************************************/
 typedef enum en_bt_m23cr_pwm2s
 {
-    BtDoublePointCmp      = 0u,         ///< 双点比较使能，使用CCRA,CCRB比较控制OCREFA输出
-    BtSinglePointCmp      = 1u,         ///< 单点比较使能，使用CCRA比较控制OCREFA输出
+    BtDoublePointCmp      = 0u,         ///< CCRA,CCRBOCREFA
+    BtSinglePointCmp      = 1u,         ///< CCRAOCREFA
 }en_bt_m23cr_pwm2s_t;
 
 /**
  ******************************************************************************
- ** \brief GATE在PWM互补模式下捕获或比较功能 选择数据类型重定义 (CSG)(模式23)
+ ** \brief GATEPWM  (CSG)(23)
  *****************************************************************************/
 typedef enum en_bt_m23cr_csg
 {
-     BtPWMCompGateCmpOut    = 0u,         ///< 在PWM互补模式下，Gate作为比较输出
-     BtPWMCompGateCapIn     = 1u,         ///< 在PWM互补模式下，Gate作为捕获输入
+     BtPWMCompGateCmpOut    = 0u,         ///< PWMGate
+     BtPWMCompGateCapIn     = 1u,         ///< PWMGate
 }en_bt_m23cr_csg_t;
 
 
 /**
  ******************************************************************************
- ** \brief 比较捕获寄存器 数据类型重定义 (CCR0A,CCR0B)(模式23)
+ ** \brief   (CCR0A,CCR0B)(23)
  *****************************************************************************/
 typedef enum en_bt_m23_ccrx
 {
-     BtCCR0A    = 0u,         ///< CCR0A比较捕获寄存器
-     BtCCR0B    = 1u,         ///< CCR0B比较捕获寄存器
+     BtCCR0A    = 0u,         ///< CCR0A
+     BtCCR0B    = 1u,         ///< CCR0B
 }en_bt_m23_ccrx_t;
 
 /**
  ******************************************************************************
- ** \brief  OCREF清除源 选择数据类型重定义 (OCCS)(模式23)
+ ** \brief  OCREF  (OCCS)(23)
  *****************************************************************************/
 typedef enum en_bt_m23ce_occs
 {
-     BtOC_Ref_Clr  = 0u,         ///< 来自VC的OC_Ref_Clr
-     BtETRf        = 1u,         ///< 外部ETRf
+     BtOC_Ref_Clr  = 0u,         ///< VCOC_Ref_Clr
+     BtETRf        = 1u,         ///< ETRf
 }en_bt_m23ce_occs_t;
 
 /**
  ******************************************************************************
- ** \brief  比较匹配中断模式 选择数据类型重定义 (CIS/CISB)(模式23)
+ ** \brief    (CIS/CISB)(23)
  *****************************************************************************/
 typedef enum en_bt_m23_cisa_cisb
 {
-     BtCmpIntNone        = 0u,         ///< 无比较匹配中断
-     BtCmpIntRise        = 1u,         ///< 比较匹配上升沿中断
-     BtCmpIntFall        = 2u,         ///< 比较匹配下降沿中断
-     BtCmpIntRiseFall    = 3u,         ///< 比较匹配上升沿下降沿中断
+     BtCmpIntNone        = 0u,         ///< 
+     BtCmpIntRise        = 1u,         ///< 
+     BtCmpIntFall        = 2u,         ///< 
+     BtCmpIntRiseFall    = 3u,         ///< 
 }en_bt_m23_cisa_cisb_t;
 
 /**
  ******************************************************************************
- ** \brief BT端口控制 - 刹车时CHx输出状态控制(BKSA/BKSB)(模式23)
+ ** \brief BT - CHx(BKSA/BKSB)(23)
  **
  ** \note
  ******************************************************************************/
 typedef enum en_bt_m23_crch0_bks
 {
-    BtCHxBksHiZ         = 0u,         ///< 刹车使能时，CHx端口输出高阻态
-    BtCHxBksNorm        = 1u,         ///< 刹车使能时，CHx端口正常输出
-    BtCHxBksLow         = 2u,         ///< 刹车使能时，CHx端口输出低电平
-    BtCHxBksHigh        = 3u,         ///< 刹车使能时，CHx端口输出高电平
+    BtCHxBksHiZ         = 0u,         ///< CHx
+    BtCHxBksNorm        = 1u,         ///< CHx
+    BtCHxBksLow         = 2u,         ///< CHx
+    BtCHxBksHigh        = 3u,         ///< CHx
 }en_bt_m23_crch0_bks_t;
 
 /**
  ******************************************************************************
-** \brief BT端口控制 - CHx上升沿下降沿捕获(CRx/CFx)(模式23)
+** \brief BT - CHx(CRx/CFx)(23)
  **
  ** \note
  ******************************************************************************/
 typedef enum en_bt_m23_crch0_cfx_crx
 {
-    BtCHxCapNone        = 0u,         ///< CHx通道捕获禁止
-    BtCHxCapRise        = 1u,         ///< CHx通道上升沿捕获使能
-    BtCHxCapFall        = 2u,         ///< CHx通道下降沿捕获使能
-    BtCHxCapFallRise    = 3u,         ///< CHx通道上升沿下降沿捕获都使能
+    BtCHxCapNone        = 0u,         ///< CHx
+    BtCHxCapRise        = 1u,         ///< CHx
+    BtCHxCapFall        = 2u,         ///< CHx
+    BtCHxCapFallRise    = 3u,         ///< CHx
 }en_bt_m23_crch0_cfx_crx_t;
 
 /**
  ******************************************************************************
-** \brief BT端口控制 - CHx比较捕获模式(CSA/CSB)(模式23)
+** \brief BT - CHx(CSA/CSB)(23)
  **
  ** \note
  ******************************************************************************/
 typedef enum en_bt_m23_crch0_csa_csb
 {
-    BtCHxCmpMode        = 0u,         ///< CHx通道设置为比较模式
-    BtCHxCapMode        = 1u,         ///< CHx通道设置为捕获模式
+    BtCHxCmpMode        = 0u,         ///< CHx
+    BtCHxCapMode        = 1u,         ///< CHx
 }en_bt_m23_crch0_csa_csb_t;
 
 /**
  ******************************************************************************
- ** \brief  比较模式下 DMA比较触发选择 数据类型重定义 (CCDS)(模式23)
+ ** \brief   DMA  (CCDS)(23)
  *****************************************************************************/
 typedef enum en_bt_m23_mscr_ccds
 {
-     BtCmpTrigDMA  = 0u,         ///< 比较匹配触发DMA
-     BtUEVTrigDMA  = 1u,         ///< 事件更新代替比较匹配触发DMA
+     BtCmpTrigDMA  = 0u,         ///< DMA
+     BtUEVTrigDMA  = 1u,         ///< DMA
 }en_bt_m23_mscr_ccds_t;
 
 /**
  ******************************************************************************
- ** \brief  主从模式选择 数据类型重定义 (MSM)(模式23)
+ ** \brief    (MSM)(23)
  *****************************************************************************/
 typedef enum en_bt_m23_mscr_msm
 {
-     BtSlaveMode    = 0u,         ///< 从模式
-     BtMasterMode   = 1u,         ///< 主模式
+     BtSlaveMode    = 0u,         ///< 
+     BtMasterMode   = 1u,         ///< 
 }en_bt_m23_mscr_msm_t;
 
 /**
  ******************************************************************************
- ** \brief  触发主模式输出源 数据类型重定义 (MMS)(模式23)
+ ** \brief    (MMS)(23)
  *****************************************************************************/
 typedef enum en_bt_m23_mscr_mms
 {
-     BtMasterUG         = 0u,         ///< UG(软件更新)源
-     BtMasterCTEN       = 1u,         ///< CTEN源
-     BtMasterUEV        = 2u,         ///< UEV更新源
-     BtMasterCMPSO      = 3u,         ///< 比较匹配选择输出源
-     BtMasterOCA0Ref    = 4u,         ///< OCA0_Ref源
-     BtMasterOCB0Ref    = 5u,         ///< OCB0_Ref源
+     BtMasterUG         = 0u,         ///< UG()
+     BtMasterCTEN       = 1u,         ///< CTEN
+     BtMasterUEV        = 2u,         ///< UEV
+     BtMasterCMPSO      = 3u,         ///< 
+     BtMasterOCA0Ref    = 4u,         ///< OCA0_Ref
+     BtMasterOCB0Ref    = 5u,         ///< OCB0_Ref
      //BtMasterOCB0Ref  = 6u,
      //BtMasterOCB0Ref  = 7u,
 }en_bt_m23_mscr_mms_t;
 
 /**
  ******************************************************************************
- ** \brief  触发从模式选择 数据类型重定义 (SMS)(模式23)
+ ** \brief    (SMS)(23)
  *****************************************************************************/
 typedef enum en_bt_m23_mscr_sms
 {
-     BtSlaveIClk        = 0u,         ///< 使用内部时钟
-     BtSlaveResetTIM    = 1u,         ///< 复位功能
-     BtSlaveTrigMode    = 2u,         ///< 触发模式
-     BtSlaveEClk        = 3u,         ///< 外部时钟模式
-     BtSlaveCodeCnt1    = 4u,         ///< 正交编码计数模式1
-     BtSlaveCodeCnt2    = 5u,         ///< 正交编码计数模式2
-     BtSlaveCodeCnt3    = 6u,         ///< 正交编码计数模式3
-     BtSlaveGateCtrl    = 7u,         ///< 门控功能
+     BtSlaveIClk        = 0u,         ///< 
+     BtSlaveResetTIM    = 1u,         ///< 
+     BtSlaveTrigMode    = 2u,         ///< 
+     BtSlaveEClk        = 3u,         ///< 
+     BtSlaveCodeCnt1    = 4u,         ///< 1
+     BtSlaveCodeCnt2    = 5u,         ///< 2
+     BtSlaveCodeCnt3    = 6u,         ///< 3
+     BtSlaveGateCtrl    = 7u,         ///< 
 }en_bt_m23_mscr_sms_t;
 
 /**
  ******************************************************************************
- ** \brief 定时器运行控制数据类型重定义 (CTEN)
+ ** \brief  (CTEN)
  *****************************************************************************/
 typedef enum en_bt_start
 {
-    BtCTENDisable = 0u,            ///< 停止
-    BtCTENEnable  = 1u,            ///< 运行
+    BtCTENDisable = 0u,            ///< 
+    BtCTENEnable  = 1u,            ///< 
 }en_bt_start_t;
 
 /**
  ******************************************************************************
- ** \brief BaseTimer mode0 配置结构体定义(模式0)
+ ** \brief BaseTimer mode0 (0)
  *****************************************************************************/
 typedef struct stc_bt_mode0_config
 {
-    en_bt_work_mode_t     enWorkMode;       ///< 工作模式设置
-    en_bt_m0_gatep_t      enGateP;          ///< 门控极性控制
-    boolean_t             bEnGate;          ///< 门控使能
-    en_bt_cr_timclkdiv_t  enPRS;            ///< 预除频配置
-    boolean_t             bEnTog;           ///< 翻转输出使能
-    en_bt_cr_ct_t         enCT;             ///< 定时/计数功能选择
-    en_bt_m0cr_md_t       enCntMode;        ///< 计数模式配置
+    en_bt_work_mode_t     enWorkMode;       ///< 
+    en_bt_m0_gatep_t      enGateP;          ///< 
+    boolean_t             bEnGate;          ///< 
+    en_bt_cr_timclkdiv_t  enPRS;            ///< 
+    boolean_t             bEnTog;           ///< 
+    en_bt_cr_ct_t         enCT;             ///< /
+    en_bt_m0cr_md_t       enCntMode;        ///< 
     
-    func_ptr_t            pfnTim0Cb;        ///< Timer0中断服务回调函数[void function(void)]
-    func_ptr_t            pfnTim1Cb;        ///< Timer1中断服务回调函数[void function(void)]
-    func_ptr_t            pfnTim2Cb;        ///< Timer2中断服务回调函数[void function(void)]
+    func_ptr_t            pfnTim0Cb;        ///< Timer0[void function(void)]
+    func_ptr_t            pfnTim1Cb;        ///< Timer1[void function(void)]
+    func_ptr_t            pfnTim2Cb;        ///< Timer2[void function(void)]
 }stc_bt_mode0_config_t;
 
 /**
  ******************************************************************************
- ** \brief BaseTimer mode1 配置结构体定义(模式1)
+ ** \brief BaseTimer mode1 (1)
  *****************************************************************************/
 typedef struct stc_bt_mode1_config
 {
-    en_bt_work_mode_t     enWorkMode;       ///< 工作模式设置
-    en_bt_cr_timclkdiv_t  enPRS;            ///< 预除频配置
-    en_bt_cr_ct_t         enCT;             ///< 定时/计数功能选择
-    en_bt_m1cr_oneshot_t  enOneShot;        ///< 单次测量/循环测量选择
+    en_bt_work_mode_t     enWorkMode;       ///< 
+    en_bt_cr_timclkdiv_t  enPRS;            ///< 
+    en_bt_cr_ct_t         enCT;             ///< /
+    en_bt_m1cr_oneshot_t  enOneShot;        ///< /
     
     
-    func_ptr_t          pfnTim0Cb;        ///< Timer0中断服务回调函数[void function(void)]
-    func_ptr_t          pfnTim1Cb;        ///< Timer1中断服务回调函数[void function(void)]
-    func_ptr_t          pfnTim2Cb;        ///< Timer2中断服务回调函数[void function(void)]
+    func_ptr_t          pfnTim0Cb;        ///< Timer0[void function(void)]
+    func_ptr_t          pfnTim1Cb;        ///< Timer1[void function(void)]
+    func_ptr_t          pfnTim2Cb;        ///< Timer2[void function(void)]
 }stc_bt_mode1_config_t;
 
 /**
  ******************************************************************************
- ** \brief PWC输入配置结构体定义(模式1)
+ ** \brief PWC(1)
  *****************************************************************************/
 typedef struct stc_bt_pwc_input_config
 {
-    en_bt_mscr_ts_t          enTsSel;       ///< 触发输入源选择
-    en_bt_m1_mscr_ia0s_t     enIA0Sel;      ///< CHA0输入选择
-    en_bt_m1_mscr_ib0s_t     enIB0Sel;      ///< CHB0输入选择
-    en_bt_port_polarity_t    enETRPhase;    ///< ETR相位选择
-    en_bt_flt_t              enFltETR;      ///< ETR滤波设置
-    en_bt_flt_t              enFltIA0;      ///< CHA0滤波设置
-    en_bt_flt_t              enFltIB0;      ///< CHB0滤波设置
+    en_bt_mscr_ts_t          enTsSel;       ///< 
+    en_bt_m1_mscr_ia0s_t     enIA0Sel;      ///< CHA0
+    en_bt_m1_mscr_ib0s_t     enIB0Sel;      ///< CHB0
+    en_bt_port_polarity_t    enETRPhase;    ///< ETR
+    en_bt_flt_t              enFltETR;      ///< ETR
+    en_bt_flt_t              enFltIA0;      ///< CHA0
+    en_bt_flt_t              enFltIB0;      ///< CHB0
 }stc_bt_pwc_input_config_t;
 
 /**
  ******************************************************************************
- ** \brief BaseTimer mode23 配置结构体定义(模式23)
+ ** \brief BaseTimer mode23 (23)
  *****************************************************************************/
 typedef struct stc_bt_mode23_config
 {
-    en_bt_work_mode_t         enWorkMode;       ///< 工作模式设置
-    en_bt_m23cr_dir_t         enCntDir;         ///< 计数方向
-    en_bt_cr_timclkdiv_t      enPRS;            ///< 时钟预除频配置
-    en_bt_cr_ct_t             enCT;             ///< 定时/计数功能选择
-    en_bt_m23cr_comp_t        enPWMTypeSel;     ///< PWM模式选择（独立/互补）
-    en_bt_m23cr_pwm2s_t       enPWM2sSel;       ///< OCREFA双点比较功能选择
-    boolean_t                 bOneShot;         ///< 单次触发模式使能/禁止
-    boolean_t                 bURSSel;          ///< 更新源选择
+    en_bt_work_mode_t         enWorkMode;       ///< 
+    en_bt_m23cr_dir_t         enCntDir;         ///< 
+    en_bt_cr_timclkdiv_t      enPRS;            ///< 
+    en_bt_cr_ct_t             enCT;             ///< /
+    en_bt_m23cr_comp_t        enPWMTypeSel;     ///< PWM/
+    en_bt_m23cr_pwm2s_t       enPWM2sSel;       ///< OCREFA
+    boolean_t                 bOneShot;         ///< /
+    boolean_t                 bURSSel;          ///< 
     
-    func_ptr_t                pfnTim0Cb;        ///< Timer0中断服务回调函数[void function(void)]
-    func_ptr_t                pfnTim1Cb;        ///< Timer1中断服务回调函数[void function(void)]
-    func_ptr_t                pfnTim2Cb;        ///< Timer2中断服务回调函数[void function(void)]
+    func_ptr_t                pfnTim0Cb;        ///< Timer0[void function(void)]
+    func_ptr_t                pfnTim1Cb;        ///< Timer1[void function(void)]
+    func_ptr_t                pfnTim2Cb;        ///< Timer2[void function(void)]
 }stc_bt_mode23_config_t;
 
 /**
  ******************************************************************************
- ** \brief GATE在PWM互补模式下捕获或比较功能 配置结构体定义(模式23)
+ ** \brief GATEPWM (23)
  *****************************************************************************/
 typedef struct stc_bt_m23_gate_config
 {
-    en_bt_m23cr_csg_t        enGateFuncSel;      ///< Gate比较、捕获功能选择
-    boolean_t                bGateRiseCap;       ///< GATE作为捕获功能时，上沿捕获有效控制
-    boolean_t                bGateFallCap;       ///< GATE作为捕获功能时，下沿捕获有效控制
+    en_bt_m23cr_csg_t        enGateFuncSel;      ///< Gate
+    boolean_t                bGateRiseCap;       ///< GATE
+    boolean_t                bGateFallCap;       ///< GATE
 }stc_bt_m23_gate_config_t;
 
 /**
  ******************************************************************************
- ** \brief CHA/CHB通道比较控制 配置结构体定义(模式23)
+ ** \brief CHA/CHB (23)
  *****************************************************************************/
 typedef struct stc_bt_m23_compare_config
 {
-    en_bt_m23_crch0_csa_csb_t  enCh0ACmpCap;     ///< CH0A比较/捕获功能选择
-    en_bt_m23_fltr_ocm_t       enCH0ACmpCtrl;    ///< CH0A通道比较控制
-    en_bt_port_polarity_t      enCH0APolarity;   ///< CH0A输出极性控制
-    boolean_t                  bCh0ACmpBufEn;    ///< 比较A缓存功能 使能/禁止
-    en_bt_m23_cisa_cisb_t      enCh0ACmpIntSel;  ///< CHA比较匹配中断选择
+    en_bt_m23_crch0_csa_csb_t  enCh0ACmpCap;     ///< CH0A/
+    en_bt_m23_fltr_ocm_t       enCH0ACmpCtrl;    ///< CH0A
+    en_bt_port_polarity_t      enCH0APolarity;   ///< CH0A
+    boolean_t                  bCh0ACmpBufEn;    ///< A /
+    en_bt_m23_cisa_cisb_t      enCh0ACmpIntSel;  ///< CHA
     
-    en_bt_m23_crch0_csa_csb_t  enCh0BCmpCap;     ///< CH0B比较/捕获功能选择
-    en_bt_m23_fltr_ocm_t       enCH0BCmpCtrl;    ///< CH0B通道比较控制
-    en_bt_port_polarity_t      enCH0BPolarity;   ///< CH0B输出极性控制
-    boolean_t                  bCH0BCmpBufEn;    ///< 比较B缓存功能 使能/禁止
-    en_bt_m23_cisa_cisb_t      enCH0BCmpIntSel;  ///< CHB0比较匹配中断选择
+    en_bt_m23_crch0_csa_csb_t  enCh0BCmpCap;     ///< CH0B/
+    en_bt_m23_fltr_ocm_t       enCH0BCmpCtrl;    ///< CH0B
+    en_bt_port_polarity_t      enCH0BPolarity;   ///< CH0B
+    boolean_t                  bCH0BCmpBufEn;    ///< B /
+    en_bt_m23_cisa_cisb_t      enCH0BCmpIntSel;  ///< CHB0
 }stc_bt_m23_compare_config_t;
 
 /**
  ******************************************************************************
- ** \brief CHA/CHB通道捕获控制 配置结构体定义(模式23)
+ ** \brief CHA/CHB (23)
  *****************************************************************************/
 typedef struct stc_bt_m23_input_config
 {
-    en_bt_m23_crch0_csa_csb_t  enCh0ACmpCap;     ///< CH0A比较/捕获功能选择
-    en_bt_m23_crch0_cfx_crx_t  enCH0ACapSel;     ///< CH0A捕获边沿选择
-    en_bt_flt_t                enCH0AInFlt;      ///< CH0A通道捕获滤波控制
-    en_bt_port_polarity_t      enCH0APolarity;   ///< CH0A输入相位
+    en_bt_m23_crch0_csa_csb_t  enCh0ACmpCap;     ///< CH0A/
+    en_bt_m23_crch0_cfx_crx_t  enCH0ACapSel;     ///< CH0A
+    en_bt_flt_t                enCH0AInFlt;      ///< CH0A
+    en_bt_port_polarity_t      enCH0APolarity;   ///< CH0A
     
-    en_bt_m23_crch0_csa_csb_t  enCh0BCmpCap;     ///< CH0B比较/捕获功能选择
-    en_bt_m23_crch0_cfx_crx_t  enCH0BCapSel;     ///< HC0B捕获边沿选择
-    en_bt_flt_t                enCH0BInFlt;      ///< CH0B通道捕获滤波控制
-    en_bt_port_polarity_t      enCH0BPolarity;   ///< CH0B输入相位
+    en_bt_m23_crch0_csa_csb_t  enCh0BCmpCap;     ///< CH0B/
+    en_bt_m23_crch0_cfx_crx_t  enCH0BCapSel;     ///< HC0B
+    en_bt_flt_t                enCH0BInFlt;      ///< CH0B
+    en_bt_port_polarity_t      enCH0BPolarity;   ///< CH0B
     
 }stc_bt_m23_input_config_t;   
 
 /**
  ******************************************************************************
- ** \brief ETR输入相位滤波配置结构体定义(模式23)
+ ** \brief ETR(23)
  *****************************************************************************/
 typedef struct stc_bt_m23_etr_input_config
 {
-    en_bt_port_polarity_t     enETRPolarity;  ///< ETR输入极性设置
-    en_bt_flt_t               enETRFlt;       ///< ETR滤波设置
+    en_bt_port_polarity_t     enETRPolarity;  ///< ETR
+    en_bt_flt_t               enETRFlt;       ///< ETR
 }stc_bt_m23_etr_input_config_t;
 
 /**
  ******************************************************************************
- ** \brief 刹车BK输入相位滤波配置结构体定义(模式23)
+ ** \brief BK(23)
  *****************************************************************************/
 typedef struct stc_bt_m23_bk_input_config
 {
-    boolean_t                 bEnBrake;         ///< 刹车使能
-    boolean_t                 bEnVC0Brake;      ///< 使能VC0刹车
-    boolean_t                 bEnVC1Brake;      ///< 使能VC1刹车
-    boolean_t                 bEnSafetyBk;      ///< 使能safety刹车
-    boolean_t                 bEnBKSync;        ///< TIM0/TIM1/TIM2刹车同步使能
-    en_bt_m23_crch0_bks_t     enBkCH0AStat;     ///< 刹车时CHA端口状态设置
-    en_bt_m23_crch0_bks_t     enBkCH0BStat;     ///< 刹车时CHB端口状态设置
-    en_bt_port_polarity_t     enBrakePolarity;  ///< 刹车BK输入极性设置
-    en_bt_flt_t               enBrakeFlt;       ///< 刹车BK滤波设置
+    boolean_t                 bEnBrake;         ///< 
+    boolean_t                 bEnVC0Brake;      ///< VC0
+    boolean_t                 bEnVC1Brake;      ///< VC1
+    boolean_t                 bEnSafetyBk;      ///< safety
+    boolean_t                 bEnBKSync;        ///< TIM0/TIM1/TIM2
+    en_bt_m23_crch0_bks_t     enBkCH0AStat;     ///< CHA
+    en_bt_m23_crch0_bks_t     enBkCH0BStat;     ///< CHB
+    en_bt_port_polarity_t     enBrakePolarity;  ///< BK
+    en_bt_flt_t               enBrakeFlt;       ///< BK
 }stc_bt_m23_bk_input_config_t;
 
 /**
  ******************************************************************************
-** \brief 死区功能配置结构体定义(模式23)
+** \brief (23)
  *****************************************************************************/
 typedef struct stc_bt_m23_dt_config
 {
-    boolean_t       bEnDeadTime;      ///< 刹车时CHA端口状态设置
-    uint8_t         u8DeadTimeValue;  ///< 刹车时CHA端口状态设置
+    boolean_t       bEnDeadTime;      ///< CHA
+    uint8_t         u8DeadTimeValue;  ///< CHA
 }stc_bt_m23_dt_config_t;
 
 /**
  ******************************************************************************
- ** \brief 触发ADC配置结构体定义(模式23)
+ ** \brief ADC(23)
  *****************************************************************************/
 typedef struct stc_bt_m23_adc_trig_config
 {
-    boolean_t     bEnTrigADC;          ///< 触发ADC全局控制
-    boolean_t     bEnUevTrigADC;       ///< 事件更新触发ADC
-    boolean_t     bEnCH0ACmpTrigADC;   ///< CH0A比较匹配触发ADC
-    boolean_t     bEnCH0BCmpTrigADC;   ///< CH0B比较匹配触发ADC
+    boolean_t     bEnTrigADC;          ///< ADC
+    boolean_t     bEnUevTrigADC;       ///< ADC
+    boolean_t     bEnCH0ACmpTrigADC;   ///< CH0AADC
+    boolean_t     bEnCH0BCmpTrigADC;   ///< CH0BADC
 }stc_bt_m23_adc_trig_config_t;
 
 /**
  ******************************************************************************
- ** \brief  DMA触发 配置结构体定义(模式23)
+ ** \brief  DMA (23)
  *****************************************************************************/
 typedef struct stc_bt_m23_trig_dma_config
 {
-    boolean_t              bUevTrigDMA;      ///< 更新 触发DMA使能
-    boolean_t              bTITrigDMA;       ///< Trig 触发DMA功能
-    boolean_t              bCmpATrigDMA;     ///< A捕获比较触发DMA使能
-    boolean_t              bCmpBTrigDMA;     ///< B捕获比较触发DMA使能
-    en_bt_m23_mscr_ccds_t  enCmpUevTrigDMA;  ///< 比较模式下DMA比较触发选择
+    boolean_t              bUevTrigDMA;      ///<  DMA
+    boolean_t              bTITrigDMA;       ///< Trig DMA
+    boolean_t              bCmpATrigDMA;     ///< ADMA
+    boolean_t              bCmpBTrigDMA;     ///< BDMA
+    en_bt_m23_mscr_ccds_t  enCmpUevTrigDMA;  ///< DMA
 }stc_bt_m23_trig_dma_config_t;
 
 /**
  ******************************************************************************
- ** \brief  主从模式 配置结构体定义(模式23)
+ ** \brief   (23)
  *****************************************************************************/
 typedef struct stc_bt_m23_master_slave_config
 {
-    en_bt_m23_mscr_msm_t      enMasterSlaveSel;  ///< 主从模式选择
-    en_bt_m23_mscr_mms_t      enMasterSrc;       ///< 主模式触发源选择
-    en_bt_m23_mscr_sms_t      enSlaveModeSel;    ///< 从模式选择
-    en_bt_mscr_ts_t           enTsSel;           ///< 触发输入源选择
+    en_bt_m23_mscr_msm_t      enMasterSlaveSel;  ///< 
+    en_bt_m23_mscr_mms_t      enMasterSrc;       ///< 
+    en_bt_m23_mscr_sms_t      enSlaveModeSel;    ///< 
+    en_bt_mscr_ts_t           enTsSel;           ///< 
 }stc_bt_m23_master_slave_config_t;
 
 /**
  ******************************************************************************
- ** \brief  OCREF清除功能 配置结构体定义(模式23)
+ ** \brief  OCREF (23)
  *****************************************************************************/
 typedef struct stc_bt_m23_OCREF_Clr_config
 {
-    en_bt_m23ce_occs_t       enOCRefClrSrcSel;  ///< OCREF清除源选择
-    boolean_t                bVCClrEn;          ///< 是否使能来自VC的OCREF_Clr
+    en_bt_m23ce_occs_t       enOCRefClrSrcSel;  ///< OCREF
+    boolean_t                bVCClrEn;          ///< VCOCREF_Clr
 }stc_bt_m23_OCREF_Clr_config_t;
 
 /******************************************************************************
@@ -646,113 +646,113 @@ typedef struct stc_bt_m23_OCREF_Clr_config
 /******************************************************************************
  * Global function prototypes (definition in C source)
  *****************************************************************************/
-//中断相关函数
+//
 
-//中断标志获取
+//
 boolean_t Bt_GetIntFlag(en_bt_unit_t enUnit, en_bt_irq_type_t enBtIrq);
-//中断标志清除
+//
 en_result_t Bt_ClearIntFlag(en_bt_unit_t enUnit, en_bt_irq_type_t enBtIrq);
-//所有中断标志清除
+//
 en_result_t Bt_ClearAllIntFlag(en_bt_unit_t enUnit);
-//模式0中断使能
+//0
 en_result_t Bt_Mode0_EnableIrq(en_bt_unit_t enUnit);
-//模式1中断使能
+//1
 en_result_t Bt_Mode1_EnableIrq (en_bt_unit_t enUnit, en_bt_irq_type_t enBtIrq);
-//模式2中断使能
+//2
 en_result_t Bt_Mode23_EnableIrq (en_bt_unit_t enUnit, en_bt_irq_type_t enBtIrq);
-//模式0中断禁止
+//0
 en_result_t Bt_Mode0_DisableIrq(en_bt_unit_t enUnit);
-//模式1中断禁止
+//1
 en_result_t Bt_Mode1_DisableIrq (en_bt_unit_t enUnit, en_bt_irq_type_t enBtIrq);
-//模式2中断禁止
+//2
 en_result_t Bt_Mode23_DisableIrq (en_bt_unit_t enUnit, en_bt_irq_type_t enBtIrq);
 
 
-//模式0初始化及相关功能操作
+//0
 
-//timer配置及初始化
+//timer
 en_result_t Bt_Mode0_Init(en_bt_unit_t enUnit, stc_bt_mode0_config_t* pstcConfig);
-//timer 启动/停止
+//timer /
 en_result_t Bt_M0_Run(en_bt_unit_t enUnit);
 en_result_t Bt_M0_Stop(en_bt_unit_t enUnit);
-//重载值设置
+//
 en_result_t Bt_M0_ARRSet(en_bt_unit_t enUnit, uint16_t u16Data);
-//16位计数值设置/获取
+//16/
 en_result_t Bt_M0_Cnt16Set(en_bt_unit_t enUnit, uint16_t u16Data);
 uint16_t Bt_M0_Cnt16Get(en_bt_unit_t enUnit);
-//32位计数值设置/获取
+//32/
 en_result_t Bt_M0_Cnt32Set(en_bt_unit_t enUnit, uint32_t u32Data);
 uint32_t Bt_M0_Cnt32Get(en_bt_unit_t enUnit);
-//翻转输出使能/禁止设定
+///
 en_result_t Bt_M0_EnTOG_Output(en_bt_unit_t enUnit, boolean_t bEnOutput);
 
 
-//模式1初始化及相关功能操作
+//1
 
-//timer配置及初始化
+//timer
 en_result_t Bt_Mode1_Init(en_bt_unit_t enUnit, stc_bt_mode1_config_t* pstcConfig);
-//PWC 输入配置
+//PWC 
 en_result_t Bt_M1_Input_Config(en_bt_unit_t enUnit, stc_bt_pwc_input_config_t* pstcConfig);
-//PWC测量边沿起始结束选择
+//PWC
 en_result_t Bt_M1_PWC_Edge_Sel(en_bt_unit_t enUnit,en_bt_m1cr_Edge_t enEdgeSel);
-//timer 启动/停止
+//timer /
 en_result_t Bt_M1_Run(en_bt_unit_t enUnit);
 en_result_t Bt_M1_Stop(en_bt_unit_t enUnit);
-//16位计数值设置/获取
+//16/
 en_result_t Bt_M1_Cnt16Set(en_bt_unit_t enUnit, uint16_t u16Data);
 uint16_t Bt_M1_Cnt16Get(en_bt_unit_t enUnit);
-//脉冲宽度测量结果数值获取
+//
 uint16_t Bt_M1_PWC_CapValueGet(en_bt_unit_t enUnit);
 
 
-//模式23初始化及相关功能操作
+//23
 
-//timer配置及初始化
+//timer
 en_result_t Bt_Mode23_Init(en_bt_unit_t enUnit, stc_bt_mode23_config_t* pstcConfig);
-//timer 启动/停止
+//timer /
 en_result_t Bt_M23_Run(en_bt_unit_t enUnit);
 en_result_t Bt_M23_Stop(en_bt_unit_t enUnit);
-//PWM输出使能
+//PWM
 en_result_t Bt_M23_EnPWM_Output(en_bt_unit_t enUnit, boolean_t bEnOutput, boolean_t bEnAutoOutput);
-//重载值设置
+//
 en_result_t Bt_M23_ARRSet(en_bt_unit_t enUnit, uint16_t u16Data, boolean_t bArrBufEn);
-//16位计数值设置/获取
+//16/
 en_result_t Bt_M23_Cnt16Set(en_bt_unit_t enUnit, uint16_t u16Data);
 uint16_t Bt_M23_Cnt16Get(en_bt_unit_t enUnit);
-//比较捕获寄存器CCR0A/CCR0B设置/读取
+//CCR0A/CCR0B/
 en_result_t Bt_M23_CCR_Set(en_bt_unit_t enUnit, en_bt_m23_ccrx_t enCCRSel, uint16_t u16Data);
 uint16_t Bt_M23_CCR_Get(en_bt_unit_t enUnit, en_bt_m23_ccrx_t enCCRSel);
-//PWM互补输出模式下，GATE功能选择
+//PWMGATE
 en_result_t Bt_M23_GateFuncSel(en_bt_unit_t enUnit,stc_bt_m23_gate_config_t* pstcConfig);
-//主从模式配置
+//
 en_result_t Bt_M23_MasterSlave_Set(en_bt_unit_t enUnit, stc_bt_m23_master_slave_config_t* pstcConfig);
-//CH0A/CH0B比较通道控制
+//CH0A/CH0B
 en_result_t Bt_M23_PortOutput_Config(en_bt_unit_t enUnit, stc_bt_m23_compare_config_t* pstcConfig);
-//CH0A/CH0B输入控制
+//CH0A/CH0B
 en_result_t Bt_M23_PortInput_Config(en_bt_unit_t enUnit, stc_bt_m23_input_config_t* pstcConfig);
-//ERT输入控制
+//ERT
 en_result_t Bt_M23_ETRInput_Config(en_bt_unit_t enUnit, stc_bt_m23_etr_input_config_t* pstcConfig);
-//刹车BK输入控制
+//BK
 en_result_t Bt_M23_BrakeInput_Config(en_bt_unit_t enUnit, stc_bt_m23_bk_input_config_t* pstcConfig);
-//触发ADC控制
+//ADC
 en_result_t Bt_M23_TrigADC_Config(en_bt_unit_t enUnit, stc_bt_m23_adc_trig_config_t* pstcConfig);
-//死区功能
+//
 en_result_t Bt_M23_DT_Config(en_bt_unit_t enUnit, stc_bt_m23_dt_config_t* pstcConfig);
-//重复周期设置
+//
 en_result_t Bt_M23_SetValidPeriod(en_bt_unit_t enUnit, uint8_t u8ValidPeriod);
-//OCREF清除功能
+//OCREF
 en_result_t Bt_M23_OCRefClr(en_bt_unit_t enUnit, stc_bt_m23_OCREF_Clr_config_t* pstcConfig);
-//使能DMA传输
+//DMA
 en_result_t Bt_M23_EnDMA(en_bt_unit_t enUnit, stc_bt_m23_trig_dma_config_t* pstcConfig);
-//捕获比较A软件触发
+//A
 en_result_t Bt_M23_EnSwTrigCapCmpA(en_bt_unit_t enUnit);
-//捕获比较B软件触发
+//B
 en_result_t Bt_M23_EnSwTrigCapCmpB(en_bt_unit_t enUnit);
-//软件更新使能
+//
 en_result_t Bt_M23_EnSwUev(en_bt_unit_t enUnit);
-//软件触发使能
+//
 en_result_t Bt_M23_EnSwTrig(en_bt_unit_t enUnit);
-//软件刹车使能
+//
 en_result_t Bt_M23_EnSwBk(en_bt_unit_t enUnit);
 
 

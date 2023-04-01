@@ -20,75 +20,75 @@
  *  Ver   Who  Date   Changes
  * ----- ------  -------- --------------------------------------
 -->
-# FXMAC 驱动程序
+# FXMAC 
 
-## 1. 概述
+## 1. 
 
-以太网控制器（XMAC）的主要功能是在兼容 IEEE802.3 standard 标准的以太网中发送和接收数据，当前支持 SGMII/RGMII 的 PHY 接口
+XMAC IEEE802.3 standard  SGMII/RGMII  PHY 
 
-XMAC 接口特点包括
-- 支持速率 1000Mbps/100Mbps/10Mbps
-- 支持 Reduced Gigabit Media Independent Interface (RGMII)
-- 支持 SGMII Serial Gigabit Media-Independent Interface （SGMII）
+XMAC 
+-  1000Mbps/100Mbps/10Mbps
+-  Reduced Gigabit Media Independent Interface (RGMII)
+-  SGMII Serial Gigabit Media-Independent Interface SGMII
 
-## 2. 功能
+## 2. 
 
-XMAC 驱动提供了以太网控制器的初始化，DMA 环形队列使用函数，外部PHY 接口相关的配置功能
+XMAC DMA PHY 
 
-XMAC 驱动程序的源文件包括，
+XMAC 
 
 ```
 .
-├── fxmac_bd.h
-├── fxmac_bdring.c
-├── fxmac_bdring.h
-├── fxmac.c
-├── fxmac_g.c
-├── fxmac.h
-├── fxmac_hw.h
-├── fxmac_intr.c
-├── fxmac_options.c
-├── fxmac_phy.c
-├── fxmac_phy.h
-├── fxmac_sinit.c
-├── Kconfig
-└── phy
-    ├── eth_ieee_reg.h
-    └── yt
-        ├── phy_yt.c
-        └── phy_yt.h
+ fxmac_bd.h
+ fxmac_bdring.c
+ fxmac_bdring.h
+ fxmac.c
+ fxmac_g.c
+ fxmac.h
+ fxmac_hw.h
+ fxmac_intr.c
+ fxmac_options.c
+ fxmac_phy.c
+ fxmac_phy.h
+ fxmac_sinit.c
+ Kconfig
+ phy
+     eth_ieee_reg.h
+     yt
+         phy_yt.c
+         phy_yt.h
 ```
 
-- 其中fxmac.h/fxmac.c 为开发者提供以下功能：
-1. mac 控制器实例初始化
-2. 设置每个控制器实例中4个mac地址的接口
-3. 设置每个控制器实例中4个mac匹配地址的接口
-4. 外置phy 芯片交互接口
-5. 中断相关接口
+- fxmac.h/fxmac.c 
+1. mac 
+2. 4mac
+3. 4mac
+4. phy 
+5. 
 
-- 其中fxmac_bdring.h/fxmac_bdring.c 为开发者提供了以下功能：
-1.  创建dma 环形队列
-2.  环形队列数据拷贝
-3.  环形队列描述符分配
-4.  环形队列描述符释放
+- fxmac_bdring.h/fxmac_bdring.c 
+1.  dma 
+2.  
+3.  
+4.  
 
 
 
-## 4 应用示例
+## 4 
 
 ### [fgmac_lwip_echo](../../../baremetal/example/fgmac_lwip_echo/README.md)
 
-- 启动LWIP网络协议栈，通过FXMAC驱动，支持开发板和网络主机的ping通
+- LWIPFXMACping
 
 ### [lwip port](../../../third-party/lwip-2.1.2/ports/fxmac/)
 
-- fxmac 耦合lwip 功能
+- fxmac lwip 
 
-## 5. API参考
+## 5. API
 
-### 5.1. 用户数据结构
+### 5.1. 
 
-- FXMAC 驱动配置数据
+- FXMAC 
 ```c
     typedef struct
     {
@@ -96,7 +96,7 @@ XMAC 驱动程序的源文件包括，
         volatile uintptr_t base_address;
         volatile uintptr_t extral_mode_base;
         volatile uintptr_t extral_loopback_base;
-        FXmacPhyInterface interface; /* 接口类型，提供SGMII/RGMII 选择 */
+        FXmacPhyInterface interface; /* SGMII/RGMII  */
         u32 speed;    /* FXMAC_SPEED_XXX */
         u32 duplex;   /* 1 is full-duplex , 0 is half-duplex */
         u32 auto_neg; /* Enable auto-negotiation - when set active high, autonegotiation operation is enabled. */
@@ -106,12 +106,12 @@ XMAC 驱动程序的源文件包括，
         u32 rx_queue_id;   /* 0 ~ FT_XMAC_QUEUE_MAX_NUM ,Index queue number */
         u32 hotplug_irq_num;
         u32 dma_brust_length; /*  burst length */
-        u32 network_default_config; /* mac 控制器默认配置 */
-        u32 queue_irq_num[FT_XMAC_QUEUE_MAX_NUM]; /* mac0 8个 ，其他的 4个 */
+        u32 network_default_config; /* mac  */
+        u32 queue_irq_num[FT_XMAC_QUEUE_MAX_NUM]; /* mac0 8  4 */
     } FXmacConfig;
 ```
 
-- FGMAC 驱动控制数据
+- FGMAC 
 ```c
     typedef struct
     {
@@ -149,7 +149,7 @@ XMAC 驱动程序的源文件包括，
     } FXmac;
 ```
 
-- FGMAC DMA描述符
+- FGMAC DMA
 
 ```c
     typedef struct
@@ -179,7 +179,7 @@ XMAC 驱动程序的源文件包括，
     } FXmacBdRing;
 ```
 
-- FGMAC DMA描述符表(链式)相关数据
+- FGMAC DMA()
 ```c
 typedef struct
 {
@@ -191,9 +191,9 @@ typedef struct
 ```
 
 
-### 5.2  错误码定义
+### 5.2  
 
-- 模块错误码编号：0x1070000
+- 0x1070000
 - [0x0] FGMAC: Success
 - FXMAC_ERR_INVALID_PARAM : Invalid parameter
 - FXMAC_ERR_SG_LIST : dma ring out of sequence
@@ -205,22 +205,22 @@ typedef struct
 - FXMAC_ERR_MAC_IS_PROCESSING : MAC controllers are enabled together. As a result, some operations cannot be mirrored
 
 
-### 5.3 初始化流程
+### 5.3 
 
-1. FXmacLookupConfig 获取默认配置
-2. 修改默认配置 中 phy interface 类型、协商模式
-3. 初始化mac 模块
-4. 初始化phy 模块
-5. 初始化mac 中断
-6. 初始化dma 模块
-7. 根据mac 默认配置启动mac 功能
+1. FXmacLookupConfig 
+2.   phy interface 
+3. mac 
+4. phy 
+5. mac 
+6. dma 
+7. mac mac 
 
 
-### 5.4. 用户API接口
+### 5.4. API
 
 #### FXmacLookupConfig
 
-- 获取FXMAC驱动的默认配置参数
+- FXMAC
 
 ```c
 const FXmacConfig *FXmacLookupConfig(u32 instance_id);
@@ -228,19 +228,19 @@ const FXmacConfig *FXmacLookupConfig(u32 instance_id);
 
 Note:
 
-- 返回FXMAC的默认配置，复制后修改配置
-- 需要确认当前平台支持输入的instance_id
+- FXMAC
+- instance_id
 
 Input:
 
-- {u32} instance_id, 驱动控制器号
+- {u32} instance_id, 
 
 Return:
 
-- {const FXmacConfig *}, 驱动默认配置
+- {const FXmacConfig *}, 
 #### FXmacCfgInitialize
 
-- 完成FGMAC驱动实例的初始化，使之可以使用
+- FGMAC
 
 ```c
 FError FXmacCfgInitialize(FXmac *instance_p, const FXmacConfig *config_p)
@@ -248,35 +248,35 @@ FError FXmacCfgInitialize(FXmac *instance_p, const FXmacConfig *config_p)
 
 Note:
 
-- 此函数会重置FGMAC控制器和FGMAC控制数据
+- FGMACFGMAC
 
 Input:
 
-- {FXmac} *instance_p MAC 控制器实例指针
+- {FXmac} *instance_p MAC 
 
-- {FXmacConfig} *cofig_p 控制器驱动配置数据
+- {FXmacConfig} *cofig_p 
 
 Return:
 
-- {FError} 驱动初始化的错误码信息，FGMAC_SUCCESS 表示初始化成功，其它返回值表示初始化失败
+- {FError} FGMAC_SUCCESS 
 
 #### FXmacInitInterface
 
-- 根据phy 接口类型 ，初始化mac 控制器配置
+- phy  mac 
 
 ```c
 void FXmacInitInterface(FXmac *instance_p)
 ```
 
 Note:
-- 此函数一般用于 PHY 芯片协商完成之后被调用，与PHY配置进行适配
+-  PHY PHY
 
 Input:
-- {FXmac}     *instance_p MAC 控制器实例指针
+- {FXmac}     *instance_p MAC 
 
 #### FXmacGetMacAddress
 
-- 根据index 获取mac 地址
+- index mac 
 
 ```c
 void FXmacGetMacAddress(FXmac *instance_p, u8 *address_ptr, u8 index)
@@ -284,16 +284,16 @@ void FXmacGetMacAddress(FXmac *instance_p, u8 *address_ptr, u8 index)
 
 Input :
 
-- {FGmac} *instance_p MAC 控制器实例指针
-- {u8}  index MAC(0-3)地址的索引
+- {FGmac} *instance_p MAC 
+- {u8}  index MAC(0-3)
 
 Output :
-- {u8}  *address_ptr 是指向缓冲区的指针当前MAC地址将被复制。
+- {u8}  *address_ptr MAC
 
 
 #### FXmacSetMacAddress
 
-- 根据index 写入mac 地址
+- index mac 
 
 ```c
 FError FXmacSetMacAddress(FXmac *instance_p, u8 *address_ptr, u8 index);
@@ -301,55 +301,55 @@ FError FXmacSetMacAddress(FXmac *instance_p, u8 *address_ptr, u8 index);
 
 Input :
 
-- {FGmac} *instance_p MAC 控制器实例指针
-- {u8}  *address_ptr 是指向缓冲区的指针当前MAC地址将被复制。
-- {u8}  index MAC(0-3)地址的索引
+- {FGmac} *instance_p MAC 
+- {u8}  *address_ptr MAC
+- {u8}  index MAC(0-3)
 
 Output :
 
-- {FError} FT_SUCCESS 如果MAC地址设置成功
+- {FError} FT_SUCCESS MAC
 
 #### FXmacSetOptions
 
-- 设置FXmac 中的相关配置信息
+- FXmac 
 
 ```c
 FError FXmacSetOptions(FXmac *instance_p, u32 options, u32 queue_num)
 ```
 
 Note:
-- 必须在mac 控制器关闭的情况被调用
+- mac 
 
 Input:
-- {FGmac} *instance_p MAC 控制器实例指针
-- {u32} options 是要设置的选项。 选项参数位于 fxmac.h 中的 FXMAC_****_OPTION 
-- {u32} queue_num mac控制器中队列的选项，仅在 FXMAC_JUMBO_ENABLE_OPTION 配置时被使用
+- {FGmac} *instance_p MAC 
+- {u32} options   fxmac.h  FXMAC_****_OPTION 
+- {u32} queue_num mac FXMAC_JUMBO_ENABLE_OPTION 
 
 Return:
-- {FError} FT_SUCCESS 设置成功
+- {FError} FT_SUCCESS 
 
 #### FXmacClearOptions
 
-- 清除FXmac 中的相关配置信息
+- FXmac 
 
 ```c
 FError FXmacClearOptions(FXmac *instance_p, u32 options, u32 queue_num)
 ```
 
 Note:
-- 必须在mac 控制器关闭的情况被调用
+- mac 
 
 Input:
-- {FGmac} *instance_p MAC 控制器实例指针
-- {u32} options 是要设置的选项。 选项参数位于 fxmac.h 中的 FXMAC_****_OPTION 
-- {u32} queue_num mac控制器中队列的选项，仅在 FXMAC_JUMBO_ENABLE_OPTION 配置时被使用
+- {FGmac} *instance_p MAC 
+- {u32} options   fxmac.h  FXMAC_****_OPTION 
+- {u32} queue_num mac FXMAC_JUMBO_ENABLE_OPTION 
 
 Return:
-- {FError} FT_SUCCESS 清除成功
+- {FError} FT_SUCCESS 
 
 #### FXmacStart
 
-- 启动以太网控制器
+- 
 
 ```c
 void FXmacStart(FXmac *instance_p)
@@ -357,33 +357,33 @@ void FXmacStart(FXmac *instance_p)
 
 note:
 
-- 根据 network_default_config 中的 FXMAC_TRANSMIT_ENABLE_OPTION 与 
-FXMAC_RECEIVER_ENABLE_OPTION ，决定是否开启控制器的接收与发送功能。并且默认开启接收与发送相关中断
+-  network_default_config  FXMAC_TRANSMIT_ENABLE_OPTION  
+FXMAC_RECEIVER_ENABLE_OPTION 
 
 Input:
 
-- {FGmac} *instance_p MAC 控制器实例指针
+- {FGmac} *instance_p MAC 
 
 
 #### FXmacStop
 
-- 关闭以太网控制器
+- 
 
 ```c
 void FXmacStop(FXmac *instance_p)
 ```
 
 note:
-- 关闭所有中断，关闭接收与发送功能
+- 
 
 Input:
 
-- {FGmac} *instance_p MAC 控制器实例指针
+- {FGmac} *instance_p MAC 
 
 
 #### FXmacSetQueuePtr
 
-- 设置mac 控制器中接收/发送缓冲区 的描述符环形队列的首地址
+- mac / 
 
 ```c
 void FXmacSetQueuePtr(FXmac *instance_p, uintptr queue_p, u8 queue_num,
@@ -391,19 +391,19 @@ void FXmacSetQueuePtr(FXmac *instance_p, uintptr queue_p, u8 queue_num,
 ```
 
 Note:
-- 描述符环形队列的首地址按照128bit 对其
+- 128bit 
 
 Input:
 
-- {FXmac} *instance_p MAC 控制器实例指针
-- {uintptr} queue_p 写入队列的地址
-- {u8} queue_num 缓冲队列索引
-- {u32} direction 当为 FXMAC_SEND 表示方向为发送，当为 FXMAC_RECV 表示方向为接收
+- {FXmac} *instance_p MAC 
+- {uintptr} queue_p 
+- {u8} queue_num 
+- {u32} direction  FXMAC_SEND  FXMAC_RECV 
 
 
 #### FXmacPhyWrite
 
-- 将数据写入指定的PHY寄存器。
+- PHY
 
 ```c
 FError FXmacPhyWrite(FXmac *instance_p, u32 phy_address,
@@ -411,22 +411,22 @@ FError FXmacPhyWrite(FXmac *instance_p, u32 phy_address,
 ```
 
 Note: 
-- 这个函数不是线程安全的。 用户必须提供互斥的如果有多个线程可以调用该函数，则访问该函数。 
+-   
 
 Input:
-- {FXmac} *instance_p MAC 控制器实例指针
-- {u32} phy_address 要写入的PHY的地址
-- {u32} register_num 要写入的PHY的地址，特定PHY寄存器的寄存器号0-31 
-- {u16} phy_data 需要写入对应PHY 芯片中 对应register_num 的参数
+- {FXmac} *instance_p MAC 
+- {u32} phy_address PHY
+- {u32} register_num PHYPHY0-31 
+- {u16} phy_data PHY  register_num 
 
 Return:
 
-- {FError} FT_SUCCESS PHY 写入成功
+- {FError} FT_SUCCESS PHY 
 
 
 #### FXmacPhyRead
 
-- 指定PHY 芯片中对应的寄存器号，读出其中对应的参数
+- PHY 
 
 ```c
 FError FXmacPhyRead(FXmac *instance_p, u32 phy_address,
@@ -435,62 +435,62 @@ FError FXmacPhyRead(FXmac *instance_p, u32 phy_address,
 
 Note:
 
-- 这个函数不是线程安全的。 用户必须提供互斥的如果有多个线程可以调用该函数，则访问该函数。 
+-   
 
 Input:
-- {FXmac} *instance_p MAC 控制器实例指针
-- {u32} phy_address 要写入的PHY的地址
-- {u32} register_num 要写入的PHY的地址，特定PHY寄存器的寄存器号0-31 
+- {FXmac} *instance_p MAC 
+- {u32} phy_address PHY
+- {u32} register_num PHYPHY0-31 
 
 Output:
-- {u16} *phydat_aptr  需要读出对应PHY 芯片中 对应register_num中值的指针
+- {u16} *phydat_aptr  PHY  register_num
   
 Return:
 
-- {FError} FT_SUCCESS PHY 读入成功
+- {FError} FT_SUCCESS PHY 
 
 
 #### FXmacPhyInit
 
-- 初始化PHY 芯片 ，首先检查出当前已连接的PHY 芯片地址，然后根据协商方式，确定
+- PHY  PHY 
 
 ```c
 FError FXmacPhyInit(FXmac *instance_p, u32 speed,u32 duplex_mode, u32 autonegotiation_en);
 ```
 
 Input:
-- {FXmac} *instance_p MAC 控制器实例指针
-- {u32} speed 需要设置的速度
-- {u32} duplex_mode 双工模式配置，1为全双工，0 为半双工
-- {u32} autonegotiation_en 为1 时，PHY 会进行自协商操作。为0时 ，将根据配置项进行协商
+- {FXmac} *instance_p MAC 
+- {u32} speed 
+- {u32} duplex_mode 10 
+- {u32} autonegotiation_en 1 PHY 0 
 
 Return:
-- FError FT_SUCCESS 初始化成功
+- FError FT_SUCCESS 
 
 
 #### FXmacSelectClk
 
-- 根据MAC 与 PHY 芯片连接的情况，设置相关时钟参数
+- MAC  PHY 
 
 ```c
 void FXmacSelectClk(FXmac *instance_p )
 ```
 
 Input:
-- {FXmac} *instance_p MAC 控制器实例指针
+- {FXmac} *instance_p MAC 
 
 
 #### FXmacSetHandler
 
-- 设置中断回调函数
+- 
 
 ```c
 FError FXmacSetHandler(FXmac *instance_p, u32 handler_type, void *func_pointer, void *call_back_ref)
 ```
 
 Input:
-- {FXmac} *instance_p MAC 控制器实例指针
-- {u32} handler_type 指示中断处理程序类型 ,具体参数参考 FXMAC_HANDLER_*** 
-- {void } *func_pointer 回调函数接口 
-- {void } *call_back_ref 回调函数的传入参数
+- {FXmac} *instance_p MAC 
+- {u32} handler_type  , FXMAC_HANDLER_*** 
+- {void } *func_pointer  
+- {void } *call_back_ref 
 

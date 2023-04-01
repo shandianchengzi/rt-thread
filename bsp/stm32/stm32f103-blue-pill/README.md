@@ -1,6 +1,6 @@
 # STM32F103C8 Blue Pill Board BSP Introduction
 
- [[中文]](README_zh.md)
+ [[]](README_zh.md)
 
 [TOC]
 
@@ -21,15 +21,15 @@ Video tutorial: https://www.youtube.com/watch?v=0PwBBYXQ08g
 
 ## 1 MCU Resources
 
-The STM32F103Cx medium-density performance line family incorporates the high-performance ARM®Cortex®-M3 32-bit RISC core operating at a 72 MHz frequency, high-speed embedded memories (Flash memory up to 128 Kbytes and SRAM up to 20 Kbytes), and an extensive range of enhanced I/Os and peripherals connected to two APB buses. All devices offer two 12-bit ADCs, three general purpose 16-bit timers plus one PWM timer, as well as standard and advanced communication interfaces: up to two I2Cs and SPIs, three USARTs, an USB and a CAN.
+The STM32F103Cx medium-density performance line family incorporates the high-performance ARMCortex-M3 32-bit RISC core operating at a 72 MHz frequency, high-speed embedded memories (Flash memory up to 128 Kbytes and SRAM up to 20 Kbytes), and an extensive range of enhanced I/Os and peripherals connected to two APB buses. All devices offer two 12-bit ADCs, three general purpose 16-bit timers plus one PWM timer, as well as standard and advanced communication interfaces: up to two I2Cs and SPIs, three USARTs, an USB and a CAN.
 
-The devices operate from a 2.0 to 3.6 V power supply. They are available in both the –40 to +85 °C temperature range and the –40 to +105 °C extended temperature range. A comprehensive set of power-saving mode allows the design of low-power applications.
+The devices operate from a 2.0 to 3.6 V power supply. They are available in both the 40 to +85 C temperature range and the 40 to +105 C extended temperature range. A comprehensive set of power-saving mode allows the design of low-power applications.
 The STM32F103Cx medium-density performance line family includes devices in six different package types: from 36 pins to 100 pins. Depending on the device chosen, different sets of peripherals are included, the description below gives an overview of the complete range of peripherals proposed in this family.
 These features make the STM32F103xx medium-density performance line microcontroller family suitable for a wide range of applications such as motor drives, application control, medical and handheld equipment, PC and gaming peripherals, GPS platforms, industrial applications, PLCs, inverters, printers, scanners, alarm systems, video intercoms, and HVACs.
 
 KEY FEATURES
 
-- ARM® 32-bit Cortex®-M3 CPU Core
+- ARM 32-bit Cortex-M3 CPU Core
   - 72 MHz maximum frequency,1.25 DMIPS/MHz (Dhrystone 2.1) performance at 0 wait state memory access
   - Single-cycle multiplication and hardware division
 - Memories
@@ -46,7 +46,7 @@ KEY FEATURES
 - Low-power
   - Sleep, Stop and Standby modes
   - VBAT supply for RTC and backup registers
-- 2 x 12-bit, 1 μs A/D converters (up to 16 channels)
+- 2 x 12-bit, 1 s A/D converters (up to 16 channels)
   - Conversion range: 0 to 3.6 V
   - Dual-sample and hold capability
   - Temperature sensor
@@ -70,17 +70,17 @@ KEY FEATURES
   - CAN interface (2.0B Active)
   - USB 2.0 full-speed interface
 - CRC calculation unit, 96-bit unique ID
-- Packages are ECOPACK®
+- Packages are ECOPACK
 
 
 
 ## 2 Onboard Resources
 
-- MCU：STM32F103C8T6 @72MHz, 64KB FLASH (can be extended to 128KB) , 20KB RAM
+- MCUSTM32F103C8T6 @72MHz, 64KB FLASH (can be extended to 128KB) , 20KB RAM
 
 - Peripherals
   
-  - LED：PC13
+  - LEDPC13
   
 - Debug IO interface type: ST-LINK V2 (SWD)
 
@@ -160,7 +160,7 @@ You can use other USB to UART adapters to replace FTDI adapter.
 #### 3.4.2 Using Keil-MDK or IAR to compile the project
 
 - Double-click the `project.uvprojx` file to open the MDK-Keil5 project  (**NOT** `template.uvprojx` file)
-- Click the “option for target” button
+- Click the option for target button
   - Debug: Choose "ST-LINK Debugger" and Click "Setting" button:
     - Port: choose "SW (Serial Wire)"
     - Flash Download: check "Reset and Run"
@@ -209,20 +209,20 @@ Each peripheral supporting condition for this BSP is as follows:
 
 | **On-board Peripherals** | **Support** | **Remark**                                                   |
 | ------------------------ | ----------- | ------------------------------------------------------------ |
-| LED                      | √           | PC13                                                         |
-| USB Virtual Serial Port  | √           | USB CDC                                                      |
+| LED                      |            | PC13                                                         |
+| USB Virtual Serial Port  |            | USB CDC                                                      |
 | **On-chip Peripherals**  | **Support** | **Remark**                                                   |
-| GPIO                     | √           |                                                              |
-| UART                     | √           | USART1 / USART2                                              |
-| SPI                      | √           | SPI1                                                         |
-| I2C                      | √           | software simulate                                            |
-| USB                      | √           | USB Device                                                   |
-| ADC                      | √           | ADC1 IN1                                                     |
-| RTC                      | √           | Support for external crystal oscillator and internal low-speed clocks |
+| GPIO                     |            |                                                              |
+| UART                     |            | USART1 / USART2                                              |
+| SPI                      |            | SPI1                                                         |
+| I2C                      |            | software simulate                                            |
+| USB                      |            | USB Device                                                   |
+| ADC                      |            | ADC1 IN1                                                     |
+| RTC                      |            | Support for external crystal oscillator and internal low-speed clocks |
 | PWM                      |             |                                                              |
 | FLASH                    |             |                                                              |
 | IWG                      |             |                                                              |
-| UID                      | √           | STM32 Unique Device Identifier                               |
+| UID                      |            | STM32 Unique Device Identifier                               |
 
 
 
@@ -294,7 +294,7 @@ Re-plug the USB cable and you will find a new serial (virtual com, 115200, 8-N-1
 
 
 
-### 4.2 How to extend Blue Pill board’s Flash space
+### 4.2 How to extend Blue Pill boards Flash space
 
 According to ST official datasheet, STM32F103C8 has 64KB of Flash. However, STM32F103C8 and STM32F103CB use the same type of silicon die, which means STM32F103C8 also has 128KB ROM in theory, but ST locked the high 64KB. Basically, to force the debugger to download program can unlock the high 64KB. There is a good news that **Keil5 / IAR / RT-Studio will help you to unlock the Blue Pill Board high 64KB block** if you use this Blue Pill Board BSP as a template to create your project. You just need to press the "Flash Download" button as usual. What you only need to remember is that Blue Pill board has 128KB of Flash rather than 64KB.
 

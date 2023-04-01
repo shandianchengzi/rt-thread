@@ -72,48 +72,48 @@
  ******************************************************************************/
  /**
  ******************************************************************************
- ** \brief I2C通道选择
+ ** \brief I2C
  *****************************************************************************/
  typedef enum en_i2c_channel
  {
-    I2C0 = 0,///<通道0
-    I2C1 = 1,///<通道1  
+    I2C0 = 0,///<0
+    I2C1 = 1,///<1  
  }en_i2c_channel_t;
  /**
  ******************************************************************************
- ** \brief I2C功能配置
+ ** \brief I2C
  *****************************************************************************/
 typedef enum en_i2c_func
 {
-    I2cMode_En  = 0, ///<I2C模块使能
-    I2cStart_En = 1, ///<开始信号
-    I2cStop_En  = 2, ///<结束信号
-    I2cAck_En   = 3, ///<应答信号
-    I2cHlm_En   = 4, ///<高速使能
-    I2cBaud_En  = 5, ///<波特率使能
+    I2cMode_En  = 0, ///<I2C
+    I2cStart_En = 1, ///<
+    I2cStop_En  = 2, ///<
+    I2cAck_En   = 3, ///<
+    I2cHlm_En   = 4, ///<
+    I2cBaud_En  = 5, ///<
 }en_i2c_func_t; 
 /**
  ******************************************************************************
- ** \brief I2C从机地址配置
+ ** \brief I2C
  *****************************************************************************/
 typedef struct stc_i2c_addr
 {
-    uint8_t Addr;       ///<从机模式地址
-    uint8_t Gc;         ///<广播地址使能
+    uint8_t Addr;       ///<
+    uint8_t Gc;         ///<
 
 }stc_i2c_addr_t;
 /**
  ******************************************************************************
- ** \brief I2C初始化配置结构
+ ** \brief I2C
  *****************************************************************************/
 typedef struct stc_i2c_config
 {
-    en_i2c_func_t   enFunc;      ///<功能使能
-    uint8_t         u8Tm;        ///<波特率计数器配置
-    stc_i2c_addr_t  stcSlaveAddr;///<从机地址
-    func_ptr_t      pfnI2c0Cb;    ///<中断服务函数指针
+    en_i2c_func_t   enFunc;      ///<
+    uint8_t         u8Tm;        ///<
+    stc_i2c_addr_t  stcSlaveAddr;///<
+    func_ptr_t      pfnI2c0Cb;    ///<
     func_ptr_t      pfnI2c1Cb;
-    boolean_t       bTouchNvic;  ///<是否使能NVIC
+    boolean_t       bTouchNvic;  ///<NVIC
 }stc_i2c_config_t;
 
 /******************************************************************************
@@ -123,35 +123,35 @@ typedef struct stc_i2c_config
 /******************************************************************************
  * Global function prototypes (definition in C source)
  *****************************************************************************/
- //I2C初始化函数
+ //I2C
  en_result_t I2C_Init(en_i2c_channel_t enCh,stc_i2c_config_t *pstcI2CCfg);
-  //I2C模块关闭函数
+  //I2C
  en_result_t I2C_DeInit(en_i2c_channel_t enCh);
- //设置波特率配置寄存器
+ //
  en_result_t I2C_SetBaud(en_i2c_channel_t enCh,uint8_t u8Tm);
- //I2C功能设置函数
+ //I2C
  en_result_t I2C_SetFunc(en_i2c_channel_t enCh,en_i2c_func_t enFunc);
-  //I2C功能清除函数
+  //I2C
  en_result_t I2C_ClearFunc(en_i2c_channel_t enCh,en_i2c_func_t enFunc);
- //获取中断标记SI
+ //SI
  boolean_t I2C_GetIrq(en_i2c_channel_t enCh);
-  //清除中断标记SI
+  //SI
  en_result_t I2C_ClearIrq(en_i2c_channel_t enCh);
- //获取状态
+ //
  uint8_t I2C_GetState(en_i2c_channel_t enCh);
- //写从机地址函数
+ //
  en_result_t I2C_WriteSlaveAddr(en_i2c_channel_t enCh,stc_i2c_addr_t *pstcSlaveAddr);
- //主发送函数
+ //
  en_result_t I2C_MasterWriteData(en_i2c_channel_t enCh,uint8_t u8DevAddr,uint8_t u8Addr,uint8_t *pu8Data,uint32_t u32Len);
-  //从发送函数
+  //
  en_result_t I2C_SlaveWriteData(en_i2c_channel_t enCh,uint8_t *pu8Data,uint32_t *u32Len);
- //字节写函数
+ //
  en_result_t I2C_WriteByte(en_i2c_channel_t enCh,uint8_t u8Data);
- //主接收函数
+ //
  en_result_t I2C_MasterReadData(en_i2c_channel_t enCh,uint8_t u8DevAddr,uint8_t *pu8Data,uint8_t u8Addr,uint32_t u32Len);
-  //主接收函数
+  //
  en_result_t I2C_SlaveReadData(en_i2c_channel_t enCh,uint8_t *pu8Data,uint32_t *pu32Len);
-  //字节读函数
+  //
 uint8_t I2C_ReadByte(en_i2c_channel_t enCh);
  
 //@} // I2cGroup

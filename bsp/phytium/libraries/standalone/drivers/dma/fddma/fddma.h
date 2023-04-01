@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fddma.h
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:24:52
- * Description:  This files is for ddma interface definition
+ * Description: This files is for ddma interface definition
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   Zhugengyu  2022/5/13    init commit
  */
 
@@ -122,42 +122,42 @@ typedef struct FDdma_
 #define FDDMA_DDR_ADDR_ALIGMENT         128 /* DMA DDR Buffer need align wiht 128 bytes */
 
 /************************** Function Prototypes ******************************/
-/* 获取DDMA实例默认配置 */
+/* DDMA */
 const FDdmaConfig *FDdmaLookupConfig(u32 instance_id);
 
-/* 初始化DDMA控制器 */
+/* DDMA */
 FError FDdmaCfgInitialization(FDdma *const instance, const FDdmaConfig *input_config);
 
-/* 去初始化DDMA控制器 */
+/* DDMA */
 void FDdmaDeInitialization(FDdma *const instance);
 
-/* 按照配置分配DDMA通道 */
+/* DDMA */
 FError FDdmaAllocateChan(FDdma *const instance, FDdmaChan *const dma_chan, const FDdmaChanConfig *dma_chan_config);
 
-/* 释放之前分配的DDMA通道 */
+/* DDMA */
 FError FDdmaDellocateChan(FDdmaChan *const dma_chan);
 
-/* 使能指定的DDMA通道，调用FDdmaAllocateChan后无需调用此函数 */
+/* DDMAFDdmaAllocateChan */
 FError FDdmaActiveChan(FDdmaChan *const dma_chan);
 
-/* 去使能DDMA通道 */
+/* DDMA */
 FError FDdmaDeactiveChan(FDdmaChan *const dma_chan);
 
-/* 启动DDMA控制器并开始传输 */
+/* DDMA */
 FError FDdmaStart(FDdma *const instance);
 
-/* 停止DDMA控制器 */
+/* DDMA */
 FError FDdmaStop(FDdma *const instance);
 
-/* DDMA中断处理函数 */
+/* DDMA */
 void FDdmaIrqHandler(s32 vector, void *args);
 
-/* 注册DDMA通道中断响应事件函数 */
+/* DDMA */
 void FDdmaRegisterChanEvtHandler(FDdmaChan *const dma_chan,
                                  FDdmaChanEvt evt,
                                  FDdmaChanEvtHandler handler,
                                  void *handler_arg);
-/* DDMA控制器寄存器自检测试 */
+/* DDMA */
 void FDdmaDumpRegisters(uintptr base_addr);
 
 void FDdmaDumpChanRegisters(uintptr base_addr, FDdmaChanIndex chan);

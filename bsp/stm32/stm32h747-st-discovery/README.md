@@ -1,6 +1,6 @@
 # STM32H747-ST-DISCOVERY BSP (Board Support Package) Execution Instruction
 
-[中文页](README_zh.md) |
+[](README_zh.md) |
 
 ## Introduction
 
@@ -27,10 +27,10 @@ The mainly-used resources of this board are shown as follows:
 - MCU: STM32H747
 - Main Frequency 480MHz
 - Memory: 2MB FLASH, 1MB RAM
-- Common-used peripherals: USB、Ethernet、arduino API etc.
+- Common-used peripherals: USBEthernetarduino API etc.
 - Debug interface: Standard JTAG/SWD.
 
-For more details about this board, please refer to the ST official documentation [STM32H747I-DISCO](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-mpu-eval-tools/stm32-mcu-mpu-eval-tools/stm32-discovery-kits/stm32h747i-disco.html)。
+For more details about this board, please refer to the ST official documentation [STM32H747I-DISCO](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-mpu-eval-tools/stm32-mcu-mpu-eval-tools/stm32-discovery-kits/stm32h747i-disco.html)
 
 ## Peripheral Condition
 

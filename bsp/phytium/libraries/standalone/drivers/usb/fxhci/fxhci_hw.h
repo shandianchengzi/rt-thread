@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fxhci_hw.h
  * Date: 2022-02-11 13:33:12
  * LastEditTime: 2022-02-18 09:13:47
- * Description:  This files is for definition of XHCI hardware register interface
+ * Description: This files is for definition of XHCI hardware register interface
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   Zhugengyu  2022/2/7    init commit
  */
 
@@ -61,7 +61,7 @@ extern "C"
 #define FXHCI_REG_OP_DCBAAP             0x30    /* Device Context Base Address Array Pointer Register */
 #define FXHCI_REG_OP_CONFIG             0x38    /* Configure Register */
 
-/* Port Status and Ctrl Register : OP Base + (400h + (10h * (n–1))) 'n' is port num */
+/* Port Status and Ctrl Register : OP Base + (400h + (10h * (n1))) 'n' is port num */
 #define FXHCI_REG_OP_PORTS_BASE         0x400   /* Port Status and Control Register Base */
 #define FXHCI_REG_OP_PORTS_SIZE          0x10    /* Size of one Port SC Register */
 #define FXHCI_REG_OP_PORTS_PORTSC       0x00    /* Port Status and Control Register */
@@ -147,7 +147,7 @@ extern "C"
 #define FXHCI_REG_OP_USBSTS_PCD             (1 << 4)    /* 1: Port Change Detect */
 #define FXHCI_REG_OP_USBSTS_SSS             (1 << 8)    /* remain 1 while the xHC saves its internal state */
 #define FXHCI_REG_OP_USBSTS_RSS             (1 << 9)    /* remain 1 while the xHC restores its internal state */
-#define FXHCI_REG_OP_USBSTS_SRE             (1 << 10)   /* if error occurs during a Save or Restore operation this bit shall be set to ‘1’. */
+#define FXHCI_REG_OP_USBSTS_SRE             (1 << 10)   /* if error occurs during a Save or Restore operation this bit shall be set to 1. */
 #define FXHCI_REG_OP_USBSTS_CNR             (1 << 11)   /* 1: Controller Not Ready */
 #define FXHCI_REG_OP_USBSTS_HCE             (1 << 12)   /* 1: Internal xHC error condition */
 #define FXHCI_REG_OP_USBSTS_PRSRV_MASK      ((1 << 1) | 0xffffe000) /* Rsvd bits */
@@ -171,17 +171,17 @@ extern "C"
 
 /** @name FXHCI_REG_OP_CONFIG Register
  */
-#define FXHCI_REG_OP_CONFIG_MAX_SLOTS_EN_MASK        GENMASK(7, 0)               /* Max Device Slots Enabled (MaxSlotsEn) – RW */
+#define FXHCI_REG_OP_CONFIG_MAX_SLOTS_EN_MASK        GENMASK(7, 0)               /* Max Device Slots Enabled (MaxSlotsEn)  RW */
 #define FXHCI_REG_OP_CONFIG_MAX_SLOTS_EN_SET(x)     FUSB_REG32_SET_BITS(x, 7, 0)    /* bit[7:0] Max Device Slots Enabled */
 #define FXHCI_REG_OP_CONFIG_MAX_SLOTS_EN_GET(x)      FUSB_REG32_GET_BITS(x, 7, 0)
 
 /** @name FXHCI_REG_OP_PORTS_PORTSC Register
  */
-#define FXHCI_REG_OP_PORTS_PORTSC_CCS           (1 << 0)    /* Current Connect Status (CCS) – ROS */
-#define FXHCI_REG_OP_PORTS_PORTSC_PED           (1 << 1)    /* Port Enabled/Disabled (PED) – RW1CS */
-#define FXHCI_REG_OP_PORTS_PORTSC_OCA           (1 << 3)    /* Over-current Active (OCA) – RO */
-#define FXHCI_REG_OP_PORTS_PORTSC_PR                (1 << 4)    /* Port Reset (PR) – RW1S */
-#define FXHCI_REG_OP_PORTS_PORTSC_PLS_GET(x)    FUSB_REG32_GET_BITS(x, 8, 5)    /* Port Link State (PLS) – RWS */
+#define FXHCI_REG_OP_PORTS_PORTSC_CCS           (1 << 0)    /* Current Connect Status (CCS)  ROS */
+#define FXHCI_REG_OP_PORTS_PORTSC_PED           (1 << 1)    /* Port Enabled/Disabled (PED)  RW1CS */
+#define FXHCI_REG_OP_PORTS_PORTSC_OCA           (1 << 3)    /* Over-current Active (OCA)  RO */
+#define FXHCI_REG_OP_PORTS_PORTSC_PR                (1 << 4)    /* Port Reset (PR)  RW1S */
+#define FXHCI_REG_OP_PORTS_PORTSC_PLS_GET(x)    FUSB_REG32_GET_BITS(x, 8, 5)    /* Port Link State (PLS)  RWS */
 #define FXHCI_REG_OP_PORTS_PORTSC_PLS_SET(x)    FUSB_REG32_SET_BITS(x, 8, 5)
 #define FXHCI_REG_OP_PORTS_PORTSC_PLS_MASK      GENMASK(8, 5)
 #define FXHCI_REG_OP_PORTS_PORTSC_PLS(x)            (x << 5)
@@ -208,8 +208,8 @@ enum
 
 #define FXHCI_REG_OP_PORTS_PORTSC_PLS_SET(x)           FUSB_REG32_SET_BITS(x, 8, 5)
 
-#define FXHCI_REG_OP_PORTS_PORTSC_PP (1 << 9)           /* Port Power (PP) – RWS */
-#define FXHCI_REG_OP_PORTS_PORTSC_PORT_SPEED_GET(x) FUSB_REG32_GET_BITS(x, 13, 10)  /* Port Speed (Port Speed) – ROS */
+#define FXHCI_REG_OP_PORTS_PORTSC_PP (1 << 9)           /* Port Power (PP)  RWS */
+#define FXHCI_REG_OP_PORTS_PORTSC_PORT_SPEED_GET(x) FUSB_REG32_GET_BITS(x, 13, 10)  /* Port Speed (Port Speed)  ROS */
 /* Protocol Speed ID (PSI) 1~15 */
 enum
 {
@@ -500,7 +500,7 @@ static inline u32 FXhciReadPort32(const FXhciMMIO *mmio, u32 port, u32 offset)
     FASSERT(mmio);
     FASSERT(mmio->base != 0);
 
-    /* Operational Base + (400h + (10h * (n–1))) */
+    /* Operational Base + (400h + (10h * (n1))) */
     return FtIn32(mmio->port_base + port * FXHCI_REG_OP_PORTS_SIZE + offset);
 }
 

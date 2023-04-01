@@ -85,7 +85,7 @@
 
 /**
  *****************************************************************************
- ** \brief BGR 使能
+ ** \brief BGR 
  **
  ** 
  ** \retval TRUE or FALSE                                      
@@ -102,7 +102,7 @@ en_result_t Bgr_BgrEnable(void)
 
 /**
  *****************************************************************************
- ** \brief BGR 禁止
+ ** \brief BGR 
  **
  ** 
  ** \retval TRUE or FALSE                                      
@@ -117,7 +117,7 @@ en_result_t Bgr_BgrDisable(void)
 
 /**
  *****************************************************************************
- ** \brief BGR 温度传感器使能
+ ** \brief BGR 
  **
  ** 
  ** \retval TRUE or FALSE                                      
@@ -134,7 +134,7 @@ en_result_t Bgr_TempSensorEnable(void)
 
 /**
  *****************************************************************************
- ** \brief BGR 温度传感器禁止
+ ** \brief BGR 
  **
  ** 
  ** \retval TRUE or FALSE                                      

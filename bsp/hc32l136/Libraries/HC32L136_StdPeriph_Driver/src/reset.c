@@ -88,12 +88,12 @@
 
 /**
  *******************************************************************************
- ** \brief 获取复位源类型.
+ ** \brief .
  **
- ** \param [out]  pstcOut  复位源类型列表     
+ ** \param [out]  pstcOut       
  ** 
- ** \retval  Ok         操作成功
- **          其他       操作失败
+ ** \retval  Ok         
+ **                 
  ******************************************************************************/
 en_result_t Reset_GetCause(stc_reset_cause_t *pstcOut)
 {
@@ -111,12 +111,12 @@ en_result_t Reset_GetCause(stc_reset_cause_t *pstcOut)
 
 /**
  *******************************************************************************
- ** \brief 清除复位源类型.
+ ** \brief .
  **
- ** \param [in]  stcval  复位源类型列表,每种类型对应的比特位写“0”清除，写“1”无效
+ ** \param [in]  stcval  ,01
  ** 
- ** \retval  Ok         操作成功
- **          其他       操作失败
+ ** \retval  Ok         
+ **                 
  ******************************************************************************/
 en_result_t Reset_Clear(stc_reset_cause_t stcval)
 {
@@ -129,13 +129,13 @@ en_result_t Reset_Clear(stc_reset_cause_t stcval)
 
 /**
  *******************************************************************************
- ** \brief 设置外设复位源开关.
+ ** \brief .
  **
- ** \param [in]  enPeri  复位源类型列表
- ** \param [in]  bFlag   复位开关
+ ** \param [in]  enPeri  
+ ** \param [in]  bFlag   
  ** 
- ** \retval  Ok         操作成功
- **          其他       操作失败
+ ** \retval  Ok         
+ **                 
  ******************************************************************************/
 en_result_t Reset_SetPeripheralReset(en_reset_peripheral_t enPeri, boolean_t bFlag)
 {

@@ -1,20 +1,20 @@
 # STM32G071-Nucleo BSP Introduction
 
-[中文](README_zh.md) 
+[](README_zh.md) 
 
 ## MCU: STM32G071RB @64MHz, 128KB FLASH,  36KB RAM
 
-The STM32G071x8/xB mainstream microcontrollers are based on high-performance Arm® Cortex®-M0+ 32-bit RISC core operating at up to 64 MHz frequency. Offering a high level of integration, they are suitable for a wide range of applications in consumer, industrial and appliance domains and ready for the Internet of Things (IoT) solutions.
+The STM32G071x8/xB mainstream microcontrollers are based on high-performance Arm Cortex-M0+ 32-bit RISC core operating at up to 64 MHz frequency. Offering a high level of integration, they are suitable for a wide range of applications in consumer, industrial and appliance domains and ready for the Internet of Things (IoT) solutions.
 
 The devices incorporate a memory protection unit (MPU), high-speed embedded memories (up to 128 Kbytes of Flash program memory with read protection, write protection, proprietary code protection, and securable area, and 36 Kbytes of SRAM), DMA and an extensive range of system functions, enhanced I/Os and peripherals. The devices offer standard communication interfaces (two I2Cs, two SPIs / one I2S, one HDMI CEC, and four USARTs), one 12-bit ADC (2.5 MSps) with up to 19 channels, one 12-bit DAC with two channels, two fast comparators, an internal voltage reference buffer, a low-power RTC, an advanced control PWM timer running at up to double the CPU frequency, five general-purpose 16-bit timers with one running at up to double the CPU frequency, a 32-bit general-purpose timer, two basic timers, two low-power 16-bit timers, two watchdog timers, and a SysTick timer. The STM32G071x8/xB devices provide a fully integrated USB Type-C Power Delivery controller.
-The devices operate within ambient temperatures from -40 to 125°C. They can operate with supply voltages from 1.7 V to 3.6 V. Optimized dynamic consumption combined with a comprehensive set of power-saving modes, low-power timers and low-power UART, allows the design of low-power applications.
+The devices operate within ambient temperatures from -40 to 125C. They can operate with supply voltages from 1.7 V to 3.6 V. Optimized dynamic consumption combined with a comprehensive set of power-saving modes, low-power timers and low-power UART, allows the design of low-power applications.
 VBAT direct battery input allows keeping RTC and backup registers powered.
 The devices come in packages with 28 to 64 pins.
 
 #### KEY FEATURES
 
-- Core: Arm® 32-bit Cortex®-M0+ CPU, frequency up to 64 MHz
-- -40°C to 85°C/105°C/125°C operating temperature
+- Core: Arm 32-bit Cortex-M0+ CPU, frequency up to 64 MHz
+- -40C to 85C/105C/125C operating temperature
 - Memories
   - Up to 128 Kbytes of Flash memory with protection and securable area
   - 36 Kbytes of SRAM (32 Kbytes with HW parity check)
@@ -29,13 +29,13 @@ The devices come in packages with 28 to 64 pins.
 - Clock management
   - 4 to 48 MHz crystal oscillator
   - 32 kHz crystal oscillator with calibration
-  - Internal 16 MHz RC with PLL option (±1 %)
-  - Internal 32 kHz RC oscillator (±5 %)
+  - Internal 16 MHz RC with PLL option (1 %)
+  - Internal 32 kHz RC oscillator (5 %)
 - Up to 60 fast I/Os
   - All mappable on external interrupt vectors
   - Multiple 5 V-tolerant I/Os
 - 7-channel DMA controller with flexible mapping
-- 12-bit, 0.4 µs ADC (up to 16 ext. channels)
+- 12-bit, 0.4 s ADC (up to 16 ext. channels)
   - Up to 16-bit with hardware oversampling
   - Conversion range: 0 to 3.6V
 
@@ -49,10 +49,10 @@ The devices come in packages with 28 to 64 pins.
   - One low-power UART
   - Two SPIs (32 Mbit/s) with 4- to 16-bit programmable bitframe, one multiplexed with I2S interface
   - HDMI CEC interface, wakeup on header
-- USB Type-C™ Power Delivery controller
+- USB Type-C Power Delivery controller
 - Development support: serial wire debug (SWD)
 - 96-bit unique ID
-- All packages ECOPACK®2 compliant
+- All packages ECOPACK2 compliant
 
 
 

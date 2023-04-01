@@ -281,7 +281,7 @@
  * therefore startup time is required before starting a new conversion.
  *
  * \subsection asfdoc_sam0_dac_special_considerations_conversion_time Conversion Time
- * DAC conversion time is approximately 2.85µs. The user must ensure that new
+ * DAC conversion time is approximately 2.85s. The user must ensure that new
  * data is not written to the DAC before the last conversion is complete.
  * Conversions should be triggered by a periodic event from a Timer/Counter or
  * another peripheral.

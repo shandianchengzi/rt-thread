@@ -23,9 +23,9 @@
 #define __CORE_RNG_H__
 void RNG_Init(void);
 /**
- * @brief 获取随机数
+ * @brief 
  *
- * @param Buf，一次获取4个32bit数据
+ * @param Buf432bit
  */
 void RNG_GetData(uint32_t Buf[4]);
 #endif

@@ -92,8 +92,8 @@ typedef struct {
  * MIRQDN (RW)
  *
  * Mask Interrupt Request for Done Event, asks the interrupts generated upon the completion of the seed and self-test modes. The status of these jobs can be viewed by:
- * • Reading the STA and viewing the seed done and the self-test done bits (STA[SDN, STDN]).
- * • Viewing the RNG_CMD for the generate-seed or the self-test bits (CMD[GS,ST]) being set, indicating that the operation is still taking place.
+ *  Reading the STA and viewing the seed done and the self-test done bits (STA[SDN, STDN]).
+ *  Viewing the RNG_CMD for the generate-seed or the self-test bits (CMD[GS,ST]) being set, indicating that the operation is still taking place.
  */
 #define RNG_CTRL_MIRQDN_MASK (0x20U)
 #define RNG_CTRL_MIRQDN_SHIFT (5U)

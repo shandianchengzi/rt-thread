@@ -1,6 +1,6 @@
 # Raspberry PI 3B 32 BSP (Board Support Package) Execution Instruction 
 
-[中文页](README_zh.md) |
+[](README_zh.md) |
 
 ## Introduction
 
@@ -29,7 +29,7 @@ This document records the execution instruction of the BSP (board support packag
 
 The [env](https://www.rt-thread.io/download.html?download=Env) tool is recommended for compiling in Windows environments.
 
-The cross-compiler gcc-arm-none-eabi-4_8-2014q1_linux is recommended in Linux environment. If you don’t have compiling tool, please uncompress the downloaded package like this:
+The cross-compiler gcc-arm-none-eabi-4_8-2014q1_linux is recommended in Linux environment. If you dont have compiling tool, please uncompress the downloaded package like this:
 
 ```
 tar vxf gcc-arm-none-eabi-4_8-2014q1_linux.tar.bz2
@@ -47,7 +47,7 @@ Enter the rt-thread/bsp/raspi3-32 directory and run the following command to com
 scons
 ```
 
-If everything goes well, a new 'rtthread.elf' and 'kernel7.img' file will be generated. ‘kernel7.img' is what we need to put into the root directory of the Raspberry PI 3B SD card.
+If everything goes well, a new 'rtthread.elf' and 'kernel7.img' file will be generated. kernel7.img' is what we need to put into the root directory of the Raspberry PI 3B SD card.
 
 ###  **Eclipse compiling environment**
 

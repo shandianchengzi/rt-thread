@@ -161,7 +161,7 @@ extern "C" {
     extern const uint16_t _CYHAL_TCPWM_TRIGGER_INPUTS_IDX_OFFSET[1];
     extern const uint16_t _CYHAL_TCPWM_TRIGGER_INPUTS_PER_BLOCK[1];
 #elif (CY_IP_MXTCPWM_VERSION == 2U)
-    // PSoC™ 6 devices with trigmux vers2 also have a number of reserved input
+    // PSoC 6 devices with trigmux vers2 also have a number of reserved input
     // lines defined by TCPWM_TR_ONE_CNT_NR.
     #if (CY_IP_MXTCPWM_INSTANCES == 1)
     extern const uint16_t _CYHAL_TCPWM_TRIGGER_INPUTS_IDX_OFFSET[1];
@@ -173,7 +173,7 @@ extern "C" {
     #warning ""
     #endif
 #else // (CY_IP_M0S8TCPWM_VERSION == 2)
-    // PSoC™ 4 devices have a number of reserved input lines coming directly from
+    // PSoC 4 devices have a number of reserved input lines coming directly from
     // GPIO triggers (depending on exact architecture).
     #if defined(CY_DEVICE_PSOC4AS1)
         // 12 GPIO trigger lines reserved (but some may be unused, depending on

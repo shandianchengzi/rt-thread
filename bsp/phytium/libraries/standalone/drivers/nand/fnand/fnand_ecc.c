@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fnand_ecc.c
  * Date: 2022-05-12 14:17:42
  * LastEditTime: 2022-05-12 15:56:27
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 
@@ -34,7 +34,7 @@
 
 /**
  * @name: FNandGetEccTotalLength
- * @msg:  根据page size 与 ecc_strength（纠错个数）确定硬件ecc 产生
+ * @msg:  page size  ecc_strengthecc 
  * @param {u32} bytes_per_page
  * @param {u32} ecc_strength
  * @return {*}
@@ -111,9 +111,9 @@ u32 FNandGetEccTotalLength(u32 bytes_per_page, u32 ecc_strength)
  * @note:
  * @return {*}
  * @param {uintptr_t} base_address
- * @param {u32} ecc_step_size   单次ecc 使用的步长大小
- * @param {u32} hw_ecc_steps    一页操作需要进行的ecc 次数
- * @param {u8*} buf page 页 对应的指针
+ * @param {u32} ecc_step_size   ecc 
+ * @param {u32} hw_ecc_steps    ecc 
+ * @param {u8*} buf page  
  * @param {u32} length
  */
 // s32 FNandCorrectEcc(uintptr_t base_address,u32 ecc_step_size,u32 hw_ecc_steps,u8* buf ,u32 length)
@@ -187,10 +187,10 @@ u32 FNandGetEccTotalLength(u32 bytes_per_page, u32 ecc_strength)
 
 // }
 
-// 校验offset 0xb8  + i * 0x10
-// 校验强度为 2 j = 1
-// 校验强度为 4 j = 2
-// 校验强度为 8 j = 4
+// offset 0xb8  + i * 0x10
+//  2 j = 1
+//  4 j = 2
+//  8 j = 4
 
 
 

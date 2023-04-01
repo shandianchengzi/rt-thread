@@ -29,26 +29,26 @@
 
 typedef struct __UsbBlkDev
 {
-    unsigned int   last_lun;               //如果为1，表示是最后一个分区
-    unsigned int   Magic;                  /* 表示设备是否合法                 */
-    __mscLun_t *Lun;                /* sd和其他scsi device共有的属性    */
+    unsigned int   last_lun;               //1
+    unsigned int   Magic;                  /*                  */
+    __mscLun_t *Lun;                /* sdscsi device    */
 
     /* Disk information */
-    unsigned int used;                     /* 打开设备计数                     */
-    __dev_devop_t DiskOp;           /* 设备操作函数                     */
+    unsigned int used;                     /*                      */
+    __dev_devop_t DiskOp;           /*                      */
 
     /* Disk manager */
-    void *DevParaHdle;      /* open时的句柄                     */
-    void *DevRegHdle;       /* reg时的句柄                      */
+    void *DevParaHdle;      /* open                     */
+    void *DevRegHdle;       /* reg                      */
 
-    unsigned int DevNo;                                /* 此设备号, 它由host_id, target_id, lun 组成   */
-    unsigned char ClassName[USB_BULK_DISK_MAX_NAME_LEN]; /* 设备类名, 如"disk"               */
-    unsigned char DevName[USB_BULK_DISK_MAX_NAME_LEN];   /* 此设备名, 如"SCSI_DISK_000"      */
+    unsigned int DevNo;                                /* , host_id, target_id, lun    */
+    unsigned char ClassName[USB_BULK_DISK_MAX_NAME_LEN]; /* , "disk"               */
+    unsigned char DevName[USB_BULK_DISK_MAX_NAME_LEN];   /* , "SCSI_DISK_000"      */
 
-    unsigned int is_RegDisk;               /* 是否注册过disk设备                           */
-    unsigned int ErrCmdNr;                 /* test_unit_ready期间, 未知错误的次数          */
+    unsigned int is_RegDisk;               /* disk                           */
+    unsigned int ErrCmdNr;                 /* test_unit_ready,           */
 
-    void *Extern;                   /* 扩展属性, 如cd                               */
+    void *Extern;                   /* , cd                               */
 
     usbh_disk_device_info_t device_info;
 } __UsbBlkDev_t;

@@ -340,7 +340,7 @@ rt_err_t sam7xether_init(rt_device_t dev)
 	     break;
 	}
 
-    for(i=0; i<0xfffff; i++);//* 等待一段指定的时间，使PHY就绪
+    for(i=0; i<0xfffff; i++);//* PHY
 
 	linksetup();
 
@@ -365,7 +365,7 @@ rt_err_t sam7xether_init(rt_device_t dev)
 
 	/* Configure EMAC operation mode. */
 	//AT91C_BASE_EMAC->EMAC_NCFGR |= (AT91C_EMAC_BIG | AT91C_EMAC_DRFCS);
- 	//                   复制所有有效帧到接收缓冲区   *不复制FCS字段       不接收广播帧    不接收1526字节长帧                 
+ 	//                      *FCS           1526                 
 	AT91C_BASE_EMAC->EMAC_NCFGR |= AT91C_EMAC_CAF |AT91C_EMAC_DRFCS | AT91C_EMAC_NBC | AT91C_EMAC_BIG;
 	AT91C_BASE_EMAC->EMAC_NCR   |= (AT91C_EMAC_TE  | AT91C_EMAC_RE | AT91C_EMAC_WESTAT);
 

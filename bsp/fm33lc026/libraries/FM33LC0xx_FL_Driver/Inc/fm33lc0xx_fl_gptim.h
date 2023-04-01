@@ -48,19 +48,19 @@ extern "C" {
   */
 typedef struct
 {
-    /** 预分频系数 */
+    /**  */
     uint32_t prescaler;
 
-    /** 计数模式 */
+    /**  */
     uint32_t counterMode;
 
-    /** 自动重装载值 */
+    /**  */
     uint32_t autoReload;
 
-    /** 预装载使能 */
+    /**  */
     uint32_t autoReloadState;
 
-    /** 定时器分频系数与数字滤波器所使用的采样时钟分频比*/
+    /** */
     uint32_t clockDivision;
 
 } FL_GPTIM_InitTypeDef;
@@ -70,16 +70,16 @@ typedef struct
   */
 typedef struct
 {
-    /** ITRx 源*/
+    /** ITRx */
     uint32_t ITRSourceGroup;
 
-    /** 外部时钟源模式 */
+    /**  */
     uint32_t slaveMode;
 
-    /** 输入触发信号选择 */
+    /**  */
     uint32_t triggerSrc;
 
-    /** Trigger 延迟*/
+    /** Trigger */
     uint32_t triggerDelay;
 
 } FL_GPTIM_SlaveInitTypeDef;
@@ -89,19 +89,19 @@ typedef struct
   */
 typedef struct
 {
-    /** 输入捕获使能 */
+    /**  */
     uint32_t captureState;
 
-    /** 输入捕获极性 */
+    /**  */
     uint32_t ICPolarity;
 
-    /** 通道映射激活的输入选择 */
+    /**  */
     uint32_t ICActiveInput;
 
-    /** 输入分频 */
+    /**  */
     uint32_t ICPrescaler;
 
-    /** 输入滤波 */
+    /**  */
     uint32_t ICFilter;
 
 } FL_GPTIM_IC_InitTypeDef;
@@ -111,16 +111,16 @@ typedef struct
   */
 typedef struct
 {
-    /** 外部触发使能 */
+    /**  */
     uint32_t useExternalTrigger;
 
-    /** 外部时钟滤波 */
+    /**  */
     uint32_t ETRFilter;
 
-    /** 外部时钟分频 */
+    /**  */
     uint32_t ETRClockDivision;
 
-    /** 外部时钟触发极性 */
+    /**  */
     uint32_t ETRPolarity;
 
 } FL_GPTIM_ETR_InitTypeDef;
@@ -130,22 +130,22 @@ typedef struct
   */
 typedef struct
 {
-    /** 比较输出模式 */
+    /**  */
     uint32_t OCMode;
 
-    /** 比较输出通道快速模式使能 */
+    /**  */
     uint32_t OCFastMode;
 
-    /** 输出比较预装载 */
+    /**  */
     uint32_t OCPreload;
 
-    /** 通道比较值 */
+    /**  */
     uint32_t compareValue;
 
-    /** 比较输出极性 */
+    /**  */
     uint32_t OCPolarity;
 
-    /** ETR清0使能 */
+    /** ETR0 */
     uint32_t OCETRFStatus;
 
 } FL_GPTIM_OC_InitTypeDef;
@@ -155,56 +155,56 @@ typedef struct
   */
 
 /**
-  * GPTIM0~GPTIM2 ITRSEL_Group 映射表
+  * GPTIM0~GPTIM2 ITRSEL_Group 
   *
   * ===================== GPTIM0 ======================
   * ---------------------------------------------------
   * ITRx   | Group  | Function Name | Function Type
   * ---------------------------------------------------
-  * ITR0   | 0      | ATIM_TRGO     | 计数触发
-  *        | 1      | UART0_RX      | 宽度捕捉
-  *        | 2      | UART1_RX      | 宽度捕捉
-  *        | 3      | UART3_RX      | 宽度捕捉
+  * ITR0   | 0      | ATIM_TRGO     | 
+  *        | 1      | UART0_RX      | 
+  *        | 2      | UART1_RX      | 
+  *        | 3      | UART3_RX      | 
   * ---------------------------------------------------
-  * ITR1   | 0      | GPTIM2_TRGO   | 计数触发
-  *        | 1      | XTHF          | 周期捕捉
-  *        | 2      | RCHF          | 周期捕捉
-  *        | 3      | LPUART1_RX    | 周期捕捉
+  * ITR1   | 0      | GPTIM2_TRGO   | 
+  *        | 1      | XTHF          | 
+  *        | 2      | RCHF          | 
+  *        | 3      | LPUART1_RX    | 
   * ---------------------------------------------------
-  * ITR2   | 0      | BSTIM32_TRGO  | 计数触发
-  *        | 1      | LPUART2_RX    | 宽度捕捉
-  *        | 2      | LPOSC         | 周期捕捉
-  *        | 3      | XTLF          | 周期捕捉
+  * ITR2   | 0      | BSTIM32_TRGO  | 
+  *        | 1      | LPUART2_RX    | 
+  *        | 2      | LPOSC         | 
+  *        | 3      | XTLF          | 
   * ---------------------------------------------------
-  * ITR3   | 0      | COMP1_TRGO    | 计数触发
-  *        | 1      | RCLF          | 周期捕捉
-  *        | 2      | COMP2_TRGO    | 计数触发
-  *        | 3      | LPT32_TRGO    | 计数触发
+  * ITR3   | 0      | COMP1_TRGO    | 
+  *        | 1      | RCLF          | 
+  *        | 2      | COMP2_TRGO    | 
+  *        | 3      | LPT32_TRGO    | 
   * ---------------------------------------------------
   *
   * ===================== GPTIM1 ======================
   * ---------------------------------------------------
   * ITRx   | Group  | Function Name | Function Type
   * ---------------------------------------------------
-  * ITR0   | 0      | ATIM_TRGO     | 计数触发
-  *        | 1      | UART0_RX      | 宽度捕捉
-  *        | 2      | UART1_RX      | 宽度捕捉
-  *        | 3      | UART3_RX      | 宽度捕捉
+  * ITR0   | 0      | ATIM_TRGO     | 
+  *        | 1      | UART0_RX      | 
+  *        | 2      | UART1_RX      | 
+  *        | 3      | UART3_RX      | 
   * ---------------------------------------------------
-  * ITR1   | 0      | GPTIM0_TRGO   | 计数触发
-  *        | 1      | LUT1_TRGO     | 周期捕捉
-  *        | 2      | RCHF          | 周期捕捉
-  *        | 3      | ADC_EOC_TRGO  | 计数触发
+  * ITR1   | 0      | GPTIM0_TRGO   | 
+  *        | 1      | LUT1_TRGO     | 
+  *        | 2      | RCHF          | 
+  *        | 3      | ADC_EOC_TRGO  | 
   * ---------------------------------------------------
-  * ITR2   | 0      | BSTIM32_TRGO  | 计数触发
-  *        | 1      | LSCLK         | 周期捕捉
-  *        | 2      | LPOSC         | 周期捕捉
-  *        | 3      | XTLF          | 周期捕捉
+  * ITR2   | 0      | BSTIM32_TRGO  | 
+  *        | 1      | LSCLK         | 
+  *        | 2      | LPOSC         | 
+  *        | 3      | XTLF          | 
   * ---------------------------------------------------
-  * ITR3   | 0      | COMP1_TRGO    | 计数触发
-  *        | 1      | LUT3_TRGO     | 周期捕捉
-  *        | 2      | COMP2_TRGO    | 计数触发
-  *        | 3      | LPT32_TRGO    | 计数触发
+  * ITR3   | 0      | COMP1_TRGO    | 
+  *        | 1      | LUT3_TRGO     | 
+  *        | 2      | COMP2_TRGO    | 
+  *        | 3      | LPT32_TRGO    | 
   * ---------------------------------------------------
   *
   */

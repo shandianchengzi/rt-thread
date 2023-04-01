@@ -32,7 +32,7 @@
  * \ingroup group_hal_impl
  * \{
  * \section cyhal_adc_impl_features Features
- * The CAT1A/CAT2 (PMG/PSoC™ 4/PSoC™ 6) ADC supports the following features:
+ * The CAT1A/CAT2 (PMG/PSoC 4/PSoC 6) ADC supports the following features:
  * * Resolution: 12 bit
  * * Only @ref CYHAL_POWER_LEVEL_DEFAULT and CYHAL_POWER_LEVEL_OFF are defined. The default power
  *   level will automatically adjust based on smple rate.
@@ -1520,7 +1520,7 @@ cy_rslt_t cyhal_adc_channel_init_diff(cyhal_adc_channel_t *obj, cyhal_adc_t* adc
             result = CYHAL_ADC_RSLT_BAD_ARGUMENT;
         }
         #if defined(CY_IP_M0S8PASS4A_SAR_INSTANCES)
-        // For PSoC™ 4A devices, vplus must be an even number pin, and vminus the following odd numbered pin
+        // For PSoC 4A devices, vplus must be an even number pin, and vminus the following odd numbered pin
         else if (((vplus & 1) != 0) || ((vplus + 1) != vminus))
         {
             result = CYHAL_ADC_RSLT_BAD_ARGUMENT;

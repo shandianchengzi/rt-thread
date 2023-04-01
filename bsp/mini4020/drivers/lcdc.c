@@ -19,20 +19,20 @@ rt_err_t sep4020_lcd_init(void)
 {
     pVideoBuffer =(unsigned long)rt_malloc(LCDWIDTH * LCDHEIGHT * 2);
 
-    *(RP)GPIO_PORTC_SEL  |= 0X0008;      //Portc8设置为通用口
-    *(RP)GPIO_PORTC_DIR  &= (~0X0008);   //Portc8设置为输出
-    *(RP)GPIO_PORTC_DATA |= 0X0008;      //Portc8输出高电平
+    *(RP)GPIO_PORTC_SEL  |= 0X0008;      //Portc8
+    *(RP)GPIO_PORTC_DIR  &= (~0X0008);   //Portc8
+    *(RP)GPIO_PORTC_DATA |= 0X0008;      //Portc8
 
-    writel(0x00000000,LCDC_LECR);     //禁用LCDC
-    writel(pVideoBuffer,LCDC_SSA);    //lcd数据帧的起始地址
+    writel(0x00000000,LCDC_LECR);     //LCDC
+    writel(pVideoBuffer,LCDC_SSA);    //lcd
     writel(YMAX | XMAX,LCDC_SIZE);
     writel(TFT|COLOR|PBSIZE|BPIX|PIXPOL|FLMPOL|LPPOL|CLKPOL|OEPOL|END_SEL|ACD_SEL|ACD|PCD,LCDC_PCR);
     writel(H_WIDTH|H_WAIT_1|H_WAIT_2,LCDC_HCR);
     writel(V_WIDTH|PASS_FRAME_WAIT|V_WAIT_1|V_WAIT_2,LCDC_VCR);
     writel(SCR|CC_EN|PW,LCDC_PWMR);
     writel(BL|HM|TM,LCDC_DMACR);
-    writel(0x00000001,LCDC_LECR);         //使能LCDC
-    writel(0x00000000,LCDC_LCDISREN);     //中断在加载帧的最后一个或第一个数据时设置，到LCD之间会有一个延时
+    writel(0x00000001,LCDC_LECR);         //LCDC
+    writel(0x00000000,LCDC_LCDISREN);     //LCD
 
     return RT_EOK;
 }

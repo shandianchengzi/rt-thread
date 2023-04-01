@@ -61,24 +61,24 @@
 
 /**
 ******************************************************************************
-** \brief LCD bias源选择
+** \brief LCD bias
 *****************************************************************************/
  typedef enum
  {
-    LcdInResHighPower = 6,//内部电阻分压，大功耗模式
-    LcdInResLowPower  = 4,//内部电阻分压，小功耗模式
-    LcdInResMidPower  = 2,//内部电阻分压，中功耗模式
-    LcdExtCap          = 1,//电容分压模式，需要外部电路配合
-    LcdExtRes          = 0,//外部电阻模式，需要外部电路配合
+    LcdInResHighPower = 6,//
+    LcdInResLowPower  = 4,//
+    LcdInResMidPower  = 2,//
+    LcdExtCap          = 1,//
+    LcdExtRes          = 0,//
  }en_lcd_biassrc_t;
 
 /**
 ******************************************************************************
-** \brief LCD duty选择                  LCD_CR0    Duty
+** \brief LCD duty                  LCD_CR0    Duty
 *****************************************************************************/
  typedef enum
  {
-    LcdStatic = 0u,        // 静态显示
+    LcdStatic = 0u,        // 
     LcdDuty2  = 1u,        // 1/2duty
     LcdDuty3  = 2u,        // 1/3duty
     LcdDuty4  = 3u,        // 1/4duty
@@ -88,7 +88,7 @@
 
 /**
 ******************************************************************************
-** \brief LCD bias配置位                 LCD_CR0    Bias
+** \brief LCD bias                 LCD_CR0    Bias
 *****************************************************************************/
  typedef enum
  {
@@ -98,7 +98,7 @@
 
 /**
 ******************************************************************************
-** \brief LCD 电压泵时钟频率选择         LCD_CR0    CpClk
+** \brief LCD          LCD_CR0    CpClk
 *****************************************************************************/
  typedef enum
  {
@@ -110,7 +110,7 @@
 
 /**
 ******************************************************************************
-** \brief LCD 扫描频率选择                LCD_CR0    LcdClk
+** \brief LCD                 LCD_CR0    LcdClk
 *****************************************************************************/
  typedef enum
  {
@@ -122,53 +122,53 @@
 
 /**
 ******************************************************************************
-** \brief LCD 使能控制                    LCD_CR0    EN
+** \brief LCD                     LCD_CR0    EN
 *****************************************************************************/
 typedef enum
 {
-    LcdEnable   =1u,    //LCD使能
-    LcdDisable  =0u     //LCD禁止
+    LcdEnable   =1u,    //LCD
+    LcdDisable  =0u     //LCD
 }en_lcd_en_t;
 
 /**
  ******************************************************************************
- ** \brief LCD显示模式               LCD_CR1    Mode
+ ** \brief LCD               LCD_CR1    Mode
  *****************************************************************************/
  typedef enum
  {
-    LcdMode0 = 0,///<模式0
-    LcdMode1 = 1,///<模式1
+    LcdMode0 = 0,///<0
+    LcdMode1 = 1,///<1
  }en_lcd_dispmode_t;
 
  /**
  ******************************************************************************
- ** \brief LCD时钟源选择             LCD_CR1    ClkSrc
+ ** \brief LCD             LCD_CR1    ClkSrc
  *****************************************************************************/
  typedef enum
  {
-    LcdXTL = 1,///<外部XTL
-    LcdRCL = 0,///<内部RCL
+    LcdXTL = 1,///<XTL
+    LcdRCL = 0,///<RCL
  }en_lcd_clk_t;
 
 
 /**
 ******************************************************************************
-** \brief LCD CR1寄存器的使能位、标志位
+** \brief LCD CR1
 *****************************************************************************/
 typedef enum
 {
-    LcdBlinkEn   = 6u,  //LCD闪屏配置位
-    LcdIe        = 9u,  //LCD 中断使能位
-    LcdDmaEn     = 10u, //LCD DMA硬件触发使能位
+    LcdBlinkEn   = 6u,  //LCD
+    LcdIe        = 9u,  //LCD 
+    LcdDmaEn     = 10u, //LCD DMA
 }en_cr1_t;
 
 /**
  ******************************************************************************
- ** \brief LCD显示SEG COM端口寄存器的配置
+ ** \brief LCDSEG COM
  *****************************************************************************/
 typedef struct
 {
-    uint32_t u32Seg0_31;      ///<SEG0-31配置
+    uint32_t u32Seg0_31;      ///<SEG0-31
     union{
         uint32_t seg32_51_com0_8;
         struct
@@ -198,33 +198,33 @@ typedef struct
 
 /**
  ******************************************************************************
- ** \brief LCD端口配置参数
+ ** \brief LCD
  *****************************************************************************/
 typedef struct stc_lcd_segcompara
 {
-    en_lcd_duty_t LcdDuty;       ///<占空比
-    en_lcd_biassrc_t LcdBiasSrc; ///<时钟源
-    uint8_t u8MaxSeg;             ///<最大SEG口
+    en_lcd_duty_t LcdDuty;       ///<
+    en_lcd_biassrc_t LcdBiasSrc; ///<
+    uint8_t u8MaxSeg;             ///<SEG
 }stc_lcd_segcompara_t;
 
 /**
  ******************************************************************************
- ** \brief I2C初始化配置结构
+ ** \brief I2C
  *****************************************************************************/
 typedef struct
 {
-    en_lcd_biassrc_t    LcdBiasSrc;    //偏置源选择
-    en_lcd_duty_t       LcdDuty;       //duty配置选择
-    en_lcd_bias_t       LcdBias;       //偏压选择
-    en_lcd_cpclk_t      LcdCpClk;      //电压泵时钟频率选择
-    en_lcd_scanclk_t    LcdScanClk;    //扫描频率选择
-    en_lcd_dispmode_t   LcdMode;       //显示模式选择
-    en_lcd_clk_t        LcdClkSrc;     //时钟源选择
-    en_lcd_en_t         LcdEn;         //LCD使能
+    en_lcd_biassrc_t    LcdBiasSrc;    //
+    en_lcd_duty_t       LcdDuty;       //duty
+    en_lcd_bias_t       LcdBias;       //
+    en_lcd_cpclk_t      LcdCpClk;      //
+    en_lcd_scanclk_t    LcdScanClk;    //
+    en_lcd_dispmode_t   LcdMode;       //
+    en_lcd_clk_t        LcdClkSrc;     //
+    en_lcd_en_t         LcdEn;         //LCD
 }stc_lcd_cfg_t;
 
 /*******************************************************************************
- ** \brief lcd相关函数声明
+ ** \brief lcd
  ******************************************************************************/
 
 extern boolean_t Lcd_GetItStatus(void);

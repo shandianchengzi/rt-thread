@@ -1,6 +1,6 @@
 # SAME70Q21B BSP Introduction
 
-[中文](README_zh.md) 
+[](README_zh.md) 
 - MCU: ATSAME70Q21B @300MHz, 2MB FLASH, 384KB RAM
 - V71: Auto grade Cortex-M7 + Advanced Feature Set + Ethernet + 2x CAN-FD
 - E70: Industrial Cortex-M7 + Advanced Feature Set + Ethernet + 2x CAN-FD
@@ -12,7 +12,7 @@
 #### KEY FEATURES
 
 #### Core
-  - 32-bit Arm® Cortex®-M7 core with double-precision FPU and L1 cache: 16 Kbytes of data and 16 Kbytes of instruction cache; frequency up to 300 MHz, MPU, 2.14 DMIPS/MHz (Dhrystone 2.1), and DSP instructions
+  - 32-bit Arm Cortex-M7 core with double-precision FPU and L1 cache: 16 Kbytes of data and 16 Kbytes of instruction cache; frequency up to 300 MHz, MPU, 2.14 DMIPS/MHz (Dhrystone 2.1), and DSP instructions
 
 ####  Memories
   - Up to 2 Mbytes of embedded Flash with unique identifier and user signature for user-defined data
@@ -22,13 +22,13 @@
 ####  Peripherals
   - 16-bit Static Memory Controller (SMC) with support for SRAM, PSRAM, LCD module, NOR and NAND Flash with on-the-fly scrambling
   - 16-bit SDRAM Controller (SDRAMC) interfacing up to 128 MB and with on-the-fly scrambling
-  - One Ethernet MAC (GMAC) 10/100 Mbps in MII mode and RMII with dedicated DMA. IEEE® 1588 PTP frames and 802.3az Energy-efficiency support.
+  - One Ethernet MAC (GMAC) 10/100 Mbps in MII mode and RMII with dedicated DMA. IEEE 1588 PTP frames and 802.3az Energy-efficiency support.
   - USB 2.0 Device/Mini Host High-speed (USBHS) at 480 Mbps, 4-Kbyte FIFO, up to 10 bidirectional endpoints, dedicated DMA
   - 12-bit ITU-R BT. 601/656 Image Sensor Interface (ISI)
   - Two master Controller Area Networks (MCAN) with Flexible Data Rate (CAN-FD) with SRAM-based mailboxes, time-triggered and event-triggered transmission
-  - MediaLB® device with 3-wire mode, up to 1024 x Fs speed, supporting MOST25 and MOST50 networks
-  - Three USARTs, USART0, USART1, USART2, support LIN mode, ISO7816, IrDA®, RS-485, SPI, Manchester and Modem modes; USART1 supports LON mode.
-  - Five 2-wire UARTs with SleepWalking™ support
+  - MediaLB device with 3-wire mode, up to 1024 x Fs speed, supporting MOST25 and MOST50 networks
+  - Three USARTs, USART0, USART1, USART2, support LIN mode, ISO7816, IrDA, RS-485, SPI, Manchester and Modem modes; USART1 supports LON mode.
+  - Five 2-wire UARTs with SleepWalking support
   - Three Two-Wire Interfaces (TWIHS) (I2C-compatible) with SleepWalking support
   - Quad I/O Serial Peripheral Interface (QSPI) interfacing up to 256 MB Flash and with eXecute-In-Place and onthe-fly scrambling
   - Two Serial Peripheral Interfaces (SPI)

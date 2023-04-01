@@ -12,7 +12,7 @@
 
 // __align(256) rt_uint32_t LTDC_Buf[XSIZE_PHYS * YSIZE_PHYS];
 
-volatile void LCD_delay(volatile int time) //简单软件延时
+volatile void LCD_delay(volatile int time) //
 {
     // volatile rt_uint32_t i;
     // while (time--)
@@ -20,16 +20,16 @@ volatile void LCD_delay(volatile int time) //简单软件延时
     //         ;
     rt_thread_mdelay(time);
 }
-void LTDC_Clock_Set(void) //设置LTDC时钟
+void LTDC_Clock_Set(void) //LTDC
 {
     RCC->AHB1ENR |= 1 << 31;
     RCC->CR |= 1 << 28;
-    RCC->PLLDCKCFGR = 0x1 << 16; //分频系数 0~3 --> 2,4,6,8
-    RCC->PLLLCDCFGR = 6 << 6;    //倍频系数
+    RCC->PLLDCKCFGR = 0x1 << 16; // 0~3 --> 2,4,6,8
+    RCC->PLLLCDCFGR = 6 << 6;    //
 }
 void GPIO_RGB_INIT(void)
 {
-    GPIO_InitTypeDef GPIO_InitStructure; //定义GPIO初始化结构体变量
+    GPIO_InitTypeDef GPIO_InitStructure; //GPIO
 
     RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB | RCC_AHBPeriph_GPIOD | RCC_AHBPeriph_GPIOE, ENABLE);
 
@@ -45,7 +45,7 @@ void GPIO_RGB_INIT(void)
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
     GPIO_Init(GPIOD, &GPIO_InitStructure);
 
-    // GPIO模拟SPI初始化液晶屏        SPI_SDA      SPI_DCLK     LCD_SPI_CS
+    // GPIOSPI        SPI_SDA      SPI_DCLK     LCD_SPI_CS
     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_9 | GPIO_Pin_11;
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
@@ -56,12 +56,12 @@ void GPIO_RGB_INIT(void)
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
     GPIO_Init(GPIOE, &GPIO_InitStructure);
 
-    GPIO_PinAFConfig(GPIOB, GPIO_Pin_4 | GPIO_Pin_5 | GPIO_Pin_6 | GPIO_Pin_7, GPIO_AF_LTDC); //PB4~7复用为LTDC的同步信号线
-    GPIO_PinAFConfig(GPIOE, GPIO_Pin_All, GPIO_AF_LTDC);                                      //GPIOE所有的IO全部复用为LTDC的数据线
+    GPIO_PinAFConfig(GPIOB, GPIO_Pin_4 | GPIO_Pin_5 | GPIO_Pin_6 | GPIO_Pin_7, GPIO_AF_LTDC); //PB4~7LTDC
+    GPIO_PinAFConfig(GPIOE, GPIO_Pin_All, GPIO_AF_LTDC);                                      //GPIOEIOLTDC
 }
 static void LCD_Reset(void)
 {
-    //注意，现在科学发达，有的屏不用复位也行
+    //
     LCD_RST(0);
     LCD_delay(200);
     LCD_RST(1);
@@ -79,11 +79,11 @@ void set_resolutionXX(LCD_FORM_TypeDef *LCD_FORM)
     aVerStart = LCD_FORM->blkVerEnd + 1;
     aVerEnd = aVerStart + LCD_FORM->aVerLen;
 
-    LTDC->P_HOR = aHorEnd;                                             //总宽度
-    LTDC->HSYNC = (LCD_FORM->sHsyncStart << 16) | LCD_FORM->sHsyncEnd; //水平同步信号起始和结束，位于背景色中间
-    LTDC->A_HOR = (aHorStart << 16) | aHorEnd;                         //水平激活起始和结束
-    LTDC->A_HOR_LEN = LCD_FORM->aHorLen;                               //水平激活域宽度
-    LTDC->BLK_HOR = (0 << 16) | LCD_FORM->blkHorEnd;                   //背景开始和结束宽度0~激活地址
+    LTDC->P_HOR = aHorEnd;                                             //
+    LTDC->HSYNC = (LCD_FORM->sHsyncStart << 16) | LCD_FORM->sHsyncEnd; //
+    LTDC->A_HOR = (aHorStart << 16) | aHorEnd;                         //
+    LTDC->A_HOR_LEN = LCD_FORM->aHorLen;                               //
+    LTDC->BLK_HOR = (0 << 16) | LCD_FORM->blkHorEnd;                   //0~
     LTDC->P_VER = aVerEnd;
     LTDC->VSYNC = (LCD_FORM->sVsyncStart << 16) | LCD_FORM->sVsyncEnd;
     LTDC->A_VER = (aVerStart << 16) | aVerEnd;
@@ -95,19 +95,19 @@ void Set_LCD_Timing_to_LTDC(rt_uint32_t LTDC_Buf1, rt_uint32_t LTDC_Buf2)
 {
     LCD_FORM_TypeDef LCD_FORM;
     LTDC->OUT_EN = 0;
-    LTDC->DP_ADDR0 = LTDC_Buf1; //第0层地址
-    LTDC->DP_ADDR1 = LTDC_Buf2;//第一层地址
-    LTDC->BLK_DATA = 0x0000;        //背景色
+    LTDC->DP_ADDR0 = LTDC_Buf1; //0
+    LTDC->DP_ADDR1 = LTDC_Buf2;//
+    LTDC->BLK_DATA = 0x0000;        //
 
-    LCD_FORM.sHsyncStart = 0x2; //水平激活起始
-    LCD_FORM.sHsyncEnd = 0x3;   //水平激活结束
-    LCD_FORM.aHorLen = 480 - 1; //水平分辨率
-    LCD_FORM.blkHorEnd = 0xf;   //水平消隐
+    LCD_FORM.sHsyncStart = 0x2; //
+    LCD_FORM.sHsyncEnd = 0x3;   //
+    LCD_FORM.aHorLen = 480 - 1; //
+    LCD_FORM.blkHorEnd = 0xf;   //
 
-    LCD_FORM.sVsyncStart = 0x2; //垂直激活起始
-    LCD_FORM.sVsyncEnd = 0x3;   //垂直激活结束
-    LCD_FORM.aVerLen = 800 - 1; //垂直分辨率
-    LCD_FORM.blkVerEnd = 0xF;   //垂直消隐
+    LCD_FORM.sVsyncStart = 0x2; //
+    LCD_FORM.sVsyncEnd = 0x3;   //
+    LCD_FORM.aVerLen = 800 - 1; //
+    LCD_FORM.blkVerEnd = 0xF;   //
 
     set_resolutionXX(&LCD_FORM);
 
@@ -118,7 +118,7 @@ void Set_LCD_Timing_to_LTDC(rt_uint32_t LTDC_Buf1, rt_uint32_t LTDC_Buf2)
 void LTDC_IRQHandler(void)
 {
     LTDC->INTR_CLR = 2;
-    LTDC->DP_SWT ^= 1; //连续显示两幅图片
+    LTDC->DP_SWT ^= 1; //
     if (LTDC->DP_SWT != 0)
     {
         //        fun_test(SDRAM_RGB_ADD);
@@ -1007,27 +1007,27 @@ void Lcd_Initialize(void)
     SPI_WriteComm(0x2c00);
     SPI_WriteComm(0x3c00);
 }
-void LCD_Initial(rt_uint32_t LTDC_Buf1, rt_uint32_t LTDC_Buf2) //LCD初始化函数
+void LCD_Initial(rt_uint32_t LTDC_Buf1, rt_uint32_t LTDC_Buf2) //LCD
 {
-    GPIO_RGB_INIT(); //初始化液晶屏相关GPIO
-    LCD_Reset();     //复位液晶屏
+    GPIO_RGB_INIT(); //GPIO
+    LCD_Reset();     //
 
     LTDC_Clock_Set();
     Set_LCD_Timing_to_LTDC(LTDC_Buf1, LTDC_Buf2);
     Lcd_Initialize();
-    Lcd_Light_ON; //打开背光
+    Lcd_Light_ON; //
 }
 
 
 
 /**********************************************
-函数名：Lcd矩形填充函数
+Lcd
 
-入口参数：xStart x方向的起始点
-          ySrart y方向的终止点
-          xLong 要选定矩形的x方向长度
-          yLong  要选定矩形的y方向长度
-返回值：无
+xStart x
+          ySrart y
+          xLong x
+          yLong  y
+
 ***********************************************/
 // void Lcd_ColorBox(rt_uint16_t xStart, rt_uint16_t yStart, rt_uint16_t xLong, rt_uint16_t yLong, rt_uint32_t Color)
 // {
@@ -1051,12 +1051,12 @@ void LCD_Initial(rt_uint32_t LTDC_Buf1, rt_uint32_t LTDC_Buf2) //LCD初始化函
 // }
 
 /******************************************
-函数名：Lcd图像填充
-功能：向Lcd指定位置填充图像
-入口参数：
-                    (x,y): 图片左上角起始坐标
-                    (pic_H,pic_V): 图片的宽高
-                     pic  指向存储图片数组的指针
+Lcd
+Lcd
+
+                    (x,y): 
+                    (pic_H,pic_V): 
+                     pic  
 LCD_Fill_Pic(400,100,320,480,(rt_uint32_t*)gImage_MM_T035);
 ******************************************/
 // void LCD_Fill_Pic(rt_uint16_t x, rt_uint16_t y, rt_uint16_t pic_H, rt_uint16_t pic_V, rt_uint32_t *pic)
@@ -1079,54 +1079,54 @@ LCD_Fill_Pic(400,100,320,480,(rt_uint32_t*)gImage_MM_T035);
 //     //       LTDC_Buf[x+j+YSIZE_PHYS*i+Ystart]=pic[k++];
 //     //   }
 // }
-//=============== 在x，y 坐标上打一个颜色为Color的点 ===============
+//=============== xy Color ===============
 // void DrawPixel(rt_uint16_t x, rt_uint16_t y, int Color)
 // {
 //     LTDC_Buf[y + YSIZE_PHYS * x] = Color;
 //     //   LTDC_Buf[x+XSIZE_PHYS*y] = Color;
 // }
-/**********8*16字体 ASCII码 显示*************
-(x,y): 显示字母的起始坐标
-num:   要显示的字符:" "--->"~"
-fColor 前景色
-bColor 背景色
-flag:  有背景色(1)无背景色(0)
+/**********8*16 ASCII *************
+(x,y): 
+num:   :" "--->"~"
+fColor 
+bColor 
+flag:  (1)(0)
 *********************************************/
 // void SPILCD_ShowChar(unsigned short x, unsigned short y, unsigned char num, unsigned int fColor, unsigned int bColor, unsigned char flag)
 // {
 //     unsigned char temp;
 //     unsigned int pos, i, j;
 
-//     num = num - ' '; //得到偏移后的值
+//     num = num - ' '; //
 //     i = num * 16;
 //     for (pos = 0; pos < 16; pos++)
 //     {
-//         temp = nAsciiDot[i + pos]; //调通调用ASCII字体
+//         temp = nAsciiDot[i + pos]; //ASCII
 //         for (j = 0; j < 8; j++)
 //         {
 //             if (temp & 0x80)
 //                 DrawPixel(x + j, y, fColor);
 //             else if (flag)
-//                 DrawPixel(x + j, y, bColor); //如果背景色标志flag为1
+//                 DrawPixel(x + j, y, bColor); //flag1
 //             temp <<= 1;
 //         }
 //         y++;
 //     }
 // }
 
-/**********写一个16x16的汉字*****************
-(x,y): 显示汉字的起始坐标
-c[2]:  要显示的汉字
-fColor 前景色
-bColor 背景色
-flag:  有背景色(1)无背景色(0)
+/**********16x16*****************
+(x,y): 
+c[2]:  
+fColor 
+bColor 
+flag:  (1)(0)
 *********************************************/
 // void PutGB1616(unsigned short x, unsigned short y, unsigned char c[2], unsigned int fColor, unsigned int bColor, unsigned char flag)
 // {
 //     unsigned int i, j, k;
 //     unsigned short m;
 //     for (k = 0; k < 64; k++)
-//     { //64标示自建汉字库中的个数，循环查询内码
+//     { //64
 //         if ((codeGB_16[k].Index[0] == c[0]) && (codeGB_16[k].Index[1] == c[1]))
 //         {
 //             for (i = 0; i < 32; i++)
@@ -1156,12 +1156,12 @@ flag:  有背景色(1)无背景色(0)
 //         }
 //     }
 // }
-/**********显示一串字*****************
-(x,y): 字符串的起始坐标
-*s:    要显示的字符串指针
-fColor 前景色
-bColor 背景色
-flag:  有背景色(1)无背景色(0)
+/***************************
+(x,y): 
+*s:    
+fColor 
+bColor 
+flag:  (1)(0)
 *********************************************/
 // void LCD_PutString(unsigned short x, unsigned short y, char *s, unsigned int fColor, unsigned int bColor, unsigned char flag)
 // {

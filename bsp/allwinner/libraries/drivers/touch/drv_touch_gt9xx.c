@@ -46,22 +46,22 @@
 #define IIC_RETRY_NUM 2
 #endif
 
-#define GT9xx_Read_Interval         (20)        /* gt9xx 读取坐标最小间隔时间 */
+#define GT9xx_Read_Interval         (20)        /* gt9xx  */
 
 /* Either 0x5D or 0x14 could be used as the address */
 #define GT9xx_TS_ADDR1 (0x14)
 #define GT9xx_TS_ADDR2 (0x5D)
 static uint8_t GT9xx_TS_ADDR = GT9xx_TS_ADDR1;
 
-#define gt9xx_READ_XY_REG (0x814E)          /* 坐标寄存器       */
-#define gt9xx_CLEARBUF_REG (0x814E)         /* 清除坐标寄存器   */
-#define gt9xx_CONFIG_REG (0x8047)           /* 配置参数寄存器   */
-#define gt9xx_COMMAND_REG (0x8040)          /* 实时命令         */
-#define gt9xx_PRODUCT_ID_REG (0x8140)       /* 产品ID           */
-#define gt9xx_VENDOR_ID_REG (0x814A)        /* 当前模组选项信息 */
-#define gt9xx_CONFIG_VERSION_REG (0x8047)   /* 配置文件版本号   */
-#define gt9xx_CONFIG_CHECKSUM_REG (0x80FF)  /* 配置文件校验码   */
-#define gt9xx_FIRMWARE_VERSION_REG (0x8144) /* 固件版本号       */
+#define gt9xx_READ_XY_REG (0x814E)          /*        */
+#define gt9xx_CLEARBUF_REG (0x814E)         /*    */
+#define gt9xx_CONFIG_REG (0x8047)           /*    */
+#define gt9xx_COMMAND_REG (0x8040)          /*          */
+#define gt9xx_PRODUCT_ID_REG (0x8140)       /* ID           */
+#define gt9xx_VENDOR_ID_REG (0x814A)        /*  */
+#define gt9xx_CONFIG_VERSION_REG (0x8047)   /*    */
+#define gt9xx_CONFIG_CHECKSUM_REG (0x80FF)  /*    */
+#define gt9xx_FIRMWARE_VERSION_REG (0x8144) /*        */
 
 static struct touch_driver gt9xx_driver;
 

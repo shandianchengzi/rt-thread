@@ -1,45 +1,45 @@
-# FADC 驱动程序
+# FADC 
 
-## 1. 概述
+## 1. 
 
-ADC，Analog-to-Digital Converter的缩写，指模/数转换器或者模拟/数字转换器。是将连续变量的模拟信号转换为离散的数字信号的器件。真实世界的模拟信号，例如温度、压力、声音或者图像等，需要转换成更容易储存、处理和发射的数字形式。模/数转换器可以实现这个功能，典型的模拟数字转换器将模拟信号转换为表示一定比例电压值的数字信号。
+ADCAnalog-to-Digital Converter///
 
-## 2. 功能
+## 2. 
 
-adc控制器驱动提供了adc的控制访问方法，
-- 初始化adc控制器，配置相关参数，如转换模式，通道使能等
-- 读adc转换数据
-- 转换完成与结果阈值的中断触发
+adcadc
+- adc
+- adc
+- 
 
-驱动相关的源文件包括
+
 ```
 .
-├── fadc_g.c
-├── fadc_hw.c
-├── fadc_hw.h
-├── fadc_intr.c
-├── fadc_sinit.c
-├── fadc.c
-└── fadc.h
+ fadc_g.c
+ fadc_hw.c
+ fadc_hw.h
+ fadc_intr.c
+ fadc_sinit.c
+ fadc.c
+ fadc.h
 ```
 
-## 3. 配置方法
+## 3. 
 
-以下部分将指导您完成 fadc 驱动的软件配置:
+ fadc :
 
-- 初始化adc控制器
-- 设置adc的中断处理函数
-- 根据adc转换完成状态读取adc转换结果
+- adc
+- adc
+- adcadc
 
-## 4 应用示例
+## 4 
 
-### [adc收发数据](../../../baremetal/example/peripheral/adc)
+### [adc](../../../baremetal/example/peripheral/adc)
 
-## 5. API参考
+## 5. API
 
-### 5.1. 用户数据结构
+### 5.1. 
 
-- fadc控制数据
+- fadc
 
 ```c
 typedef struct
@@ -56,7 +56,7 @@ typedef struct
 }FAdcCtrl;
 ```
 
-- fadc配置数据，FAdcConfig主要是adc控制器id、基地址和中断号，FAdcConvertConfig主要包括用户可配置的参数，包括转换间隔时间、转换模式、通道模式等，FAdcThresholdConfig主要包含具体通道的结果阈值
+- fadcFAdcConfigadcidFAdcConvertConfigFAdcThresholdConfig
 
 ```c
 typedef struct
@@ -87,7 +87,7 @@ typedef struct
 } FAdcThresholdConfig;
 ```
 
-- fadc转换模式，单次转换和连续转换
+- fadc
 ```c
 typedef enum
 {
@@ -99,7 +99,7 @@ typedef enum
 } FAdcCovertMode;
 ```
 
-- fadc通道模式，多通道顺序转换和固定通道转换
+- fadc
 ```c
 typedef enum
 {
@@ -110,7 +110,7 @@ typedef enum
 } FAdcChannelMode;
 ```
 
-- fadc中断事件类型
+- fadc
 ```c
 typedef enum
 {
@@ -124,19 +124,19 @@ typedef enum
 
 ```
 
-### 5.2  错误码定义
+### 5.2  
 
-- FADC_SUCCESS                执行成功 
-- FADC_ERR_INVAL_PARM         参数无效
-- FADC_ERR_NOT_READY          驱动未初始化
-- FADC_ERR_TIMEOUT            超时
-- FADC_ERR_CMD_FAILED         执行失败
+- FADC_SUCCESS                 
+- FADC_ERR_INVAL_PARM         
+- FADC_ERR_NOT_READY          
+- FADC_ERR_TIMEOUT            
+- FADC_ERR_CMD_FAILED         
 
-### 5.3. 用户API接口
+### 5.3. API
 
 #### FAdcLookupConfig
 
-- 获取fadc控制器默认配置
+- fadc
 
 ```c
 const FAdcConfig *FAdcLookupConfig(FAdcInstance instance_id);
@@ -144,19 +144,19 @@ const FAdcConfig *FAdcLookupConfig(FAdcInstance instance_id);
 
 Note:
 
-- 获取默认配置参数，包括基地址、中断号等
+- 
 
 Input:
 
-- {FAdcInstance} instance_id，adc控制器id号
+- {FAdcInstance} instance_idadcid
 
 Return:
 
-- {const FAdcConfig *} adc默认配置，返回NULL如果找不到默认配置
+- {const FAdcConfig *} adcNULL
 
 #### FAdcCfgInitialize
 
-- 初始化fadc控制器, 使之可以使用
+- fadc, 
 
 ```c
 FError FAdcCfgInitialize(FAdcCtrl *pctrl, const FAdcConfig *input_config_p);
@@ -164,20 +164,20 @@ FError FAdcCfgInitialize(FAdcCtrl *pctrl, const FAdcConfig *input_config_p);
 
 Note:
 
-- 输入配置通过FAdcLookupConfig获取，用户按照需要修改后传入此函数
+- FAdcLookupConfig
 
 Input:
 
-- {FAdcCtrl} *pctrl，adc驱动控制数据
-- {FAdcConfig} *input_config_p，adc用户输入配置
+- {FAdcCtrl} *pctrladc
+- {FAdcConfig} *input_config_padc
 
 Return:
 
-- {FError} 驱动初始化的错误码信息，FADC_SUCCESS 表示初始化成功，其它返回值表示初始化失败
+- {FError} FADC_SUCCESS 
 
 #### FAdcVariableConfig
 
-- 设置adc可配置参数
+- adc
 
 ```c
 FError FAdcVariableConfig(FAdcCtrl *pctrl, u8 channel, FAdcConvertConfig *convert_config, 
@@ -186,22 +186,22 @@ FError FAdcVariableConfig(FAdcCtrl *pctrl, u8 channel, FAdcConvertConfig *conver
 
 Note:
 
-- 设置指定adc控制器的可配置参数，包括转换模式，通道阈值等
+- adc
 
 Input:
 
-- {FAdcCtrl} *pctrl，adc驱动控制数据
-- {u8} channel，adc通道号
-- {FAdcConvertConfig} *convert_config，adc转换参数配置
-- {FAdcThresholdConfig} *threshold_config，adc通道转换结果阈值配置
+- {FAdcCtrl} *pctrladc
+- {u8} channeladc
+- {FAdcConvertConfig} *convert_configadc
+- {FAdcThresholdConfig} *threshold_configadc
 
 Return:
 
-- {FError} 驱动初始化的错误码信息，FADC_SUCCESS 表示初始化成功，其它返回值表示初始化失败
+- {FError} FADC_SUCCESS 
 
 #### FAdcChannelThresholdSet
 
-- 设置adc通道的转换结果阈值，使能该通道
+- adc
 
 ```c
 FError FAdcChannelThresholdSet(FAdcCtrl *pctrl, u8 channel, FAdcThresholdConfig *threshold_config);
@@ -209,21 +209,21 @@ FError FAdcChannelThresholdSet(FAdcCtrl *pctrl, u8 channel, FAdcThresholdConfig 
 
 Note:
 
-- 设置指定adc控制器的指定通道的转换结果阈值，使能该通道
+- adc
 
 Input:
 
-- {FAdcCtrl} *pctrl，adc驱动控制数据
-- {u8} channel，adc通道号
-- {FAdcThresholdConfig} *threshold_config，adc通道转换结果阈值配置
+- {FAdcCtrl} *pctrladc
+- {u8} channeladc
+- {FAdcThresholdConfig} *threshold_configadc
 
 Return:
 
-- {FError} 驱动初始化的错误码信息，FADC_SUCCESS 表示初始化成功，其它返回值表示初始化失败
+- {FError} FADC_SUCCESS 
 
 #### FAdcConvertStart
 
-- 设置adc控制器转换开始
+- adc
 
 ```c
 FError FAdcConvertStart(FAdcCtrl *pctrl);
@@ -231,19 +231,19 @@ FError FAdcConvertStart(FAdcCtrl *pctrl);
 
 Note:
 
-- 设置指定adc控制器转换开始
+- adc
 
 Input:
 
-- {FAdcCtrl} *pctrl，adc驱动控制数据
+- {FAdcCtrl} *pctrladc
 
 Return:
 
-- {FError} 驱动初始化的错误码信息，FADC_SUCCESS 表示初始化成功，其它返回值表示初始化失败
+- {FError} FADC_SUCCESS 
 
 #### FAdcInterruptEnable
 
-- 使能adc通道的中断
+- adc
 
 ```c
 FError FAdcInterruptEnable(FAdcCtrl *pctrl, u8 channel, FAdcIntrEventType event_type);
@@ -251,22 +251,22 @@ FError FAdcInterruptEnable(FAdcCtrl *pctrl, u8 channel, FAdcIntrEventType event_
 
 Note:
 
-- 使能指定adc控制器的指定通道的中断
+- adc
 
 Input:
 
-- {FAdcCtrl} *pctrl，adc驱动控制数据
-- {u8} channel，adc通道号
-- {FAdcIntrEventType} event_type，中断事件类型
+- {FAdcCtrl} *pctrladc
+- {u8} channeladc
+- {FAdcIntrEventType} event_type
 
 Return:
 
-- {FError} 驱动初始化的错误码信息，FADC_SUCCESS 表示初始化成功，其它返回值表示初始化失败
+- {FError} FADC_SUCCESS 
 
 
 #### FAdcReadConvertResult
 
-- 读adc通道的转换结果
+- adc
 
 ```c
 FError FAdcReadConvertResult(FAdcCtrl *pctrl, u8 channel, u16 *val);
@@ -274,22 +274,22 @@ FError FAdcReadConvertResult(FAdcCtrl *pctrl, u8 channel, u16 *val);
 
 Note:
 
-- 读指定adc控制器的指定通道的转换结果
+- adc
 
 Input:
 
-- {FAdcCtrl} *pctrl，adc驱动控制数据
-- {u8} channel，adc通道号
-- {u16} *val，存储转换结果的指针
+- {FAdcCtrl} *pctrladc
+- {u8} channeladc
+- {u16} *val
 
 Return:
 
-- {FError} 驱动初始化的错误码信息，FADC_SUCCESS 表示初始化成功，其它返回值表示初始化失败
+- {FError} FADC_SUCCESS 
 
 
 #### FAdcRegisterInterruptHandler
 
-- 注册adc中断事件函数
+- adc
 
 ```c
 void FAdcRegisterInterruptHandler(FAdcCtrl *instance_p, FAdcIntrEventType event_type, 
@@ -297,31 +297,31 @@ void FAdcRegisterInterruptHandler(FAdcCtrl *instance_p, FAdcIntrEventType event_
 ```
 
 Note:
-- 无
+- 
 
 Input:
-- {FAdcCtrl} *instance_p，fadc驱动控制数据
-- {FAdcIntrEventType} event_type，中断事件类型
-- {FAdcIntrEventHandler} handler，中断事件回调函数
-- {void} *param，回调函数参数
+- {FAdcCtrl} *instance_pfadc
+- {FAdcIntrEventType} event_type
+- {FAdcIntrEventHandler} handler
+- {void} *param
 
 Return:
-- 无
+- 
 
 #### FAdcIntrHandler
 
-- adc中断处理函数入口
+- adc
 
 ```c
 void FAdcIntrHandler(s32 vector, void *args);
 ```
 
 Note:
-- 根据中断类型，设置对应的回调函数和参数传入
+- 
 
 Input:
 - {s32} vector
-- {void} *param, 输入参数，指向fadc驱动控制数据
+- {void} *param, fadc
 
 Return:
-- 无
+- 

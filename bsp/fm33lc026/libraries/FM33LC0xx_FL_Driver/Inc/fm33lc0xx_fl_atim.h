@@ -48,25 +48,25 @@ extern "C" {
   */
 typedef struct
 {
-    /** 时钟源选择 */
+    /**  */
     uint32_t clockSource;
 
-    /** 预分频系数 */
+    /**  */
     uint32_t prescaler;
 
-    /** 计数模式 */
+    /**  */
     uint32_t counterMode;
 
-    /** 自动重装载值 */
+    /**  */
     uint32_t autoReload;
 
-    /** 预装载使能 */
+    /**  */
     uint32_t autoReloadState;
 
-    /** 定时器分频系数与数字滤波器所使用的采样时钟分频比 */
+    /**  */
     uint32_t clockDivision;
 
-    /** 重复计数次数 */
+    /**  */
     uint32_t repetitionCounter;
 
 } FL_ATIM_InitTypeDef;
@@ -77,13 +77,13 @@ typedef struct
 typedef struct
 {
 
-    /** 外部时钟源模式 */
+    /**  */
     uint32_t slaveMode;
 
-    /** 输入触发信号选择 */
+    /**  */
     uint32_t triggerSrc;
 
-    /** Trigger 延迟*/
+    /** Trigger */
     uint32_t triggerDelay;
 
 } FL_ATIM_SlaveInitTypeDef;
@@ -93,16 +93,16 @@ typedef struct
   */
 typedef struct
 {
-    /** 外部触发使能 */
+    /**  */
     uint32_t useExternalTrigger;
 
-    /** 外部时钟滤波 */
+    /**  */
     uint32_t ETRFilter;
 
-    /** 外部时钟分频 */
+    /**  */
     uint32_t ETRClockDivision;
 
-    /** 外部时钟触发极性 */
+    /**  */
     uint32_t ETRPolarity;
 
 } FL_ATIM_ETR_InitTypeDef;
@@ -112,37 +112,37 @@ typedef struct
   */
 typedef struct
 {
-    /** 比较输出模式 */
+    /**  */
     uint32_t OCMode;
 
-    /** 比较正向通道输出使能 */
+    /**  */
     uint32_t OCState;
 
-    /** 比较互补通道输出使能 */
+    /**  */
     uint32_t OCNState;
 
-    /** 比较输出极性 */
+    /**  */
     uint32_t OCPolarity;
 
-    /** 比较互补输出极性 */
+    /**  */
     uint32_t OCNPolarity;
 
-    /** 比较输出通道快速模式使能 */
+    /**  */
     uint32_t OCFastMode;
 
-    /** 输出比较预装载 */
+    /**  */
     uint32_t OCPreload;
 
-    /** 通道比较值 */
+    /**  */
     uint32_t compareValue;
 
-    /** 输出空闲状态电平 */
+    /**  */
     uint32_t OCIdleState;
 
-    /** ETR清0使能 */
+    /** ETR0 */
     uint32_t OCETRFStatus;
 
-    /** 互补输出空闲状态电平 */
+    /**  */
     uint32_t OCNIdleState;
 
 } FL_ATIM_OC_InitTypeDef;
@@ -152,19 +152,19 @@ typedef struct
   */
 typedef struct
 {
-    /** 输入捕获使能 */
+    /**  */
     uint32_t captureState;
 
-    /** 输入捕获极性 */
+    /**  */
     uint32_t ICPolarity;
 
-    /** 通道映射激活的输入选择 */
+    /**  */
     uint32_t ICActiveInput;
 
-    /** 输入分频 */
+    /**  */
     uint32_t ICPrescaler;
 
-    /** 输入滤波 */
+    /**  */
     uint32_t ICFilter;
 
 } FL_ATIM_IC_InitTypeDef;
@@ -174,37 +174,37 @@ typedef struct
   */
 typedef struct
 {
-    /** 运行状态下的输出关闭状态 */
+    /**  */
     uint32_t OSSRState;
 
-    /** 空闲状态下的输出关闭状态 */
+    /**  */
     uint32_t OSSIState;
 
-    /** 寄存器写保护等级 */
+    /**  */
     uint32_t lockLevel;
 
-    /** 死区时间 */
+    /**  */
     uint32_t deadTime;
 
-    /** 刹车使能 */
+    /**  */
     uint32_t breakState;
 
-    /** 刹车信号滤波 */
+    /**  */
     uint32_t breakFilter;
 
-    /** 刹车信号极性 */
+    /**  */
     uint32_t breakPolarity;
 
-    /** 刹车后计数器重装后自动输出使能*/
+    /** */
     uint32_t automaticOutput;
 
-    /** 刹车信号1门控 */
+    /** 1 */
     uint32_t gatedBrakeSignal_1;
 
-    /** 刹车信号2门控 */
+    /** 2 */
     uint32_t gatedBrakeSignal_2;
 
-    /** 两路刹车信号控制逻辑 */
+    /**  */
     uint32_t brakeSignalCombined;
 
 } FL_ATIM_BDTR_InitTypeDef;
@@ -776,7 +776,7 @@ typedef struct
   */
 
 /**
-  * @brief    设置时钟分频因子
+  * @brief    
   * @rmtoll   CR1    CKD    FL_ATIM_SetClockDivision
   * @param    TIMx TIM instance
   * @param    div This parameter can be one of the following values:
@@ -791,7 +791,7 @@ __STATIC_INLINE void FL_ATIM_SetClockDivision(ATIM_Type *TIMx, uint32_t div)
 }
 
 /**
-  * @brief    读取时钟分频因子
+  * @brief    
   * @rmtoll   CR1    CKD    FL_ATIM_GetClockDivision
   * @param    TIMx TIM instance
   * @retval   Returned value can be one of the following values:
@@ -805,7 +805,7 @@ __STATIC_INLINE uint32_t FL_ATIM_GetClockDivision(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    自动重装载使能
+  * @brief    
   * @rmtoll   CR1    ARPE    FL_ATIM_EnableARRPreload
   * @param    TIMx TIM instance
   * @retval   None
@@ -816,7 +816,7 @@ __STATIC_INLINE void FL_ATIM_EnableARRPreload(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    获取自动重装载使能状态
+  * @brief    
   * @rmtoll   CR1    ARPE    FL_ATIM_IsEnabledARRPreload
   * @param    TIMx TIM instance
   * @retval   State of bit (1 or 0).
@@ -827,7 +827,7 @@ __STATIC_INLINE uint32_t FL_ATIM_IsEnabledARRPreload(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    自动重装载禁用
+  * @brief    
   * @rmtoll   CR1    ARPE    FL_ATIM_DisableARRPreload
   * @param    TIMx TIM instance
   * @retval   None
@@ -838,7 +838,7 @@ __STATIC_INLINE void FL_ATIM_DisableARRPreload(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    计数器对齐模式设置
+  * @brief    
   * @rmtoll   CR1    CMS    FL_ATIM_SetCounterAlignedMode
   * @param    TIMx TIM instance
   * @param    mode This parameter can be one of the following values:
@@ -854,7 +854,7 @@ __STATIC_INLINE void FL_ATIM_SetCounterAlignedMode(ATIM_Type *TIMx, uint32_t mod
 }
 
 /**
-  * @brief    读取计数器对齐模式
+  * @brief    
   * @rmtoll   CR1    CMS    FL_ATIM_GetCounterAlignedMode
   * @param    TIMx TIM instance
   * @retval   Returned value can be one of the following values:
@@ -869,7 +869,7 @@ __STATIC_INLINE uint32_t FL_ATIM_GetCounterAlignedMode(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    设置记数方向
+  * @brief    
   * @rmtoll   CR1    DIR    FL_ATIM_SetCounterDirection
   * @param    TIMx TIM instance
   * @param    dir This parameter can be one of the following values:
@@ -883,7 +883,7 @@ __STATIC_INLINE void FL_ATIM_SetCounterDirection(ATIM_Type *TIMx, uint32_t dir)
 }
 
 /**
-  * @brief    读取记数方向
+  * @brief    
   * @rmtoll   CR1    DIR    FL_ATIM_GetCounterDirection
   * @param    TIMx TIM instance
   * @retval   Returned value can be one of the following values:
@@ -896,7 +896,7 @@ __STATIC_INLINE uint32_t FL_ATIM_GetCounterDirection(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    设置单脉冲输出模式
+  * @brief    
   * @rmtoll   CR1    OPM    FL_ATIM_SetOnePulseMode
   * @param    TIMx TIM instance
   * @param    mode This parameter can be one of the following values:
@@ -910,7 +910,7 @@ __STATIC_INLINE void FL_ATIM_SetOnePulseMode(ATIM_Type *TIMx, uint32_t mode)
 }
 
 /**
-  * @brief    读取单脉冲输出的模式
+  * @brief    
   * @rmtoll   CR1    OPM    FL_ATIM_GetOnePulseMode
   * @param    TIMx TIM instance
   * @retval   Returned value can be one of the following values:
@@ -923,7 +923,7 @@ __STATIC_INLINE uint32_t FL_ATIM_GetOnePulseMode(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    设置更新请求源
+  * @brief    
   * @rmtoll   CR1    URS    FL_ATIM_SetUpdateSource
   * @param    TIMx TIM instance
   * @param    source This parameter can be one of the following values:
@@ -937,7 +937,7 @@ __STATIC_INLINE void FL_ATIM_SetUpdateSource(ATIM_Type *TIMx, uint32_t source)
 }
 
 /**
-  * @brief    读取更新请求源
+  * @brief    
   * @rmtoll   CR1    URS    FL_ATIM_GetUpdateSource
   * @param    TIMx TIM instance
   * @retval   Returned value can be one of the following values:
@@ -950,7 +950,7 @@ __STATIC_INLINE uint32_t FL_ATIM_GetUpdateSource(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    使能更新事件
+  * @brief    
   * @rmtoll   CR1    UDIS    FL_ATIM_EnableUpdateEvent
   * @param    TIMx TIM instance
   * @retval   None
@@ -961,7 +961,7 @@ __STATIC_INLINE void FL_ATIM_EnableUpdateEvent(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    读取更新事件状态
+  * @brief    
   * @rmtoll   CR1    UDIS    FL_ATIM_IsEnabledUpdateEvent
   * @param    TIMx TIM instance
   * @retval   State of bit (1 or 0).
@@ -972,7 +972,7 @@ __STATIC_INLINE uint32_t FL_ATIM_IsEnabledUpdateEvent(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    禁用更新事件
+  * @brief    
   * @rmtoll   CR1    UDIS    FL_ATIM_DisableUpdateEvent
   * @param    TIMx TIM instance
   * @retval   None
@@ -983,7 +983,7 @@ __STATIC_INLINE void FL_ATIM_DisableUpdateEvent(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    计数器使能
+  * @brief    
   * @rmtoll   CR1    CEN    FL_ATIM_Enable
   * @param    TIMx TIM instance
   * @retval   None
@@ -994,7 +994,7 @@ __STATIC_INLINE void FL_ATIM_Enable(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    读取计数器使能状态
+  * @brief    
   * @rmtoll   CR1    CEN    FL_ATIM_IsEnabled
   * @param    TIMx TIM instance
   * @retval   State of bit (1 or 0).
@@ -1005,7 +1005,7 @@ __STATIC_INLINE uint32_t FL_ATIM_IsEnabled(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    计数器关闭
+  * @brief    
   * @rmtoll   CR1    CEN    FL_ATIM_Disable
   * @param    TIMx TIM instance
   * @retval   None
@@ -1016,7 +1016,7 @@ __STATIC_INLINE void FL_ATIM_Disable(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    设置OCN的输出空闲状态
+  * @brief    OCN
   * @note
   * @rmtoll   CR2    OISN    FL_ATIM_OC_SetReverseChannelIdleState
   * @param    TIMx TIM instance
@@ -1035,7 +1035,7 @@ __STATIC_INLINE void FL_ATIM_OC_SetReverseChannelIdleState(ATIM_Type *TIMx, uint
 }
 
 /**
-  * @brief    读取OCN的输出空闲状态
+  * @brief    OCN
   * @note
   * @rmtoll   CR2    OISN    FL_ATIM_OC_GetReverseChannelIdleState
   * @param    TIMx TIM instance
@@ -1053,7 +1053,7 @@ __STATIC_INLINE uint32_t FL_ATIM_OC_GetReverseChannelIdleState(ATIM_Type *TIMx, 
 }
 
 /**
-  * @brief    设置OC的输出空闲状态
+  * @brief    OC
   * @note
   * @rmtoll   CR2    OIS    FL_ATIM_OC_SetChannelIdleState
   * @param    TIMx TIM instance
@@ -1073,7 +1073,7 @@ __STATIC_INLINE void FL_ATIM_OC_SetChannelIdleState(ATIM_Type *TIMx, uint32_t OC
 }
 
 /**
-  * @brief    读取OC的输出空闲状态
+  * @brief    OC
   * @note
   * @rmtoll   CR2    OIS    FL_ATIM_OC_GetChannelIdleState
   * @param    TIMx TIM instance
@@ -1092,7 +1092,7 @@ __STATIC_INLINE uint32_t FL_ATIM_OC_GetChannelIdleState(ATIM_Type *TIMx, uint32_
 }
 
 /**
-  * @brief    通道1输入源选择
+  * @brief    1
   * @rmtoll   CR2    TI1S    FL_ATIM_IC_EnableXORCombination
   * @param    TIMx TIM instance
   * @retval   None
@@ -1103,7 +1103,7 @@ __STATIC_INLINE void FL_ATIM_IC_EnableXORCombination(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    读取通道1输入源
+  * @brief    1
   * @rmtoll   CR2    TI1S    FL_ATIM_IC_IsEnabledXORCombination
   * @param    TIMx TIM instance
   * @retval   State of bit (1 or 0).
@@ -1114,7 +1114,7 @@ __STATIC_INLINE uint32_t FL_ATIM_IC_IsEnabledXORCombination(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    通道1输入源禁用XOR组合
+  * @brief    1XOR
   * @rmtoll   CR2    TI1S    FL_ATIM_IC_DisableXORCombination
   * @param    TIMx TIM instance
   * @retval   None
@@ -1125,7 +1125,7 @@ __STATIC_INLINE void FL_ATIM_IC_DisableXORCombination(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    设置同步触发信号源
+  * @brief    
   * @rmtoll   CR2    MMS    FL_ATIM_SetTriggerOutput
   * @param    TIMx TIM instance
   * @param    triggerOutput This parameter can be one of the following values:
@@ -1145,7 +1145,7 @@ __STATIC_INLINE void FL_ATIM_SetTriggerOutput(ATIM_Type *TIMx, uint32_t triggerO
 }
 
 /**
-  * @brief    读取同步触发源
+  * @brief    
   * @rmtoll   CR2    MMS    FL_ATIM_GetTriggerOutput
   * @param    TIMx TIM instance
   * @retval   Returned value can be one of the following values:
@@ -1164,7 +1164,7 @@ __STATIC_INLINE uint32_t FL_ATIM_GetTriggerOutput(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    设置DMA请求触发
+  * @brief    DMA
   * @rmtoll   CR2    CCDS    FL_ATIM_CC_SetDMAReqTrigger
   * @param    TIMx TIM instance
   * @param    trigger This parameter can be one of the following values:
@@ -1178,7 +1178,7 @@ __STATIC_INLINE void FL_ATIM_CC_SetDMAReqTrigger(ATIM_Type *TIMx, uint32_t trigg
 }
 
 /**
-  * @brief    读取DMA请求触发
+  * @brief    DMA
   * @rmtoll   CR2    CCDS    FL_ATIM_CC_GetDMAReqTrigger
   * @param    TIMx TIM instance
   * @retval   Returned value can be one of the following values:
@@ -1191,7 +1191,7 @@ __STATIC_INLINE uint32_t FL_ATIM_CC_GetDMAReqTrigger(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    设置捕捉比较寄存器更新选择
+  * @brief    
   * @rmtoll   CR2    CCUS    FL_ATIM_CC_SetUpdateSource
   * @param    TIMx TIM instance
   * @param    updateSource This parameter can be one of the following values:
@@ -1205,7 +1205,7 @@ __STATIC_INLINE void FL_ATIM_CC_SetUpdateSource(ATIM_Type *TIMx, uint32_t update
 }
 
 /**
-  * @brief    读取捕捉比较寄存器更新源
+  * @brief    
   * @rmtoll   CR2    CCUS    FL_ATIM_CC_GetUpdateSource
   * @param    TIMx TIM instance
   * @retval   Returned value can be one of the following values:
@@ -1218,7 +1218,7 @@ __STATIC_INLINE uint32_t FL_ATIM_CC_GetUpdateSource(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    捕捉比较预装载使能
+  * @brief    
   * @rmtoll   CR2    CCPC    FL_ATIM_CC_EnablePreload
   * @param    TIMx TIM instance
   * @retval   None
@@ -1229,7 +1229,7 @@ __STATIC_INLINE void FL_ATIM_CC_EnablePreload(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    读取捕捉比较预装载使能状态
+  * @brief    
   * @rmtoll   CR2    CCPC    FL_ATIM_CC_IsEnabledPreload
   * @param    TIMx TIM instance
   * @retval   State of bit (1 or 0).
@@ -1240,7 +1240,7 @@ __STATIC_INLINE uint32_t FL_ATIM_CC_IsEnabledPreload(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    捕捉比较预装载失能
+  * @brief    
   * @rmtoll   CR2    CCPC    FL_ATIM_CC_DisablePreload
   * @param    TIMx TIM instance
   * @retval   None
@@ -1251,7 +1251,7 @@ __STATIC_INLINE void FL_ATIM_CC_DisablePreload(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    设置外部触发信号极性
+  * @brief    
   * @rmtoll   SMCR    ETP    FL_ATIM_SetETRPolarity
   * @param    TIMx TIM instance
   * @param    polarity This parameter can be one of the following values:
@@ -1265,7 +1265,7 @@ __STATIC_INLINE void FL_ATIM_SetETRPolarity(ATIM_Type *TIMx, uint32_t polarity)
 }
 
 /**
-  * @brief    读取外部触发信号极性
+  * @brief    
   * @rmtoll   SMCR    ETP    FL_ATIM_GetETRPolarity
   * @param    TIMx TIM instance
   * @retval   Returned value can be one of the following values:
@@ -1278,7 +1278,7 @@ __STATIC_INLINE uint32_t FL_ATIM_GetETRPolarity(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    外部时钟使能
+  * @brief    
   * @rmtoll   SMCR    ECE    FL_ATIM_EnableExternalClock
   * @param    TIMx TIM instance
   * @retval   None
@@ -1289,7 +1289,7 @@ __STATIC_INLINE void FL_ATIM_EnableExternalClock(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    读取外部时钟使能状态
+  * @brief    
   * @rmtoll   SMCR    ECE    FL_ATIM_IsEnabledExternalClock
   * @param    TIMx TIM instance
   * @retval   State of bit (1 or 0).
@@ -1300,7 +1300,7 @@ __STATIC_INLINE uint32_t FL_ATIM_IsEnabledExternalClock(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    外部时钟禁用
+  * @brief    
   * @rmtoll   SMCR    ECE    FL_ATIM_DisableExternalClock
   * @param    TIMx TIM instance
   * @retval   None
@@ -1311,7 +1311,7 @@ __STATIC_INLINE void FL_ATIM_DisableExternalClock(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    设置外部触发信号预分频
+  * @brief    
   * @rmtoll   SMCR    ETPS    FL_ATIM_SetETRPrescaler
   * @param    TIMx TIM instance
   * @param    psc This parameter can be one of the following values:
@@ -1327,7 +1327,7 @@ __STATIC_INLINE void FL_ATIM_SetETRPrescaler(ATIM_Type *TIMx, uint32_t psc)
 }
 
 /**
-  * @brief    读取外部触发信号预分频
+  * @brief    
   * @rmtoll   SMCR    ETPS    FL_ATIM_GetETRPrescaler
   * @param    TIMx TIM instance
   * @retval   Returned value can be one of the following values:
@@ -1342,7 +1342,7 @@ __STATIC_INLINE uint32_t FL_ATIM_GetETRPrescaler(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    设置外部触发信号滤波时钟和长度
+  * @brief    
   * @rmtoll   SMCR    ETF    FL_ATIM_SetETRFilter
   * @param    TIMx TIM instance
   * @param    filter This parameter can be one of the following values:
@@ -1370,7 +1370,7 @@ __STATIC_INLINE void FL_ATIM_SetETRFilter(ATIM_Type *TIMx, uint32_t filter)
 }
 
 /**
-  * @brief    读取外部触发信号滤波时钟和长度
+  * @brief    
   * @rmtoll   SMCR    ETF    FL_ATIM_GetETRFilter
   * @param    TIMx TIM instance
   * @retval   Returned value can be one of the following values:
@@ -1397,7 +1397,7 @@ __STATIC_INLINE uint32_t FL_ATIM_GetETRFilter(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    主/从模式使能
+  * @brief    /
   * @rmtoll   SMCR    MSM    FL_ATIM_EnableMasterSlaveMode
   * @param    TIMx TIM instance
   * @retval   None
@@ -1408,7 +1408,7 @@ __STATIC_INLINE void FL_ATIM_EnableMasterSlaveMode(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    读取主/从模式使能状态
+  * @brief    /
   * @rmtoll   SMCR    MSM    FL_ATIM_IsEnabledMasterSlaveMode
   * @param    TIMx TIM instance
   * @retval   State of bit (1 or 0).
@@ -1419,7 +1419,7 @@ __STATIC_INLINE uint32_t FL_ATIM_IsEnabledMasterSlaveMode(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    定时器主/从模式禁用
+  * @brief    /
   * @rmtoll   SMCR    MSM    FL_ATIM_DisableMasterSlaveMode
   * @param    TIMx TIM instance
   * @retval   None
@@ -1430,7 +1430,7 @@ __STATIC_INLINE void FL_ATIM_DisableMasterSlaveMode(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    设置同步计数器触发源
+  * @brief    
   * @rmtoll   SMCR    TS    FL_ATIM_SetTriggerInput
   * @param    TIMx TIM instance
   * @param    triggerInput This parameter can be one of the following values:
@@ -1450,7 +1450,7 @@ __STATIC_INLINE void FL_ATIM_SetTriggerInput(ATIM_Type *TIMx, uint32_t triggerIn
 }
 
 /**
-  * @brief    读取同步计数器的触发源
+  * @brief    
   * @rmtoll   SMCR    TS    FL_ATIM_GetTriggerInput
   * @param    TIMx TIM instance
   * @retval   Returned value can be one of the following values:
@@ -1469,7 +1469,7 @@ __STATIC_INLINE uint32_t FL_ATIM_GetTriggerInput(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    从机模式设置
+  * @brief    
   * @rmtoll   SMCR    SMS    FL_ATIM_SetSlaveMode
   * @param    TIMx TIM instance
   * @param    encoderMode This parameter can be one of the following values:
@@ -1489,7 +1489,7 @@ __STATIC_INLINE void FL_ATIM_SetSlaveMode(ATIM_Type *TIMx, uint32_t encoderMode)
 }
 
 /**
-  * @brief    读取从机模式
+  * @brief    
   * @rmtoll   SMCR    SMS    FL_ATIM_GetSlaveMode
   * @param    TIMx TIM instance
   * @retval   Returned value can be one of the following values:
@@ -1508,7 +1508,7 @@ __STATIC_INLINE uint32_t FL_ATIM_GetSlaveMode(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    通道1的模式配置为Burst模式
+  * @brief    1Burst
   * @rmtoll   DIER    CC1BURSTEN    FL_ATIM_EnableCC1DMABurstMode
   * @param    TIMx TIM instance
   * @retval   None
@@ -1519,7 +1519,7 @@ __STATIC_INLINE void FL_ATIM_EnableCC1DMABurstMode(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    读取通道1的模式配置
+  * @brief    1
   * @rmtoll   DIER    CC1BURSTEN    FL_ATIM_IsEnabledCC1DMABurstMode
   * @param    TIMx TIM instance
   * @retval   State of bit (1 or 0).
@@ -1530,7 +1530,7 @@ __STATIC_INLINE uint32_t FL_ATIM_IsEnabledCC1DMABurstMode(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    通道1的Burst模式禁用
+  * @brief    1Burst
   * @rmtoll   DIER    CC1BURSTEN    FL_ATIM_DisableCC1DMABurstMode
   * @param    TIMx TIM instance
   * @retval   None
@@ -1541,7 +1541,7 @@ __STATIC_INLINE void FL_ATIM_DisableCC1DMABurstMode(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    通道2的模式配置为Burst模式
+  * @brief    2Burst
   * @rmtoll   DIER    CC2BURSTEN    FL_ATIM_EnableCC2DMABurstMode
   * @param    TIMx TIM instance
   * @retval   None
@@ -1552,7 +1552,7 @@ __STATIC_INLINE void FL_ATIM_EnableCC2DMABurstMode(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    读取通道2的模式配置
+  * @brief    2
   * @rmtoll   DIER    CC2BURSTEN    FL_ATIM_IsEnabledCC2DMABurstMode
   * @param    TIMx TIM instance
   * @retval   State of bit (1 or 0).
@@ -1563,7 +1563,7 @@ __STATIC_INLINE uint32_t FL_ATIM_IsEnabledCC2DMABurstMode(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    通道2的Burst模式禁用
+  * @brief    2Burst
   * @rmtoll   DIER    CC2BURSTEN    FL_ATIM_DisableCC2DMABurstMode
   * @param    TIMx TIM instance
   * @retval   None
@@ -1574,7 +1574,7 @@ __STATIC_INLINE void FL_ATIM_DisableCC2DMABurstMode(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    通道3的模式配置为Burst模式
+  * @brief    3Burst
   * @rmtoll   DIER    CC3BURSTEN    FL_ATIM_EnableCC3DMABurstMode
   * @param    TIMx TIM instance
   * @retval   None
@@ -1585,7 +1585,7 @@ __STATIC_INLINE void FL_ATIM_EnableCC3DMABurstMode(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    读取通道3的模式配置
+  * @brief    3
   * @rmtoll   DIER    CC3BURSTEN    FL_ATIM_IsEnabledCC3DMABurstMode
   * @param    TIMx TIM instance
   * @retval   State of bit (1 or 0).
@@ -1596,7 +1596,7 @@ __STATIC_INLINE uint32_t FL_ATIM_IsEnabledCC3DMABurstMode(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    通道3的Burst模式禁用
+  * @brief    3Burst
   * @rmtoll   DIER    CC3BURSTEN    FL_ATIM_DisableCC3DMABurstMode
   * @param    TIMx TIM instance
   * @retval   None
@@ -1607,7 +1607,7 @@ __STATIC_INLINE void FL_ATIM_DisableCC3DMABurstMode(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    通道4的模式配置为Burst模式
+  * @brief    4Burst
   * @rmtoll   DIER    CC4BURSTEN    FL_ATIM_EnableCC4DMABurstMode
   * @param    TIMx TIM instance
   * @retval   None
@@ -1618,7 +1618,7 @@ __STATIC_INLINE void FL_ATIM_EnableCC4DMABurstMode(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    读取通道4的模式配置
+  * @brief    4
   * @rmtoll   DIER    CC4BURSTEN    FL_ATIM_IsEnabledCC4DMABurstMode
   * @param    TIMx TIM instance
   * @retval   State of bit (1 or 0).
@@ -1629,7 +1629,7 @@ __STATIC_INLINE uint32_t FL_ATIM_IsEnabledCC4DMABurstMode(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    通道4的Burst模式禁用
+  * @brief    4Burst
   * @rmtoll   DIER    CC4BURSTEN    FL_ATIM_DisableCC4DMABurstMode
   * @param    TIMx TIM instance
   * @retval   None
@@ -1640,7 +1640,7 @@ __STATIC_INLINE void FL_ATIM_DisableCC4DMABurstMode(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    外部触发DMA请求使能
+  * @brief    DMA
   * @rmtoll   DIER    TDE    FL_ATIM_EnableDMAReq_Trigger
   * @param    TIMx TIM instance
   * @retval   None
@@ -1651,7 +1651,7 @@ __STATIC_INLINE void FL_ATIM_EnableDMAReq_Trigger(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    读取外部触发DMA请求使能状态
+  * @brief    DMA
   * @rmtoll   DIER    TDE    FL_ATIM_IsEnabledDMAReq_Trigger
   * @param    TIMx TIM instance
   * @retval   State of bit (1 or 0).
@@ -1662,7 +1662,7 @@ __STATIC_INLINE uint32_t FL_ATIM_IsEnabledDMAReq_Trigger(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    外部触发DMA请求禁用
+  * @brief    DMA
   * @rmtoll   DIER    TDE    FL_ATIM_DisableDMAReq_Trigger
   * @param    TIMx TIM instance
   * @retval   None
@@ -1673,7 +1673,7 @@ __STATIC_INLINE void FL_ATIM_DisableDMAReq_Trigger(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    COM事件DMA请求使能
+  * @brief    COMDMA
   * @note
   * @rmtoll   DIER    COMDE    FL_ATIM_EnableDMAReq_COM
   * @param    TIMx TIM instance
@@ -1685,7 +1685,7 @@ __STATIC_INLINE void FL_ATIM_EnableDMAReq_COM(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    读取COM事件DMA请求使能状态
+  * @brief    COMDMA
   * @note
   * @rmtoll   DIER    COMDE    FL_ATIM_IsEnabledDMAReq_COM
   * @param    TIMx TIM instance
@@ -1697,7 +1697,7 @@ __STATIC_INLINE uint32_t FL_ATIM_IsEnabledDMAReq_COM(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    COM事件DMA请求禁用
+  * @brief    COMDMA
   * @note
   * @rmtoll   DIER    COMDE    FL_ATIM_DisableDMAReq_COM
   * @param    TIMx TIM instance
@@ -1709,7 +1709,7 @@ __STATIC_INLINE void FL_ATIM_DisableDMAReq_COM(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    捕捉比较通道的DMA请求使能
+  * @brief    DMA
   * @rmtoll   DIER    CCDE    FL_ATIM_EnableDMAReq_CC
   * @param    TIMx TIM instance
   * @param    channel This parameter can be one of the following values:
@@ -1725,7 +1725,7 @@ __STATIC_INLINE void FL_ATIM_EnableDMAReq_CC(ATIM_Type *TIMx, uint32_t channel)
 }
 
 /**
-  * @brief    读取捕捉比较通道的DMA请求使能
+  * @brief    DMA
   * @rmtoll   DIER    CCDE    FL_ATIM_IsEnabledDMAReq_CC
   * @param    TIMx TIM instance
   * @param    channel This parameter can be one of the following values:
@@ -1741,7 +1741,7 @@ __STATIC_INLINE uint32_t FL_ATIM_IsEnabledDMAReq_CC(ATIM_Type *TIMx, uint32_t ch
 }
 
 /**
-  * @brief    捕捉比较通道的DMA请求禁用
+  * @brief    DMA
   * @rmtoll   DIER    CCDE    FL_ATIM_DisableDMAReq_CC
   * @param    TIMx TIM instance
   * @param    channel This parameter can be one of the following values:
@@ -1757,7 +1757,7 @@ __STATIC_INLINE void FL_ATIM_DisableDMAReq_CC(ATIM_Type *TIMx, uint32_t channel)
 }
 
 /**
-  * @brief    更新事件DMA请求使能
+  * @brief    DMA
   * @rmtoll   DIER    UDE    FL_ATIM_EnableDMAReq_Update
   * @param    TIMx TIM instance
   * @retval   None
@@ -1768,7 +1768,7 @@ __STATIC_INLINE void FL_ATIM_EnableDMAReq_Update(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    读取更新事件DMA请求使能状态
+  * @brief    DMA
   * @rmtoll   DIER    UDE    FL_ATIM_IsEnabledDMAReq_Update
   * @param    TIMx TIM instance
   * @retval   State of bit (1 or 0).
@@ -1779,7 +1779,7 @@ __STATIC_INLINE uint32_t FL_ATIM_IsEnabledDMAReq_Update(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    更新事件DMA请求禁用
+  * @brief    DMA
   * @rmtoll   DIER    UDE    FL_ATIM_DisableDMAReq_Update
   * @param    TIMx TIM instance
   * @retval   None
@@ -1790,7 +1790,7 @@ __STATIC_INLINE void FL_ATIM_DisableDMAReq_Update(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    刹车事件中断使能
+  * @brief    
   * @note
   * @rmtoll   DIER    BIE    FL_ATIM_EnableIT_Break
   * @param    TIMx TIM instance
@@ -1802,7 +1802,7 @@ __STATIC_INLINE void FL_ATIM_EnableIT_Break(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    读取刹车事件中断使能状态
+  * @brief    
   * @note
   * @rmtoll   DIER    BIE    FL_ATIM_IsEnabledIT_Break
   * @param    TIMx TIM instance
@@ -1814,7 +1814,7 @@ __STATIC_INLINE uint32_t FL_ATIM_IsEnabledIT_Break(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    刹车事件中断禁用
+  * @brief    
   * @note
   * @rmtoll   DIER    BIE    FL_ATIM_DisableIT_Break
   * @param    TIMx TIM instance
@@ -1826,7 +1826,7 @@ __STATIC_INLINE void FL_ATIM_DisableIT_Break(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    触发事件中断使能
+  * @brief    
   * @rmtoll   DIER    TIE    FL_ATIM_EnableIT_Trigger
   * @param    TIMx TIM instance
   * @retval   None
@@ -1837,7 +1837,7 @@ __STATIC_INLINE void FL_ATIM_EnableIT_Trigger(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    读取触发事件中断使能
+  * @brief    
   * @rmtoll   DIER    TIE    FL_ATIM_IsEnabledIT_Trigger
   * @param    TIMx TIM instance
   * @retval   State of bit (1 or 0).
@@ -1848,7 +1848,7 @@ __STATIC_INLINE uint32_t FL_ATIM_IsEnabledIT_Trigger(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    触发事件中断禁用
+  * @brief    
   * @rmtoll   DIER    TIE    FL_ATIM_DisableIT_Trigger
   * @param    TIMx TIM instance
   * @retval   None
@@ -1859,7 +1859,7 @@ __STATIC_INLINE void FL_ATIM_DisableIT_Trigger(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    COM事件中断使能
+  * @brief    COM
   * @note
   * @rmtoll   DIER    COMIE    FL_ATIM_EnableIT_COM
   * @param    TIMx TIM instance
@@ -1871,7 +1871,7 @@ __STATIC_INLINE void FL_ATIM_EnableIT_COM(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    读取COM事件中断使能状态
+  * @brief    COM
   * @note
   * @rmtoll   DIER    COMIE    FL_ATIM_IsEnabledIT_COM
   * @param    TIMx TIM instance
@@ -1883,7 +1883,7 @@ __STATIC_INLINE uint32_t FL_ATIM_IsEnabledIT_COM(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    COM事件中断禁用
+  * @brief    COM
   * @note
   * @rmtoll   DIER    COMIE    FL_ATIM_DisableIT_COM
   * @param    TIMx TIM instance
@@ -1895,7 +1895,7 @@ __STATIC_INLINE void FL_ATIM_DisableIT_COM(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    捕捉/比较通道中断使能
+  * @brief    /
   * @rmtoll   DIER    CCIE    FL_ATIM_EnableIT_CC
   * @param    TIMx TIM instance
   * @param    channel This parameter can be one of the following values:
@@ -1911,7 +1911,7 @@ __STATIC_INLINE void FL_ATIM_EnableIT_CC(ATIM_Type *TIMx, uint32_t channel)
 }
 
 /**
-  * @brief    读取捕捉/比较通道中断使能状态
+  * @brief    /
   * @rmtoll   DIER    CCIE    FL_ATIM_IsEnabledIT_CC
   * @param    TIMx TIM instance
   * @param    channel This parameter can be one of the following values:
@@ -1927,7 +1927,7 @@ __STATIC_INLINE uint32_t FL_ATIM_IsEnabledIT_CC(ATIM_Type *TIMx, uint32_t channe
 }
 
 /**
-  * @brief    捕捉/比较通道中断禁用
+  * @brief    /
   * @rmtoll   DIER    CCIE    FL_ATIM_DisableIT_CC
   * @param    TIMx TIM instance
   * @param    channel This parameter can be one of the following values:
@@ -1943,7 +1943,7 @@ __STATIC_INLINE void FL_ATIM_DisableIT_CC(ATIM_Type *TIMx, uint32_t channel)
 }
 
 /**
-  * @brief    更新事件中断使能
+  * @brief    
   * @rmtoll   DIER    UIE    FL_ATIM_EnableIT_Update
   * @param    TIMx TIM instance
   * @retval   None
@@ -1954,7 +1954,7 @@ __STATIC_INLINE void FL_ATIM_EnableIT_Update(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    读取更新事件中断使能状态
+  * @brief    
   * @rmtoll   DIER    UIE    FL_ATIM_IsEnabledIT_Update
   * @param    TIMx TIM instance
   * @retval   State of bit (1 or 0).
@@ -1965,7 +1965,7 @@ __STATIC_INLINE uint32_t FL_ATIM_IsEnabledIT_Update(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    更新事件中断禁用
+  * @brief    
   * @rmtoll   DIER    UIE    FL_ATIM_DisableIT_Update
   * @param    TIMx TIM instance
   * @retval   None
@@ -1976,7 +1976,7 @@ __STATIC_INLINE void FL_ATIM_DisableIT_Update(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    捕捉/比较通道的Overcapture中断标志
+  * @brief    /Overcapture
   * @rmtoll   ISR    CCOF    FL_ATIM_IsActiveFlag_CCOverflow
   * @param    TIMx TIM instance
   * @param    channel This parameter can be one of the following values:
@@ -1992,7 +1992,7 @@ __STATIC_INLINE uint32_t FL_ATIM_IsActiveFlag_CCOverflow(ATIM_Type *TIMx, uint32
 }
 
 /**
-  * @brief    清除Overcapture中断标志
+  * @brief    Overcapture
   * @rmtoll   ISR    CCOF    FL_ATIM_ClearFlag_CCOverflow
   * @param    TIMx TIM instance
   * @param    channel This parameter can be one of the following values:
@@ -2008,7 +2008,7 @@ __STATIC_INLINE void FL_ATIM_ClearFlag_CCOverflow(ATIM_Type *TIMx, uint32_t chan
 }
 
 /**
-  * @brief    读取刹车事件中断标志
+  * @brief    
   * @note
   * @rmtoll   ISR    BIF    FL_ATIM_IsActiveFlag_Break
   * @param    TIMx TIM instance
@@ -2020,7 +2020,7 @@ __STATIC_INLINE uint32_t FL_ATIM_IsActiveFlag_Break(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    清除刹车事件中断标志
+  * @brief    
   * @note
   * @rmtoll   ISR    BIF    FL_ATIM_ClearFlag_Break
   * @param    TIMx TIM instance
@@ -2032,7 +2032,7 @@ __STATIC_INLINE void FL_ATIM_ClearFlag_Break(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    触发事件中断标志
+  * @brief    
   * @rmtoll   ISR    TIF    FL_ATIM_IsActiveFlag_Trigger
   * @param    TIMx TIM instance
   * @retval   State of bit (1 or 0).
@@ -2043,7 +2043,7 @@ __STATIC_INLINE uint32_t FL_ATIM_IsActiveFlag_Trigger(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    清除触发事件中断标志
+  * @brief    
   * @rmtoll   ISR    TIF    FL_ATIM_ClearFlag_Trigger
   * @param    TIMx TIM instance
   * @retval   None
@@ -2054,7 +2054,7 @@ __STATIC_INLINE void FL_ATIM_ClearFlag_Trigger(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    读取COM事件中断标志
+  * @brief    COM
   * @note
   * @rmtoll   ISR    COMIF    FL_ATIM_IsActiveFlag_COM
   * @param    TIMx TIM instance
@@ -2066,7 +2066,7 @@ __STATIC_INLINE uint32_t FL_ATIM_IsActiveFlag_COM(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    清除COM事件中断标志
+  * @brief    COM
   * @note
   * @rmtoll   ISR    COMIF    FL_ATIM_ClearFlag_COM
   * @param    TIMx TIM instance
@@ -2078,7 +2078,7 @@ __STATIC_INLINE void FL_ATIM_ClearFlag_COM(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    读取捕捉/比较通道中断标志
+  * @brief    /
   * @rmtoll   ISR    CCIF    FL_ATIM_IsActiveFlag_CC
   * @param    TIMx TIM instance
   * @param    channel This parameter can be one of the following values:
@@ -2094,7 +2094,7 @@ __STATIC_INLINE uint32_t FL_ATIM_IsActiveFlag_CC(ATIM_Type *TIMx, uint32_t chann
 }
 
 /**
-  * @brief    清除捕捉/比较通道中断标志
+  * @brief    /
   * @rmtoll   ISR    CCIF    FL_ATIM_ClearFlag_CC
   * @param    TIMx TIM instance
   * @param    channel This parameter can be one of the following values:
@@ -2110,7 +2110,7 @@ __STATIC_INLINE void FL_ATIM_ClearFlag_CC(ATIM_Type *TIMx, uint32_t channel)
 }
 
 /**
-  * @brief    读取更新事件中断标志
+  * @brief    
   * @rmtoll   ISR    UIF    FL_ATIM_IsActiveFlag_Update
   * @param    TIMx TIM instance
   * @retval   State of bit (1 or 0).
@@ -2121,7 +2121,7 @@ __STATIC_INLINE uint32_t FL_ATIM_IsActiveFlag_Update(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    清除更新事件中断标志
+  * @brief    
   * @rmtoll   ISR    UIF    FL_ATIM_ClearFlag_Update
   * @param    TIMx TIM instance
   * @retval   None
@@ -2132,7 +2132,7 @@ __STATIC_INLINE void FL_ATIM_ClearFlag_Update(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    软件刹车使能
+  * @brief    
   * @note
   * @rmtoll   EGR    BG    FL_ATIM_GenerateBreakEvent
   * @param    TIMx TIM instance
@@ -2144,7 +2144,7 @@ __STATIC_INLINE void FL_ATIM_GenerateBreakEvent(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    软件触发使能
+  * @brief    
   * @rmtoll   EGR    TG    FL_ATIM_GenerateTriggerEvent
   * @param    TIMx TIM instance
   * @retval   None
@@ -2155,7 +2155,7 @@ __STATIC_INLINE void FL_ATIM_GenerateTriggerEvent(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    软件COM事件使能
+  * @brief    COM
   * @note
   * @rmtoll   EGR    COMG    FL_ATIM_GenerateCOMEvent
   * @param    TIMx TIM instance
@@ -2167,7 +2167,7 @@ __STATIC_INLINE void FL_ATIM_GenerateCOMEvent(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    捕捉/比较通道软件触发使能
+  * @brief    /
   * @rmtoll   EGR    CCG    FL_ATIM_GenerateCCEvent
   * @param    TIMx TIM instance
   * @param    channel This parameter can be one of the following values:
@@ -2183,7 +2183,7 @@ __STATIC_INLINE void FL_ATIM_GenerateCCEvent(ATIM_Type *TIMx, uint32_t channel)
 }
 
 /**
-  * @brief    软件更新事件使能
+  * @brief    
   * @rmtoll   EGR    UG    FL_ATIM_GenerateUpdateEvent
   * @param    TIMx TIM instance
   * @retval   None
@@ -2194,7 +2194,7 @@ __STATIC_INLINE void FL_ATIM_GenerateUpdateEvent(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    设置计数器值
+  * @brief    
   * @rmtoll   CNT        FL_ATIM_WriteCounter
   * @param    TIMx TIM instance
   * @param    counter
@@ -2206,7 +2206,7 @@ __STATIC_INLINE void FL_ATIM_WriteCounter(ATIM_Type *TIMx, uint32_t counter)
 }
 
 /**
-  * @brief    读取计数器值
+  * @brief    
   * @rmtoll   CNT        FL_ATIM_ReadCounter
   * @param    TIMx TIM instance
   * @retval
@@ -2217,7 +2217,7 @@ __STATIC_INLINE uint32_t FL_ATIM_ReadCounter(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    设置计数器时钟预分频值
+  * @brief    
   * @rmtoll   PSC        FL_ATIM_WritePrescaler
   * @param    TIMx TIM instance
   * @param    psc
@@ -2229,7 +2229,7 @@ __STATIC_INLINE void FL_ATIM_WritePrescaler(ATIM_Type *TIMx, uint32_t psc)
 }
 
 /**
-  * @brief    读取计数器时钟预分频值
+  * @brief    
   * @rmtoll   PSC        FL_ATIM_ReadPrescaler
   * @param    TIMx TIM instance
   * @retval
@@ -2240,7 +2240,7 @@ __STATIC_INLINE uint32_t FL_ATIM_ReadPrescaler(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    设置计数溢出时的自动重载值
+  * @brief    
   * @rmtoll   ARR        FL_ATIM_WriteAutoReload
   * @param    TIMx TIM instance
   * @param    autoReload
@@ -2252,7 +2252,7 @@ __STATIC_INLINE void FL_ATIM_WriteAutoReload(ATIM_Type *TIMx, uint32_t autoReloa
 }
 
 /**
-  * @brief    读取计数溢出时的自动重载值
+  * @brief    
   * @rmtoll   ARR        FL_ATIM_ReadAutoReload
   * @param    TIMx TIM instance
   * @retval
@@ -2263,7 +2263,7 @@ __STATIC_INLINE uint32_t FL_ATIM_ReadAutoReload(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    捕捉/比较通道1寄存器配置
+  * @brief    /1
   * @rmtoll   CCR1        FL_ATIM_WriteCompareCH1
   * @param    TIMx TIM instance
   * @param    compareValue
@@ -2275,7 +2275,7 @@ __STATIC_INLINE void FL_ATIM_WriteCompareCH1(ATIM_Type *TIMx, uint32_t compareVa
 }
 
 /**
-  * @brief    读取捕捉/比较通道1寄存器值
+  * @brief    /1
   * @rmtoll   CCR1        FL_ATIM_ReadCompareCH1
   * @param    TIMx TIM instance
   * @retval
@@ -2286,7 +2286,7 @@ __STATIC_INLINE uint32_t FL_ATIM_ReadCompareCH1(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    捕捉/比较通道2寄存器配置
+  * @brief    /2
   * @rmtoll   CCR2        FL_ATIM_WriteCompareCH2
   * @param    TIMx TIM instance
   * @param    compareValue
@@ -2298,7 +2298,7 @@ __STATIC_INLINE void FL_ATIM_WriteCompareCH2(ATIM_Type *TIMx, uint32_t compareVa
 }
 
 /**
-  * @brief    读取捕捉/比较通道2寄存器值
+  * @brief    /2
   * @rmtoll   CCR2        FL_ATIM_ReadCompareCH2
   * @param    TIMx TIM instance
   * @retval
@@ -2309,7 +2309,7 @@ __STATIC_INLINE uint32_t FL_ATIM_ReadCompareCH2(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    捕捉/比较通道3寄存器配置
+  * @brief    /3
   * @rmtoll   CCR3        FL_ATIM_WriteCompareCH3
   * @param    TIMx TIM instance
   * @param    compareValue
@@ -2321,7 +2321,7 @@ __STATIC_INLINE void FL_ATIM_WriteCompareCH3(ATIM_Type *TIMx, uint32_t compareVa
 }
 
 /**
-  * @brief    读取捕捉/比较通道3寄存器值
+  * @brief    /3
   * @rmtoll   CCR3        FL_ATIM_ReadCompareCH3
   * @param    TIMx TIM instance
   * @retval
@@ -2332,7 +2332,7 @@ __STATIC_INLINE uint32_t FL_ATIM_ReadCompareCH3(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    捕捉/比较通道4寄存器配置
+  * @brief    /4
   * @rmtoll   CCR4        FL_ATIM_WriteCompareCH4
   * @param    TIMx TIM instance
   * @param    compareValue
@@ -2344,7 +2344,7 @@ __STATIC_INLINE void FL_ATIM_WriteCompareCH4(ATIM_Type *TIMx, uint32_t compareVa
 }
 
 /**
-  * @brief    读取捕捉/比较通道4寄存器值
+  * @brief    /4
   * @rmtoll   CCR4        FL_ATIM_ReadCompareCH4
   * @param    TIMx TIM instance
   * @retval
@@ -2355,7 +2355,7 @@ __STATIC_INLINE uint32_t FL_ATIM_ReadCompareCH4(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    设置DMA Burst长度
+  * @brief    DMA Burst
   * @rmtoll   DCR    DBL    FL_ATIM_SetDMABurstLength
   * @param    TIMx TIM instance
   * @param    length This parameter can be one of the following values:
@@ -2385,7 +2385,7 @@ __STATIC_INLINE void FL_ATIM_SetDMABurstLength(ATIM_Type *TIMx, uint32_t length)
 }
 
 /**
-  * @brief    读取DMA Burst长度
+  * @brief    DMA Burst
   * @rmtoll   DCR    DBL    FL_ATIM_GetDMABurstLength
   * @param    TIMx TIM instance
   * @retval   Returned value can be one of the following values:
@@ -2414,7 +2414,7 @@ __STATIC_INLINE uint32_t FL_ATIM_GetDMABurstLength(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    设置指向DMA寄存器的偏移地址
+  * @brief    DMA
   * @rmtoll   DCR    DBA    FL_ATIM_SetDMABurstAddress
   * @param    TIMx TIM instance
   * @param    address This parameter can be one of the following values:
@@ -2444,7 +2444,7 @@ __STATIC_INLINE void FL_ATIM_SetDMABurstAddress(ATIM_Type *TIMx, uint32_t addres
 }
 
 /**
-  * @brief    读取指向DMA寄存器的偏移地址
+  * @brief    DMA
   * @rmtoll   DCR    DBA    FL_ATIM_GetDMABurstAddress
   * @param    TIMx TIM instance
   * @retval   Returned value can be one of the following values:
@@ -2473,7 +2473,7 @@ __STATIC_INLINE uint32_t FL_ATIM_GetDMABurstAddress(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    配置DMA burst访问寄存器
+  * @brief    DMA burst
   * @rmtoll   DMAR        FL_ATIM_WriteDMAAddress
   * @param    TIMx TIM instance
   * @param    address
@@ -2485,7 +2485,7 @@ __STATIC_INLINE void FL_ATIM_WriteDMAAddress(ATIM_Type *TIMx, uint32_t address)
 }
 
 /**
-  * @brief    读取DMA burst访问寄存器值
+  * @brief    DMA burst
   * @rmtoll   DMAR        FL_ATIM_ReadDMAAddress
   * @param    TIMx TIM instance
   * @retval
@@ -2496,7 +2496,7 @@ __STATIC_INLINE uint32_t FL_ATIM_ReadDMAAddress(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    输出比较清零使能
+  * @brief    
   * @rmtoll   CCMR    OCCE    FL_ATIM_OC_EnableClear
   * @param    TIMx TIM instance
   * @param    channel This parameter can be one of the following values:
@@ -2519,7 +2519,7 @@ __STATIC_INLINE void FL_ATIM_OC_EnableClear(ATIM_Type *TIMx, uint32_t channel)
 }
 
 /**
-  * @brief    读取输出比较清零使能状态
+  * @brief    
   * @rmtoll   CCMR    OCCE    FL_ATIM_OC_IsEnabledClear
   * @param    TIMx TIM instance
   * @param    channel This parameter can be one of the following values:
@@ -2542,7 +2542,7 @@ __STATIC_INLINE uint32_t FL_ATIM_OC_IsEnabledClear(ATIM_Type *TIMx, uint32_t cha
 }
 
 /**
-  * @brief    输出比较清零禁用
+  * @brief    
   * @rmtoll   CCMR    OCCE    FL_ATIM_OC_DisableClear
   * @param    TIMx TIM instance
   * @param    channel This parameter can be one of the following values:
@@ -2565,7 +2565,7 @@ __STATIC_INLINE void FL_ATIM_OC_DisableClear(ATIM_Type *TIMx, uint32_t channel)
 }
 
 /**
-  * @brief    输出比较模式配置
+  * @brief    
   * @rmtoll   CCMR    OCM    FL_ATIM_OC_SetMode
   * @param    TIMx TIM instance
   * @param    mode This parameter can be one of the following values:
@@ -2597,7 +2597,7 @@ __STATIC_INLINE void FL_ATIM_OC_SetMode(ATIM_Type *TIMx, uint32_t mode, uint32_t
 }
 
 /**
-  * @brief    读取输出比较模式配置值
+  * @brief    
   * @rmtoll   CCMR    OCM    FL_ATIM_OC_GetMode
   * @param    TIMx TIM instance
   * @param    channel This parameter can be one of the following values:
@@ -2628,7 +2628,7 @@ __STATIC_INLINE uint32_t FL_ATIM_OC_GetMode(ATIM_Type *TIMx, uint32_t channel)
 }
 
 /**
-  * @brief    输出比较预装载使能
+  * @brief    
   * @rmtoll   CCMR    OCPE    FL_ATIM_OC_EnablePreload
   * @param    TIMx TIM instance
   * @param    channel This parameter can be one of the following values:
@@ -2651,7 +2651,7 @@ __STATIC_INLINE void FL_ATIM_OC_EnablePreload(ATIM_Type *TIMx, uint32_t channel)
 }
 
 /**
-  * @brief    读取输出比较预装载使能状态
+  * @brief    
   * @rmtoll   CCMR    OCPE    FL_ATIM_OC_IsEnabledPreload
   * @param    TIMx TIM instance
   * @param    channel This parameter can be one of the following values:
@@ -2674,7 +2674,7 @@ __STATIC_INLINE uint32_t FL_ATIM_OC_IsEnabledPreload(ATIM_Type *TIMx, uint32_t c
 }
 
 /**
-  * @brief    输出比较预装载禁用
+  * @brief    
   * @rmtoll   CCMR    OCPE    FL_ATIM_OC_DisablePreload
   * @param    TIMx TIM instance
   * @param    channel This parameter can be one of the following values:
@@ -2697,7 +2697,7 @@ __STATIC_INLINE void FL_ATIM_OC_DisablePreload(ATIM_Type *TIMx, uint32_t channel
 }
 
 /**
-  * @brief    输出比较快速使能
+  * @brief    
   * @rmtoll   CCMR    OCFE    FL_ATIM_OC_EnableFastMode
   * @param    TIMx TIM instance
   * @param    channel This parameter can be one of the following values:
@@ -2720,7 +2720,7 @@ __STATIC_INLINE void FL_ATIM_OC_EnableFastMode(ATIM_Type *TIMx, uint32_t channel
 }
 
 /**
-  * @brief    获取输出比较快速使能状态
+  * @brief    
   * @rmtoll   CCMR    OCFE    FL_ATIM_OC_IsEnabledFastMode
   * @param    TIMx TIM instance
   * @param    channel This parameter can be one of the following values:
@@ -2743,7 +2743,7 @@ __STATIC_INLINE uint32_t FL_ATIM_OC_IsEnabledFastMode(ATIM_Type *TIMx, uint32_t 
 }
 
 /**
-  * @brief    输出比较快速禁用
+  * @brief    
   * @rmtoll   CCMR    OCFE    FL_ATIM_OC_DisableFastMode
   * @param    TIMx TIM instance
   * @param    channel This parameter can be one of the following values:
@@ -2766,7 +2766,7 @@ __STATIC_INLINE void FL_ATIM_OC_DisableFastMode(ATIM_Type *TIMx, uint32_t channe
 }
 
 /**
-  * @brief    设置输入捕捉滤波器
+  * @brief    
   * @rmtoll   CCMR    ICF    FL_ATIM_IC_SetFilter
   * @param    TIMx TIM instance
   * @param    filter This parameter can be one of the following values:
@@ -2806,7 +2806,7 @@ __STATIC_INLINE void FL_ATIM_IC_SetFilter(ATIM_Type *TIMx, uint32_t filter, uint
 }
 
 /**
-  * @brief    读取输入滤波器值
+  * @brief    
   * @rmtoll   CCMR    ICF    FL_ATIM_IC_GetFilter
   * @param    TIMx TIM instance
   * @param    channel This parameter can be one of the following values:
@@ -2845,7 +2845,7 @@ __STATIC_INLINE uint32_t FL_ATIM_IC_GetFilter(ATIM_Type *TIMx, uint32_t channel)
 }
 
 /**
-  * @brief    设置输入捕捉预分频
+  * @brief    
   * @rmtoll   CCMR    ICPSC    FL_ATIM_IC_SetPrescaler
   * @param    TIMx TIM instance
   * @param    psc This parameter can be one of the following values:
@@ -2873,7 +2873,7 @@ __STATIC_INLINE void FL_ATIM_IC_SetPrescaler(ATIM_Type *TIMx, uint32_t psc, uint
 }
 
 /**
-  * @brief    读取输入捕捉预分频值
+  * @brief    
   * @rmtoll   CCMR    ICPSC    FL_ATIM_IC_GetPrescaler
   * @param    TIMx TIM instance
   * @param    channel This parameter can be one of the following values:
@@ -2900,7 +2900,7 @@ __STATIC_INLINE uint32_t FL_ATIM_IC_GetPrescaler(ATIM_Type *TIMx, uint32_t chann
 }
 
 /**
-  * @brief    捕捉/比较通道选择
+  * @brief    /
   * @rmtoll   CCMR    CCS    FL_ATIM_CC_SetChannelMode
   * @param    TIMx TIM instance
   * @param    mode This parameter can be one of the following values:
@@ -2928,7 +2928,7 @@ __STATIC_INLINE void FL_ATIM_CC_SetChannelMode(ATIM_Type *TIMx, uint32_t mode, u
 }
 
 /**
-  * @brief    获取捕捉/比较通道
+  * @brief    /
   * @rmtoll   CCMR    CCS    FL_ATIM_CC_GetChannelMode
   * @param    TIMx TIM instance
   * @param    channel This parameter can be one of the following values:
@@ -2955,7 +2955,7 @@ __STATIC_INLINE uint32_t FL_ATIM_CC_GetChannelMode(ATIM_Type *TIMx, uint32_t cha
 }
 
 /**
-  * @brief    设置捕捉/比较互补输出极性
+  * @brief    /
   * @note
   * @rmtoll   CCER    CCNP    FL_ATIM_OC_SetReverseChannelPolarity
   * @param    TIMx TIM instance
@@ -2975,7 +2975,7 @@ __STATIC_INLINE void FL_ATIM_OC_SetReverseChannelPolarity(ATIM_Type *TIMx, uint3
 }
 
 /**
-  * @brief    读取捕捉/比较互补输出极性
+  * @brief    /
   * @note
   * @rmtoll   CCER    CCNP    FL_ATIM_OC_GetReverseChannelPolarty
   * @param    TIMx TIM instance
@@ -2994,7 +2994,7 @@ __STATIC_INLINE uint32_t FL_ATIM_OC_GetReverseChannelPolarity(ATIM_Type *TIMx, u
 }
 
 /**
-  * @brief    捕捉/比较互补输出使能
+  * @brief    /
   * @note
   * @rmtoll   CCER    CCNE    FL_ATIM_OC_EnableReverseChannel
   * @param    TIMx TIM instance
@@ -3011,7 +3011,7 @@ __STATIC_INLINE void FL_ATIM_OC_EnableReverseChannel(ATIM_Type *TIMx, uint32_t c
 }
 
 /**
-  * @brief    读取捕捉/比较互补输出使能状态
+  * @brief    /
   * @note
   * @rmtoll   CCER    CCNE    FL_ATIM_OC_IsEnabledReverseChannel
   * @param    TIMx TIM instance
@@ -3028,7 +3028,7 @@ __STATIC_INLINE uint32_t FL_ATIM_OC_IsEnabledReverseChannel(ATIM_Type *TIMx, uin
 }
 
 /**
-  * @brief    捕捉/比较互补输出禁用
+  * @brief    /
   * @note
   * @rmtoll   CCER    CCNE    FL_ATIM_OC_DisableReverseChannel
   * @param    TIMx TIM instance
@@ -3045,7 +3045,7 @@ __STATIC_INLINE void FL_ATIM_OC_DisableReverseChannel(ATIM_Type *TIMx, uint32_t 
 }
 
 /**
-  * @brief    CC1通道配置为输出时，设置捕捉/比较输出极性
+  * @brief    CC1/
   * @rmtoll   CCER    CCOP    FL_ATIM_OC_SetChannelPolarity
   * @param    TIMx TIM instance
   * @param    polarity This parameter can be one of the following values:
@@ -3064,7 +3064,7 @@ __STATIC_INLINE void FL_ATIM_OC_SetChannelPolarity(ATIM_Type *TIMx, uint32_t pol
 }
 
 /**
-  * @brief    CC1通道配置为输出时，读取捕捉/比较输出极性
+  * @brief    CC1/
   * @rmtoll   CCER    CCOP    FL_ATIM_OC_GetChannelPolarity
   * @param    TIMx TIM instance
   * @param    channel This parameter can be one of the following values:
@@ -3082,7 +3082,7 @@ __STATIC_INLINE uint32_t FL_ATIM_OC_GetChannelPolarity(ATIM_Type *TIMx, uint32_t
 }
 
 /**
-  * @brief    CC1通道配置为输入时，设置捕捉/比较输出极性
+  * @brief    CC1/
   * @rmtoll   CCER    CCIP    FL_ATIM_IC_SetChannelPolarity
   * @param    TIMx TIM instance
   * @param    polarity This parameter can be one of the following values:
@@ -3101,7 +3101,7 @@ __STATIC_INLINE void FL_ATIM_IC_SetChannelPolarity(ATIM_Type *TIMx, uint32_t pol
 }
 
 /**
-  * @brief    CC1通道配置为输入时，设置捕捉/比较输出极性
+  * @brief    CC1/
   * @rmtoll   CCER    CCIP    FL_ATIM_IC_GetChannelPolarity
   * @param    TIMx TIM instance
   * @param    channel This parameter can be one of the following values:
@@ -3119,7 +3119,7 @@ __STATIC_INLINE uint32_t FL_ATIM_IC_GetChannelPolarity(ATIM_Type *TIMx, uint32_t
 }
 
 /**
-  * @brief    CC1通道配置为输出时，捕捉/比较输出使能
+  * @brief    CC1/
   * @rmtoll   CCER    CCOE    FL_ATIM_OC_EnableChannel
   * @param    TIMx TIM instance
   * @param    channel This parameter can be one of the following values:
@@ -3135,7 +3135,7 @@ __STATIC_INLINE void FL_ATIM_OC_EnableChannel(ATIM_Type *TIMx, uint32_t channel)
 }
 
 /**
-  * @brief    CC1通道配置为输出时，读取捕捉/比较输出使能状态
+  * @brief    CC1/
   * @rmtoll   CCER    CCOE    FL_ATIM_OC_IsEnabledChannel
   * @param    TIMx TIM instance
   * @param    channel This parameter can be one of the following values:
@@ -3151,7 +3151,7 @@ __STATIC_INLINE uint32_t FL_ATIM_OC_IsEnabledChannel(ATIM_Type *TIMx, uint32_t c
 }
 
 /**
-  * @brief    CC1通道配置为输出时，捕捉/比较输出禁用
+  * @brief    CC1/
   * @rmtoll   CCER    CCOE    FL_ATIM_OC_DisableChannel
   * @param    TIMx TIM instance
   * @param    channel This parameter can be one of the following values:
@@ -3167,7 +3167,7 @@ __STATIC_INLINE void FL_ATIM_OC_DisableChannel(ATIM_Type *TIMx, uint32_t channel
 }
 
 /**
-  * @brief    CC1通道配置为输入时，捕捉/比较输出使能
+  * @brief    CC1/
   * @rmtoll   CCER    CCIE    FL_ATIM_IC_EnableChannel
   * @param    TIMx TIM instance
   * @param    channel This parameter can be one of the following values:
@@ -3183,7 +3183,7 @@ __STATIC_INLINE void FL_ATIM_IC_EnableChannel(ATIM_Type *TIMx, uint32_t channel)
 }
 
 /**
-  * @brief    CC1通道配置为输入时，读取捕捉/比较输出使能状态
+  * @brief    CC1/
   * @rmtoll   CCER    CCIE    FL_ATIM_IC_IsEnabledChannel
   * @param    TIMx TIM instance
   * @param    channel This parameter can be one of the following values:
@@ -3199,7 +3199,7 @@ __STATIC_INLINE uint32_t FL_ATIM_IC_IsEnabledChannel(ATIM_Type *TIMx, uint32_t c
 }
 
 /**
-  * @brief    CC1通道配置为输入时，捕捉/比较输出禁用
+  * @brief    CC1/
   * @rmtoll   CCER    CCIE    FL_ATIM_IC_DisableChannel
   * @param    TIMx TIM instance
   * @param    channel This parameter can be one of the following values:
@@ -3215,7 +3215,7 @@ __STATIC_INLINE void FL_ATIM_IC_DisableChannel(ATIM_Type *TIMx, uint32_t channel
 }
 
 /**
-  * @brief    设置重复计数值
+  * @brief    
   * @note
   * @rmtoll   RCR        FL_ATIM_WriteRepetitionCounter
   * @param    TIMx TIM instance
@@ -3228,7 +3228,7 @@ __STATIC_INLINE void FL_ATIM_WriteRepetitionCounter(ATIM_Type *TIMx, uint32_t re
 }
 
 /**
-  * @brief    读取重复计数值
+  * @brief    
   * @note
   * @rmtoll   RCR        FL_ATIM_ReadRepetitionCounter
   * @param    TIMx TIM instance
@@ -3240,7 +3240,7 @@ __STATIC_INLINE uint32_t FL_ATIM_ReadRepetitionCounter(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    主控输出使能
+  * @brief    
   * @note
   * @rmtoll   BDTR    MOE    FL_ATIM_EnableALLOutput
   * @param    TIMx TIM instance
@@ -3252,7 +3252,7 @@ __STATIC_INLINE void FL_ATIM_EnableALLOutput(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    读取主控输出使能状态
+  * @brief    
   * @note
   * @rmtoll   BDTR    MOE    FL_ATIM_IsEnabledALLOutput
   * @param    TIMx TIM instance
@@ -3264,7 +3264,7 @@ __STATIC_INLINE uint32_t FL_ATIM_IsEnabledALLOutput(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    主控输出禁用
+  * @brief    
   * @note
   * @rmtoll   BDTR    MOE    FL_ATIM_DisableALLOutput
   * @param    TIMx TIM instance
@@ -3276,7 +3276,7 @@ __STATIC_INLINE void FL_ATIM_DisableALLOutput(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    自动输出使能
+  * @brief    
   * @note
   * @rmtoll   BDTR    AOE    FL_ATIM_EnableAutomaticOutput
   * @param    TIMx TIM instance
@@ -3288,7 +3288,7 @@ __STATIC_INLINE void FL_ATIM_EnableAutomaticOutput(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    读取自动输出使能状态
+  * @brief    
   * @note
   * @rmtoll   BDTR    AOE    FL_ATIM_IsEnabledAutomaticOutput
   * @param    TIMx TIM instance
@@ -3300,7 +3300,7 @@ __STATIC_INLINE uint32_t FL_ATIM_IsEnabledAutomaticOutput(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    自动输出禁用
+  * @brief    
   * @note
   * @rmtoll   BDTR    AOE    FL_ATIM_DisableAutomaticOutput
   * @param    TIMx TIM instance
@@ -3312,7 +3312,7 @@ __STATIC_INLINE void FL_ATIM_DisableAutomaticOutput(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    设置刹车极性
+  * @brief    
   * @note
   * @rmtoll   BDTR    BKP    FL_ATIM_SetBreakPolarity
   * @param    TIMx TIM instance
@@ -3327,7 +3327,7 @@ __STATIC_INLINE void FL_ATIM_SetBreakPolarity(ATIM_Type *TIMx, uint32_t polarity
 }
 
 /**
-  * @brief    读取刹车极性
+  * @brief    
   * @note
   * @rmtoll   BDTR    BKP    FL_ATIM_GetBreakPolarity
   * @param    TIMx TIM instance
@@ -3341,7 +3341,7 @@ __STATIC_INLINE uint32_t FL_ATIM_GetBreakPolarity(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    刹车使能
+  * @brief    
   * @note
   * @rmtoll   BDTR    BKE    FL_ATIM_EnableBreak
   * @param    TIMx TIM instance
@@ -3353,7 +3353,7 @@ __STATIC_INLINE void FL_ATIM_EnableBreak(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    读取刹车使能状态
+  * @brief    
   * @note
   * @rmtoll   BDTR    BKE    FL_ATIM_IsEnabledBreak
   * @param    TIMx TIM instance
@@ -3365,7 +3365,7 @@ __STATIC_INLINE uint32_t FL_ATIM_IsEnabledBreak(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    刹车禁用
+  * @brief    
   * @note
   * @rmtoll   BDTR    BKE    FL_ATIM_DisableBreak
   * @param    TIMx TIM instance
@@ -3377,7 +3377,7 @@ __STATIC_INLINE void FL_ATIM_DisableBreak(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    运行状态下的输出关闭状态选择
+  * @brief    
   * @note
   * @rmtoll   BDTR    OSSR    FL_ATIM_SetOffStateRun
   * @param    TIMx TIM instance
@@ -3392,7 +3392,7 @@ __STATIC_INLINE void FL_ATIM_SetOffStateRun(ATIM_Type *TIMx, uint32_t state)
 }
 
 /**
-  * @brief    读取运行状态下的输出关闭状态选择
+  * @brief    
   * @note
   * @rmtoll   BDTR    OSSR    FL_ATIM_GetOffStateRun
   * @param    TIMx TIM instance
@@ -3406,7 +3406,7 @@ __STATIC_INLINE uint32_t FL_ATIM_GetOffStateRun(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    IDLE状态下的输出关闭状态选择
+  * @brief    IDLE
   * @note
   * @rmtoll   BDTR    OSSI    FL_ATIM_SetOffStateIdle
   * @param    TIMx TIM instance
@@ -3421,7 +3421,7 @@ __STATIC_INLINE void FL_ATIM_SetOffStateIdle(ATIM_Type *TIMx, uint32_t state)
 }
 
 /**
-  * @brief    IDLE状态下的输出关闭状态选择
+  * @brief    IDLE
   * @note
   * @rmtoll   BDTR    OSSI    FL_ATIM_GetOffStateIdle
   * @param    TIMx TIM instance
@@ -3435,7 +3435,7 @@ __STATIC_INLINE uint32_t FL_ATIM_GetOffStateIdle(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    设置寄存器写保护等级
+  * @brief    
   * @note
   * @rmtoll   BDTR    LOCK    FL_ATIM_SetLockLevel
   * @param    TIMx TIM instance
@@ -3452,7 +3452,7 @@ __STATIC_INLINE void FL_ATIM_SetLockLevel(ATIM_Type *TIMx, uint32_t lockLevel)
 }
 
 /**
-  * @brief    读取寄存器写保护配置状态
+  * @brief    
   * @note
   * @rmtoll   BDTR    LOCK    FL_ATIM_GetLockLevel
   * @param    TIMx TIM instance
@@ -3468,7 +3468,7 @@ __STATIC_INLINE uint32_t FL_ATIM_GetLockLevel(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    设置死区时间长度
+  * @brief    
   * @note
   * @rmtoll   BDTR    DTG    FL_ATIM_WriteDeadTime
   * @param    TIMx TIM instance
@@ -3481,7 +3481,7 @@ __STATIC_INLINE void FL_ATIM_WriteDeadTime(ATIM_Type *TIMx, uint32_t deadTime)
 }
 
 /**
-  * @brief    读取死区时间长度
+  * @brief    
   * @note
   * @rmtoll   BDTR    DTG    FL_ATIM_ReadDeadTime
   * @param    TIMx TIM instance
@@ -3493,7 +3493,7 @@ __STATIC_INLINE uint32_t FL_ATIM_ReadDeadTime(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    设置ATIM_BRK1引脚输入门控信号
+  * @brief    ATIM_BRK1
   * @note
   * @rmtoll   BKCR    BRK1GATE    FL_ATIM_SetBreak1GateState
   * @param    TIMx TIM instance
@@ -3508,7 +3508,7 @@ __STATIC_INLINE void FL_ATIM_SetBreak1GateState(ATIM_Type *TIMx, uint32_t state)
 }
 
 /**
-  * @brief    读取ATIM_BRK1引脚输入门控信号
+  * @brief    ATIM_BRK1
   * @note
   * @rmtoll   BKCR    BRK1GATE    FL_ATIM_GetBreak1GateState
   * @param    TIMx TIM instance
@@ -3522,7 +3522,7 @@ __STATIC_INLINE uint32_t FL_ATIM_GetBreak1GateState(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    设置ATIM_BRK2引脚输入门控信号
+  * @brief    ATIM_BRK2
   * @note
   * @rmtoll   BKCR    BRK2GATE    FL_ATIM_SetBreak2GateState
   * @param    TIMx TIM instance
@@ -3537,7 +3537,7 @@ __STATIC_INLINE void FL_ATIM_SetBreak2GateState(ATIM_Type *TIMx, uint32_t state)
 }
 
 /**
-  * @brief    读取ATIM_BRK2引脚输入门控信号
+  * @brief    ATIM_BRK2
   * @note
   * @rmtoll   BKCR    BRK2GATE    FL_ATIM_GetBreak2GateState
   * @param    TIMx TIM instance
@@ -3551,7 +3551,7 @@ __STATIC_INLINE uint32_t FL_ATIM_GetBreak2GateState(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    设置刹车信号的滤波时钟和长度选择
+  * @brief    
   * @note
   * @rmtoll   BKCR    BRKF    FL_ATIM_SetBreakFilter
   * @param    TIMx TIM instance
@@ -3580,7 +3580,7 @@ __STATIC_INLINE void FL_ATIM_SetBreakFilter(ATIM_Type *TIMx, uint32_t filter)
 }
 
 /**
-  * @brief    读取刹车信号的滤波时钟和长度选择
+  * @brief    
   * @note
   * @rmtoll   BKCR    BRKF    FL_ATIM_GetBreakFilter
   * @param    TIMx TIM instance
@@ -3608,7 +3608,7 @@ __STATIC_INLINE uint32_t FL_ATIM_GetBreakFilter(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    刹车组合控制
+  * @brief    
   * @note
   * @rmtoll   BKCR    BRKCOMB    FL_ATIM_SetBreakSignalCombination
   * @param    TIMx TIM instance
@@ -3623,7 +3623,7 @@ __STATIC_INLINE void FL_ATIM_SetBreakSignalCombination(ATIM_Type *TIMx, uint32_t
 }
 
 /**
-  * @brief    读取刹车组合控制状态
+  * @brief    
   * @note
   * @rmtoll   BKCR    BRKCOMB    FL_ATIM_GetBreakSignalCombination
   * @param    TIMx TIM instance
@@ -3637,7 +3637,7 @@ __STATIC_INLINE uint32_t FL_ATIM_GetBreakSignalCombination(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    XTHF停振检测刹车信号使能
+  * @brief    XTHF
   * @note
   * @rmtoll   BKCR    HFDET_BRKEN    FL_ATIM_EnableHFDETBreak
   * @param    TIMx TIM instance
@@ -3649,7 +3649,7 @@ __STATIC_INLINE void FL_ATIM_EnableHFDETBreak(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    读取XTHF停振检测刹车信号使能状态
+  * @brief    XTHF
   * @note
   * @rmtoll   BKCR    HFDET_BRKEN    FL_ATIM_IsEnabledHFDETBreak
   * @param    TIMx TIM instance
@@ -3661,7 +3661,7 @@ __STATIC_INLINE uint32_t FL_ATIM_IsEnabledHFDETBreak(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    XTHF停振检测刹车信号禁用
+  * @brief    XTHF
   * @note
   * @rmtoll   BKCR    HFDET_BRKEN    FL_ATIM_DisableHFDETBreak
   * @param    TIMx TIM instance
@@ -3673,7 +3673,7 @@ __STATIC_INLINE void FL_ATIM_DisableHFDETBreak(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    SVD刹车信号使能
+  * @brief    SVD
   * @note
   * @rmtoll   BKCR    SVD_BRKEN    FL_ATIM_EnableSVDBreak
   * @param    TIMx TIM instance
@@ -3685,7 +3685,7 @@ __STATIC_INLINE void FL_ATIM_EnableSVDBreak(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    读取SVD刹车信号使能状态
+  * @brief    SVD
   * @note
   * @rmtoll   BKCR    SVD_BRKEN    FL_ATIM_IsEnabledSVDBreak
   * @param    TIMx TIM instance
@@ -3697,7 +3697,7 @@ __STATIC_INLINE uint32_t FL_ATIM_IsEnabledSVDBreak(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    SVD刹车信号禁用
+  * @brief    SVD
   * @note
   * @rmtoll   BKCR    SVD_BRKEN    FL_ATIM_DisableSVDBreak
   * @param    TIMx TIM instance
@@ -3709,7 +3709,7 @@ __STATIC_INLINE void FL_ATIM_DisableSVDBreak(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    比较器输出刹车信号使能
+  * @brief    
   * @note
   * @rmtoll   BKCR    COMP_BRKEN    FL_ATIM_EnableCOMPBreak
   * @param    TIMx TIM instance
@@ -3721,7 +3721,7 @@ __STATIC_INLINE void FL_ATIM_EnableCOMPBreak(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    读取比较器输出刹车信号使能状态
+  * @brief    
   * @note
   * @rmtoll   BKCR    COMP_BRKEN    FL_ATIM_IsEnabledCOMPBreak
   * @param    TIMx TIM instance
@@ -3733,7 +3733,7 @@ __STATIC_INLINE uint32_t FL_ATIM_IsEnabledCOMPBreak(ATIM_Type *TIMx)
 }
 
 /**
-  * @brief    比较器输出刹车信号禁用
+  * @brief    
   * @note
   * @rmtoll   BKCR    COMP_BRKEN    FL_ATIM_DisableCOMPBreak
   * @param    TIMx TIM instance

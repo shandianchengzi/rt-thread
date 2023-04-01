@@ -962,7 +962,7 @@ Change Log since v0.1.13
 ## example
 
 - re-organize example with category, e.g. benchmark, eth
-- add catche_bench、cormark_bench and memperf_bench
+- add catche_benchcormark_bench and memperf_bench
 
 ## tools
 

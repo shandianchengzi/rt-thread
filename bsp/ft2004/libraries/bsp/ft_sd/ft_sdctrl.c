@@ -1,14 +1,14 @@
 /*
- * @ : Copyright (c) 2021 Phytium Information Technology, Inc.
- *
- * SPDX-License-Identifier: Apache-2.0.
- *
+*@:Copyright(c)2021PhytiumInformationTechnology,Inc.
+*
+*SPDX-License-Identifier:Apache-2.0.
+*
  * @Date: 2021-03-31 14:59:20
  * @LastEditTime: 2021-05-25 16:49:01
- * @Description:  This files is for implemenation of sd ctrl
+ * @Description: This files is for implemenation of sd ctrl
  *
- * @Modify History: * * Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * @ModifyHistory: **VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 #include "ft_parameters.h"

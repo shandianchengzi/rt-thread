@@ -5,7 +5,7 @@
 
 
 typedef struct {
-    uint8_t button; // bit0 左键  bit1 右键   bit2 中键
+    uint8_t button; // bit0   bit1    bit2 
     uint8_t x;
     uint8_t y;
     uint8_t z;      // Not Supported

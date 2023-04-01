@@ -71,132 +71,132 @@ extern "C"
  *****************************************************************************/
  /**
  ******************************************************************************
- ** \brief SPI 功能通道选择设置
+ ** \brief SPI 
  ******************************************************************************/ 
 typedef enum en_spi_channel
 {
-    Spi0     = 0u,  ///< SPI通道0
-    Spi1     = 1u,  ///< SPI通道1
+    Spi0     = 0u,  ///< SPI0
+    Spi1     = 1u,  ///< SPI1
 }en_spi_channel_t;
 /**
  ******************************************************************************
- ** \brief SPI 功能使能设置
+ ** \brief SPI 
  ******************************************************************************/ 
 typedef enum en_spi_en
 {
-    SpiEnable     = 1u,  ///< SPI模块使能
-    SpiDisable    = 0u,  ///< SPI模块禁止
+    SpiEnable     = 1u,  ///< SPI
+    SpiDisable    = 0u,  ///< SPI
 }en_spi_en_t;
 /**
  ******************************************************************************
- ** \brief SPI 模式配置
+ ** \brief SPI 
  ******************************************************************************/ 
 typedef enum en_spi_mode
 {
-    SpiMaster = 1u,  ///<主机
-    SpiSlave  = 0u,  ///<从机
+    SpiMaster = 1u,  ///<
+    SpiSlave  = 0u,  ///<
 }en_spi_mode_t;
 /**
  ******************************************************************************
- ** \brief SPI 时钟极性设置
+ ** \brief SPI 
  ******************************************************************************/ 
 typedef enum en_spi_cpol
 {
-    Spicpollow   = 0u,  ///<极性为低
-    Spicpolhigh  = 1u,  ///<极性为高
+    Spicpollow   = 0u,  ///<
+    Spicpolhigh  = 1u,  ///<
 }en_spi_cpol_t;
 /**
  ******************************************************************************
- ** \brief SPI 时钟相位设置
+ ** \brief SPI 
  ******************************************************************************/ 
 typedef enum en_spi_cpha
 {
-    Spicphafirst   = 0u,  ///<第一边沿采样
-    Spicphasecond  = 1u,  ///<第二边沿采样
+    Spicphafirst   = 0u,  ///<
+    Spicphasecond  = 1u,  ///<
 }en_spi_cpha_t;
 /**
  ******************************************************************************
- ** \brief SPI 时钟分频配置
+ ** \brief SPI 
  *****************************************************************************/
 typedef enum en_spi_clk_div
 {
-    SpiClkDiv2   = 0u,   ///<2分频       
-    SpiClkDiv4   = 1u,   ///<4分频            
-    SpiClkDiv8   = 2u,   ///<8分频            
-    SpiClkDiv16  = 3u,   ///<16分频            
-    SpiClkDiv32  = 4u,   ///<32分频            
-    SpiClkDiv64  = 5u,   ///<64分频            
-    SpiClkDiv128 = 6u,   ///<128分频            
+    SpiClkDiv2   = 0u,   ///<2       
+    SpiClkDiv4   = 1u,   ///<4            
+    SpiClkDiv8   = 2u,   ///<8            
+    SpiClkDiv16  = 3u,   ///<16            
+    SpiClkDiv32  = 4u,   ///<32            
+    SpiClkDiv64  = 5u,   ///<64            
+    SpiClkDiv128 = 6u,   ///<128            
 }en_spi_clk_div_t;
 
 /**
  ******************************************************************************
- ** \brief SPI 片选脚电平选择
+ ** \brief SPI 
  *****************************************************************************/
 typedef enum en_spi_cspin
 {
-    SpiCsLow  = 0u,      ///<片选低电平         
-    SpiCsHigh = 1u,      ///<片选高电平            
+    SpiCsLow  = 0u,      ///<         
+    SpiCsHigh = 1u,      ///<            
 }en_spi_cspin_t;
 
 /**
  ******************************************************************************
- ** \brief SPI 状态
+ ** \brief SPI 
  *****************************************************************************/
 typedef enum en_spi_status
 {
-    SpiIf              = 0x80,   ///<传输结束中断标志       
-    SpiSserr           = 0x20,   ///<从机模式错误标志    
-    SpiMdf             = 0x10,   ///<主机模式错误标志 
-    SpiBusy            = 0x08,   ///<SPI总线忙标志
-    SpiTxe             = 0x04,   ///<发送缓冲器器空标志
-    SpiRxne            = 0x02,   ///<接受缓冲器非空标志
+    SpiIf              = 0x80,   ///<       
+    SpiSserr           = 0x20,   ///<    
+    SpiMdf             = 0x10,   ///< 
+    SpiBusy            = 0x08,   ///<SPI
+    SpiTxe             = 0x04,   ///<
+    SpiRxne            = 0x02,   ///<
 }en_spi_status_t;
 /**
  ******************************************************************************
- ** \brief SPI 功能开启函数
+ ** \brief SPI 
  *****************************************************************************/
 typedef enum en_spi_func
 {
-    SpiRxNeIe          = 0x40,   ///<接收缓冲器非空中断使能       
-    SpiTxEIe           = 0x20,   ///<发送缓冲器空中断使能    
-    SpiDmaTxEn         = 0x10,   ///<DMA硬件访问发送使能
-    SpiDmaRxEn         = 0x08,   ///<DMA硬件访问接收使能
+    SpiRxNeIe          = 0x40,   ///<       
+    SpiTxEIe           = 0x20,   ///<    
+    SpiDmaTxEn         = 0x10,   ///<DMA
+    SpiDmaRxEn         = 0x08,   ///<DMA
 }en_spi_func_t;
 /**
  ******************************************************************************
- ** \brief SPI 总体配置结构体
+ ** \brief SPI 
  *****************************************************************************/
 typedef struct stc_spi_config
 {
-    boolean_t           bMasterMode;     ///< 主从模式选择
-    uint8_t             u8BaudRate;      ///< 波特率设置
-    boolean_t           bCPOL;           ///< 时钟极性选择
-    boolean_t           bCPHA;           ///< 时钟相位选择
-    boolean_t           bIrqEn;          ///< 中断使能
-    func_ptr_t          pfnSpi0IrqCb;    ///< 中断回调函数
-    func_ptr_t          pfnSpi1IrqCb;    ///< 中断回调函数
+    boolean_t           bMasterMode;     ///< 
+    uint8_t             u8BaudRate;      ///< 
+    boolean_t           bCPOL;           ///< 
+    boolean_t           bCPHA;           ///< 
+    boolean_t           bIrqEn;          ///< 
+    func_ptr_t          pfnSpi0IrqCb;    ///< 
+    func_ptr_t          pfnSpi1IrqCb;    ///< 
 }stc_spi_config_t;
 
-//SPI 中断
+//SPI 
 void Spi_IRQHandler(en_spi_channel_t enCh);
 
-//SPI 获取状态  
+//SPI   
 uint8_t Spi_GetState(en_spi_channel_t enCh);
 boolean_t Spi_GetStatus(en_spi_channel_t enCh,en_spi_status_t enStatus);
-//SPI 清除中断标记
+//SPI 
 en_result_t Spi_ClearStatus(en_spi_channel_t enCh);
-//SPI初始化函数
+//SPI
 en_result_t Spi_Init(en_spi_channel_t enCh,stc_spi_config_t* pstcSpiConfig);
-//SPI 功能使能禁止函数
+//SPI 
 en_result_t Spi_FuncEn(en_spi_channel_t enCh,en_spi_func_t enFunc,boolean_t bFlag);
-//SPI关闭函数
+//SPI
 en_result_t Spi_DeInit(en_spi_channel_t enCh);
-//SPI 配置主发送的电平
+//SPI 
 void Spi_SetCS(en_spi_channel_t enCh,boolean_t bFlag);
-//SPI 发送数据
+//SPI 
 en_result_t Spi_SendData(en_spi_channel_t enCh,uint8_t u8Data);
-//SPI 主机接收数据
+//SPI 
 uint8_t Spi_ReceiveData(en_spi_channel_t enCh,boolean_t bMasterOrSlave);
 
 //@} // Spi Group

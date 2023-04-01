@@ -386,7 +386,7 @@ status_t FFR_SecLibInit(flash_config_t *config, uint32_t *context)
 }
 
 /*!
- * @brief The API is used for getting the customer key store data from the customer key store region(0x3e400 ¨C 0x3e600),
+ * @brief The API is used for getting the customer key store data from the customer key store region(0x3e400 C 0x3e600),
  * and the API should be called after the FLASH_Init and FFR_Init.
  */
 status_t FFR_GetCustKeystoreData(flash_config_t *config, uint8_t *pData, uint32_t offset, uint32_t len)

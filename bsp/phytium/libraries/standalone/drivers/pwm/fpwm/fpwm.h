@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fpwm.h
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-25 11:45:05
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 #ifndef BSP_DRIVERS_FPWM_H
@@ -157,14 +157,14 @@ typedef struct
     u32 irq_prority[FPWM_CHANNEL_NUM];  /* pwm irq priority */
     const char *instance_name;/* instance name */
 
-} FPwmConfig; /* Pwm配置 */
+} FPwmConfig; /* Pwm */
 
 typedef void (*FPwmIntrEventHandler)(void *param);
 
 typedef struct
 {
-    FPwmConfig config;/* Pwm配置 */
-    u32 is_ready;/* Pwm初始化完成标志 */
+    FPwmConfig config;/* Pwm */
+    u32 is_ready;/* Pwm */
 
     u8 channel_ctrl_enable[FPWM_CHANNEL_NUM];   /* pwm channel ctrl enable state */
 

@@ -1,15 +1,15 @@
 /*
- * @ : Copyright (c) 2021 Phytium Information Technology, Inc.
- *
- * SPDX-License-Identifier: Apache-2.0.
- *
+*@:Copyright(c)2021PhytiumInformationTechnology,Inc.
+*
+*SPDX-License-Identifier:Apache-2.0.
+*
  * @Date: 2021-04-25 14:01:29
  * @LastEditTime: 2021-05-26 15:42:52
- * @Description:  This files is for
+ * @Description: This files is for
  *
- * @Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * @ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 #include "drv_spi.h"
@@ -389,7 +389,7 @@ static u32 ft2004_spi_readid_for_test(ft2004_manuid_t *pId)
 
     ft2004_spi_cs(TRUE);
 
-    /* shifting the command code “90H” followed by a 24-bit address */
+    /* shifting the command code 90H followed by a 24-bit address */
     ret |= ft2004_spi_transcation(S25FS_READ_ID, RT_NULL);
 
     /* Manufacturer ID and the Device ID are shifted out */

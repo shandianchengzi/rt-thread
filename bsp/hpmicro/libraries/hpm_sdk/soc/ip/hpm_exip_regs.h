@@ -91,7 +91,7 @@ typedef struct {
  * KBEN (RO)
  *
  * Key Blob Processing Enable
- * “0”, Key Blob processing is not enabled.
+ * 0, Key Blob processing is not enabled.
  * "1", Key Blob processing is enabled.
  */
 #define EXIP_STA_KBEN_MASK (0x40000000UL)
@@ -115,8 +115,8 @@ typedef struct {
  * Context Integrity Error.
  * This field signals an integrity error was detected in a specific context during key blob processing as signaled by SR[KBERR] = 1. bit 19 corresponds to context 3, bit 18 to context 2, bit 17 to context 1, bit 16 to context 0.
  *  This field is cleared if SR[KBERR] was set in response to a write asserting CR[FERR]. It is also cleared when SR[KBERR] is cleared.
- * 0000b - No key blob integrity error was detected for context “n”.
- * 0001b - A key blob integrity error was detected in context “n”.
+ * 0000b - No key blob integrity error was detected for context n.
+ * 0001b - A key blob integrity error was detected in context n.
  */
 #define EXIP_STA_RGNE_MASK (0xF0000UL)
 #define EXIP_STA_RGNE_SHIFT (16U)
@@ -217,10 +217,10 @@ typedef struct {
  * alternatively, if enabled, it can be written using the slave peripheral bus. The two consecutive memorymapped registers directly provide the upper 64 bits of counter storage.
  * Word0: CTR[31:0][C3, C2, C1, C0]
  * Word1: CTR[31:0][C7, C6, C5, C4]
- * The third 32-bit portion of the CTR is formed by exclusive-or’ing the upper 64 bits of the counter as two
+ * The third 32-bit portion of the CTR is formed by exclusive-oring the upper 64 bits of the counter as two
  * 32-bit values, while the least-significant portion of the counter is the 32-bit 0-modulo-16 byte system
  * address of the external flash memory.
- * CTR[C0...C15] = {CTR[C0...C7], CTR[C0...C3] ^ CTR[C4...C7], systemAddress[31–4], 0h}
+ * CTR[C0...C15] = {CTR[C0...C7], CTR[C0...C3] ^ CTR[C4...C7], systemAddress[314], 0h}
  */
 #define EXIP_RGN_CTR0_CTR_MASK (0xFFFFFFFFUL)
 #define EXIP_RGN_CTR0_CTR_SHIFT (0U)
@@ -236,10 +236,10 @@ typedef struct {
  * alternatively, if enabled, it can be written using the slave peripheral bus. The two consecutive memorymapped registers directly provide the upper 64 bits of counter storage.
  * Word0: CTR[31:0][C3, C2, C1, C0]
  * Word1: CTR[31:0][C7, C6, C5, C4]
- * The third 32-bit portion of the CTR is formed by exclusive-or’ing the upper 64 bits of the counter as two
+ * The third 32-bit portion of the CTR is formed by exclusive-oring the upper 64 bits of the counter as two
  * 32-bit values, while the least-significant portion of the counter is the 32-bit 0-modulo-16 byte system
  * address of the external flash memory.
- * CTR[C0...C15] = {CTR[C0...C7], CTR[C0...C3] ^ CTR[C4...C7], systemAddress[31–4], 0h}
+ * CTR[C0...C15] = {CTR[C0...C7], CTR[C0...C3] ^ CTR[C4...C7], systemAddress[314], 0h}
  */
 #define EXIP_RGN_CTR1_CTR_MASK (0xFFFFFFFFUL)
 #define EXIP_RGN_CTR1_CTR_SHIFT (0U)

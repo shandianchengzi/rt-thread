@@ -1,14 +1,14 @@
 /*
- * @ : Copyright (c) 2021 Phytium Information Technology, Inc.
- *
- * SPDX-License-Identifier: Apache-2.0.
+*@:Copyright(c)2021PhytiumInformationTechnology,Inc.
+*
+*SPDX-License-Identifier:Apache-2.0.
  *
  * @Date: 2021-04-27 13:52:41
  * @LastEditTime: 2021-04-27 13:52:41
- * @Description:  Description of file
- * @Modify History:
- * * * Ver   Who        Date         Changes
- * * ----- ------     --------    --------------------------------------
+ * @Description: Descriptionoffile
+ * @ModifyHistory:
+ * **VerWhoDateChanges
+ * *---------------------------------------------------------
  */
 
 #include "ft_can_hw.h"

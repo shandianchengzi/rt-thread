@@ -18,12 +18,12 @@
 #define GREEN            0x07E0
 #define CYAN             0x7FFF
 #define YELLOW           0xFFE0
-#define BROWN            0XBC40 //棕色
-#define BRRED            0XFC07 //棕红色
-#define GRAY             0X8430 //灰色
-#define DARKBLUE         0X01CF //深蓝色
-#define LIGHTBLUE        0X7D7C //浅蓝色
-#define GRAYBLUE         0X5458 //灰蓝色
+#define BROWN            0XBC40 //
+#define BRRED            0XFC07 //
+#define GRAY             0X8430 //
+#define DARKBLUE         0X01CF //
+#define LIGHTBLUE        0X7D7C //
+#define GRAYBLUE         0X5458 //
 
 // lcd spi
 #define LCD_SPI_DEVICE_NAME     "spi40"

@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fi2c_hw.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:36:22
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 /***************************** Include Files *********************************/
@@ -81,10 +81,10 @@ static const FI2cSpeedModeInfo I2C_SPEED_CFG[FI2C_SPEED_MODE_MAX] =
 /************************** Function Prototypes ******************************/
 /**
  * @name: FI2cSetEnable
- * @msg: 设置I2C控制器的使能状态
+ * @msg: I2C
  * @return {*}
- * @param {uintptr} addr， I2c控制器基地址
- * @param {boolean} enable， TRUE: 使能，FALSE: 去使能
+ * @param {uintptr} addr I2c
+ * @param {boolean} enable TRUE: FALSE: 
  */
 FError FI2cSetEnable(uintptr addr, boolean enable)
 {
@@ -108,11 +108,11 @@ FError FI2cSetEnable(uintptr addr, boolean enable)
 
 /**
  * @name: FI2cCalcTiming
- * @msg: 计算I2C的上升沿下降沿配置
+ * @msg: I2C
  * @return {*}
- * @param {u32} bus_clk_hz， I2C总线时钟速度 Hz，默认48MHz
- * @param {u32} spk_cnt, spk数目
- * @param {FI2cSpeedCfg} *speed_cfg_p，速度配置
+ * @param {u32} bus_clk_hz I2C Hz48MHz
+ * @param {u32} spk_cnt, spk
+ * @param {FI2cSpeedCfg} *speed_cfg_p
  */
 static FError FI2cCalcTiming(u32 bus_clk_hz, u32 spk_cnt, FI2cSpeedCfg *speed_cfg_p)
 {
@@ -180,12 +180,12 @@ static FError FI2cCalcTiming(u32 bus_clk_hz, u32 spk_cnt, FI2cSpeedCfg *speed_cf
 
 /**
  * @name: FI2cCalcSpeedCfg
- * @msg: 计算I2C的速度配置
+ * @msg: I2C
  * @return {*}
- * @param {uintptr} addr, I2C控制器基地址
- * @param {u32} speed, I2C传输速率
- * @param {u32} bus_clk_hz, I2C时钟频率
- * @param {FI2cSpeedCfg} *speed_cfg_p, I2C速度配置
+ * @param {uintptr} addr, I2C
+ * @param {u32} speed, I2C
+ * @param {u32} bus_clk_hz, I2C
+ * @param {FI2cSpeedCfg} *speed_cfg_p, I2C
  */
 static FError FI2cCalcSpeedCfg(uintptr addr, u32 speed, u32 bus_clk_hz, FI2cSpeedCfg *speed_cfg_p)
 {
@@ -205,10 +205,10 @@ static FError FI2cCalcSpeedCfg(uintptr addr, u32 speed, u32 bus_clk_hz, FI2cSpee
 
 /**
  * @name: FI2cSetSpeed
- * @msg: 设置I2C控制器的速率
+ * @msg: I2C
  * @return {*}
- * @param {uintptr} addr, I2C控制器基地址
- * @param {u32} speed_rate, I2C传输速率
+ * @param {uintptr} addr, I2C
+ * @param {u32} speed_rate, I2C
  */
 FError FI2cSetSpeed(uintptr addr, u32 speed_rate)
 {
@@ -261,10 +261,10 @@ FError FI2cSetSpeed(uintptr addr, u32 speed_rate)
 
 /**
  * @name: FI2cWaitStatus
- * @msg: 等待特定的I2C状态位直到状态不存在或者超时
+ * @msg: I2C
  * @return {*}
- * @param {uintptr} addr, I2C控制器基地址
- * @param {u32} stat_bit, I2C状态位
+ * @param {uintptr} addr, I2C
+ * @param {u32} stat_bit, I2C
  */
 FError FI2cWaitStatus(uintptr addr, u32 stat_bit)
 {
@@ -288,9 +288,9 @@ FError FI2cWaitStatus(uintptr addr, u32 stat_bit)
 
 /**
  * @name: FI2cWaitBusBusy
- * @msg: 等待I2C总线忙
+ * @msg: I2C
  * @return {*}
- * @param {uintptr} addr, I2C控制器基地址
+ * @param {uintptr} addr, I2C
  */
 FError FI2cWaitBusBusy(uintptr addr)
 {
@@ -309,10 +309,10 @@ FError FI2cWaitBusBusy(uintptr addr)
 
 /**
  * @name: FI2cSetTar
- * @msg: 设置与I2C主机通信的从机地址
+ * @msg: I2C
  * @return {*}
- * @param {uintptr} addr, I2C控制器基地址
- * @param {u32} tar_addr, I2C从机地址
+ * @param {uintptr} addr, I2C
+ * @param {u32} tar_addr, I2C
  */
 FError FI2cSetTar(uintptr addr, u32 tar_addr)
 {
@@ -334,10 +334,10 @@ FError FI2cSetTar(uintptr addr, u32 tar_addr)
 
 /**
  * @name: FI2cSetSar
- * @msg: 从机模式下，设置I2C地址
+ * @msg: I2C
  * @return {*}
- * @param {uintptr} addr, I2C控制器基地址
- * @param {u32} sar_addr, 作为从机的地址
+ * @param {uintptr} addr, I2C
+ * @param {u32} sar_addr, 
  */
 FError FI2cSetSar(uintptr addr, u32 sar_addr)
 {
@@ -359,9 +359,9 @@ FError FI2cSetSar(uintptr addr, u32 sar_addr)
 
 /**
  * @name: FI2cFlushRxFifo
- * @msg: 等待接收Fifo传输完成
+ * @msg: Fifo
  * @return {*}
- * @param {uintptr} addr, I2C控制器基地址
+ * @param {uintptr} addr, I2C
  */
 FError FI2cFlushRxFifo(uintptr addr)
 {
@@ -387,10 +387,10 @@ FError FI2cFlushRxFifo(uintptr addr)
 
 /**
  * @name: FI2cClearIntrBits
- * @msg: 清除中断状态位，返回清除前的中断状态
+ * @msg: 
  * @return {*}
- * @param {uintptr} addr, I2C控制器基地址
- * @param {u32} *last_err_p, Abort错误
+ * @param {uintptr} addr, I2C
+ * @param {u32} *last_err_p, Abort
  */
 u32 FI2cClearIntrBits(uintptr addr, u32 *last_err_p)
 {

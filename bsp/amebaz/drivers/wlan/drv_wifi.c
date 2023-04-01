@@ -110,7 +110,7 @@ unsigned char *rltk_wlan_get_ip(int idx)
 
     LOG_D("F:%s L:%d is run", __FUNCTION__, __LINE__);
 
-    /* 这里留空了，会不会炸未知 */
+    /*  */
     return RT_NULL;
 }
 

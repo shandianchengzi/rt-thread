@@ -42,7 +42,7 @@
 /*****************************************************************************/
 /** \file lpt.h
  **
- ** 低功耗定时器数据结构及API声明
+ ** API
  **  
  **
  ** History:
@@ -82,27 +82,27 @@ extern "C"
 
 /**
  ******************************************************************************
- ** \brief GATE 极性控制数据类型重定义 (GATE_P)
+ ** \brief GATE  (GATE_P)
  *****************************************************************************/
 typedef enum en_lpt_gatep
 {
-    LptActHighLevel = 0u,            ///< 高电平有效
-    LptActLowLevel  = 1u,            ///< 低电平有效
+    LptActHighLevel = 0u,            ///< 
+    LptActLowLevel  = 1u,            ///< 
 }en_lpt_gatep_t;
 
 /**
  ******************************************************************************
- ** \brief 定时器门控数据类型重定义 (GATE)
+ ** \brief  (GATE)
  *****************************************************************************/
 typedef enum en_lpt_gate
 {
-    LptGateDisable = 0u,            ///< 无门控
-    LptGateEnable  = 1u,            ///< 门控使能
+    LptGateDisable = 0u,            ///< 
+    LptGateEnable  = 1u,            ///< 
 }en_lpt_gate_t;
 
 /**
  ******************************************************************************
- ** \brief Lptimer 时钟选择数据类型重定义 (TCK_SEL)
+ ** \brief Lptimer  (TCK_SEL)
  *****************************************************************************/
 typedef enum en_lpt_clksel
 {
@@ -113,59 +113,59 @@ typedef enum en_lpt_clksel
 
 /**
  ******************************************************************************
- ** \brief 翻转输出使能数据类型重定义 (TOG_EN)
+ ** \brief  (TOG_EN)
  *****************************************************************************/
 typedef enum en_lpt_toggle
 {
-    LptTogDisable = 0u,            ///< 翻转输出禁止
-    LptTogEnable  = 1u,            ///< 翻转输出使能
+    LptTogDisable = 0u,            ///< 
+    LptTogEnable  = 1u,            ///< 
 }en_lpt_toggle_t;
 
 /**
  ******************************************************************************
- ** \brief 计数/定时器功能选择数据类型重定义 (CT)
+ ** \brief / (CT)
  *****************************************************************************/
 typedef enum en_lpt_function
 {
-    LptTimer   = 0u,            ///< 定时器功能
-    LptCounter = 1u,            ///< 计数器功能
+    LptTimer   = 0u,            ///< 
+    LptCounter = 1u,            ///< 
 }en_lpt_function_t;
 
 
 /**
  ******************************************************************************
- ** \brief 定时器工作模式数据类型重定义 (MD)
+ ** \brief  (MD)
  *****************************************************************************/
 typedef enum en_lpt_mode
 {
-    Lpt16bitFreeMode  = 0u,         ///< 无重载16位计数器/定时器
-    Lpt16bitArrMode   = 1u,         ///< 自动重装载16位计数器/定时器
+    Lpt16bitFreeMode  = 0u,         ///< 16/
+    Lpt16bitArrMode   = 1u,         ///< 16/
 }en_lpt_mode_t;
 
 /**
  ******************************************************************************
- ** \brief 定时器运行控制数据类型重定义 (TR)
+ ** \brief  (TR)
  *****************************************************************************/
 typedef enum en_lpt_start
 {
-    LptTRDisable = 0u,            ///< 停止
-    LptTREnable  = 1u,            ///< 运行
+    LptTRDisable = 0u,            ///< 
+    LptTREnable  = 1u,            ///< 
 }en_lpt_start_t;
 
 /**
  ******************************************************************************
- ** \brief Lptimer 配置结构体定义 
+ ** \brief Lptimer  
  *****************************************************************************/
 typedef struct stc_lpt_config
 {
-    en_lpt_gatep_t    enGateP;      ///< 门控极性控制
-    en_lpt_gate_t     enGate;       ///< 门控使能
-    en_lpt_clksel_t   enTckSel;     ///< 时钟选择
-    en_lpt_toggle_t   enTog;        ///< 翻转输出使能
-    en_lpt_function_t enCT;         ///< 定时/计数模式选择
-    en_lpt_mode_t     enMD;         ///< 工作模式选择
+    en_lpt_gatep_t    enGateP;      ///< 
+    en_lpt_gate_t     enGate;       ///< 
+    en_lpt_clksel_t   enTckSel;     ///< 
+    en_lpt_toggle_t   enTog;        ///< 
+    en_lpt_function_t enCT;         ///< /
+    en_lpt_mode_t     enMD;         ///< 
     
-    func_ptr_t pfnLpTimCb;          ///< LpTimer中断服务回调函数[void function(void)]
+    func_ptr_t pfnLpTimCb;          ///< LpTimer[void function(void)]
 }stc_lpt_config_t;
 
 
@@ -176,24 +176,24 @@ typedef struct stc_lpt_config
 /******************************************************************************
  * Global function prototypes (definition in C source)
  *****************************************************************************/
-//中断相关函数 
-//中断标志获取
+// 
+//
 boolean_t Lpt_GetIntFlag(void);
-//中断标志清除
+//
 en_result_t Lpt_ClearIntFlag(void);
-//中断使能/禁止
+///
 en_result_t Lpt_EnableIrq (void);
 en_result_t Lpt_DisableIrq(void);
 
-//初始化及相关功能操作
-//Lptimer配置及初始化
+//
+//Lptimer
 en_result_t Lpt_Init(stc_lpt_config_t* pstcConfig);
-//Lptimer 启动/停止
+//Lptimer /
 en_result_t Lpt_Run(void);
 en_result_t Lpt_Stop(void);
-//重载值设置
+//
 en_result_t Lpt_ARRSet(uint16_t u16Data);
-//计数值获取
+//
 en_result_t Lpt_Cnt16Set(uint16_t u16Data);
 uint16_t Lpt_Cnt16Get(void);
 

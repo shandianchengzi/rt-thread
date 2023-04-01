@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fgic_redistributor.h
  * Date: 2022-03-28 14:57:01
  * LastEditTime: 2022-03-28 14:57:01
- * Description:  This file is for
+ * Description: This file is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 #ifndef  DRIVERS_GIC_FGIC_REDISTRIBUTOR_H
 #define  DRIVERS_GIC_FGIC_REDISTRIBUTOR_H

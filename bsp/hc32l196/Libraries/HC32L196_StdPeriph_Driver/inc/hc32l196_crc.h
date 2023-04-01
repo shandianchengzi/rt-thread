@@ -42,7 +42,7 @@
 /******************************************************************************/
 /** \file crc.h
  **
- ** CRC 数据结构及API声明.
+ ** CRC API.
  **
  **   - 2016-05-04  LuX V1.0.
  **
@@ -89,21 +89,21 @@ extern "C"
 /******************************************************************************
  * Global function prototypes (definition in C source)                        
  ******************************************************************************/
-//CRC16 编码值获取
+//CRC16 
 uint16_t CRC16_Get8(uint8_t* pu8Data, uint32_t u32Len);
 uint16_t CRC16_Get16(uint16_t* pu16Data, uint32_t u32Len);
 uint16_t CRC16_Get32(uint32_t* pu32Data, uint32_t u32Len);
-//CRC16 校验
+//CRC16 
 en_result_t CRC16_Check8(uint8_t* pu8Data, uint32_t u32Len, uint16_t u16CRC);
 en_result_t CRC16_Check16(uint16_t* pu16Data, uint32_t u32Len, uint16_t u16CRC);
 en_result_t CRC16_Check32(uint32_t* pu32Data, uint32_t u32Len, uint16_t u16CRC);
 
 
-//CRC32 编码值获取
+//CRC32 
 uint32_t CRC32_Get8(uint8_t* pu8Data, uint32_t u32Len);
 uint32_t CRC32_Get16(uint16_t* pu16Data, uint32_t u32Len);
 uint32_t CRC32_Get32(uint32_t* pu32Data, uint32_t u32Len);
-//CRC32 校验
+//CRC32 
 en_result_t CRC32_Check8(uint8_t* pu8Data, uint32_t u32Len, uint32_t u32CRC);
 en_result_t CRC32_Check16(uint16_t* pu16Data, uint32_t u32Len, uint32_t u32CRC);
 en_result_t CRC32_Check32(uint32_t* pu32Data, uint32_t u32Len, uint32_t u32CRC);

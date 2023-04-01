@@ -1,4 +1,4 @@
-﻿# NuMaker-PFM-M487
+# NuMaker-PFM-M487
 
 ## 1. Introduction
 NuMaker-PFM-M487 provides multiple networking, interfaces, audio recording, playback functions, and flexible extended data storage. 
@@ -48,7 +48,7 @@ Notice: Please install Nu-Link_Keil_Driver or Nu-Link_IAR_Driver for development
 
 ## 3. Program firmware
 ### Step 1:
-At first, you need to configure ISW1 switch on the NuMaker-PFM-M487 board. Set the four switches to ‘ON’ position. After the configuration is done,  connect the NuMaker-PFM-M487 board and your computer using the USB Micro cable. After that, window manager will show a ‘NuMicro MCU’ virtual disk. Finally, you will use this virtual disk to burn firmware.
+At first, you need to configure ISW1 switch on the NuMaker-PFM-M487 board. Set the four switches to ON position. After the configuration is done,  connect the NuMaker-PFM-M487 board and your computer using the USB Micro cable. After that, window manager will show a NuMicro MCU virtual disk. Finally, you will use this virtual disk to burn firmware.
 
 [![NuLinkMe](https://i.imgur.com/daoohon.png "NuLinkMe")](https://i.imgur.com/daoohon.png "NuLinkMe")
 

@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fsemaphore_sinit.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:25:15
- * Description:  This files is for semaphore static init
+ * Description: This files is for semaphore static init
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   zhugengyu  2022/5/23    init commit
  */
 
@@ -41,9 +41,9 @@ extern const FSemaConfig fsema_cfg_tbl[FSEMA_INSTANCE_NUM];
 /************************** Function Prototypes ******************************/
 /**
  * @name: FSemaLoopkupConfig
- * @msg: 获取Semaphore的默认配置
- * @return {const FSemaConfig *} Semaphore的默认配置
- * @param {u32} instance_id, Semaphore的实例id
+ * @msg: Semaphore
+ * @return {const FSemaConfig *} Semaphore
+ * @param {u32} instance_id, Semaphoreid
  */
 const FSemaConfig *FSemaLoopkupConfig(u32 instance_id)
 {

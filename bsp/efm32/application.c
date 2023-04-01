@@ -298,7 +298,7 @@ static void app_main(void *parameter)
     }
 //    rtgui_win_set_box(win_hello, box);
 
-    label = rtgui_label_create("哈罗,盹胖!");
+    label = rtgui_label_create(",!");
     if(label == RT_NULL)
     {
         rt_kprintf("Create lable failed!\n");

@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fsdio.h
  * Date: 2022-05-26 16:20:52
  * LastEditTime: 2022-05-26 16:20:53
- * Description:  This files is for sdio user interface definition
+ * Description: This files is for sdio user interface definition
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   zhugengyu  2021/12/2    init
  * 1.1   zhugengyu  2022/6/6     modify according to tech manual.
  * 1.2   zhugengyu  2022/7/15    adopt to e2000
@@ -93,15 +93,15 @@ typedef void (*FSdioEvtHandler)(FSdio *const instance_p, void *args);
 typedef struct
 {
     u32 attribute; /* ds0 */
-#define FSDIO_IDMAC_DES0_DIC    BIT(1)/* 内部描述表不触发TI/RI中断 */
-#define FSDIO_IDMAC_DES0_LD     BIT(2)/* 数据的最后一个描述符 */
-#define FSDIO_IDMAC_DES0_FD     BIT(3)/* 数据的第一个描述符 */
-#define FSDIO_IDMAC_DES0_CH     BIT(4)/* 链接下一个描述符地址 */
-#define FSDIO_IDMAC_DES0_ER     BIT(5)/* 链表已经到达最后一个链表 */
-#define FSDIO_IDMAC_DES0_CES    BIT(30)/* RINTSTS寄存器错误汇总 */
-#define FSDIO_IDMAC_DES0_OWN    BIT(31)/* 描述符关联DMA，完成传输后该位置置0 */
+#define FSDIO_IDMAC_DES0_DIC    BIT(1)/* TI/RI */
+#define FSDIO_IDMAC_DES0_LD     BIT(2)/*  */
+#define FSDIO_IDMAC_DES0_FD     BIT(3)/*  */
+#define FSDIO_IDMAC_DES0_CH     BIT(4)/*  */
+#define FSDIO_IDMAC_DES0_ER     BIT(5)/*  */
+#define FSDIO_IDMAC_DES0_CES    BIT(30)/* RINTSTS */
+#define FSDIO_IDMAC_DES0_OWN    BIT(31)/* DMA0 */
     u32 non1; /* ds1 --> unused */
-    u32 len; /* ds2 bit[25:13] buffer2 size，bit[12:0] buffer1 size*/
+    u32 len; /* ds2 bit[25:13] buffer2 sizebit[12:0] buffer1 size*/
 #define FSDIO_IDMAC_DES2_BUF1_MASK      GENMASK(12, 0)
 #define FSDIO_IDMAC_DES2_BUF1_SIZE(x)  (FSDIO_IDMAC_DES2_BUF1_MASK & (x))
 #define FSDIO_IDMAC_DES2_BUF2_MASK      GENMASK(25, 13)

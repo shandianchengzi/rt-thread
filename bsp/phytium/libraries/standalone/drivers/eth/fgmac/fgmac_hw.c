@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fgmac_hw.c
  * Date: 2022-04-06 14:46:52
  * LastEditTime: 2022-04-06 14:46:58
- * Description:  This file is for
+ * Description: This file is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 #include "fassert.h"
@@ -47,10 +47,10 @@
 
 /**
  * @name: FGmacGetMacAddr
- * @msg: 获取FGMAC控制器配置的MAC地址
+ * @msg: FGMACMAC
  * @return {*}
- * @param {uintptr} base_addr 控制器寄存器基地址
- * @param {FGmacMacAddr} mac_addr 配置的MAC地址
+ * @param {uintptr} base_addr 
+ * @param {FGmacMacAddr} mac_addr MAC
  */
 void FGmacGetMacAddr(uintptr base_addr, FGmacMacAddr mac_addr)
 {
@@ -72,10 +72,10 @@ void FGmacGetMacAddr(uintptr base_addr, FGmacMacAddr mac_addr)
 
 /**
  * @name: FGmacSetMacAddr
- * @msg: 设置FGMAC控制器的MAC地址
+ * @msg: FGMACMAC
  * @return {*}
- * @param {uintptr} base_addr 控制器寄存器基地址
- * @param {FGmacMacAddr} mac_addr 配置的MAC地址
+ * @param {uintptr} base_addr 
+ * @param {FGmacMacAddr} mac_addr MAC
  */
 void FGmacSetMacAddr(uintptr base_addr, const FGmacMacAddr mac_addr)
 {
@@ -91,22 +91,22 @@ void FGmacSetMacAddr(uintptr base_addr, const FGmacMacAddr mac_addr)
 
 /**
  * @name: FGmacSoftwareReset
- * @msg: 触发FGMAC控制器软件复位    GMac   DMA寄存器列表 和 控制寄存器列表
+ * @msg: FGMAC    GMac   DMA  
  * @return {*}
- * @param {uintptr} base_addr 控制器寄存器基地址
- * @param {int} timeout 等待复位完成的状态检测周期数目
+ * @param {uintptr} base_addr 
+ * @param {int} timeout 
  */
 FError FGmacSoftwareReset(uintptr base_addr, int timeout)
 {
-    FASSERT(timeout > 1); /* 至少等待一个周期 */
+    FASSERT(timeout > 1); /*  */
     u32 reg_val;
 
-    FGMAC_SET_REG32(base_addr, FGMAC_DMA_BUS_MODE_OFFSET, FGMAC_DMA_BUS_SWR); /*最后一位写为1  此时MAC DMA 控制器将复位所有 GMAC子系统内部寄存器和逻辑。 完成后会自动清0*/
+    FGMAC_SET_REG32(base_addr, FGMAC_DMA_BUS_MODE_OFFSET, FGMAC_DMA_BUS_SWR); /*1  MAC DMA  GMAC 0*/
     do
     {
         reg_val = FGMAC_READ_REG32(base_addr, FGMAC_DMA_BUS_MODE_OFFSET);
     }
-    while ((reg_val & FGMAC_DMA_BUS_SWR) && (--timeout > 0));   /*判断swr位是否为1，当读到0时此时判断 复位操作已完成  软件复位成功*/
+    while ((reg_val & FGMAC_DMA_BUS_SWR) && (--timeout > 0));   /*swr10   */
 
     if ((0 >= timeout) && (reg_val & FGMAC_DMA_BUS_SWR))
     {
@@ -119,7 +119,7 @@ FError FGmacSoftwareReset(uintptr base_addr, int timeout)
 
 FError FGmacFlushTxFifo(uintptr base_addr, int timeout)
 {
-    FASSERT(timeout > 1); /* 至少等待一个周期 */
+    FASSERT(timeout > 1); /*  */
     u32 reg_val;
     FGMAC_SET_REG32(base_addr, FGMAC_DMA_OP_OFFSET, FGMAC_DMA_OP_FTF);
 
@@ -143,7 +143,7 @@ FError FGmacFlushTxFifo(uintptr base_addr, int timeout)
  * @msg: wait phy gmii is not busy
  * @param {uintptr} base_addr, base address of FGmac controller register
  * @param {int} timeout, wait timeout
- * @return err code information, FGMAC_SUCCESS indicates success，others indicates failed
+ * @return err code information, FGMAC_SUCCESS indicates successothers indicates failed
  */
 FError FGmacPhyWaitBusBusy(uintptr base_addr, int timeout)
 {

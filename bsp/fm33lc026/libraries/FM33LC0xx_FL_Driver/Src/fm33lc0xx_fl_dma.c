@@ -83,33 +83,33 @@
   */
 
 /**
-  * @brief  复位DMA相关寄存器
-  * @param  DMAx 外设入口地址
-  * @retval 错误状态，可能值
-  *         -FL_PASS 外设寄存器值恢复复位值
-  *         -FL_FAIL 未成功执行
+  * @brief  DMA
+  * @param  DMAx 
+  * @retval 
+  *         -FL_PASS 
+  *         -FL_FAIL 
   */
 FL_ErrorStatus FL_DMA_DeInit(DMA_Type *DMAx)
 {
     assert_param(IS_FL_DMA_INSTANCE(DMAx));
-    /* 使能外设复位 */
+    /*  */
     FL_RCC_EnablePeripheralReset();
-    /* 复位外设寄存器 */
+    /*  */
     FL_RCC_EnableResetAHBPeripheral(FL_RCC_RSTAHB_DMA);
     FL_RCC_DisableResetAHBPeripheral(FL_RCC_RSTAHB_DMA);
-    /* 关闭外设总线始时钟和工作时钟 */
+    /*  */
     FL_RCC_DisableGroup2BusClock(FL_RCC_GROUP2_BUSCLK_DMA);
-    /* 锁定外设复位 */
+    /*  */
     FL_RCC_DisablePeripheralReset();
     return FL_PASS;
 }
 
 /**
-  * @brief  根据 initStruct 的配置信息初始化对应外设入口地址的寄存器值.
-  * @param  DMAx 外设入口地址
-  * @param  initStruct 指向一个 @ref FL_DMA_InitTypeDef 结构体
-  *         其中包含了外设的相关配置信息.
-  * @param  Channel 此参数可取以下值：
+  * @brief   initStruct .
+  * @param  DMAx 
+  * @param  initStruct  @ref FL_DMA_InitTypeDef 
+  *         .
+  * @param  Channel 
   *           @arg @ref FL_DMA_CHANNEL_0
   *           @arg @ref FL_DMA_CHANNEL_1
   *           @arg @ref FL_DMA_CHANNEL_2
@@ -118,30 +118,30 @@ FL_ErrorStatus FL_DMA_DeInit(DMA_Type *DMAx)
   *           @arg @ref FL_DMA_CHANNEL_5
   *           @arg @ref FL_DMA_CHANNEL_6
   *           @arg @ref FL_DMA_CHANNEL_7
-  * @retval 错误状态，可能值：
-  *         -FL_FAIL 配置过程发生错误
-  *         -FL_PASS 配置成功
+  * @retval 
+  *         -FL_FAIL 
+  *         -FL_PASS 
   */
 FL_ErrorStatus FL_DMA_Init(DMA_Type *DMAx, FL_DMA_InitTypeDef *initStruct, uint32_t channel)
 {
-    /* 参数检查 */
+    /*  */
     assert_param(IS_FL_DMA_INSTANCE(DMAx));
     assert_param(IS_FL_DMA_PRIORITY(initStruct->priority));
     assert_param(IS_FL_DMA_CIRC_MODE(initStruct->circMode));
     assert_param(IS_FL_DMA_DIRECTION(initStruct->direction));
     assert_param(IS_FL_DMA_DATA_SIZE(initStruct->dataSize));
     assert_param(IS_FL_DMA_INCMODE(initStruct->memoryAddressIncMode));
-    /* 开启时钟 */
+    /*  */
     FL_RCC_EnableGroup2BusClock(FL_RCC_GROUP2_BUSCLK_DMA);
-    /* 配置通道优先级 */
+    /*  */
     FL_DMA_SetPriority(DMAx, initStruct->priority, channel);
-    /* RAM地址方向 */
+    /* RAM */
     FL_DMA_SetMemoryIncrementMode(DMAx, initStruct->memoryAddressIncMode, channel);
-    /* 传输方向 */
+    /*  */
     FL_DMA_SetTransmissionDirection(DMAx, initStruct->direction, channel);
-    /* 数据宽度 */
+    /*  */
     FL_DMA_SetBandwidth(DMAx, initStruct->dataSize, channel);
-    /* 循环模式 */
+    /*  */
     if(initStruct->circMode == FL_ENABLE)
     {
         FL_DMA_EnableCircularMode(DMAx, channel);
@@ -154,7 +154,7 @@ FL_ErrorStatus FL_DMA_Init(DMA_Type *DMAx, FL_DMA_InitTypeDef *initStruct, uint3
     {
         FL_DMA_DisableCircularMode(DMAx, channel);
     }
-    /* 如果是通道7 外设地址实际就是FLASH地址，因此这里针对通道7做了单独处理 */
+    /* 7 FLASH7 */
     if(channel != FL_DMA_CHANNEL_7)
     {
         assert_param(IS_FL_DMA_PERIPH(initStruct->periphAddress));
@@ -162,15 +162,15 @@ FL_ErrorStatus FL_DMA_Init(DMA_Type *DMAx, FL_DMA_InitTypeDef *initStruct, uint3
     }
     else
     {
-        /* Flash地址方向 */
+        /* Flash */
         FL_DMA_SetFlashIncrementMode(DMAx, initStruct->flashAddressIncMode);
     }
     return FL_PASS;
 }
 
 /**
-  * @brief  将 @ref FL_DMA_InitTypeDef 结构体初始化为默认配置
-  * @param  initStruct 指向需要将值设置为默认配置的结构体 @ref FL_DMA_InitTypeDef 结构体
+  * @brief   @ref FL_DMA_InitTypeDef 
+  * @param  initStruct  @ref FL_DMA_InitTypeDef 
   *
   * @retval None
   */
@@ -193,11 +193,11 @@ void FL_DMA_StructInit(FL_DMA_InitTypeDef *initStruct)
   */
 
 /**
-  * @brief  启动一次DMA传输.
-  * @param  DMAx 外设入口地址
-  * @param  configStruct 指向一个 @ref FL_DMA_ConfigTypeDef 结构体
-  *         其中包含了外设的相关配置信息.
-  * @param  channel 此参数可取以下值:
+  * @brief  DMA.
+  * @param  DMAx 
+  * @param  configStruct  @ref FL_DMA_ConfigTypeDef 
+  *         .
+  * @param  channel :
   *           @arg @ref FL_DMA_CHANNEL_0
   *           @arg @ref FL_DMA_CHANNEL_1
   *           @arg @ref FL_DMA_CHANNEL_2
@@ -206,20 +206,20 @@ void FL_DMA_StructInit(FL_DMA_InitTypeDef *initStruct)
   *           @arg @ref FL_DMA_CHANNEL_5
   *           @arg @ref FL_DMA_CHANNEL_6
   *           @arg @ref FL_DMA_CHANNEL_7
-  * @retval 错误状态，可能值：
-  *         -FL_FAIL 配置过程发生错误可能是超时也可能是地址非法
-  *         -FL_PASS 配置成功
+  * @retval 
+  *         -FL_FAIL 
+  *         -FL_PASS 
   */
 FL_ErrorStatus FL_DMA_StartTransmission(DMA_Type *DMAx, FL_DMA_ConfigTypeDef *configStruct, uint32_t channel)
 {
-    /* 配置传输个数 */
+    /*  */
     FL_DMA_WriteTransmissionSize(DMAx, configStruct->transmissionCount, channel);
-    /* 配置Memory地址 */
+    /* Memory */
     FL_DMA_WriteMemoryAddress(DMAx, configStruct->memoryAddress, channel);
-    /* 清除DMA通道中断标志位 */
+    /* DMA */
     FL_DMA_ClearFlag_TransferHalfComplete(DMAx, channel);
     FL_DMA_ClearFlag_TransferComplete(DMAx, channel);
-    /* 使能DMA通道使能开关 */
+    /* DMA */
     FL_DMA_EnableChannel(DMAx, channel);
     return FL_PASS;
 }

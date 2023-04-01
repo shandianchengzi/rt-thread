@@ -39,15 +39,15 @@
 #define USB_OS_EPDK_TRUE 0
 #define USB_OS_EPDK_FALSE 1
 
-/* 被urb的消费者调用，如hcd的finish函数通知core该urb被执行完毕 */
+/* urbhcdfinishcoreurb */
 static void _urb_done_complete_callback(struct urb *urb)
 {
     // USB_OS_COMPLETE_POST((USB_OS_KERNEL_EVENT *)(urb->context));
     hal_sem_post((hal_sem_t)(urb->context));//akira 20202020
 }
 
-/* urb timeout 处理函数, 其实就是在queue的过程中出现了问题，
-   通过unqueue来并行的做一下，别的地方都是复用的。 */
+/* urb timeout , queue
+   unqueue */
 static void _urb_timeout_process(void *data)
 {
     struct urb *urb = (struct urb *)data;
@@ -66,14 +66,14 @@ static void _urb_timeout_process(void *data)
 // Starts urb and waits for completion or timeout
 // note that this call is NOT interruptible, while
 // many device driver i/o requests should be interruptible
-//timeout   :   != 0时表示有timeout，单位为ms
+//timeout   :   != 0timeoutms
 
-/*  内部函数--发送urb，并等待其完成，或timeout
-    本函数要求可以重入，所以semi和timer得时时分配
-    虽然epos的semi带有timeout 功能，
-    但是为了提高本代码的可移植性
-    将不利用该特性，
-    但是将来为了优化，可以考虑该特性
+/*  --urbtimeout
+    semitimer
+    epossemitimeout 
+    
+    
+    
 */
 static int usb_start_wait_urb(struct urb *urb, int timeout_ms, int *actual_length)
 {
@@ -207,8 +207,8 @@ static int usb_start_wait_urb(struct urb *urb, int timeout_ms, int *actual_lengt
 }
 
 //returns
-//  <0  :   失败
-//  >=0 :   返回的长度
+//  <0  :   
+//  >=0 :   
 int _usb_internal_ctrll_msg(struct usb_host_virt_dev *usb_dev,
                             uint32_t pipe,
                             struct usb_ctrlrequest *cmd,
@@ -228,7 +228,7 @@ int _usb_internal_ctrll_msg(struct usb_host_virt_dev *usb_dev,
         return -ENOMEM;
     }
 
-    //--<2>--填充urb
+    //--<2>--urb
     usb_fill_control_urb(urb,
                          usb_dev,
                          pipe,
@@ -237,7 +237,7 @@ int _usb_internal_ctrll_msg(struct usb_host_virt_dev *usb_dev,
                          len,
                          _urb_done_complete_callback,
                          NULL);
-    //--<3>--发送并等待urb完成或timeout
+    //--<3>--urbtimeout
     retv = usb_start_wait_urb(urb, timeout, &length);
 
     if (retv < 0)
@@ -260,7 +260,7 @@ int _usb_internal_bulk_msg(struct usb_host_virt_dev *usb_dev,
                            int timeout)
 {
     struct urb *urb = NULL;
-    //--<1>--分配一个urb
+    //--<1>--urb
     urb = usb_alloc_urb(0);
 
     if (!urb)
@@ -268,7 +268,7 @@ int _usb_internal_bulk_msg(struct usb_host_virt_dev *usb_dev,
         return -ENOMEM;
     }
 
-    //--<2>--填充一个urb
+    //--<2>--urb
     usb_fill_bulk_urb(urb,
                       usb_dev,
                       pipe,
@@ -276,7 +276,7 @@ int _usb_internal_bulk_msg(struct usb_host_virt_dev *usb_dev,
                       len,
                       _urb_done_complete_callback,
                       NULL);
-    //--<3>--发送urb并等待其完成或timeout
+    //--<3>--urbtimeout
     return usb_start_wait_urb(urb, timeout, actual_length);
 }
 

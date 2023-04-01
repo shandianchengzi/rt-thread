@@ -23,11 +23,11 @@
 <center>
 <h1 id="release-notes-for">Release Notes for</h1>
 <h1 id="stm32wlxx-hal-drivers"><mark>STM32WLxx HAL Drivers</mark></h1>
-<p>Copyright © 2020 STMicroelectronics</p>
+<p>Copyright  2020 STMicroelectronics</p>
 <a href="https://www.st.com" class="logo"><img src="_htmresc/st_logo_2020.png" alt="ST logo" /></a>
 </center>
 <h1 id="license">License</h1>
-<p>This software component is licensed by ST under BSD-3-Clause license, the “License”; You may not use this component except in compliance with the License. You may obtain a copy of the License at:</p>
+<p>This software component is licensed by ST under BSD-3-Clause license, the License; You may not use this component except in compliance with the License. You may obtain a copy of the License at:</p>
 <p><a href="https://opensource.org/licenses/BSD-3-Clause">https://opensource.org/licenses/BSD-3-Clause</a></p>
 <h1 id="purpose">Purpose</h1>
 <p>The STM32Cube HAL and LL, an STM32 abstraction layer embedded software, ensure maximized portability across STM32 portfolio.</p>
@@ -64,11 +64,11 @@
 <ul>
 <li>Update CFGR2 oversampling bitfields conditionally to oversampling enable</li>
 <li>Update timeout mechanism to avoid false timeout detection in case of preemption</li>
-<li>Update wait_loop_index computation so delay in us is always multiplicated by at least value “1”</li>
+<li>Update wait_loop_index computation so delay in us is always multiplicated by at least value 1</li>
 </ul></li>
 <li><strong>HAL COMP</strong> driver
 <ul>
-<li>Update wait_loop_index computation so delay in us is always multiplicated by at least value “1”</li>
+<li>Update wait_loop_index computation so delay in us is always multiplicated by at least value 1</li>
 </ul></li>
 <li><strong>HAL CORTEX</strong> driver
 <ul>
@@ -171,10 +171,10 @@
 <li>Remove an invalid FIFO mode configuration from UART_SetConfig() as it is not is not member of UART_InitTypeDef Structure</li>
 <li>Update HAL_UART_IRQHandler() API to handle receiver timeout interrupt
 <ul>
-<li>Update UART receive processes (IT and DMA) to handle the UART receive’s timeout interrupt</li>
+<li>Update UART receive processes (IT and DMA) to handle the UART receives timeout interrupt</li>
 </ul></li>
 <li>Update arrays definition to be declared as static const</li>
-<li>Fix erroneous UART’s handle state in case of error returned after DMA reception start within UART_Start_Receive_DMA()</li>
+<li>Fix erroneous UARTs handle state in case of error returned after DMA reception start within UART_Start_Receive_DMA()</li>
 <li>Update UART ReceptionType management in case of ReceptionToIdle API are called from RxEvent callback</li>
 <li>Handling of UART concurrent register access in case of race condition between Tx and Rx transfers (HAL UART and LL LPUART)</li>
 </ul></li>

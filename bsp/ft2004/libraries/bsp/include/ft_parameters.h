@@ -1,11 +1,11 @@
 /*
- * @ : Copyright (c) 2021 Phytium Information Technology, Inc.
- *
- * SPDX-License-Identifier: Apache-2.0.
- *
+*@:Copyright(c)2021PhytiumInformationTechnology,Inc.
+*
+*SPDX-License-Identifier:Apache-2.0.
+*
  *  Date: 2021-03-30 14:57:03
  * @LastEditTime: 2021-05-24 14:35:00
- *  Description:  definitions of BSP parameters
+ *  Description: definitions of BSP parameters
  *  Modify History:
  * * * Ver   Who        Date            Changes
  * * ----- ------     --------    ----------------------------------------------

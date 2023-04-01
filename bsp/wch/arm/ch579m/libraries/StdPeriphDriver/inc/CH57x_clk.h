@@ -18,7 +18,7 @@ typedef enum
     CLK_SOURCE_HSE_32MHz,
     CLK_SOURCE_HSE_16MHz,
     CLK_SOURCE_HSE_8MHz,
-    CLK_SOURCE_HSI_32MHz,               //上电默认情况
+    CLK_SOURCE_HSI_32MHz,               //
     CLK_SOURCE_HSI_16MHz,
     CLK_SOURCE_HSI_8MHz,
     CLK_SOURCE_PLL_40MHz,
@@ -94,14 +94,14 @@ typedef enum
   */
 typedef enum
 {
-    Period_0_125_S = 0,         // 0.125s 周期
-    Period_0_25_S,              // 0.25s 周期
-    Period_0_5_S,               // 0.5s 周期
-    Period_1_S,                 // 1s 周期
-    Period_2_S,                 // 2s 周期
-    Period_4_S,                 // 4s 周期
-    Period_8_S,                 // 8s 周期
-    Period_16_S,                // 16s 周期
+    Period_0_125_S = 0,         // 0.125s 
+    Period_0_25_S,              // 0.25s 
+    Period_0_5_S,               // 0.5s 
+    Period_1_S,                 // 1s 
+    Period_2_S,                 // 2s 
+    Period_4_S,                 // 4s 
+    Period_8_S,                 // 8s 
+    Period_16_S,                // 16s 
 }RTC_TMRCycTypeDef;
 
 
@@ -110,8 +110,8 @@ typedef enum
   */
 typedef enum
 {
-    RTC_TRIG_EVENT = 0,         // RTC 触发事件
-    RTC_TMR_EVENT,              // RTC 周期定时事件
+    RTC_TRIG_EVENT = 0,         // RTC 
+    RTC_TMR_EVENT,              // RTC 
 
 }RTC_EVENTTypeDef;
 
@@ -120,38 +120,38 @@ typedef enum
   */
 typedef enum
 {
-    RTC_TRIG_MODE = 0,          // RTC 触发模式
-    RTC_TMR_MODE,               // RTC 周期定时模式
+    RTC_TRIG_MODE = 0,          // RTC 
+    RTC_TMR_MODE,               // RTC 
 
 }RTC_MODETypeDef;
 
 
-void SystemInit(void);                          /* 系统时钟初始化 */
-void SetSysClock( SYS_CLKTypeDef sc);           /* 重设系统运行时钟 */
-UINT32 GetSysClock( void );                     /* 获取当前系统时钟 */
-void HClk32M_Select( HClk32MTypeDef hc);        /* 32M 高频时钟来源 */
-void LClk32K_Select( LClk32KTypeDef hc);        /* 32K 低频时钟来源 */
+void SystemInit(void);                          /*  */
+void SetSysClock( SYS_CLKTypeDef sc);           /*  */
+UINT32 GetSysClock( void );                     /*  */
+void HClk32M_Select( HClk32MTypeDef hc);        /* 32M  */
+void LClk32K_Select( LClk32KTypeDef hc);        /* 32K  */
 
-void HSECFG_Current( HSECurrentTypeDef c );     /* HSE晶体 偏置电流配置 */
-void HSECFG_Capacitance( HSECapTypeDef c );     /* HSE晶体 负载电容配置 */
-void LSECFG_Current( LSECurrentTypeDef c );     /* LSE晶体 偏置电流配置 */
-void LSECFG_Capacitance( LSECapTypeDef c );     /* LSE晶体 负载电容配置 */
+void HSECFG_Current( HSECurrentTypeDef c );     /* HSE  */
+void HSECFG_Capacitance( HSECapTypeDef c );     /* HSE  */
+void LSECFG_Current( LSECurrentTypeDef c );     /* LSE  */
+void LSECFG_Capacitance( LSECapTypeDef c );     /* LSE  */
 
-UINT16 Calibration_LSI( void );             /* 外部32M时钟校准内部32K时钟 */
+UINT16 Calibration_LSI( void );             /* 32M32K */
 
 
-void RTC_InitTime( UINT16 y, UINT16 mon, UINT16 d, UINT16 h, UINT16 m, UINT16 s );          /* RTC时钟初始化当前时间 */
-void RTC_GetTime( PUINT16 py, PUINT16 pmon, PUINT16 pd, PUINT16 ph, PUINT16 pm, PUINT16 ps );       /* 获取当前时间 */
+void RTC_InitTime( UINT16 y, UINT16 mon, UINT16 d, UINT16 h, UINT16 m, UINT16 s );          /* RTC */
+void RTC_GetTime( PUINT16 py, PUINT16 pmon, PUINT16 pd, PUINT16 ph, PUINT16 pm, PUINT16 ps );       /*  */
 
-void RTC_SetCycle32k( UINT32 cyc );                         /* 基于LSE/LSI时钟，配置当前RTC 周期数 */
-UINT32 RTC_GetCycle32k( void );                             /* 基于LSE/LSI时钟，获取当前RTC 周期数 */
+void RTC_SetCycle32k( UINT32 cyc );                         /* LSE/LSIRTC  */
+UINT32 RTC_GetCycle32k( void );                             /* LSE/LSIRTC  */
 
-void RTC_TRIGFunCfg( UINT32 cyc );                          /* RTC触发模式配置间隔时间,基于LSE/LSI时钟，匹配周期数 */
-void RTC_TMRFunCfg( RTC_TMRCycTypeDef t );                  /* RTC定时模式配置 */
-void RTC_ModeFunDisable( RTC_MODETypeDef m );               /* RTC 模式功能关闭 */
+void RTC_TRIGFunCfg( UINT32 cyc );                          /* RTC,LSE/LSI */
+void RTC_TMRFunCfg( RTC_TMRCycTypeDef t );                  /* RTC */
+void RTC_ModeFunDisable( RTC_MODETypeDef m );               /* RTC  */
 
-UINT8 RTC_GetITFlag( RTC_EVENTTypeDef f );                  /* 获取RTC中断标志 */
-void RTC_ClearITFlag( RTC_EVENTTypeDef f );                 /* 清除RTC中断标志 */
+UINT8 RTC_GetITFlag( RTC_EVENTTypeDef f );                  /* RTC */
+void RTC_ClearITFlag( RTC_EVENTTypeDef f );                 /* RTC */
 
 
 

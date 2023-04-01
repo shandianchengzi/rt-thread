@@ -88,10 +88,10 @@
 
 /**
  *****************************************************************************
- ** \brief Timer3 中断标志获取(模式0/1/23)
+ ** \brief Timer3 (0/1/23)
  **
  **
- ** \param [in]  enTim3Irq           中断类型
+ ** \param [in]  enTim3Irq           
  ** 
  ** \retval TRUE or FALSE                                      
  *****************************************************************************/
@@ -108,10 +108,10 @@ boolean_t Tim3_GetIntFlag(en_tim3_irq_type_t enTim3Irq)
 
 /**
  *****************************************************************************
- ** \brief Timer3 中断标志清除(模式0/1/23)
+ ** \brief Timer3 (0/1/23)
  **
  **
- ** \param [in]  enTim3Irq           中断类型
+ ** \param [in]  enTim3Irq           
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -126,7 +126,7 @@ en_result_t Tim3_ClearIntFlag(en_tim3_irq_type_t enTim3Irq)
 
 /**
  *****************************************************************************
- ** \brief Timer3 中断所有标志清除(模式23)
+ ** \brief Timer3 (23)
  **
  **
  ** 
@@ -144,7 +144,7 @@ en_result_t Tim3_ClearAllIntFlag(void)
 
 /**
  *****************************************************************************
- ** \brief Timer3 中断使能(模式0)
+ ** \brief Timer3 (0)
  **
  **
  ** \param [in]  none
@@ -162,7 +162,7 @@ en_result_t Tim3_Mode0_EnableIrq(void)
 
 /**
  *****************************************************************************
- ** \brief Timer3 中断禁止(模式0)
+ ** \brief Timer3 (0)
  **
  **
  ** \param [in]  none
@@ -180,10 +180,10 @@ en_result_t Tim3_Mode0_DisableIrq(void)
 
 /**
  *****************************************************************************
- ** \brief Timer3 中断使能(模式1)
+ ** \brief Timer3 (1)
  **
  **
- ** \param [in]  enTim3Irq           中断类型
+ ** \param [in]  enTim3Irq           
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -210,10 +210,10 @@ en_result_t Tim3_Mode1_EnableIrq (en_tim3_irq_type_t enTim3Irq)
 
 /**
  *****************************************************************************
- ** \brief Timer3 中断禁止(模式1)
+ ** \brief Timer3 (1)
  **
  **
- ** \param [in]  enTim3Irq           中断类型
+ ** \param [in]  enTim3Irq           
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -240,10 +240,10 @@ en_result_t Tim3_Mode1_DisableIrq (en_tim3_irq_type_t enTim3Irq)
 
 /**
  *****************************************************************************
- ** \brief Timer3 中断使能(模式23)
+ ** \brief Timer3 (23)
  **
  **
- ** \param [in]  enTim3Irq           中断类型
+ ** \param [in]  enTim3Irq           
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -291,10 +291,10 @@ en_result_t Tim3_Mode23_EnableIrq (en_tim3_irq_type_t enTim3Irq)
 
 /**
  *****************************************************************************
- ** \brief Timer3 中断禁止(模式23)
+ ** \brief Timer3 (23)
  **
  **
- ** \param [in]  enTim3Irq           中断类型
+ ** \param [in]  enTim3Irq           
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -342,10 +342,10 @@ en_result_t Tim3_Mode23_DisableIrq (en_tim3_irq_type_t enTim3Irq)
 
 /**
  *****************************************************************************
- ** \brief Timer3 初始化配置(模式0)
+ ** \brief Timer3 (0)
  **
  **
- ** \param [in]  pstcCfg       初始化配置结构体指针
+ ** \param [in]  pstcCfg       
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -366,7 +366,7 @@ en_result_t Tim3_Mode0_Init(stc_tim3_mode0_cfg_t* pstcCfg)
 
 /**
  *****************************************************************************
- ** \brief Timer3 启动运行(模式0)
+ ** \brief Timer3 (0)
  **
  **
  ** \param [in]  none
@@ -384,7 +384,7 @@ en_result_t Tim3_M0_Run(void)
 
 /**
  *****************************************************************************
- ** \brief Timer3 停止运行(模式0)
+ ** \brief Timer3 (0)
  **
  **
  ** \param [in]  none
@@ -402,10 +402,10 @@ en_result_t Tim3_M0_Stop(void)
 
 /**
  *****************************************************************************
- ** \brief Timer3 端口输出使能/禁止设定(模式0)
+ ** \brief Timer3 /(0)
  **
  **
- ** \param [in]  bEnOutput          翻转输出设定 TRUE:使能, FALSE:禁止
+ ** \param [in]  bEnOutput           TRUE:, FALSE:
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -421,10 +421,10 @@ en_result_t Tim3_M0_Enable_Output(boolean_t bEnOutput)
 
 /**
  *****************************************************************************
- ** \brief Timer3 翻转使能/禁止（低电平）设定(模式0)
+ ** \brief Timer3 /(0)
  **
  **
- ** \param [in]  bEnTOG          翻转输出设定 TRUE:使能, FALSE:禁止
+ ** \param [in]  bEnTOG           TRUE:, FALSE:
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -439,10 +439,10 @@ en_result_t Tim3_M0_EnTOG(boolean_t bEnTOG)
 
 /**
  *****************************************************************************
- ** \brief Timer3 16位计数器初值设置(模式0)
+ ** \brief Timer3 16(0)
  **
  **
- ** \param [in]  u16Data          CNT 16位初值
+ ** \param [in]  u16Data          CNT 16
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -457,12 +457,12 @@ en_result_t Tim3_M0_Cnt16Set(uint16_t u16Data)
 
 /**
  *****************************************************************************
- ** \brief Timer3 16位计数值获取(模式0)
+ ** \brief Timer3 16(0)
  **
  **
  ** \param [in]  none
  ** 
- ** \retval 16bits计数值                                      
+ ** \retval 16bits                                      
  *****************************************************************************/
 uint16_t Tim3_M0_Cnt16Get(void)
 {
@@ -475,10 +475,10 @@ uint16_t Tim3_M0_Cnt16Get(void)
 
 /**
  *****************************************************************************
- ** \brief Timer3 重载值设置(模式0)
+ ** \brief Timer3 (0)
  **
  **
- ** \param [in]  u16Data          16bits重载值
+ ** \param [in]  u16Data          16bits
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -493,10 +493,10 @@ en_result_t Tim3_M0_ARRSet(uint16_t u16Data)
 
 /**
  *****************************************************************************
- ** \brief Timer3 32位计数器初值设置(模式0)
+ ** \brief Timer3 32(0)
  **
  **
- ** \param [in]  u32Data          32位初值
+ ** \param [in]  u32Data          32
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -511,12 +511,12 @@ en_result_t Tim3_M0_Cnt32Set(uint32_t u32Data)
 
 /**
  *****************************************************************************
- ** \brief Timer3 32位计数值获取(模式0)
+ ** \brief Timer3 32(0)
  **
  **
  ** \param [in]  none
  ** 
- ** \retval 32bits计数值                                      
+ ** \retval 32bits                                      
  *****************************************************************************/
 uint32_t Tim3_M0_Cnt32Get(void)
 {
@@ -529,10 +529,10 @@ uint32_t Tim3_M0_Cnt32Get(void)
 
 /**
  *****************************************************************************
- ** \brief Timer3 初始化配置(模式1)
+ ** \brief Timer3 (1)
  **
  **
- ** \param [in]  pstcCfg       初始化配置结构体指针
+ ** \param [in]  pstcCfg       
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -550,10 +550,10 @@ en_result_t Tim3_Mode1_Init(stc_tim3_mode1_cfg_t* pstcCfg)
 
 /**
  *****************************************************************************
- ** \brief Timer3 PWC 输入配置(模式1)
+ ** \brief Timer3 PWC (1)
  **
  **
- ** \param [in]  pstcCfg       初始化配置结构体指针
+ ** \param [in]  pstcCfg       
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -574,10 +574,10 @@ en_result_t Tim3_M1_Input_Cfg(stc_tim3_pwc_input_cfg_t* pstcCfg)
 
 /**
  *****************************************************************************
- ** \brief Timer3 PWC测量边沿起始结束选择(模式1)
+ ** \brief Timer3 PWC(1)
  **
  **
- ** \param [in]  enEdgeSel           pwc测量起始终止电平
+ ** \param [in]  enEdgeSel           pwc
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -587,21 +587,21 @@ en_result_t Tim3_M1_PWC_Edge_Sel(en_tim3_m1cr_Edge_t enEdgeSel)
         
     switch (enEdgeSel)
     {
-        case 0:                                 ///< 上升沿到上升沿(周期)
-            M0P_TIM3_MODE1->M1CR_f.EDG1ST = 0;  //上升沿
-            M0P_TIM3_MODE1->M1CR_f.EDG2ND = 0;  //上升沿
+        case 0:                                 ///< ()
+            M0P_TIM3_MODE1->M1CR_f.EDG1ST = 0;  //
+            M0P_TIM3_MODE1->M1CR_f.EDG2ND = 0;  //
             break;
-        case 1:                                 ///< 下降沿到上升沿(低电平)
-            M0P_TIM3_MODE1->M1CR_f.EDG1ST = 1;  //下降沿
-            M0P_TIM3_MODE1->M1CR_f.EDG2ND = 0;  //上升沿
+        case 1:                                 ///< ()
+            M0P_TIM3_MODE1->M1CR_f.EDG1ST = 1;  //
+            M0P_TIM3_MODE1->M1CR_f.EDG2ND = 0;  //
             break;
-        case 2:                                 ///< 上升沿到下降沿(高电平)
-            M0P_TIM3_MODE1->M1CR_f.EDG1ST = 0;  //上升沿
-            M0P_TIM3_MODE1->M1CR_f.EDG2ND = 1;  //下降沿
+        case 2:                                 ///< ()
+            M0P_TIM3_MODE1->M1CR_f.EDG1ST = 0;  //
+            M0P_TIM3_MODE1->M1CR_f.EDG2ND = 1;  //
             break;
-        case 3:                                 ///< 下降沿到下降沿(周期)
-            M0P_TIM3_MODE1->M1CR_f.EDG1ST = 1;  //下降沿
-            M0P_TIM3_MODE1->M1CR_f.EDG2ND = 1;  //下降沿
+        case 3:                                 ///< ()
+            M0P_TIM3_MODE1->M1CR_f.EDG1ST = 1;  //
+            M0P_TIM3_MODE1->M1CR_f.EDG2ND = 1;  //
             break;
         default:
             ;
@@ -613,7 +613,7 @@ en_result_t Tim3_M1_PWC_Edge_Sel(en_tim3_m1cr_Edge_t enEdgeSel)
 
 /**
  *****************************************************************************
- ** \brief Timer3 启动运行(模式1)
+ ** \brief Timer3 (1)
  **
  **
  ** \param [in]  none
@@ -631,7 +631,7 @@ en_result_t Tim3_M1_Run(void)
 
 /**
  *****************************************************************************
- ** \brief Timer3 停止运行(模式1)
+ ** \brief Timer3 (1)
  **
  **
  ** \param [in]  none
@@ -649,10 +649,10 @@ en_result_t Tim3_M1_Stop(void)
 
 /**
  *****************************************************************************
- ** \brief Timer3 16位计数器初值设置(模式1)
+ ** \brief Timer3 16(1)
  **
  **
- ** \param [in]  u16Data          16位初值
+ ** \param [in]  u16Data          16
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -667,12 +667,12 @@ en_result_t Tim3_M1_Cnt16Set(uint16_t u16Data)
 
 /**
  *****************************************************************************
- ** \brief Timer3 16位计数值获取(模式1)
+ ** \brief Timer3 16(1)
  **
  **
  ** \param [in]  none
  ** 
- ** \retval 16bits计数值                                      
+ ** \retval 16bits                                      
  *****************************************************************************/
 uint16_t Tim3_M1_Cnt16Get(void)
 {
@@ -685,12 +685,12 @@ uint16_t Tim3_M1_Cnt16Get(void)
 
 /**
  *****************************************************************************
- ** \brief Timer3 脉冲宽度测量结果数值获取(模式1)
+ ** \brief Timer3 (1)
  **
  **
  ** \param [in]  none
  ** 
- ** \retval 16bits脉冲宽度测量结果                                      
+ ** \retval 16bits                                      
  *****************************************************************************/
 uint16_t Tim3_M1_PWC_CapValueGet(void)
 {
@@ -703,10 +703,10 @@ uint16_t Tim3_M1_PWC_CapValueGet(void)
 
 /**
  *****************************************************************************
- ** \brief Timer3 初始化配置(模式23)
+ ** \brief Timer3 (23)
  **
  **
- ** \param [in]  pstcCfg       初始化配置结构体指针
+ ** \param [in]  pstcCfg       
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -729,11 +729,11 @@ en_result_t Tim3_Mode23_Init(stc_tim3_mode23_cfg_t* pstcCfg)
 
 /**
  *****************************************************************************
- ** \brief Timer3 PWM输出使能(模式23)
+ ** \brief Timer3 PWM(23)
  **
  **
- ** \param [in]  bEnOutput          PWM输出使能/禁止设定
- ** \param [in]  bEnAutoOutput      PWM自动输出使能/禁止设定
+ ** \param [in]  bEnOutput          PWM/
+ ** \param [in]  bEnAutoOutput      PWM/
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -750,7 +750,7 @@ en_result_t Tim3_M23_EnPWM_Output(boolean_t bEnOutput, boolean_t bEnAutoOutput)
 
 /**
  *****************************************************************************
- ** \brief Timer3 启动运行(模式23)
+ ** \brief Timer3 (23)
  **
  **
  ** \param [in]  none
@@ -768,7 +768,7 @@ en_result_t Tim3_M23_Run(void)
 
 /**
  *****************************************************************************
- ** \brief Timer3 停止运行(模式23)
+ ** \brief Timer3 (23)
  **
  **
  ** \param [in]  none
@@ -786,11 +786,11 @@ en_result_t Tim3_M23_Stop(void)
 
 /**
  *****************************************************************************
- ** \brief Timer3 重载值设置(模式23)
+ ** \brief Timer3 (23)
  **
  **
- ** \param [in]  u16Data          16bits重载值
- ** \param [in]  bArrBufEn        ARR重载缓存使能TRUE/禁止FALSE
+ ** \param [in]  u16Data          16bits
+ ** \param [in]  bArrBufEn        ARRTRUE/FALSE
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -806,10 +806,10 @@ en_result_t Tim3_M23_ARRSet(uint16_t u16Data, boolean_t bArrBufEn)
 
 /**
  *****************************************************************************
- ** \brief Timer3 16位计数器初值设置(模式23)
+ ** \brief Timer3 16(23)
  **
  **
- ** \param [in]  u16Data          16位初值
+ ** \param [in]  u16Data          16
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -824,12 +824,12 @@ en_result_t Tim3_M23_Cnt16Set(uint16_t u16Data)
 
 /**
  *****************************************************************************
- ** \brief Timer3 16位计数值获取(模式23)
+ ** \brief Timer3 16(23)
  **
  **
  ** \param [in]  none
  ** 
- ** \retval 16bits计数值                                      
+ ** \retval 16bits                                      
  *****************************************************************************/
 uint16_t Tim3_M23_Cnt16Get(void)
 {
@@ -842,11 +842,11 @@ uint16_t Tim3_M23_Cnt16Get(void)
 
 /**
  *****************************************************************************
- ** \brief Timer3 比较捕获寄存器CCRxA/CCRxB设置(模式23)
+ ** \brief Timer3 CCRxA/CCRxB(23)
  **
  **
- ** \param [in]  enCCRSel           CCRxA/CCRxB设定
- ** \param [in]  u16Data            CCRxA/CCRxB 16位初始值
+ ** \param [in]  enCCRSel           CCRxA/CCRxB
+ ** \param [in]  u16Data            CCRxA/CCRxB 16
  ** 
  ** \retval Ok or Error                                     
  *****************************************************************************/
@@ -888,12 +888,12 @@ en_result_t Tim3_M23_CCR_Set(en_tim3_m23_ccrx_t enCCRSel, uint16_t u16Data)
 
 /**
  *****************************************************************************
- ** \brief Timer3 比较捕获寄存器CCRxA/CCRxB读取(模式23)
+ ** \brief Timer3 CCRxA/CCRxB(23)
  **
  **
- ** \param [in]  enCCRSel           CCRxA/CCRxB设定
+ ** \param [in]  enCCRSel           CCRxA/CCRxB
  ** 
- ** \retval 16bitsCCRxA/CCRxB捕获值                                     
+ ** \retval 16bitsCCRxA/CCRxB                                     
  *****************************************************************************/
 uint16_t Tim3_M23_CCR_Get(en_tim3_m23_ccrx_t enCCRSel)
 {
@@ -933,10 +933,10 @@ uint16_t Tim3_M23_CCR_Get(en_tim3_m23_ccrx_t enCCRSel)
 
 /**
  *****************************************************************************
- ** \brief Timer3 PWM互补输出模式下，GATE功能选择(模式23)
+ ** \brief Timer3 PWMGATE(23)
  **
  **
- ** \param [in]  pstcCfg       初始化配置结构体指针
+ ** \param [in]  pstcCfg       
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -953,10 +953,10 @@ en_result_t Tim3_M23_GateFuncSel(stc_tim3_m23_gate_cfg_t* pstcCfg)
 
 /**
  *****************************************************************************
- ** \brief Timer3 主从模式配置(模式23)
+ ** \brief Timer3 (23)
  **
  **
- ** \param [in]  pstcCfg       初始化配置结构体指针
+ ** \param [in]  pstcCfg       
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -974,11 +974,11 @@ en_result_t Tim3_M23_MasterSlave_Set(stc_tim3_m23_master_slave_cfg_t* pstcCfg)
 
 /**
  *****************************************************************************
- ** \brief Timer3 CHxA/CHxB比较通道控制(模式23)
+ ** \brief Timer3 CHxA/CHxB(23)
  **
  **
- ** \param [in]  pstcCfg          初始化配置结构体指针
- ** \param [in]  enTim3Chx        Timer3通道(Tim3CH0, Tim3CH1, Tim3CH2)
+ ** \param [in]  pstcCfg          
+ ** \param [in]  enTim3Chx        Timer3(Tim3CH0, Tim3CH1, Tim3CH2)
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -1037,11 +1037,11 @@ en_result_t Tim3_M23_PortOutput_Cfg(en_tim3_channel_t enTim3Chx, stc_tim3_m23_co
 
 /**
  *****************************************************************************
- ** \brief Timer3 CHxA/CHxB输入控制(模式23)
+ ** \brief Timer3 CHxA/CHxB(23)
  **
  **
- ** \param [in]  pstcCfg          初始化配置结构体指针
- ** \param [in]  enTim3Chx        Timer3通道(Tim3CH0, Tim3CH1, Tim3CH2)
+ ** \param [in]  pstcCfg          
+ ** \param [in]  enTim3Chx        Timer3(Tim3CH0, Tim3CH1, Tim3CH2)
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -1093,10 +1093,10 @@ en_result_t Tim3_M23_PortInput_Cfg(en_tim3_channel_t enTim3Chx, stc_tim3_m23_inp
 
 /**
  *****************************************************************************
- ** \brief Timer3 ERT输入控制(模式23)
+ ** \brief Timer3 ERT(23)
  **
  **
- ** \param [in]  pstcCfg       初始化配置结构体指针
+ ** \param [in]  pstcCfg       
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -1112,10 +1112,10 @@ en_result_t Tim3_M23_ETRInput_Cfg(stc_tim3_m23_etr_input_cfg_t* pstcCfg)
 
 /**
  *****************************************************************************
- ** \brief Timer3 刹车BK输入控制(模式23)
+ ** \brief Timer3 BK(23)
  **
  **
- ** \param [in]  pstcBkCfg      初始化配置结构体指针
+ ** \param [in]  pstcBkCfg      
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -1141,10 +1141,10 @@ en_result_t Tim3_M23_BrakeInput_Cfg(stc_tim3_m23_bk_input_cfg_t* pstcBkCfg)
 
 /**
  *****************************************************************************
- ** \brief Base Timer3 触发ADC控制(模式23)
+ ** \brief Base Timer3 ADC(23)
  **
  **
- ** \param [in]  pstcCfg       初始化配置结构体指针
+ ** \param [in]  pstcCfg       
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -1165,10 +1165,10 @@ en_result_t Tim3_M23_TrigADC_Cfg(stc_tim3_m23_adc_trig_cfg_t* pstcCfg)
 
 /**
  *****************************************************************************
-** \brief Timer3 死区功能(模式23)
+** \brief Timer3 (23)
  **
  **
- ** \param [in]  pstcCfg       初始化配置结构体指针
+ ** \param [in]  pstcCfg       
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -1184,10 +1184,10 @@ en_result_t Tim3_M23_DT_Cfg(stc_tim3_m23_dt_cfg_t* pstcCfg)
 
 /**
  *****************************************************************************
-** \brief Timer3 重复周期设置(模式23)
+** \brief Timer3 (23)
  **
  **
- ** \param [in]  u8ValidPeriod       重复周期值
+ ** \param [in]  u8ValidPeriod       
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -1202,10 +1202,10 @@ en_result_t Tim3_M23_SetValidPeriod(uint8_t u8ValidPeriod)
 
 /**
  *****************************************************************************
- ** \brief Timer3 OCREF清除功能(模式23)
+ ** \brief Timer3 OCREF(23)
  **
  **
- ** \param [in]  pstcCfg       初始化配置结构体指针
+ ** \param [in]  pstcCfg       
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -1221,10 +1221,10 @@ en_result_t Tim3_M23_OCRefClr(stc_tim3_m23_OCREF_Clr_cfg_t* pstcCfg)
 
 /**
  *****************************************************************************
- ** \brief Timer3 使能DMA传输(模式23)
+ ** \brief Timer3 DMA(23)
  **
  **
- ** \param [in]  pstcCfg       初始化配置结构体指针
+ ** \param [in]  pstcCfg       
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -1247,10 +1247,10 @@ en_result_t Tim3_M23_EnDMA(stc_tim3_m23_trig_dma_cfg_t* pstcCfg)
 
 /**
  *****************************************************************************
- ** \brief Timer3 捕获比较A软件触发(模式23)
+ ** \brief Timer3 A(23)
  **
  **
- ** \param [in]  enTim3Chx           Timer3通道(Tim3CH0, Tim3CH1, Tim3CH2)
+ ** \param [in]  enTim3Chx           Timer3(Tim3CH0, Tim3CH1, Tim3CH2)
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -1278,10 +1278,10 @@ en_result_t Tim3_M23_EnSwTrigCapCmpA(en_tim3_channel_t enTim3Chx)
 
 /**
  *****************************************************************************
- ** \brief Timer3 捕获比较B软件触发(模式23)
+ ** \brief Timer3 B(23)
  **
  **
- ** \param [in]  enTim3Chx           Timer3通道(Tim3CH0, Tim3CH1, Tim3CH2)
+ ** \param [in]  enTim3Chx           Timer3(Tim3CH0, Tim3CH1, Tim3CH2)
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -1309,7 +1309,7 @@ en_result_t Tim3_M23_EnSwTrigCapCmpB(en_tim3_channel_t enTim3Chx)
 
 /**
  *****************************************************************************
- ** \brief Timer3 软件更新使能(模式23)
+ ** \brief Timer3 (23)
  **
  **
  ** \param [in]  none
@@ -1327,7 +1327,7 @@ en_result_t Tim3_M23_EnSwUev(void)
 
 /**
  *****************************************************************************
- ** \brief Timer3 软件触发使能(模式23)
+ ** \brief Timer3 (23)
  **
  **
  ** \param [in]  none
@@ -1345,7 +1345,7 @@ en_result_t Tim3_M23_EnSwTrig(void)
 
 /**
  *****************************************************************************
- ** \brief Timer3 软件刹车使能(模式23)
+ ** \brief Timer3 (23)
  **
  **
  ** \param [in]  none

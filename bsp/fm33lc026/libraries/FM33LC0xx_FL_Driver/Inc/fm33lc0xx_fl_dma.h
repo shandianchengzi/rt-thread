@@ -70,25 +70,25 @@ extern "C" {
   */
 typedef struct
 {
-    /*! DMA外设映射地址 */
+    /*! DMA */
     uint32_t periphAddress;
 
-    /*! DMA传输方向 */
+    /*! DMA */
     uint32_t direction;
 
-    /*! RAM地址增长方向 */
+    /*! RAM */
     uint32_t memoryAddressIncMode;
 
-    /*! RAM地址增长方向 */
+    /*! RAM */
     uint32_t flashAddressIncMode;
 
-    /*! DAM传输通道数据位宽 */
+    /*! DAM */
     uint32_t dataSize;
 
-    /*! DMA通道优先级 */
+    /*! DMA */
     uint32_t priority;
 
-    /*! 循环模式使能 */
+    /*!  */
     uint32_t circMode;
 
 } FL_DMA_InitTypeDef;
@@ -98,10 +98,10 @@ typedef struct
   */
 typedef struct
 {
-    /* DMA传输RAM地址 */
+    /* DMARAM */
     uint32_t memoryAddress;
 
-    /* DMA传输请求次数 */
+    /* DMA */
     uint32_t transmissionCount;
 
 } FL_DMA_ConfigTypeDef;

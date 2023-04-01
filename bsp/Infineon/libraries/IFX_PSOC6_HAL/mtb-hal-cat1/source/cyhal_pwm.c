@@ -30,9 +30,9 @@
  * \ingroup group_hal_impl
  * \{
  * \section section_hal_impl_pwm_compl_pins Complementary PWM output
- * The PWM HAL driver allows generation of a normal and an inverted output. PSoC™ devices support
+ * The PWM HAL driver allows generation of a normal and an inverted output. PSoC devices support
  * complementary pin pairs to which the normal and inverted signals can be routed. To identify
- * the complementary pin for a given pin, open the PSoC™ device datasheet and navigate to the
+ * the complementary pin for a given pin, open the PSoC device datasheet and navigate to the
  * 'Multiple Alternate Functions' table. Each column represents an alternate function of the pin
  * in the corresponding row. Find your pin and make a note of the tcpwm[X].line[Y]:Z. The
  * complementary pin is found by looking up the pin against tcpwm[X].line_<b>compl</b>[Y]:Z from
@@ -42,7 +42,7 @@
  * in any order. \image html pwm_compl_pins.png "Complementary PWM pins"
  *
  * \section section_psoc6_pwm_resolution PWM Resolution
- * On CAT1 (PSoC™ 6) devices, not all PWMs hardware blocks are of the same resolution. The
+ * On CAT1 (PSoC 6) devices, not all PWMs hardware blocks are of the same resolution. The
  * resolution of the PWM associated with a given pin is specified by the `TCPWM<idx>_CNT_CNT_WIDTH`
  * macro (provided by cy_device_headers.h in mtb-pdl-cat1), where `<idx>` is the index associated
  * with the `tcpwm` portion of the entry in the pin function table. For example, if the pin

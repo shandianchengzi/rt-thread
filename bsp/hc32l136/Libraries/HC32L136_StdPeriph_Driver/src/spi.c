@@ -86,11 +86,11 @@ static func_ptr_t pfnSpi0Callback = NULL; ///< callback function pointer for SPI
 static func_ptr_t pfnSpi1Callback = NULL; ///< callback function pointer for SPI Irq
 /**
  ******************************************************************************
- ** \brief  SPI 中断处理函数
+ ** \brief  SPI 
  **
- ** \param [in] enCh通道
+ ** \param [in] enCh
  **
- ** \retval 无
+ ** \retval 
  ** 
  ******************************************************************************/
 void Spi_IRQHandler(en_spi_channel_t enCh)
@@ -113,11 +113,11 @@ void Spi_IRQHandler(en_spi_channel_t enCh)
 }
 /**
  ******************************************************************************
- ** \brief  SPI 请求状态获取
+ ** \brief  SPI 
  **
- ** \param [in]enCh 通道
+ ** \param [in]enCh 
  **
- ** \retval 请求状态
+ ** \retval 
  ** 
  ******************************************************************************/
 uint8_t Spi_GetState(en_spi_channel_t enCh)
@@ -136,11 +136,11 @@ uint8_t Spi_GetState(en_spi_channel_t enCh)
 }
 /**
  ******************************************************************************
- ** \brief  SPI 请求状态获取
+ ** \brief  SPI 
  **
- ** \param [in]enCh 通道， enStatus 获取请求
+ ** \param [in]enCh  enStatus 
  **
- ** \retval 请求状态
+ ** \retval 
  ** 
  ******************************************************************************/
 boolean_t Spi_GetStatus(en_spi_channel_t enCh,en_spi_status_t enStatus)
@@ -204,11 +204,11 @@ boolean_t Spi_GetStatus(en_spi_channel_t enCh,en_spi_status_t enStatus)
 }
 /**
  ******************************************************************************
- ** \brief  SPI中断清除
+ ** \brief  SPI
  **
- ** \param [in]enCh 通道， enStatus 获取请求
+ ** \param [in]enCh  enStatus 
  **
- ** \retval 请求状态
+ ** \retval 
  ** 
  ******************************************************************************/
 en_result_t Spi_ClearStatus(en_spi_channel_t enCh)
@@ -228,12 +228,12 @@ en_result_t Spi_ClearStatus(en_spi_channel_t enCh)
 }
 /**
  ******************************************************************************
- ** \brief  SPI 功能使能禁止函数
+ ** \brief  SPI 
  **
- ** \param [in] enCh通道，enFunc功能，bFlag 0/1使能或禁止
+ ** \param [in] enChenFuncbFlag 0/1
  **
- ** \retval Ok初始化成功
- ** \retval ErrorInvalidParameter 初始化错误
+ ** \retval Ok
+ ** \retval ErrorInvalidParameter 
  ******************************************************************************/
 en_result_t Spi_FuncEn(en_spi_channel_t enCh,en_spi_func_t enFunc,boolean_t bFlag)
 {
@@ -284,14 +284,14 @@ en_result_t Spi_FuncEn(en_spi_channel_t enCh,en_spi_func_t enFunc,boolean_t bFla
 }
 /**
  ******************************************************************************
- ** \brief  SPI 总体初始化函数
+ ** \brief  SPI 
  **
  ** \param [in] 
-            enCh通道
-            pstcSpiConfig初始化结构
+            enCh
+            pstcSpiConfig
  **
- ** \retval Ok初始化成功
- ** \retval ErrorInvalidParameter 初始化错误
+ ** \retval Ok
+ ** \retval ErrorInvalidParameter 
  ******************************************************************************/
 en_result_t Spi_Init(en_spi_channel_t enCh,stc_spi_config_t *pstcSpiConfig)
 {
@@ -362,11 +362,11 @@ en_result_t Spi_Init(en_spi_channel_t enCh,stc_spi_config_t *pstcSpiConfig)
 
 /**
  ******************************************************************************
- ** \brief  SPI 禁止函数
+ ** \brief  SPI 
  **
- ** \param [in] enCh通道
+ ** \param [in] enCh
  **
- ** \retval Ok禁止设置成功
+ ** \retval Ok
  ** 
  ******************************************************************************/
 en_result_t Spi_DeInit(en_spi_channel_t enCh)
@@ -392,11 +392,11 @@ en_result_t Spi_DeInit(en_spi_channel_t enCh)
 }
 /**
  ******************************************************************************
- ** \brief  SPI 配置主发送的电平
+ ** \brief  SPI 
  **
- ** \param [in] 高低电平
+ ** \param [in] 
  **
- ** \retval 无
+ ** \retval 
  ** 
  ******************************************************************************/
 void Spi_SetCS(en_spi_channel_t enCh,boolean_t bFlag) 
@@ -413,11 +413,11 @@ void Spi_SetCS(en_spi_channel_t enCh,boolean_t bFlag)
 } 
 /**
  ******************************************************************************
- ** \brief  SPI 发送一字节函数
+ ** \brief  SPI 
  **
- ** \param [in] enCh通道，u8Data发送字节
+ ** \param [in] enChu8Data
  **
- ** \retval Ok发送成功
+ ** \retval Ok
  ** 
  ******************************************************************************/
 en_result_t Spi_SendData(en_spi_channel_t enCh,uint8_t u8Data)
@@ -487,11 +487,11 @@ en_result_t Spi_SendData(en_spi_channel_t enCh,uint8_t u8Data)
 
 /**
  ******************************************************************************
- ** \brief  SPI 接收一字节函数
+ ** \brief  SPI 
  **
- ** \param [in] enCh接收通道
+ ** \param [in] enCh
  **
- ** \retval 接收一字节数据
+ ** \retval 
  ** 
  ******************************************************************************/
 uint8_t Spi_ReceiveData(en_spi_channel_t enCh,boolean_t bMasterOrSlave)

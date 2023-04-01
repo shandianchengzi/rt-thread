@@ -1,6 +1,6 @@
 # STM32F091-Nucleo BSP Introduction
 
-[中文页](README_zh.md) |
+[](README_zh.md) |
 
 ## Introduction
 

@@ -5,7 +5,7 @@
 ;/* used for reference and in an evaluation laboratory environment.      */
 ;/* It is provided on an as-is basis without charge and is subject to    */
 ;/* alterations.                                                         */
-;/* It is the user’s obligation to fully test the software in its        */
+;/* It is the users obligation to fully test the software in its        */
 ;/* environment and to ensure proper functionality, qualification and    */
 ;/* compliance with component specifications.                            */
 ;/*                                                                      */

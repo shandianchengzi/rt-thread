@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fsemaphore_hw.h
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:24:52
- * Description:  This files is for semaphore register definition
+ * Description: This files is for semaphore register definition
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   zhugengyu  2022/5/23    init commit
  */
 
@@ -44,28 +44,28 @@ extern "C"
  * Register offsets from the base address of an Semaphore.
  * @{
  */
-#define FSEMA_RST_REG_OFFSET             0x0U /* 写 1 复位所有信号量 */
-#define FSEMA_IND_RST_REG_OFFSET         0x4U /* 写信号量独热码为 1，复位对应信号量 */
-#define FSEMA_STATE_REG_OFFSET           0x8U /* 信号量 0 ~ 31的状态 */
-#define FSEMA_RLOCK_X_REG_OFFSET(x)      (0x10U + (x) * 4)  /* 信号量 X 读锁定寄存器 */
+#define FSEMA_RST_REG_OFFSET             0x0U /*  1  */
+#define FSEMA_IND_RST_REG_OFFSET         0x4U /*  1 */
+#define FSEMA_STATE_REG_OFFSET           0x8U /*  0 ~ 31 */
+#define FSEMA_RLOCK_X_REG_OFFSET(x)      (0x10U + (x) * 4)  /*  X  */
 
 /** @name FSEMA_RST_REG_OFFSET Register
  */
-#define FSEMA_RST_ALL                   BIT(0) /* 写 1 复位所有信号量 */
+#define FSEMA_RST_ALL                   BIT(0) /*  1  */
 
 /** @name FSEMA_IND_RST_REG_OFFSET Register
  */
-#define FSEMA_IND_RSET(locker_idx)      BIT(locker_idx) /* 写信号量独热码为 1，复位对应信号量 */
+#define FSEMA_IND_RSET(locker_idx)      BIT(locker_idx) /*  1 */
 
 /** @name FSEMA_STATE_REG_OFFSET Register
  */
-#define FSEMA_LOCKER_STATE(locker_idx)  BIT(locker_idx) /* 状态:0 表示解锁，1 表示锁定 */
+#define FSEMA_LOCKER_STATE(locker_idx)  BIT(locker_idx) /* :0 1  */
 
 /** @name FSEMA_RLOCK_X_REG_OFFSET Register
  */
-#define FSEMA_RLOCK_X_UNLOCK               0  /* 写 0：信号量被解锁 */
-/* 读返回 0：信号量当前未被锁定，读后被锁定
-   读返回 1：信号量当前已经被锁定，锁定失败 */
+#define FSEMA_RLOCK_X_UNLOCK               0  /*  0 */
+/*  0
+    1 */
 #define FSEMA_RLOCK_X_IS_LOCKED         1
 #define FSEMA_RLOCK_X_TAKE_LOCKER       0
 
@@ -90,9 +90,9 @@ static inline void FSemaWriteReg(uintptr base_addr, u32 reg_off, u32 reg_val)
 
 /**
  * @name: FSemaHwResetAll
- * @msg: 强制解除所有锁定
- * @return {void} 无
- * @param {uintptr} base_addr, Semaphore 控制器基地址
+ * @msg: 
+ * @return {void} 
+ * @param {uintptr} base_addr, Semaphore 
  */
 static inline void FSemaHwResetAll(uintptr base_addr)
 {
@@ -101,10 +101,10 @@ static inline void FSemaHwResetAll(uintptr base_addr)
 
 /**
  * @name: FSemaHwResetLocker
- * @msg: 强制解除指定锁定
- * @return {void} 无
- * @param {uintptr} base_addr, Semaphore 控制器基地址
- * @param {u32} locker_idx, Semaphore锁id
+ * @msg: 
+ * @return {void} 
+ * @param {uintptr} base_addr, Semaphore 
+ * @param {u32} locker_idx, Semaphoreid
  */
 static inline void FSemaHwResetLocker(uintptr base_addr, u32 locker_idx)
 {
@@ -116,10 +116,10 @@ static inline void FSemaHwResetLocker(uintptr base_addr, u32 locker_idx)
 
 /**
  * @name: FSemaHwGetStatus
- * @msg: 获取锁定状态
- * @return {boolean} TRUE: 被锁定, FALSE: 未被锁定
- * @param {uintptr} base_addr, Semaphore 控制器基地址
- * @param {u32} locker_idx, Semaphore锁id
+ * @msg: 
+ * @return {boolean} TRUE: , FALSE: 
+ * @param {uintptr} base_addr, Semaphore 
+ * @param {u32} locker_idx, Semaphoreid
  */
 static inline boolean FSemaHwGetStatus(uintptr base_addr, u32 locker_idx)
 {
@@ -129,18 +129,18 @@ static inline boolean FSemaHwGetStatus(uintptr base_addr, u32 locker_idx)
 
 /**
  * @name: FSemaTryLockOnce
- * @msg: 尝试锁定
- * @return {boolean} TRUE: 锁定成功
- * @param {uintptr} base_addr, Semaphore 控制器基地址
- * @param {u32} locker_idx, Semaphore锁id
+ * @msg: 
+ * @return {boolean} TRUE: 
+ * @param {uintptr} base_addr, Semaphore 
+ * @param {u32} locker_idx, Semaphoreid
  */
 static inline boolean FSemaTryLockOnce(uintptr base_addr, u32 locker_idx)
 {
     boolean lock_success = FALSE;
-    u32 reg_val = FSemaReadReg(base_addr, FSEMA_RLOCK_X_REG_OFFSET(locker_idx)); /* 读寄存器，尝试上锁 */
+    u32 reg_val = FSemaReadReg(base_addr, FSEMA_RLOCK_X_REG_OFFSET(locker_idx)); /*  */
 
-    /* 读返回 1：信号量之前已经被锁定，本次锁定失败
-       读返回 0：信号量之前未被锁定，本次锁定成功 */
+    /*  1
+        0 */
     return (FSEMA_RLOCK_X_IS_LOCKED & reg_val) ? FALSE : TRUE;
 }
 

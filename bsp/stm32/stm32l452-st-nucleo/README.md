@@ -1,6 +1,6 @@
 # STM32L452-Nucleo BSP Introduction
 
-[中文](README_zh.md) 
+[](README_zh.md) 
 
 ## MCU: STM32L452RE @80MHz, 512KB FLASH, 160KB RAM
 

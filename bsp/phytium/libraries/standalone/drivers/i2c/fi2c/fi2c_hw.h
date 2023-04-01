@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,25 +14,25 @@
  * FilePath: fi2c_hw.h
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:36:32
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 
 #ifndef DRIVERS_I2C_FI2C_HW_H
 #define DRIVERS_I2C_FI2C_HW_H
 
-/* - 传入模块基地址，不能复杂结构体
+/* - 
 - hardware interface of device || low-level driver function prototypes
 
-- 包括驱动寄存器参数和low-level操作定义
-1. 定义寄存器偏移
-2. 对上提供该模块寄存器操作的接口
-3. 一些简单外设提供直接操作接口
-4. 可以定义一些状态的接口，用于响应驱动状态的变化 */
+- low-level
+1. 
+2. 
+3. 
+4.  */
 
 #ifdef __cplusplus
 extern "C"
@@ -133,7 +133,7 @@ extern "C"
 
 /** @name FI2C_HS_MADDR_OFFSET Register
  */
-#define FI2C_IC_HS_MAR GENMASK(2, 0) //I2C High Speed模式主机编码
+#define FI2C_IC_HS_MAR GENMASK(2, 0) //I2C High Speed
 
 /** @name FI2C_DATA_CMD_OFFSET Register
  */
@@ -147,18 +147,18 @@ extern "C"
  *  @name FI2C_INTR_MASK_OFFSET Register
  *  @name FI2C_RAW_INTR_STAT_OFFSET Register
  */
-#define FI2C_INTR_RX_UNDER (0x1 << 0)   /* 接收缓冲区为空 */
-#define FI2C_INTR_RX_OVER (0x1 << 1)    /* 接收缓冲区大小达到 IC_RX_BUFFER_DEPTH ，且还继续从外部接收数据 */
-#define FI2C_INTR_RX_FULL (0x1 << 2)    /* 接收缓冲区大于等于 IC_RX_TL 中设定的门限值（RX_TL) */
-#define FI2C_INTR_TX_OVER (0x1 << 3)    /* 发送缓冲区大小达到 IC_TX_BUFFER_DEPTH，并且还在尝试写数据 */
-#define FI2C_INTR_TX_EMPTY (0x1 << 4)   /* 发送缓冲区小于等于 IC_TX_TL 寄存器中设定的门限值 */
-#define FI2C_INTR_RD_REQ (0x1 << 5)     /* 读请求标志 */
-#define FI2C_INTR_TX_ABRT (0x1 << 6)    /* I2C 不能完成FIFO内容的传输 */
-#define FI2C_INTR_RX_DONE (0x1 << 7)    /* Slave工作模式下，规定时间内没有Master的回应，通信结束 */
-#define FI2C_INTR_ACTIVITY (0x1 << 8)   /* I2C 控制器的活动状态 */
-#define FI2C_INTR_STOP_DET (0x1 << 9)   /* I2C 总线接口上是否产生了 STOP */
-#define FI2C_INTR_START_DET (0x1 << 10) /* I2C 总线接口上是否产生了 START 或 RESTART */
-#define FI2C_INTR_GEN_CALL (0x1 << 11)  /* I2C 总线接口上接收并识别到General Call格式 */
+#define FI2C_INTR_RX_UNDER (0x1 << 0)   /*  */
+#define FI2C_INTR_RX_OVER (0x1 << 1)    /*  IC_RX_BUFFER_DEPTH  */
+#define FI2C_INTR_RX_FULL (0x1 << 2)    /*  IC_RX_TL RX_TL) */
+#define FI2C_INTR_TX_OVER (0x1 << 3)    /*  IC_TX_BUFFER_DEPTH */
+#define FI2C_INTR_TX_EMPTY (0x1 << 4)   /*  IC_TX_TL  */
+#define FI2C_INTR_RD_REQ (0x1 << 5)     /*  */
+#define FI2C_INTR_TX_ABRT (0x1 << 6)    /* I2C FIFO */
+#define FI2C_INTR_RX_DONE (0x1 << 7)    /* SlaveMaster */
+#define FI2C_INTR_ACTIVITY (0x1 << 8)   /* I2C  */
+#define FI2C_INTR_STOP_DET (0x1 << 9)   /* I2C  STOP */
+#define FI2C_INTR_START_DET (0x1 << 10) /* I2C  START  RESTART */
+#define FI2C_INTR_GEN_CALL (0x1 << 11)  /* I2C General Call */
 
 #define FI2C_INTR_ALL_MASK 0x8FF
 

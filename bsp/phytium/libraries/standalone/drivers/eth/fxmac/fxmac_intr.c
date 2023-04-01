@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fxmac_intr.c
  * Date: 2022-04-06 14:46:52
  * LastEditTime: 2022-04-06 14:46:58
- * Description:  This file is for
+ * Description: This file is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 #include "fxmac.h"
@@ -91,11 +91,11 @@ FError FXmacSetHandler(FXmac *instance_p, u32 handler_type,
 
 /**
  * @name: FXmacIntrHandler
- * @msg:  中断处理函数
+ * @msg:  
  * @param {s32} vector is interrrupt num
  * @param {void} *args is a arguments variables
  * @return {*}
- * @note 目前中断只支持单queue的情况
+ * @note queue
  */
 void FXmacIntrHandler(s32 vector, void *args)
 {

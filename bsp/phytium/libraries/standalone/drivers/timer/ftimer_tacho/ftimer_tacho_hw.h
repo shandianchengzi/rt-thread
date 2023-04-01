@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: ftimer_tacho_hw.h
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 09:09:15
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 #ifndef BSP_DRIVERS_E2000_TIMER_HW_H
@@ -35,24 +35,24 @@ extern "C"
 #include "fparameters.h"
 
 /* register offset */
-#define FTIMER_CTRL_REG_OFFSET (0x0)                /*Timer or Tachometer 控制寄存器*/
-#define FTACHO_RESULT_REG_OFFSET (0x4)                /*一个转速周期内的时钟周期计数结果*/
-#define FTIMER_COMP_VALU_OFFSET (0x8)               /*定时计数值高 32 位*/
-#define FTIMER_COMP_VALL_OFFSET (0x1c)              /*timer模式下：定时计数值低32位,tacho模式下：配置tach转速周期 = pulse_num*/
-#define FTIMER_CNT_VALU_OFFSET (0x20)               /*计数器当前计数值高 32 位*/
-#define FTIMER_CNT_VALL_OFFSET (0x24)               /*计数器当前计数值低 32 位*/
-#define FTIMER_INTR_MASK_OFFSET (0x28)              /*中断使能寄存器*/
-#define FTIMER_INTR_STATUS_OFFSET (0x2c)            /*中断状态寄存器*/
-#define FTACHO_OVER_LIM_OFFSET (0x30)               /*预设的 tach 最大值*/
-#define FTACHO_UNDER_LIM_OFFSET (0x34)              /*预设的 tach 最小值*/
-#define FTIMER_START_VAL_OFFSET (0x38)              /*计数器初始值*/
+#define FTIMER_CTRL_REG_OFFSET (0x0)                /*Timer or Tachometer */
+#define FTACHO_RESULT_REG_OFFSET (0x4)                /**/
+#define FTIMER_COMP_VALU_OFFSET (0x8)               /* 32 */
+#define FTIMER_COMP_VALL_OFFSET (0x1c)              /*timer32,tachotach = pulse_num*/
+#define FTIMER_CNT_VALU_OFFSET (0x20)               /* 32 */
+#define FTIMER_CNT_VALL_OFFSET (0x24)               /* 32 */
+#define FTIMER_INTR_MASK_OFFSET (0x28)              /**/
+#define FTIMER_INTR_STATUS_OFFSET (0x2c)            /**/
+#define FTACHO_OVER_LIM_OFFSET (0x30)               /* tach */
+#define FTACHO_UNDER_LIM_OFFSET (0x34)              /* tach */
+#define FTIMER_START_VAL_OFFSET (0x38)              /**/
 
 /* bit set */
 /* timer ctrl */
 #define FTIMER_REG_TACHO_MODE_MASK (0x3 << 0)       /*bit [1:0] RW*/
-#define FTIMER_REG_TACHO_MODE_TIMER (0x0 << 0)      /*定时器功能*/
-#define FTIMER_REG_TACHO_MODE_TACHO (0x1 << 0)      /*tachometer 功能*/
-#define FTIMER_REG_TACHO_MODE_CAPTURE (0x2 << 0)    /*输入 capture 功能*/
+#define FTIMER_REG_TACHO_MODE_TIMER (0x0 << 0)      /**/
+#define FTIMER_REG_TACHO_MODE_TACHO (0x1 << 0)      /*tachometer */
+#define FTIMER_REG_TACHO_MODE_CAPTURE (0x2 << 0)    /* capture */
 
 #define FTIMER_REG_TACHO_RESET (0x1 << 2)           /*in reset status*/
 
@@ -96,45 +96,45 @@ extern "C"
 #define FTACHO_REG_UNDER_MASK GENMASK(30, 0)        /*tacho min value mask*/
 
 /* intr mask */
-#define FTACHO_OVER_INTR_EN (0x1 << 0)              /*tach 超转速中断使能*/
-#define FTACHO_UNDER_INTR_EN (0x1 << 1)             /*tach 低于转速中断使能*/
-#define FTIMER_ROLLOVER_INTR_EN (0x1 << 2)          /*计数器翻转中断使能*/
-#define FTIMER_ONCECMP_INTR_EN (0x1 << 3)           /*一次定时输出中断使能*/
-#define FTIMER_CYCCMP_INTR_EN (0x1 << 4)            /*重复定时输出中断使能*/
-#define FTACHO_CAPTURE_INTR_EN (0x1 << 5)           /*tach 输入捕获中断使能*/
+#define FTACHO_OVER_INTR_EN (0x1 << 0)              /*tach */
+#define FTACHO_UNDER_INTR_EN (0x1 << 1)             /*tach */
+#define FTIMER_ROLLOVER_INTR_EN (0x1 << 2)          /**/
+#define FTIMER_ONCECMP_INTR_EN (0x1 << 3)           /**/
+#define FTIMER_CYCCMP_INTR_EN (0x1 << 4)            /**/
+#define FTACHO_CAPTURE_INTR_EN (0x1 << 5)           /*tach */
 
 #define FTIMER_ALL_INTR_EN (FTIMER_ROLLOVER_INTR_EN | FTIMER_ONCECMP_INTR_EN | FTIMER_CYCCMP_INTR_EN)
 
 /* intr status */
-#define FTACHO_OVER_INTR_STATUS (0x1 << 0)          /*tach 超转速中断*/
-#define FTACHO_UNDER_INTR_STATUS (0x1 << 1)         /*tach 低于转速中断*/
-#define FTIMER_ROLLOVER_INTR_STATUS (0x1 << 2)      /*计数器翻转中断*/
-#define FTIMER_ONCECMP_INTR_STATUS (0x1 << 3)       /*一次定时输出中断*/
-#define FTIMER_CYCCMP_INTR_STATUS (0x1 << 4)        /*重复定时输出中断*/
-#define FTACHO_CAPTURE_INTR_STATUS (0x1 << 5)       /*tach 输入捕获中断*/
+#define FTACHO_OVER_INTR_STATUS (0x1 << 0)          /*tach */
+#define FTACHO_UNDER_INTR_STATUS (0x1 << 1)         /*tach */
+#define FTIMER_ROLLOVER_INTR_STATUS (0x1 << 2)      /**/
+#define FTIMER_ONCECMP_INTR_STATUS (0x1 << 3)       /**/
+#define FTIMER_CYCCMP_INTR_STATUS (0x1 << 4)        /**/
+#define FTACHO_CAPTURE_INTR_STATUS (0x1 << 5)       /*tach */
 
 /**
  * @name: FTIMER_READ_REG32
- * @msg:  读取定时器寄存器
- * @param {u32} addr 定时器的基地址
- * @param {u32} reg_offset   定时器的寄存器的偏移
- * @return {u32} 寄存器参数
+ * @msg:  
+ * @param {u32} addr 
+ * @param {u32} reg_offset   
+ * @return {u32} 
  */
 #define FTIMER_READ_REG32(addr, reg_offset) FtIn32(addr + (u32)reg_offset)
 
 /**
  * @name: FTIMER_WRITE_REG32
- * @msg:  写入定时器寄存器
- * @param {u32} addr 定时器的基地址
- * @param {u32} reg_offset   定时器的寄存器的偏移
- * @param {u32} reg_value    写入寄存器参数
+ * @msg:  
+ * @param {u32} addr 
+ * @param {u32} reg_offset   
+ * @param {u32} reg_value    
  * @return {void}
  */
 #define FTIMER_WRITE_REG32(addr, reg_offset, reg_value) FtOut32(addr + (u32)reg_offset, (u32)reg_value)
 
-#define FTIMER_TIMEOUT 3000     /*超时时间*/
+#define FTIMER_TIMEOUT 3000     /**/
 
-#define FTIMER_BASE_ADDR(instance_p) TIMER_TACHO_BASE_ADDR((instance_p)->config.id)        /*获取设备基地址*/
+#define FTIMER_BASE_ADDR(instance_p) TIMER_TACHO_BASE_ADDR((instance_p)->config.id)        /**/
 /*read and write reg value*/
 #define FTIMER_CTRL_READ(instance_p) FTIMER_READ_REG32(FTIMER_BASE_ADDR(instance_p), FTIMER_CTRL_REG_OFFSET)
 #define FTIMER_CTRL_WRITE(instance_p, regVal) FTIMER_WRITE_REG32(FTIMER_BASE_ADDR(instance_p), FTIMER_CTRL_REG_OFFSET, (regVal))

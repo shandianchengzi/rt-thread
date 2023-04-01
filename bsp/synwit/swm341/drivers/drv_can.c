@@ -70,7 +70,7 @@ struct swm_can_device
     struct swm_can_cfg *can_cfg;
     struct rt_can_device can_device;
 };
-/* SystemCoreClock 152MHz(max) 150MHz不能生成CAN1MBaud */
+/* SystemCoreClock 152MHz(max) 150MHzCAN1MBaud */
 static const struct swm_baud_rate_tab can_baud_rate_tab[] =
     {
         {CAN1MBaud, ((CAN_SJW_4tq << SJW_Pos) | (CAN_BS1_12tq << BS1_Pos) | (CAN_BS2_6tq << BS2_Pos) | (1 << PRESCL_Pos))},
@@ -147,7 +147,7 @@ static rt_err_t swm_can_config(struct rt_can_device *can_device, struct can_conf
 
     baud_index = get_can_baud_index(cfg->baud_rate);
 
-    CAN_Close(can_dev->can_cfg->CANx); //一些关键寄存器只能在CAN关闭时设置
+    CAN_Close(can_dev->can_cfg->CANx); //CAN
 
     can_dev->can_cfg->CANx->CR &= ~(CAN_CR_LOM_Msk | CAN_CR_STM_Msk);
     can_dev->can_cfg->CANx->CR |= (can_mode << CAN_CR_LOM_Pos);
@@ -161,7 +161,7 @@ static rt_err_t swm_can_config(struct rt_can_device *can_device, struct can_conf
 
     can_dev->can_cfg->CANx->BT2 = ((BAUD_DATA(PRESCL, baud_index) >> 6) << CAN_BT2_BRP_Pos);
 
-    can_dev->can_cfg->CANx->RXERR = 0; //只能在复位模式下清除
+    can_dev->can_cfg->CANx->RXERR = 0; //
     can_dev->can_cfg->CANx->TXERR = 0;
 
     /* can start */

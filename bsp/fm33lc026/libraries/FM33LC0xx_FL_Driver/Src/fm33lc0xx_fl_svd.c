@@ -74,16 +74,16 @@
   */
 
 /**
-  * @brief  复位SVD外设
-  * @param  SVDx 外设入口地址
-  * @retval 错误状态，可能值：
-  *         -FL_PASS 外设寄存器值恢复复位值
-  *         -FL_FAIL 未成功执行
+  * @brief  SVD
+  * @param  SVDx 
+  * @retval 
+  *         -FL_PASS 
+  *         -FL_FAIL 
   */
 FL_ErrorStatus FL_SVD_DeInit(SVD_Type *SVDx)
 {
     FL_ErrorStatus status = FL_PASS;
-    /* 入口参数合法性断言 */
+    /*  */
     assert_param(IS_SVD_INSTANCE(SVDx));
     SVDx->CFGR  = 0x00000C08U;
     SVDx->CR    = 0x00000000U;
@@ -93,30 +93,30 @@ FL_ErrorStatus FL_SVD_DeInit(SVD_Type *SVDx)
 }
 
 /**
-  * @brief  配置SVD
-  * @param  SVDx  外设入口地址
-  * @param  initStruct 指向 @ref FL_SVD_InitTypeDef 结构体的指针
+  * @brief  SVD
+  * @param  SVDx  
+  * @param  initStruct  @ref FL_SVD_InitTypeDef 
   *
-  * @retval 错误状态，可能值：
-  *         -FL_PASS 配置成功
-  *         -FL_FAIL 配置过程发生错误
+  * @retval 
+  *         -FL_PASS 
+  *         -FL_FAIL 
   */
 FL_ErrorStatus FL_SVD_Init(SVD_Type *SVDx, FL_SVD_InitTypeDef *initStruct)
 {
     FL_ErrorStatus status = FL_FAIL;
-    /* 参数合法性检查 */
+    /*  */
     assert_param(IS_SVD_INSTANCE(SVDx));
     assert_param(IS_FL_SVD_WARNING_THRESHOLD_LEVEL(initStruct->warningThreshold));
     assert_param(IS_FL_SVD_SVSCONFIG(initStruct->SVSChannel));
     assert_param(IS_FL_SVD_REFERENCE_VOLTAGE(initStruct->referenceVoltage));
     assert_param(IS_FL_SVD_DIGITAL_FILTER(initStruct->digitalFilter));
-    /* 使能工作时钟 */
+    /*  */
     FL_RCC_EnableGroup1BusClock(FL_RCC_GROUP1_BUSCLK_ANAC);
-    /* 检测阈值 */
+    /*  */
     FL_SVD_SetWarningThreshold(SVDx, initStruct->warningThreshold);
-    /* 参考电压通道选择 */
+    /*  */
     FL_SVD_EnableReference(SVD, initStruct->referenceVoltage);
-    /* 外部通道配置 */
+    /*  */
     if(initStruct->SVSChannel == FL_ENABLE)
     {
         FL_SVD_EnableSVSChannel(SVDx);
@@ -125,7 +125,7 @@ FL_ErrorStatus FL_SVD_Init(SVD_Type *SVDx, FL_SVD_InitTypeDef *initStruct)
     {
         FL_SVD_DisableSVSChannel(SVDx);
     }
-    /* 数字滤波配置 */
+    /*  */
     if(initStruct->digitalFilter == FL_ENABLE)
     {
         FL_SVD_EnableDigitalFilter(SVDx);
@@ -139,8 +139,8 @@ FL_ErrorStatus FL_SVD_Init(SVD_Type *SVDx, FL_SVD_InitTypeDef *initStruct)
 }
 
 /**
-  * @brief  将 @ref FL_SVD_InitTypeDef 结构体初始化为默认配置
-  * @param  initStruct 指向 @ref FL_SVD_InitTypeDef 结构体的指针
+  * @brief   @ref FL_SVD_InitTypeDef 
+  * @param  initStruct  @ref FL_SVD_InitTypeDef 
   *
   * @retval None
   */

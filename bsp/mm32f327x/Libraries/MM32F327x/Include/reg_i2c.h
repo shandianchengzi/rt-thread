@@ -194,13 +194,13 @@ typedef struct {
         __IO u32 GCR;                                                          ///< ACK General Call Register                      offset: 0x98
         __IO u32 IC_ACK_GENERAL_CALL;
     };
-    __IO u32 RESERVED32a;                                                       ///_RESERVED;                                     offset: 0x9C
-    __IO u32 RESERVED33;                                                        ///_RESERVED;                                     offset: 0xA0
-    __IO u32 RESERVED34;                                                        ///_RESERVED;                                     offset: 0xA4
-    __IO u32 RESERVED35;                                                        ///_RESERVED;                                     offset: 0xA8
-    __IO u32 RESERVED36;                                                        ///_RESERVED;                                     offset: 0xAC    
-    __IO u32 SLVMASK;                                                           ///<I2C Slave Mode Mask Register                  offset: 0xB0
-    __IO u32 SLVRCVADDR;                                                        ///<I2C Slave Mode Address Register               offset: 0xB4
+    __IO u32 RESERVED32a;                                                       ///_RESERVED;                                     offset:0x9C
+    __IO u32 RESERVED33;                                                        ///_RESERVED;                                     offset:0xA0
+    __IO u32 RESERVED34;                                                        ///_RESERVED;                                     offset:0xA4
+    __IO u32 RESERVED35;                                                        ///_RESERVED;                                     offset:0xA8
+    __IO u32 RESERVED36;                                                        ///_RESERVED;                                     offset:0xAC
+    __IO u32 SLVMASK;                                                           ///<I2CSlaveModeMaskRegister                  offset:0xB0
+    __IO u32 SLVRCVADDR;                                                        ///<I2CSlaveModeAddressRegister               offset:0xB4
 
 } I2C_TypeDef;
 #endif

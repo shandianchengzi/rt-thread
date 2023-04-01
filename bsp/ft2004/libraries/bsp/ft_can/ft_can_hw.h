@@ -1,14 +1,14 @@
 /*
- * @ : Copyright (c) 2021 Phytium Information Technology, Inc.
- *
- * SPDX-License-Identifier: Apache-2.0.
+*@:Copyright(c)2021PhytiumInformationTechnology,Inc.
+*
+*SPDX-License-Identifier:Apache-2.0.
  *
  * @Date: 2021-04-27 13:52:47
  * @LastEditTime: 2021-04-27 13:52:47
- * @Description:  Description of file
- * @Modify History:
- * * * Ver   Who        Date         Changes
- * * ----- ------     --------    --------------------------------------
+ * @Description: Descriptionoffile
+ * @ModifyHistory:
+ * **VerWhoDateChanges
+ * *---------------------------------------------------------
  */
 
 #ifndef FT_CAN_HW_H
@@ -79,7 +79,7 @@
 #define FCAN_INTR_EIC_MASK (0x1 << 23) /* WO */  /*Error interrupt clear*/
 
 /* FCAN_ACC_ID(0-3)_MASK mask */
-#define FCAN_ACC_IDN_MASK 0x1FFFFFFF /* WO */ /*don’t care the matching */
+#define FCAN_ACC_IDN_MASK 0x1FFFFFFF /* WO */ /*dont care the matching */
 /* FCAN_DAT_RATE_CTRL mask */
 
 /* FCAN_ERR_CNT_OFFSET mask */

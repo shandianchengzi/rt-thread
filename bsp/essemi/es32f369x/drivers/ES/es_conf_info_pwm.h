@@ -38,7 +38,7 @@
 
 
 
-/* PWM 配置 */
+/* PWM  */
 
 
 /* codes_main */

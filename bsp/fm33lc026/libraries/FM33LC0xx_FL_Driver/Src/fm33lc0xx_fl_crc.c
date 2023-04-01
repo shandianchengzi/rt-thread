@@ -69,40 +69,40 @@
   */
 
 /**
-  * @brief  复位CRC外设
-  * @param  CRCx 外设入口地址
-  * @retval 错误状态，可能值：
-  *         -FL_PASS 外设寄存器值恢复复位值
-  *         -FL_FAIL 未成功执行
+  * @brief  CRC
+  * @param  CRCx 
+  * @retval 
+  *         -FL_PASS 
+  *         -FL_FAIL 
   */
 FL_ErrorStatus FL_CRC_DeInit(CRC_Type *CRCx)
 {
     assert_param(IS_FL_CRC_INSTANCE(CRCx));
-    /* 外设复位使能 */
+    /*  */
     FL_RCC_EnablePeripheralReset();
-    /* 复位外设寄存器 */
+    /*  */
     FL_RCC_EnableResetAPB2Peripheral(FL_RCC_RSTAPB_CRC);
     FL_RCC_DisableResetAPB2Peripheral(FL_RCC_RSTAPB_CRC);
-    /* 关闭总线时钟 */
+    /*  */
     FL_RCC_DisableGroup2BusClock(FL_RCC_GROUP2_BUSCLK_CRC);
-    /* 锁定外设复位功能 */
+    /*  */
     FL_RCC_DisablePeripheralReset();
     return FL_PASS;
 }
 
 /**
-  * @brief  根据 CRC_InitStruct 的配置信息初始化对应外设入口地址的寄存器值.
+  * @brief   CRC_InitStruct .
   *
-  * @param  CRCx 外设入口地址
-  * @param  CRC_InitStruct 指向一个 @ref FL_CRC_InitTypeDef 结构体其中包含了外设的相关配置信息.
+  * @param  CRCx 
+  * @param  CRC_InitStruct  @ref FL_CRC_InitTypeDef .
   *
-  * @retval 错误状态，可能值：
-  *         -FL_PASS 配置成功
-  *         -FL_FAIL 配置过程发生错误
+  * @retval 
+  *         -FL_PASS 
+  *         -FL_FAIL 
   */
 FL_ErrorStatus FL_CRC_Init(CRC_Type *CRCx, FL_CRC_InitTypeDef *CRC_InitStruct)
 {
-    /* 参数检查 */
+    /*  */
     assert_param(IS_FL_CRC_INSTANCE(CRCx));
     assert_param(IS_FL_CRC_DR_WIDTH(CRC_InitStruct->dataWidth));
     assert_param(IS_FL_CRC_CALCULA_MODE(CRC_InitStruct->calculatMode));
@@ -131,8 +131,8 @@ FL_ErrorStatus FL_CRC_Init(CRC_Type *CRCx, FL_CRC_InitTypeDef *CRC_InitStruct)
 
 
 /**
-  * @brief  将 @ref FL_CRC_InitTypeDef 结构体初始化为默认配置
-  * @param  CRC_InitStruct 指向 @ref FL_CRC_InitTypeDef 结构体的指针
+  * @brief   @ref FL_CRC_InitTypeDef 
+  * @param  CRC_InitStruct  @ref FL_CRC_InitTypeDef 
   *
   * @retval None
   */

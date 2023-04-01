@@ -38,8 +38,8 @@
  */
 #define USB_MAXCHILDREN     (31)
 
-#define USB_MAX_VIRT_SUB_DEV_NR     16      //一个物理设备支持的最大的子设备
-//既复合设备的interface数目
+#define USB_MAX_VIRT_SUB_DEV_NR     16      //
+//interface
 
 
 /*
@@ -98,13 +98,13 @@ struct usb_drv_dev_match_table
 
 struct usb_host_virt_dev;
 
-/* 一个usb设备的ep的抽象，用来描述usb设备的一个ep的属性 */
+/* usbepusbep */
 struct usb_host_virt_endpoint
 {
     struct usb_endpoint_descriptor  desc;
     // struct usb_list_head urb_list;
     struct list_head urb_list;
-    void *hcpriv;   //具体hc的priv的ep结构，如ep_priv
+    void *hcpriv;   //hcprivepep_priv
     unsigned char *extra;   /* Extra descriptors */
     int extralen;
 };
@@ -117,28 +117,28 @@ struct usb_devmap
 
 struct usb_host_func_drv;
 
-/* 总线 */
+/*  */
 struct usb_virt_bus
 {
-    struct usb_list_head  dev_list;     //设备list
-    struct usb_list_head  drv_list;     //驱动list
+    struct usb_list_head  dev_list;     //list
+    struct usb_list_head  drv_list;     //list
 
-    struct hc_gen_dev *point_gen_hcd;   //指向hc_gen_dev
+    struct hc_gen_dev *point_gen_hcd;   //hc_gen_dev
 
-    int busnum;                     /* bus的编号，只要不冲突即可 */
-    const char *bus_name;           /* bus的名字，既"usb_bus" */
-    uint8_t otg_port;                    /* otg端口数目 */
+    int busnum;                     /* bus */
+    const char *bus_name;           /* bus"usb_bus" */
+    uint8_t otg_port;                    /* otg */
 
     uint8_t is_b_host;               /* true during some HNP roleswitches  */
     uint8_t b_hnp_enable;            /* OTG: did A-Host enable HNP */
 
-    uint32_t devnum_next;            /* 下一个dev的地址 */
+    uint32_t devnum_next;            /* dev */
 
-    struct usb_devmap devmap;   /* 地址占用bitmap */
+    struct usb_devmap devmap;   /* bitmap */
 
-    struct usb_host_virt_dev *root_hub; /* 总线上的root hub */
+    struct usb_host_virt_dev *root_hub; /* root hub */
 
-    void *hcpriv;               /* 其实是指向usb_hcd,hc_gen_dev */
+    void *hcpriv;               /* usb_hcd,hc_gen_dev */
 
     unsigned resuming_ports;    /* bit array: resuming root-hub ports */
 
@@ -157,24 +157,24 @@ struct usb_virt_bus
     //struct metux bus_metux;
 };
 
-/* 是连接usb_host_virt_dev和usb_interface的桥梁
- * 在usb_set_configuration()的时候被使用
+/* usb_host_virt_devusb_interface
+ * usb_set_configuration()
  *
- * 可以看做是一个lun
+ * lun
  */
 struct usb_host_virt_sub_dev
 {
-    struct usb_host_func_drv *func_drv;     //指向功能驱动
+    struct usb_host_func_drv *func_drv;     //
     //USB_OS_KERNEL_EVENT    *usb_virt_sub_dev_semi;
     hal_sem_t    usb_virt_sub_dev_semi;
 
-    struct usb_host_virt_dev *father_dev;       //指向其father
-    struct usb_interface *sub_dev_interface;        //指向其下游，既interface
+    struct usb_host_virt_dev *father_dev;       //father
+    struct usb_interface *sub_dev_interface;        //interface
 
-    void *drv_pirv_data;                        //存储临时数据
+    void *drv_pirv_data;                        //
 };
 
-/* 对应一个物理设备 */
+/*  */
 struct usb_host_virt_dev
 {
     struct usb_host_virt_sub_dev virt_sub_dev_array[USB_MAX_VIRT_SUB_DEV_NR];
@@ -183,64 +183,64 @@ struct usb_host_virt_dev
     hal_sem_t    usb_virt_dev_semi;
 
     int devnum;                     /* Address on USB bus */
-    enum usb_device_state   state;  /* 设备当前的state,configured, not attached */
-    enum usb_device_speed   speed;  /* 设备的当前速度 */
+    enum usb_device_state   state;  /* state,configured, not attached */
+    enum usb_device_speed   speed;  /*  */
     int     ttport;                 /* device port on that tt hub  */
 
-    unsigned int toggle[2];         /* 该设备的各个ep的toggle */
+    unsigned int toggle[2];         /* eptoggle */
     /* one bit for each endpoint ([0] = IN, [1] = OUT) */
 
-    struct usb_host_virt_dev *parent;   /* 设备连接的那个hub, root hub 除外 */
-    struct usb_virt_bus *bus;           /* 设备连接的那条总线 */
-    uint32_t  hub_port;                    /* 设备所在hun的port */
+    struct usb_host_virt_dev *parent;   /* hub, root hub  */
+    struct usb_virt_bus *bus;           /*  */
+    uint32_t  hub_port;                    /* hunport */
 
-    struct usb_device_descriptor descriptor;    /* 设备描述符 */
-    struct usb_host_virt_config *config;        /* 设备配置 */
-    struct usb_host_virt_config *actconfig;     /* 被挑选用来配置的那个配置描述符 */
+    struct usb_device_descriptor descriptor;    /*  */
+    struct usb_host_virt_config *config;        /*  */
+    struct usb_host_virt_config *actconfig;     /*  */
 
     struct usb_host_virt_endpoint ep0;
-    struct usb_host_virt_endpoint *ep_in[16];   /* 找到ep的快速通道 */
-    struct usb_host_virt_endpoint *ep_out[16];  /* 找到ep的快速通道 */
+    struct usb_host_virt_endpoint *ep_in[16];   /* ep */
+    struct usb_host_virt_endpoint *ep_out[16];  /* ep */
 
-    u8 **rawdescriptors;    /* 存放各个物理config(包括下游的)入口, 既这是个索引数组 */
+    u8 **rawdescriptors;    /* config(),  */
     int have_langid;        /* whether string_langid is valid yet */
     int string_langid;      /* language ID for strings  */
     char *manufacturer;     /*  */
     char *product;          /*  */
     char *serial;           /*  */
 
-    int maxchild;       /* 该hub的port数目  */
+    int maxchild;       /* hubport  */
     struct usb_host_virt_dev *children[USB_MAXCHILDREN];
 };
 
 
 struct usb_host_func_drv_ext
 {
-    int32_t (*probe_ext)(struct usb_host_virt_sub_dev *dev);    //对usb_host_func_drv{}的probe的extend
-    //目前为_usb_core_func_drv_probe_interface()
-    int32_t (*disconnect_ext)(struct usb_host_virt_sub_dev *dev);   /* 指向真实的drv */
+    int32_t (*probe_ext)(struct usb_host_virt_sub_dev *dev);    //usb_host_func_drv{}probeextend
+    //_usb_core_func_drv_probe_interface()
+    int32_t (*disconnect_ext)(struct usb_host_virt_sub_dev *dev);   /* drv */
 };
 
 #define USB_HOST_FUNC_DRV_PROBE_SUCCESS    0x11
 #define USB_HOST_FUNC_DRV_PROBE_FAIL       0x22
 
-/* usb总线上的驱动，功能驱动 */
+/* usb */
 struct usb_host_func_drv
 {
-    struct usb_list_head  virt_dev_list;  /* 与本驱动关联的virt_dev */
-    const char *func_drv_name;                  //驱动名
-    const char *func_drv_auther;      /* 作者   */
+    struct usb_list_head  virt_dev_list;  /* virt_dev */
+    const char *func_drv_name;                  //
+    const char *func_drv_auther;      /*    */
 
     int32_t(*probe)(struct usb_interface *intf, const struct usb_drv_dev_match_table *id);
-    void (*disconnect)(struct usb_interface *intf);     //在unmatch的时候调用
+    void (*disconnect)(struct usb_interface *intf);     //unmatch
     int(*ioctl)(struct usb_interface *intf, unsigned int code, void *buf);
     int32_t(*suspend)(struct usb_interface *intf);
     int(*resume)(struct usb_interface *intf);
 
-    const struct usb_drv_dev_match_table *match_table;  //支持设备列表
+    const struct usb_drv_dev_match_table *match_table;  //
 
     //===========================================================
-    //==下面部分是usb core会处理，func drv的编写者不用关心===
+    //==usb corefunc drv===
     //===========================================================
     struct usb_host_func_drv_ext  func_drv_ext;
 };
@@ -275,44 +275,44 @@ typedef void (*usb_complete_t)(URB *my_urb);
 struct urb
 {
     hal_spinlock_t lock_urb;                     // lock for the URB
-    //USB_OS_KERNEL_SOFT_TIMER *wait_urb_timer;   //本urb的timerout timer
+    //USB_OS_KERNEL_SOFT_TIMER *wait_urb_timer;   //urbtimerout timer
     osal_timer_t wait_urb_timer;
-    void *hcpriv;                               //其实是指向hcd的私有数据
+    void *hcpriv;                               //hcd
     int32_t bandwidth;                              //bandwidth for INT/ISO request
     uint32_t use_count;                              //concurrent submissions counter
     uint8_t reject;                                  //submissions will fail
     int unlinked;                               //unlink error code
 
-    struct usb_host_virt_dev *dev;              //目标dev
+    struct usb_host_virt_dev *dev;              //dev
 
-    uint32_t pipe;                                   //目标dev上的pipe
+    uint32_t pipe;                                   //devpipe
     int32_t status;                                 //(return) non-ISO status
     uint32_t transfer_flags;                         // (in) URB_SHORT_NOT_OK | ...
 
     struct usb_host_virt_endpoint *ep;      /* (internal) pointer to endpoint */
-    void *transfer_buffer;                      //要发送的data 的buff
+    void *transfer_buffer;                      //data buff
 
-    unsigned long transfer_dma;                           //dma addr,不支持的时候为0
-    int32_t transfer_buffer_length;                 //要发送的长度
+    unsigned long transfer_dma;                           //dma addr,0
+    int32_t transfer_buffer_length;                 //
     int32_t actual_length;                          //actual transfer length
 
     uint8_t *setup_packet;                           //setup packet (control only)
-    unsigned long setup_dma;                              //dma addr for setup_packet, 不支持的时候为0
+    unsigned long setup_dma;                              //dma addr for setup_packet, 0
     int32_t start_frame;                            //start frame (ISO)
     int32_t number_of_packets;                      //number of ISO packets */
     int32_t interval;                               //transfer interval (INT/ISO)
     int32_t error_count;                            //number of ISO errors
-    void *context;                              //context for completion, 一般为USB_OS_KERNEL_EVENT
+    void *context;                              //context for completion, USB_OS_KERNEL_EVENT
     usb_complete_t complete;                    //completion routine
 
     //struct usb_iso_packet_descriptor iso_frame_desc[0];   //ISO ONLY
-    // struct usb_list_head *wrapper_urb;              //指向本结构的wrapper，
-    struct list_head urb_list;              //指向本结构的wrapper，
+    // struct usb_list_head *wrapper_urb;              //wrapper
+    struct list_head urb_list;              //wrapper
 
     uint32_t urb_sn;                                 //urb sn ,just for debug
 
-    uint32_t is_busy;                                /* flag. urb是否正在被hcd处理, urb dequeue时有用 */
-    uint32_t need_dispose;                           /* flag. urb是否需要被hcd处理, urb dequeue时有用 */
+    uint32_t is_busy;                                /* flag. urbhcd, urb dequeue */
+    uint32_t need_dispose;                           /* flag. urbhcd, urb dequeue */
     struct usb_iso_packet_descriptor iso_frame_desc[0];
 };
 
@@ -434,20 +434,20 @@ static inline void usb_fill_int_urb(struct urb *urb,
 //#define USB_MAXINTERFACES 32
 #define USB_MAXINTERFACES   16
 
-/* host端的config */
+/* hostconfig */
 struct usb_host_virt_config
 {
-    struct usb_config_descriptor desc;      //物理config desc 自身，不包括下游
+    struct usb_config_descriptor desc;      //config desc 
 
     char *string;
 
     /* the interfaces associated with this configuration,
      * stored in no particular order */
-    struct usb_interface *interfac[USB_MAXINTERFACES];  //是后期set config时候创建与物理desc无关
+    struct usb_interface *interfac[USB_MAXINTERFACES];  //set configdesc
 
     /* Interface information available even when this is not the
      * active configuration */
-    struct usb_interface_cache *intf_cache[USB_MAXINTERFACES];  //指向各个interface
+    struct usb_interface_cache *intf_cache[USB_MAXINTERFACES];  //interface
     unsigned char *extra;
     int extralen;
 };
@@ -462,7 +462,7 @@ struct usb_host_virt_interface
     /* array of desc.bNumEndpoint endpoints associated with this
      * interface setting.  these will be in no particular order.
      */
-    struct usb_host_virt_endpoint *endpoint;    //有desc.bNumEndpoint个
+    struct usb_host_virt_endpoint *endpoint;    //desc.bNumEndpoint
 
     char *string;               /* iInterface string, if present */
     unsigned char *extra;       /* Extra descriptors */
@@ -478,14 +478,14 @@ enum usb_interface_condition
     USB_INTERFACE_UNBINDING
 };
 
-/* 主机端interface，一个interface对应一个逻辑device */
+/* interfaceinterfacedevice */
 struct usb_interface
 {
-    struct usb_host_virt_sub_dev *virt_sub_dev;     //指向virt_sub_dev
+    struct usb_host_virt_sub_dev *virt_sub_dev;     //virt_sub_dev
 
     /* array of alternate settings for this interface,
      * stored in no particular order */
-    struct usb_host_virt_interface *altsetting;     //指向usb_interface_cache->
+    struct usb_host_virt_interface *altsetting;     //usb_interface_cache->
     struct usb_host_virt_interface *cur_altsetting; // the currently active alternate setting
     uint32_t num_altsetting; /* number of alternate settings */
     int32_t minor;              /* minor number this interface is bound to */
@@ -510,11 +510,11 @@ struct usb_interface
  * structures at any time, permitting comparison of configurations and
  * providing support for the /proc/bus/usb/devices pseudo-file.
  */
-//用来描述一个interface,包括其下的AlternateSetting
+//interface,AlternateSetting
 struct usb_interface_cache
 {
     uint8_t num_altsetting;  //number of alternate settings
-    struct usb_host_virt_interface *altsetting_array;   //指向usb_host_virt_interface[],其有效长度为
+    struct usb_host_virt_interface *altsetting_array;   //usb_host_virt_interface[],
 };
 
 /* -------------------------------------------------------------------------- */

@@ -88,11 +88,11 @@ static func_ptr_t    pfnAdtIrqCbk[3][16] = {NULL};
 
 /*************************************************
  * \brief   
- *          使能NVIC中ADT中断
+ *          NVICADT
  *
- * \param   [in]  enIrqn  中断号
+ * \param   [in]  enIrqn  
  *
- * \retval  无
+ * \retval  
  **************************************************/
 static void AdtEnableNvic(IRQn_Type enIrqn)
 {
@@ -103,11 +103,11 @@ static void AdtEnableNvic(IRQn_Type enIrqn)
 
 /**************************************************
  * \brief   
- *          除能NVIC中ADT中断
+ *          NVICADT
  *
- * \param   [in]  enIrqn  中断号
+ * \param   [in]  enIrqn  
  *
- * \retval  无
+ * \retval  
  **************************************************/
 static void AdtDisableNvic(IRQn_Type enIrqn)
 {
@@ -118,11 +118,11 @@ static void AdtDisableNvic(IRQn_Type enIrqn)
 
 /***************************************************
  * \brief   
- *          ADT中断服务程序
+ *          ADT
  *
- * \param   [in]  u8Param  未使用
+ * \param   [in]  u8Param  
  *
- * \retval  无
+ * \retval  
  ****************************************************/
 void Adt_IRQHandler(uint8_t u8Param)
 {
@@ -213,15 +213,15 @@ void Adt_IRQHandler(uint8_t u8Param)
 
 /*****************************************************************
  * \brief   
- *          配置中断
+ *          
  *
- * \param   [in]  enAdtUnit     ADV Timer通道选择（TIM4、TIM5、TIM6）
- * \param   [in]  enAdtIrq      中断类型
- * \param   [in]  bEn           中断使能/禁止
- * \param   [in]  pfnIrqCalbak  回调函数指针
+ * \param   [in]  enAdtUnit     ADV TimerTIM4TIM5TIM6
+ * \param   [in]  enAdtIrq      
+ * \param   [in]  bEn           /
+ * \param   [in]  pfnIrqCalbak  
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  ****************************************************************/
 en_result_t Adt_ConfigIrq(en_adt_unit_t enAdtUnit,
                           en_adt_irq_type_t enAdtIrq,
@@ -253,14 +253,14 @@ en_result_t Adt_ConfigIrq(en_adt_unit_t enAdtUnit,
 
 /*******************************************************************
  * \brief   
- *          获取中断标志
+ *          
  *
- * \param   [in]  enAdtUnit     ADV Timer通道选择（TIM4、TIM5、TIM6）
- * \param   [in]  enAdtIrq      中断类型
- * \param   [in]  pbFlag        中断标志指针
+ * \param   [in]  enAdtUnit     ADV TimerTIM4TIM5TIM6
+ * \param   [in]  enAdtIrq      
+ * \param   [in]  pbFlag        
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  *****************************************************************/
 en_result_t Adt_GetIrqFlag(en_adt_unit_t enAdtUnit,
                            en_adt_irq_type_t enAdtIrq,
@@ -282,13 +282,13 @@ en_result_t Adt_GetIrqFlag(en_adt_unit_t enAdtUnit,
 
 /****************************************************************
  * \brief   
- *          清除中断标志
+ *          
  *
- * \param   [in]  enAdtUnit     ADV Timer通道选择（TIM4、TIM5、TIM6）
- * \param   [in]  enAdtIrq      中断类型
+ * \param   [in]  enAdtUnit     ADV TimerTIM4TIM5TIM6
+ * \param   [in]  enAdtIrq      
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  ****************************************************************/
 en_result_t Adt_ClearIrqFlag(en_adt_unit_t enAdtUnit,
                              en_adt_irq_type_t enAdtIrq)
@@ -307,13 +307,13 @@ en_result_t Adt_ClearIrqFlag(en_adt_unit_t enAdtUnit,
 
 /**************************************************************
  * \brief   
- *          配置硬件递加事件
+ *          
  *
- * \param   [in]  enAdtUnit     ADV Timer通道选择（TIM4、TIM5、TIM6）
- * \param   [in]  enAdtHwCntUp  硬件递加事件
+ * \param   [in]  enAdtUnit     ADV TimerTIM4TIM5TIM6
+ * \param   [in]  enAdtHwCntUp  
  *
- * \retval  en_result_t    Ok:  设置成功
- * \retval  en_result_t    ErrorInvalidParameter:  无效参数
+ * \retval  en_result_t    Ok:  
+ * \retval  en_result_t    ErrorInvalidParameter:  
  ****************************************************************/
 en_result_t Adt_ConfigHwCntUp(en_adt_unit_t enAdtUnit, en_adt_hw_cnt_t enAdtHwCntUp)
 {
@@ -332,12 +332,12 @@ en_result_t Adt_ConfigHwCntUp(en_adt_unit_t enAdtUnit, en_adt_hw_cnt_t enAdtHwCn
 
 /**************************************************************
  * \brief   
- *          清除硬件递加事件
+ *          
  *
- * \param   [in]  enAdtUnit     ADV Timer通道选择（TIM4、TIM5、TIM6）
+ * \param   [in]  enAdtUnit     ADV TimerTIM4TIM5TIM6
  *
- * \retval  en_result_t    Ok:  设置成功
- * \retval  en_result_t    ErrorInvalidParameter:  无效参数
+ * \retval  en_result_t    Ok:  
+ * \retval  en_result_t    ErrorInvalidParameter:  
  ************************************************************/
 en_result_t Adt_ClearHwCntUp(en_adt_unit_t enAdtUnit)
 {
@@ -354,13 +354,13 @@ en_result_t Adt_ClearHwCntUp(en_adt_unit_t enAdtUnit)
 
 /**
  * \brief   
- *          配置硬件递减事件
+ *          
  *
- * \param   [in]  enAdtUnit     ADV Timer通道选择（TIM4、TIM5、TIM6）
- * \param   [in]  enAdtHwCntDwn 硬件递减事件
+ * \param   [in]  enAdtUnit     ADV TimerTIM4TIM5TIM6
+ * \param   [in]  enAdtHwCntDwn 
  *
- * \retval  en_result_t    Ok:  设置成功
- * \retval  en_result_t    ErrorInvalidParameter:  无效参数
+ * \retval  en_result_t    Ok:  
+ * \retval  en_result_t    ErrorInvalidParameter:  
  */
 en_result_t Adt_ConfigHwCntDwn(en_adt_unit_t enAdtUnit, en_adt_hw_cnt_t enAdtHwCntDwn)
 {
@@ -379,12 +379,12 @@ en_result_t Adt_ConfigHwCntDwn(en_adt_unit_t enAdtUnit, en_adt_hw_cnt_t enAdtHwC
 
 /******************************************************************
  * \brief   
- *          清除硬件递减事件
+ *          
  *
- * \param   [in]  enAdtUnit     ADV Timer通道选择（TIM4、TIM5、TIM6）
+ * \param   [in]  enAdtUnit     ADV TimerTIM4TIM5TIM6
  *
- * \retval  en_result_t    Ok:  设置成功
- * \retval  en_result_t    ErrorInvalidParameter:  无效参数
+ * \retval  en_result_t    Ok:  
+ * \retval  en_result_t    ErrorInvalidParameter:  
  *****************************************************************/
 en_result_t Adt_ClearHwCntDwn(en_adt_unit_t enAdtUnit)
 {
@@ -401,13 +401,13 @@ en_result_t Adt_ClearHwCntDwn(en_adt_unit_t enAdtUnit)
 
 /******************************************************************
  * \brief   
- *          配置硬件启动事件
+ *          
  *
- * \param   [in]  enAdtUnit         ADV Timer通道选择（TIM4、TIM5、TIM6）
- * \param   [in]  enAdtHwStart      硬件启动事件
+ * \param   [in]  enAdtUnit         ADV TimerTIM4TIM5TIM6
+ * \param   [in]  enAdtHwStart      
  *
- * \retval  en_result_t    Ok:  设置成功
- * \retval  en_result_t    ErrorInvalidParameter:  无效参数
+ * \retval  en_result_t    Ok:  
+ * \retval  en_result_t    ErrorInvalidParameter:  
  *******************************************************************/
 en_result_t Adt_ConfigHwStart(en_adt_unit_t enAdtUnit, en_adt_hw_trig_t enAdtHwStart)
 {
@@ -425,12 +425,12 @@ en_result_t Adt_ConfigHwStart(en_adt_unit_t enAdtUnit, en_adt_hw_trig_t enAdtHwS
 
 /************************************************************************
  * \brief   
- *          清除硬件启动事件
+ *          
  *
- * \param   [in]  enAdtUnit         ADV Timer通道选择（TIM4、TIM5、TIM6）
+ * \param   [in]  enAdtUnit         ADV TimerTIM4TIM5TIM6
  *
- * \retval  en_result_t    Ok:  设置成功
- * \retval  en_result_t    ErrorInvalidParameter:  无效参数
+ * \retval  en_result_t    Ok:  
+ * \retval  en_result_t    ErrorInvalidParameter:  
  ***********************************************************************/
 en_result_t Adt_ClearHwStart(en_adt_unit_t enAdtUnit)
 {
@@ -447,12 +447,12 @@ en_result_t Adt_ClearHwStart(en_adt_unit_t enAdtUnit)
 
 /*********************************************************************
  * \brief   
- *          使能硬件启动
+ *          
  *
- * \param   [in]  enAdtUnit         ADV Timer通道选择（TIM4、TIM5、TIM6）
+ * \param   [in]  enAdtUnit         ADV TimerTIM4TIM5TIM6
  *
- * \retval  en_result_t    Ok:  设置成功
- * \retval  en_result_t    ErrorInvalidParameter:  无效参数
+ * \retval  en_result_t    Ok:  
+ * \retval  en_result_t    ErrorInvalidParameter:  
  *********************************************************************/
 en_result_t Adt_EnableHwStart(en_adt_unit_t enAdtUnit)
 {
@@ -471,12 +471,12 @@ en_result_t Adt_EnableHwStart(en_adt_unit_t enAdtUnit)
 
 /*************************************************************************
  * \brief   
- *          除能硬件启动
+ *          
  *
- * \param   [in]  enAdtUnit         ADV Timer通道选择（TIM4、TIM5、TIM6）
+ * \param   [in]  enAdtUnit         ADV TimerTIM4TIM5TIM6
  *
- * \retval  en_result_t    Ok:  设置成功
- * \retval  en_result_t    ErrorInvalidParameter:  无效参数
+ * \retval  en_result_t    Ok:  
+ * \retval  en_result_t    ErrorInvalidParameter:  
  ************************************************************************/
 en_result_t Adt_DisableHwStart(en_adt_unit_t enAdtUnit)
 {
@@ -495,13 +495,13 @@ en_result_t Adt_DisableHwStart(en_adt_unit_t enAdtUnit)
 
 /****************************************************************
  * \brief   
- *          配置硬件停止事件
+ *          
  *
- * \param   [in]  enAdtUnit         ADV Timer通道选择（TIM4、TIM5、TIM6）
- * \param   [in]  enAdtHwStop       硬件停止事件
+ * \param   [in]  enAdtUnit         ADV TimerTIM4TIM5TIM6
+ * \param   [in]  enAdtHwStop       
  *
- * \retval  en_result_t    Ok:  设置成功
- * \retval  en_result_t    ErrorInvalidParameter:  无效参数
+ * \retval  en_result_t    Ok:  
+ * \retval  en_result_t    ErrorInvalidParameter:  
  ***************************************************************/
 en_result_t Adt_ConfigHwStop(en_adt_unit_t enAdtUnit, en_adt_hw_trig_t enAdtHwStop)
 {
@@ -519,12 +519,12 @@ en_result_t Adt_ConfigHwStop(en_adt_unit_t enAdtUnit, en_adt_hw_trig_t enAdtHwSt
 
 /***************************************************************
  * \brief   
- *          清除硬件停止事件
+ *          
  *
- * \param   [in]  enAdtUnit         ADV Timer通道选择（TIM4、TIM5、TIM6）
+ * \param   [in]  enAdtUnit         ADV TimerTIM4TIM5TIM6
  *
- * \retval  en_result_t    Ok:  设置成功
- * \retval  en_result_t    ErrorInvalidParameter:  无效参数
+ * \retval  en_result_t    Ok:  
+ * \retval  en_result_t    ErrorInvalidParameter:  
  ***************************************************************/
 en_result_t Adt_ClearHwStop(en_adt_unit_t enAdtUnit)
 {
@@ -541,12 +541,12 @@ en_result_t Adt_ClearHwStop(en_adt_unit_t enAdtUnit)
 
 /*************************************************************
  * \brief   
- *          使能硬件停止
+ *          
  *
- * \param   [in]  enAdtUnit         ADV Timer通道选择（TIM4、TIM5、TIM6）
+ * \param   [in]  enAdtUnit         ADV TimerTIM4TIM5TIM6
  *
- * \retval  en_result_t    Ok:  设置成功
- * \retval  en_result_t    ErrorInvalidParameter:  无效参数
+ * \retval  en_result_t    Ok:  
+ * \retval  en_result_t    ErrorInvalidParameter:  
  **********************************************************/
 en_result_t Adt_EnableHwStop(en_adt_unit_t enAdtUnit)
 {
@@ -565,12 +565,12 @@ en_result_t Adt_EnableHwStop(en_adt_unit_t enAdtUnit)
 
 /*****************************************************************************
  * \brief   
- *          除能硬件停止
+ *          
  *
- * \param   [in]  enAdtUnit         ADV Timer通道选择（TIM4、TIM5、TIM6）
+ * \param   [in]  enAdtUnit         ADV TimerTIM4TIM5TIM6
  *
- * \retval  en_result_t    Ok:  设置成功
- * \retval  en_result_t    ErrorInvalidParameter:  无效参数
+ * \retval  en_result_t    Ok:  
+ * \retval  en_result_t    ErrorInvalidParameter:  
  ***************************************************************************/
 en_result_t Adt_DisableHwStop(en_adt_unit_t enAdtUnit)
 {
@@ -589,13 +589,13 @@ en_result_t Adt_DisableHwStop(en_adt_unit_t enAdtUnit)
 
 /**************************************************************************
  * \brief   
- *          配置硬件清零事件
+ *          
  *
- * \param   [in]  enAdtUnit         ADV Timer通道选择（TIM4、TIM5、TIM6）
- * \param   [in]  enAdtHwClear      硬件清零事件
+ * \param   [in]  enAdtUnit         ADV TimerTIM4TIM5TIM6
+ * \param   [in]  enAdtHwClear      
  *
- * \retval  en_result_t    Ok:  设置成功
- * \retval  en_result_t    ErrorInvalidParameter:  无效参数
+ * \retval  en_result_t    Ok:  
+ * \retval  en_result_t    ErrorInvalidParameter:  
  *************************************************************************/
 en_result_t Adt_ConfigHwClear(en_adt_unit_t enAdtUnit, en_adt_hw_trig_t enAdtHwClear)
 {
@@ -613,12 +613,12 @@ en_result_t Adt_ConfigHwClear(en_adt_unit_t enAdtUnit, en_adt_hw_trig_t enAdtHwC
 
 /**************************************************************************
  * \brief   
- *          清除硬件清零事件
+ *          
  *
- * \param   [in]  enAdtUnit         ADV Timer通道选择（TIM4、TIM5、TIM6）
+ * \param   [in]  enAdtUnit         ADV TimerTIM4TIM5TIM6
  *
- * \retval  en_result_t    Ok:  设置成功
- * \retval  en_result_t    ErrorInvalidParameter:  无效参数
+ * \retval  en_result_t    Ok:  
+ * \retval  en_result_t    ErrorInvalidParameter:  
  **************************************************************************/
 en_result_t Adt_ClearHwClear(en_adt_unit_t enAdtUnit)
 {
@@ -635,12 +635,12 @@ en_result_t Adt_ClearHwClear(en_adt_unit_t enAdtUnit)
 
 /***************************************************************************
  * \brief   
- *          使能硬件清零
+ *          
  *
- * \param   [in]  enAdtUnit         ADV Timer通道选择（TIM4、TIM5、TIM6）
+ * \param   [in]  enAdtUnit         ADV TimerTIM4TIM5TIM6
  *
- * \retval  en_result_t    Ok:  设置成功
- * \retval  en_result_t    ErrorInvalidParameter:  无效参数
+ * \retval  en_result_t    Ok:  
+ * \retval  en_result_t    ErrorInvalidParameter:  
  *************************************************************************/
 en_result_t Adt_EnableHwClear(en_adt_unit_t enAdtUnit)
 {
@@ -659,12 +659,12 @@ en_result_t Adt_EnableHwClear(en_adt_unit_t enAdtUnit)
 
 /************************************************************************
  * \brief   
- *          除能硬件清零
+ *          
  *
- * \param   [in]  enAdtUnit         ADV Timer通道选择（TIM4、TIM5、TIM6）
+ * \param   [in]  enAdtUnit         ADV TimerTIM4TIM5TIM6
  *
- * \retval  en_result_t    Ok:  设置成功
- * \retval  en_result_t    ErrorInvalidParameter:  无效参数
+ * \retval  en_result_t    Ok:  
+ * \retval  en_result_t    ErrorInvalidParameter:  
  **********************************************************************/
 en_result_t Adt_DisableHwClear(en_adt_unit_t enAdtUnit)
 {
@@ -683,13 +683,13 @@ en_result_t Adt_DisableHwClear(en_adt_unit_t enAdtUnit)
 
 /*******************************************************************
  * \brief   
- *          配置硬件捕获A事件
+ *          A
  *
- * \param   [in]  enAdtUnit         ADV Timer通道选择（TIM4、TIM5、TIM6）
- * \param   [in]  enAdtHwCaptureA   硬件捕获A事件选择
+ * \param   [in]  enAdtUnit         ADV TimerTIM4TIM5TIM6
+ * \param   [in]  enAdtHwCaptureA   A
  *
- * \retval  en_result_t    Ok:  设置成功
- * \retval  en_result_t    ErrorInvalidParameter:  无效参数
+ * \retval  en_result_t    Ok:  
+ * \retval  en_result_t    ErrorInvalidParameter:  
  *******************************************************************/
 en_result_t Adt_ConfigHwCaptureA(en_adt_unit_t enAdtUnit, en_adt_hw_trig_t enAdtHwCaptureA)
 {
@@ -709,12 +709,12 @@ en_result_t Adt_ConfigHwCaptureA(en_adt_unit_t enAdtUnit, en_adt_hw_trig_t enAdt
 
 /************************************************************************
  * \brief   
- *          清除硬件捕获A事件
+ *          A
  *
- * \param   [in]  enAdtUnit         ADV Timer通道选择（TIM4、TIM5、TIM6）
+ * \param   [in]  enAdtUnit         ADV TimerTIM4TIM5TIM6
  *
- * \retval  en_result_t    Ok:  设置成功
- * \retval  en_result_t    ErrorInvalidParameter:  无效参数
+ * \retval  en_result_t    Ok:  
+ * \retval  en_result_t    ErrorInvalidParameter:  
  ***********************************************************************/
 en_result_t Adt_ClearHwCaptureA(en_adt_unit_t enAdtUnit)
 {
@@ -731,13 +731,13 @@ en_result_t Adt_ClearHwCaptureA(en_adt_unit_t enAdtUnit)
 
 /*********************************************************************
  * \brief   
- *          配置硬件捕获B事件
+ *          B
  *
- * \param   [in]  enAdtUnit         ADV Timer通道选择（TIM4、TIM5、TIM6）
- * \param   [in]  enAdtHwCaptureB   硬件捕获B事件选择
+ * \param   [in]  enAdtUnit         ADV TimerTIM4TIM5TIM6
+ * \param   [in]  enAdtHwCaptureB   B
  *
- * \retval  en_result_t    Ok:  设置成功
- * \retval  en_result_t    ErrorInvalidParameter:  无效参数
+ * \retval  en_result_t    Ok:  
+ * \retval  en_result_t    ErrorInvalidParameter:  
  ********************************************************************/
 en_result_t Adt_ConfigHwCaptureB(en_adt_unit_t enAdtUnit, en_adt_hw_trig_t enAdtHwCaptureB)
 {
@@ -757,12 +757,12 @@ en_result_t Adt_ConfigHwCaptureB(en_adt_unit_t enAdtUnit, en_adt_hw_trig_t enAdt
 
 /********************************************************************
  * \brief   
- *          清除硬件捕获B事件
+ *          B
  *
- * \param   [in]  enAdtUnit         ADV Timer通道选择（TIM4、TIM5、TIM6）
+ * \param   [in]  enAdtUnit         ADV TimerTIM4TIM5TIM6
  *
- * \retval  en_result_t    Ok:  设置成功
- * \retval  en_result_t    ErrorInvalidParameter:  无效参数
+ * \retval  en_result_t    Ok:  
+ * \retval  en_result_t    ErrorInvalidParameter:  
  *******************************************************************/
 en_result_t Adt_ClearHwCaptureB(en_adt_unit_t enAdtUnit)
 {
@@ -779,12 +779,12 @@ en_result_t Adt_ClearHwCaptureB(en_adt_unit_t enAdtUnit)
 
 /*****************************************************************
  * \brief   
- *          软件同步开始
+ *          
  *
- * \param   [in]  pstcAdtSwSyncStart    软件同步开始指针
+ * \param   [in]  pstcAdtSwSyncStart    
  *
- * \retval  en_result_t    Ok:  设置成功
- * \retval  en_result_t    ErrorInvalidParameter:  无效参数
+ * \retval  en_result_t    Ok:  
+ * \retval  en_result_t    ErrorInvalidParameter:  
  ***************************************************************/
 en_result_t Adt_SwSyncStart(stc_adt_sw_sync_t* pstcAdtSwSyncStart)
 {
@@ -814,12 +814,12 @@ en_result_t Adt_SwSyncStart(stc_adt_sw_sync_t* pstcAdtSwSyncStart)
 
 /***************************************************************
  * \brief   
- *          软件同步停止
+ *          
  *
- * \param   [in]  pstcAdtSwSyncStop     软件同步停止指针
+ * \param   [in]  pstcAdtSwSyncStop     
  *
- * \retval  en_result_t    Ok:  设置成功
- * \retval  en_result_t    ErrorInvalidParameter:  无效参数
+ * \retval  en_result_t    Ok:  
+ * \retval  en_result_t    ErrorInvalidParameter:  
  ***************************************************************/
 en_result_t Adt_SwSyncStop(stc_adt_sw_sync_t* pstcAdtSwSyncStop)
 {
@@ -849,12 +849,12 @@ en_result_t Adt_SwSyncStop(stc_adt_sw_sync_t* pstcAdtSwSyncStop)
 
 /*****************************************************************
  * \brief   
- *          软件同步清零
+ *          
  *
- * \param   [in]  pstcAdtSwSyncClear    软件同步清零指针
+ * \param   [in]  pstcAdtSwSyncClear    
  *
- * \retval  en_result_t    Ok:  设置成功
- * \retval  en_result_t    ErrorInvalidParameter:  无效参数
+ * \retval  en_result_t    Ok:  
+ * \retval  en_result_t    ErrorInvalidParameter:  
  *******************************************************************/
 en_result_t Adt_SwSyncClear(stc_adt_sw_sync_t* pstcAdtSwSyncClear)
 {
@@ -884,12 +884,12 @@ en_result_t Adt_SwSyncClear(stc_adt_sw_sync_t* pstcAdtSwSyncClear)
 
 /*******************************************************************
  * \brief   
- *          获取软件同步运行状态
+ *          
  *
- * \param   [in]  pstcAdtSwSyncState    ADV Timer软件同步运行状态指针
+ * \param   [in]  pstcAdtSwSyncState    ADV Timer
  *
- * \retval  en_result_t    Ok:  设置成功
- * \retval  en_result_t    ErrorInvalidParameter:  无效参数
+ * \retval  en_result_t    Ok:  
+ * \retval  en_result_t    ErrorInvalidParameter:  
  *******************************************************************/
 en_result_t Adt_GetSwSyncState(stc_adt_sw_sync_t* pstcAdtSwSyncState)
 {
@@ -927,12 +927,12 @@ en_result_t Adt_GetSwSyncState(stc_adt_sw_sync_t* pstcAdtSwSyncState)
 
 /************************************************************************
  * \brief   
- *          AOS触发配置
+ *          AOS
  *
- * \param   [in]  pstcAdtAosTrigCfg 触发配置指针
+ * \param   [in]  pstcAdtAosTrigCfg 
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  ************************************************************************/
 en_result_t Adt_AosTrigConfig(stc_adt_aos_trig_cfg_t* pstcAdtAosTrigCfg)
 {
@@ -950,13 +950,13 @@ en_result_t Adt_AosTrigConfig(stc_adt_aos_trig_cfg_t* pstcAdtAosTrigCfg)
 
 /**********************************************************************
  * \brief   
- *          中断触发配置
+ *          
  *
- * \param   [in]  enAdtUnit         ADV Timer通道选择（TIM4、TIM5、TIM6）
- * \param   [in]  pstcAdtIrqTrigCfg 触发配置指针
+ * \param   [in]  enAdtUnit         ADV TimerTIM4TIM5TIM6
+ * \param   [in]  pstcAdtIrqTrigCfg 
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  ***********************************************************************/
 en_result_t Adt_IrqTrigConfig(en_adt_unit_t enAdtUnit,
                               stc_adt_irq_trig_cfg_t* pstcAdtIrqTrigCfg)
@@ -988,13 +988,13 @@ en_result_t Adt_IrqTrigConfig(en_adt_unit_t enAdtUnit,
 
 /*************************************************************************
  * \brief   
- *          端口触发配置
+ *          
  *
- * \param   [in]  enAdtTrigPort         触发端口
- * \param   [in]  pstcAdtPortTrigCfg    触发配置指针
+ * \param   [in]  enAdtTrigPort         
+ * \param   [in]  pstcAdtPortTrigCfg    
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  *************************************************************************/
 en_result_t Adt_PortTrigConfig(en_adt_trig_port_t enAdtTrigPort,
                                stc_adt_port_trig_cfg_t* pstcAdtPortTrigCfg)
@@ -1039,14 +1039,14 @@ en_result_t Adt_PortTrigConfig(en_adt_trig_port_t enAdtTrigPort,
 
 /***********************************************************************
  * \brief   
- *          CHxX端口配置
+ *          CHxX
  *
- * \param   [in]  enAdtUnit         ADV Timer通道选择（TIM4、TIM5、TIM6）
- * \param   [in]  enAdtCHxXPort    CHxX端口
- * \param   [in]  pstcAdtCHxXCfg   CHxX端口配置指针
+ * \param   [in]  enAdtUnit         ADV TimerTIM4TIM5TIM6
+ * \param   [in]  enAdtCHxXPort    CHxX
+ * \param   [in]  pstcAdtCHxXCfg   CHxX
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  *********************************************************************/
 en_result_t Adt_CHxXPortConfig(en_adt_unit_t enAdtUnit,
                                 en_adt_CHxX_port_t enAdtCHxXPort,
@@ -1098,13 +1098,13 @@ en_result_t Adt_CHxXPortConfig(en_adt_unit_t enAdtUnit,
 
 /************************************************************************
  * \brief   
- *          使能端口刹车
+ *          
  *
- * \param   [in]  port              端口
- * \param   [in]  pstcAdtBrkPtCfg   端口刹车配置指针
+ * \param   [in]  port              
+ * \param   [in]  pstcAdtBrkPtCfg   
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  ************************************************************************/
 en_result_t Adt_EnableBrakePort(uint8_t port, stc_adt_break_port_cfg_t* pstcAdtBrkPtCfg)
 {
@@ -1127,7 +1127,7 @@ en_result_t Adt_EnableBrakePort(uint8_t port, stc_adt_break_port_cfg_t* pstcAdtB
 
 /**********************************************************************
  * \brief   
- *          清除端口刹车
+ *          
  *
  * \param   none
  *
@@ -1140,12 +1140,12 @@ void Adt_ClearBrakePort(void)
 
 /*********************************************************************
  * \brief   
- *          无效条件3配置
+ *          3
  *
- * \param   [in]  pstcAdtDisable3   无效条件3配置指针
+ * \param   [in]  pstcAdtDisable3   3
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  ********************************************************************/
 en_result_t Adt_Disable3Cfg(stc_adt_disable_3_cfg_t* pstcAdtDisable3)
 {
@@ -1174,7 +1174,7 @@ en_result_t Adt_Disable3Cfg(stc_adt_disable_3_cfg_t* pstcAdtDisable3)
 
 /*******************************************************************
  * \brief   
- *          获取端口刹车标志
+ *          
  *
  * \param   none
  *
@@ -1187,7 +1187,7 @@ boolean_t Adt_GetPortBrakeFlag(void)
 
 /******************************************************************
  * \brief   
- *          清除端口刹车标志
+ *          
  *
  * \param   none
  *
@@ -1200,12 +1200,12 @@ void Adt_ClearPortBrakeFlag(void)
 
 /********************************************************************
  * \brief   
- *          无效条件1配置
+ *          1
  *
- * \param   [in]  pstcAdtDisable1   无效条件1配置指针
+ * \param   [in]  pstcAdtDisable1   1
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  ********************************************************************/
 en_result_t Adt_Disable1Cfg(stc_adt_disable_1_cfg_t* pstcAdtDisable1)
 {
@@ -1227,7 +1227,7 @@ en_result_t Adt_Disable1Cfg(stc_adt_disable_1_cfg_t* pstcAdtDisable1)
 
 /********************************************************************
  * \brief   
- *          获取同高同低刹车标志
+ *          
  *
  * \param   none
  *
@@ -1240,7 +1240,7 @@ boolean_t Adt_GetSameBrakeFlag(void)
 
 /*********************************************************************
  * \brief   
- *          清除同高同低刹车标志
+ *          
  *
  * \param   none
  *
@@ -1253,12 +1253,12 @@ void Adt_ClearSameBrakeFlag(void)
 
 /********************************************************************
  * \brief   
- *          PWM展频配置
+ *          PWM
  *
- * \param   [in]  pstcAdtPwmDitherCfg   PWM展频配置指针
+ * \param   [in]  pstcAdtPwmDitherCfg   PWM
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  *********************************************************************/
 en_result_t Adt_PwmDitherConfig(en_adt_unit_t enAdtUnit, stc_adt_pwm_dither_cfg_t* pstcAdtPwmDitherCfg)
 {
@@ -1278,13 +1278,13 @@ en_result_t Adt_PwmDitherConfig(en_adt_unit_t enAdtUnit, stc_adt_pwm_dither_cfg_
 
 /**********************************************************************
  * \brief   
- *          ADT初始化
+ *          ADT
  *
- * \param   [in]  enAdtUnit         ADV Timer通道选择（TIM4、TIM5、TIM6）
- * \param   [in]  pstcAdtBaseCntCfg     计数配置指针
+ * \param   [in]  enAdtUnit         ADV TimerTIM4TIM5TIM6
+ * \param   [in]  pstcAdtBaseCntCfg     
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  **********************************************************************/
 en_result_t Adt_Init(en_adt_unit_t enAdtUnit, stc_adt_basecnt_cfg_t* pstcAdtBaseCntCfg)
 {
@@ -1319,10 +1319,10 @@ en_result_t Adt_Init(en_adt_unit_t enAdtUnit, stc_adt_basecnt_cfg_t* pstcAdtBase
  * \brief   
  *          ADT Deinit
  *
- * \param   [in]  enAdtUnit         ADV Timer通道选择（TIM4、TIM5、TIM6）
+ * \param   [in]  enAdtUnit         ADV TimerTIM4TIM5TIM6
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  ***********************************************************************/
 en_result_t Adt_DeInit(en_adt_unit_t enAdtUnit)
 {
@@ -1348,12 +1348,12 @@ en_result_t Adt_DeInit(en_adt_unit_t enAdtUnit)
 
 /***********************************************************************
  * \brief   
- *          开始计数
+ *          
  *
- * \param   [in]  enAdtUnit         ADV Timer通道选择（TIM4、TIM5、TIM6）
+ * \param   [in]  enAdtUnit         ADV TimerTIM4TIM5TIM6
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  ***********************************************************************/
 en_result_t Adt_StartCount(en_adt_unit_t enAdtUnit)
 {
@@ -1371,12 +1371,12 @@ en_result_t Adt_StartCount(en_adt_unit_t enAdtUnit)
 
 /***********************************************************************
  * \brief   
- *          停止计数
+ *          
  *
- * \param   [in]  enAdtUnit         ADV Timer通道选择（TIM4、TIM5、TIM6）
+ * \param   [in]  enAdtUnit         ADV TimerTIM4TIM5TIM6
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  **********************************************************************/
 en_result_t Adt_StopCount(en_adt_unit_t enAdtUnit)
 {
@@ -1394,13 +1394,13 @@ en_result_t Adt_StopCount(en_adt_unit_t enAdtUnit)
 
 /********************************************************************
  * \brief   
- *          设置计数值
+ *          
  *
- * \param   [in]  enAdtUnit         ADV Timer通道选择（TIM4、TIM5、TIM6）
- * \param   [in]  u16Value          计数值
+ * \param   [in]  enAdtUnit         ADV TimerTIM4TIM5TIM6
+ * \param   [in]  u16Value          
  *
- * \retval  en_result_t  Ok:  配置成功
- *                       ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ *                       ErrorInvalidParameter: 
  *******************************************************************/
 en_result_t Adt_SetCount(en_adt_unit_t enAdtUnit, uint16_t u16Value)
 {
@@ -1417,13 +1417,13 @@ en_result_t Adt_SetCount(en_adt_unit_t enAdtUnit, uint16_t u16Value)
 
 /********************************************************************
  * \brief   
- *          获取计数值
+ *          
  *
- * \param   [in]  enAdtUnit         ADV Timer通道选择（TIM4、TIM5、TIM6）
- * \param   [in]  u16Value          计数值
+ * \param   [in]  enAdtUnit         ADV TimerTIM4TIM5TIM6
+ * \param   [in]  u16Value          
  *
- * \retval  en_result_t  Ok:  配置成功
- *                       ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ *                       ErrorInvalidParameter: 
  *******************************************************************/
 uint16_t Adt_GetCount(en_adt_unit_t enAdtUnit)
 {
@@ -1443,13 +1443,13 @@ uint16_t Adt_GetCount(en_adt_unit_t enAdtUnit)
 
 /**************************************************************************
  * \brief   
- *          清除计数值
+ *          
  *
- * \param   [in]  enAdtUnit         ADV Timer通道选择（TIM4、TIM5、TIM6）
- * \param   [in]  u16Value          计数值
+ * \param   [in]  enAdtUnit         ADV TimerTIM4TIM5TIM6
+ * \param   [in]  u16Value          
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  **************************************************************************/
 en_result_t Adt_ClearCount(en_adt_unit_t enAdtUnit)
 {
@@ -1466,13 +1466,13 @@ en_result_t Adt_ClearCount(en_adt_unit_t enAdtUnit)
 
 /*************************************************************************
  * \brief   
- *          获取计数状态
+ *          
  *
- * \param   [in]  enAdtUnit         ADV Timer通道选择（TIM4、TIM5、TIM6）
- * \param   [in]  pstcAdtCntState   计数状态指针 
+ * \param   [in]  enAdtUnit         ADV TimerTIM4TIM5TIM6
+ * \param   [in]  pstcAdtCntState    
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  *************************************************************************/
 en_result_t Adt_GetCntState(en_adt_unit_t enAdtUnit, stc_adt_cntstate_cfg_t* pstcAdtCntState)
 {
@@ -1503,13 +1503,13 @@ en_result_t Adt_GetCntState(en_adt_unit_t enAdtUnit, stc_adt_cntstate_cfg_t* pst
 
 /***********************************************************************
  * \brief   
- *          配置计数周期
+ *          
  *
- * \param   [in]  enAdtUnit         ADV Timer通道选择（TIM4、TIM5、TIM6）
- * \param   [in]  u16Period         计数周期值
+ * \param   [in]  enAdtUnit         ADV TimerTIM4TIM5TIM6
+ * \param   [in]  u16Period         
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  ***********************************************************************/
 en_result_t Adt_SetPeriod(en_adt_unit_t enAdtUnit, uint16_t u16Period)
 {
@@ -1527,13 +1527,13 @@ en_result_t Adt_SetPeriod(en_adt_unit_t enAdtUnit, uint16_t u16Period)
 
 /***********************************************************************
  * \brief   
- *          配置计数周期缓冲
+ *          
  *
- * \param   [in]  enAdtUnit         ADV Timer通道选择（TIM4、TIM5、TIM6）
- * \param   [in]  u16PeriodBuf          计数周期缓冲值
+ * \param   [in]  enAdtUnit         ADV TimerTIM4TIM5TIM6
+ * \param   [in]  u16PeriodBuf          
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  ***********************************************************************/
 en_result_t Adt_SetPeriodBuf(en_adt_unit_t enAdtUnit, uint16_t u16PeriodBuf)
 {
@@ -1552,12 +1552,12 @@ en_result_t Adt_SetPeriodBuf(en_adt_unit_t enAdtUnit, uint16_t u16PeriodBuf)
 
 /**********************************************************************
  * \brief   
- *          清除计数周期缓冲
+ *          
  *
- * \param   [in]  enAdtUnit         ADV Timer通道选择（TIM4、TIM5、TIM6）
+ * \param   [in]  enAdtUnit         ADV TimerTIM4TIM5TIM6
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  **********************************************************************/
 en_result_t Adt_ClearPeriodBuf(en_adt_unit_t enAdtUnit)
 {
@@ -1576,13 +1576,13 @@ en_result_t Adt_ClearPeriodBuf(en_adt_unit_t enAdtUnit)
 
 /***********************************************************************
  * \brief   
- *          配置有效计数周期
+ *          
  *
- * \param   [in]  enAdtUnit         ADV Timer通道选择（TIM4、TIM5、TIM6）
- * \param   [in]  pstcAdtValidPerCfg            有效计数周期配置指针
+ * \param   [in]  enAdtUnit         ADV TimerTIM4TIM5TIM6
+ * \param   [in]  pstcAdtValidPerCfg            
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  ***********************************************************************/
 en_result_t Adt_SetValidPeriod(en_adt_unit_t enAdtUnit,
                                stc_adt_validper_cfg_t* pstcAdtValidPerCfg)
@@ -1606,14 +1606,14 @@ en_result_t Adt_SetValidPeriod(en_adt_unit_t enAdtUnit,
 
 /************************************************************************
  * \brief   
- *          配置比较输出计数基准值
+ *          
  *
- * \param   [in]  enAdtUnit         ADV Timer通道选择（TIM4、TIM5、TIM6）
- * \param   [in]  enAdtCompare      比较基准
- * \param   [in]  u16Compare        比较基准值
+ * \param   [in]  enAdtUnit         ADV TimerTIM4TIM5TIM6
+ * \param   [in]  enAdtCompare      
+ * \param   [in]  u16Compare        
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  *************************************************************************/
 en_result_t Adt_SetCompareValue(en_adt_unit_t enAdtUnit,
                                 en_adt_compare_t enAdtCompare,
@@ -1652,14 +1652,14 @@ en_result_t Adt_SetCompareValue(en_adt_unit_t enAdtUnit,
 
 /************************************************************************
  * \brief   
- *          配置专用比较计数基准值
+ *          
  *
- * \param   [in]  enAdtUnit         ADV Timer通道选择（TIM4、TIM5、TIM6）
- * \param   [in]  enAdtSpclCmp      专用比较基准值寄存器
- * \param   [in]  u16SpclCmp        比较基准值
+ * \param   [in]  enAdtUnit         ADV TimerTIM4TIM5TIM6
+ * \param   [in]  enAdtSpclCmp      
+ * \param   [in]  u16SpclCmp        
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  *************************************************************************/
 en_result_t Adt_SetSpecilCompareValue(en_adt_unit_t enAdtUnit,
                                       en_adt_special_compare_t enAdtSpclCmp,
@@ -1690,14 +1690,14 @@ en_result_t Adt_SetSpecilCompareValue(en_adt_unit_t enAdtUnit,
 
 /**********************************************************************
  * \brief   
- *          配置通用比较值/捕获值缓存传送
+ *          /
  *
- * \param   [in]  enAdtUnit         ADV Timer通道选择（TIM4、TIM5、TIM6）
- * \param   [in]  enAdtCHxXPort    TIMxX端口
- * \param   [in]  bCompareBufEn     通用比较值缓存传送使能
+ * \param   [in]  enAdtUnit         ADV TimerTIM4TIM5TIM6
+ * \param   [in]  enAdtCHxXPort    TIMxX
+ * \param   [in]  bCompareBufEn     
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  **********************************************************************/
 en_result_t Adt_EnableValueBuf(en_adt_unit_t enAdtUnit,
                                  en_adt_CHxX_port_t enAdtCHxXPort,
@@ -1728,13 +1728,13 @@ en_result_t Adt_EnableValueBuf(en_adt_unit_t enAdtUnit,
 
 /***********************************************************************
  * \brief   
- *          清除比较输出计数值/捕获值缓存
+ *          /
  *
- * \param   [in]  enAdtUnit         ADV Timer通道选择（TIM4、TIM5、TIM6）
- * \param   [in]  enAdtCHxXPort    TIMxX端口
+ * \param   [in]  enAdtUnit         ADV TimerTIM4TIM5TIM6
+ * \param   [in]  enAdtCHxXPort    TIMxX
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  **********************************************************************/
 en_result_t Adt_ClearValueBuf(en_adt_unit_t enAdtUnit,
                                      en_adt_CHxX_port_t enAdtCHxXPort)
@@ -1766,14 +1766,14 @@ en_result_t Adt_ClearValueBuf(en_adt_unit_t enAdtUnit,
 
 /***********************************************************************
  * \brief   
- *          获取捕获值
+ *          
  *
- * \param   [in]  enAdtUnit         ADV Timer通道选择（TIM4、TIM5、TIM6）
- * \param   [in]  enAdtCHxXPort    TIMxX端口
- * \param   [in]  pu16Capture       捕获值指针
+ * \param   [in]  enAdtUnit         ADV TimerTIM4TIM5TIM6
+ * \param   [in]  enAdtCHxXPort    TIMxX
+ * \param   [in]  pu16Capture       
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  ***********************************************************************/
 en_result_t Adt_GetCaptureValue(en_adt_unit_t enAdtUnit,
                                 en_adt_CHxX_port_t enAdtCHxXPort,
@@ -1803,14 +1803,14 @@ en_result_t Adt_GetCaptureValue(en_adt_unit_t enAdtUnit,
 
 /**********************************************************************
  * \brief   
- *          获取捕获缓存值
+ *          
  *
- * \param   [in]  enAdtUnit         ADV Timer通道选择（TIM4、TIM5、TIM6）
- * \param   [in]  enAdtCHxXPort    TIMxX端口
- * \param   [in]  pu16CaptureBuf    捕获缓存值指针
+ * \param   [in]  enAdtUnit         ADV TimerTIM4TIM5TIM6
+ * \param   [in]  enAdtCHxXPort    TIMxX
+ * \param   [in]  pu16CaptureBuf    
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  ***********************************************************************/
 en_result_t Adt_GetCaptureBuf(en_adt_unit_t enAdtUnit,
                                 en_adt_CHxX_port_t enAdtCHxXPort,
@@ -1840,13 +1840,13 @@ en_result_t Adt_GetCaptureBuf(en_adt_unit_t enAdtUnit,
 
 /***********************************************************************
  * \brief   
- *          设置死区时间上基准值
+ *          
  *
- * \param   [in]  enAdtUnit         ADV Timer通道选择（TIM4、TIM5、TIM6）
- * \param   [in]  u16Value          死区时间上基准值
+ * \param   [in]  enAdtUnit         ADV TimerTIM4TIM5TIM6
+ * \param   [in]  u16Value          
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  ************************************************************************/
 en_result_t Adt_SetDTUA(en_adt_unit_t enAdtUnit,
                         uint16_t u16Value)
@@ -1866,13 +1866,13 @@ en_result_t Adt_SetDTUA(en_adt_unit_t enAdtUnit,
 
 /***********************************************************************
  * \brief   
- *          设置死区时间下基准值
+ *          
  *
- * \param   [in]  enAdtUnit         ADV Timer通道选择（TIM4、TIM5、TIM6）
- * \param   [in]  u16Value          死区时间下基准值
+ * \param   [in]  enAdtUnit         ADV TimerTIM4TIM5TIM6
+ * \param   [in]  u16Value          
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  ***********************************************************************/
 en_result_t Adt_SetDTDA(en_adt_unit_t enAdtUnit,
                         uint16_t u16Value)
@@ -1892,14 +1892,14 @@ en_result_t Adt_SetDTDA(en_adt_unit_t enAdtUnit,
 
 /******************************************************************
  * \brief   
- *          配置死区时间功能
+ *          
  *
- * \param   [in]  enAdtUnit     ADV Timer通道选择（TIM4、TIM5、TIM6）
- * \param   [in]  bDTEn         死区功能使能
- * \param   [in]  bEqual        DTDAR的值和DTUAR的值自动相等
+ * \param   [in]  enAdtUnit     ADV TimerTIM4TIM5TIM6
+ * \param   [in]  bDTEn         
+ * \param   [in]  bEqual        DTDARDTUAR
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  *****************************************************************/
 en_result_t Adt_ConfigDT(en_adt_unit_t enAdtUnit,
                          boolean_t bDTEn,
@@ -1920,13 +1920,13 @@ en_result_t Adt_ConfigDT(en_adt_unit_t enAdtUnit,
 
 /*************************************************************************
  * \brief   
- *          Z相输入屏蔽设置
+ *          Z
  *
- * \param   [in]  enAdtUnit           ADV Timer通道选择（TIM4、TIM5、TIM6）
- * \param   [in]  pstcAdtZMaskCfg     Z相输入屏蔽功能配置指针
+ * \param   [in]  enAdtUnit           ADV TimerTIM4TIM5TIM6
+ * \param   [in]  pstcAdtZMaskCfg     Z
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  *************************************************************************/
 en_result_t Adt_ConfigZMask(en_adt_unit_t enAdtUnit, stc_adt_zmask_cfg_t* pstcAdtZMaskCfg)
 {

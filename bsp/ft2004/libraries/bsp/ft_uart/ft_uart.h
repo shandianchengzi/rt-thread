@@ -1,15 +1,15 @@
 /*
- * @ : Copyright (c) 2021 Phytium Information Technology, Inc.
- *
- * SPDX-License-Identifier: Apache-2.0.
- *
+*@:Copyright(c)2021PhytiumInformationTechnology,Inc.
+*
+*SPDX-License-Identifier:Apache-2.0.
+*
  * @Date: 2021-04-07 09:53:07
  * @LastEditTime: 2021-05-24 10:13:51
- * @Description:  This files is for uart functions
+ * @Description: This files is for uart functions
  *
- * @Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * @ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 #ifndef FT_UART_H
@@ -92,7 +92,7 @@ typedef struct
 
     FUart_Handler_t Handler;
     void *Args;
-    uint8_t rxbs_error; /* 接收过程中出现错误 ，0 无错误，1 存在错误*/
+    uint8_t rxbs_error; /*  0 1 */
 
 } Ft_Uart;
 

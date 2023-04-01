@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fnand.c
  * Date: 2022-05-10 14:53:42
  * LastEditTime: 2022-05-10 08:56:27
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 #include "fnand.h"
 #include "fnand_hw.h"
@@ -89,13 +89,13 @@ FError FNandSendCmd(FNand *instance_p, struct FNandDmaDescriptor *descriptor_p, 
     FNAND_WRITEREG(config_p->base_address, FNAND_MADDR0_OFFSET, ((uintptr)descriptor_p) & FNAND_MADDR0_DT_LOW_ADDR_MASK);
 
 #ifdef __aarch64__
-    /* 将高位地址填入寄存器 */
+    /*  */
     FNAND_CLEARBIT(config_p->base_address, FNAND_MADDR1_OFFSET, FNAND_MADDR1_DT_HIGH_8BITADDR_MASK);
     FNAND_SETBIT(config_p->base_address, FNAND_MADDR1_OFFSET, ((uintptr)descriptor_p >> 32) & FNAND_MADDR1_DT_HIGH_8BITADDR_MASK);
 #else
     FNAND_CLEARBIT(config_p->base_address, FNAND_MADDR1_OFFSET, FNAND_MADDR1_DT_HIGH_8BITADDR_MASK);
 #endif
-    /* 中断模式操作 */
+    /*  */
     if (instance_p->work_mode == FNAND_WORK_MODE_ISR)
     {
         if (isr_type == FNAND_CMD_TYPE)
@@ -234,12 +234,12 @@ FError FNandCfgInitialize(FNand *instance_p,
     /* lsd config */
     FNAND_CLEARBIT(FLSD_CONFIG_BASE, 0xc0, 1);
 
-    instance_p->work_mode = FNAND_WORK_MODE_ISR ; /* 默认采用中断模式 */
+    instance_p->work_mode = FNAND_WORK_MODE_ISR ; /*  */
     for (i = 0; i < FNAND_CONNECT_MAX_NUM; i++)
     {
-        instance_p->inter_mode[i] = FNAND_ASYN_SDR; /* 初始化阶段以异步模式启动 */
+        instance_p->inter_mode[i] = FNAND_ASYN_SDR; /*  */
         instance_p->timing_mode[i] = FNAND_TIMING_MODE0 ;
-        /*  初始化时序配置 */
+        /*   */
         ret  = FNandTimingInterfaceUpdate(instance_p, i);
         if (ret != FT_SUCCESS)
         {
@@ -303,14 +303,14 @@ FError FNandWritePage(FNand *instance_p, u32 page_addr, u8 *buffer, u32 page_cop
     FNandOpData op_data =
     {
         .page_addr = page_addr,
-        .page_buf = NULL,            /* page 数据缓存空间 */
-        .page_offset = 0,            /* 从offset开始拷贝页数据 */
-        .page_length = 0, /* 从offset开始拷贝页数据的长度 */
-        .obb_required = 0,                /* obb 是否读取的标志位,1 需要操作oob 区域 */
-        .oob_buf = NULL,         /* obb 数据缓存空间 */
-        .oob_offset = 0,             /* 从offset开始拷贝页数据 */
-        .oob_length = 0,               /* 从offset开始拷贝页数据的长度 */
-        .chip_addr = chip_addr,                   /* 芯片地址 */
+        .page_buf = NULL,            /* page  */
+        .page_offset = 0,            /* offset */
+        .page_length = 0, /* offset */
+        .obb_required = 0,                /* obb ,1 oob  */
+        .oob_buf = NULL,         /* obb  */
+        .oob_offset = 0,             /* offset */
+        .oob_length = 0,               /* offset */
+        .chip_addr = chip_addr,                   /*  */
     };
 
     if (buffer && (length > 0))
@@ -356,14 +356,14 @@ FError FNandWritePageRaw(FNand *instance_p, u32 page_addr, u8 *buffer, u32 page_
     FNandOpData op_data =
     {
         .page_addr = page_addr,
-        .page_buf = NULL,            /* page 数据缓存空间 */
-        .page_offset = 0,            /* 从offset开始拷贝页数据 */
-        .page_length = 0, /* 从offset开始拷贝页数据的长度 */
-        .obb_required = 0,                /* obb 是否读取的标志位,1 需要操作oob 区域 */
-        .oob_buf = NULL,         /* obb 数据缓存空间 */
-        .oob_offset = 0,             /* 从offset开始拷贝页数据 */
-        .oob_length = 0,               /* 从offset开始拷贝页数据的长度 */
-        .chip_addr = chip_addr,                   /* 芯片地址 */
+        .page_buf = NULL,            /* page  */
+        .page_offset = 0,            /* offset */
+        .page_length = 0, /* offset */
+        .obb_required = 0,                /* obb ,1 oob  */
+        .oob_buf = NULL,         /* obb  */
+        .oob_offset = 0,             /* offset */
+        .oob_length = 0,               /* offset */
+        .chip_addr = chip_addr,                   /*  */
     };
 
     if (buffer && (length > 0))
@@ -409,14 +409,14 @@ FError FNandReadPage(FNand *instance_p, u32 page_addr, u8 *buffer, u32 page_copy
     FNandOpData op_data =
     {
         .page_addr = page_addr,
-        .page_buf = NULL,            /* page 数据缓存空间 */
-        .page_offset = 0,            /* 从offset开始拷贝页数据 */
-        .page_length = 0,            /* 从offset开始拷贝页数据的长度 */
-        .obb_required = 0,           /* obb 是否读取的标志位,1 需要操作oob 区域 */
-        .oob_buf = NULL,             /* obb 数据缓存空间 */
-        .oob_offset = 0,             /* 从offset开始拷贝页数据 */
-        .oob_length = 0,             /* 从offset开始拷贝页数据的长度 */
-        .chip_addr = chip_addr,      /* 芯片地址 */
+        .page_buf = NULL,            /* page  */
+        .page_offset = 0,            /* offset */
+        .page_length = 0,            /* offset */
+        .obb_required = 0,           /* obb ,1 oob  */
+        .oob_buf = NULL,             /* obb  */
+        .oob_offset = 0,             /* offset */
+        .oob_length = 0,             /* offset */
+        .chip_addr = chip_addr,      /*  */
     };
 
     /* clear buffer */
@@ -448,14 +448,14 @@ FError FNandReadPageRaw(FNand *instance_p, u32 page_addr, u8 *buffer, u32 page_c
     FNandOpData op_data =
     {
         .page_addr = page_addr,
-        .page_buf = NULL,            /* page 数据缓存空间 */
-        .page_offset = 0,            /* 从offset开始拷贝页数据 */
-        .page_length = 0,            /* 从offset开始拷贝页数据的长度 */
-        .obb_required = 0,           /* obb 是否读取的标志位,1 需要操作oob 区域 */
-        .oob_buf = NULL,             /* obb 数据缓存空间 */
-        .oob_offset = 0,             /* 从offset开始拷贝页数据 */
-        .oob_length = 0,             /* 从offset开始拷贝页数据的长度 */
-        .chip_addr = chip_addr,      /* 芯片地址 */
+        .page_buf = NULL,            /* page  */
+        .page_offset = 0,            /* offset */
+        .page_length = 0,            /* offset */
+        .obb_required = 0,           /* obb ,1 oob  */
+        .oob_buf = NULL,             /* obb  */
+        .oob_offset = 0,             /* offset */
+        .oob_length = 0,             /* offset */
+        .chip_addr = chip_addr,      /*  */
     };
 
     /* clear buffer */
@@ -480,7 +480,7 @@ FError FNandReadPageRaw(FNand *instance_p, u32 page_addr, u8 *buffer, u32 page_c
 /**
  * @name: FNandEraseBlock
  * @msg:  erase block data
- * @note: 擦除之后增加read status 命令进行检查。（70h）
+ * @note: read status 70h
  * @param {FNand} *instance_p is the pointer to the FNand instance.
  * @param {u32} block   is block number
  * @param {u32} chip_addr is chip address
@@ -519,14 +519,14 @@ FError FNandReadPageOOb(FNand *instance_p, u32 page_addr, u8 *oob_buffer, u32 oo
     FNandOpData op_data =
     {
         .page_addr = page_addr,
-        .page_buf = NULL,            /* page 数据缓存空间 */
-        .page_offset = 0,            /* 从offset开始拷贝页数据 */
-        .page_length = 0, /* 从offset开始拷贝页数据的长度 */
-        .obb_required = 1,                /* obb 是否读取的标志位,1 需要操作oob 区域 */
-        .oob_buf = oob_buffer,         /* obb 数据缓存空间 */
-        .oob_offset = oob_copy_offset,             /* 从offset开始拷贝页数据 */
-        .oob_length = oob_length,               /* 从offset开始拷贝页数据的长度 */
-        .chip_addr = chip_addr,                   /* 芯片地址 */
+        .page_buf = NULL,            /* page  */
+        .page_offset = 0,            /* offset */
+        .page_length = 0, /* offset */
+        .obb_required = 1,                /* obb ,1 oob  */
+        .oob_buf = oob_buffer,         /* obb  */
+        .oob_offset = oob_copy_offset,             /* offset */
+        .oob_length = oob_length,               /* offset */
+        .chip_addr = chip_addr,                   /*  */
     };
 
     return instance_p->read_oob_p(instance_p, &op_data);
@@ -553,14 +553,14 @@ FError FNandWritePageOOb(FNand *instance_p, u32 page_addr, u8 *oob_buffer, u32 p
     FNandOpData op_data =
     {
         .page_addr = page_addr,
-        .page_buf = NULL,            /* page 数据缓存空间 */
-        .page_offset = 0,            /* 从offset开始拷贝页数据 */
-        .page_length = 0, /* 从offset开始拷贝页数据的长度 */
-        .obb_required = 1,                /* obb 是否读取的标志位,1 需要操作oob 区域 */
-        .oob_buf = oob_buffer,         /* obb 数据缓存空间 */
-        .oob_offset = page_copy_offset,             /* 从offset开始拷贝页数据 */
-        .oob_length = oob_length,               /* 从offset开始拷贝页数据的长度 */
-        .chip_addr = chip_addr,                   /* 芯片地址 */
+        .page_buf = NULL,            /* page  */
+        .page_offset = 0,            /* offset */
+        .page_length = 0, /* offset */
+        .obb_required = 1,                /* obb ,1 oob  */
+        .oob_buf = oob_buffer,         /* obb  */
+        .oob_offset = page_copy_offset,             /* offset */
+        .oob_length = oob_length,               /* offset */
+        .chip_addr = chip_addr,                   /*  */
     };
 
     return instance_p->write_oob_p(instance_p, &op_data);

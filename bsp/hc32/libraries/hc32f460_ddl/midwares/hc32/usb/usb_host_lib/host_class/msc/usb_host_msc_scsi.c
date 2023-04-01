@@ -1,7 +1,7 @@
 /**
  *******************************************************************************
  * @file  usb_host_msc_scsi.c
- * @brief The SCSI commands。
+ * @brief The SCSI commands
  @verbatim
    Change Logs:
    Date             Author          Notes

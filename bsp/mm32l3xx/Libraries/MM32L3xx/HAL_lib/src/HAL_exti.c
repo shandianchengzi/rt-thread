@@ -192,7 +192,7 @@ FlagStatus EXTI_GetFlagStatus(uint32_t EXTI_Line)
 }
 
 /**
-* @brief  Clears the EXTI’s line pending flags.
+* @brief  Clears the EXTIs line pending flags.
 * @param EXTI_Line: specifies the EXTI lines flags to clear.
 *   This parameter can be any combination of EXTI_Linex where 
 *   x can be (0..18).
@@ -233,7 +233,7 @@ ITStatus EXTI_GetITStatus(uint32_t EXTI_Line)
 }
 
 /**
-* @brief  Clears the EXTI’s line pending bits.
+* @brief  Clears the EXTIs line pending bits.
 * @param EXTI_Line: specifies the EXTI lines to clear.
 *   This parameter can be any combination of EXTI_Linex where 
 *   x can be (0..18).

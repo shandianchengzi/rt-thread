@@ -69,7 +69,7 @@ static int ecspi_xfer_slv(unsigned instance, const uint8_t * tx_buf, uint8_t * r
 //! @param bytes Number of bytes to transfer.
 //!
 //! @todo Use interrupts to get notification of transfer completion instead of
-//!     polling the ECSPI STATREG and pausing 500 µs.
+//!     polling the ECSPI STATREG and pausing 500 s.
 static int ecspi_xfer_mst(unsigned instance, const uint8_t * tx_buf, uint8_t * rx_buf, int bytes)
 {
     uint32_t val;

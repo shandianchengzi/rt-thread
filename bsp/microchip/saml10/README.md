@@ -1,8 +1,8 @@
 # SAML10E16A BSP Introduction
 
-[中文](README_zh.md) 
-- MCU: ATSAML10E16A @32MHz, 64KB FLASH, 16KB RAM, 1.62V – 3.63V
-- L10: Cortex-M23 + Hardware multiplier & divider + ultra low power(< 25 μA/MHz)
+[](README_zh.md) 
+- MCU: ATSAML10E16A @32MHz, 64KB FLASH, 16KB RAM, 1.62V  3.63V
+- L10: Cortex-M23 + Hardware multiplier & divider + ultra low power(< 25 A/MHz)
 - Pin: E=32 pins, D=24pins
 - Flash: 16=64KB, 15=32KB, 14=16KB(size=2^n)
 - SRAM : 16KB(Flash 64KB), 8KB(Flash 32KB), 4KB(Flash 16KB)
@@ -11,13 +11,13 @@
 #### KEY FEATURES
 
 #### Core
-  - 32 MHz (2.64 CoreMark/MHz and up to 31 DMIPS) Arm® Cortex®-M23 with:
+  - 32 MHz (2.64 CoreMark/MHz and up to 31 DMIPS) Arm Cortex-M23 with:
   - Single-cycle hardware multiplier
   - Hardware divider
   - Nested Vector Interrupt Controller (NVIC)
   - Memory Protection Unit (MPU)
   - Stack Limit Checking
-  - TrustZone® for ARMv8-M (optional)
+  - TrustZone for ARMv8-M (optional)
 
 #### Memories
   - 16/32/64-KB Flash
@@ -42,9 +42,9 @@
   - One frequency meter
   - Low-Power and Power Management
   - Active, Idle, Standby with partial or full SRAM retention and off sleep modes:
-  - Active mode (< 25 μA/MHz)
-  - Idle mode (< 10 μA/MHz) with 1.5 μs wake-up time
-  - Standby with Full SRAM Retention (0.5 μA) with 5.3 μs wake-up time
+  - Active mode (< 25 A/MHz)
+  - Idle mode (< 10 A/MHz) with 1.5 s wake-up time
+  - Standby with Full SRAM Retention (0.5 A) with 5.3 s wake-up time
   - Off mode (< 100 nA)
   - Static and dynamic power gating architecture
   - Sleepwalking peripherals
@@ -79,7 +79,7 @@
   - Unique 128-bit serial number
   - SAM L11 Securely Key Provisioned (KPH) (optional)
   - Key Provisioning using Root of Trust flow
-  - Security Software Framework using Kinibi-M™ Software Development Kit (SDK)
+  - Security Software Framework using Kinibi-M Software Development Kit (SDK)
 
 #### Advanced Analog and Touch
   - One 12-bit 1 Msps Analog-to-Digital Converter (ADC) with up to 10 channels
@@ -119,7 +119,7 @@
   - Sequential logic functions, such as Flip-Flop and Latches
 
 #### Qualification
-  - AEC-Q100 Grade 1 (-40°C to 125°C)
+  - AEC-Q100 Grade 1 (-40C to 125C)
   - Class-B safety library, IEC 60730 (future)
 
 #### Packages

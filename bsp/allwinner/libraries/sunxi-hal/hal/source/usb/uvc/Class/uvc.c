@@ -11,7 +11,7 @@
 *
 * Date          :  2013/03/26
 *
-* Description   :  USB VIDEO CONTROL Driver中对USB接口设备的处理
+* Description   :  USB VIDEO CONTROL DriverUSB
 *
 * Others        :  NULL
 *
@@ -50,14 +50,14 @@
 #define  UVC_DRV_AUTHOR     "Kingvan.Tong"
 
 //---------------------------------------------------------------
-//  宏定义区
+//  
 //---------------------------------------------------------------
 
 //---------------------------------------------------------------
-//  全局变量区
+//  
 //---------------------------------------------------------------
 static struct usb_host_func_drv UVCDrv;
-static __u32 UVCDev_id_array;               /* 记录了设备的编号 */
+static __u32 UVCDev_id_array;               /*  */
 static void* UVCDev_attr;
 
 
@@ -294,7 +294,7 @@ static struct usb_drv_dev_match_table UVC_match_table[] = {
 };
 
 //---------------------------------------------------------------
-//  函数区定义区
+//  
 //---------------------------------------------------------------
 
 static unsigned int get_UVCDev_id(void)
@@ -319,7 +319,7 @@ static int free_UVCDev_id(unsigned int bit)
         return -1;
     }
 
-    /* 回收该位 */
+    /*  */
     usb_clear_bit(bit, (volatile uint32_t *)&UVCDev_id_array);
 
     return 0;
@@ -453,9 +453,9 @@ static int32_t UVCDevProbe(struct usb_interface *intf, const struct usb_drv_dev_
     }
 
     //----------------------------------------------------------------
-    //   创建UVCDev设备
+    //   UVCDev
     //----------------------------------------------------------------
-    /* 初始化一个mscDev */
+    /* mscDev */
     UVCDev = hal_malloc(sizeof(UVCDev_t));
     if(UVCDev == NULL){
         hal_log_err("ERR: UVCDevProbe malloc failed\n");
@@ -471,13 +471,13 @@ static int32_t UVCDevProbe(struct usb_interface *intf, const struct usb_drv_dev_
         goto error1;
     }
 
-    /* 获得设备信息 */
+    /*  */
     UVCGetDeviceInfo(UVCDev);
 
     UVCSetDeviceState(UVCDev, UVC_DEV_ONLINE);
 
     //----------------------------------------------------------------
-    //   识别UVCDev设备
+    //   UVCDev
     //----------------------------------------------------------------
     ret = UVCDevAdd(UVCDev, table_item);
     if(ret != USB_ERR_SUCCESS){

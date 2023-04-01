@@ -338,7 +338,7 @@ static rt_err_t eth_init(rt_device_t device)
             break;
         }
 
-        dma_addr = plat_dma_map_single(gmacdev, (void *)skb, RX_BUF_SIZE);  //获取 skb 的 dma 地址
+        dma_addr = plat_dma_map_single(gmacdev, (void *)skb, RX_BUF_SIZE);  // skb  dma 
 
         status = synopGMAC_set_rx_qptr(gmacdev, dma_addr, RX_BUF_SIZE, (u32)skb, 0, 0, 0);
         if (status < 0)

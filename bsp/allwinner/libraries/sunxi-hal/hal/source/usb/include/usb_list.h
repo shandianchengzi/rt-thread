@@ -16,7 +16,7 @@
 * Description :
 *
 * History :
-*注意*:别忘记修改list 的头指针，我犯过这个错误。
+**:list 
 ********************************************************************************************************************
 */
 
@@ -31,7 +31,7 @@
 //#include "usb_host_config.h"
 
 
-//#define   USE_USB_LIST_BUFF   0x01        //使用usb_list的buff机制
+//#define   USE_USB_LIST_BUFF   0x01        //usb_listbuff
 
 struct usb_list_head
 {
@@ -42,21 +42,21 @@ struct usb_list_head
 
 #define __USB_LIST_HEAD_INIT(name) { &(name), &(name) ,NULL}
 
-//创建并初始化
+//
 #define USB_LIST_HEAD(name) \
     struct usb_list_head name = __USB_LIST_HEAD_INIT(name)
 
-//只初始化
+//
 #define USB_INIT_LIST_HEAD(ptr) do { \
         (ptr)->next = (ptr); (ptr)->prev = (ptr); \
         (ptr)->data = NULL;\
     } while (0)
 
-/* 获得list中每个node的内容
+/* listnode
  *
- * list_head  :  链表头
- * list_next  :  下一个node
- * data       :  node的内容
+ * list_head  :  
+ * list_next  :  node
+ * data       :  node
  */
 #define usb_list_for_each_entry(list_head, list_next, data) \
     for((list_next) = (list_head)->next, (data) = list_next->data; \
@@ -65,7 +65,7 @@ struct usb_list_head
 
 //=========================================================
 
-//用这个的前提：prev,next必须是存在的，否则崩溃。
+//prev,next
 static inline void __usb_list_add(struct usb_list_head *node,
                                   struct usb_list_head *prev,
                                   struct usb_list_head *next)
@@ -76,13 +76,13 @@ static inline void __usb_list_add(struct usb_list_head *node,
     next->prev = node;
 }
 
-//将node添加到head的后面
+//nodehead
 static inline void usb_list_add(struct usb_list_head *node, struct usb_list_head *head)
 {
     __usb_list_add(node, head, head->next);
 }
 
-//将node添加到head的最后面，既其前面
+//nodehead
 static inline void usb_list_add_tail(struct usb_list_head *node, struct usb_list_head *head)
 {
     __usb_list_add(node, head->prev, head);
@@ -90,14 +90,14 @@ static inline void usb_list_add_tail(struct usb_list_head *node, struct usb_list
 
 //=========================================================
 
-//内部函数，删除prev,next之间的
+//prev,next
 static inline void __usb_list_del(struct usb_list_head *prev, struct usb_list_head *next)
 {
     next->prev = prev;
     prev->next = next;
 }
 
-//从list中删除entry
+//listentry
 static inline void usb_list_del(struct usb_list_head *entry)
 {
     __usb_list_del(entry->prev, entry->next);
@@ -107,14 +107,14 @@ static inline void usb_list_del(struct usb_list_head *entry)
     entry->prev = entry;
 }
 
-//比list_del多清除了指向data的
+//list_deldata
 static inline void usb_list_del_init(struct usb_list_head *entry)
 {
     __usb_list_del(entry->prev, entry->next);
     USB_INIT_LIST_HEAD(entry);
 }
 
-//判断是否为空
+//
 static inline int usb_list_empty(const struct usb_list_head *head)
 {
     return head->next == head;
@@ -130,11 +130,11 @@ void *ListMemoryMalloc(__u32 size, u8 *file_name, u32 line_nr);
 void ListMemoryFree(void *addr, u8 *file_name, u32 line_nr);
 
 
-/* list_head结构的分配和init */
+/* list_headinit */
 static struct usb_list_head *_list_head_malloc_init(void)
 {
     struct usb_list_head *list = NULL;
-    //先从buff中分配
+    //buff
     //list = ListMemoryMalloc(sizeof(struct usb_list_head), USB_MEM_FILE_TRIGGER, USB_MEM_LINE_TRIGGER);
     list = hal_malloc(sizeof(struct usb_list_head));
 
@@ -148,7 +148,7 @@ static struct usb_list_head *_list_head_malloc_init(void)
     return list;
 }
 
-/* list_head结构的释放 */
+/* list_head */
 static void _usb_list_head_free(struct usb_list_head *list)
 {
     if (list == NULL)
@@ -167,14 +167,14 @@ static void _usb_list_head_free(struct usb_list_head *list)
 *                     list_head_malloc_and_add
 *
 * Description:
-*     创建list_head并将data挂载到list_head，同时添加到目标list
-* 与list_head_malloc_and_add()配对使用
+*     list_headdatalist_headlist
+* list_head_malloc_and_add()
 *
 * Arguments:
-*     data  : input. 需要加入队列的数据
-*     head  : input. 队列的头
+*     data  : input. 
+*     head  : input. 
 * Return value:
-*     返回 head->data
+*      head->data
 * note:
 *     void
 *********************************************************************************
@@ -202,13 +202,13 @@ static inline void list_head_malloc_and_add(void *data, struct usb_list_head *he
 *                     list_head_unlink_and_del
 *
 * Description:
-*     从list中删除head这个node ,且free这个node的内存, 返回这个node的内容
-* 与list_head_malloc_and_add()配对使用
+*     listheadnode ,freenode, node
+* list_head_malloc_and_add()
 *
 * Arguments:
-*     head  : input. 即将被删除的node
+*     head  : input. node
 * Return value:
-*     返回 head->data
+*      head->data
 * note:
 *     void
 *********************************************************************************

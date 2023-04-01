@@ -1,15 +1,15 @@
 /*
- * @ : Copyright (c) 2021 Phytium Information Technology, Inc.
- *
- * SPDX-License-Identifier: Apache-2.0.
- *
+*@:Copyright(c)2021PhytiumInformationTechnology,Inc.
+*
+*SPDX-License-Identifier:Apache-2.0.
+*
  * @Date: 2021-04-07 09:53:07
  * @LastEditTime: 2021-05-24 10:48:22
- * @Description:  This files is for uart functions
+ * @Description: This files is for uart functions
  *
- * @Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * @ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 /***************************** Include Files ********************************/
@@ -55,7 +55,7 @@ s32 FUart_CfgInitialize(Ft_Uart *UartPtr, FUart_Config_t *Config)
     UartPtr->ReceiveBuffer.RemainingBytes = 0;
     UartPtr->rxbs_error = 0;
     UartPtr->IsReady = FT_COMPONENT_IS_READLY;
-    //<! 设置波特率
+    //<! 
 
     /*
          * Set up the default data format: 8 bit data, 1 stop bit, no

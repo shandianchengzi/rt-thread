@@ -56,7 +56,7 @@ typedef struct {
     volatile uint32_t int_on_setup            : 1  ; /* Interrupt on setup This bit is used on control type endpoints to indicate if USBINT is set in response to a setup being received. */
     volatile uint32_t max_packet_size         : 11 ; /* This directly corresponds to the maximum packet size of the associated endpoint (wMaxPacketSize) */
     volatile uint32_t                         : 2  ;
-    volatile uint32_t zero_length_termination : 1  ; /* This bit is used for non-isochronous endpoints to indicate when a zero-length packet is received to terminate transfers in case the total transfer length is “multiple”. 0 - Enable zero-length packet to terminate transfers equal to a multiple of Max_packet_length (default). 1 - Disable zero-length packet on transfers that are equal in length to a multiple Max_packet_length. */
+    volatile uint32_t zero_length_termination : 1  ; /* This bit is used for non-isochronous endpoints to indicate when a zero-length packet is received to terminate transfers in case the total transfer length is multiple. 0 - Enable zero-length packet to terminate transfers equal to a multiple of Max_packet_length (default). 1 - Disable zero-length packet on transfers that are equal in length to a multiple Max_packet_length. */
     volatile uint32_t iso_mult                : 2  ;
     volatile uint32_t                         : 0  ;
 

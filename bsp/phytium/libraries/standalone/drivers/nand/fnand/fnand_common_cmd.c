@@ -352,7 +352,7 @@ static FError FNandPageWriteHwEcc(FNand *instance_p, u32 page_addr, u8 *buf, u32
     FNandDmaPack(&cmd_format[CMD_PAGE_PROGRAM_WITH_OTHER], (struct FNandDmaDescriptor *)&instance_p->descriptor_buffer.data_buffer[0], &pack_data) ;
     /*  Random Data Input */
 
-    /* 写入存储硬件ecc 偏移位置参数 */
+    /* ecc  */
     memset(addr_buf, 0, sizeof(addr_buf));
     addr_buf[0] = bytes_per_page + ecc_offset;
     addr_buf[1] = (bytes_per_page + ecc_offset) >> 8;
@@ -401,7 +401,7 @@ static FError FNandPageReadOOb(FNand *instance_p, u32 page_addr, u8 *buf, u32 pa
         .addr_p = addr_buf,
         .addr_length = 5,
         .phy_address = (uintptr)instance_p->dma_data_buffer.data_buffer,
-        .phy_bytes_length = spare_bytes_per_page, /* 读取所有的oob 数据 */
+        .phy_bytes_length = spare_bytes_per_page, /* oob  */
         .chip_addr = chip_addr,
         .contiune_dma = 0,
     };
@@ -409,7 +409,7 @@ static FError FNandPageReadOOb(FNand *instance_p, u32 page_addr, u8 *buf, u32 pa
     addr_buf[4] = (page_addr >> 16);
     addr_buf[3] = (page_addr >> 8);
     addr_buf[2] = (page_addr);
-    addr_buf[1] = ((bytes_per_page >> 8) & 0xff); /* 从oob 位置读取 */
+    addr_buf[1] = ((bytes_per_page >> 8) & 0xff); /* oob  */
     addr_buf[0] = (bytes_per_page & 0xff);
 
     FNandDmaPack(&cmd_format[CMD_READ_OPTION_NEW], (struct FNandDmaDescriptor *)&instance_p->descriptor_buffer.data_buffer[0], &pack_data);
@@ -497,7 +497,7 @@ static FError FNandPageReadHwEcc(FNand *instance_p, u32 page_addr, u8 *buf, u32 
 
     /* Random Data Output */
     memset(addr_buf, 0, sizeof(addr_buf));
-    /* 读取存储硬件ecc 偏移位置参数 */
+    /* ecc  */
     addr_buf[0] = instance_p->nand_geometry[chip_addr].bytes_per_page + instance_p->nand_geometry[chip_addr].ecc_offset;
     addr_buf[1] = (instance_p->nand_geometry[chip_addr].bytes_per_page + instance_p->nand_geometry[chip_addr].ecc_offset) >> 8;
 
@@ -519,7 +519,7 @@ static FError FNandPageReadHwEcc(FNand *instance_p, u32 page_addr, u8 *buf, u32 
     }
 
     fsleep_microsec(100);
-    /* 增加判断bit(16) 是否ecc 正忙 */
+    /* bit(16) ecc  */
     nand_state = FNAND_READREG(instance_p->config.base_address, FNAND_STATE_OFFSET);
 
     while ((nand_state & FNAND_STATE_ECC_BUSY_OFFSET) && ((nand_state & FNAND_STATE_ECC_FINISH_OFFSET) == 0))

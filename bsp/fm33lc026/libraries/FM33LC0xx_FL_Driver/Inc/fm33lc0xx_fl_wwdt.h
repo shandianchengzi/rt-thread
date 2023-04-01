@@ -48,7 +48,7 @@ extern "C" {
   */
 typedef struct
 {
-    /** 看门狗溢出周期 */
+    /**  */
     uint32_t overflowPeriod;
 
 } FL_WWDT_InitTypeDef;

@@ -884,13 +884,13 @@ dead:
  * to a (possibly active) QH, and the same QH scanning code.
  */
 
-// 从usb_submit_urb传下来的调用
-// 实现了EHCI这一层上HCD(host controller driver)与硬件的读写接口
-// 该函数被执行代表driver有数据要与usb交换（收或者发），driver的请求用urb传下来
-// EHCI与CPU的数据交换方式是通过在内存中建立一块共享的内存区域，通过DMA的方式实现的
-// 数据在usb设备和HC间传输不需要CPU的干预，但是需要CPU告诉HC共享区域的地址和长度信息（还有usb设备的信息）等
-// 那么CPU就会把共享内存区域的地址、长度等信息构造成HC能识别的表（iTD,QH,qTD等描述符），再把这些表交给HC
-// HC就会按这张表所记录的信息在指定的内存地址处进行数据的传输，传输完成后，以中断的方式通知CPU一次传输的完成
+// usb_submit_urb
+// EHCIHCD(host controller driver)
+// driverusbdriverurb
+// EHCICPUDMA
+// usbHCCPUCPUHCusb
+// CPUHCiTD,QH,qTDHC
+// HCCPU
 
 int ehci_urb_enqueue (
     struct hc_gen_dev *hcd,
@@ -900,7 +900,7 @@ int ehci_urb_enqueue (
     struct ehci_hcd     *ehci = hcd_to_ehci (hcd);
     struct list_head    qtd_list;
 
-    INIT_LIST_HEAD (&qtd_list);//用于管理EHCI中的qtd数据结构
+    INIT_LIST_HEAD (&qtd_list);//EHCIqtd
 
     switch (usb_pipetype (urb->pipe)) {
     case PIPE_CONTROL:

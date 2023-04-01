@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fsleep.h
  * Date: 2021-05-28 08:48:40
  * LastEditTime: 2022-02-17 18:02:51
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 
@@ -27,8 +27,8 @@
 
 #include "ftypes.h"
 
-u32 fsleep_seconds(u32 seconds); /* 按秒延迟 */
-u32 fsleep_millisec(u32 mseconds); /* 按毫秒延迟 */
-u32 fsleep_microsec(u32 useconds); /* 按微秒延迟 */
+u32 fsleep_seconds(u32 seconds); /*  */
+u32 fsleep_millisec(u32 mseconds); /*  */
+u32 fsleep_microsec(u32 useconds); /*  */
 
 #endif // !

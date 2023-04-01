@@ -1,15 +1,15 @@
 /*
- * @ : Copyright (c) 2021 Phytium Information Technology, Inc.
- *
- * SPDX-License-Identifier: Apache-2.0.
- *
+*@:Copyright(c)2021PhytiumInformationTechnology,Inc.
+*
+*SPDX-License-Identifier:Apache-2.0.
+*
  * @Date: 2021-04-07 09:53:07
  * @LastEditTime: 2021-05-24 14:32:56
- * @Description:  This files is for
+ * @Description: This files is for
  *
- * @Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * @ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.00a hh  2021-02-05 First release
  */
 
@@ -174,13 +174,13 @@ typedef struct
 
 /**
  * @name: FGmac_DmaRxDescRingInit
- * @msg:  化标准 DMA 接收描述符 在ring结构下的初始化。
- * @param {Ft_Gmac_t} *Gmac  Gmac对象
- * @param {FGmac_DmaDesc_t} *DMARxDescTab 用户定义的静态 DMA 接收描述符表格
- * @param {u8} *RxBuff 用户定义的用于匹配 DMA 接收描述符表格的缓冲区
- * @param {u32} DescBufPerLength 每个缓冲区的大小
- * @param {u32} RxBuffCount 缓冲区的总数量
- * @return {s32} Common_status 参数。
+ * @msg:   DMA  ring
+ * @param {Ft_Gmac_t} *Gmac  Gmac
+ * @param {FGmac_DmaDesc_t} *DMARxDescTab  DMA 
+ * @param {u8} *RxBuff  DMA 
+ * @param {u32} DescBufPerLength 
+ * @param {u32} RxBuffCount 
+ * @return {s32} Common_status 
  */
 s32 FGmac_DmaRxDescRingInit(Ft_Gmac_t *Gmac,
                             FGmac_DmaDesc_t *DMATxDescTab,
@@ -190,13 +190,13 @@ s32 FGmac_DmaRxDescRingInit(Ft_Gmac_t *Gmac,
 
 /**
  * @name: FGmac_DmaTxDescRingInit
- * @msg:  标准 DMA 发送描述符 在ring结构下的初始化。
- * @param {Ft_Gmac_t} *Gmac Gmac对象
- * @param {FGmac_DmaDesc_t} *DMATxDescTab 用户定义的静态 DMA 发送描述符表格
- * @param {u8} *TxBuff  用户定义的用于匹配 DMA 发送描述符表格的缓冲区
- * @param {u32} DescBufPerLength 每个缓冲区的大小
- * @param {u32} TxBuffCount 缓冲区的总数量
- * @return {s32} Common_status 参数
+ * @msg:   DMA  ring
+ * @param {Ft_Gmac_t} *Gmac Gmac
+ * @param {FGmac_DmaDesc_t} *DMATxDescTab  DMA 
+ * @param {u8} *TxBuff   DMA 
+ * @param {u32} DescBufPerLength 
+ * @param {u32} TxBuffCount 
+ * @return {s32} Common_status 
  */
 s32 FGmac_DmaTxDescRingInit(Ft_Gmac_t *Gmac,
                             FGmac_DmaDesc_t *DMATxDescTab,
@@ -206,40 +206,40 @@ s32 FGmac_DmaTxDescRingInit(Ft_Gmac_t *Gmac,
 
 /**
  * @name: FGmac_TransmitframeRingPoll
- * @msg:  轮询的方式发送DMA发送表述符
- * @param {Ft_Gmac_t} *Gmac Gmac对象
- * @param {uint32_t} FrameLength 需要发送数据的有效长度
- * @return {s32} Common_status 参数
+ * @msg:  DMA
+ * @param {Ft_Gmac_t} *Gmac Gmac
+ * @param {uint32_t} FrameLength 
+ * @return {s32} Common_status 
  */
 s32 FGmac_TransmitframeRingPoll(Ft_Gmac_t *Gmac, uint32_t FrameLength);
 
 /**
  * @name: FGmac_RingGetReceivedFrame_IT
- * @msg:  检查标准ring结构的DMA接收符中是否有完整的数据包。
- * @param {Ft_Gmac_t} *Gmac Gmac对象
- * @return {s32} Common_status 参数
+ * @msg:  ringDMA
+ * @param {Ft_Gmac_t} *Gmac Gmac
+ * @return {s32} Common_status 
  */
 s32 FGmac_RingGetReceivedFrame_IT(Ft_Gmac_t *Gmac);
 
 /**
  * @name: FGmac_ResumeTransmission
- * @msg:  检查 DMA_STATUS_TU 符号是否存在，如果存在将其置位，恢复DMA 描述符的发送 。
- * @param {Ft_Gmac_t} *Gmac Gmac对象
+ * @msg:   DMA_STATUS_TU DMA  
+ * @param {Ft_Gmac_t} *Gmac Gmac
  * @return {void}
  */
 void FGmac_ResumeTransmission(Ft_Gmac_t *Gmac);
 
 /**
  * @name: FGmac_SetTransmitUnderflow
- * @msg:  检查 DMA_STATUS_UNF 符号是否存在，如果存在将其置位，恢复DMA 描述符的发送 。
- * @param {Ft_Gmac_t} *Gmac Gmac对象
+ * @msg:   DMA_STATUS_UNF DMA  
+ * @param {Ft_Gmac_t} *Gmac Gmac
  * @return {void}
  */
 void FGmac_SetTransmitUnderflow(Ft_Gmac_t *Gmac);
 
 /**
  * @name: FGmac_ResumeTransmissionReception
- * @msg:  检查 DMA_STATUS_RU 符号是否存在，如果存在将其置位，恢复DMA 描述符的接收 。
+ * @msg:   DMA_STATUS_RU DMA  
  * @param {Ft_Gmac_t} *Gmac
  * @return {void}
  */
@@ -247,61 +247,61 @@ void FGmac_ResumeTransmissionReception(Ft_Gmac_t *Gmac);
 
 /**
  * @name: Ft_Gmac_LookupConfig
- * @msg:  获取 Gmac 静态预设配置参数 。
- * @param {u32} InstanceId Gmac 实例编号。
- * @return {FGmac_Config_t *} 返回Gmac的静态配置
+ * @msg:   Gmac  
+ * @param {u32} InstanceId Gmac 
+ * @return {FGmac_Config_t *} Gmac
  */
 FGmac_Config_t *Ft_Gmac_LookupConfig(u32 InstanceId);
 
 /**
  * @name: Ft_Gmac_HwInitialize
- * @msg:  对于Gmac Mac 层 与Phy 层的硬件部分进行预设初始化配置
- * @param {Ft_Gmac_t} *Gmac Gmac对象。
- * @return {s32} Common_status 参数
+ * @msg:  Gmac Mac  Phy 
+ * @param {Ft_Gmac_t} *Gmac Gmac
+ * @return {s32} Common_status 
  */
 s32 Ft_Gmac_HwInitialize(Ft_Gmac_t *Gmac);
 
 /**
  * @name: Ft_GmacCfgInitialize
- * @msg:  初始化，硬件配置相关参数。
- * @param {Ft_Gmac_t} *Gmac Gmac对象。
+ * @msg:  
+ * @param {Ft_Gmac_t} *Gmac Gmac
  * @param {FGmac_Config_t} *Config
- * @return {s32} Common_status 参数
+ * @return {s32} Common_status 
  */
 s32 Ft_GmacCfgInitialize(Ft_Gmac_t *Gmac, FGmac_Config_t *Config);
 
 /**
  * @name: Ft_Gmac_Start
- * @msg:  开启Gmac 的 发送接收功能，并且开启中断功能。
- * @param {Ft_Gmac_t} *Gmac Gmac对象。
- * @return {s32}  Common_status 参数
+ * @msg:  Gmac  
+ * @param {Ft_Gmac_t} *Gmac Gmac
+ * @return {s32}  Common_status 
  */
 s32 Ft_Gmac_Start(Ft_Gmac_t *Gmac);
 
 /**
  * @name: Ft_Gmac_Stop
- * @msg:  关闭Gmac 的 发送接收功能。
- * @param {Ft_Gmac_t} *Gmac Gmac对象。
- * @return {s32} Common_status 参数
+ * @msg:  Gmac  
+ * @param {Ft_Gmac_t} *Gmac Gmac
+ * @return {s32} Common_status 
  */
 s32 Ft_Gmac_Stop(Ft_Gmac_t *Gmac);
 
 /**
  * @name: FGmac_IntrHandler
- * @msg:  Gmac 中断函数，用于响应Gmac 相关所以函数
- * @param {void} *Args Ft_Gmac_t *Gmac 参数传入
+ * @msg:  Gmac Gmac 
+ * @param {void} *Args Ft_Gmac_t *Gmac 
  * @return {void}
  */
 void FGmac_IntrHandler(void *Args);
 
 /**
  * @name: FGmac_SetHandler
- * @msg:  根据SelectIndex 配置 中断过程中响应函数
- * @param {Ft_Gmac_t} *Gmac Gmac对象。
+ * @msg:  SelectIndex  
+ * @param {Ft_Gmac_t} *Gmac Gmac
  * @param {FGmac_IsrCallbackSelect_t} SelectIndex
  * @param {void} *FuncPtr
  * @param {void} *Args
- * @return {s32} Common_status 参数
+ * @return {s32} Common_status 
  */
 s32 FGmac_SetHandler(Ft_Gmac_t *Gmac, FGmac_IsrCallbackSelect_t SelectIndex, void *FuncPtr, void *Args);
 
@@ -309,9 +309,9 @@ void Ft_Gmac_Phy_Debug(Ft_Gmac_t *Gmac);
 
 /**
  * @name: Ft_Gmac_UseDefaultMacAddr
- * @msg:  在有uboot的模式之下，使用默认的Mac0配置参数。
- * @in param{Ft_Gmac_t *}:  Gmac对象
- * @out param{u8 *}:  输出的Mac参数
+ * @msg:  ubootMac0
+ * @in param{Ft_Gmac_t *}:  Gmac
+ * @out param{u8 *}:  Mac
  * @return {None}:
  */
 void Ft_Gmac_UseDefaultMacAddr(Ft_Gmac_t *Gmac, u8 *MacAddr);

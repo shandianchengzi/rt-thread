@@ -128,7 +128,7 @@ void rt_hw_board_init(void)
     rt_components_board_init();
     rt_console_set_device(RT_CONSOLE_DEVICE_NAME);
 
-/* 初始化内存池 */
+/*  */
 #ifdef RT_USING_HEAP
     rt_system_heap_init(HEAP_BEGIN, HEAP_END);
 #endif

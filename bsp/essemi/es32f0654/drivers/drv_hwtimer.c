@@ -276,7 +276,7 @@ static rt_err_t es32f0_hwtimer_control(rt_hwtimer_t *timer,
             temp = (double)ald_cmu_get_pclk1_clock();
             target = temp/freq;
 
-            if(target < 0x10001)   /*最大分频 = max(PRES)+1*/
+            if(target < 0x10001)   /* = max(PRES)+1*/
             {
                 temp = target - (int)(target);
 
@@ -293,7 +293,7 @@ static rt_err_t es32f0_hwtimer_control(rt_hwtimer_t *timer,
 
             }
 
-            if(ret == RT_EOK)     /*更新信息*/
+            if(ret == RT_EOK)     /**/
                 hwtimer->parent.freq = ald_cmu_get_pclk1_clock()/((hwtimer->hwtimer_periph->perh->PRES & 0xFFFF)+1);
 
         }

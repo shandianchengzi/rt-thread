@@ -130,7 +130,7 @@ exclusive of preamble. */
     __RW uint32_t RX1024TOMAXOCTETS_GB;        /* 0x1C0: Number of good and bad frames received with length between
 1024 and maxsize (inclusive) bytes, exclusive of preamble. */
     __RW uint32_t RXUNICASTFRAMES_G;           /* 0x1C4: Number of received good unicast frames. */
-    __RW uint32_t RXLENGTHERROR;               /* 0x1C8: Number of frames received with length error (Length type field ≠
+    __RW uint32_t RXLENGTHERROR;               /* 0x1C8: Number of frames received with length error (Length type field 
 frame size), for all frames with valid length field. */
     __RW uint32_t RXOUTOFRANGETYPE;            /* 0x1CC: Number of frames received with length field not equal to the valid
 frame size (greater than 1,500 but less than 1,536). */
@@ -190,20 +190,20 @@ below). */
 (checksum, length, version mismatch). The value in the Length
 field of IPv4 header is used to update this counter. */
     __RW uint32_t RXIPV4_NOPAY_OCTETS;         /* 0x258: Number of bytes received in IPv4 datagrams that did not have a
-TCP, UDP, or ICMP payload. The value in the IPv4 header’s
+TCP, UDP, or ICMP payload. The value in the IPv4 headers
 Length field is used to update this counter. */
     __RW uint32_t RXIPV4_FRAG_OCTETS;          /* 0x25C: Number of bytes received in fragmented IPv4 datagrams. The
-value in the IPv4 header’s Length field is used to update this
+value in the IPv4 headers Length field is used to update this
 counter */
     __RW uint32_t RXIPV4_UDSBL_OCTETS;         /* 0x260: Number of bytes received in a UDP segment that had the UDP
 checksum disabled. This counter does not count IP Header bytes. */
     __RW uint32_t RXIPV6_GD_OCTETS;            /* 0x264: Number of bytes received in good IPv6 datagrams encapsulating
 TCP, UDP or ICMPv6 data */
     __RW uint32_t RXIPV6_HDRERR_OCTETS;        /* 0x268: Number of bytes received in IPv6 datagrams with header errors
-(length, version mismatch). The value in the IPv6 header’s Length
+(length, version mismatch). The value in the IPv6 headers Length
 field is used to update this counter. */
     __RW uint32_t RXIPV6_NOPAY_OCTETS;         /* 0x26C: Number of bytes received in IPv6 datagrams that did not have a
-TCP, UDP, or ICMP payload. The value in the IPv6 header’s
+TCP, UDP, or ICMP payload. The value in the IPv6 headers
 Length field is used to update this counter. */
     __RW uint32_t RXUDP_GD_OCTETS;             /* 0x270: Number of bytes received in a good UDP segment. This counter
 (and the counters below) does not count IP header bytes. */
@@ -474,7 +474,7 @@ errors */
  * IPC (RW)
  *
  * Checksum Offload
- * When this bit is set, the MAC calculates the 16-bit one’s complement of the one’s complement sum of all received Ethernet frame payloads. It also checks whether the IPv4 Header checksum (assumed to be bytes 25–26 or 29–30 (VLAN-tagged) of the received Ethernet frame) is correct for the received frame and gives the status in the receive status word. The MAC also appends the 16-bit checksum calculated for the IP header datagram payload (bytes after the IPv4 header) and appends it to the Ethernet frame transferred to the application (when Type 2 COE is deselected). When this bit is reset, this function is disabled. When Type 2 COE is selected, this bit, when set, enables the IPv4 header checksum checking and IPv4 or IPv6 TCP, UDP, or ICMP payload checksum checking.
+ * When this bit is set, the MAC calculates the 16-bit ones complement of the ones complement sum of all received Ethernet frame payloads. It also checks whether the IPv4 Header checksum (assumed to be bytes 2526 or 2930 (VLAN-tagged) of the received Ethernet frame) is correct for the received frame and gives the status in the receive status word. The MAC also appends the 16-bit checksum calculated for the IP header datagram payload (bytes after the IPv4 header) and appends it to the Ethernet frame transferred to the application (when Type 2 COE is deselected). When this bit is reset, this function is disabled. When Type 2 COE is selected, this bit, when set, enables the IPv4 header checksum checking and IPv4 or IPv6 TCP, UDP, or ICMP payload checksum checking.
  */
 #define ENET_MACCFG_IPC_MASK (0x400U)
 #define ENET_MACCFG_IPC_SHIFT (10U)
@@ -524,7 +524,7 @@ errors */
  * - 00: k= min (n, 10)
  * - 01: k = min (n, 8)
  * - 10: k = min (n, 4)
- * - 11: k = min (n, 1) where n = retransmission attempt. The random integer r takes the value in the range 0 ≤ r < 2k
+ * - 11: k = min (n, 1) where n = retransmission attempt. The random integer r takes the value in the range 0  r < 2k
  */
 #define ENET_MACCFG_BL_MASK (0x60U)
 #define ENET_MACCFG_BL_SHIFT (5U)
@@ -789,13 +789,13 @@ errors */
  * CR (RW)
  *
  * CSR Clock Range
- *  The CSR Clock Range selection determines the frequency of the MDC clock according to the CSR clock frequency used in your design. The CSR clock corresponding to different GMAC configurations is given in Table 9-2 on page 564. The suggested range of CSR clock frequency applicable for each value (when Bit[5] = 0) ensures that the MDC clock is approximately between the frequency range 1.0 MHz–2.5 MHz.
- * - 0000: The CSR clock frequency is 60–100 MHz and the MDC clock frequency is CSR clock/42.
- * - 0001: The CSR clock frequency is 100–150 MHz and the MDC clock frequency is CSR clock/62.
- * - 0010: The CSR clock frequency is 20–35 MHz and the MDC clock frequency is CSR clock/16.
- * - 0011: The CSR clock frequency is 35–60 MHz and the MDC clock frequency is CSR clock/26.
- * - 0100: The CSR clock frequency is 150–250 MHz and the MDC clock frequency is CSR clock/102.
- * - 0101: The CSR clock frequency is 250–300 MHz and the MDC clock is CSR clock/124.
+ *  The CSR Clock Range selection determines the frequency of the MDC clock according to the CSR clock frequency used in your design. The CSR clock corresponding to different GMAC configurations is given in Table 9-2 on page 564. The suggested range of CSR clock frequency applicable for each value (when Bit[5] = 0) ensures that the MDC clock is approximately between the frequency range 1.0 MHz2.5 MHz.
+ * - 0000: The CSR clock frequency is 60100 MHz and the MDC clock frequency is CSR clock/42.
+ * - 0001: The CSR clock frequency is 100150 MHz and the MDC clock frequency is CSR clock/62.
+ * - 0010: The CSR clock frequency is 2035 MHz and the MDC clock frequency is CSR clock/16.
+ * - 0011: The CSR clock frequency is 3560 MHz and the MDC clock frequency is CSR clock/26.
+ * - 0100: The CSR clock frequency is 150250 MHz and the MDC clock frequency is CSR clock/102.
+ * - 0101: The CSR clock frequency is 250300 MHz and the MDC clock is CSR clock/124.
  * - 0110, 0111: Reserved When Bit 5 is set, you can achieve higher frequency of the MDC clock than the frequency limit of 2.5 MHz (specified in the IEEE Std 802.3) and program a clock divider of lower value. For example, when CSR clock is of 100 MHz frequency and you program these bits as 1010, then the resultant MDC clock is of 12.5 MHz which is outside the limit of IEEE 802.3 specified range. Program the following values only if the interfacing chips support faster MDC clocks.
  * - 1000: CSR clock/4
  * - 1001: CSR clock/6
@@ -826,7 +826,7 @@ errors */
  * GB (RW)
  *
  * GMII Busy
- *  This bit should read logic 0 before writing to Register 4 and Register 5. During a PHY or RevMII register access, the software sets this bit to 1’b1 to indicate that a Read or Write access is in progress. Register 5 is invalid until this bit is cleared by the MAC. Therefore, Register 5 (GMII Data) should be kept valid until the MAC clears this bit during a PHY Write operation. Similarly for a read operation, the contents of Register 5 are not valid until this bit is cleared. The subsequent read or write operation should happen only after the previous operation is complete. Because there is no acknowledgment from the PHY to MAC after a read or write operation is completed, there is no change in the functionality of this bit even when the PHY is not present.
+ *  This bit should read logic 0 before writing to Register 4 and Register 5. During a PHY or RevMII register access, the software sets this bit to 1b1 to indicate that a Read or Write access is in progress. Register 5 is invalid until this bit is cleared by the MAC. Therefore, Register 5 (GMII Data) should be kept valid until the MAC clears this bit during a PHY Write operation. Similarly for a read operation, the contents of Register 5 are not valid until this bit is cleared. The subsequent read or write operation should happen only after the previous operation is complete. Because there is no acknowledgment from the PHY to MAC after a read or write operation is completed, there is no change in the functionality of this bit even when the PHY is not present.
  */
 #define ENET_GMII_ADDR_GB_MASK (0x1U)
 #define ENET_GMII_ADDR_GB_SHIFT (0U)
@@ -872,11 +872,11 @@ errors */
  * PLT (RW)
  *
  * Pause Low Threshold
- *  This field configures the threshold of the Pause timer at which the input flow control signal mti_flowctrl_i (or sbd_flowctrl_i) is checked for automatic retransmission of the Pause frame. The threshold values should be always less than the Pause Time configured in Bits[31:16]. For example, if PT = 100H (256 slot-times), and PLT = 01, then a second Pause frame is automatically transmitted if the mti_flowctrl_i signal is asserted at 228 (256 – 28) slot times after the first Pause frame is transmitted. The following list provides the threshold values for different values:
- * - 00: The threshold is Pause time minus 4 slot times (PT – 4 slot times).
- * - 01: The threshold is Pause time minus 28 slot times (PT – 28 slot times).
- * - 10: The threshold is Pause time minus 144 slot times (PT – 144 slot times).
- * - 11: The threshold is Pause time minus 256 slot times (PT – 256 slot times). The slot time is defined as the time taken to transmit 512 bits (64 bytes) on the GMII or MII interface.
+ *  This field configures the threshold of the Pause timer at which the input flow control signal mti_flowctrl_i (or sbd_flowctrl_i) is checked for automatic retransmission of the Pause frame. The threshold values should be always less than the Pause Time configured in Bits[31:16]. For example, if PT = 100H (256 slot-times), and PLT = 01, then a second Pause frame is automatically transmitted if the mti_flowctrl_i signal is asserted at 228 (256  28) slot times after the first Pause frame is transmitted. The following list provides the threshold values for different values:
+ * - 00: The threshold is Pause time minus 4 slot times (PT  4 slot times).
+ * - 01: The threshold is Pause time minus 28 slot times (PT  28 slot times).
+ * - 10: The threshold is Pause time minus 144 slot times (PT  144 slot times).
+ * - 11: The threshold is Pause time minus 256 slot times (PT  256 slot times). The slot time is defined as the time taken to transmit 512 bits (64 bytes) on the GMII or MII interface.
  */
 #define ENET_FLOWCTRL_PLT_MASK (0x30U)
 #define ENET_FLOWCTRL_PLT_SHIFT (4U)
@@ -931,7 +931,7 @@ errors */
  * VTHM (RW)
  *
  * VLAN Tag Hash Table Match Enable
- *  When set, the most significant four bits of the VLAN tag’s CRC are used to index the content of Register 354 (VLAN Hash Table Register). A value of 1 in the VLAN Hash Table register, corresponding to the index, indicates that the frame matched the VLAN hash table. When Bit 16 (ETV) is set, the CRC of the 12-bit VLAN Identifier (VID) is used for comparison whereas when ETV is reset, the CRC of the 16-bit VLAN tag is used for comparison. When reset, the VLAN Hash Match operation is not performed.
+ *  When set, the most significant four bits of the VLAN tags CRC are used to index the content of Register 354 (VLAN Hash Table Register). A value of 1 in the VLAN Hash Table register, corresponding to the index, indicates that the frame matched the VLAN hash table. When Bit 16 (ETV) is set, the CRC of the 12-bit VLAN Identifier (VID) is used for comparison whereas when ETV is reset, the CRC of the 16-bit VLAN tag is used for comparison. When reset, the VLAN Hash Match operation is not performed.
  */
 #define ENET_VLAN_TAG_VTHM_MASK (0x80000UL)
 #define ENET_VLAN_TAG_VTHM_SHIFT (19U)
@@ -975,7 +975,7 @@ errors */
  * VL (RW)
  *
  * VLAN Tag Identifier for Receive Frames
- *  This field contains the 802.1Q VLAN tag to identify the VLAN frames and is compared to the 15th and 16th bytes of the frames being received for VLAN frames. The following list describes the bits of this field: - Bits [15:13]: User Priority - Bit 12: Canonical Format Indicator (CFI) or Drop Eligible Indicator (DEI) - Bits[11:0]: VLAN tag’s VLAN Identifier (VID) field When the ETV bit is set, only the VID (Bits[11:0]) is used for comparison. If VL (VL[11:0] if ETV is set) is all zeros, the MAC does not check the fifteenth and 16th bytes for VLAN tag comparison, and declares all frames with a Type field value of 0x8100 or 0x88a8 as VLAN frames.
+ *  This field contains the 802.1Q VLAN tag to identify the VLAN frames and is compared to the 15th and 16th bytes of the frames being received for VLAN frames. The following list describes the bits of this field: - Bits [15:13]: User Priority - Bit 12: Canonical Format Indicator (CFI) or Drop Eligible Indicator (DEI) - Bits[11:0]: VLAN tags VLAN Identifier (VID) field When the ETV bit is set, only the VID (Bits[11:0]) is used for comparison. If VL (VL[11:0] if ETV is set) is all zeros, the MAC does not check the fifteenth and 16th bytes for VLAN tag comparison, and declares all frames with a Type field value of 0x8100 or 0x88a8 as VLAN frames.
  */
 #define ENET_VLAN_TAG_VL_MASK (0xFFFFU)
 #define ENET_VLAN_TAG_VL_SHIFT (0U)
@@ -1154,7 +1154,7 @@ errors */
  * RWKFILTRST (RW)
  *
  * Remote Wake-Up Frame Filter Register Pointer Reset
- * When this bit is set, it resets the remote wake-up frame filter register pointer to 3’b000. It is automatically cleared after 1 clock cycle.
+ * When this bit is set, it resets the remote wake-up frame filter register pointer to 3b000. It is automatically cleared after 1 clock cycle.
  */
 #define ENET_PMT_CSR_RWKFILTRST_MASK (0x80000000UL)
 #define ENET_PMT_CSR_RWKFILTRST_SHIFT (31U)
@@ -1704,8 +1704,8 @@ errors */
  *
  * Link Mode
  *  This bit indicates the current mode of operation of the link:
- * - 1’b0: Half-duplex mode
- * - 1’b1: Full-duplex mode
+ * - 1b0: Half-duplex mode
+ * - 1b1: Full-duplex mode
  */
 #define ENET_XMII_CSR_LNKMOD_MASK (0x1U)
 #define ENET_XMII_CSR_LNKMOD_SHIFT (0U)
@@ -3479,7 +3479,7 @@ errors */
 /*
  * FRMCNT (RW)
  *
- * Number of frames received with length error (Length type field ≠ frame size), for all frames with valid length field.
+ * Number of frames received with length error (Length type field  frame size), for all frames with valid length field.
  */
 #define ENET_RXLENGTHERROR_FRMCNT_MASK (0xFFFFFFFFUL)
 #define ENET_RXLENGTHERROR_FRMCNT_SHIFT (0U)
@@ -4361,7 +4361,7 @@ errors */
 /*
  * BYTECNT (RW)
  *
- * Number of bytes received in IPv4 datagrams that did not have a TCP, UDP, or ICMP payload. The value in the IPv4 header’s Length field is used to update this counter.
+ * Number of bytes received in IPv4 datagrams that did not have a TCP, UDP, or ICMP payload. The value in the IPv4 headers Length field is used to update this counter.
  */
 #define ENET_RXIPV4_NOPAY_OCTETS_BYTECNT_MASK (0xFFFFFFFFUL)
 #define ENET_RXIPV4_NOPAY_OCTETS_BYTECNT_SHIFT (0U)
@@ -4372,7 +4372,7 @@ errors */
 /*
  * BYTECNT (RW)
  *
- * Number of bytes received in fragmented IPv4 datagrams. The value in the IPv4 header’s Length field is used to update this counter.
+ * Number of bytes received in fragmented IPv4 datagrams. The value in the IPv4 headers Length field is used to update this counter.
  */
 #define ENET_RXIPV4_FRAG_OCTETS_BYTECNT_MASK (0xFFFFFFFFUL)
 #define ENET_RXIPV4_FRAG_OCTETS_BYTECNT_SHIFT (0U)
@@ -4405,7 +4405,7 @@ errors */
 /*
  * BYTECNT (RW)
  *
- * Number of bytes received in IPv6 datagrams with header errors (length, version mismatch). The value in the IPv6 header’s Length field is used to update this counter.
+ * Number of bytes received in IPv6 datagrams with header errors (length, version mismatch). The value in the IPv6 headers Length field is used to update this counter.
  */
 #define ENET_RXIPV6_HDRERR_OCTETS_BYTECNT_MASK (0xFFFFFFFFUL)
 #define ENET_RXIPV6_HDRERR_OCTETS_BYTECNT_SHIFT (0U)
@@ -4416,7 +4416,7 @@ errors */
 /*
  * BYTECNT (RW)
  *
- * Number of bytes received in IPv6 datagrams that did not have a TCP, UDP, or ICMP payload. The value in the IPv6 header’s Length field is used to update this counter.
+ * Number of bytes received in IPv6 datagrams that did not have a TCP, UDP, or ICMP payload. The value in the IPv6 headers Length field is used to update this counter.
  */
 #define ENET_RXIPV6_NOPAY_OCTETS_BYTECNT_MASK (0xFFFFFFFFUL)
 #define ENET_RXIPV6_NOPAY_OCTETS_BYTECNT_SHIFT (0U)
@@ -4545,7 +4545,7 @@ errors */
  * - 31: All bits except MSb are masked. IPv6 Frames: Bits [12:11] of this field correspond to Bits [6:5] of L3HSBM0, which indicate the number of lower bits of IP Source or Destination Address that are masked in the IPv6 frames. The following list describes the concatenated values of the L3HDBM0[1:0] and L3HSBM0 bits:
  * - 0: No bits are masked.
  * - 1: LSb[0] is masked.
- * - 2: Two LSbs [1:0] are masked. - …
+ * - 2: Two LSbs [1:0] are masked. - 
  * - 127: All bits except MSb are masked. This field is valid and applicable only if L3DAM0 or L3SAM0 is set high.
  */
 #define ENET_L3_L4_CFG_L3_L4_CTRL_L3HDBM0_MASK (0xF800U)
@@ -4732,10 +4732,10 @@ errors */
  * VLC (RW)
  *
  * VLAN Tag Control in Transmit Frames
- * - 2’b00: No VLAN tag deletion, insertion, or replacement
- * - 2’b01: VLAN tag deletion The MAC removes the VLAN type (bytes 13 and 14) and VLAN tag (bytes 15 and 16) of all transmitted frames with VLAN tags.
- * - 2’b10: VLAN tag insertion The MAC inserts VLT in bytes 15 and 16 of the frame after inserting the Type value (0x8100/0x88a8) in bytes 13 and 14. This operation is performed on all transmitted frames, irrespective of whether they already have a VLAN tag.
- * - 2’b11: VLAN tag replacement The MAC replaces VLT in bytes 15 and 16 of all VLAN-type transmitted frames (Bytes 13 and 14 are 0x8100/0x88a8). Note: Changes to this field take effect only on the start of a frame. If you write this register field when a frame is being transmitted, only the subsequent frame can use the updated value, that is, the current frame does not use the updated value.
+ * - 2b00: No VLAN tag deletion, insertion, or replacement
+ * - 2b01: VLAN tag deletion The MAC removes the VLAN type (bytes 13 and 14) and VLAN tag (bytes 15 and 16) of all transmitted frames with VLAN tags.
+ * - 2b10: VLAN tag insertion The MAC inserts VLT in bytes 15 and 16 of the frame after inserting the Type value (0x8100/0x88a8) in bytes 13 and 14. This operation is performed on all transmitted frames, irrespective of whether they already have a VLAN tag.
+ * - 2b11: VLAN tag replacement The MAC replaces VLT in bytes 15 and 16 of all VLAN-type transmitted frames (Bytes 13 and 14 are 0x8100/0x88a8). Note: Changes to this field take effect only on the start of a frame. If you write this register field when a frame is being transmitted, only the subsequent frame can use the updated value, that is, the current frame does not use the updated value.
  */
 #define ENET_VLAN_TAG_INC_RPL_VLC_MASK (0x30000UL)
 #define ENET_VLAN_TAG_INC_RPL_VLC_SHIFT (16U)
@@ -4746,7 +4746,7 @@ errors */
  * VLT (RW)
  *
  * VLAN Tag for Transmit Frames
- *  This field contains the value of the VLAN tag to be inserted or replaced. The value must only be changed when the transmit lines are inactive or during the initialization phase. Bits[15:13] are the User Priority, Bit 12 is the CFI/DEI, and Bits[11:0] are the VLAN tag’s VID field.
+ *  This field contains the value of the VLAN tag to be inserted or replaced. The value must only be changed when the transmit lines are inactive or during the initialization phase. Bits[15:13] are the User Priority, Bit 12 is the CFI/DEI, and Bits[11:0] are the VLAN tags VID field.
  */
 #define ENET_VLAN_TAG_INC_RPL_VLT_MASK (0xFFFFU)
 #define ENET_VLAN_TAG_INC_RPL_VLT_SHIFT (0U)
@@ -4957,7 +4957,7 @@ errors */
  * TSUPDT (RW)
  *
  * Timestamp Update
- * When set, the system time is updated (added or subtracted) with the value specified in Register 452 (System Time – Seconds Update Register) and Register 453 (System Time – Nanoseconds Update Register). This bit should be read zero before updating it. This bit is reset when the update is completed in hardware. The “Timestamp Higher Word” register (if enabled during core configuration) is not updated.
+ * When set, the system time is updated (added or subtracted) with the value specified in Register 452 (System Time  Seconds Update Register) and Register 453 (System Time  Nanoseconds Update Register). This bit should be read zero before updating it. This bit is reset when the update is completed in hardware. The Timestamp Higher Word register (if enabled during core configuration) is not updated.
  */
 #define ENET_TS_CTRL_TSUPDT_MASK (0x8U)
 #define ENET_TS_CTRL_TSUPDT_SHIFT (3U)
@@ -4968,7 +4968,7 @@ errors */
  * TSINIT (RW)
  *
  * Timestamp Initialize
- * When set, the system time is initialized (overwritten) with the value specified in the Register 452 (System Time – Seconds Update Register) and Register 453 (System Time – Nanoseconds Update Register). This bit should be read zero before updating it. This bit is reset when the initialization is complete. The “Timestamp Higher Word” register (if enabled during core configuration) can only be initialized.
+ * When set, the system time is initialized (overwritten) with the value specified in the Register 452 (System Time  Seconds Update Register) and Register 453 (System Time  Nanoseconds Update Register). This bit should be read zero before updating it. This bit is reset when the initialization is complete. The Timestamp Higher Word register (if enabled during core configuration) can only be initialized.
  */
 #define ENET_TS_CTRL_TSINIT_MASK (0x4U)
 #define ENET_TS_CTRL_TSINIT_SHIFT (2U)
@@ -5378,7 +5378,7 @@ errors */
  * PPSINT (RW)
  *
  * PPS0 Output Signal Interval
- * These bits store the interval between the rising edges of PPS0 signal output in terms of units of sub-second increment value. You need to program one value less than the required interval. For example, if the PTP reference clock is 50 MHz (period of 20ns), and desired interval between rising edges of PPS0 signal output is 100ns (that is, five units of sub-second increment value), then you should program value 4 (5 – 1) in this register.
+ * These bits store the interval between the rising edges of PPS0 signal output in terms of units of sub-second increment value. You need to program one value less than the required interval. For example, if the PTP reference clock is 50 MHz (period of 20ns), and desired interval between rising edges of PPS0 signal output is 100ns (that is, five units of sub-second increment value), then you should program value 4 (5  1) in this register.
  */
 #define ENET_PPS0_INTERVAL_PPSINT_MASK (0xFFFFFFFFUL)
 #define ENET_PPS0_INTERVAL_PPSINT_SHIFT (0U)
@@ -5390,7 +5390,7 @@ errors */
  * PPSWIDTH (RW)
  *
  * PPS0 Output Signal Width
- * These bits store the width between the rising edge and corresponding falling edge of the PPS0 signal output in terms of units of sub-second increment value. You need to program one value less than the required interval. For example, if PTP reference clock is 50 MHz (period of 20ns), and desired width between the rising and corresponding falling edges of PPS0 signal output is 80ns (that is, four units of sub-second increment value), then you should program value 3 (4 – 1) in this register.
+ * These bits store the width between the rising edge and corresponding falling edge of the PPS0 signal output in terms of units of sub-second increment value. You need to program one value less than the required interval. For example, if PTP reference clock is 50 MHz (period of 20ns), and desired width between the rising and corresponding falling edges of PPS0 signal output is 80ns (that is, four units of sub-second increment value), then you should program value 3 (4  1) in this register.
  */
 #define ENET_PPS0_WIDTH_PPSWIDTH_MASK (0xFFFFFFFFUL)
 #define ENET_PPS0_WIDTH_PPSWIDTH_SHIFT (0U)
@@ -5437,7 +5437,7 @@ errors */
  * PPSINT (RW)
  *
  * PPS1 Output Signal Interval
- * These bits store the interval between the rising edges of PPS1 signal output in terms of units of sub-second increment value. You need to program one value less than the required interval. For example, if the PTP reference clock is 50 MHz (period of 20ns), and desired interval between rising edges of PPS1 signal output is 100ns (that is, five units of sub-second increment value), then you should program value 4 (5 – 1) in this register.
+ * These bits store the interval between the rising edges of PPS1 signal output in terms of units of sub-second increment value. You need to program one value less than the required interval. For example, if the PTP reference clock is 50 MHz (period of 20ns), and desired interval between rising edges of PPS1 signal output is 100ns (that is, five units of sub-second increment value), then you should program value 4 (5  1) in this register.
  */
 #define ENET_PPS_INTERVAL_PPSINT_MASK (0xFFFFFFFFUL)
 #define ENET_PPS_INTERVAL_PPSINT_SHIFT (0U)
@@ -5449,7 +5449,7 @@ errors */
  * PPSWIDTH (RW)
  *
  * PPS1 Output Signal Width
- * These bits store the width between the rising edge and corresponding falling edge of the PPS1 signal output in terms of units of sub-second increment value. You need to program one value less than the required interval. For example, if PTP reference clock is 50 MHz (period of 20ns), and desired width between the rising and corresponding falling edges of PPS1 signal output is 80ns (that is, four units of sub-second increment value), then you should program value 3 (4 – 1) in this register.
+ * These bits store the width between the rising edge and corresponding falling edge of the PPS1 signal output in terms of units of sub-second increment value. You need to program one value less than the required interval. For example, if PTP reference clock is 50 MHz (period of 20ns), and desired width between the rising and corresponding falling edges of PPS1 signal output is 80ns (that is, four units of sub-second increment value), then you should program value 3 (4  1) in this register.
  */
 #define ENET_PPS_WIDTH_PPSWIDTH_MASK (0xFFFFFFFFUL)
 #define ENET_PPS_WIDTH_PPSWIDTH_SHIFT (0U)
@@ -5590,7 +5590,7 @@ errors */
  * ATDS (RW)
  *
  * Alternate Descriptor Size
- * When set, the size of the alternate descriptor (described in “Alternate or Enhanced Descriptors” on page 545) increases to 32 bytes (8 DWORDS). This is required when the Advanced Timestamp feature or the IPC Full Checksum Offload Engine (Type 2) is enabled in the receiver. The enhanced descriptor is not required if the Advanced Timestamp and IPC Full Checksum Offload Engine (Type 2) features are not enabled. In such case, you can use the 16 bytes descriptor to save 4 bytes of memory. This bit is present only when you select the Alternate Descriptor feature and any one of the following features during core configuration: - Advanced Timestamp feature - IPC Full Checksum Offload Engine (Type 2) feature Otherwise, this bit is reserved and is read-only. When reset, the descriptor size reverts back to 4 DWORDs (16 bytes).
+ * When set, the size of the alternate descriptor (described in Alternate or Enhanced Descriptors on page 545) increases to 32 bytes (8 DWORDS). This is required when the Advanced Timestamp feature or the IPC Full Checksum Offload Engine (Type 2) is enabled in the receiver. The enhanced descriptor is not required if the Advanced Timestamp and IPC Full Checksum Offload Engine (Type 2) features are not enabled. In such case, you can use the 16 bytes descriptor to save 4 bytes of memory. This bit is present only when you select the Alternate Descriptor feature and any one of the following features during core configuration: - Advanced Timestamp feature - IPC Full Checksum Offload Engine (Type 2) feature Otherwise, this bit is reserved and is read-only. When reset, the descriptor size reverts back to 4 DWORDs (16 bytes).
  */
 #define ENET_DMA_BUS_MODE_ATDS_MASK (0x80U)
 #define ENET_DMA_BUS_MODE_ATDS_SHIFT (7U)
@@ -5707,7 +5707,7 @@ errors */
  * GPI (RW)
  *
  * GMAC PMT Interrupt
- * This bit indicates an interrupt event in the PMT module of the DWC_gmac. The software must read the PMT Control and Status Register in the MAC to get the exact cause of interrupt and clear its source to reset this bit to 1’b0. The interrupt signal from the DWC_gmac subsystem (sbd_intr_o) is high when this bit is high. This bit is applicable only when the Power Management feature is enabled. Otherwise, this bit is reserved. Note: The GPI and pmt_intr_o interrupts are generated in different clock domains.
+ * This bit indicates an interrupt event in the PMT module of the DWC_gmac. The software must read the PMT Control and Status Register in the MAC to get the exact cause of interrupt and clear its source to reset this bit to 1b0. The interrupt signal from the DWC_gmac subsystem (sbd_intr_o) is high when this bit is high. This bit is applicable only when the Power Management feature is enabled. Otherwise, this bit is reserved. Note: The GPI and pmt_intr_o interrupts are generated in different clock domains.
  */
 #define ENET_DMA_STATUS_GPI_MASK (0x10000000UL)
 #define ENET_DMA_STATUS_GPI_SHIFT (28U)
@@ -5718,7 +5718,7 @@ errors */
  * GMI (RW)
  *
  * GMAC MMC Interrupt
- *  This bit reflects an interrupt event in the MMC module of the DWC_gmac. The software must read the corresponding registers in the DWC_gmac to get the exact cause of the interrupt and clear the source of interrupt to make this bit as 1’b0. The interrupt signal from the DWC_gmac subsystem (sbd_intr_o) is high when this bit is high. This bit is applicable only when the MAC Management Counters (MMC) are enabled. Otherwise, this bit is reserved.
+ *  This bit reflects an interrupt event in the MMC module of the DWC_gmac. The software must read the corresponding registers in the DWC_gmac to get the exact cause of the interrupt and clear the source of interrupt to make this bit as 1b0. The interrupt signal from the DWC_gmac subsystem (sbd_intr_o) is high when this bit is high. This bit is applicable only when the MAC Management Counters (MMC) are enabled. Otherwise, this bit is reserved.
  */
 #define ENET_DMA_STATUS_GMI_MASK (0x8000000UL)
 #define ENET_DMA_STATUS_GMI_SHIFT (27U)
@@ -5758,14 +5758,14 @@ errors */
  *
  * Transmit Process State
  * This field indicates the Transmit DMA FSM state. This field does not generate an interrupt.
- * - 3’b000: Stopped; Reset or Stop Transmit Command issued
- * - 3’b001: Running; Fetching Transmit Transfer Descriptor
- * - 3’b010: Running; Waiting for status
- * - 3’b011: Running; Reading Data from host memory buffer and queuing it to transmit buffer (Tx FIFO)
- * - 3’b100: TIME_STAMP write state
- * - 3’b101: Reserved for future use
- * - 3’b110: Suspended; Transmit Descriptor Unavailable or Transmit Buffer Underflow
- * - 3’b111: Running; Closing Transmit Descriptor
+ * - 3b000: Stopped; Reset or Stop Transmit Command issued
+ * - 3b001: Running; Fetching Transmit Transfer Descriptor
+ * - 3b010: Running; Waiting for status
+ * - 3b011: Running; Reading Data from host memory buffer and queuing it to transmit buffer (Tx FIFO)
+ * - 3b100: TIME_STAMP write state
+ * - 3b101: Reserved for future use
+ * - 3b110: Suspended; Transmit Descriptor Unavailable or Transmit Buffer Underflow
+ * - 3b111: Running; Closing Transmit Descriptor
  */
 #define ENET_DMA_STATUS_TS_MASK (0x700000UL)
 #define ENET_DMA_STATUS_TS_SHIFT (20U)
@@ -5777,14 +5777,14 @@ errors */
  *
  * Receive Process State
  * This field indicates the Receive DMA FSM state. This field does not generate an interrupt.
- * - 3’b000: Stopped: Reset or Stop Receive Command issued
- * - 3’b001: Running: Fetching Receive Transfer Descriptor
- * - 3’b010: Reserved for future use
- * - 3’b011: Running: Waiting for receive packet
- * - 3’b100: Suspended: Receive Descriptor Unavailable
- * - 3’b101: Running: Closing Receive Descriptor
- * - 3’b110: TIME_STAMP write state
- * - 3’b111: Running: Transferring the receive packet data from receive buffer to host memory
+ * - 3b000: Stopped: Reset or Stop Receive Command issued
+ * - 3b001: Running: Fetching Receive Transfer Descriptor
+ * - 3b010: Reserved for future use
+ * - 3b011: Running: Waiting for receive packet
+ * - 3b100: Suspended: Receive Descriptor Unavailable
+ * - 3b101: Running: Closing Receive Descriptor
+ * - 3b110: TIME_STAMP write state
+ * - 3b111: Running: Transferring the receive packet data from receive buffer to host memory
  */
 #define ENET_DMA_STATUS_RS_MASK (0xE0000UL)
 #define ENET_DMA_STATUS_RS_SHIFT (17U)
@@ -5983,7 +5983,7 @@ errors */
  * DFF (RW)
  *
  * Disable Flushing of Received Frames
- * When this bit is set, the Rx DMA does not flush any frames because of the unavailability of receive descriptors or buffers as it does normally when this bit is reset. (See “Receive Process Suspended” on page 83.)
+ * When this bit is set, the Rx DMA does not flush any frames because of the unavailability of receive descriptors or buffers as it does normally when this bit is reset. (See Receive Process Suspended on page 83.)
  */
 #define ENET_DMA_OP_MODE_DFF_MASK (0x1000000UL)
 #define ENET_DMA_OP_MODE_DFF_SHIFT (24U)
@@ -5995,9 +5995,9 @@ errors */
  *
  * MSB of Threshold for Activating Flow Control
  * If the DWC_gmac is configured for an Rx FIFO size of 8 KB or more, this bit (when set) provides additional threshold levels for activating the flow control in both half-duplex and full-duplex modes. This bit (as Most Significant Bit), along with the RFA (Bits [10:9]), gives the following thresholds for activating flow control:
- * - 100: Full minus 5 KB, that is, FULL — 5 KB
- * - 101: Full minus 6 KB, that is, FULL — 6 KB
- * - 110: Full minus 7 KB, that is, FULL — 7 KB
+ * - 100: Full minus 5 KB, that is, FULL  5 KB
+ * - 101: Full minus 6 KB, that is, FULL  6 KB
+ * - 110: Full minus 7 KB, that is, FULL  7 KB
  * - 111: Reserved This bit is reserved (and RO) if the Rx FIFO is 4 KB or less deep.
  */
 #define ENET_DMA_OP_MODE_RFA_2_MASK (0x800000UL)
@@ -6010,9 +6010,9 @@ errors */
  *
  * MSB of Threshold for Deactivating Flow Control
  * If the DWC_gmac is configured for Rx FIFO size of 8 KB or more, this bit (when set) provides additional threshold levels for deactivating the flow control in both half-duplex and full-duplex modes. This bit (as Most Significant Bit) along with the RFD (Bits [12:11]) gives the following thresholds for deactivating flow control:
- * - 100: Full minus 5 KB, that is, FULL — 5 KB
- * - 101: Full minus 6 KB, that is, FULL — 6 KB
- * - 110: Full minus 7 KB, that is, FULL — 7 KB
+ * - 100: Full minus 5 KB, that is, FULL  5 KB
+ * - 101: Full minus 6 KB, that is, FULL  6 KB
+ * - 110: Full minus 7 KB, that is, FULL  7 KB
  * - 111: Reserved This bit is reserved (and RO) if the Rx FIFO is 4 KB or less deep.
  */
 #define ENET_DMA_OP_MODE_RFD_2_MASK (0x400000UL)
@@ -6076,10 +6076,10 @@ errors */
  * RFD (RW)
  *
  * Threshold for Deactivating Flow Control (in half-duplex and full-duplex modes) These bits control the threshold (Fill-level of Rx FIFO) at which the flow control is de-asserted after activation.
- * - 00: Full minus 1 KB, that is, FULL — 1 KB
- * - 01: Full minus 2 KB, that is, FULL — 2 KB
- * - 10: Full minus 3 KB, that is, FULL — 3 KB
- * - 11: Full minus 4 KB, that is, FULL — 4 KB The de-assertion is effective only after flow control is asserted. If the Rx FIFO is 8 KB or more, an additional Bit (RFD_2) is used for more threshold levels as described in Bit 22. These bits are reserved and read-only when the Rx FIFO depth is less than 4 KB.
+ * - 00: Full minus 1 KB, that is, FULL  1 KB
+ * - 01: Full minus 2 KB, that is, FULL  2 KB
+ * - 10: Full minus 3 KB, that is, FULL  3 KB
+ * - 11: Full minus 4 KB, that is, FULL  4 KB The de-assertion is effective only after flow control is asserted. If the Rx FIFO is 8 KB or more, an additional Bit (RFD_2) is used for more threshold levels as described in Bit 22. These bits are reserved and read-only when the Rx FIFO depth is less than 4 KB.
  */
 #define ENET_DMA_OP_MODE_RFD_MASK (0x1800U)
 #define ENET_DMA_OP_MODE_RFD_SHIFT (11U)
@@ -6090,10 +6090,10 @@ errors */
  * RFA (RW)
  *
  * Threshold for Activating Flow Control (in half-duplex and full-duplex modes) These bits control the threshold (Fill level of Rx FIFO) at which the flow control is activated.
- * - 00: Full minus 1 KB, that is, FULL—1KB.
- * - 01: Full minus 2 KB, that is, FULL—2KB.
- * - 10: Full minus 3 KB, that is, FULL—3KB.
- * - 11: Full minus 4 KB, that is, FULL—4KB. These values are applicable only to Rx FIFOs of 4 KB or more and when Bit 8 (EFC) is set high. If the Rx FIFO is 8 KB or more, an additional Bit (RFA_2) is used for more threshold levels as described in Bit 23. These bits are reserved and read-only when the depth of Rx FIFO is less than 4 KB. Note: When FIFO size is exactly 4 KB, although the DWC_gmac allows you to program the value of these bits to 11, the software should not program these bits to 2'b11. The value 2'b11 means flow control on FIFO empty condition
+ * - 00: Full minus 1 KB, that is, FULL1KB.
+ * - 01: Full minus 2 KB, that is, FULL2KB.
+ * - 10: Full minus 3 KB, that is, FULL3KB.
+ * - 11: Full minus 4 KB, that is, FULL4KB. These values are applicable only to Rx FIFOs of 4 KB or more and when Bit 8 (EFC) is set high. If the Rx FIFO is 8 KB or more, an additional Bit (RFA_2) is used for more threshold levels as described in Bit 23. These bits are reserved and read-only when the depth of Rx FIFO is less than 4 KB. Note: When FIFO size is exactly 4 KB, although the DWC_gmac allows you to program the value of these bits to 11, the software should not program these bits to 2'b11. The value 2'b11 means flow control on FIFO empty condition
  */
 #define ENET_DMA_OP_MODE_RFA_MASK (0x600U)
 #define ENET_DMA_OP_MODE_RFA_SHIFT (9U)
@@ -6363,7 +6363,7 @@ errors */
  * OVFFRMCNT (RW)
  *
  * Overflow Frame Counter
- * This field indicates the number of frames missed by the application. This counter is incremented each time the MTL FIFO overflows. The counter is cleared when this register is read with mci_be_i[2] at 1’b1.
+ * This field indicates the number of frames missed by the application. This counter is incremented each time the MTL FIFO overflows. The counter is cleared when this register is read with mci_be_i[2] at 1b1.
  */
 #define ENET_DMA_MISS_OVF_CNT_OVFFRMCNT_MASK (0xFFE0000UL)
 #define ENET_DMA_MISS_OVF_CNT_OVFFRMCNT_SHIFT (17U)
@@ -6385,7 +6385,7 @@ errors */
  * MISFRMCNT (RW)
  *
  * Missed Frame Counter
- * This field indicates the number of frames missed by the controller because of the Host Receive Buffer being unavailable. This counter is incremented each time the DMA discards an incoming frame. The counter is cleared when this register is read with mci_be_i[0] at 1’b1.
+ * This field indicates the number of frames missed by the controller because of the Host Receive Buffer being unavailable. This counter is incremented each time the DMA discards an incoming frame. The counter is cleared when this register is read with mci_be_i[0] at 1b1.
  */
 #define ENET_DMA_MISS_OVF_CNT_MISFRMCNT_MASK (0xFFFFU)
 #define ENET_DMA_MISS_OVF_CNT_MISFRMCNT_SHIFT (0U)

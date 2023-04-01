@@ -19,4 +19,4 @@ To list the build options, run the "help" target by typing "make help" in CLI. F
 * [ModusToolbox](https://www.cypress.com/products/modustoolbox-software-environment)
 
 ---
-© Cypress Semiconductor Corporation, 2019.
+ Cypress Semiconductor Corporation, 2019.

@@ -1,8 +1,8 @@
 # SAMC21J18A BSP Introduction
 
-[中文](README_zh.md) 
+[](README_zh.md) 
 
-- MCU: ATSAMC21J18A @64MHz, 256KB FLASH, 32KB RAM, 2.7V – 5.5V
+- MCU: ATSAMC21J18A @64MHz, 256KB FLASH, 32KB RAM, 2.7V  5.5V
 - C21: Cortex-M0+ + Advanced Feature Set + 2x CAN-FD + Delta-Sigma ADC
 - Pin: N=100 pins, J=64 pins, G=48 pins, E=32 pins
 - Flash: 18=256KB, 17=128KB, 16=64KB , 15=32KB(size=2^n)
@@ -12,7 +12,7 @@
 #### KEY FEATURES
 
 #### Core
-  - 32-bit Arm® Cortex®-M0+ CPU running at up to 48 MHz or 64 MHz with Single-cycle hardware multiplier
+  - 32-bit Arm Cortex-M0+ CPU running at up to 48 MHz or 64 MHz with Single-cycle hardware multiplier
 
 ####  Memories
   - 32/64/128/256 KB in-system self-programmable Flash
@@ -52,12 +52,12 @@
   - Up to 84 programmable I/O pins
 
 #### Qualification
-  - AEC - Q100 Grade 1 (-40°C to 125°C)
+  - AEC - Q100 Grade 1 (-40C to 125C)
 
 #### Voltage
-  - 2.7V – 5.5V
-  - -40°C to +125°C, DC to 48 MHz
-  - -40°C to +85°C, DC to 64 MHz
+  - 2.7V  5.5V
+  - -40C to +125C, DC to 48 MHz
+  - -40C to +85C, DC to 64 MHz
 
 #### Packages
   - 100-pin TQFP
@@ -67,4 +67,4 @@
   - 32-pin TQFP, VQFN
 
 #### Board info
-- [SAM C21 XPLAINED PRO]（https://www.microchip.com/en-us/development-tool/ATSAMC21-XPRO）
+- [SAM C21 XPLAINED PRO]https://www.microchip.com/en-us/development-tool/ATSAMC21-XPRO

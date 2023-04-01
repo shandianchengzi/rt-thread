@@ -383,7 +383,7 @@ typedef struct
     uint8_t u8_WeekDay;  /*!< Specifies the RTC Date WeekDay.
                               This parameter can be a value of @ref RTC_WeekDay_Definitions */
 }RTC_DateTypeDef;
-/* Attention: Year、Month、Date、Week use BCD code */
+/* Attention: YearMonthDateWeek use BCD code */
 
 
 /**
@@ -400,7 +400,7 @@ typedef struct
     uint8_t u8_Seconds;     /*!< Specifies the RTC Time Seconds.
                                  This parameter must be a number between Min_Data = 0x00 and Max_Data = 0x59 */
 }RTC_TimeTypeDef;
-/* Attention: Hour、Minute、Second use BCD code */
+/* Attention: HourMinuteSecond use BCD code */
 
 
 /**
@@ -461,41 +461,41 @@ typedef struct
 
 /** @brief  PC13 function select
   * @param  __FUNC__: PC13 function select.
-  *         This parameter can be 0: GPIO，1：RTC Fout，2：RTC tamper 3：PC13 Value
+  *         This parameter can be 0: GPIO1RTC Fout2RTC tamper 3PC13 Value
   */
 #define __HAL_RTC_PC13_SEL(__FUNC__)    (PMU->IOSEL |= (PMU->IOSEL & ~(0x3)) | (__FUNC__))
 
 /** @brief  PC14 function select
   * @param  __FUNC__: PC14 function select.
-  *         This parameter can be 0: GPIO，1：PC14 Value
+  *         This parameter can be 0: GPIO1PC14 Value
   */
 #define __HAL_RTC_PC14_SEL(__FUNC__)    (PMU->IOSEL |= (PMU->IOSEL & ~(0x3 << 3)) | (__FUNC__ << 3))
 
 /** @brief  PC15 function select
   * @param  __FUNC__: PC15 function select.
-  *         This parameter can be 0: GPIO，1：PC15 Value
+  *         This parameter can be 0: GPIO1PC15 Value
   */
 #define __HAL_RTC_PC15_SEL(__FUNC__)    (PMU->IOSEL |= (PMU->IOSEL & ~(0x3 << 5)) | (__FUNC__ << 5))
 
 /** @brief  PC13 Value set
   * @param  __FUNC__: PC13 Value set.
-  *         This parameter can be 0: set，1：claer
+  *         This parameter can be 0: set1claer
   */
 #define __HAL_RTC_PC13_VALUE(__VALUE__)    (PMU->IOSEL |= (PMU->IOSEL & ~(1 << 8)) | (__VALUE__ << 8))
 
 /** @brief  PC14 Value set
   * @param  __FUNC__: PC14 Value set.
-  *         This parameter can be 0: set，1：claer
+  *         This parameter can be 0: set1claer
   */
 #define __HAL_RTC_PC14_VALUE(__VALUE__)    (PMU->IOSEL |= (PMU->IOSEL & ~(1 << 9)) | (__VALUE__ << 9))
 
 /** @brief  PC15 Value set
   * @param  __FUNC__: PC15 Value set.
-  *         This parameter can be 0: set，1：claer
+  *         This parameter can be 0: set1claer
   */
 #define __HAL_RTC_PC15_VALUE(__VALUE__)    (PMU->IOSEL |= (PMU->IOSEL & ~(1 << 10)) | (__VALUE__ << 10))
 
-/* @brief  PC13、PC14、PC15 pull up or pull down */
+/* @brief  PC13PC14PC15 pull up or pull down */
 #define __HAL_RTC_PC13_PULL_UP_ENABLE()       (PMU->IOCR |=  BIT0)
 #define __HAL_RTC_PC13_PULL_UP_DISABLE()      (PMU->IOCR &= ~BIT0)
 #define __HAL_RTC_PC13_PULL_DOWN_ENABLE()     (PMU->IOCR |=  BIT1)
@@ -511,7 +511,7 @@ typedef struct
 #define __HAL_RTC_PC15_PULL_DOWN_ENABLE()     (PMU->IOCR |=  BIT17)
 #define __HAL_RTC_PC15_PULL_DOWN_DISABLE()    (PMU->IOCR &= ~BIT17)
 
-/* @brief  PC13、PC14、PC15 digit or analog */
+/* @brief  PC13PC14PC15 digit or analog */
 #define __HAL_RTC_PC13_ANALOG()    (PMU->IOCR |=  BIT6)
 #define __HAL_RTC_PC13_DIGIT()     (PMU->IOCR &= ~BIT6)
 
@@ -607,35 +607,35 @@ typedef struct
   * @}
   */
 
-/* RTC stamp1 interrupt enable、disable */
+/* RTC stamp1 interrupt enabledisable */
 #define __HAL_RTC_ENABLE_STAMP1_IT         (RTC->IE |= (RTC_IE_STP1RIE | RTC_IE_STP1FIE))
 #define __HAL_RTC_DISABLE_STAMP1_IT        (RTC->IE &= ~(RTC_IE_STP1RIE | RTC_IE_STP1FIE))
 
-/* RTC stamp2 interrupt enable、disable */
+/* RTC stamp2 interrupt enabledisable */
 #define __HAL_RTC_ENABLE_STAMP2_IT         (RTC->IE |= (RTC_IE_STP2RIE | RTC_IE_STP2FIE))
 #define __HAL_RTC_DISABLE_STAMP2_IT        (RTC->IE &= ~(RTC_IE_STP2RIE | RTC_IE_STP2FIE))
 
-/* RTC 32S interrupt enable、disable */
+/* RTC 32S interrupt enabledisable */
 #define __HAL_RTC_ENABLE_32S_IT            (RTC->IE |= RTC_IE_ADJ32)
 #define __HAL_RTC_DISABLE_32S_IT           (RTC->IE &= ~RTC_IE_ADJ32)
 
-/* RTC alarm interrupt enable、disable */
+/* RTC alarm interrupt enabledisable */
 #define __HAL_RTC_ENABLE_ALM_IT            (RTC->IE |= RTC_IE_ALM)
 #define __HAL_RTC_DISABLE_ALM_IT           (RTC->IE &= RTC_IE_ALM)
 
-/* RTC sec interrupt enable、disable */
+/* RTC sec interrupt enabledisable */
 #define __HAL_RTC_ENABLE_SEC_IT            (RTC->IE |= RTC_IE_SEC)
 #define __HAL_RTC_DISABLE_SEC_IT           (RTC->IE &= ~RTC_IE_SEC)
 
-/* RTC Minutes interrupt enable、disable */
+/* RTC Minutes interrupt enabledisable */
 #define __HAL_RTC_ENABLE_MIN_IT            (RTC->IE |= RTC_IE_MIN)
 #define __HAL_RTC_DISABLE_MIN_IT           (RTC->IE &= ~RTC_IE_MIN)
 
-/* RTC Hour interrupt enable、disable */
+/* RTC Hour interrupt enabledisable */
 #define __HAL_RTC_ENABLE_HOUR_IT           (RTC->IE |= RTC_IE_HOUR)
 #define __HAL_RTC_DISABLE_HOUR_IT          (RTC->IE &= ~RTC_IE_HOUR)
 
-/* RTC Date interrupt enable、disable */
+/* RTC Date interrupt enabledisable */
 #define __HAL_RTC_ENABLE_DATE_IT           (RTC->IE |= RTC_IE_DATE)
 #define __HAL_RTC_DISABLE_DATE_IT          (RTC->IE &= ~RTC_IE_DATE)
 

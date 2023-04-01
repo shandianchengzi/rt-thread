@@ -22,7 +22,7 @@
 #include "HAL_wwdg.h"
 #include "HAL_rcc.h"
 
-//WWDG_BASE 未定义
+//WWDG_BASE 
 #ifdef 0
 
 /** @addtogroup StdPeriph_Driver

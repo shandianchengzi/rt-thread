@@ -42,7 +42,7 @@
 /******************************************************************************/
 /** \file aes.h
  **
- ** AES 数据结构及API声明.
+ ** AES API.
  **
  **   - 2016-05-04  LuX V1.0.
  **
@@ -74,7 +74,7 @@ extern "C"
  ******************************************************************************/
 /**
  *******************************************************************************
- ** \brief AES密钥长度类型定义
+ ** \brief AES
  ** \note
  ******************************************************************************/
 typedef enum en_aes_key_type
@@ -86,15 +86,15 @@ typedef enum en_aes_key_type
 
 /**
  *******************************************************************************
- ** \brief AES配置结构体
+ ** \brief AES
  ** \note
  ******************************************************************************/
 typedef struct
 {
-    uint32_t*           pu32Cipher;           ///< AES 密文指针
-    uint32_t*           pu32Plaintext;        ///< AES 明文指针
-    uint32_t*           pu32Key;              ///< AES 密钥指针
-    en_aes_key_type_t   enKeyLen;             ///< AES 密钥长度类型
+    uint32_t*           pu32Cipher;           ///< AES 
+    uint32_t*           pu32Plaintext;        ///< AES 
+    uint32_t*           pu32Key;              ///< AES 
+    en_aes_key_type_t   enKeyLen;             ///< AES 
 
 }stc_aes_cfg_t;
 
@@ -113,9 +113,9 @@ typedef struct
 /******************************************************************************
  * Global function prototypes (definition in C source)                        
  ******************************************************************************/
-//AES 加密
+//AES 
 en_result_t AES_Encrypt(stc_aes_cfg_t* pstcAesCfg);
-//AES 解密
+//AES 
 en_result_t AES_Decrypt(stc_aes_cfg_t* pstcAesCfg);
 
 

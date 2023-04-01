@@ -484,11 +484,11 @@ cache_detect_4way:
     mfc0	t4, CP0_CONFIG,1 /* move CP0 CONFIG to t4 */
     lui		v0, 0x7 /* v0 = 0x7 << 16 */
     and		v0, t4, v0 /* v0 = t4 & v0 */
-    srl		t3, v0, 16 /* t3 = v0 >> 16  Icache组相联数 IA */
+    srl		t3, v0, 16 /* t3 = v0 >> 16  Icache IA */
 
     li		t5, 0x800 		//32*64
     srl		v1, t4,22		//v1 = t4 >> 22
-    andi	v1, 7			//Icache每路的组数 64x2^S IS
+    andi	v1, 7			//Icache 64x2^S IS
     sll		t5, v1			//InstCacheSetSize
     sll		t5, t3			//t5 InstCacheSize
 

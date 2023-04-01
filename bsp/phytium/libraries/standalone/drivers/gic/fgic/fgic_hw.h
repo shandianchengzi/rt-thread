@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fgic_hw.h
  * Date: 2022-03-24 11:44:48
  * LastEditTime: 2022-03-24 11:44:48
- * Description:  This file is for
+ * Description: This file is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 #ifndef DRIVERS_GIC_FGIC_HW_H
@@ -189,7 +189,7 @@
 #define FGIC_GICD_IROUTER_WRITE(gicd_base, bank, reg) FGIC_WRITEREG64(gicd_base , FGIC_GICD_IROUTER_OFFSET + (bank * FGIC_GICD_IROUTER_BYTE_WIDTH), reg)
 #define FGIC_GICD_IROUTER_READ(gicd_base, bank) FGIC_READREG64(gicd_base , FGIC_GICD_IROUTER_OFFSET + (bank * FGIC_GICD_IROUTER_BYTE_WIDTH))
 
-/* FGIC_GICD_ITARGETSR_OFFSET --- legacy operation （ affinity routing is not enabled）  */
+/* FGIC_GICD_ITARGETSR_OFFSET --- legacy operation  affinity routing is not enabled  */
 #define FGIC_GICD_ITARGETSR_BYTE_WIDTH 4
 #define FGIC_GICD_ITARGETSR_WRITE(gicd_base, bank, reg) FGIC_WRITEREG32(gicd_base , FGIC_GICD_ITARGETSR_OFFSET + (bank * FGIC_GICD_ITARGETSR_BYTE_WIDTH), reg)
 #define FGIC_GICD_ITARGETSR_READ(gicd_base, bank) FGIC_READREG32(gicd_base , FGIC_GICD_ITARGETSR_OFFSET + (bank * FGIC_GICD_ITARGETSR_BYTE_WIDTH))
@@ -224,7 +224,7 @@
 #define FGIC_GICD_IGROUPR_WRITE_N_MASK(gicd_base,itnum,reg) FGIC_WRITEREG32(gicd_base , FGIC_GICD_IGROUPR_OFFSET + ((itnum >> 5)<<2), reg)
 
 
-/* FGIC_GICD_IGRPMODR_OFFSET --- Controls whether the corresponding interrupt is in Secure Group 0、Non-secure Group 1、 Secure Group 1 */
+/* FGIC_GICD_IGRPMODR_OFFSET --- Controls whether the corresponding interrupt is in Secure Group 0Non-secure Group 1 Secure Group 1 */
 #define FGIC_GICD_IGRPMODR_DEFAULT_MASK BIT_MASK(32)
 #define FGIC_GICD_IGRPMODR_VALUE_OFFSET(itnum) ((itnum % 32U))
 #define FGIC_GICD_IGRPMODR_VALUE_MASK(itnum)   (0x1U << FGIC_GICD_IGRPMODR_VALUE_OFFSET(itnum))
@@ -274,7 +274,7 @@
 #define FGIC_GICR_IGROUPR0_WRITE(sgi_base, reg) FGIC_WRITEREG32(sgi_base , FGIC_GICR_IGROUPR0_OFFSET, reg)
 #define FGIC_GICR_IGROUPR0_READ(sgi_base) FGIC_READREG32(sgi_base , FGIC_GICR_IGROUPR0_OFFSET)
 
-/* FGIC_GICR_IGRPMODR0_OFFSET --- controls whether the corresponding interrupt is in: • Secure Group 0.• Non-secure Group 1.• When System register access is enabled, Secure Group 1. */
+/* FGIC_GICR_IGRPMODR0_OFFSET --- controls whether the corresponding interrupt is in:  Secure Group 0. Non-secure Group 1. When System register access is enabled, Secure Group 1. */
 #define FGIC_GICR_IGRPMODR0_DEFAULT_MASK BIT_MASK(32)
 #define FGIC_GICR_IGRPMODR0_VALUE_OFFSET(itnum) ((itnum % 32U))
 #define FGIC_GICR_IGRPMODR0_VALUE_MASK(itnum)   (0x1U << FGIC_GICR_IGRPMODR0_VALUE_OFFSET(itnum))

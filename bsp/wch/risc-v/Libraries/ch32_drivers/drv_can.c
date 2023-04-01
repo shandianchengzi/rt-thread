@@ -18,7 +18,7 @@
 #define DBG_ENABLE
 #include <rtdbg.h>
 
-//兼容老版的can宏定义
+//can
 #ifndef RT_CAN_MODE_LISTEN
 #define RT_CAN_MODE_LISTEN    RT_CAN_MODE_LISEN
 #endif

@@ -176,7 +176,7 @@ void SystemClk_HSEInit(uint32_t PLL_DN)
 {
     RCC_DeInit();
     //HSE on
-    //CR寄存器BIT16位（HSEON位）置1，作用是连接外部时钟HSE作为系统时钟
+    //CRBIT16HSEON1HSE
     RCC_HSEConfig(RCC_HSE_ON);
 
     while(1)
@@ -189,7 +189,7 @@ void SystemClk_HSEInit(uint32_t PLL_DN)
     RCC_PLLCmd(DISABLE);
     RCC_PLLConfig(RCC_PLLSource_HSE_Div1,PLL_DN);
     RCC_PLLCmd(ENABLE);
-    RCC_SYSCLKConfig(RCC_SYSCLKSource_PLLCLK);//选择外部时钟作为系统时钟
+    RCC_SYSCLKConfig(RCC_SYSCLKSource_PLLCLK);//
 }
 /**
 * @brief  Resets the RCC clock configuration to the default reset state.
@@ -833,7 +833,7 @@ void RCC_LSICmd(FunctionalState NewState)
 
 /**
 * @brief  Configures the RTC clock (RTCCLK).
-*   Once the RTC clock is selected it can抰 be changed unless the
+*   Once the RTC clock is selected it can be changed unless the
 *   Backup domain is reset.
 * @param RCC_RTCCLKSource: specifies the RTC clock source.
 *   This parameter can be one of the following values:
@@ -1269,7 +1269,7 @@ ITStatus RCC_GetITStatus(uint8_t RCC_IT)
 }
 
 /**
-* @brief  Clears the RCC抯 interrupt pending bits.
+* @brief  Clears the RCC interrupt pending bits.
 * @param RCC_IT: specifies the interrupt pending bit to clear.
 *   This parameter can be any combination of the following values:
 * @arg RCC_IT_LSIRDY: LSI ready interrupt

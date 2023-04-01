@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: frtc.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 09:02:33
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   Wangxiaodong   2021/11/5   init
  */
 
@@ -56,20 +56,20 @@ static FError FRtcCheckDateTime(const FRtcDateTime *date_time)
     u8 w_year = date_time->year;
     u8 w_month = date_time->month;
     u8 w_day = date_time->mday;
-    u8 days_of_month[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}; /* 月份天数表 */
+    u8 days_of_month[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}; /*  */
 
-    /* 闰年2月+1天 */
+    /* 2+1 */
     if ((w_month == 2) && (FRTC_IS_LEAP_YEAR(w_year)))
         days_of_month[w_month - 1] += 1;
 
-    /* 判断月份日期是否合法 */
+    /*  */
     if ((w_month > 12) || (w_month < 1) || (w_day > days_of_month[w_month - 1]) || (w_day < 1))
     {
         FRTC_ERROR("invalid input date: month: %d, day: %d", w_month, w_day);
         return FRTC_ERR_DATE_INVALID;
     }
 
-    /* 判断时分秒是否合法 */
+    /*  */
     if ((w_hour > 23) || (w_minute > 59) || (w_second > 59))
     {
         FRTC_ERROR("invalid input time: hour: %d, minute: %d, second: %d",
@@ -217,7 +217,7 @@ FError FRtcCfgInitialize(FRtcCtrl *instance_p, const FRtcConfig *input_config_p)
 /**
  * @name: FRtcCfgDeInitialize
  * @msg: DeInitialization function for the device instance
- * @param {FRtcCtrl} *instance_p FRTC驱动控制数据
+ * @param {FRtcCtrl} *instance_p FRTC
  * @return {*}
  */
 void FRtcCfgDeInitialize(FRtcCtrl *pctrl)

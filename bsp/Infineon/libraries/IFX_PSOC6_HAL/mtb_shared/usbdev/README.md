@@ -38,7 +38,7 @@ of the endpoint buffers allocated in the USB Configurator.
 
 ## Quick Start
 
-Configure the USB Device using the ModusToolbox™ USB Device personality and
+Configure the USB Device using the ModusToolbox USB Device personality and
 USB Device Configurator. Refer to the
 [API Reference Quick Start Guide](https://infineon.github.io/usbdev/usbfs_dev_api_reference_manual/html/index.html)
 
@@ -50,20 +50,20 @@ The following links provide more information:
 * [USB Device Middleware Library API Reference](https://infineon.github.io/usbdev/usbfs_dev_api_reference_manual/html/index.html)
 * [CAT1 Peripheral Driver Library API Reference](https://infineon.github.io/mtb-pdl-cat1/pdl_api_reference_manual/html/index.html)
 * [CAT2 Peripheral Driver Library API Reference](https://infineon.github.io/mtb-pdl-cat2/pdl_api_reference_manual/html/index.html)
-* [ModusToolbox™ Software Environment, Quick Start Guide, Documentation, and Videos](https://www.cypress.com/products/modustoolbox-software-environment)
-* [PSoC™ 6 SDK Examples](https://github.com/Infineon?q=mtb-example-psoc6%20NOT%20Deprecated)
-* [ModusToolbox™ USB Configurator Tool Guide](https://www.cypress.com/ModusToolboxUSBConfig)
-* [ModusToolbox™ Device Configurator Tool Guide](https://www.cypress.com/ModusToolboxDeviceConfig)
-* [PSoC™ 6 WiFi-BT Pioneer Kit](http://www.cypress.com/CY8CKIT-062-WiFi-BT)
-* [PSoC™ 6 Wi-Fi BT Prototyping Kit](http://www.cypress.com/cy8cproto-062-4343w)
-* [PSoC™ 6 MCU Datasheets](http://www.cypress.com/psoc6ds)
-* [PSoC™ 6 MCU Application Notes](http://www.cypress.com/psoc6an)
-* [PSoC™ 6 MCU Technical Reference Manuals](http://www.cypress.com/psoc6trm)
+* [ModusToolbox Software Environment, Quick Start Guide, Documentation, and Videos](https://www.cypress.com/products/modustoolbox-software-environment)
+* [PSoC 6 SDK Examples](https://github.com/Infineon?q=mtb-example-psoc6%20NOT%20Deprecated)
+* [ModusToolbox USB Configurator Tool Guide](https://www.cypress.com/ModusToolboxUSBConfig)
+* [ModusToolbox Device Configurator Tool Guide](https://www.cypress.com/ModusToolboxDeviceConfig)
+* [PSoC 6 WiFi-BT Pioneer Kit](http://www.cypress.com/CY8CKIT-062-WiFi-BT)
+* [PSoC 6 Wi-Fi BT Prototyping Kit](http://www.cypress.com/cy8cproto-062-4343w)
+* [PSoC 6 MCU Datasheets](http://www.cypress.com/psoc6ds)
+* [PSoC 6 MCU Application Notes](http://www.cypress.com/psoc6an)
+* [PSoC 6 MCU Technical Reference Manuals](http://www.cypress.com/psoc6trm)
 * [PMG1-S2 Prototyping Kit](http://www.cypress.com/CY7112)
 * [PMG1-S3 Prototyping Kit](http://www.cypress.com/CY7113)
 * [PMG1 Datasheets](https://www.cypress.com/PMG1DS)
-* [CYPRESS™ Semiconductor](http://www.cypress.com)
+* [CYPRESS Semiconductor](http://www.cypress.com)
 
 ---
-© 2019-2021, CYPRESS™ Semiconductor Corporation (an Infineon company)
-or an affiliate of CYPRESS™ Semiconductor Corporation.
+ 2019-2021, CYPRESS Semiconductor Corporation (an Infineon company)
+or an affiliate of CYPRESS Semiconductor Corporation.

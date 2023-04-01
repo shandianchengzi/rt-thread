@@ -1,7 +1,7 @@
 # MTB CAT1 Peripheral Driver Library
 
 ### Overview
-The Cypress PDL simplifies software development for CAT1A (or PSoC® 6) and CAT1B family of devices.
+The Cypress PDL simplifies software development for CAT1A (or PSoC 6) and CAT1B family of devices.
 The PDL integrates device header files, startup code, and 
 peripheral drivers into a single package. The drivers abstract the hardware functions into a set of 
 easy-to-use APIs. These are fully documented in the [PDL API Reference Manual](https://infineon.github.io/mtb-pdl-cat1/pdl_api_reference_manual/html/index.html). 
@@ -11,9 +11,9 @@ with PSoC Creator. The most recent PSoC Creator-compatible version of the PDL
 is [available here](https://www.infineon.com/cms/en/design-support/software/device-driver-libraries/psoc-6-peripheral-driver-library-pdl-for-psoc-creator).
 
 ### Features
-* Includes all the updates made to the peripheral drivers for ModusToolbox™ software
+* Includes all the updates made to the peripheral drivers for ModusToolbox software
 * Contains standard set of CAT1 digital and analog peripheral drivers that enable rapid peripheral software development in third-party IDEs
-* The ARM Cortex® Microcontroller Software Interface Standard (CMSIS) core access header files
+* The ARM Cortex Microcontroller Software Interface Standard (CMSIS) core access header files
 * CMSIS compliant device header files, startup code (platform initialization) and device configuration header files
 
 The PDL reduces the need to understand register usage and bit structures, 
@@ -46,4 +46,4 @@ See the [PDL API Reference Manual Getting Started section](https://infineon.gith
 New versions of PDL from 2.0 onwards are now be available in [mtb-pdl-cat1](https://infineon.github.io/mtb-pdl-cat1/pdl_api_reference_manual/html/index.html) repo and [psoc6pdl](https://infineon.github.io/psoc6pdl/pdl_api_reference_manual/html/index.html) repo will no longer be updated in future.
 
 ---
-© Cypress Semiconductor Corporation (an Infineon company), 2022.
+ Cypress Semiconductor Corporation (an Infineon company), 2022.

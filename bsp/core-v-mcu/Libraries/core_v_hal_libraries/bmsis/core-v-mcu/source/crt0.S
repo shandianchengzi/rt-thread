@@ -17,7 +17,7 @@
  */
 
 /* Copyright (c) 2017  SiFive Inc. All rights reserved.
- * Copyright (c) 2019  ETH Zürich and University of Bologna
+ * Copyright (c) 2019  ETH Zrich and University of Bologna
  * This copyrighted material is made available to anyone wishing to use,
  * modify, copy, or redistribute it subject to the terms and conditions
  * of the FreeBSD License.   This program is distributed in the hope that

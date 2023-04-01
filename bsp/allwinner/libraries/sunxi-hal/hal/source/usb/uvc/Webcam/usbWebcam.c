@@ -121,7 +121,7 @@ __s32 usbWebcam_probe(UVCDev_t *UVCDev)
         DEV_WEBCAM_Ioctrl(usbWebcam->webcamHdl, DRV_WENCAM_CMD_WEBCAM_INSERT, 0, 0);
     }
 
-    /* Notice: 由于新的设备上来以后，系统的设备管理告知应用程序，因此只能由驱动告知应用程序 */
+    /* Notice:  */
 //  USB_OS_esKSRV_SendMsg(KMSG_USR_SYSTEM_WEBCAM_PLUGIN, KMSG_PRIO_HIGH);
     hal_log_info("webcam plug in message...\n");
 
@@ -134,7 +134,7 @@ void* usbWebcam_init(void)
     __u8 err = 0;
     __s32 ret = 0;
 
-    /* 创建一个Webcam设备，并且初始化 */
+    /* Webcam */
     usbWebcam = (usbWebcam_t *)hal_malloc(sizeof(usbWebcam_t));
     if(usbWebcam == NULL){
         hal_log_err("ERR: hal_malloc failed\n");
@@ -192,7 +192,7 @@ __s32 usbWebcam_remove(UVCDev_t * UVCDev)
     UVCDev->frame_buf1      = 0;
     UVCDev->frame_buf2      = 0;
 
-    usbWebcam_v4l2_capture_off(UVCDev);//关中断发生器
+    usbWebcam_v4l2_capture_off(UVCDev);//
 
     usbWebcam_v4l2_exit(UVCDev);
 

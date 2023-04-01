@@ -53,7 +53,7 @@ __s32 usbWebcam_v4l2_init(UVCDev_t *UVCDev)
         hal_log_err("usbWebcam_v4l2_init() v4l2_handle != NULL\n");
         return -1;
     }
-    //1.打开设备文件
+    //1.
     v4l2_handle = uvc_v4l2_open(UVCDev->streams);
     hal_log_info("usbWebcam_v4l2_init()\n");
     if( v4l2_handle == NULL )

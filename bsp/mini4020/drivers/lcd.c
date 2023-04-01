@@ -63,7 +63,7 @@ void radio_rtgui_init(void)
     rt_memset((char*)pVideoBuffer,0xff,320*240*2);
     //rt_memcpy((char*)pVideoBuffer,pic,320*240*2);  //TESTING IMAGE
 
-    //此处待修正
+    //
     /* add lcd driver into graphic driver */
     // rtgui_graphic_driver_add(&_rtgui_lcd_driver);
 }

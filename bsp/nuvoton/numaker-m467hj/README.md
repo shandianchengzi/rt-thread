@@ -1,4 +1,4 @@
-﻿# NuMaker-M467HJ
+# NuMaker-M467HJ
 
 ## 1. Introduction
 
@@ -6,7 +6,7 @@ The NuMaker-M467HJ is an evaluation board for Nuvoton NuMicro M467HJ microcontro
 
 The M467HJ target board is based on NuMicro M467HJHAN. For the development flexibility, the M467HJ target board provides the extension connectors, the Arduino UNO compatible headers and the capability of adopting multiple power supplies. Furthermore, the Nuvoton-designed ammeter connector can measure the power consumption instantly, which is essential for the prototype evaluation.
 
-In addition, there is an attached on-board debugger and programmer “Nu-Link2-Me”. The Nu-Link2-Me supports on-chip debugging, online and offline ICP programming via SWD interface. The Nu-Link2-Me supports virtual COM (VCOM) port for printing debug messages on PC. Besides, the programming status could be shown on the built-in LEDs. Lastly, the Nu-Link2-Me could be detached from the evaluation board and become a stand-alone mass production programmer.
+In addition, there is an attached on-board debugger and programmer Nu-Link2-Me. The Nu-Link2-Me supports on-chip debugging, online and offline ICP programming via SWD interface. The Nu-Link2-Me supports virtual COM (VCOM) port for printing debug messages on PC. Besides, the programming status could be shown on the built-in LEDs. Lastly, the Nu-Link2-Me could be detached from the evaluation board and become a stand-alone mass production programmer.
 
 ![NuMaker-M467HJ](./figures/NuMaker-M467HJ-V1_F.png)
 
@@ -71,7 +71,7 @@ Notice: Please install Nu-Link_Keil_Driver or Nu-Link_IAR_Driver for development
 
 ### Step 1
 
-At first, you need to configure switch on the NuMaker-M467HJ board. Set the No.1/2 switches to ‘ON’ position. After the configuration is done, connect the NuMaker-M467HJ board and your computer using the USB Micro cable. After that, window manager will show a ‘NuMicro MCU’ virtual disk. Finally, you will use this virtual disk to burn firmware.
+At first, you need to configure switch on the NuMaker-M467HJ board. Set the No.1/2 switches to ON position. After the configuration is done, connect the NuMaker-M467HJ board and your computer using the USB Micro cable. After that, window manager will show a NuMicro MCU virtual disk. Finally, you will use this virtual disk to burn firmware.
 
 ![NuLinkMe2_SwitchSetting](./figures/NuLinkMe_SwitchSetting.png)
 

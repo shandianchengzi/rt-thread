@@ -63,7 +63,7 @@ static rt_err_t rt_flash_control(rt_device_t dev, int cmd, void *args)
                 ui32CurrentPage =  AM_HAL_FLASH_ADDR2PAGE(erase->addrstart);
                 ui32CurrentBlock = AM_HAL_FLASH_ADDR2INST(erase->addrstart);
 
-                am_hal_flash_page_erase(AM_HAL_FLASH_PROGRAM_KEY, ui32CurrentBlock, ui32CurrentPage); //单扇区擦除命令
+                am_hal_flash_page_erase(AM_HAL_FLASH_PROGRAM_KEY, ui32CurrentBlock, ui32CurrentPage); //
                 erase->addrstart += 8192;
             }
         }

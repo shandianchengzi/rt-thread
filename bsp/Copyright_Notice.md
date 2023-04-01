@@ -1,8 +1,8 @@
-# 版权声明 Copyright Notice
+#  Copyright Notice
 
-RT-Thread 是一套开源、开放的操作系统平台，自 3.1.1 版本开始以 Apache License v2.0 许可协议发布。
+RT-Thread  3.1.1  Apache License v2.0 
 
-芯片厂商外设函数库或者厂商固件，按厂商的许可进行授权，并以原有许可协议发布。
+
 
 RT-Thread is an open source operating system, which is released under Apache License V2.0 since version 3.1.1.
 
@@ -22,7 +22,7 @@ Path:
 
 ### apm32
 
-bsp 列表：
+bsp 
 - apm32f103xe-minibroard
 
 ------
@@ -134,7 +134,7 @@ Path:
 
 ### essemi
 
-License: 未注明
+License: 
 
 Copyright: Copyright (c) 2018 Shanghai Eastsoft Microelectronics Co., Ltd.
 
@@ -186,7 +186,7 @@ Path:
 
 ### gd32
 
-bsp 列表：
+bsp 
 - gd32103c-eval
 - gd32303e-eval
 - gd32450z-eval
@@ -195,7 +195,7 @@ bsp 列表：
 
 ------
 
-License: 未注明
+License: 
 
 Copyright: Copyright (c) 2017 GigaDevice
 
@@ -307,7 +307,7 @@ Path:
 
 ------
 
-License: bsd-new、robert-hubley、other-permissive、proprietary-license
+License: bsd-newrobert-hubleyother-permissiveproprietary-license
 
 Copyright: Copyright (c) 2012, Freescale Semiconductor, Inc.
 
@@ -317,7 +317,7 @@ Path:
 
 ### imx6ul
 
-License: bsd-new、proprietary-license、robert-hubley
+License: bsd-newproprietary-licenserobert-hubley
 
 Copyright: Copyright (c) 2012, Freescale Semiconductor, Inc.
 
@@ -352,7 +352,7 @@ Path:
 
 ### lm
 
-bsp 列表：
+bsp 
 
 - lm3s9b9x
 - lm3s8962
@@ -360,7 +360,7 @@ bsp 列表：
 
 ------
 
-License: unknown-license-reference 或 proprietary-license
+License: unknown-license-reference  proprietary-license
 
 Copyright: Copyright (c) 2005-2011 Texas Instruments Incorporated
 
@@ -372,7 +372,7 @@ Path:
 
 ###  lpcxxx
 
-bsp 列表：
+bsp 
 
 - lpc408x
 - lpc54114-lite
@@ -472,7 +472,7 @@ Path:
 
 ### mb9bf
 
-bsp 列表：
+bsp 
 
 - mb9bf500r
 - mb9bf506r
@@ -526,7 +526,7 @@ Path:
 
 ### mm32
 
-bsp 列表：
+bsp 
 
 - mm32l07x
 - mm32l3xx
@@ -555,7 +555,7 @@ Path:
 
 ### nrf
 
-bsp 列表：
+bsp 
 
 - nrf5x
 - nrf51822
@@ -615,7 +615,7 @@ Path:
 
 ### raspberry-pico
 
-License: bsd-new、mit
+License: bsd-newmit
 
 Copyright: Copyright (c) 2020 Raspberry Pi (Trading) Ltd.
 
@@ -623,7 +623,7 @@ Path: bsp/raspberry-pico/libraries/pico-sdk
 
 ### rm48x50
 
-License: 未注明
+License: 
 
 Copyright: (c) Texas Instruments 2009-2013
 
@@ -644,7 +644,7 @@ Path:
 
 ### rx
 
-License: 未注明
+License: 
 
 Copyright: Copyright, 2011. Renesas Electronics Corporation and Renesas Solutions Corporation
 
@@ -677,9 +677,9 @@ Path:
 
 ### simulator
 
-License: bsd-new、bsd-original-uc
+License: bsd-newbsd-original-uc
 
-Copyright: Copyright (c) 2006 Paolo Abeni (Italy)、Copyright (c) 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997 The Regents of the University of California
+Copyright: Copyright (c) 2006 Paolo Abeni (Italy)Copyright (c) 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997 The Regents of the University of California
 
 Path:
 
@@ -729,7 +729,7 @@ Path:
 
 ### SYNWIT
 
-bsp 列表：
+bsp 
 
 - swm320
 
@@ -816,7 +816,7 @@ Path:
 
 ### n32
 
-License: 未注明
+License: 
 
 Copyright: Copyright (c) 2019, Nations Technologies Inc.
 

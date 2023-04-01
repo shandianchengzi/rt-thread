@@ -47,7 +47,7 @@ function error() {
         shift
     done
 
-    echo "—ABORTING--"
+    echo "ABORTING--"
     exit 1
 }
 

@@ -523,9 +523,9 @@ typedef union _hw_snvs_hpcomr
  *
  * SSM State Transition Transition state of the system security monitor. This self-clearing bit is
  * always read as zero. This command results only in the following transitions of the SSM: Check
- * State → Non-Secure (when Non-Secure Boot and not in Fab Configuration ) Check State → Trusted
- * (when Secure Boot or in Fab Configuration ) Trusted State → Secure Secure State → Trusted (if not
- * disabled by SSM_ST_DIS bit) Soft Fail → Non-Secure (if not disabled by SSM_SFNS_DIS bit)
+ * State  Non-Secure (when Non-Secure Boot and not in Fab Configuration ) Check State  Trusted
+ * (when Secure Boot or in Fab Configuration ) Trusted State  Secure Secure State  Trusted (if not
+ * disabled by SSM_ST_DIS bit) Soft Fail  Non-Secure (if not disabled by SSM_SFNS_DIS bit)
  */
 //@{
 #define BP_SNVS_HPCOMR_SSM_ST      (0)      //!< Bit position for SNVS_HPCOMR_SSM_ST.
@@ -637,7 +637,7 @@ typedef union _hw_snvs_hpcomr
  *
  * Software Security Violation When set, the system security monitor treats this bit as a non-fatal
  * security violation. This security violation has no effect on the LP section. This command results
- * only in the following transitions of the SSM: Check → Non-Secure Trusted → Soft Fail Secure →
+ * only in the following transitions of the SSM: Check  Non-Secure Trusted  Soft Fail Secure 
  * Soft Fail
  */
 //@{
@@ -660,8 +660,8 @@ typedef union _hw_snvs_hpcomr
  *
  * Software Fatal Security Violation When set, the system security monitor treats this bit as a
  * fatal security violation. This security violation has no effect on the LP section. This command
- * results only in the following transitions of the SSM: Check State → Soft Fail Non-Secure State →
- * Soft Fail Trusted State → Soft Fail Secure State → Soft Fail
+ * results only in the following transitions of the SSM: Check State  Soft Fail Non-Secure State 
+ * Soft Fail Trusted State  Soft Fail Secure State  Soft Fail
  */
 //@{
 #define BP_SNVS_HPCOMR_SW_FSV      (9)      //!< Bit position for SNVS_HPCOMR_SW_FSV.

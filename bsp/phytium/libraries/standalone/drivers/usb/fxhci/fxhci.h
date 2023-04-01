@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fxhci.h
  * Date: 2022-02-11 13:33:12
  * LastEditTime: 2022-02-18 09:17:44
- * Description:  This files is for definition of XHCI user function
+ * Description: This files is for definition of XHCI user function
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   Zhugengyu  2022/2/7    init commit
  */
 
@@ -81,7 +81,7 @@ typedef FUsbTransCode FXhciTransCode;
 /***************** Macros (Inline Functions) Definitions *********************/
 
 /************************** Function Prototypes ******************************/
-/* 创建XHCI USB 控制器实例，完成初始化 */
+/* XHCI USB  */
 FUsbHc *FXhciHcInit(FUsb *instance, uintptr base_addr);
 
 #ifdef __cplusplus

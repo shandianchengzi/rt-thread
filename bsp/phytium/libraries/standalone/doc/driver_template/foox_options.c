@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,23 +14,23 @@
  * FilePath: foox_options.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:24:58
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 
 /*
     - The implementation of the options functions for the driver.
-    - 用户选项实现
-    1. 速度参数配置
-    2. 工作模式参数
-    3. fifo功能
-    1. 深度
-    2. 使能
-    - 用户常用的功能寄存器读写动作，建议通过option提供快捷方式
+    - 
+    1. 
+    2. 
+    3. fifo
+    1. 
+    2. 
+    - option
 
 */
 

@@ -11,7 +11,7 @@
 *
 * Date          :  2010/06/02
 *
-* Description   :  Hid Driver中对USB接口设备的处理
+* Description   :  Hid DriverUSB
 *
 * Others        :  NULL
 *
@@ -50,14 +50,14 @@
 #endif
 
 //---------------------------------------------------------------
-//  宏定义区
+//  
 //---------------------------------------------------------------
 
 //---------------------------------------------------------------
-//  全局变量区
+//  
 //---------------------------------------------------------------
 static struct usb_host_func_drv HidDrv;
-static u32 HidDev_id_array;             /* 记录了设备的编号 */
+static u32 HidDev_id_array;             /*  */
 
 static struct usb_drv_dev_match_table Hid_match_table[] = {
     {
@@ -106,7 +106,7 @@ static struct usb_drv_dev_match_table Hid_match_table[] = {
 };
 
 //---------------------------------------------------------------
-//  函数区定义区
+//  
 //---------------------------------------------------------------
 
 /*
@@ -114,16 +114,16 @@ static struct usb_drv_dev_match_table Hid_match_table[] = {
 *                     get_HidDev_id
 *
 * Description:
-*    给新插入的设备分配ID
+*    ID
 *
 * Parameters:
 *    void
 *
 * Return value:
-*    返回分配的ID
+*    ID
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -147,17 +147,17 @@ static unsigned int get_HidDev_id(void)
 *                     free_HidDev_id
 *
 * Description:
-*    释放分配的ID
+*    ID
 *
 * Parameters:
-*    bit : input.  mscDev的ID号
+*    bit : input.  mscDevID
 *
 * Return value:
-*    0  ：成功
-*   !0  ：失败
+*    0  
+*   !0  
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -168,7 +168,7 @@ static int free_HidDev_id(unsigned int bit)
         return -1;
     }
 
-    /* 回收该位 */
+    /*  */
     usb_clear_bit(bit, (volatile uint32_t *)&HidDev_id_array);
 
     return 0;
@@ -188,7 +188,7 @@ static int free_HidDev_id(unsigned int bit)
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -274,7 +274,7 @@ error0:
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -325,10 +325,10 @@ static int HidDevFree(HidDev_t *HidDev)
 *
 *
 * Return value:
-*    无
+*    
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -357,7 +357,7 @@ static void HidGetDeviceInfo(HidDev_t *HidDev, unsigned int index)
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -385,7 +385,7 @@ static int HidGetTransport(HidDev_t *HidDev)
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -435,7 +435,7 @@ static int HidCreatePipes(HidDev_t *HidDev)
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -462,7 +462,7 @@ void HidSetDeviceState(HidDev_t *HidDev, HidDev_State_t state)
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -476,7 +476,7 @@ int HidGetInputReport(HidDev_t *HidDev,
     usbHidReport_t *Report = NULL;
     usbHidField_t *Field = NULL;
     usbHidUsage_t *ReportUsage = NULL;
-    unsigned int Offset_ReportId = 0; /* 如果有ReportId, 那么data[0]就不能够算在BitOffset里 */
+    unsigned int Offset_ReportId = 0; /* ReportId, data[0]BitOffset */
     unsigned int i = 0;
     unsigned int j = 0;
     unsigned int k = 0;
@@ -566,7 +566,7 @@ int HidGetInputReport(HidDev_t *HidDev,
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -596,7 +596,7 @@ static int HidDevScan(HidDev_t *HidDev)
         return USB_ERR_UNKOWN_ERROR;
     }
 
-    /* 获得report返回的数据长度 */
+    /* report */
     for (i = 0; i < HidDesc->bNumDescriptors; i++){
         if (HidDesc->desc[i].bDescriptorType == USB_HID_DT_REPORT){
             HidDev->ReportSize = le16_to_cpu(HidDesc->desc[i].wDescriptorLength);
@@ -609,7 +609,7 @@ static int HidDevScan(HidDev_t *HidDev)
         return USB_ERR_UNKOWN_ERROR;
     }
 
-    /* set idle request, 限制了report的频率 */
+    /* set idle request, report */
     HidSetIlde(HidDev, HidDev->InterfaceNo, 0, 0);
 
     /* Get Hid Report descriptor */
@@ -670,7 +670,7 @@ static int HidDevScan(HidDev_t *HidDev)
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -693,7 +693,7 @@ static int HidDevAdd(HidDev_t * HidDev)
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -726,7 +726,7 @@ static int HidDevDel(HidDev_t * HidDev)
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -774,7 +774,7 @@ int HidSentRequest(HidRequest_t *HidReq)
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -793,9 +793,9 @@ static int32_t HidDevProbe(struct usb_interface *intf, const struct usb_drv_dev_
     }
 
     //----------------------------------------------------------------
-    //   创建HidDev设备
+    //   HidDev
     //----------------------------------------------------------------
-    /* 初始化一个mscDev */
+    /* mscDev */
     HidDev = hal_malloc(sizeof(HidDev_t));
     if(HidDev == NULL){
         hal_log_err("ERR: HidDevProbe malloc failed\n");
@@ -811,10 +811,10 @@ static int32_t HidDevProbe(struct usb_interface *intf, const struct usb_drv_dev_
         goto error1;
     }
 
-    /* 获得设备信息 */
+    /*  */
     HidGetDeviceInfo(HidDev, match_table_index);
 
-    /* 获得Transport */
+    /* Transport */
     ret = HidGetTransport(HidDev);
     if(ret != USB_ERR_SUCCESS){
         hal_log_err("ERR: HidGetTransport failed\n");
@@ -822,7 +822,7 @@ static int32_t HidDevProbe(struct usb_interface *intf, const struct usb_drv_dev_
         goto error2;
     }
 
-    /* 创建传输管道 */
+    /*  */
     ret = HidCreatePipes(HidDev);
     if(ret != USB_ERR_SUCCESS){
         hal_log_err("ERR: HidGetTransport failed\n");
@@ -833,7 +833,7 @@ static int32_t HidDevProbe(struct usb_interface *intf, const struct usb_drv_dev_
     HidSetDeviceState(HidDev, HID_DEV_ONLINE);
 
     //----------------------------------------------------------------
-    //   识别HidDev设备
+    //   HidDev
     //----------------------------------------------------------------
     ret = HidDevAdd(HidDev);
     if(ret != USB_ERR_SUCCESS){
@@ -873,7 +873,7 @@ error0:
 *    EPDK_OK / EPDK_FAIL
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -897,7 +897,7 @@ static int32_t HidDevSuspend(struct usb_interface *intf)
 *    EPDK_OK / EPDK_FAIL
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -943,7 +943,7 @@ static void HidDevRemove(struct usb_interface *intf)
 *    EPDK_OK / EPDK_FAIL
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -980,7 +980,7 @@ static int HidDriverInit(struct usb_host_func_drv *drv)
 *    EPDK_OK / EPDK_FAIL
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -1018,7 +1018,7 @@ int HidInit(void)
 *    EPDK_OK / EPDK_FAIL
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */

@@ -1,4 +1,4 @@
-# HPM 开发板介绍
+# HPM 
 
 :::{eval-rst}
 .. toctree::
@@ -12,16 +12,16 @@
 
 :::
 
-**开发板引脚对照表**
+****
 
 :::{tab} HPM6750EVK
-点击{ref}`此处 <lab_hpm6750_evk_board>`查看HPM6750EVK开发板
+{ref}` <lab_hpm6750_evk_board>`HPM6750EVK
 :::
 :::{tab} HPM6750EVKMINI
-点击{ref}`此处 <lab_hpm6750_evkmini_board>`查看HPM6750EVKMINI开发板
+{ref}` <lab_hpm6750_evkmini_board>`HPM6750EVKMINI
 :::
 :::{tab} HPM6300EVK
-点击{ref}`此处 <lab_hpm6300_evk_board>`查看HPM6300EVK开发板
+{ref}` <lab_hpm6300_evk_board>`HPM6300EVK
 :::
 
 (lab_board_resource)=

@@ -34,7 +34,7 @@
 * \addtogroup group_hal_impl_tdm TDM (Time Division Multiplexing)
 * \ingroup group_hal_impl
 * \{
-* The CAT1 (PSoC™ 6) TDM Supports the following values for word lengths:
+* The CAT1 (PSoC 6) TDM Supports the following values for word lengths:
 * - 8 bits
 * - 10 bits (CAT1B only)
 * - 12 bits (CAT1B only)
@@ -78,7 +78,7 @@
 * \ingroup group_hal_impl
 * \{
 *
-* The CAT2 (PSoC™ 4) TDM only supports TX in master mode.
+* The CAT2 (PSoC 4) TDM only supports TX in master mode.
 *
 * There are no trigger connections available from the TDM peripheral to other peripherals on
 * the CAT2 platform. Hence, the \ref cyhal_tdm_enable_output and \ref cyhal_tdm_disable_output

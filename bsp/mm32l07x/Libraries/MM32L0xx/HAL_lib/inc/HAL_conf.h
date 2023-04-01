@@ -20,7 +20,7 @@
 #ifndef __HAL_CONF_H__
 #define __HAL_CONF_H__
 
-/*此处可添加或删除外设*/
+/**/
 #include "HAL_device.h"
 #include "HAL_adc.h"
 #include "HAL_bkp.h"

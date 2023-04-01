@@ -38,10 +38,10 @@
 *
 *
 * Return value:
-*    无
+*    
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -158,13 +158,13 @@ static void print_CD_Disc_info(CDROM_DiscInfo_t *DiscInfo)
 *
 *
 * Parameters:
-*    CD     : input. 记录光碟的信息
+*    CD     : input. 
 *
 * Return value:
-*    无
+*    
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -221,16 +221,16 @@ static void PrintCDInfo(CD_Rom_t *CD)
 *                     CdLastWriteSector
 *
 * Description:
-*    获得可写光碟的最后写的位置。
+*    
 *
 * Parameters:
-*    mscLun  :  input. 目标设备
+*    mscLun  :  input. 
 *
 * Return value:
-*    无
+*    
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -260,16 +260,16 @@ unsigned int CdIOCtrlLastWriteSector(__UsbBlkDev_t *BlkDev)
 *                     CdMultiSession
 *
 * Description:
-*    获得光碟多扇区的位置。
+*    
 *
 * Parameters:
-*    mscLun  :  input. 目标设备
+*    mscLun  :  input. 
 *
 * Return value:
-*    无
+*    
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -283,16 +283,16 @@ unsigned int CdIOCtrlMultiSession(__UsbBlkDev_t *BlkDev)
 *                     GetCdLastWriteSector
 *
 * Description:
-*    获得可写光碟的最后写的位置。
+*    
 *
 * Parameters:
-*    mscLun  :  input. 目标设备
+*    mscLun  :  input. 
 *
 * Return value:
-*    无
+*    
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -304,7 +304,7 @@ static int GetCdLastWriteSector(__mscLun_t *mscLun, CD_Rom_t *CD)
     CDROM_TrackMSF_t  *TrackMSF;
     __u8 buffer[MAXIMUM_CDROM_SIZE];
     unsigned int ActLen    = 0;
-    unsigned int LastTrack = 0;  /* 最后一个扇区 */
+    unsigned int LastTrack = 0;  /*  */
     int ret       = 0;
 
     if (mscLun == NULL || CD == NULL)
@@ -468,7 +468,7 @@ int CDIOCtrl(__UsbBlkDev_t *BlkDev, unsigned int Cmd, int Aux, void *pBuffer)
         case USB_STORAGE_USER_CTRL_CMD_CDROM_EJECT:
             //DMSG_INFO("USB_STORAGE_USER_CTRL_CMD_CDROM_EJECT\n");
 
-            /* 先允许介质移动，再去弹出介质 */
+            /*  */
             if (ScsiPreventAllowMedium(mscLun, 0, 0) == USB_STATUS_SUCCESS)
             {
                 //DMSG_INFO("[CD_ROM]: Allow medium removal\n");
@@ -485,7 +485,7 @@ int CDIOCtrl(__UsbBlkDev_t *BlkDev, unsigned int Cmd, int Aux, void *pBuffer)
         case USB_STORAGE_USER_CTRL_CMD_CDROM_LOAD:
             //DMSG_INFO("USB_STORAGE_USER_CTRL_CMD_CDROM_LOCK\n");
 
-            /* 先允许介质移动，再去加载介质 */
+            /*  */
             if (ScsiPreventAllowMedium(mscLun, 0, 0) == USB_STATUS_SUCCESS)
             {
                 //DMSG_INFO("[CD_ROM]: Allow medium removal\n");
@@ -554,17 +554,17 @@ int CDIOCtrl(__UsbBlkDev_t *BlkDev, unsigned int Cmd, int Aux, void *pBuffer)
 *                     GetCDDriveCapabilites
 *
 * Description:
-*    获得光驱的驱动能力
+*    
 *
 * Parameters:
-*    mscLun : input. 目标设备
-*    CD     : input. 记录光碟的信息
+*    mscLun : input. 
+*    CD     : input. 
 *
 * Return value:
-*    无
+*    
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -574,7 +574,7 @@ static void GetCDDriveCapabilites(__mscLun_t *mscLun, CD_Rom_t *CD)
     __u8  buffer[SCSI_MODE_SENSE_MAX_DATA_LEN];
     unsigned int ActLen        = 0;
     int ret           = 0;
-    unsigned int pageAddr      = 0;   /* Capitilities页起始地址 */
+    unsigned int pageAddr      = 0;   /* Capitilities */
     __ModeSense10Header_t *Header = NULL;
     unsigned int DiscType = 0;
 
@@ -749,17 +749,17 @@ static void GetCDDriveCapabilites(__mscLun_t *mscLun, CD_Rom_t *CD)
 *                     GetCDDiscTpye
 *
 * Description:
-*    获得光碟的信息
+*    
 *
 * Parameters:
-*    mscLun : input. 目标设备
-*    CD     : input. 记录光碟的信息
+*    mscLun : input. 
+*    CD     : input. 
 *
 * Return value:
-*    无
+*    
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -769,7 +769,7 @@ static void GetCDDiscTpye(__mscLun_t *mscLun, CD_Rom_t *CD)
     __u8  buffer[SCSI_MODE_SENSE_MAX_DATA_LEN];
     unsigned int ActLen        = 0;
     int ret           = 0;
-    unsigned int pageAddr      = 0;   /* CDROM page 页起始地址 */
+    unsigned int pageAddr      = 0;   /* CDROM page  */
     __ModeSense10Header_t *Header = NULL;
 
     if (mscLun == NULL || CD == NULL)
@@ -822,17 +822,17 @@ static void GetCDDiscTpye(__mscLun_t *mscLun, CD_Rom_t *CD)
 *                     GetCDDiscInfo
 *
 * Description:
-*    获得光碟的信息
+*    
 *
 * Parameters:
-*    mscLun : input. 目标设备
-*    CD     : input. 记录光碟的信息
+*    mscLun : input. 
+*    CD     : input. 
 *
 * Return value:
-*    无
+*    
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -847,17 +847,17 @@ static void GetCDDiscInfo(__mscLun_t *mscLun, CD_Rom_t *CD)
 *                     GetCDRomInfo
 *
 * Description:
-*    获得光碟的信息
+*    
 *
 * Parameters:
-*    mscLun : input. 目标设备
-*    CD     : input. 记录光碟的信息
+*    mscLun : input. 
+*    CD     : input. 
 *
 * Return value:
-*    无
+*    
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -869,9 +869,9 @@ static void GetCDRomInfo(__mscLun_t *mscLun, CD_Rom_t *CD)
         return ;
     }
 
-    /* 获得光驱的信息 */
+    /*  */
     GetCDDriveCapabilites(mscLun, CD);
-    /* 获得光碟的信息 */
+    /*  */
     GetCDDiscInfo(mscLun, CD);
     PrintCDInfo(CD);
 }
@@ -881,17 +881,17 @@ static void GetCDRomInfo(__mscLun_t *mscLun, CD_Rom_t *CD)
 *                     GetCDRomPowerEvent
 *
 * Description:
-*    获得光驱电源的信息
+*    
 *
 * Parameters:
-*    mscLun : input. 目标设备
-*    CD     : input. 记录光碟的信息
+*    mscLun : input. 
+*    CD     : input. 
 *
 * Return value:
-*    无
+*    
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -944,17 +944,17 @@ static int GetCDRomPowerEvent(__mscLun_t *mscLun, CD_Rom_t *CD, CDROM_PowerStatu
 *                     GetCDRomMediaEvent
 *
 * Description:
-*    获得光驱光碟的信息
+*    
 *
 * Parameters:
-*    mscLun : input. 目标设备
-*    CD     : input. 记录光碟的信息
+*    mscLun : input. 
+*    CD     : input. 
 *
 * Return value:
-*    无
+*    
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -1005,19 +1005,19 @@ static int GetCDRomMediaEvent(__mscLun_t *mscLun, CD_Rom_t *CD, CDROM_MediaStatu
 *                     GetCDRomMediaEvent
 *
 * Description:
-*    获得光驱的状态
+*    
 *
 * Parameters:
-*    mscLun : input. 目标设备
-*    CD     : input. 记录光碟的信息
+*    mscLun : input. 
+*    CD     : input. 
 *
 * Return value:
-*    无
+*    
 *
 * note:
-*    发送Test Unit Ready命令获得设备的状态。命令发送成功，直接返回。如果命令失败
-* 就去获得光驱的状态。如果发送get MediaEvent命令失败，那么就只能通过Test Unit Ready
-* 命令的结果判断设备的状态。
+*    Test Unit Ready
+* get MediaEventTest Unit Ready
+* 
 *
 *******************************************************************************
 */
@@ -1093,19 +1093,19 @@ static int GetCDRomDriveEvent(__mscLun_t *mscLun, CD_Rom_t *CD)
 *                     ReadCDDA
 *
 * Description:
-*    读取音乐cd的内容
+*    cd
 *
 * Parameters:
-*    mscLun     : input.  目标设备
-*    Lba        : input.  起始扇区
-*    nFrames    : input.  帧数
-*    Buffer     : input.  存放读取的数据
+*    mscLun     : input.  
+*    Lba        : input.  
+*    nFrames    : input.  
+*    Buffer     : input.  
 *
 * Return value:
-*    无
+*    
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -1119,16 +1119,16 @@ unsigned int ReadCDDA(__mscLun_t *mscLun, unsigned int Lba, unsigned int nFrames
 *                     CDMediaChange
 *
 * Description:
-*    实时检测光驱的变化
+*    
 *
 * Parameters:
 *
 *
 * Return value:
-*    无
+*    
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -1195,14 +1195,14 @@ static void __CDMediaChange(__mscLun_t *mscLun)
 
         case USBH_CDROM_DRIVE_STATUS_DISK_OK:
 
-            /* 没有注册disk设备, 就去注册disk设备 */
+            /* disk, disk */
             if (!BlkDev->is_RegDisk)
             {
-                /* 获得磁盘信息 */
+                /*  */
                 GetDiskInfo(BlkDev);
                 GetCDRomInfo(mscLun, CD);
 
-                /* 注册块设备 */
+                /*  */
                 if (mscLun->MediaPresent && CD->DiscType != USBH_MEDIUM_CD_AUDIO_ONLY)
                 {
                     UsbBlkDevUnReg(BlkDev);
@@ -1269,7 +1269,7 @@ static void CDMediaChange(__mscLun_t *mscLun)
         return;
     }
 
-    /* 如果介质被禁止移动, 并且已经注册Disk设备, 那么就不用实时检测了 */
+    /* , Disk,  */
     if (CD->IsMeduimPrevent && BlkDev->is_RegDisk == 1)
     {
         /* nothing to do */
@@ -1298,16 +1298,16 @@ static void CDMediaChange(__mscLun_t *mscLun)
 *                     CDProbe
 *
 * Description:
-*    光驱识别
+*    
 *
 * Parameters:
-*    mscLun  :  目标设备
+*    mscLun  :  
 *
 * Return value:
-*    无
+*    
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -1324,7 +1324,7 @@ int CDProbe(__mscLun_t *mscLun)
         return USB_ERR_BAD_ARGUMENTS;
     }
 
-    /* 初始化一个块设备 */
+    /*  */
     BlkDev = UsbBlkDevAllocInit(mscLun);
 
     if (BlkDev == NULL)
@@ -1358,11 +1358,11 @@ int CDProbe(__mscLun_t *mscLun)
     memset(CD, 0, sizeof(CD_Rom_t));
     mscLun->sdev_data = (void *)BlkDev;
     BlkDev->Extern    = CD;
-    /* 获得磁盘信息 */
+    /*  */
     GetDiskInfo(BlkDev);
     GetCDRomInfo(mscLun, CD);
 
-    /* 注册块设备 */
+    /*  */
     if (mscLun->MediaPresent && CD->DiscType != USBH_MEDIUM_CD_AUDIO_ONLY)
     {
         ret = UsbBlkDevReg(BlkDev, DEV_CLASS_DISK, 1);
@@ -1382,7 +1382,7 @@ int CDProbe(__mscLun_t *mscLun)
         return USB_ERR_REG_BLK_DEV_FAILED;
     }
 
-    /* 告诉usb_monitor, scsi disk识别设备成功 */
+    /* usb_monitor, scsi disk */
     {
         u32 is_reg = 1;
         //usbm_sendcmd(DEV_IOC_USR_HWSC_USBH_MSC_DEV_REG_SET, &is_reg);
@@ -1399,16 +1399,16 @@ int CDProbe(__mscLun_t *mscLun)
 *                     CDRemove
 *
 * Description:
-*    光驱驱动卸载
+*    
 *
 * Parameters:
-*    mscLun  :  目标设备
+*    mscLun  :  
 *
 * Return value:
-*    无
+*    
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -1431,15 +1431,15 @@ int CDRemove(__mscLun_t *mscLun)
         return -1;
     }
 
-    /* 注销块设备 */
+    /*  */
     UsbBlkDevUnReg(BlkDev);
-    /* 告诉usb_monitor scsi disk设备已经注销 */
+    /* usb_monitor scsi disk */
     {
         u32 is_reg = 0;
         ////usbm_sendcmd(DEV_IOC_USR_HWSC_USBH_MSC_DEV_REG_SET, &is_reg);
     }
     ShutDown(BlkDev);
-    /* media change线程已经停止了, 所以现在可以直接删除MediaChange */
+    /* media change, MediaChange */
     ENTER_CRITICAL(cpu_sr);
     mscLun->MediaChange = NULL;
     mscLun->sdev_data = NULL;

@@ -2,7 +2,7 @@
 * \file cyhal_syspm_impl.h
 *
 * \brief
-* Provides a PSoC™ Specific interface for interacting with the Infineon power
+* Provides a PSoC Specific interface for interacting with the Infineon power
 * management and system clock configuration. This interface abstracts out the
 * chip specific details. If any chip specific functionality is necessary, or
 * performance is critical the low level functions can be used directly.
@@ -40,7 +40,7 @@
 * PINA = hibernate_wakeup[0]<br>
 * PINB = hibernate_wakeup[1]
 *
-* The CAT1 (PSoC™ 6) Power Management has the following characteristics:<br>
+* The CAT1 (PSoC 6) Power Management has the following characteristics:<br>
 * \ref CYHAL_SYSPM_SYSTEM_NORMAL equates to the Low Power mode<br>
 * \ref CYHAL_SYSPM_SYSTEM_LOW equates to the Ultra Low Power mode
 *

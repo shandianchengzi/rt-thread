@@ -1,15 +1,15 @@
 /*
- * @ : Copyright (c) 2021 Phytium Information Technology, Inc.
- *
- * SPDX-License-Identifier: Apache-2.0.
- *
+*@:Copyright(c)2021PhytiumInformationTechnology,Inc.
+*
+*SPDX-License-Identifier:Apache-2.0.
+*
  * @Date: 2021-04-07 09:53:07
  * @LastEditTime: 2021-05-25 16:49:42
- * @Description:  This files is for uart irq functions
+ * @Description: This files is for uart irq functions
  *
- * @Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * @ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 #include "ft_uart.h"
@@ -24,7 +24,7 @@ static void FUart_sendDataHandler(Ft_Uart *UartPtr, u32 InterruptStatus);
 
 /**
  * @name: FUart_GetInterruptMask
- * @msg:  此函数获取所有串口中断的mask。
+ * @msg:  mask
  * @param {Ft_Uart} *UartPtr
  * @return {u32} mask
  */
@@ -47,7 +47,7 @@ void FUart_SetInterruptMask(Ft_Uart *UartPtr, u32 Mask)
 
 /**
  * @name: FUart_SetHandler
- * @msg:  设置中断回调函数
+ * @msg:  
  * @param {*}
  * @return {*}
  */
@@ -64,7 +64,7 @@ void FUart_SetHandler(Ft_Uart *UartPtr, FUart_Handler_t FuncPtr,
 
 /**
  * @name: FUart_InterruptHandler
- * @msg:  串口中断函数入口
+ * @msg:  
  * @param {Ft_Uart} *UartPtr
  * @return {*}
  */

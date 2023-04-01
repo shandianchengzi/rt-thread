@@ -7,7 +7,7 @@
  * Date           Author       Notes
  *                             first version
  */
-// 串口相关头文件
+// 
 
 
 #ifndef __OPENLOONGSON_UART_H
@@ -17,7 +17,7 @@
 #include "ls1c_public.h"
 
 
-// 串口各寄存器相对基地址的偏移
+// 
 #define LS1C_UART_DAT_OFFSET            (0)
 #define LS1C_UART_IER_OFFSET            (1)
 #define LS1C_UART_IIR_OFFSET            (2)
@@ -27,14 +27,14 @@
 #define LS1C_UART_LSR_OFFSET            (5)
 #define LS1C_UART_MSR_OFFSET            (6)
 
-#define LS1C_UART_LSB_OFFSET            (0)     // 分频锁存器1
-#define LS1C_UART_MSB_OFFSET            (1)     // 分频锁存器2
+#define LS1C_UART_LSB_OFFSET            (0)     // 1
+#define LS1C_UART_MSB_OFFSET            (1)     // 2
 
 /* interrupt enable register */
-#define	IER_IRxE	0x1	/* 接收有效数据中断使能 */
-#define	IER_ITxE	0x2	/* 传输保存寄存器为空中断使能 */
-#define	IER_ILE	    0x4	/* 接收器线路状态中断使能 */
-#define	IER_IME	    0x8	/* Modem状态中断使能 */
+#define	IER_IRxE	0x1	/*  */
+#define	IER_ITxE	0x2	/*  */
+#define	IER_ILE	    0x4	/*  */
+#define	IER_IME	    0x8	/* Modem */
 
 /* interrupt identification register */
 #define	IIR_IMASK	0xf	/* mask */
@@ -56,7 +56,7 @@
 #define	FIFO_TRIGGER_8	0x80	/* trigger at 8 chars */
 #define	FIFO_TRIGGER_14	0xc0	/* trigger at 14 chars */
 
-// 线路控制寄存器
+// 
 /* character format control register */
 #define	CFCR_DLAB	0x80	/* divisor latch */
 #define	CFCR_SBREAK	0x40	/* send break */
@@ -90,10 +90,10 @@
 #define	LSR_RCV_MASK	0x1f
 
 
-// 串口模块编号
+// 
 typedef enum
 {
-    LS1C_UART00 = 0,        // 全功能串口UART0可以分为两个四线串口UART00和UART01
+    LS1C_UART00 = 0,        // UART0UART00UART01
     LS1C_UART01,
     LS1C_UART1,
     LS1C_UART2,
@@ -109,78 +109,78 @@ typedef enum
 }ls1c_uart_t;
 
 
-// 串口信息
+// 
 typedef struct
 {
-    ls1c_uart_t UARTx;              // 串口模块编号
-    unsigned int baudrate;          // 波特率
-    BOOL rx_enable;                 // 是否需要使用串口接收数据(使能接收中断)，发送默认使能
+    ls1c_uart_t UARTx;              // 
+    unsigned int baudrate;          // 
+    BOOL rx_enable;                 // ()
 }ls1c_uart_info_t;
 
 
 
 /*
- * 获取指定串口模块的基地址
- * @UARTx 串口编号
- * @ret 基地址
+ * 
+ * @UARTx 
+ * @ret 
  */
 void *uart_get_base(ls1c_uart_t UARTx);
 
 
 /*
- * 初始化指定的串口模块
- * @uart_info_p 串口模块信息
+ * 
+ * @uart_info_p 
  */
 void uart_init(ls1c_uart_info_t *uart_info_p);
 
 
 /*
- * 初始化串口2
+ * 2
  */
 void uart2_init(void);
 
 
 /*
- * 在串口2上打印字符串
- * @str 待打印的字符串
+ * 2
+ * @str 
  */
 void uart2_print(const char *str);
 
 
 /*
- * 在调试串口打印字符串
- * @str 待打印的字符串
+ * 
+ * @str 
  */
 void uart_debug_print(const char *str);
 
 
 /*
- * 在调试串口打印一个字符
- * @ch 待打印的字符
+ * 
+ * @ch 
  */
 void uart_debug_putc(unsigned char ch);
 
 
 /*
- * 把中断号转换为串口号
- * @IRQn 中断号
- * @ret 串口号
+ * 
+ * @IRQn 
+ * @ret 
  */
 ls1c_uart_t uart_irqn_to_uartx(int IRQn);
 
 
 /*
- * 发送一个字节
- * @uartx 串口号
- * @ch 待发送的字符串
+ * 
+ * @uartx 
+ * @ch 
  */
 void uart_putc(ls1c_uart_t uartx, unsigned char ch);
 
 
 /*
- * 打印一个字符串到指定串口
- * @uartx 串口号
- * @str 待打印的字符串
+ * 
+ * @uartx 
+ * @str 
  */
 void uart_print(ls1c_uart_t uartx, const char *str);
 

@@ -311,8 +311,8 @@ typedef enum _xrdc_mem_code_region
 typedef enum _xrdc_access_flags_select
 {
     kXRDC_AccessFlagsNone = 0U, /* Select predefined constant {r,w,x} flags. See the table above. */
-    kXRDC_AccessFlagsAlt1 = 1U, /* Select ACCSET1 4*{r,w,x} fully‐programmable access flags. */
-    kXRDC_AccessFlagsAlt2 = 2U, /* Select ACCSET2 4*{r,w,x} fully‐programmable access flags. */
+    kXRDC_AccessFlagsAlt1 = 1U, /* Select ACCSET1 4*{r,w,x} fullyprogrammable access flags. */
+    kXRDC_AccessFlagsAlt2 = 2U, /* Select ACCSET2 4*{r,w,x} fullyprogrammable access flags. */
     kXRDC_AccessFlagsAlt3 = 3U, /* Select predefined constant {r,w,x} flags. See the table above. */
     kXRDC_AccessFlagsAlt4 = 4U, /* Select predefined constant {r,w,x} flags. See the table above. */
     kXRDC_AccessFlagsAlt5 = 5U, /* Select predefined constant {r,w,x} flags. See the table above. */

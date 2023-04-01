@@ -80,66 +80,66 @@ extern "C"
 
 /**
  ******************************************************************************
- ** \brief rtc周期中断的时间间隔                       RTC_CR0  PRDS
+ ** \brief rtc                       RTC_CR0  PRDS
  *****************************************************************************/
 typedef enum
 {
-    RtcNone   = 0u, //无周期中断
-    Rtc05S    = 1u, //0.5S中断
-    Rtc1S     = 2u, //1秒
-    Rtc1Min   = 3u, //1分钟
-    Rtc1H     = 4u, //1小时
-    Rtc1Day   = 5u, //1天
-    Rtc1Mon   = 6u  //1月
+    RtcNone   = 0u, //
+    Rtc05S    = 1u, //0.5S
+    Rtc1S     = 2u, //1
+    Rtc1Min   = 3u, //1
+    Rtc1H     = 4u, //1
+    Rtc1Day   = 5u, //1
+    Rtc1Mon   = 6u  //1
 }en_rtc_prds_t;
 
 /**
  ******************************************************************************
- ** \brief rtc 12h制或24h制方式选择                   RTC_CR0  AMPM
+ ** \brief rtc 12h24h                   RTC_CR0  AMPM
  *****************************************************************************/
 typedef enum
 {
-    RtcAm = 0u,     //12小时制
-    RtcPm = 1u      //24小时制
+    RtcAm = 0u,     //12
+    RtcPm = 1u      //24
 }en_rtc_ampm_t;
 
 /**
  ******************************************************************************
- ** \brief 普通精度与高精度1Hz输出                   RTC_CR0  HZ1SEL
+ ** \brief 1Hz                   RTC_CR0  HZ1SEL
  *****************************************************************************/
 typedef enum
 {
-    RtcHz1selGeneralPricision = 0u,    //普通精度1Hz输出
-    RtcHz1selHighPricision = 1u        //高精度1Hz输出
+    RtcHz1selGeneralPricision = 0u,    //1Hz
+    RtcHz1selHighPricision = 1u        //1Hz
 }en_rtc_hz1sel_t;
 
 /**
  ******************************************************************************
- ** \brief 周期中断选择                             RTC_CR0  PRDSEL
+ ** \brief                              RTC_CR0  PRDSEL
  *****************************************************************************/
 typedef enum
 {
-    RtcPrds = 0u,   //使用PRDS所设定的周期中断事件间隔
-    RtcPrdx = 1u    //使用PRDX所设定的周期中断事件间隔
+    RtcPrds = 0u,   //PRDS
+    RtcPrdx = 1u    //PRDX
 }en_rtc_prdsel_t;
 
 /**
  ******************************************************************************
- ** \brief rtc的时钟选择                           RTC_CR1  CKSEL
+ ** \brief rtc                           RTC_CR1  CKSEL
  *****************************************************************************/
 typedef enum 
 {
-    RtcClkXtl      = 0u, //外部低速时钟XTL  32.768k    
-    RtcClkRcl      = 2u, //内部低速时钟RCL  32k   
-    RtcClkXth128   = 4u, //外部晶振4M       XTH/128
-    RtcClkXth256   = 5u, //外部晶振8M       XTH/256
-    RtcClkXth512   = 6u, //外部晶振16M      XTH/512
-    RtcClkXth1024  = 7u  //外部晶振32M      XTH/1024
+    RtcClkXtl      = 0u, //XTL  32.768k    
+    RtcClkRcl      = 2u, //RCL  32k   
+    RtcClkXth128   = 4u, //4M       XTH/128
+    RtcClkXth256   = 5u, //8M       XTH/256
+    RtcClkXth512   = 6u, //16M      XTH/512
+    RtcClkXth1024  = 7u  //32M      XTH/1024
 }en_rtc_cksel_t;
 
 /**
  ******************************************************************************
- ** \brief 时钟误差补偿使能或禁止                      RTC_COMPEN  EN
+ ** \brief                       RTC_COMPEN  EN
  *****************************************************************************/
 typedef enum
 {
@@ -149,7 +149,7 @@ typedef enum
 
 /**
  ******************************************************************************
-** \brief 配置PRD中断使能及其周期类型                      
+** \brief PRD                      
  *****************************************************************************/
 typedef struct
 {
@@ -160,85 +160,85 @@ typedef struct
 
 /**
  ******************************************************************************
- ** \brief 闹钟源配置
+ ** \brief 
  *****************************************************************************/
 typedef struct
 {
-    uint8_t  RtcAlarmSec;    //闹钟秒钟
-    uint8_t  RtcAlarmMinute; //闹钟分钟
-    uint8_t  RtcAlarmHour;   //闹钟小时
-    uint8_t  RtcAlarmWeek;   //闹钟周
+    uint8_t  RtcAlarmSec;    //
+    uint8_t  RtcAlarmMinute; //
+    uint8_t  RtcAlarmHour;   //
+    uint8_t  RtcAlarmWeek;   //
 }stc_rtc_alarmtime_t;
 
 /**
  ******************************************************************************
- ** \brief 时间
+ ** \brief 
  *****************************************************************************/
 /**
  ******************************************************************************
- ** \brief rtc时钟年、月、日、时、分、秒读写结构
+ ** \brief rtc
  *****************************************************************************/
 typedef struct stc_rtc_time
 {
-    uint8_t  u8Second;      //时间：秒    
-    uint8_t  u8Minute;      //时间：分
-    uint8_t  u8Hour;        //时间：时
-    uint8_t  u8DayOfWeek;   //时间：周
-    uint8_t  u8Day;         //时间：日    
-    uint8_t  u8Month;       //时间：月
-    uint8_t  u8Year;        //时间：年
+    uint8_t  u8Second;      //    
+    uint8_t  u8Minute;      //
+    uint8_t  u8Hour;        //
+    uint8_t  u8DayOfWeek;   //
+    uint8_t  u8Day;         //    
+    uint8_t  u8Month;       //
+    uint8_t  u8Year;        //
 } stc_rtc_time_t;
 
 /**
  ******************************************************************************
- ** \brief 初始化RTC的结构体
+ ** \brief RTC
  *****************************************************************************/
 typedef struct
 {
-    en_rtc_ampm_t         rtcAmpm;      //小时的时制
-    stc_rtc_cyccfg_t      rtcPrdsel;    //确定PRDS或者PRDX所设定的周期中断时间间隔类型
-    en_rtc_cksel_t        rtcClksrc;    //实时时钟的时钟源
-    en_rtc_compen_t       rtcCompen;    //时钟误差补偿使能与禁止
-    uint16_t              rtcCompValue; //使能补偿的情况下，补偿值取值范围为:0-255
-    stc_rtc_time_t        rtcTime;      //要写入时间寄存器的时间
+    en_rtc_ampm_t         rtcAmpm;      //
+    stc_rtc_cyccfg_t      rtcPrdsel;    //PRDSPRDX
+    en_rtc_cksel_t        rtcClksrc;    //
+    en_rtc_compen_t       rtcCompen;    //
+    uint16_t              rtcCompValue; //:0-255
+    stc_rtc_time_t        rtcTime;      //
 }stc_rtc_initstruct_t;
 
 /******************************************************************************
   Global function prototypes (definition in C source)
 *******************************************************************************/
-//RTC计数器的使能或停止
+//RTC
 extern void Rtc_Cmd(boolean_t NewState);
-//RTC计数器启动等待函数
+//RTC
 extern void Rtc_StartWait(void);
-//RTC的1Hz输出的使能或停止
+//RTC1Hz
 extern void Rtc_Hz1Cmd(en_rtc_hz1sel_t pricision, boolean_t NewState);
-//设置周期中断的类型(PRDSEL)及其所选类型的时间(PRDS或PRDX)
+//(PRDSEL)(PRDSPRDX)
 extern en_result_t Rtc_SetCyc(stc_rtc_cyccfg_t* pstCyc);
-//RTC闹钟中断的使能或停止
+//RTC
 extern void Rtc_AlmIeCmd(boolean_t NewState);
-//RTC闹钟的使能或停止
+//RTC
 extern void Rtc_AlmEnCmd(boolean_t NewState);
-//获取RTC闹钟中断状态位
+//RTC
 extern boolean_t Rtc_GetAlmfItStatus(void);
-//清除RTC闹钟中断状态位
+//RTC
 extern void Rtc_ClearAlmfItStatus(void);
-//清除RTC周期中断状态位
+//RTC
 extern void Rtc_ClearPrdfItStatus(void);
-//获取RTC周期中断状态位
+//RTC
 extern boolean_t Rtc_GetPridItStatus(void);
-//配置RTC的误差补偿寄存器
+//RTC
 extern en_result_t Rtc_CompCfg(uint16_t CompVlue, en_rtc_compen_t NewStatus);
-//RTC根据日期计算周数
+//RTC
 extern en_result_t Check_BCD_Format(uint8_t u8data,uint8_t u8limit_min, uint8_t u8limit_max);
-//RTC获取时间函数
+//RTC
 extern en_result_t Rtc_ReadDateTime(stc_rtc_time_t* time);
-//向RTC时间寄存器写入时间
+//RTC
 extern en_result_t Rtc_SetTime(stc_rtc_time_t* time);
-//RTC闹钟中断时间获取
+//RTC
 extern void Rtc_GetAlarmTime(stc_rtc_alarmtime_t* pstcAlarmTime);
-//RTC闹钟设置
+//RTC
 extern en_result_t Rtc_SetAlarmTime(stc_rtc_alarmtime_t* pstcAlarmTime);
-//初始化RTC
+//RTC
 extern void Rtc_Init(stc_rtc_initstruct_t* Rtc_InitStruct);
 #endif /* __RTC_H__ */
 /******************************************************************************

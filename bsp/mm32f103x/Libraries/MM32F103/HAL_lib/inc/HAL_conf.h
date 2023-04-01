@@ -20,7 +20,7 @@
 #ifndef __HAL_CONF_H__
 #define __HAL_CONF_H__
 
-/*´Ë´¦¿ÉÌí¼Ó»òÉ¾³ýÍâÉè*/
+/**/
 #include "HAL_device.h"
 
 

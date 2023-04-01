@@ -456,7 +456,7 @@ OF SUCH DAMAGE.
 #define DEPLEN_TLEN               BITS(0, 18)         /*!< transfer length */
 
 /* device in endpoint-x transmit fifo status register bits definitions */
-#define DIEPTFSTAT_IEPTFS         BITS(0, 15)         /*!< in endpoint¡¯s tx fifo space remaining */
+#define DIEPTFSTAT_IEPTFS         BITS(0, 15)         /*!< in endpoints tx fifo space remaining */
 
 /* USB power and clock registers bits definition */
 #define PWRCLKCTL_SHCLK           BIT(1)              /*!< stop HCLK */

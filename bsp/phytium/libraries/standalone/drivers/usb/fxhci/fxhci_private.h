@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fxhci_private.h
  * Date: 2022-02-11 13:33:12
  * LastEditTime: 2022-02-18 09:16:44
- * Description:  This files is for definition of XHCI internal function
+ * Description: This files is for definition of XHCI internal function
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   Zhugengyu  2022/2/7    init commit
  */
 
@@ -396,7 +396,7 @@ static inline int FXhciEpId(const FUsbEndpoint *const ep)
 {
     /* calculate endpoint ID (Device Context Index (DCI)) The range of DCI values is 0 to 31.
      *      For Isoch, Interrupt, or Bulk type endpoints
-     *          DCI = (Endpoint Number * 2) + Direction ,  Direction = ‘0’ for OUT  ‘1’ for IN
+     *          DCI = (Endpoint Number * 2) + Direction ,  Direction = 0 for OUT  1 for IN
      *      For Control type endpoints
      *          DCI = (Endpoint Number * 2) + 1.
     */
@@ -406,25 +406,25 @@ static inline int FXhciEpId(const FUsbEndpoint *const ep)
 #define FXHCI_EP0_ID            1
 
 /************************** Function Prototypes ******************************/
-/* 初始化Roothub */
+/* Roothub */
 void FXhciRootHubInit(FUsbDev *dev);
 
-/* 分配一段对齐的内存 */
+/*  */
 void *FXhciAlign(FXhci *xhci, const size_t min_align, const size_t size);
 
-/* 初始化TRB ring */
+/* TRB ring */
 void FXhciInitCycleRing(FXhciTransRing *ring, const size_t ring_size);
 
-/* 设备USB设备的地址 */
+/* USB */
 FUsbDev *FXhciSetAddress(FUsbHc *hc, FUsbSpeed speed, int hubport, int hubaddr);
 
-/* 完成USB设备配置 */
+/* USB */
 FXhciTransCode FXhciFinishDevConfig(FUsbDev *hc);
 
-/* 删除指定USB设备实例 */
+/* USB */
 void FXhciDestoryDev(FUsbHc *xhci, int slot_id);
 
-/* 重置Event TRB ring */
+/* Event TRB ring */
 void FXhciResetEvtRing(FXhciEvtRing *ring);
 
 void FXhciAdvanceEvtRing(FXhci *xhci);
@@ -457,7 +457,7 @@ void FXhciDumpTransferTrb(const FXhciTrb *trb);
 void FXhciDumpTransferTrbs(const FXhciTrb *first, const FXhciTrb *last);
 
 
-/* 支持带TAG的内存分配，用于跟踪动态内存使用 */
+/* TAG */
 #ifdef FMEMP_TAG_DEBUG
 void *FXhciAlignTag(FXhci *const xhci, const size_t min_align, const size_t size, const char *file, unsigned long line, const char *msg);
 

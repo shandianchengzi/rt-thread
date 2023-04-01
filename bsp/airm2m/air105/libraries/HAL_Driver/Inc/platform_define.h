@@ -34,14 +34,14 @@ enum
     UART_STOP_BIT1_5,
     UART_STOP_BIT2,
 
-    I2C_OP_READ_REG = 0,    //i2c通用读寄存器，一写一读，自动带start信号
-    I2C_OP_READ,        //i2c通用读，只读
-    I2C_OP_WRITE,       //i2c通用写，只写
+    I2C_OP_READ_REG = 0,    //i2cstart
+    I2C_OP_READ,        //i2c
+    I2C_OP_WRITE,       //i2c
 
     OP_QUEUE_CMD_END = 0,
-    OP_QUEUE_CMD_ONE_TIME_DELAY,    //只有一次delay
-    OP_QUEUE_CMD_CONTINUE_DELAY,    //连续delay，配合OP_QUEUE_CMD_REPEAT_DELAY使用
-    OP_QUEUE_CMD_REPEAT_DELAY,  //重复OP_QUEUE_CMD_CONTINUE_DELAY
+    OP_QUEUE_CMD_ONE_TIME_DELAY,    //delay
+    OP_QUEUE_CMD_CONTINUE_DELAY,    //delayOP_QUEUE_CMD_REPEAT_DELAY
+    OP_QUEUE_CMD_REPEAT_DELAY,  //OP_QUEUE_CMD_CONTINUE_DELAY
     OP_QUEUE_CMD_SET_GPIO_DIR_OUT,
     OP_QUEUE_CMD_SET_GPIO_DIR_IN,
     OP_QUEUE_CMD_GPIO_OUT,
@@ -53,9 +53,9 @@ enum
     OP_QUEUE_CMD_IO_PULL_NONE = 0,
     OP_QUEUE_CMD_IO_PULL_UP,
     OP_QUEUE_CMD_IO_PULL_DOWN,
-    OP_QUEUE_CMD_IO_EXTI_BOTH = 0,  //双边沿中断
-    OP_QUEUE_CMD_IO_EXTI_UP,        //上升沿中断
-    OP_QUEUE_CMD_IO_EXTI_DOWN,      //下降沿中断
+    OP_QUEUE_CMD_IO_EXTI_BOTH = 0,  //
+    OP_QUEUE_CMD_IO_EXTI_UP,        //
+    OP_QUEUE_CMD_IO_EXTI_DOWN,      //
 
     COLOR_MODE_RGB_565 = 0,
     COLOR_MODE_GRAY,
@@ -210,7 +210,7 @@ enum
     HAL_GPIO_94,
     HAL_GPIO_95,
     HAL_GPIO_MAX,
-    HAL_GPIO_NONE = HAL_GPIO_MAX, //大于等于HAL_GPIO_NONE，说明不存在
+    HAL_GPIO_NONE = HAL_GPIO_MAX, //HAL_GPIO_NONE
 };
 enum
 {
@@ -311,7 +311,7 @@ enum
     GPIOF_14,
     GPIOF_15,
     GPIO_MAX,
-    GPIO_NONE = GPIO_MAX, //大于等于GPIO_NONE，说明不存在
+    GPIO_NONE = GPIO_MAX, //GPIO_NONE
 };
 
 #endif

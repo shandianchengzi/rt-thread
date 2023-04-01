@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fgmac_ar803x.c
  * Date: 2022-04-06 14:46:52
  * LastEditTime: 2022-04-06 14:46:58
- * Description:  This file is for
+ * Description: This file is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 
@@ -55,11 +55,11 @@ extern FError FGmacReadPhyReg(FGmac *instance_p, u32 phy_address, u16 phy_reg, u
 
 /*****************************************************************************/
 
-/* 此文件主要为了完成用户对外接口，用户可以使用这些接口直接开始工作 */
+/*  */
 
-/* - 包括用户API的定义和实现
-   - 同时包含必要的OPTION方法，方便用户进行配置
-   - 如果驱动可以直接进行I/O操作，在此源文件下可以将API 进行实现 */
+/* - API
+   - OPTION
+   - I/OAPI  */
 
 
 /**
@@ -69,7 +69,7 @@ extern FError FGmacReadPhyReg(FGmac *instance_p, u32 phy_address, u16 phy_reg, u
  * @param {u32} phy_address, phy address connect to fgmac
  * @param {u16} debug_reg, phy debug register offset to read
  * @param {u16} *reg_data_p, phy register value pointer
- * @return err code information, FGMAC_SUCCESS indicates success，others indicates failed
+ * @return err code information, FGMAC_SUCCESS indicates successothers indicates failed
  */
 static FError FGmacAr803xDebugRegRead(FGmac *instance_p, u32 phy_address, u16 debug_reg, u16 *reg_data_p)
 {
@@ -105,7 +105,7 @@ static FError FGmacAr803xMaskReg(FGmac *instance_p, u32 phy_address, u16 reg, u3
  * @name: FGmacAr803xDisableHibernate
  * @msg: disable phy Power hibernate control
  * @param {FGmac} *instance_p, instance of FGmac controller
- * @return err code information, FGMAC_SUCCESS indicates success，others indicates failed
+ * @return err code information, FGMAC_SUCCESS indicates successothers indicates failed
  */
 FError FGmacAr803xDisableHibernate(FGmac *instance_p)
 {
@@ -132,7 +132,7 @@ FError FGmacAr803xDisableHibernate(FGmac *instance_p)
  * @msg: control phy debug register0 for rx clock delay
  * @param {FGmac} *instance_p, instance of FGmac controller
  * @param {u32} enable_setting, 1-enable, else disable
- * @return err code information, FGMAC_SUCCESS indicates success，others indicates failed
+ * @return err code information, FGMAC_SUCCESS indicates successothers indicates failed
  */
 FError FFmacAr803xRxClockDelayControl(FGmac *instance_p, u32 enable_setting)
 {
@@ -167,7 +167,7 @@ FError FFmacAr803xRxClockDelayControl(FGmac *instance_p, u32 enable_setting)
  * @msg: control phy debug register5 for tx clock delay
  * @param {FGmac} *instance_p, instance of FGmac controller
  * @param {u32} enable_setting, 1-enable, else disable
- * @return err code information, FGMAC_SUCCESS indicates success，others indicates failed
+ * @return err code information, FGMAC_SUCCESS indicates successothers indicates failed
  */
 FError FFmacAr803xTxClockDelayControl(FGmac *instance_p, u32 enable_setting)
 {

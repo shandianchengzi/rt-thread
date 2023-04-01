@@ -125,7 +125,7 @@ typedef struct {
  * Set to enable the FIFO Half Interrupt.
  * Receiver: Interrupts when the FIFO is half-empty, i.e, there is >= 1/2 entries in the FIFO.
  * Transmitter: Interrupts when the FIFO is half-empty, i.e. there is <= 1/2 entries in the FIFO.
- * This interrupt depends on the transaction direction; don’t enable this interrupt unless the transfer direction is determined, otherwise unintended interrupts may be triggered.
+ * This interrupt depends on the transaction direction; dont enable this interrupt unless the transfer direction is determined, otherwise unintended interrupts may be triggered.
  */
 #define I2C_INTEN_FIFOHALF_MASK (0x4U)
 #define I2C_INTEN_FIFOHALF_SHIFT (2U)

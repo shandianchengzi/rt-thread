@@ -304,8 +304,8 @@ typedef struct
 * @{
 */
 
-#define ADC_FLAG_AWD                               ((uint8_t)0x02) //ADWIF 比较标志位
-#define ADC_FLAG_EOC                               ((uint8_t)0x01) //ADIF  转换结束标志位
+#define ADC_FLAG_AWD                               ((uint8_t)0x02) //ADWIF 
+#define ADC_FLAG_EOC                               ((uint8_t)0x01) //ADIF  
 #define IS_ADC_CLEAR_FLAG(FLAG) ((((FLAG) & (uint8_t)0xF0) == 0x00) && ((FLAG) != 0x00))
 #define IS_ADC_GET_FLAG(FLAG) (((FLAG) == ADC_FLAG_AWD) || ((FLAG) == ADC_FLAG_EOC))
 

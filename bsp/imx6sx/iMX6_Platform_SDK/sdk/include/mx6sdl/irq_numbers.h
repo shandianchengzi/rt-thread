@@ -210,7 +210,7 @@ enum _imx_interrupts
                         //! - MAC 0 Babbling Transmit Error
                         //! - MAC 0 Babbling Receive Error
                         //! - MAC 0 Wakeup Request [synchronous]
-    IMX_INT_ENET_1588 = 151,    //!< ￼MAC 0 1588 Timer interrupt [synchronous] request.
+    IMX_INT_ENET_1588 = 151,    //!< MAC 0 1588 Timer interrupt [synchronous] request.
     IMX_INT_PCIE_1 = 152,   //!< PCIe interrupt request 1.
     IMX_INT_PCIE_2 = 153,   //!< PCIe interrupt request 2.
     IMX_INT_PCIE_3 = 154,   //!< PCIe interrupt request 3.

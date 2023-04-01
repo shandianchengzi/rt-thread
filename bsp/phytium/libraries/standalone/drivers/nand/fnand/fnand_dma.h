@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fnand_dma.h
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:56:27
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 #ifndef DRIVERS_NAND_FNAND_DMA_H
@@ -54,25 +54,25 @@ extern "C"
 
 struct CmdCtrl
 {
-    u16 csel : 4;     /* 每一位表示选择NAND FLASH 设备  */
-    u16 dbc : 1;      /* 表示是否有2级命令，1表示有，只有此位为1时，描述符表的CMD1才有效 */
-    u16 addr_cyc : 3; /* 表示指令有几个周期，‘b000’:表示没有周期 ‘b001’:表示1一个地址周期，一次类推 */
-    u16 nc : 1;       /* 表示是否有连续的下一个指令，一般多页操作需要连续发送多个指令 */
-    u16 cmd_type : 4; /* 表示命令类型 */
-    u16 dc : 1;       /* 表示命令发送是否包含有数据周期，有数据此位为1 */
-    u16 auto_rs : 1;  /* 表示命令发送完成后是否检测闪存状态 */
-    u16 ecc_en : 1;   /* ECC 数据发送和读取使能位，位1 表示该命令仅发送或者读取ECC数据，当读命令该位使能位1后，控制器会对上一次数据进行ECC 校验，并返回结果 */
+    u16 csel : 4;     /* NAND FLASH   */
+    u16 dbc : 1;      /* 211CMD1 */
+    u16 addr_cyc : 3; /* b000: b001:1 */
+    u16 nc : 1;       /*  */
+    u16 cmd_type : 4; /*  */
+    u16 dc : 1;       /* 1 */
+    u16 auto_rs : 1;  /*  */
+    u16 ecc_en : 1;   /* ECC 1 ECC1ECC  */
 };
 
 struct FNandDmaDescriptor
 {
-    u8 cmd0; /* NAND FLASH 第一个命令编码 */
-    u8 cmd1; /* NAND FLASH 第二个命令编码 */
+    u8 cmd0; /* NAND FLASH  */
+    u8 cmd1; /* NAND FLASH  */
     union
     {
         u16 ctrl;
         struct CmdCtrl nfc_ctrl;
-    } cmd_ctrl; /* 16位命令字 */
+    } cmd_ctrl; /* 16 */
     u8 addr[FNAND_NFC_ADDR_MAX_LEN];
     u16 page_cnt;
     u8 mem_addr_first[FNAND_NFC_ADDR_MAX_LEN];
@@ -100,7 +100,7 @@ typedef struct
     u8 addr_cycles; /* Number of address cycles */
     u8 cmd_type;    /* Presentation command type ,followed by FNAND_CMDCTRL_XXXX */
     u8 ecc_en;      /* Hardware ecc open */
-    u8 auto_rs;     /* 表示命令发送完成后是否检测闪存状态 */
+    u8 auto_rs;     /*  */
 } FNandCmdFormat;
 
 

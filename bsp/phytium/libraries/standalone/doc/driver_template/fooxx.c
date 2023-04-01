@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fooxx.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:25:29
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 
@@ -42,11 +42,11 @@
 
 /*****************************************************************************/
 
-/* 此文件主要为了完成用户对外接口，用户可以使用这些接口直接开始工作 */
+/*  */
 
-/* - 包括用户API的定义和实现
-   - 同时包含必要的OPTION方法，方便用户进行配置
-   - 如果驱动可以直接进行I/O操作，在此源文件下可以将API 进行实现 */
+/* - API
+   - OPTION
+   - I/OAPI  */
 
 /**
  * @name: FooxxCfgInitialize
@@ -62,6 +62,6 @@ FError FooxxCfgInitialize(Fooxx *instance_p, FooxxConfig *config_p)
 
 }
 
-/* - 包括用户API的定义和实现
-   - 同时包含必要的OPTION方法，方便用户进行配置
-   - 如果驱动可以直接进行I/O操作，在此源文件下可以将API 进行实现 */
+/* - API
+   - OPTION
+   - I/OAPI  */

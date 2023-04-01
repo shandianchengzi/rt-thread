@@ -5,15 +5,15 @@
  *
  * Change Logs:
  * Date           Author       Notes
- * 2017-09-06     勤为本       first version
+ * 2017-09-06            first version
  */
 
-// 一些常用的、共用的接口
+// 
 
 /*
- * 将指定寄存器的指定位置1
- * @reg 寄存器地址
- * @bit 需要置1的那一bit
+ * 1
+ * @reg 
+ * @bit 1bit
  */
 void reg_set_one_bit(volatile unsigned int *reg, unsigned int bit)
 {
@@ -29,9 +29,9 @@ void reg_set_one_bit(volatile unsigned int *reg, unsigned int bit)
 
 
 /*
- * 将指定寄存器的指定位清零
- * @reg 寄存器地址
- * @bit 需要清零的那一bit
+ * 
+ * @reg 
+ * @bit bit
  */
 void reg_clr_one_bit(volatile unsigned int *reg, unsigned int bit)
 {
@@ -48,10 +48,10 @@ void reg_clr_one_bit(volatile unsigned int *reg, unsigned int bit)
 
 
 /*
- * 获取指定寄存器的指定位的值
- * @reg 寄存器地址
- * @bit 需要读取值的那一bit
- * @ret 指定位的值
+ * 
+ * @reg 
+ * @bit bit
+ * @ret 
  */
 unsigned int reg_get_bit(volatile unsigned int *reg, unsigned int bit)
 {
@@ -65,9 +65,9 @@ unsigned int reg_get_bit(volatile unsigned int *reg, unsigned int bit)
 
 
 /*
- * 向寄存器中写入8bit(一个字节)数据
- * @data 待写入的数据
- * @addr 寄存器地址
+ * 8bit()
+ * @data 
+ * @addr 
  */
 void reg_write_8(unsigned char data, volatile unsigned char *addr)
 {
@@ -76,9 +76,9 @@ void reg_write_8(unsigned char data, volatile unsigned char *addr)
 
 
 /*
- * 从寄存器读出8bit(一个字节)数据
- * @addr 寄存器地址
- * @ret 读出的数据
+ * 8bit()
+ * @addr 
+ * @ret 
  */
 unsigned char reg_read_8(volatile unsigned char *addr)
 {
@@ -87,9 +87,9 @@ unsigned char reg_read_8(volatile unsigned char *addr)
 
 
 /*
- * 向寄存器中写一个32bit的数据
- * @data 待写入的数据
- * @addr 寄存器地址
+ * 32bit
+ * @data 
+ * @addr 
  */
 void reg_write_32(unsigned int data, volatile unsigned int *addr)
 {
@@ -98,9 +98,9 @@ void reg_write_32(unsigned int data, volatile unsigned int *addr)
 
 
 /*
- * 从寄存器读出一个32bit数据
- * @addr 寄存器地址
- * @ret 读出的数据
+ * 32bit
+ * @addr 
+ * @ret 
  */
 unsigned int reg_read_32(volatile unsigned int *addr)
 {

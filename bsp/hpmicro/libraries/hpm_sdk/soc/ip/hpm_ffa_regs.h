@@ -525,7 +525,7 @@ typedef struct {
 /*
  * LOC (RW)
  *
- * The output data buffer pointer. The length of the output buffer should be （FIR_DATA_TAPS - FIR_COEF_TAPS + 1）
+ * The output data buffer pointer. The length of the output buffer should be FIR_DATA_TAPS - FIR_COEF_TAPS + 1
  */
 #define FFA_OP_FIR_OUTBUF_LOC_MASK (0xFFFFFFFFUL)
 #define FFA_OP_FIR_OUTBUF_LOC_SHIFT (0U)

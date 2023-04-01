@@ -263,7 +263,7 @@ typedef struct {
 
 extern SD_CardInfo SDCardInfo;
 ////////////////////////////////////////////////////////////////////////////////
-/// @defgroup SDIO ָinstruction set
+/// @defgroup SDIO instruction set
 /// @{
 #define SD_CMD_GO_IDLE_STATE                       ((u8)0)
 #define SD_CMD_SEND_OP_COND                        ((u8)1)

@@ -86,14 +86,14 @@
 ******************************************************************************/
 /**
 * \brief   
-*          HDIV 有符号除法
+*          HDIV 
 *
-* \param   [in]   Dividend      被除数
-* \param   [in]   Dividsor      除数
-* \param   [out]  stcDivResult  商和余数
+* \param   [in]   Dividend      
+* \param   [in]   Dividsor      
+* \param   [out]  stcDivResult  
 *
-* \retval  en_result_t  Ok:  配置成功
-* \retval  en_result_t  ErrorInvalidParameter: 无效参数
+* \retval  en_result_t  Ok:  
+* \retval  en_result_t  ErrorInvalidParameter: 
 */
 en_result_t Hdiv_Unsigned(uint32_t Dividend,uint16_t Divisor,stc_div_unsigned_result_t* stcDivResult)
 {
@@ -123,14 +123,14 @@ en_result_t Hdiv_Unsigned(uint32_t Dividend,uint16_t Divisor,stc_div_unsigned_re
 
 /**
 * \brief   
-*          HDIV 无符号除法
+*          HDIV 
 *
-* \param   [in]   Dividend      被除数
-* \param   [in]   Dividsor      除数
-* \param   [out]  stcDivResult  商和余数
+* \param   [in]   Dividend      
+* \param   [in]   Dividsor      
+* \param   [out]  stcDivResult  
 *
-* \retval  en_result_t  Ok:  配置成功
-* \retval  en_result_t  ErrorInvalidParameter: 无效参数
+* \retval  en_result_t  Ok:  
+* \retval  en_result_t  ErrorInvalidParameter: 
 */
 en_result_t Hdiv_Signed(int32_t Dividend,int16_t Divisor,stc_div_signed_result_t* stcDivResult)
 {

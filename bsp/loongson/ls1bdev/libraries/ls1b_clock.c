@@ -5,7 +5,7 @@
  *
  * Change Logs:
  * Date           Author       Notes
- * 2017-09-06     勤为本       first version
+ * 2017-09-06            first version
  * 2021-02-02     michael5hzg@gmail.com       adapt to ls1b
  */
 
@@ -15,7 +15,7 @@
 #include "ls1b_public.h"
 
 
-// 晶振的频率
+// 
 #define AHB_CLK                 (RT_OSC_CLK)
 #define APB_CLK                 (AHB_CLK)
 
@@ -32,8 +32,8 @@
 
 
 /*
- * 获取PLL频率
- * @ret PLL频率
+ * PLL
+ * @ret PLL
  */
 unsigned long clk_get_pll_rate(void)
 {
@@ -49,8 +49,8 @@ unsigned long clk_get_pll_rate(void)
 
 
 /*
- * 获取CPU频率
- * @ret CPU频率
+ * CPU
+ * @ret CPU
  */
 unsigned long clk_get_cpu_rate(void)
 {
@@ -66,8 +66,8 @@ unsigned long clk_get_cpu_rate(void)
 
 
 /*
- * 获取DDR频率
- * @ret DDR频率
+ * DDR
+ * @ret DDR
  */
 unsigned long clk_get_ddr_rate(void)
 {
@@ -84,8 +84,8 @@ unsigned long clk_get_ddr_rate(void)
 
 
 /*
- * 获取APB频率
- * @ret APB频率
+ * APB
+ * @ret APB
  */
 unsigned long clk_get_apb_rate(void)
 {
@@ -94,8 +94,8 @@ unsigned long clk_get_apb_rate(void)
 
 
 /*
- * 获取DC频率
- * @ret DC频率
+ * DC
+ * @ret DC
  */
 unsigned long clk_get_dc_rate(void)
 {

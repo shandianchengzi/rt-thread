@@ -83,33 +83,33 @@ extern "C"
 
 /**
  *******************************************************************************
- ** \brief 外设复位控制类型定义
+ ** \brief 
  ** \note
  ******************************************************************************/
 typedef enum en_sysctrl_peripheral0
 {
-    ResetMskUart0      = 1u<<0u,       ///< 串口0
-    ResetMskUart1      = 1u<<1u,       ///< 串口1
-    ResetMskLpUart0    = 1u<<2u,       ///< 低功耗串口0
-    ResetMskLpUart1    = 1u<<3u,       ///< 低功耗串口1
+    ResetMskUart0      = 1u<<0u,       ///< 0
+    ResetMskUart1      = 1u<<1u,       ///< 1
+    ResetMskLpUart0    = 1u<<2u,       ///< 0
+    ResetMskLpUart1    = 1u<<3u,       ///< 1
     ResetMskI2c0       = 1u<<4u,       ///< I2C0
     ResetMskI2c1       = 1u<<5u,       ///< I2C1
     ResetMskSpi0       = 1u<<6u,       ///< SPI0
     ResetMskSpi1       = 1u<<7u,       ///< SPI1
-    ResetMskBaseTim    = 1u<<8u,       ///< 基础定时器TIM0/1/2
-    ResetMskLpTim0     = 1u<<9u,       ///< 低功耗定时器0
-    ResetMskAdvTim     = 1u<<10u,      ///< 高级定时器TIM4/5/6
-    ResetMskTim3       = 1u<<11u,      ///< 定时器3
+    ResetMskBaseTim    = 1u<<8u,       ///< TIM0/1/2
+    ResetMskLpTim0     = 1u<<9u,       ///< 0
+    ResetMskAdvTim     = 1u<<10u,      ///< TIM4/5/6
+    ResetMskTim3       = 1u<<11u,      ///< 3
     ResetMskOpa        = 1u<<13u,      ///< OPA
-    ResetMskPca        = 1u<<14u,      ///< 可编程计数阵列
+    ResetMskPca        = 1u<<14u,      ///< 
     ResetMskAdcBgr     = 1u<<16u,      ///< ADC&BGR
-    ResetMskVcLvd      = 1u<<17u,      ///< VC和LVD
+    ResetMskVcLvd      = 1u<<17u,      ///< VCLVD
     ResetMskRng        = 1u<<18u,      ///< RNG
     ResetMskPcnt       = 1u<<19u,      ///< PCNT
     ResetMskRtc        = 1u<<20u,      ///< RTC
-    ResetMskTrim       = 1u<<21u,      ///< 时钟校准
+    ResetMskTrim       = 1u<<21u,      ///< 
     ResetMskLcd        = 1u<<22u,      ///< LCD
-    ResetMskTick       = 1u<<24u,      ///< 系统定时器
+    ResetMskTick       = 1u<<24u,      ///< 
     ResetMskSwd        = 1u<<25u,      ///< SWD
     ResetMskCrc        = 1u<<26u,      ///< CRC
     ResetMskAes        = 1u<<27u,      ///< AES
@@ -120,27 +120,27 @@ typedef enum en_sysctrl_peripheral0
 typedef enum en_sysctrl_peripheral1
 {
     ResetMskDac        = 1u<<3u,      ///< DAC
-    ResetMskLpTim1     = 1u<<4u,      ///< 低功耗定时器1
+    ResetMskLpTim1     = 1u<<4u,      ///< 1
     ResetMskUart2      = 1u<<8u,      ///< UART2
     ResetMskUart3      = 1u<<9u,      ///< UART3 
 }en_reset_peripheral1_t;
 
 /**
  *******************************************************************************
- ** \brief 复位源（标识）显示
+ ** \brief 
  **
  ** \note
  ******************************************************************************/
 typedef enum en_reset_flag
 {
-    ResetFlagMskPor5V     = 1u<<0u,         ///< 5V启动复位
-    ResetFlagMskPor1_5V   = 1u<<1u,         ///< 1.5V启动复位
-    ResetFlagMskLvd       = 1u<<2u,         ///< 低电压检测复位
-    ResetFlagMskWdt       = 1u<<3u,         ///< 看门狗复位
-    ResetFlagMskPca       = 1u<<4u,         ///< PCA复位
-    ResetFlagMskLockup    = 1u<<5u,         ///< 系统异常复位
-    ResetFlagMskSysreq    = 1u<<6u,         ///< 软件复位
-    ResetFlagMskRstb      = 1u<<7u,         ///< RESET脚 复位
+    ResetFlagMskPor5V     = 1u<<0u,         ///< 5V
+    ResetFlagMskPor1_5V   = 1u<<1u,         ///< 1.5V
+    ResetFlagMskLvd       = 1u<<2u,         ///< 
+    ResetFlagMskWdt       = 1u<<3u,         ///< 
+    ResetFlagMskPca       = 1u<<4u,         ///< PCA
+    ResetFlagMskLockup    = 1u<<5u,         ///< 
+    ResetFlagMskSysreq    = 1u<<6u,         ///< 
+    ResetFlagMskRstb      = 1u<<7u,         ///< RESET 
 }en_reset_flag_t;
 
 /*******************************************************************************
@@ -150,13 +150,13 @@ typedef enum en_reset_flag
 /*******************************************************************************
  * Global function prototypes (definition in C source)
  ******************************************************************************/
-///< 获得复位源状态
+///< 
 boolean_t Reset_GetFlag(en_reset_flag_t enRstFlg);
-///< 清除复位源状态
+///< 
 void Reset_ClearFlag(en_reset_flag_t enRstFlg);
 void Reset_ClearFlagAll(void);
 
-///< 外设模块复位
+///< 
 void Reset_RstPeripheralAll(void);
 void Reset_RstPeripheral0(en_reset_peripheral0_t enPeri);
 void Reset_RstPeripheral1(en_reset_peripheral1_t enPeri);

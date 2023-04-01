@@ -26,7 +26,7 @@
 <div class="sectione dark">
 <center>
 <h1 id="release-notes-for-stm32l0xx-hal-drivers"><small>Release Notes for</small> <mark>STM32L0xx HAL Drivers</mark></h1>
-<p>Copyright © 2017 STMicroelectronics<br />
+<p>Copyright  2017 STMicroelectronics<br />
 </p>
 <a href="https://www.st.com" class="logo"><img src="_htmresc/st_logo.png" alt="ST logo" /></a>
 </center>
@@ -73,7 +73,7 @@
 <li><strong>HAL/LL DAC</strong> update
 <ul>
 <li>Fix compilation error when USE_DAC_REGISTER_CALLBACKS is activated.</li>
-<li>Remove ‘register’ storage class specifier from LL DAC driver.</li>
+<li>Remove register storage class specifier from LL DAC driver.</li>
 <li>Update LL_ADC_DMA_GetRegAddr() API to prevent unused argument compilation warning.</li>
 <li>Update HAL timeout mechanism to avoid false timeout detection in case of preemption.</li>
 </ul></li>
@@ -83,7 +83,7 @@
 </ul></li>
 <li><strong>HAL/LL RTC</strong> update
 <ul>
-<li>Update __RTC_…(__HANDLE__, …) macros to access registers through (__HANDLE__)-&gt;Instance pointer and avoid “unused variable” warnings.</li>
+<li>Update __RTC_(__HANDLE__, ) macros to access registers through (__HANDLE__)-&gt;Instance pointer and avoid unused variable warnings.</li>
 <li>Correct month management in IS_LL_RTC_MONTH() macro.</li>
 <li>Update implementations of LL_RTC_BAK_SetRegister() and LL_RTC_BAK_GetRegister() to comply to MISRAC rule 17.4.</li>
 </ul></li>
@@ -117,7 +117,7 @@
 </ul></li>
 <li><strong>HAL UART</strong> update
 <ul>
-<li>Fix erroneous UART’s handle state in case of error returned after DMA reception start within UART_Start_Receive_DMA().</li>
+<li>Fix erroneous UARTs handle state in case of error returned after DMA reception start within UART_Start_Receive_DMA().</li>
 <li>Correction on UART ReceptionType management in case of ReceptionToIdle API are called from RxEvent callback.</li>
 <li>Handling of UART concurrent register access in case of race condition between Tx and Rx transfers (HAL UART and LL LPUART).</li>
 </ul></li>
@@ -152,7 +152,7 @@
 <ul>
 <li>Update HAL driver to allow user to change systick period to 1ms, 10 ms or 100 ms:
 <ul>
-<li>Add the following new API’s :
+<li>Add the following new APIs :
 <ul>
 <li>HAL_GetTickPrio(): Returns a tick priority.</li>
 <li>HAL_SetTickFreq(): Sets new tick frequency.</li>
@@ -297,7 +297,7 @@
 </ul></li>
 <li>Add new API HAL_TIM_DMABurst_MultiWriteStart() allowing to configure the DMA Burst to transfer multiple Data from the memory to the TIM peripheral</li>
 <li>Add new API HAL_TIM_DMABurst_MultiReadStart() allowing to configure the DMA Burst to transfer Data from the TIM peripheral to the memory</li>
-<li>Remove “register” “C” keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
+<li>Remove register C keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
 <li>Correct inverted values of LL_TIM_COUNTERMODE_CENTER_DOWN and LL_TIM_COUNTERMODE_CENTER_UP</li>
 <li>Remove extra DMABurst Base Addresses not consistent with reference manual</li>
 <li>Move the TIM input remapping TIM3_TI4_GPIOC9_AF2 and TIM3_TI1_GPIO definition from USB section</li>
@@ -318,7 +318,7 @@
 <ul>
 <li>Align HAL IRDA driver with latest updates and enhancements</li>
 <li>Optimize HAL IRDA to avoid using macros as argument of function calls</li>
-<li>Update description of “HAL_IRDA_Transmit_XXX”, “HAL_IRDA_Receive_XXX” APIs with more details about the data size management</li>
+<li>Update description of HAL_IRDA_Transmit_XXX, HAL_IRDA_Receive_XXX APIs with more details about the data size management</li>
 </ul></li>
 <li><strong>HAL/LL SMARTCARD</strong> update
 <ul>
@@ -371,7 +371,7 @@
 </ul></li>
 <li><strong>LL LPUART</strong> update
 <ul>
-<li>Remove “register” “C” keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
+<li>Remove register C keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
 <li>Align LL LPUART driver with latest updates and enhancements</li>
 </ul></li>
 <li><strong>HAL/LL USART</strong> update
@@ -386,9 +386,9 @@
 <li>Update HAL_USART_IRQHandler to add support to the Receiver Timeout Interruption</li>
 </ul></li>
 <li>Optimize HAL USART to avoid using macros as argument of function calls</li>
-<li>Update description of “HAL_USART_Transmit_XXX”, “HAL_USART_Receive_XXX” APIs with more details about the data size management</li>
+<li>Update description of HAL_USART_Transmit_XXX, HAL_USART_Receive_XXX APIs with more details about the data size management</li>
 <li>Fix typos introduced in some APIs descriptions</li>
-<li>Remove “register” “C” keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
+<li>Remove register C keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
 </ul></li>
 <li><strong>LL UTILS</strong> update
 <ul>
@@ -415,8 +415,8 @@
 </ul></li>
 <li><strong>HAL/LL GPIO</strong> update
 <ul>
-<li>Update GPIO initialization sequence to avoid unwanted pulse on GPIO Pin’s.</li>
-<li>Update HAL_GPIO_TogglePin() API to improve robustness: allow multi Pin’s toggling</li>
+<li>Update GPIO initialization sequence to avoid unwanted pulse on GPIO Pins.</li>
+<li>Update HAL_GPIO_TogglePin() API to improve robustness: allow multi Pins toggling</li>
 </ul></li>
 <li><strong>HAL/LL I2C</strong> update
 <ul>
@@ -424,7 +424,7 @@
 <ul>
 <li>Add stop condition generation when NACK occurs.</li>
 </ul></li>
-<li>Update I2C_DMAXferCplt(), I2C_DMAError() and I2C_DMAAbort() APIs to fix hardfault issue when hdmatx and hdmarx parameters in i2c handle aren’t initialized (NULL pointer).
+<li>Update I2C_DMAXferCplt(), I2C_DMAError() and I2C_DMAAbort() APIs to fix hardfault issue when hdmatx and hdmarx parameters in i2c handle arent initialized (NULL pointer).
 <ul>
 <li>Add additional check on hi2c-&gt;hdmtx and hi2c-&gt;hdmarx before resetting DMA Tx/Rx complete callbacks</li>
 </ul></li>
@@ -975,7 +975,7 @@
 <li>Overall driver rework for better implementation
 <ul>
 <li>Remove HAL_WWDG_Start(), HAL_WWDG_Start_IT(), HAL_WWDG_MspDeInit() and HAL_WWDG_GetState() APIs.</li>
-<li>Update the HAL_WWDG_Refresh(WWDG_HandleTypeDef *hwwdg, uint32_t counter) function and API by removing the “counter” parameter.</li>
+<li>Update the HAL_WWDG_Refresh(WWDG_HandleTypeDef *hwwdg, uint32_t counter) function and API by removing the counter parameter.</li>
 </ul></li>
 </ul></li>
 </ul>
@@ -1039,8 +1039,8 @@
 <li><strong>HAL</strong> update
 <ul>
 <li>Change the way the APB AHB prescaler table is defined inside the HAL.</li>
-<li>Change the variable ‘uwTick’ from ‘static’ to ‘global’.</li>
-<li>Compliancy with MISRA C 2004 rule 10.6 (A “U” suffix shall be applied to all constants of unsigned type)</li>
+<li>Change the variable uwTick from static to global.</li>
+<li>Compliancy with MISRA C 2004 rule 10.6 (A U suffix shall be applied to all constants of unsigned type)</li>
 <li>Compliancy with MISRA C 2004 rule 16.4. (The identifiers used in the declaration and definition of a function shall be identical)</li>
 </ul></li>
 <li><strong>HAL COMP</strong> update
@@ -1081,7 +1081,7 @@
 </ul></li>
 <li><strong>HAL RCC</strong> update
 <ul>
-<li>Correct the setup of the global variable ‘SystemCoreClock’.</li>
+<li>Correct the setup of the global variable SystemCoreClock.</li>
 <li>Update of the CRS interrupt sources.</li>
 <li>Renamed RCC_CRS_SYNCWARM into RCC_CRS_SYNCWARN and renamed RCC_CRS_TRIMOV into RCC_CRS_TRIMOVF.</li>
 </ul></li>
@@ -1232,7 +1232,7 @@
 <li>ADC run in LPrun mode needs SYSCFG buffers enabled</li>
 <li>ADC_CLOCK_SYNC_PCLK_DIVx was not correct</li>
 <li>Remove WaitLoopIndex at the beginning of the function HAL_ADC_Enable</li>
-<li>ADC parameter “ADC_SOFTWARE_START” for compatibility with other STM32 devices</li>
+<li>ADC parameter ADC_SOFTWARE_START for compatibility with other STM32 devices</li>
 <li>ADC poll for conversion must return error status in case of ADC-DMA mode</li>
 <li>ADC identical error code returned generates confusion</li>
 <li>Issue observed with ADC start simultaneous commands</li>
@@ -1268,7 +1268,7 @@
 <li>Missing define for DAC Trigger (010: Timer 3 CH3 event)</li>
 <li>Complete DAC update as per HAL_API_Reference</li>
 <li>DAC HAL_DAC_Stop_DMA() code clean up</li>
-<li>HAL_DAC_ConfigChannel: use “hdac-&gt;Instance-&gt;XXX” instead of “DAC-&gt;XXX”</li>
+<li>HAL_DAC_ConfigChannel: use hdac-&gt;Instance-&gt;XXX instead of DAC-&gt;XXX</li>
 <li>No reset of previous bits WAVEx / MAMPx before setting values in HAL_DACEx_NoiseWaveGenerate &amp; HAL_DACEx_TriangleWaveGenerate</li>
 </ul></li>
 <li><strong>HAL DMA</strong> update
@@ -1283,7 +1283,7 @@
 <li>FLASH Crash during HAL_FLASHEx_HalfPageProgram and HAL_FLASHEx_ProgramParallelHalfPage</li>
 <li>FLASH Ramfunc error management</li>
 <li>FLASH IS_OPTIONBYTE(VALUE) is not correct if all options are selected</li>
-<li>HAL_FLASH Otpion Byte “BootConfig” and “BOOTBit1Config”</li>
+<li>HAL_FLASH Otpion Byte BootConfig and BOOTBit1Config</li>
 <li>FLASH SPRMOD option bit is impacted by FLASH_OB_RDPConfig()</li>
 <li>__HAL_FLASH_GET_FLAG was not functional</li>
 </ul></li>
@@ -1393,12 +1393,12 @@
 <li>TIM Trigger DMA request should be activated when working with a slave mode</li>
 <li>TIM Timer Register Corruption using HAL_TIM_IC_ConfigChannel</li>
 <li>TIM DMA transfer should be aborted when stopping a DMA burst</li>
-<li>Add “TIM_CHANNEL_ALL” as an argument for all Encoder Start/Stop process in the comment section</li>
+<li>Add TIM_CHANNEL_ALL as an argument for all Encoder Start/Stop process in the comment section</li>
 <li>HAL_TIM_DMADelayPulseCplt callback missing information</li>
 <li>HAL_TIM_DMACaptureCplt callback missing information</li>
 <li>TIM Trigger DMA request should be activated when working with a slave mode</li>
 <li>TIM Trigger interrupt should be activated when working with a slave mode</li>
-<li>__HAL_TIM_PRESCALER() shall be corrected: use ‘=’ instead of ‘|=’</li>
+<li>__HAL_TIM_PRESCALER() shall be corrected: use = instead of |=</li>
 </ul></li>
 <li><strong>HAL UART/USART</strong> update
 <ul>
@@ -1492,7 +1492,7 @@
 <ul>
 <li><strong>HAL generic</strong>** update
 <ul>
-<li>Fix flag clear procedure: use atomic write operation “=” instead of ready-modify-write operation “|=” or “&amp;=”</li>
+<li>Fix flag clear procedure: use atomic write operation = instead of ready-modify-write operation |= or &amp;=</li>
 <li>Fix on Timeout management, Timeout value set to 0 passed to API automatically exits the function after checking the flag without any wait</li>
 <li>Common update for the following communication peripherals: SPI, UART, USART and IRDA
 <ul>

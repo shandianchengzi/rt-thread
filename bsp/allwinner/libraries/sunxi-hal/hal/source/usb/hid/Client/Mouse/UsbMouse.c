@@ -35,7 +35,7 @@
 #include "UsbMouse_DriftControl.h"
 
 //---------------------------------------------------------
-//   函数定义区
+//   
 //---------------------------------------------------------
 static void usbMouse_StartWork(usbMouse_t *usbMouse);
 static void usbMouse_StopWork(usbMouse_t *usbMouse);
@@ -54,7 +54,7 @@ static void usbMouse_StopWork(usbMouse_t *usbMouse);
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -92,7 +92,7 @@ static void usbMouseDone(HidRequest_t *HidReq)
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -125,11 +125,11 @@ static USB_OS_HANDLE usbMouseOpen(void *open_arg, uint32_t mode)
 *
 *
 * Return value:
-*    0  ：成功
-*   !0  ：失败
+*    0  
+*   !0  
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -164,7 +164,7 @@ static int32_t usbMouseClose(USB_OS_HANDLE hDev)
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -188,7 +188,7 @@ static uint32_t usbMouseRead(void * pBuffer, uint32_t blk, uint32_t n, USB_OS_HA
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -212,7 +212,7 @@ static uint32_t usbMouseWrite(const void * pBuffer, uint32_t blk, uint32_t n, US
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -313,7 +313,7 @@ static int32_t usbMouseIoctl(USB_OS_HANDLE hDev, uint32_t Cmd, long Aux, void *p
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -339,11 +339,11 @@ static void usbMouse_StartWork(usbMouse_t *usbMouse)
         return ;
     }
 
-    /* 清除鼠标的状态 */
+    /*  */
     ret = HidDev->SoftReset(HidDev);
     if(ret != USB_ERR_SUCCESS){
         hal_log_err("ERR: SoftReset failed\n");
-        /* 由于有些鼠标不支持SetIdle命令，SoftReset可能会失败，因此不能直接return */
+        /* SetIdleSoftResetreturn */
     }
 
     ENTER_CRITICAL(cup_sr);
@@ -374,7 +374,7 @@ static void usbMouse_StartWork(usbMouse_t *usbMouse)
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -417,7 +417,7 @@ static void usbMouse_StopWork(usbMouse_t *usbMouse)
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -472,7 +472,7 @@ static void usbMouseEvent(usbMouse_t *usbMouse)
     /* button */
     if(usbMouse->DataDef.Button.BitCount){
         TempData = 0;
-        /*这里可能会有问题，里面操作是否会超过TempData所在内存*/
+        /*TempData*/
         xGetDataFromBuffer(usbMouse->Data,
                            usbMouse->DataDef.Button.BitOffset,
                            usbMouse->DataDef.Button.BitCount,
@@ -480,7 +480,7 @@ static void usbMouseEvent(usbMouse_t *usbMouse)
         memcpy(&Event.Button, &TempData, sizeof(TempData));
     }
 
-    /* X坐标 */
+    /* X */
     if(usbMouse->DataDef.X.BitCount){
         TempData = 0;
         xGetDataFromBuffer(usbMouse->Data,
@@ -491,7 +491,7 @@ static void usbMouseEvent(usbMouse_t *usbMouse)
             TempData |= (0xffffffff << (usbMouse->DataDef.X.BitCount - 1));
         }
 
-        /* 根据鼠标原厂的建议, 把超过+127设置为+127, 超过-127设置为-127 */
+        /* , +127+127, -127-127 */
         if(TempData <= -127){
             Event.X = -127;
         }else if(TempData > 127){
@@ -501,7 +501,7 @@ static void usbMouseEvent(usbMouse_t *usbMouse)
         }
     }
 
-    /* Y坐标 */
+    /* Y */
     if(usbMouse->DataDef.Y.BitCount){
         TempData = 0;
         xGetDataFromBuffer(usbMouse->Data,
@@ -582,7 +582,7 @@ next:
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -593,7 +593,7 @@ static void usbMouseThread(void *p_arg)
     hal_sem_post(usbMouse->notify_complete);
 
     while(1){
-        //--<1>--杀死线程
+        //--<1>--
 //      TryToKillThreadSelf("usbMouseThread");
 
 //      /* sleep */
@@ -625,7 +625,7 @@ static void usbMouseThread(void *p_arg)
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -640,7 +640,7 @@ int usbMouseProbe(HidDev_t *HidDev)
         return USB_ERR_BAD_ARGUMENTS;
     }
 
-    /* 创建一个mouse设备，并且初始化 */
+    /* mouse */
     usbMouse = (usbMouse_t *)hal_malloc(sizeof(usbMouse_t));
     if(usbMouse == NULL){
         hal_log_err("ERR: hal_malloc failed\n");
@@ -769,7 +769,7 @@ int usbMouseProbe(HidDev_t *HidDev)
 
     hal_sem_wait(usbMouse->notify_complete);
 
-    /* 生成设备名 */
+    /*  */
     strcpy((char *)usbMouse->ClassName, "HID");
     strcpy((char *)usbMouse->DevName, "USBMOUSE");
 
@@ -792,7 +792,7 @@ int usbMouseProbe(HidDev_t *HidDev)
         strcat((char *)usbMouse->DevName, (const char *)temp_buff);
     }
 
-    /* 向系统注册Hid设备 */
+    /* Hid */
     usbMouse->MouseRegHdle = esDEV_DevReg((const char *)usbMouse->ClassName,
                                             (const char *)usbMouse->DevName,
                                             &(usbMouse->MouseOp),
@@ -811,7 +811,7 @@ int usbMouseProbe(HidDev_t *HidDev)
     hal_log_info("*****************************************************************\n");
     hal_log_info("\n");
 
-    /* Notice: 由于新的设备上来以后，系统的设备管理告知应用程序，因此只能由驱动告知应用程序 */
+    /* Notice:  */
     esKSRV_SendMsg(KMSG_USR_SYSTEM_MOUSE_PLUGIN, KMSG_PRIO_HIGH);
 
 #ifdef USBH_HID_MOUSE_TEST
@@ -856,7 +856,7 @@ error0:
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */

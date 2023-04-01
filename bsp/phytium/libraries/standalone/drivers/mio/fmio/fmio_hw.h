@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fmio_hw.h
  * Date: 2022-06-20 21:05:34
  * LastEditTime: 2022-06-20 21:05:34
- * Description:  This file is for mio
+ * Description: This file is for mio
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 0.1.0  liushengming  2022.06.20  init
  */
 #ifndef DRIVERS_MIO_FMIO_HW_H
@@ -66,26 +66,26 @@ enum
 /***************** Macros (Inline Functions) Definitions *********************/
 /**
  * @name: FMIO_READ_REG32
- * @msg:  读取MIO寄存器
- * @param {u32} addr MIO的基地址
- * @param {u32} reg_offset   MIO的寄存器的偏移
- * @return {u32} 寄存器参数
+ * @msg:  MIO
+ * @param {u32} addr MIO
+ * @param {u32} reg_offset   MIO
+ * @return {u32} 
  */
 #define FMIO_READ_REG32(addr, reg_offset) FtIn32(addr + (u32)reg_offset)
 
 /**
  * @name: FMIO_WRITE_REG32
- * @msg:  写入MIO寄存器
- * @param {u32} addr MIO的基地址
- * @param {u32} reg_offset   MIO的寄存器的偏移
- * @param {u32} reg_value    写入寄存器参数
+ * @msg:  MIO
+ * @param {u32} addr MIO
+ * @param {u32} reg_offset   MIO
+ * @param {u32} reg_value    
  * @return {void}
  */
 #define FMIO_WRITE_REG32(addr, reg_offset, reg_value) FtOut32(addr + (u32)reg_offset, (u32)reg_value)
 
 /**
  * @name: FMioWriteFunc
- * @msg: 设置MIO的功能
+ * @msg: MIO
  * @return {*}
  * @param {uintptr} addr
  * @param {u32} val
@@ -97,7 +97,7 @@ static inline void FMioWriteFunc(uintptr addr, u32 val)
 
 /**
  * @name: FMioReadStatus
- * @msg: 获取MIO的设置
+ * @msg: MIO
  * @return {u32} register value
  * @param {uintptr} addr
  */
@@ -108,7 +108,7 @@ static inline u32 FMioReadStatus(uintptr addr)
 
 /**
  * @name: FMioReadVersion
- * @msg: 获取MIO的版本信息
+ * @msg: MIO
  * @return {u32} register value
  * @param {uintptr} addr
  */
@@ -118,13 +118,13 @@ static inline u32 FMioReadVersion(uintptr addr)
 }
 
 /************************** Function Prototypes ******************************/
-/*设置Mio功能*/
+/*Mio*/
 FError FMioSelectFunc(uintptr addr, u32 mio_type);
 
-/*获取Mio状态*/
+/*Mio*/
 u32 FMioGetFunc(uintptr addr);
 
-/*获取版本信息，默认32'h1*/
+/*32'h1*/
 u32 FMioGetVersion(uintptr addr);
 
 #ifdef __cplusplus

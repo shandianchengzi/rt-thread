@@ -21,7 +21,7 @@
 ******************************************************************************
 */
 
-//============== 锟芥本 EK V1.0  20190818  ==============//
+//==============  EK V1.0  20190818  ==============//
 
 
 #define T_SRAM_BASE 0X20000000
@@ -3981,7 +3981,7 @@ typedef struct
 #define  I2C_CON_STOP_DET_IFADDRESSED                    ((uint16_t)0x0080)
 #define  I2C_CON_EMPTY_CTRL                              ((uint16_t)0x0100)
 
-#define  I2C_CON_SPEED                                   ((uint16_t)0x0006)          
+#define  I2C_CON_SPEED                                   ((uint16_t)0x0006)          
 #define  I2C_CON_SPEED_0                                 ((uint16_t)0x0002)
 #define  I2C_CON_SPEED_1                                 ((uint16_t)0x0004)
 

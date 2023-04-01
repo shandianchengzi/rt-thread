@@ -143,7 +143,7 @@ void SPI_Cmd(SPI_TypeDef *SPIx, uint32_t NewState)
 /**
   * @brief  SPI interrupt config.
   * @param  SPIx:SPI1~SPI2
-            INTMask: can use the ¡®|¡¯ operator
+            INTMask: can use the | operator
                 SPI_INT_TX     
                 SPI_INT_RX
             NewState:
@@ -244,7 +244,7 @@ uint8_t SPI_GetStatus(SPI_TypeDef *SPIx, uint32_t Status)
 /**
   * @brief  Clear status flag.
   * @param  SPIx:SPI1~SPI2
-            Status: can use the ¡®|¡¯ operator
+            Status: can use the | operator
                 SPI_STS_TXIF     
                 SPI_STS_RXIF        
   * @retval None

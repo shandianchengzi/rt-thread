@@ -89,9 +89,9 @@ ST7735_LCD_Drv_t   ST7735_LCD_Driver =
 static uint32_t OrientationTab[4][2] =
 {
   {0x48U , 0xC8U}, /* Portrait orientation choice of LCD screen               */
-  {0x88U , 0x08U}, /* Portrait rotated 180° orientation choice of LCD screen  */
+  {0x88U , 0x08U}, /* Portrait rotated 180 orientation choice of LCD screen  */
   {0x28U , 0x68U}, /* Landscape orientation choice of LCD screen              */
-  {0xE8U , 0xA8U}  /* Landscape rotated 180° orientation choice of LCD screen */
+  {0xE8U , 0xA8U}  /* Landscape rotated 180 orientation choice of LCD screen */
 };
 
 static ST7735_Ctx_t ST7735Ctx;

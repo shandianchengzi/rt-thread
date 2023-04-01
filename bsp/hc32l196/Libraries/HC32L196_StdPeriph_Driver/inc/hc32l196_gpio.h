@@ -78,7 +78,7 @@ extern "C"
  ******************************************************************************/
 /**
  *******************************************************************************
- ** \brief GPIO PORT类型定义
+ ** \brief GPIO PORT
  ******************************************************************************/
 typedef enum en_gpio_port
 {
@@ -92,7 +92,7 @@ typedef enum en_gpio_port
 
 /**
  *******************************************************************************
- ** \brief GPIO PIN类型定义
+ ** \brief GPIO PIN
  ******************************************************************************/
 typedef enum en_gpio_pin
 {
@@ -116,19 +116,19 @@ typedef enum en_gpio_pin
 
 /**
  *******************************************************************************
- ** \brief GPIO 端口复用功能(AF-Alternate function)类型定义
- ** \note  具体功能及含义请参考用户手册GPIO复用表或下表
+ ** \brief GPIO (AF-Alternate function)
+ ** \note  GPIO
  ******************************************************************************/
 typedef enum en_gpio_af
 {
-    GpioAf0  = 0u,      ///< GPIO功能
-    GpioAf1  = 1u,      ///< GPIO AF1:复用功能1
-    GpioAf2  = 2u,      ///< GPIO AF2:复用功能2
-    GpioAf3  = 3u,      ///< GPIO AF3:复用功能3
-    GpioAf4  = 4u,      ///< GPIO AF4:复用功能4
-    GpioAf5  = 5u,      ///< GPIO AF5:复用功能5
-    GpioAf6  = 6u,      ///< GPIO AF6:复用功能6
-    GpioAf7  = 7u,      ///< GPIO AF7:复用功能7
+    GpioAf0  = 0u,      ///< GPIO
+    GpioAf1  = 1u,      ///< GPIO AF1:1
+    GpioAf2  = 2u,      ///< GPIO AF2:2
+    GpioAf3  = 3u,      ///< GPIO AF3:3
+    GpioAf4  = 4u,      ///< GPIO AF4:4
+    GpioAf5  = 5u,      ///< GPIO AF5:5
+    GpioAf6  = 6u,      ///< GPIO AF6:6
+    GpioAf7  = 7u,      ///< GPIO AF7:7
 }en_gpio_af_t;
 
 ///*||======||=============||=============||=============||=============||=============||=============||=============||*///
@@ -151,7 +151,7 @@ typedef enum en_gpio_af
 ///*||PA14  ||UART1_TXD    ||UART0_TXD    ||TIM3_CH2A    ||LVD_OUT      ||RCH_OUT      ||RCL_OUT      ||PLL_OUT      ||*///
 ///*||PA15  ||SPI0_CS      ||UART1_RXD    ||LPUART1_RTS  ||TIM0_ETR     ||TIM0_CHA     ||TIM3_CH1A    ||             ||*///
 ///*||PB00  ||PCA_CH2      ||TIM3_CH1B    ||LPUART0_TXD  ||TIM5_CHB     ||RCH_OUT      ||RCL_OUT      ||PLL_OUT      ||*///
-///*||PB01  ||PCA_CH3      ||PCLK_OUT     ||TIM3_CH2B    ||TIM6_CHB     ||LPUART0_RTS  ||VC2_OUT      ||TCLK_OUT　   ||*///
+///*||PB01  ||PCA_CH3      ||PCLK_OUT     ||TIM3_CH2B    ||TIM6_CHB     ||LPUART0_RTS  ||VC2_OUT      ||TCLK_OUT   ||*///
 ///*||PB02  ||LPTIM_TOG    ||PCA_ECI      ||LPUART1_TXD  ||TIM4_CHA     ||TIM1_BK      ||TIM0_BK      ||TIM2_BK      ||*///
 ///*||PB03  ||SPI0_SCK     ||TIM0_CHB     ||TIM1_GATE    ||TIM3_CH0A    ||LPTIM_GATE   ||XTL_OUT      ||XTH_OUT      ||*///
 ///*||PB04  ||SPI0_MISO    ||PCA_CH0      ||TIM2_BK      ||UART0_CTS    ||TIM2_GATE    ||TIM3_CH0B    ||LPTIM_ETR    ||*///
@@ -229,98 +229,98 @@ typedef enum en_gpio_af
 
 /**
  *******************************************************************************
- ** \brief GPIO输入输出配置数据类型定义
+ ** \brief GPIO
  ******************************************************************************/
 typedef enum en_gpio_dir
 {
-    GpioDirOut = 0u,                ///< GPIO 输出
-    GpioDirIn  = 1u,                ///< GPIO 输入
+    GpioDirOut = 0u,                ///< GPIO 
+    GpioDirIn  = 1u,                ///< GPIO 
 }en_gpio_dir_t;
 
 /**
  *******************************************************************************
- ** \brief GPIO端口上拉配置数据类型定义
+ ** \brief GPIO
  ******************************************************************************/
 typedef enum en_gpio_pu
 {
-    GpioPuDisable = 0u,                ///< GPIO无上拉
-    GpioPuEnable  = 1u,                ///< GPIO上拉
+    GpioPuDisable = 0u,                ///< GPIO
+    GpioPuEnable  = 1u,                ///< GPIO
 }en_gpio_pu_t;
 
 /**
  *******************************************************************************
- ** \brief GPIO端口下拉配置数据类型定义
+ ** \brief GPIO
  ******************************************************************************/
 typedef enum en_gpio_pd
 {
-    GpioPdDisable = 0u,                ///< GPIO无下拉
-    GpioPdEnable  = 1u,                ///< GPIO下拉
+    GpioPdDisable = 0u,                ///< GPIO
+    GpioPdEnable  = 1u,                ///< GPIO
 }en_gpio_pd_t;
 /**
  *******************************************************************************
- ** \brief GPIO端口输出驱动能力配置数据类型定义
+ ** \brief GPIO
  ******************************************************************************/
 typedef enum en_gpio_drv
 {
-    GpioDrvH = 0u,                  ///< GPIO高驱动能力
-    GpioDrvL = 1u,                  ///< GPIO低驱动能力
+    GpioDrvH = 0u,                  ///< GPIO
+    GpioDrvL = 1u,                  ///< GPIO
 }en_gpio_drv_t;
 
 /**
  *******************************************************************************
- ** \brief GPIO端口开漏输出控制数据类型定义
+ ** \brief GPIO
  ******************************************************************************/
 typedef enum en_gpio_od
 {
-    GpioOdDisable = 0u,             ///< GPIO开漏输出关闭
-    GpioOdEnable  = 1u,             ///< GPIO开漏输出使能
+    GpioOdDisable = 0u,             ///< GPIO
+    GpioOdEnable  = 1u,             ///< GPIO
 }en_gpio_od_t;
 
 /**
  *******************************************************************************
- ** \brief GPIO端口输入/输出值寄存器总线控制模式选择
+ ** \brief GPIO/
  ******************************************************************************/
 typedef enum en_gpio_ctrl_mode
 {
-    GpioFastIO = 0u,             ///< FAST IO 总线控制模式
-    GpioAHB  = 1u,               ///< AHB 总线控制模式
+    GpioFastIO = 0u,             ///< FAST IO 
+    GpioAHB  = 1u,               ///< AHB 
 }en_gpio_ctrl_mode_t;
 
 /**
  *******************************************************************************
- ** \brief GPIO中断触发方式类型定义
+ ** \brief GPIO
  ******************************************************************************/
 typedef enum en_gpio_irqtype
 {
-    GpioIrqHigh     = 0u,           ///< GPIO高电平触发
-    GpioIrqLow      = 1u,           ///< GPIO低电平触发
-    GpioIrqRising   = 2u,           ///< GPIO上升沿触发
-    GpioIrqFalling  = 3u,           ///< GPIO下降沿触发
+    GpioIrqHigh     = 0u,           ///< GPIO
+    GpioIrqLow      = 1u,           ///< GPIO
+    GpioIrqRising   = 2u,           ///< GPIO
+    GpioIrqFalling  = 3u,           ///< GPIO
 }en_gpio_irqtype_t;
 
 /**
  *******************************************************************************
- ** \brief GPIO 辅助功能（SF-Secondary Function）端口中断模式类型定义
+ ** \brief GPIO SF-Secondary Function
  ******************************************************************************/
 typedef enum en_gpio_sf_irqmode
 {
-    GpioSfIrqDpslpMode  = 1u,        ///< Deep Sleep模式
-    GpioSfIrqActSlpMode = 0u,        ///< Active/Sleep模式
+    GpioSfIrqDpslpMode  = 1u,        ///< Deep Sleep
+    GpioSfIrqActSlpMode = 0u,        ///< Active/Sleep
 }en_gpio_sf_irqmode_t;
 
 /**
  *******************************************************************************
- ** \brief GPIO 辅助功能（SF-Secondary Function）HCLK输出门控类型定义
+ ** \brief GPIO SF-Secondary FunctionHCLK
  ******************************************************************************/
 typedef enum en_gpio_sf_hclkout_g
 {
-    GpioSfHclkOutDisable = 0u,       ///< HCLK输出门控关闭
-    GpioSfHclkOutEnable  = 1u,       ///< HCLK输出门控使能
+    GpioSfHclkOutDisable = 0u,       ///< HCLK
+    GpioSfHclkOutEnable  = 1u,       ///< HCLK
 }en_gpio_sf_hclkout_g_t;
 
 /**
  *******************************************************************************
- ** \brief GPIO 辅助功能（SF-Secondary Function）HCLK输出分频选择类型定义
+ ** \brief GPIO SF-Secondary FunctionHCLK
  ******************************************************************************/
 typedef enum en_gpio_sf_hclkout_div
 {
@@ -331,17 +331,17 @@ typedef enum en_gpio_sf_hclkout_div
 }en_gpio_sf_hclkout_div_t;
 /**
  *******************************************************************************
- ** \brief GPIO 辅助功能（SF-Secondary Function）PCLK输出门控类型定义
+ ** \brief GPIO SF-Secondary FunctionPCLK
  ******************************************************************************/
 typedef enum en_gpio_sf_pclkout_g
 {
-    GpioSfPclkOutDisable = 0u,       ///< PCLK输出门控关闭
-    GpioSfPclkOutEnable  = 1u,       ///< PCLK输出门控使能
+    GpioSfPclkOutDisable = 0u,       ///< PCLK
+    GpioSfPclkOutEnable  = 1u,       ///< PCLK
 }en_gpio_sf_pclkout_g_t;
 
 /**
  *******************************************************************************
- ** \brief GPIO 辅助功能（SF-Secondary Function）PCLK输出分频选择类型定义
+ ** \brief GPIO SF-Secondary FunctionPCLK
  ******************************************************************************/
 typedef enum en_gpio_sf_pclkout_div
 {
@@ -353,17 +353,17 @@ typedef enum en_gpio_sf_pclkout_div
 
 /**
  *******************************************************************************
- ** \brief GPIO 辅助功能（SF-Secondary Function）IR输出极性选择类型定义
+ ** \brief GPIO SF-Secondary FunctionIR
  ******************************************************************************/
 typedef enum en_gpio_sf_irpol
 {
-    GpioSfIrP = 0u,                  ///< IR正向输出
-    GpioSfIrN = 1u,                  ///< IR反向输出
+    GpioSfIrP = 0u,                  ///< IR
+    GpioSfIrN = 1u,                  ///< IR
 }en_gpio_sf_irpol_t;
 
 /**
  *******************************************************************************
- ** \brief GPIO 辅助功能（SF-Secondary Function）SSN通道类型定义
+ ** \brief GPIO SF-Secondary FunctionSSN
  ******************************************************************************/
 typedef enum en_gpio_sf_ssnspi
 {
@@ -373,11 +373,11 @@ typedef enum en_gpio_sf_ssnspi
 
 /**
  *******************************************************************************
- ** \brief GPIO 辅助功能（SF-Secondary Function）SSN与外部时钟输入信号源选择类型定义
+ ** \brief GPIO SF-Secondary FunctionSSN
  ******************************************************************************/
 typedef enum en_gpio_sf_ssn_extclk
 {
-    GpioSfSsnExtClkH    = 0u,        ///< 高电平
+    GpioSfSsnExtClkH    = 0u,        ///< 
     GpioSfSsnExtClkPA03 = 1u,        ///< PA03
     GpioSfSsnExtClkPA04 = 2u,        ///< PA04
     GpioSfSsnExtClkPA06 = 3u,        ///< PA06
@@ -397,101 +397,101 @@ typedef enum en_gpio_sf_ssn_extclk
 
 /**
  *******************************************************************************
- ** \brief GPIO 辅助功能（SF-Secondary Function）定时器互联功能选择类型定义
- ** \note  具体功能及含义请参考用户手册GPIO辅助寄存器描述
+ ** \brief GPIO SF-Secondary Function
+ ** \note  GPIO
  ******************************************************************************/
 typedef enum en_gpio_sf
 {
-    GpioSf0 = 0u,       ///< SF0:PX_SEL的配置功能
-    GpioSf1 = 1u,       ///< SF1:辅助功能1
-    GpioSf2 = 2u,       ///< SF2:辅助功能2
-    GpioSf3 = 3u,       ///< SF3:辅助功能3
-    GpioSf4 = 4u,       ///< SF4:辅助功能4
-    GpioSf5 = 5u,       ///< SF5:辅助功能5
-    GpioSf6 = 6u,       ///< SF6:辅助功能6
-    GpioSf7 = 7u,       ///< SF7:辅助功能7
+    GpioSf0 = 0u,       ///< SF0:PX_SEL
+    GpioSf1 = 1u,       ///< SF1:1
+    GpioSf2 = 2u,       ///< SF2:2
+    GpioSf3 = 3u,       ///< SF3:3
+    GpioSf4 = 4u,       ///< SF4:4
+    GpioSf5 = 5u,       ///< SF5:5
+    GpioSf6 = 6u,       ///< SF6:6
+    GpioSf7 = 7u,       ///< SF7:7
 }en_gpio_sf_t;
 
 /**
  *******************************************************************************
- ** \brief GPIO 辅助功能（SF-Secondary Function）定时器门控类型选择数据类型定义
+ ** \brief GPIO SF-Secondary Function
  ******************************************************************************/
 typedef enum en_gpio_sf_tim_g
 {
-    GpioSfTim0G   = 0u,                   ///<Tim0定时器GATE输入选择
-    GpioSfTim1G   = 3u,                   ///<Tim1定时器GATE输入选择
-    GpioSfTim2G   = 6u,                   ///<Tim2定时器GATE输入选择
-    GpioSfTim3G   = 9u,                   ///<Tim3定时器GATE输入选择
-    GpioSfLpTim0G = 12u,                  ///<LPTim0定时器GATE输入选择
-    GpioSfLpTim1G = 38u,                  ///<LPTim1定时器GATE输入选择
+    GpioSfTim0G   = 0u,                   ///<Tim0GATE
+    GpioSfTim1G   = 3u,                   ///<Tim1GATE
+    GpioSfTim2G   = 6u,                   ///<Tim2GATE
+    GpioSfTim3G   = 9u,                   ///<Tim3GATE
+    GpioSfLpTim0G = 12u,                  ///<LPTim0GATE
+    GpioSfLpTim1G = 38u,                  ///<LPTim1GATE
 }en_gpio_sf_tim_g_t;
 
 /**
  *******************************************************************************
- ** \brief GPIO 辅助功能（SF-Secondary Function）定时器ETR类型选择数据类型定义
+ ** \brief GPIO SF-Secondary FunctionETR
  ******************************************************************************/
 typedef enum en_gpio_sf_tim_e
 {
-    GpioSfTim0E   = 0u,                   ///<Tim0定时器ETR输入选择
-    GpioSfTim1E   = 3u,                   ///<Tim1定时器ETR输入选择
-    GpioSfTim2E   = 6u,                   ///<Tim2定时器ETR输入选择
-    GpioSfTim3E   = 9u,                   ///<Tim3定时器ETR输入选择
-    GpioSfLpTim0E = 12u,                  ///<LPTim0定时器ETR输入选择
-    GpioSfLpTim1E = 41u,                  ///<LPTim1定时器ETR输入选择
+    GpioSfTim0E   = 0u,                   ///<Tim0ETR
+    GpioSfTim1E   = 3u,                   ///<Tim1ETR
+    GpioSfTim2E   = 6u,                   ///<Tim2ETR
+    GpioSfTim3E   = 9u,                   ///<Tim3ETR
+    GpioSfLpTim0E = 12u,                  ///<LPTim0ETR
+    GpioSfLpTim1E = 41u,                  ///<LPTim1ETR
 }en_gpio_sf_tim_e_t;
 
 /**
  *******************************************************************************
- ** \brief GPIO 辅助功能（SF-Secondary Function）定时器捕获输入类型选择数据类型定义
+ ** \brief GPIO SF-Secondary Function
  ******************************************************************************/
 typedef enum en_gpio_sf_tim_c
 {
-    GpioSfTim0CA = 0u,                   ///<Tim0定时器CHA输入选择
-    GpioSfTim1CA = 3u,                   ///<Tim1定时器CHA输入选择
-    GpioSfTim2CA = 6u,                   ///<Tim2定时器CHA输入选择
-    GpioSfTim3CA = 9u,                   ///<Tim3定时器CH0A输入选择
-    GpioSfTim3CB = 12u,                  ///<Tim3定时器CH0B输入选择
+    GpioSfTim0CA = 0u,                   ///<Tim0CHA
+    GpioSfTim1CA = 3u,                   ///<Tim1CHA
+    GpioSfTim2CA = 6u,                   ///<Tim2CHA
+    GpioSfTim3CA = 9u,                   ///<Tim3CH0A
+    GpioSfTim3CB = 12u,                  ///<Tim3CH0B
 }en_gpio_sf_tim_c_t;
 
 /**
  *******************************************************************************
- ** \brief GPIO 辅助功能（SF-Secondary Function）PCA捕获选择数据类型定义
+ ** \brief GPIO SF-Secondary FunctionPCA
  ******************************************************************************/
 typedef enum en_gpio_sf_pca
 {
-    GpioSfPcaCH0 = 0u,                   ///<PCA_CH0捕获口输入选择
-    GpioSfPcaECI = 3u,                   ///<PCA ECI时钟输入选择
+    GpioSfPcaCH0 = 0u,                   ///<PCA_CH0
+    GpioSfPcaECI = 3u,                   ///<PCA ECI
 }en_gpio_sf_pca_t;
 
 /**
  *******************************************************************************
- ** \brief GPIO 辅助功能（SF-Secondary Function）PCNT脉冲输入选择数据类型定义
+ ** \brief GPIO SF-Secondary FunctionPCNT
  ******************************************************************************/
 typedef enum en_gpio_sf_pcnt
 {
-    GpioSfPcntS0 = 0u,                   ///<PCNT_S0输入选择
-    GpioSfPcntS1 = 3u,                   ///<PCNT_S1输入选择
+    GpioSfPcntS0 = 0u,                   ///<PCNT_S0
+    GpioSfPcntS1 = 3u,                   ///<PCNT_S1
 }en_gpio_sf_pcnt_t;
 
 /**
  *******************************************************************************
- ** \brief GPIO 端口配置结构体定义
+ ** \brief GPIO 
  ******************************************************************************/
 typedef struct
 {
-    boolean_t           bOutputVal;      ///< 默认端口输出电平
-    en_gpio_dir_t       enDir;           ///< 端口方向配置
-    en_gpio_drv_t       enDrv;           ///< 端口驱动能力配置
-    en_gpio_pu_t        enPu;            ///< 端口上拉配置
-    en_gpio_pd_t        enPd;            ///< 端口下拉配置
-    en_gpio_od_t        enOD;            ///< 端口开漏输出配置
-    en_gpio_ctrl_mode_t enCtrlMode;      ///< 端口输入/输出值寄存器总线控制模式配置
+    boolean_t           bOutputVal;      ///< 
+    en_gpio_dir_t       enDir;           ///< 
+    en_gpio_drv_t       enDrv;           ///< 
+    en_gpio_pu_t        enPu;            ///< 
+    en_gpio_pd_t        enPd;            ///< 
+    en_gpio_od_t        enOD;            ///< 
+    en_gpio_ctrl_mode_t enCtrlMode;      ///< /
 }stc_gpio_cfg_t;
 
 /*******************************************************************************
- * Global definitions——(GPIO 复用功能宏定义)
+ * Global definitions(GPIO )
  ******************************************************************************/
-///< GPIO 复用功能宏定义
+///< GPIO 
 ///< GpioAf1
 #define PA00_UART1_CTS    (GpioPortA<<16u|GpioPin0 <<8u|GpioAf1)
 #define PA01_UART1_RTS    (GpioPortA<<16u|GpioPin1 <<8u|GpioAf1)
@@ -1156,63 +1156,63 @@ typedef uint32_t GpioPinMux;
 /******************************************************************************
   Global function prototypes (definition in C source)
 *******************************************************************************/
- ///< GPIO IO初始化/去初始化
+ ///< GPIO IO/
 en_result_t Gpio_Init(en_gpio_port_t enPort, en_gpio_pin_t enPin, stc_gpio_cfg_t *pstcGpioCfg);
 
-///< GPIO 获取端口输入电平
+///< GPIO 
 boolean_t   Gpio_GetInputIO(en_gpio_port_t enPort, en_gpio_pin_t enPin);
 uint16_t    Gpio_GetInputData(en_gpio_port_t enPort);
 
-///< GPIO 设置端口输出
-///< GPIO 端口输出电平配置及获取
+///< GPIO 
+///< GPIO 
 en_result_t Gpio_WriteOutputIO(en_gpio_port_t enPort, en_gpio_pin_t enPin, boolean_t bVal);
 boolean_t   Gpio_ReadOutputIO(en_gpio_port_t enPort, en_gpio_pin_t enPin);
-///< GPIO 端口/引脚输出电平置位
+///< GPIO /
 en_result_t Gpio_SetPort(en_gpio_port_t enPort, uint16_t u16ValMsk);
 en_result_t Gpio_SetIO(en_gpio_port_t enPort, en_gpio_pin_t enPin);
-///< GPIO 端口/引脚输出电平清零
+///< GPIO /
 en_result_t Gpio_ClrPort(en_gpio_port_t enPort, uint16_t u16ValMsk);
 en_result_t Gpio_ClrIO(en_gpio_port_t enPort, en_gpio_pin_t enPin);
-///< GPIO 端口输出电平置位与清零设置
+///< GPIO 
 en_result_t Gpio_SetClrPort(en_gpio_port_t enPort, uint32_t u32ValMsk);
 
-///< GPIO 设置端口为模拟功能
+///< GPIO 
 en_result_t Gpio_SetAnalogMode(en_gpio_port_t enPort, en_gpio_pin_t enPin);
 
-///< GPIO 设置端口为端口复用功能
+///< GPIO 
 en_result_t Gpio_SetAfMode(en_gpio_port_t enPort, en_gpio_pin_t enPin, en_gpio_af_t enAf);
 void Gpio_SetAfMode_Lite(GpioPinMux PinMux);
 
-///< GPIO 端口中断控制功能使能/关闭
+///< GPIO /
 en_result_t Gpio_EnableIrq(en_gpio_port_t enPort, en_gpio_pin_t enPin, en_gpio_irqtype_t enType);
 en_result_t Gpio_DisableIrq(en_gpio_port_t enPort, en_gpio_pin_t enPin, en_gpio_irqtype_t enType);
-///< GPIO 中断状态获取
+///< GPIO 
 boolean_t   Gpio_GetIrqStatus(en_gpio_port_t enPort, en_gpio_pin_t enPin);
-///< GPIO 中断标志清除
+///< GPIO 
 en_result_t Gpio_ClearIrq(en_gpio_port_t enPort, en_gpio_pin_t enPin);
 
-///< GPIO 端口辅助功能配置
-///< GPIO 中断模式配置
+///< GPIO 
+///< GPIO 
 en_result_t Gpio_SfIrqModeCfg(en_gpio_sf_irqmode_t enIrqMode);
-///< GPIO IR输出极性配置
+///< GPIO IR
 en_result_t Gpio_SfIrPolCfg(en_gpio_sf_irpol_t enIrPolMode);
-///< GPIO HCLK输出配置
+///< GPIO HCLK
 en_result_t Gpio_SfHClkOutputCfg(en_gpio_sf_hclkout_g_t enGate, en_gpio_sf_hclkout_div_t enDiv);
-///< GPIO PCLK输出配置
+///< GPIO PCLK
 en_result_t Gpio_SfPClkOutputCfg(en_gpio_sf_pclkout_g_t enGate, en_gpio_sf_pclkout_div_t enDiv);
-///< GPIO 外部时钟输入配置
+///< GPIO 
 en_result_t Gpio_SfExtClkCfg(en_gpio_sf_ssn_extclk_t enExtClk);
-///< GPIO SPI SSN输入配置
+///< GPIO SPI SSN
 en_result_t Gpio_SfSsnCfg(en_gpio_sf_ssnspi_t enSpi, en_gpio_sf_ssn_extclk_t enSsn);
-///< GPIO Timer 门控输入配置
+///< GPIO Timer 
 en_result_t Gpio_SfTimGCfg(en_gpio_sf_tim_g_t enTimG, en_gpio_sf_t enSf);
-///< GPIO Timer ETR选择配置
+///< GPIO Timer ETR
 en_result_t Gpio_SfTimECfg(en_gpio_sf_tim_e_t enTimE, en_gpio_sf_t enSf);
-///< GPIO Timer 捕获输入配置
+///< GPIO Timer 
 en_result_t Gpio_SfTimCCfg(en_gpio_sf_tim_c_t enTimC, en_gpio_sf_t enSf);
-///< GPIO PCA捕获选择配置
+///< GPIO PCA
 en_result_t Gpio_SfPcaCfg(en_gpio_sf_pca_t enPca, en_gpio_sf_t enSf);
-///< GPIO PCNT捕获选择配置
+///< GPIO PCNT
 en_result_t Gpio_SfPcntCfg(en_gpio_sf_pcnt_t enPcnt, en_gpio_sf_t enSf);
 
 //@} // GpioGroup

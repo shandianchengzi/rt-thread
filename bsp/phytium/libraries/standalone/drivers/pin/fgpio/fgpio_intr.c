@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fgpio_intr.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:25:29
- * Description:  This files is for GPIO interrupt function implementation
+ * Description: This files is for GPIO interrupt function implementation
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   zhugengyu  2022-3-1     init commit
  */
 
@@ -48,12 +48,12 @@
 /*****************************************************************************/
 /**
  * @name: FGpioGetInterruptMask
- * @msg: 获取GPIO A组引脚的中断屏蔽位
+ * @msg: GPIO A
  * @return {*}
- * @param {FGpio} *instance, GPIO控制器实例
- * @param {u32} *mask, 返回的GPIO A组引脚中断屏蔽位
- * @param {u32} *enabled, 返回的GPIO A组中断使能位
- * @note 获取的是A组所有Pin的中断屏蔽位和中断使能位
+ * @param {FGpio} *instance, GPIO
+ * @param {u32} *mask, GPIO A
+ * @param {u32} *enabled, GPIO A
+ * @note APin
  */
 void FGpioGetInterruptMask(FGpio *const instance, u32 *mask, u32 *enabled)
 {
@@ -76,11 +76,11 @@ void FGpioGetInterruptMask(FGpio *const instance, u32 *mask, u32 *enabled)
 
 /**
  * @name: FGpioSetInterruptMask
- * @msg: 设置GPIO A组引脚的中断屏蔽位
+ * @msg: GPIO A
  * @return {*}
- * @param {FGpioPin} *pin, GPIO引脚实例
- * @param {boolean} enable, TRUE表示使能GPIO引脚中断，FALSE表示去使能GPIO引脚中断
- * @note index对应的引脚必须为A组引脚，B组引脚不支持中断
+ * @param {FGpioPin} *pin, GPIO
+ * @param {boolean} enable, TRUEGPIOFALSEGPIO
+ * @note indexAB
  */
 void FGpioSetInterruptMask(FGpioPin *const pin, boolean enable)
 {
@@ -126,12 +126,12 @@ void FGpioSetInterruptMask(FGpioPin *const pin, boolean enable)
 
 /**
  * @name: FGpioGetInterruptType
- * @msg: 获取GPIO A组引脚的中断类型和中断极性
+ * @msg: GPIO A
  * @return {*}
- * @param {FGpio} *instance, GPIO控制器实例
- * @param {u32} *levels, GPIO A组引脚中断电平类型
- * @param {u32} *polarity, GPIO A组引脚中断极性类型
- * @note 获取的是A组所有Pin的电平和极性
+ * @param {FGpio} *instance, GPIO
+ * @param {u32} *levels, GPIO A
+ * @param {u32} *polarity, GPIO A
+ * @note APin
  */
 void FGpioGetInterruptType(FGpio *const instance, u32 *levels, u32 *polarity)
 {
@@ -154,11 +154,11 @@ void FGpioGetInterruptType(FGpio *const instance, u32 *levels, u32 *polarity)
 
 /**
  * @name: FGpioSetInterruptType
- * @msg: 设置GPIO引脚的中断类型
+ * @msg: GPIO
  * @return {*}
- * @param {FGpioPin} *pin, GPIO引脚实例
- * @param {FGpioIrqType} type, GPIO引脚中断触发类型
- * @note index对应的引脚必须为A组引脚，B组引脚不支持中断
+ * @param {FGpioPin} *pin, GPIO
+ * @param {FGpioIrqType} type, GPIO
+ * @note indexAB
  */
 void FGpioSetInterruptType(FGpioPin *const pin, const FGpioIrqType type)
 {
@@ -184,20 +184,20 @@ void FGpioSetInterruptType(FGpioPin *const pin, const FGpioIrqType type)
     switch (type)
     {
     case FGPIO_IRQ_TYPE_EDGE_FALLING:
-        level |= BIT(index.pin); /* 边沿敏感型 */
-        polarity &= ~BIT(index.pin); /* 下降沿或低电平 */
+        level |= BIT(index.pin); /*  */
+        polarity &= ~BIT(index.pin); /*  */
         break;
     case FGPIO_IRQ_TYPE_EDGE_RISING:
-        level |= BIT(index.pin); /* 边沿敏感型 */
-        polarity |= BIT(index.pin); /* 上升沿或高电平 */
+        level |= BIT(index.pin); /*  */
+        polarity |= BIT(index.pin); /*  */
         break;
     case FGPIO_IRQ_TYPE_LEVEL_LOW:
-        level &= ~BIT(index.pin); /* 电平敏感型 */
-        polarity &= ~BIT(index.pin); /* 下降沿或低电平 */
+        level &= ~BIT(index.pin); /*  */
+        polarity &= ~BIT(index.pin); /*  */
         break;
     case FGPIO_IRQ_TYPE_LEVEL_HIGH:
-        level &= ~BIT(index.pin); /* 电平敏感型 */
-        polarity |= BIT(index.pin); /* 上升沿或高电平 */
+        level &= ~BIT(index.pin); /*  */
+        polarity |= BIT(index.pin); /*  */
         break;
     default:
         break;
@@ -211,11 +211,11 @@ void FGpioSetInterruptType(FGpioPin *const pin, const FGpioIrqType type)
 
 /**
  * @name: FGpioInterruptHandler
- * @msg: GPIO中断处理函数
+ * @msg: GPIO
  * @return {*}
- * @param {s32} vector, 中断输入参数1
- * @param {void} *param, 中断输入参数2
- * @note 需要用户将此函数注册到Interrtup上，使能GPIO中断才能生效
+ * @param {s32} vector, 1
+ * @param {void} *param, 2
+ * @note InterrtupGPIO
  */
 void FGpioInterruptHandler(s32 vector, void *param)
 {
@@ -267,10 +267,10 @@ void FGpioInterruptHandler(s32 vector, void *param)
 #if defined(FGPIO_VERSION_2) /* E2000 GPIO 0 ~ 2 */
 /**
  * @name: FGpioPinInterruptHandler
- * @msg: GPIO引脚中断处理函数
+ * @msg: GPIO
  * @return {NONE}
- * @param {s32} vector, 中断输入参数1
- * @param {void} *param, 中断输入参数2
+ * @param {s32} vector, 1
+ * @param {void} *param, 2
  */
 void FGpioPinInterruptHandler(s32 vector, void *param)
 {
@@ -310,13 +310,13 @@ void FGpioPinInterruptHandler(s32 vector, void *param)
 
 /**
  * @name: FGpioRegisterInterruptCB
- * @msg: 注册GPIO引脚中断回调函数
+ * @msg: GPIO
  * @return {*}
- * @param {FGpioPin} pin, GPIO引脚实例
- * @param {FGpioInterruptCallback} cb, GPIO引脚中断回调函数
- * @param {void} *cb_param, GPIO引脚中断回调函数输入参数
- * @param {boolean} irq_one_time, TRUE表示引脚中断触发一次后自动关闭中断，用于电平敏感中断
- * @note 注册的回调函数在FGpioInterruptHandler中被调用
+ * @param {FGpioPin} pin, GPIO
+ * @param {FGpioInterruptCallback} cb, GPIO
+ * @param {void} *cb_param, GPIO
+ * @param {boolean} irq_one_time, TRUE
+ * @note FGpioInterruptHandler
  */
 void FGpioRegisterInterruptCB(FGpioPin *const pin, FGpioInterruptCallback cb, void *cb_param, boolean irq_one_time)
 {

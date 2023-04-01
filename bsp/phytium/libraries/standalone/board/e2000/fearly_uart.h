@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fearly_uart.h
  * Date: 2022-02-11 13:33:28
  * LastEditTime: 2022-02-17 18:00:16
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   rtos       2022/6/25    init commit
  */
 #ifndef  BOARD_E2000_EARLY_UART_H
@@ -49,8 +49,8 @@ extern "C"
 #define EARLY_UART_IRQ_NUM FUART1_IRQ_NUM
 #endif
 
-#define EARLY_UART_UARTDR (EARLY_UART_BASE + 0x0)  /* UART 数据寄存器地址 */
-#define EARLY_UART_UARTFR (EARLY_UART_BASE + 0x18) /* UART 状态寄存器地址 */
+#define EARLY_UART_UARTDR (EARLY_UART_BASE + 0x0)  /* UART  */
+#define EARLY_UART_UARTFR (EARLY_UART_BASE + 0x18) /* UART  */
 #define EARLY_UART_UARTCR (EARLY_UART_BASE + 0x30)
 #define EARLY_UART_UARTCR_UARTEN BIT(0)
 #define EARLY_UART_UARTCR_TXE BIT(8)
@@ -62,8 +62,8 @@ extern "C"
 #define EARLY_UART_UARTIMSC_RTIM BIT(6)
 #define EARLY_UART_UARTMIS (EARLY_UART_BASE + 0x40)
 #define EARLY_UART_UARTICR (EARLY_UART_BASE + 0x44)
-#define EARLY_UART_TXFF BIT(5) /* 发送 FIFO 已满标志位 */
-#define EARLY_UART_RXFE BIT(4) /* 接收 FIFO 为空标志位 */
+#define EARLY_UART_TXFF BIT(5) /*  FIFO  */
+#define EARLY_UART_RXFE BIT(4) /*  FIFO  */
 #define EARLY_UART_DATA_MASK GENMASK(7, 0)
 #define EARLY_UART_RXI_MASK BIT(4)
 

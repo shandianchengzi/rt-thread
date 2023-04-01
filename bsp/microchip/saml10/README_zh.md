@@ -1,37 +1,37 @@
-# SAML10E16A BSP 介绍
+# SAML10E16A BSP 
 
 [English](README.md)
-- MCU: ATSAML10E16A @32MHz, 64KB FLASH, 16KB RAM, 1.62V – 3.63V
-- L10: Cortex-M23内核 + 硬件乘除法 + 超低功耗(< 25 μA/MHz)
-- 管脚: E=32 pins, D=24pins
+- MCU: ATSAML10E16A @32MHz, 64KB FLASH, 16KB RAM, 1.62V  3.63V
+- L10: Cortex-M23 +  + (< 25 A/MHz)
+- : E=32 pins, D=24pins
 - Flash: 16=64KB, 15=32KB, 14=16KB(size=2^n)
 - SRAM : 16KB(Flash 64KB), 8KB(Flash 32KB), 4KB(Flash 16KB)
-- 手册: <https://www.microchip.com/en-us/product/ATSAML10E16A>
+- : <https://www.microchip.com/en-us/product/ATSAML10E16A>
 
-#### 关键特性
+#### 
 
-#### 内核
-  - 32 MHz (2.64 CoreMark/MHz and up to 31 DMIPS) Arm® Cortex®-M23 with:
+#### 
+  - 32 MHz (2.64 CoreMark/MHz and up to 31 DMIPS) Arm Cortex-M23 with:
   - Single-cycle hardware multiplier
   - Hardware divider
   - Nested Vector Interrupt Controller (NVIC)
   - Memory Protection Unit (MPU)
   - Stack Limit Checking
-  - TrustZone® for ARMv8-M (optional)
+  - TrustZone for ARMv8-M (optional)
 
-#### 内存
+#### 
   - 16/32/64-KB Flash
   - 4/8/16-KB SRAM
   - 2-KB Data Flash Write-While-Read (WWR) section for non-volatile data storage
   - 256 bytes TrustRAM with physical protection features
 
-#### 系统特性
+#### 
   - Power-on Reset (POR) and programmable Brown-out Detection (BOD)
   - 8-channel Direct Memory Access Controller (DMAC)
   - 8-channel event system for Inter-peripheral Core-independent Operation
   - CRC-32 generator
 
-#### 时钟系统
+#### 
   - Flexible clock distribution optimized for low power
   - 32.768 kHz crystal oscillator
   - 32.768 kHz ultra low-power internal RC oscillator
@@ -42,16 +42,16 @@
   - One frequency meter
   - Low-Power and Power Management
   - Active, Idle, Standby with partial or full SRAM retention and off sleep modes:
-  - Active mode (< 25 μA/MHz)
-  - Idle mode (< 10 μA/MHz) with 1.5 μs wake-up time
-  - Standby with Full SRAM Retention (0.5 μA) with 5.3 μs wake-up time
+  - Active mode (< 25 A/MHz)
+  - Idle mode (< 10 A/MHz) with 1.5 s wake-up time
+  - Standby with Full SRAM Retention (0.5 A) with 5.3 s wake-up time
   - Off mode (< 100 nA)
   - Static and dynamic power gating architecture
   - Sleepwalking peripherals
   - Two performance levels
   - Embedded Buck/LDO regulator with on-the-fly selection
 
-#### 安全特性
+#### 
   - Up to four tamper pins for static and dynamic intrusion detections
   - Data Flash
   - Optimized for secure storage
@@ -79,9 +79,9 @@
   - Unique 128-bit serial number
   - SAM L11 Securely Key Provisioned (KPH) (optional)
   - Key Provisioning using Root of Trust flow
-  - Security Software Framework using Kinibi-M™ Software Development Kit (SDK)
+  - Security Software Framework using Kinibi-M Software Development Kit (SDK)
 
-#### 先进的模拟和触摸功能
+#### 
   - One 12-bit 1 Msps Analog-to-Digital Converter (ADC) with up to 10 channels
   - Two Analog Comparators (AC) with window compare function
   - One 10-bit 350 kSPS Digital-to-Analog Converter (DAC) with external and internal outputs
@@ -95,7 +95,7 @@
   - Parallel Acquisition through Polarity control
   - Supports wake-up on touch from Standby Sleep mode
 
-#### 通信接口
+#### 
   - Up to three Serial Communication Interfaces (SERCOM) that can operate as:
   - USART with full-duplex and single-wire half-duplex configuration
   - I2C up to 3.4 Mbit/s (High-Speed mode) on one instance and up to 1 Mbit/s (Fast-mode Plus) on the second instance
@@ -118,15 +118,15 @@
   - Combinatorial logic functions, such as AND, NAND, OR, and NOR
   - Sequential logic functions, such as Flip-Flop and Latches
 
-#### 汽车应用
-  - AEC - Q100 Grade 1 (-40°C to 125°C)
+#### 
+  - AEC - Q100 Grade 1 (-40C to 125C)
   - Class-B safety library, IEC 60730 (future)
 
-#### 封装
+#### 
   - 24-pin VQFN(4*4mm/17 I/O pins)
   - 32-pin VQFN(5*5mm/25 I/O pins)
   - 32-pin TQFP(7*7mm/17 I/O pins)
   - 32-pin WLCSP(2.79*2.79mm/25 I/O pins)
 
-#### 官方开发板信息
+#### 
 - [SAM L10 XPLAINED PRO](https://ww1.microchip.com/downloads/en/Appnotes/Getting-Started-with-SAM%20L10L11-Xplained-Pro-DS00002722A.pdf)

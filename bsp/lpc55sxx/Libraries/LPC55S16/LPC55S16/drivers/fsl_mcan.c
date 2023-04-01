@@ -695,7 +695,7 @@ status_t MCAN_SetBaudRateFD(CAN_Type *base, uint32_t sourceClock_Hz, uint32_t ba
 
     if (MCAN_FDCalculateImprovedTimingValues(baudRateN_Bps, baudRateD_Bps, sourceClock_Hz, &timingCfg))
     {
-        /* Enable write access to the protected conﬁguration registers */
+        /* Enable write access to the protected conguration registers */
         base->CCCR |= CAN_CCCR_INIT_MASK;
         while (0U == (base->CCCR & CAN_CCCR_INIT_MASK))
         {
@@ -854,7 +854,7 @@ status_t MCAN_SetBaudRate(CAN_Type *base, uint32_t sourceClock_Hz, uint32_t baud
 
     if (MCAN_CalculateImprovedTimingValues(baudRate_Bps, sourceClock_Hz, &timingCfg))
     {
-        /* Enable write access to the protected conﬁguration registers */
+        /* Enable write access to the protected conguration registers */
         base->CCCR |= CAN_CCCR_INIT_MASK;
         while (0U == (base->CCCR & CAN_CCCR_INIT_MASK))
         {

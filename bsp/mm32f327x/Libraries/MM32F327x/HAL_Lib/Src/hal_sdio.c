@@ -117,7 +117,7 @@ void SDIO_DataStructInit(SDIO_DataInitTypeDef* SDIO_DataInitStruct)
 //}
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief  The frequency division factor is configured to generate the SDIO clock.
-/// @param  value : 1MHz = Fhclk/((mmc_cardsel[5 : 0] + 1) × 2)
+/// @param  value : 1MHz = Fhclk/((mmc_cardsel[5 : 0] + 1)  2)
 /// @retval None.
 ////////////////////////////////////////////////////////////////////////////////
 void SDIO_ClockSet(u32 value)

@@ -437,7 +437,7 @@ __STATIC_INLINE void usb_PhySelect(LL_USB_TypeDef *USBx, uint8_t PhyType)
 {
     if (1U == PhyType) {
         CLR_REG32_BIT(USBx->GREGS->GUSBCFG, USBFS_GUSBCFG_PHYSEL);
-        //SET_REG32_BIT(USBx->GREGS->GUSBCFG, 1UL<<4);  //todo 手册上没有该bit
+        //SET_REG32_BIT(USBx->GREGS->GUSBCFG, 1UL<<4);  //todo bit
     } else {
         SET_REG32_BIT(USBx->GREGS->GUSBCFG, USBFS_GUSBCFG_PHYSEL);
     }

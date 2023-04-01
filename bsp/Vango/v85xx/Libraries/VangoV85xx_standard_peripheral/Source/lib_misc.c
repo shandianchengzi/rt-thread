@@ -38,7 +38,7 @@ uint8_t MISC_GetFlag(uint32_t FlagMask)
 
 /**
   * @brief  Clear flag status.
-  * @param  FlagMask: can use the ¡®|¡¯ operator
+  * @param  FlagMask: can use the | operator
                 MISC_FLAG_LOCKUP 
                 MISC_FLAG_PIAC     
                 MISC_FLAG_HIAC          
@@ -55,7 +55,7 @@ void MISC_ClearFlag(uint32_t FlagMask)
 
 /**
   * @brief  Interrupt configure.
-  * @param  INTMask: can use the ¡®|¡¯ operator
+  * @param  INTMask: can use the | operator
                 MISC_INT_LOCK 
                 MISC_INT_PIAC   
                 MISC_INT_HIAC      

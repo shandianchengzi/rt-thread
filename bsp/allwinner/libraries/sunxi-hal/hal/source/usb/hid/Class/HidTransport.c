@@ -11,7 +11,7 @@
 *
 * Date          :  2010/06/02
 *
-* Description   :  Hid 传输
+* Description   :  Hid 
 *
 * Others        :  NULL
 *
@@ -50,7 +50,7 @@
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -79,7 +79,7 @@ static void HidTransportDone(struct urb *urb)
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -149,7 +149,7 @@ static int HidUsbTransport(HidDev_t *HidDev)
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -174,13 +174,13 @@ int HidSoftReset(HidDev_t *HidDev)
 *                     HidPortReset
 *
 * Description:
-*    reset 设备
+*    reset 
 *
 * Parameters:
-*    mscDev  :  input. 目标设备
+*    mscDev  :  input. 
 *
 * Return value:
-*    返回成功或者失败
+*    
 *
 * note:
 *
@@ -232,7 +232,7 @@ static int HidPortReset(HidDev_t *HidDev)
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -270,11 +270,11 @@ int HidResetRecovery(HidDev_t *HidDev)
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
-#if 0 /* reset 多次 */
+#if 0 /* reset  */
 int HidTransport(HidDev_t *HidDev, HidRequest_t *HidReq)
 {
     int ret = 0;
@@ -315,7 +315,7 @@ HidRetry:
         goto HidRetry;
     }
 
-    /* retry的最后一次成功，不算其中 */
+    /* retry */
     if(retries == 0 && HidDev->CurrentUrb->status != 0){
         hal_log_err("ERR: HidTransport failed\n");
         return USB_HID_TRANSPORT_DEVICE_DISCONNECT;
@@ -323,7 +323,7 @@ HidRetry:
 
     return USB_HID_TRANSPORT_SUCCESS;
 }
-#else  /* 不reset */
+#else  /* reset */
 int HidTransport(HidDev_t *HidDev, HidRequest_t *HidReq)
 {
     int ret = 0;
@@ -354,7 +354,7 @@ int HidTransport(HidDev_t *HidDev, HidRequest_t *HidReq)
     if(HidDev->CurrentUrb->status != 0){
         hal_log_err("ERR: HidTransport failed(%d)\n", HidDev->CurrentUrb->status);
 
-        /* driver取消了本次传输 */
+        /* driver */
         if(HidDev->CurrentUrb->status == -ESHUTDOWN){
             hal_log_err("ERR: HidTransport: device is shut down\n");
             return USB_HID_TRANSPORT_CANCEL_CMD;
@@ -392,7 +392,7 @@ int HidTransport(HidDev_t *HidDev, HidRequest_t *HidReq)
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */

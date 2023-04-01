@@ -246,7 +246,7 @@ static rt_err_t swm_pwm_get(struct rt_device_pwm *pwm_device, struct rt_pwm_conf
     RT_ASSERT(pwm_device != RT_NULL);
     pwm_cfg = pwm_device->parent.user_data;
 
-    configuration->period = PWM_GetPeriod(pwm_cfg->PWMx) * 1000UL; //中心对称模式下频率降低一半
+    configuration->period = PWM_GetPeriod(pwm_cfg->PWMx) * 1000UL; //
     configuration->pulse = PWM_GetHDuty(pwm_cfg->PWMx, configuration->channel) * 1000UL;
 
     return RT_EOK;
@@ -261,7 +261,7 @@ static rt_err_t swm_pwm_set(struct rt_device_pwm *pwm_device, struct rt_pwm_conf
     RT_ASSERT(pwm_device != RT_NULL);
     pwm_cfg = pwm_device->parent.user_data;
 
-    period = (unsigned long long)configuration->period / 1000UL; //中心对称模式下频率降低一半
+    period = (unsigned long long)configuration->period / 1000UL; //
     pulse = (unsigned long long)configuration->pulse / 1000UL;
     if (period < MIN_PERIOD)
     {
@@ -388,7 +388,7 @@ int swm_pwm_init(void)
 #endif
         }
 
-        pwm_obj[i].pwm_cfg->pwm_initstruct.Clkdiv = SystemCoreClock / 1000000UL / 2;  //中心对称模式下频率降低一半
+        pwm_obj[i].pwm_cfg->pwm_initstruct.Clkdiv = SystemCoreClock / 1000000UL / 2;  //
         PWM_Init(pwm_obj[i].pwm_cfg->PWMx, &(pwm_obj[i].pwm_cfg->pwm_initstruct));
         result = rt_device_pwm_register(&pwm_obj[i].pwm_device, pwm_obj[i].pwm_cfg->name, &pwm_ops, pwm_obj[i].pwm_cfg);
         if(result != RT_EOK)

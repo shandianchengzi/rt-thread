@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fsdio_selftest.c
  * Date: 2022-06-02 11:49:44
  * LastEditTime: 2022-06-02 11:49:45
- * Description:  This files is for SDIO self-test function
+ * Description: This files is for SDIO self-test function
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.1   zhugengyu  2022/6/6     modify according to tech manual.
  */
 /***************************** Include Files *********************************/

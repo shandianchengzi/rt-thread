@@ -17,13 +17,13 @@
 #define SPI_BUS_NAME                "spi0"
 #define SPI_DEVICE_NAME             "spi01"
 #define SPI_FLASH_DEVICE_NAME       "gd25q"
-#define GD25Q_SPI_CS_PIN             2          //PE3，在 drv_gpio.c 文件 pin_index pins[]中查到 PE3 编号为 2
+#define GD25Q_SPI_CS_PIN             2          //PE3 drv_gpio.c  pin_index pins[] PE3  2
 
 static int rt_hw_gd25q40_init(void)
 {
     rt_err_t res;
-    static struct rt_spi_device spi_dev_gd25q;           /* SPI设备对象 */
-    static rt_base_t gd25q_cs_pin;                       /* SPI设备CS片选引脚 */
+    static struct rt_spi_device spi_dev_gd25q;           /* SPI */
+    static rt_base_t gd25q_cs_pin;                       /* SPICS */
 
     gd25q_cs_pin = GD25Q_SPI_CS_PIN;
 

@@ -1,4 +1,4 @@
-﻿compile bsp:
+compile bsp:
 There are two ways.
 1). Visual Studio(2005 or newer version), open vs2005.vcproj with visual studio
     compile, then run it.

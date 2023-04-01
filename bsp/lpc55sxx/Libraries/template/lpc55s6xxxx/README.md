@@ -1,45 +1,45 @@
-# LPC55S69-EVK 板级支持包
+# LPC55S69-EVK 
 
-## 1. 简介(Introduction)
+## 1. (Introduction)
 
-LPC55S69 是由恩智浦NXP半导体推出的基于Cortex-M33内核的高性能单片机
-包括如下硬件特性：
+LPC55S69 NXPCortex-M33
 
-| 硬件 | 描述 |
+
+|  |  |
 | -- | -- |
-|芯片型号| LPC556x/LPC55S6x 全系列 |
+|| LPC556x/LPC55S6x  |
 |CPU| Cortex-M33 Dual Core, with FPU |
-|主频| 150MHz |
-|基本外设| 8个Flexcomm(任意配置为USART/SPI/I2C/I2S) / 1个50MHz SPI / 双USB(1高1全，支持主从) |
-|特色| PowerQuad DSP协处理器 / 安全外设:PRINCE/PUF/CASPER/AES-256/HASH |
+|| 150MHz |
+|| 8Flexcomm(USART/SPI/I2C/I2S) / 150MHz SPI / USB(11) |
+|| PowerQuad DSP / :PRINCE/PUF/CASPER/AES-256/HASH |
 
-## 2. 硬件开发环境(Hardware development system)
+## 2. (Hardware development system)
 
-开发板（EVK）
+EVK
 
-![开发板示意图](./figures/board.png)
-
-
-
-## 3. 编译说明
+![](./figures/board.png)
 
 
-| 环境         | 说明                                                         |
+
+## 3. 
+
+
+|          |                                                          |
 | ------------ | ------------------------------------------------------------ |
-| PC操作系统   | Linux/MacOS/Windows                                          |
-| 编译器       | arm-none-eabi-gcc version 6.3.1 20170620 (release)/armcc/iar |
-| 构建工具     | scons/mdk5/iar                                               |
-| 依赖软件环境 | Env工具/(MDK或IAR或arm-none-eabi-gcc)/git/调试器驱动         |
+| PC   | Linux/MacOS/Windows                                          |
+|        | arm-none-eabi-gcc version 6.3.1 20170620 (release)/armcc/iar |
+|      | scons/mdk5/iar                                               |
+|  | Env/(MDKIARarm-none-eabi-gcc)/git/         |
 
-1) 下载源码
+1) 
 
 ```bash
     git clone https://github.com/RT-Thread/rt-thread.git
 ```
 
-2) 配置工程并准备env
+2) env
 
-（Linux/Mac）
+Linux/Mac
 
 ```bash
     cd rt-thread/bsp/lpc55s69_evk
@@ -48,74 +48,74 @@ LPC55S69 是由恩智浦NXP半导体推出的基于Cortex-M33内核的高性能�
     pkgs --upgrade
 ```
 
-（Windows）
+Windows
 
->在[RT-Thread官网][1]下载ENV工具包
+>[RT-Thread][1]ENV
 
-3) 配置芯片型号
+3) 
 
-（Linux/Mac）
+Linux/Mac
 
 ```bash
     scons --menuconfig
 ```
 
-（Windows(ENV环境中)）
+Windows(ENV)
 
 ```bash
     menuconfig
 ```
 
-在menuconfig页面配置并选择对应的芯片型号，若开发环境为MDK/IAR，则需要生成工程
+menuconfigMDK/IAR
 
-4) 生成工程(Mac/Linux下请跳过此步骤)
+4) (Mac/Linux)
 
-（Windows IAR）
+Windows IAR
 
 ```bash
     SET RTT_CC=iar
     scons --target=iar -s
 ```
 
-（Windows MDK5）*
+Windows MDK5*
 
 ```bash
     scons --target=mdk5 -s
 ```
 
-*该板级支持包不支持生成mdk4的工程
+*mdk4
 
-**MDK 与 IAR 在生成完成工程之后一定要在工程中手动选择一次芯片信号，否则会产生严重编译错误**
+**MDK  IAR **
 
 
 
-5) 编译
+5) 
 
-使用MDK或IAR请参见对应教程
+MDKIAR
 
-（Windows arm-none-eabi-gcc）
-使用以下指令设置gcc路径
-
-```bash
-    set RTT_EXEC_PATH=[GCC路径]
-```
-
-（Linux/Mac arm-none-eabi-gcc）
-使用以下指令设置gcc路径
+Windows arm-none-eabi-gcc
+gcc
 
 ```bash
-    export RTT_EXEC_PATH=[GCC路径]
+    set RTT_EXEC_PATH=[GCC]
 ```
 
-编译（WindowsLinux/Mac arm-none-eabi-gcc）
+Linux/Mac arm-none-eabi-gcc
+gcc
+
+```bash
+    export RTT_EXEC_PATH=[GCC]
+```
+
+WindowsLinux/Mac arm-none-eabi-gcc
 
 ```bash
     scons -j4
 ```
 
-或者通过 `scons --exec-path="GCC工具链路径"` 命令，在指定工具链位置的同时直接编译。
+ `scons --exec-path="GCC"` 
 
-出现下列信息即为编译成功
+
 
 ```bash
     LINK rtthread-lpc55s69.elf
@@ -127,15 +127,15 @@ LPC55S69 是由恩智浦NXP半导体推出的基于Cortex-M33内核的高性能�
 ```
 
 
-如果编译正确无误，会产生rtthread-lpc55s6x.elf、rtthread.bin文件。其中rtthread.bin为二进制固件
+rtthread-lpc55s6x.elfrtthread.binrtthread.bin
 
-## 3. 烧写及执行
+## 3. 
 
-烧写可以使用仿真器 ISP等多种方式 此处不再赘述
+ ISP 
 
-### 3.1 运行结果
+### 3.1 
 
-如果编译 & 烧写无误，会在Flexcomm0串口*上看到RT-Thread的启动logo信息：
+ & Flexcomm0*RT-Threadlogo
 
 ```bash
  \ | /
@@ -146,30 +146,30 @@ uising armclang, version: 6120001
 msh />
 ```
 
-*默认串口
+*
 
 
-## 4. 驱动支持情况及计划
+## 4. 
 
-| 驱动       | 支持情况 | 备注                         |
+|        |  |                          |
 | ---------- | :------: | :--------------------------: |
-| UART       | 支持     | UART0/2                 |
-| GPIO       | 支持     | 自动根据芯片型号选择引脚布局 |
-| SPI        | 支持     | 支持High Speed SPI     |
-| USB Device | 不支持 | 暂不支持          |
-| USB Host   | 不支持  | 暂不支持      |
-| Windowed WatchDog | 不支持  | 支持                        |
-| ADC | 不支持 | 暂不支持 |
-| I2C       | 支持     | 可配合MMA8562          |
-| I2C Sensor | 支持     | 获取板上MMA8562加速度传感器数据 |
-| RTC        | 支持     | RTC时钟自动配置              |
-| SDIO       | 支持     | 操作SD卡                     |
-| I2S        | 不支持  | 暂不支持      |
+| UART       |      | UART0/2                 |
+| GPIO       |      |  |
+| SPI        |      | High Speed SPI     |
+| USB Device |  |           |
+| USB Host   |   |       |
+| Windowed WatchDog |   |                         |
+| ADC |  |  |
+| I2C       |      | MMA8562          |
+| I2C Sensor |      | MMA8562 |
+| RTC        |      | RTC              |
+| SDIO       |      | SD                     |
+| I2S        |   |       |
 
 
-### 4.1 IO在板级支持包中的映射情况
+### 4.1 IO
 
-| PIO号 | 板级包中的定义 |
+| PIO |  |
 | -- | -- |
 | PIO0_29 | Flexcomm0 USART RXD |
 | PIO0_30 | Flexcomm0 USART TXD |
@@ -198,17 +198,17 @@ msh />
 | PIO1_20 | Flexcomm4 I2C SCL |
 | PIO1_21 | Flexcomm4 I2C SDA |
 
-## 5. menuconfig Bsp菜单详解
+## 5. menuconfig Bsp
 
-| 选项 | 解释 |
+|  |  |
 | -- | -- |
-| Device type | 选择芯片型号，修改此处需修改MDK/IAR工程为相同芯片型号 |
+| Device type | MDK/IAR |
 
-*部分选项需要在RT-Thread组件菜单中开启对应的设备框架才能显示。
+*RT-Thread
 
-## 6. 联系人信息
+## 6. 
 
-维护人:
+:
 [Magicoe][2] < [magicoe@163.com][3] >
 
 [AlexYang][2] < [alex.yang@nxp.com][3] >

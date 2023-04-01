@@ -23,7 +23,7 @@
 <center>
 <h1 id="release-notes-for">Release Notes for</h1>
 <h1 id="stm32wbxx-cmsis"><mark>STM32WBxx CMSIS</mark></h1>
-<p>Copyright © 2019 STMicroelectronics<br />
+<p>Copyright  2019 STMicroelectronics<br />
 </p>
 <a href="https://www.st.com" class="logo"><img src="_htmresc/st_logo_2020.png" alt="ST logo" /></a>
 </center>
@@ -38,19 +38,19 @@
 <li>STM32WB15xx devices</li>
 <li>STM32WB10xx devices</li>
 </ul>
-<p>This driver is composed of the descriptions of the registers under “Include” directory.</p>
+<p>This driver is composed of the descriptions of the registers under Include directory.</p>
 <p>Various template file are provided to easily build an application. They can be adapted to fit applications requirements.</p>
 <ul>
 <li>Templates/system_stm32wbxx.c contains the initialization code referred as SystemInit.</li>
-<li>Startup files are provided as example for IAR©, KEIL© and SW4STM32©.</li>
-<li>Linker files are provided as example for IAR©, KEIL© and SW4STM32©.</li>
+<li>Startup files are provided as example for IAR, KEIL and SW4STM32.</li>
+<li>Linker files are provided as example for IAR, KEIL and SW4STM32.</li>
 </ul>
 <h1 id="specific-consideration-for-available-flash-size-inside-linker-file">Specific consideration for available FLASH size inside linker file</h1>
 <p>The available flash size depends on the wireless binary used inside the STM32WB device.</p>
 <p>The linker files templates for IAR, KEIL and GCC provide example of implementation which can be tuned.</p>
 <p>You can refer to the below chapters to optimize the usage of the flash on your device.</p>
 <h2 id="stm32wb55xx-stm32wb50xx-and-stm32wb5m">STM32WB55xx, STM32WB50xx and STM32WB5M</h2>
-<p>The default linker file provided in “/Drivers/CMSIS/DeviceST/STM32WBxx/Source/Templates” allows the application to use 512KB of flash.</p>
+<p>The default linker file provided in /Drivers/CMSIS/DeviceST/STM32WBxx/Source/Templates allows the application to use 512KB of flash.</p>
 <p>The maximum flash memory that can be used by the application is up to the Secure Flash Start Address (SFSA) that can be read from the option byte.</p>
 <p>The __ICFEDIT_region_ROM_end__ in the linker can be modified with a value up to : (0x08000000 + (SFSA &lt;&lt; 12)) - 1.</p>
 <p>Example:</p>
@@ -67,7 +67,7 @@
 <p>The __ICFEDIT_region_ROM_end__ in the linker can be modified with a value up to : (0x08000000 + (SFSA &lt;&lt; 12)) - 1.</p>
 <p>Example:</p>
 <ul>
-<li>When the SFSA option byte is set to 0x32, the maximum value to be used for __ICFEDIT_region_ROM_end is 0x08031FFF – which is 200KB of flash</li>
+<li>When the SFSA option byte is set to 0x32, the maximum value to be used for __ICFEDIT_region_ROM_end is 0x08031FFF  which is 200KB of flash</li>
 </ul>
 <p>Note:</p>
 <ul>
@@ -79,7 +79,7 @@
 <p>The __ICFEDIT_region_ROM_end__ in the linker can be modified with a value up to : (0x08000000 + (SFSA &lt;&lt; 11)) - 1 considering minimum CPU secure area size is one sector (2kBytes).</p>
 <p>Example:</p>
 <ul>
-<li>When the SFSA option byte is set to 0x37, the maximum value to be used for __ICFEDIT_region_ROM_end is 0x0801B800 – which is 110kB of flash</li>
+<li>When the SFSA option byte is set to 0x37, the maximum value to be used for __ICFEDIT_region_ROM_end is 0x0801B800  which is 110kB of flash</li>
 </ul>
 <p>Note:</p>
 <ul>
@@ -227,11 +227,11 @@
 <p>Added features:</p>
 <ul>
 <li>Templates/system_stm32wbxx.c contains the initialization code referred as SystemInit.</li>
-<li>Startup files are provided as example for IAR©, KEIL© and SW4STM32©.</li>
-<li>Linker files are provided as example for IAR©, KEIL© and SW4STM32©.</li>
-<li>The product STM32WB5Mxx is supported by enabling inside your project the define “STM32WB5Mxx”.</li>
-<li>The product STM32WB35xx is supported by enabling inside your project the define “STM32WB35xx”.</li>
-<li>The product STM32WB30xx is supported by enabling inside your project the define “STM32WB30xx”.</li>
+<li>Startup files are provided as example for IAR, KEIL and SW4STM32.</li>
+<li>Linker files are provided as example for IAR, KEIL and SW4STM32.</li>
+<li>The product STM32WB5Mxx is supported by enabling inside your project the define STM32WB5Mxx.</li>
+<li>The product STM32WB35xx is supported by enabling inside your project the define STM32WB35xx.</li>
+<li>The product STM32WB30xx is supported by enabling inside your project the define STM32WB30xx.</li>
 </ul>
 <h2 id="development-toolchains-and-compilers-3">Development Toolchains and Compilers</h2>
 <ul>

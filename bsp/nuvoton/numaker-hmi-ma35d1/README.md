@@ -115,8 +115,8 @@ Updating files: 100% (1248/1248), done.
 Operation completed successfully.
 
 # scons -j 16
-…
-…
+
+
 LINK rtthread.elf
 arm-none-eabi-objcopy -O binary rtthread.elf rtthread.bin
 arm-none-eabi-size rtthread.elf

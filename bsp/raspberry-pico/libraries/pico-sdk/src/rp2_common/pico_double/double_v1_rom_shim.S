@@ -391,7 +391,7 @@ l\@_1:
 .endm
 
 @ SUMULL: x signed, y unsigned
-@ in table below ¯ means signed variable
+@ in table below  means signed variable
 @ needs five temporary registers
 @ can have rt3==rx, in which case rx trashed
 @ can have rt4==ry, in which case ry trashed
@@ -400,21 +400,21 @@ l\@_1:
 @ can have rzl,rzh==rt3,rt4
 .macro muls32_32_64 rx,ry,rzl,rzh,rt0,rt1,rt2,rt3,rt4
                                @   t0   t1   t2   t3   t4
-                               @                 ¯(x)  (y)
+                               @                 (x)  (y)
  uxth \rt0,\rx                 @   xl
  uxth \rt1,\ry                 @        yl
  muls \rt0,\rt1                @  xlyl=L
- asrs \rt2,\rx,#16             @            ¯xh
- muls \rt1,\rt2                @      ¯xhyl=M0
+ asrs \rt2,\rx,#16             @            xh
+ muls \rt1,\rt2                @      xhyl=M0
  lsrs \rt4,\ry,#16             @                       yh
- muls \rt2,\rt4                @          ¯xhyh=H
+ muls \rt2,\rt4                @          xhyh=H
  uxth \rt3,\rx                 @                   xl
  muls \rt3,\rt4                @                 xlyh=M1
  asrs \rt4,\rt1,#31            @                      M0sx   (M1 sign extension is zero)
  adds \rt1,\rt3                @      M0+M1=M
  movs \rt3,#0                  @                    0
- adcs \rt4,\rt3                @                      ¯Msx
- lsls \rt4,#16                 @                    ¯Msx<<16
+ adcs \rt4,\rt3                @                      Msx
+ lsls \rt4,#16                 @                    Msx<<16
  adds \rt2,\rt4                @             H'
 
                                @   t0   t1   t2   t3   t4
@@ -422,11 +422,11 @@ l\@_1:
  lsls \rzl,\rt1,#16            @                  M~
  lsrs \rzh,\rt1,#16            @                       M~
  adds \rzl,\rt0                @                  ZL
- adcs \rzh,\rt2                @                      ¯ZH
+ adcs \rzh,\rt2                @                      ZH
 .endm
 
 @ SSMULL: x signed, y signed
-@ in table below ¯ means signed variable
+@ in table below  means signed variable
 @ needs five temporary registers
 @ can have rt3==rx, in which case rx trashed
 @ can have rt4==ry, in which case ry trashed
@@ -435,22 +435,22 @@ l\@_1:
 @ can have rzl,rzh==rt3,rt4
 .macro muls32_s32_64 rx,ry,rzl,rzh,rt0,rt1,rt2,rt3,rt4
                                @   t0   t1   t2   t3   t4
-                               @                 ¯(x)  (y)
+                               @                 (x)  (y)
  uxth \rt0,\rx                 @   xl
  uxth \rt1,\ry                 @        yl
  muls \rt0,\rt1                @  xlyl=L
- asrs \rt2,\rx,#16             @            ¯xh
- muls \rt1,\rt2                @      ¯xhyl=M0
- asrs \rt4,\ry,#16             @                      ¯yh
- muls \rt2,\rt4                @          ¯xhyh=H
+ asrs \rt2,\rx,#16             @            xh
+ muls \rt1,\rt2                @      xhyl=M0
+ asrs \rt4,\ry,#16             @                      yh
+ muls \rt2,\rt4                @          xhyh=H
  uxth \rt3,\rx                 @                   xl
- muls \rt3,\rt4                @                ¯xlyh=M1
- adds \rt1,\rt3                @     ¯M0+M1=M
+ muls \rt3,\rt4                @                xlyh=M1
+ adds \rt1,\rt3                @     M0+M1=M
  asrs \rt3,\rt1,#31            @                  Msx
  bvc l\@_1                     @
- mvns \rt3,\rt3                @                 ¯Msx        flip sign extension bits if overflow
+ mvns \rt3,\rt3                @                 Msx        flip sign extension bits if overflow
 l\@_1:
- lsls \rt3,#16                 @                    ¯Msx<<16
+ lsls \rt3,#16                 @                    Msx<<16
  adds \rt2,\rt3                @             H'
 
                                @   t0   t1   t2   t3   t4
@@ -458,7 +458,7 @@ l\@_1:
  lsls \rzl,\rt1,#16            @                  M~
  lsrs \rzh,\rt1,#16            @                       M~
  adds \rzl,\rt0                @                  ZL
- adcs \rzh,\rt2                @                      ¯ZH
+ adcs \rzh,\rt2                @                      ZH
 .endm
 
 @ can have rt2==rx, in which case rx trashed
@@ -604,24 +604,24 @@ dm_1:
 @
 @ Use Greek letters to represent the errors introduced by rounding and truncation.
 @
-@               r₀ = y - a₀x
-@                  = y - [ u₁ ( y - α ) - β ] x    where 0 ≤ α < 2^-31, 0 ≤ β < 2^-30
-@                  = y ( 1 - u₁x ) + ( u₁α + β ) x
+@               r = y - ax
+@                  = y - [ u ( y -  ) -  ] x    where 0   < 2^-31, 0   < 2^-30
+@                  = y ( 1 - ux ) + ( u +  ) x
 @
 @     Hence
 @
-@       | r₀ / x | < 2 * 10*2^-32 + 2^-31 + 2^-30
+@       | r / x | < 2 * 10*2^-32 + 2^-31 + 2^-30
 @                  = 26*2^-32
 @
-@               r₁ = y - a₁x
-@                  = y - a₀x - d₀x
-@                  = r₀ - d₀x
-@                  = r₀ - u₁ ( r₀ - γ ) x    where 0 ≤ γ < 2^-57
-@                  = r₀ ( 1 - u₁x ) + u₁γx
+@               r = y - ax
+@                  = y - ax - dx
+@                  = r - dx
+@                  = r - u ( r -  ) x    where 0   < 2^-57
+@                  = r ( 1 - ux ) + ux
 @
 @     Hence
 @
-@       | r₁ / x | < 26*2^-32 * 10*2^-32 + 2^-57
+@       | r / x | < 26*2^-32 * 10*2^-32 + 2^-57
 @                  = (260+128)*2^-64
 @                  < 2^-55
 @
@@ -889,26 +889,26 @@ a4=(q30)(a3*(q30)y+1t-31);        // good to about 28 bits
 
 Error analysis
 
-          r₄ = y - a₄²
-          d₄ = 1/2 a₃r₄
-          a₅ = a₄ + d₄
-          r₅ = y - a₅²
-             = y - ( a₄ + d₄ )²
-             = y - a₄² - a₃a₄r₄ - 1/4 a₃²r₄²
-             = r₄ - a₃a₄r₄ - 1/4 a₃²r₄²
+          r = y - a
+          d = 1/2 ar
+          a = a + d
+          r = y - a
+             = y - ( a + d )
+             = y - a - aar - 1/4 ar
+             = r - aar - 1/4 ar
 
-      | r₅ | < | r₄ | | 1 - a₃a₄ | + 1/4 r₄²
+      | r | < | r | | 1 - aa | + 1/4 r
 
-          a₅ = √y √( 1 - r₅/y )
-             = √y ( 1 - 1/2 r₅/y + ... )
+          a = y ( 1 - r/y )
+             = y ( 1 - 1/2 r/y + ... )
 
 So to first order (second order being very tiny)
 
-     √y - a₅ = 1/2 r₅/y
+     y - a = 1/2 r/y
 
 and
 
- | √y - a₅ | < 1/2 ( | r₄/y | | 1 - a₃a₄ | + 1/4 r₄²/y )
+ | y - a | < 1/2 ( | r/y | | 1 - aa | + 1/4 r/y )
 
 From dsqrttest.c (conservatively):
 
@@ -1118,15 +1118,15 @@ dq_5:
 
 @ double-length CORDIC rotation step
 
-@ r0:r1   ω
+@ r0:r1   
 @ r6      32-i (complementary shift)
 @ r7      i (shift)
 @ r8:r9   x
 @ r10:r11 y
 @ r12     coefficient pointer
 
-@ an option in rotation mode would be to compute the sequence of σ values
-@ in one pass, rotate the initial vector by the residual ω and then run a
+@ an option in rotation mode would be to compute the sequence of  values
+@ in one pass, rotate the initial vector by the residual  and then run a
 @ second pass to compute the final x and y. This would relieve pressure
 @ on registers and hence possibly be faster. The same trick does not work
 @ in vectoring mode (but perhaps one could work to single precision in
@@ -1150,8 +1150,8 @@ double_section dcordic_rot_step
  cmp r1,#0
  bge 1f
 2:
-@ ω<0 / y>=0
-@ ω+=dω
+@ <0 / y>=0
+@ +=d
 @ x+=y>>i, y-=x>>i
  adds r0,r3
  adcs r1,r4
@@ -1184,8 +1184,8 @@ double_section dcordic_rot_step
  bx r14
 
 
-@ ω>0 / y<0
-@ ω-=dω
+@ >0 / y<0
+@ -=d
 @ x-=y>>i, y+=x>>i
 1:
  subs r0,r3
@@ -1521,7 +1521,7 @@ double_section dunpacks
 @ r0:r1  reduced result y Q62, -0.6 d < y < 0.6 d (better in practice)
 @ r2     quotient q (number of reductions)
 @ if exponent >=10, returns r0:r1=0, r2=1024*mantissa sign
-@ designed to work for 0.5<d<2, in particular d=ln2 (~0.7) and d=π/2 (~1.6)
+@ designed to work for 0.5<d<2, in particular d=ln2 (~0.7) and d=/2 (~1.6)
 double_section dreduce
  regular_func dreduce
  adds r2,#2                    @ e+2
@@ -1602,14 +1602,14 @@ double_section dtan_shim
  push {r4-r7,r14}
  bl push_r8_r11
  bl dsincos_internal
- mov r12,r0                    @ save ε
+ mov r12,r0                    @ save 
  bl dcos_finish
  push {r0,r1}
  mov r0,r12
  bl dsin_finish
  pop {r2,r3}
  bl pop_r8_r11
- b ddiv0                       @ compute sin θ/cos θ
+ b ddiv0                       @ compute sin /cos 
 
 double_section dcos_shim
  regular_func dcos_shim
@@ -1635,7 +1635,7 @@ double_section dsincos_shim
  bl push_r8_r11
  push {r2-r3}
  bl dsincos_internal
- mov r12,r0                    @ save ε
+ mov r12,r0                    @ save 
  bl dcos_finish
  push {r0,r1}
  mov r0,r12
@@ -1648,12 +1648,12 @@ double_section dsincos_shim
 
 double_section dtrig_guts
 
-@ unpack double θ in r0:r1, range reduce and calculate ε, cos α and sin α such that
-@ θ=α+ε and |ε|≤2^-32
+@ unpack double  in r0:r1, range reduce and calculate , cos  and sin  such that
+@ =+ and ||2^-32
 @ on return:
-@ r0:r1   ε (residual ω, where θ=α+ε) Q62, |ε|≤2^-32 (so fits in r0)
-@ r8:r9   cos α Q62
-@ r10:r11 sin α Q62
+@ r0:r1    (residual , where =+) Q62, ||2^-32 (so fits in r0)
+@ r8:r9   cos  Q62
+@ r10:r11 sin  Q62
 .align 2
 .thumb_func
 dsincos_internal:
@@ -1701,16 +1701,16 @@ dsincos_internal:
 
 dcos_finish:
 @ here
-@ r0:r1   ε (residual ω, where θ=α+ε) Q62, |ε|≤2^-32 (so fits in r0)
-@ r8:r9   cos α Q62
-@ r10:r11 sin α Q62
-@ and we wish to calculate cos θ=cos(α+ε)~cos α - ε sin α
+@ r0:r1    (residual , where =+) Q62, ||2^-32 (so fits in r0)
+@ r8:r9   cos  Q62
+@ r10:r11 sin  Q62
+@ and we wish to calculate cos =cos(+)~cos  -  sin 
  mov r1,r11
 @ mov r2,r10
 @ lsrs r2,#31
 @ adds r1,r2                    @ rounding improves accuracy very slightly
  muls32_s32_64 r0,r1, r2,r3, r4,r5,r6,r2,r3
-@ r2:r3   ε sin α Q(62+62-32)=Q92
+@ r2:r3    sin  Q(62+62-32)=Q92
  mov r0,r8
  mov r1,r9
  lsls r5,r3,#2
@@ -1724,13 +1724,13 @@ dcos_finish:
 
 dsin_finish:
 @ here
-@ r0:r1   ε (residual ω, where θ=α+ε) Q62, |ε|≤2^-32 (so fits in r0)
-@ r8:r9   cos α Q62
-@ r10:r11 sin α Q62
-@ and we wish to calculate sin θ=sin(α+ε)~sin α + ε cos α
+@ r0:r1    (residual , where =+) Q62, ||2^-32 (so fits in r0)
+@ r8:r9   cos  Q62
+@ r10:r11 sin  Q62
+@ and we wish to calculate sin =sin(+)~sin  +  cos 
  mov r1,r9
  muls32_s32_64 r0,r1, r2,r3, r4,r5,r6,r2,r3
-@ r2:r3   ε cos α Q(62+62-32)=Q92
+@ r2:r3    cos  Q(62+62-32)=Q92
  mov r0,r10
  mov r1,r11
  lsls r5,r3,#2
@@ -1745,8 +1745,8 @@ dsin_finish:
 .ltorg
 .align 2
 dreddata0:
-.word 0x0000517d               @ 2/π Q15
-.word 0x0014611A               @ π/2 Q62=6487ED5110B4611A split into 21-bit pieces
+.word 0x0000517d               @ 2/ Q15
+.word 0x0014611A               @ /2 Q62=6487ED5110B4611A split into 21-bit pieces
 .word 0x000A8885
 .word 0x001921FB
 
@@ -1793,13 +1793,13 @@ regular_func datan2_shim
  bpl 1f
 @ y>=0: in quadrant 0
  cmp r1,r3
- ble 2f                        @ y<~x so 0≤θ<~π/4: skip
+ ble 2f                        @ y<~x so 0<~/4: skip
  adds r6,#1
  eors r1,r5                    @ negate x
- b 3f                          @ and exchange x and y = rotate by -π/2
+ b 3f                          @ and exchange x and y = rotate by -/2
 1:
  cmp r3,r7
- bge 2f                        @ -y<~x so -π/4<~θ≤0: skip
+ bge 2f                        @ -y<~x so -/4<~0: skip
  subs r6,#1
  eors r3,r5                    @ negate y and ...
 3:
@@ -1810,7 +1810,7 @@ regular_func datan2_shim
  movs r1,r3
  movs r3,r7
 2:
-@ here -π/4<~θ<~π/4
+@ here -/4<~<~/4
 @ r6 has quadrant offset
  push {r6}
  cmp r2,#0
@@ -1823,7 +1823,7 @@ regular_func datan2_shim
  bne 1f                        @ x==Inf going into division?
  lsls r4,r1,#1
  asrs r4,#21
- adds r4,#1                    @ y also ±Inf?
+ adds r4,#1                    @ y also Inf?
  bne 10f
  subs r1,#1                    @ make them both just finite
  subs r3,#1
@@ -1841,7 +1841,7 @@ regular_func datan2_shim
 @ r0:r1 y/x
  mov r10,r0
  mov r11,r1
- movs r0,#0                    @ ω=0
+ movs r0,#0                    @ =0
  movs r1,#0
  mov r8,r0
  movs r2,#1
@@ -1895,14 +1895,14 @@ regular_func datan2_shim
 
  cmp r6,#0
  beq 1f
- ldr r4,=#0x885A308D           @ π/2 Q61
+ ldr r4,=#0x885A308D           @ /2 Q61
  ldr r5,=#0x3243F6A8
  bpl 2f
  mvns r4,r4                    @ negative quadrant offset
  mvns r5,r5
 2:
  lsls r6,#31
- bne 2f                        @ skip if quadrant offset is ±1
+ bne 2f                        @ skip if quadrant offset is 1
  adds r0,r4
  adcs r1,r5
 2:
@@ -2002,11 +2002,11 @@ regular_func dexp_shim
  bne 3b
 
 @ here
-@ r0:r1   ε (residual x, where x=a+ε) Q62, |ε|≤2^-32 (so fits in r0)
+@ r0:r1    (residual x, where x=a+) Q62, ||2^-32 (so fits in r0)
 @ r2:r3   exp a Q62
-@ and we wish to calculate exp x=exp a exp ε~(exp a)(1+ε)
+@ and we wish to calculate exp x=exp a exp ~(exp a)(1+)
  muls32_32_64 r0,r3, r4,r1, r5,r6,r7,r4,r1
-@ r4:r1 ε exp a Q(62+62-32)=Q92
+@ r4:r1  exp a Q(62+62-32)=Q92
  lsrs r4,#30
  lsls r0,r1,#2
  orrs r0,r4
@@ -2037,7 +2037,7 @@ regular_func dln_shim
  lsrs r2,r0,#23
  orrs r1,r2
  lsls r0,#9
-@ r0:r1 m Q61 = m/2 Q62 0.5≤m/2<1
+@ r0:r1 m Q61 = m/2 Q62 0.5m/2<1
 
  movs r7,#1                    @ shift
  adr r6,dtab_exp

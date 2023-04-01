@@ -21,17 +21,17 @@
  * ----- ------  -------- --------------------------------------
 -->
 
-# AARCH64 工作模式使用
+# AARCH64 
 
-- 当开发者需要基于 Phytium 系列芯片进行开发时，可以从以下几个步骤出发配置芯片
+-  Phytium 
 
-## 1. 如何选择芯片
+## 1. 
 
 ```shell
     scons --menuconfig
 ```
 
-开发者通过以下选择进行配置
+
 
 ```
 Standalone Setting > Board Configuration > Chip 
@@ -40,14 +40,14 @@ Standalone Setting > Board Configuration > Chip
 ![](./figures/chip_select.png)
 ![](./figures/phytium_cpu_select.png)
 
-## 2. 如何选择驱动
+## 2. 
 
 
 ```shell
     scons --menuconfig
 ```
 
-开发者通过以下选项进行驱动的使能
+
 
 ```
 Hardware Drivers Config > On-chip Peripheral Drivers
@@ -56,27 +56,27 @@ Hardware Drivers Config > On-chip Peripheral Drivers
 ![](./figures/select_driver.png)
 
 
-## 3. 开启SDK中内部调试信息
+## 3. SDK
 
 
 ```shell
     scons --menuconfig
 ```
 
-开发者通过以下选项进行调试信息等级的设置
+
 
 ![](./figures/select_debug_info.png)
 
 
 
-## 4. 编译程序
+## 4. 
 
 ```shell
     scons -c
     scons
 ```
 
-- 完成编译之后目录下将会生成以下几个文件
+- 
 
 ```
 rtthread_a64.bin
@@ -84,10 +84,10 @@ rtthread_a64.elf
 rtthread_a64.map
 ```
 
-## 5. 打包导出工程源代码
+## 5. 
 
 
-- 指定工程名和路径，打包RT-Thread内核和Phytium BSP代码，可以导出一个工程工程
+- RT-ThreadPhytium BSP
 ```
 python ./export_project.py -n=phytium-a64 -o=D:/proj/rt-thread-e2000/phytium-a64
 ```
@@ -95,8 +95,8 @@ python ./export_project.py -n=phytium-a64 -o=D:/proj/rt-thread-e2000/phytium-a64
 ![](./figures/export_project.png)
 
 
-- 进入打包工程的目录，修改工程根目录 Kconfig 中的路径 BSP_DIR 和 STANDALONE_DIR 
-> env 环境中的 menuconfig 不会调用 SConstruct 修改路径环境变量，因此需要手动修改路径
+-  Kconfig  BSP_DIR  STANDALONE_DIR 
+> env  menuconfig  SConstruct 
 
 ```
 config BSP_DIR
@@ -110,12 +110,12 @@ config STANDALONE_DIR
     default "libraries/standalone"
 ```
 
-- 输入 menuconfig 和 scons 完成编译
+-  menuconfig  scons 
 
 
-## 6. 将工程导入 RT-Studio
+## 6.  RT-Studio
 
-- 在 RT-Studio 使用功能`RT-Thread Bsp 到工作空间`，导入 5. 中导出的 BSP 工程
-- 设置 BSP 工程的交叉编译链后进行后续开发
+-  RT-Studio `RT-Thread Bsp ` 5.  BSP 
+-  BSP 
 
 ![](./figures/import_project.png)

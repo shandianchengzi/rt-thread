@@ -23,14 +23,14 @@
 <div class="sectione dark">
 <center>
 <h1 id="release-notes-for-stm32h7xx-hal-drivers"><strong>Release Notes for STM32H7xx HAL Drivers</strong></h1>
-<p>Copyright © 2017 STMicroelectronics<br />
+<p>Copyright  2017 STMicroelectronics<br />
 </p>
 <a href="https://www.st.com" class="logo"><img src="_htmresc/st_logo.png" alt="ST logo" /></a>
 </center>
 </div>
 </div>
 <h1 id="license"><strong>License</strong></h1>
-This software component is licensed by ST under BSD 3-Clause license, the “License”; You may not use this component except in compliance with the License. You may obtain a copy of the License at:
+This software component is licensed by ST under BSD 3-Clause license, the License; You may not use this component except in compliance with the License. You may obtain a copy of the License at:
 <center>
 <a href="https://opensource.org/licenses/BSD-3-Clause">https://opensource.org/licenses/BSD-3-Clause</a>
 </center>
@@ -48,9 +48,9 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>Notes:
 <ul>
-<li>Only HAL and LL driver are compliant with MDK-ARM AC6 compiler. No warning on these drivers when using “AC5-like warning” in MDK-ARM project settings<br />
+<li>Only HAL and LL driver are compliant with MDK-ARM AC6 compiler. No warning on these drivers when using AC5-like warning in MDK-ARM project settings<br />
 </li>
-<li>Template projects updated with “Use default compiler version 6” setting and “AC5-like warning” setting</li>
+<li>Template projects updated with Use default compiler version 6 setting and AC5-like warning setting</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL</strong>:
@@ -58,9 +58,9 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>stm32h7xx_hal.h and stm32h7xx_hal.c:
 <ul>
 <li>Fix implementation values of SYSCFG_VREFBUF_VOLTAGE_SCALE0 to SYSCFG_VREFBUF_VOLTAGE_SCALE3 defines</li>
-<li>Delimit “HAL_EnableDomain3DBGStopMode” and “HAL_DisableDomain3DBGStopMode” APIs with the presence of the “DBGMCU_CR_DBG_STOPD3” field definition (from the CMSIS device header file)<br />
+<li>Delimit HAL_EnableDomain3DBGStopMode and HAL_DisableDomain3DBGStopMode APIs with the presence of the DBGMCU_CR_DBG_STOPD3 field definition (from the CMSIS device header file)<br />
 </li>
-<li>Delimit “HAL_EnableDomain3DBGStandbyMode” and “HAL_DisableDomain3DBGStandbyMode” APIs with the presence of the “DBGMCU_CR_DBG_STANDBYD3” field definition (from the CMSIS device header file)</li>
+<li>Delimit HAL_EnableDomain3DBGStandbyMode and HAL_DisableDomain3DBGStandbyMode APIs with the presence of the DBGMCU_CR_DBG_STANDBYD3 field definition (from the CMSIS device header file)</li>
 <li>Update comments of HAL_EnableCompensationCell and HAL_DisableCompensationCell according to the STM32H7 product data-sheet</li>
 </ul></li>
 <li>stm32h7xx_hal_conf_template.h:
@@ -84,40 +84,40 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>stm32h7xx_hal_cec.c:
 <ul>
-<li>Update “HAL_CEC_IRQHandler” implementation to avoid extra byte sent with CEC command</li>
+<li>Update HAL_CEC_IRQHandler implementation to avoid extra byte sent with CEC command</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL CRYP</strong>:
 <ul>
 <li>stm32h7xx_hal_cryp.h:
 <ul>
-<li>Update CRYP_ConfigTypeDef structure to add “DataWidthUnit” field allowing to set the header width unit</li>
+<li>Update CRYP_ConfigTypeDef structure to add DataWidthUnit field allowing to set the header width unit</li>
 </ul></li>
 <li>stm32h7xx_hal_cryp.c:
 <ul>
-<li>Update the implementation of the “CRYP_GCMCCM_SetHeaderPhase” function to support the header width unit setting</li>
+<li>Update the implementation of the CRYP_GCMCCM_SetHeaderPhase function to support the header width unit setting</li>
 </ul></li>
 <li>stm32h7xx_hal_cryp_ex.c:
 <ul>
-<li>Update the implementation of the “HAL_CRYPEx_AESGCM_GenerateAuthTAG” function to support the header width unit setting</li>
+<li>Update the implementation of the HAL_CRYPEx_AESGCM_GenerateAuthTAG function to support the header width unit setting</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL/LL EXTI</strong>:
 <ul>
 <li>stm32h7xx_hal_exti.h:
 <ul>
-<li>Update IS_EXTI_PROPERTY to IS_EXTI_CONFIG_LINE macros implementation using “<strong>EXTI_LINE</strong>” instead of “<strong>LINE</strong>” o avoid clash with compiler key word “<strong>LINE</strong>”</li>
+<li>Update IS_EXTI_PROPERTY to IS_EXTI_CONFIG_LINE macros implementation using <strong>EXTI_LINE</strong> instead of <strong>LINE</strong> o avoid clash with compiler key word <strong>LINE</strong></li>
 </ul></li>
 </ul></li>
 <li><strong>HAL/LL ETH</strong>:
 <ul>
 <li>stm32h7xx_hal_eth.h:
 <ul>
-<li>New private fields “PacketAddress”, “CurrentPacketAddress” and “BuffersInUse” added to the “ETH_TxDescListTypeDef” structure</li>
+<li>New private fields PacketAddress, CurrentPacketAddress and BuffersInUse added to the ETH_TxDescListTypeDef structure</li>
 </ul></li>
 <li>stm32h7xx_hal_eth.c:
 <ul>
-<li>Update implementation of “ETH_Prepare_Tx_Descriptors” function to improve TX performance using the above “ETH_TxDescListTypeDef” structure new fields</li>
+<li>Update implementation of ETH_Prepare_Tx_Descriptors function to improve TX performance using the above ETH_TxDescListTypeDef structure new fields</li>
 </ul></li>
 <li>Notes:
 <ul>
@@ -128,13 +128,13 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>stm32h7xx_hal_flash_ex.h:
 <ul>
-<li>Remove unused defines “OB_WWDG_SW” and “OB_WWDG_HW” and corresponding “IS_OB_WWDG_SOURCE” macro</li>
-<li>Delimit “OB_SWAP_BANK_DISABLE” and “OB_SWAP_BANK_ENABLE” defines with “#if defines (DUAL_BANK)” as swap bank is available for dual bank devices only. same for macro “IS_OB_USER_SWAP_BANK”</li>
-<li>Update “OB_USER_ALL” macro implementation with variants for dual bank, single bank, dual core and single core devices</li>
+<li>Remove unused defines OB_WWDG_SW and OB_WWDG_HW and corresponding IS_OB_WWDG_SOURCE macro</li>
+<li>Delimit OB_SWAP_BANK_DISABLE and OB_SWAP_BANK_ENABLE defines with #if defines (DUAL_BANK) as swap bank is available for dual bank devices only. same for macro IS_OB_USER_SWAP_BANK</li>
+<li>Update OB_USER_ALL macro implementation with variants for dual bank, single bank, dual core and single core devices</li>
 </ul></li>
 <li>stm32h7xx_hal_flash.c:
 <ul>
-<li>Update “HAL_FLASH_Program” description with details for “FlashAddress” and “DataAddress” alignment requirements</li>
+<li>Update HAL_FLASH_Program description with details for FlashAddress and DataAddress alignment requirements</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL/LL GPIO</strong>:
@@ -166,22 +166,22 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>stm32h7xx_hal_lptim.c:
 <ul>
-<li>Update “HAL_LPTIM_Init” implementation to improve behavior for external clock configuration</li>
+<li>Update HAL_LPTIM_Init implementation to improve behavior for external clock configuration</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL NAND</strong>:
 <ul>
 <li>stm32h7xx_hal_nand.c:
 <ul>
-<li>Update implementation of “HAL_NAND_Read_SpareArea_16b” and “HAL_NAND_Write_SpareArea_16b” to fix an issue with the spare area Column address calculation</li>
-<li>Update implementation of “HAL_NAND_Write_Page_16b” and “HAL_NAND_Read_Page_16b” APIs implementation to fix an issue with the page calculation of 8 bits memories</li>
+<li>Update implementation of HAL_NAND_Read_SpareArea_16b and HAL_NAND_Write_SpareArea_16b to fix an issue with the spare area Column address calculation</li>
+<li>Update implementation of HAL_NAND_Write_Page_16b and HAL_NAND_Read_Page_16b APIs implementation to fix an issue with the page calculation of 8 bits memories</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL NOR</strong>:
 <ul>
 <li>stm32h7xx_hal_nor.c:
 <ul>
-<li>Fix “HAL_NOR_ProgramBuffer” API implementation regarding the current and end address calculation</li>
+<li>Fix HAL_NOR_ProgramBuffer API implementation regarding the current and end address calculation</li>
 <li>Update NOR APIs implementation to support some specific memories</li>
 </ul></li>
 </ul></li>
@@ -189,51 +189,51 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>stm32h7xx_hal_rcc.c:
 <ul>
-<li>Update “HAL_RCC_DeInit” implementation to reset “HSEEXT” field</li>
+<li>Update HAL_RCC_DeInit implementation to reset HSEEXT field</li>
 </ul></li>
 <li>stm32h7xx_hal_rcc_ex.c:
 <ul>
-<li>Update “HAL_RCCEx_PeriphCLKConfig” implementation with CEC Configuration</li>
-<li>Update “HAL_RCCEx_GetPeriphCLKFreq” implementation to:
+<li>Update HAL_RCCEx_PeriphCLKConfig implementation with CEC Configuration</li>
+<li>Update HAL_RCCEx_GetPeriphCLKFreq implementation to:
 <ul>
 <li>Check oscillator ready flag</li>
 <li>Get FDCAN clock source</li>
 </ul></li>
-<li>Update implementation of “HAL_RCCEx_GetPLL1ClockFreq” to use HSI in default case as per the specification</li>
+<li>Update implementation of HAL_RCCEx_GetPLL1ClockFreq to use HSI in default case as per the specification</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL RNG</strong>:
 <ul>
 <li>stm32h7xx_hal_rng.h:
 <ul>
-<li>Add “RNG_RecoverSeedError” function prototype</li>
+<li>Add RNG_RecoverSeedError function prototype</li>
 </ul></li>
 <li>stm32h7xx_hal_rng.c:
 <ul>
-<li>Update “HAL_RNG_GenerateRandomNumber” function implementation to check seed error if any</li>
-<li>Update “HAL_RNG_IRQHandler” function implementation to check seed error if any</li>
-<li>Add “RNG_RecoverSeedError” function</li>
+<li>Update HAL_RNG_GenerateRandomNumber function implementation to check seed error if any</li>
+<li>Update HAL_RNG_IRQHandler function implementation to check seed error if any</li>
+<li>Add RNG_RecoverSeedError function</li>
 </ul></li>
 <li>stm32h7xx_hal_rng_ex.h:
 <ul>
-<li>Add “HAL_RNGEx_RecoverSeedError” API prototype</li>
+<li>Add HAL_RNGEx_RecoverSeedError API prototype</li>
 </ul></li>
 <li>stm32h7xx_hal_rng_ex.c:
 <ul>
-<li>Add “HAL_RNGEx_RecoverSeedError” function</li>
+<li>Add HAL_RNGEx_RecoverSeedError function</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL/LL SDMMC</strong>:
 <ul>
 <li>stm32h7xx_hal_mmc.c:
 <ul>
-<li>Update implementation of “HAL_MMC_Init” function to support SDMMC power class</li>
-<li>Add “HAL_MMC_GetCardExtCSD” function to get card extended information<br />
+<li>Update implementation of HAL_MMC_Init function to support SDMMC power class</li>
+<li>Add HAL_MMC_GetCardExtCSD function to get card extended information<br />
 </li>
-<li>Update “HAL_MMC_ConfigWideBusOperation” function implementation to support SDMMC power class</li>
-<li>Update “HAL_MMC_ConfigSpeedBusOperation” function implementation to adapt the speed to the card type</li>
-<li>Update “HAL_MMC_GetSupportedSecRemovalType” function implementation to support Secure Removal type</li>
-<li>Update “HAL_MMC_InitCard” implementation to avoid potential division by zero</li>
+<li>Update HAL_MMC_ConfigWideBusOperation function implementation to support SDMMC power class</li>
+<li>Update HAL_MMC_ConfigSpeedBusOperation function implementation to adapt the speed to the card type</li>
+<li>Update HAL_MMC_GetSupportedSecRemovalType function implementation to support Secure Removal type</li>
+<li>Update HAL_MMC_InitCard implementation to avoid potential division by zero</li>
 <li>Update to support native 4KB sector size<br />
 </li>
 </ul></li>
@@ -248,36 +248,36 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li>stm32h7xx_hal_sd.c:
 <ul>
-<li>Update “HAL_SD_InitCard” implementation to avoid potential division by zero</li>
+<li>Update HAL_SD_InitCard implementation to avoid potential division by zero</li>
 </ul></li>
 <li>stm32h7xx_ll_sdmmc.c
 <ul>
-<li>Add “SDMMC_CmdSetRelAddMmc” function to set relative address</li>
+<li>Add SDMMC_CmdSetRelAddMmc function to set relative address</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL/LL SPI</strong>
 <ul>
-<li>Update “HAL_SPI_TransmitReceive_IT” implementation to disable RXP and TXP interrupt when DXP is enabled</li>
-<li>Update “HAL_SPI_Init” implementation with NSS Software Management</li>
+<li>Update HAL_SPI_TransmitReceive_IT implementation to disable RXP and TXP interrupt when DXP is enabled</li>
+<li>Update HAL_SPI_Init implementation with NSS Software Management</li>
 <li>stm32h7xx_ll_spi.c:
 <ul>
-<li>Update “LL_SPI_Init” implementation to set the internal SS level</li>
+<li>Update LL_SPI_Init implementation to set the internal SS level</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL/LL TIM</strong>:
 <ul>
 <li>stm32h7xx_ll_tim.h:
 <ul>
-<li>Fix “LL_TIM_GetCounterMode” implementation to handle all possible return combinations</li>
+<li>Fix LL_TIM_GetCounterMode implementation to handle all possible return combinations</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL/LL UART</strong>:
 <ul>
 <li>stm32h7xx_hal_uart.h:
 <ul>
-<li>Add “HAL_UART_RxTypeTypeDef” type with possible values HAL_UART_RECEPTION_STANDARD, HAL_UART_RECEPTION_TOIDLE, HAL_UART_RECEPTION_TORTO or HAL_UART_RECEPTION_TOCHARMATCH</li>
-<li>Update “UART_HandleTypeDef” structure to add “RxEventCallback”</li>
-<li>Add “pUART_RxEventCallbackTypeDef” type</li>
+<li>Add HAL_UART_RxTypeTypeDef type with possible values HAL_UART_RECEPTION_STANDARD, HAL_UART_RECEPTION_TOIDLE, HAL_UART_RECEPTION_TORTO or HAL_UART_RECEPTION_TOCHARMATCH</li>
+<li>Update UART_HandleTypeDef structure to add RxEventCallback</li>
+<li>Add pUART_RxEventCallbackTypeDef type</li>
 </ul></li>
 <li>stm32h7xx_hal_uart_ex.h:
 <ul>
@@ -285,28 +285,28 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li>stm32h7xx_hal_uart.c:
 <ul>
-<li>Update “HAL_UART_DeInit” implementation to set the “ReceptionType” to HAL_UART_RECEPTION_STANDARD<br />
+<li>Update HAL_UART_DeInit implementation to set the ReceptionType to HAL_UART_RECEPTION_STANDARD<br />
 </li>
-<li>Add “HAL_UART_RegisterRxEventCallback” and “HAL_UART_UnRegisterRxEventCallback” APIs implementation</li>
-<li>Update “HAL_UART_Receive”, “HAL_UART_Receive_IT” and “HAL_UART_Receive_DMA” to set the “ReceptionType” to HAL_UART_RECEPTION_STANDARD</li>
-<li>Update “HAL_UART_Abort”, “HAL_UART_AbortReceive”, “HAL_UART_Abort_IT” and “HAL_UART_AbortReceive_IT” to disable IDLEIE interrupt in case of reception till IDLE</li>
-<li>Update “HAL_UART_IRQHandler” to handle reception till IDLE</li>
-<li>Add “HAL_UARTEx_RxEventCallback” weak callback</li>
+<li>Add HAL_UART_RegisterRxEventCallback and HAL_UART_UnRegisterRxEventCallback APIs implementation</li>
+<li>Update HAL_UART_Receive, HAL_UART_Receive_IT and HAL_UART_Receive_DMA to set the ReceptionType to HAL_UART_RECEPTION_STANDARD</li>
+<li>Update HAL_UART_Abort, HAL_UART_AbortReceive, HAL_UART_Abort_IT and HAL_UART_AbortReceive_IT to disable IDLEIE interrupt in case of reception till IDLE</li>
+<li>Update HAL_UART_IRQHandler to handle reception till IDLE</li>
+<li>Add HAL_UARTEx_RxEventCallback weak callback</li>
 </ul></li>
 <li>stm32h7xx_hal_uart_ex.c:
 <ul>
-<li>Add “HAL_UARTEx_ReceiveToIdle”, “HAL_UARTEx_ReceiveToIdle_IT” and “HAL_UARTEx_ReceiveToIdle_DMA” APIs implementation</li>
+<li>Add HAL_UARTEx_ReceiveToIdle, HAL_UARTEx_ReceiveToIdle_IT and HAL_UARTEx_ReceiveToIdle_DMA APIs implementation</li>
 </ul></li>
 <li>stm32h7xx_ll_lpuart.h
 <ul>
-<li>Update “LL_LPUART_SetBaudRate” implementation to avoid potential division by zero</li>
+<li>Update LL_LPUART_SetBaudRate implementation to avoid potential division by zero</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL/LL USART</strong>:
 <ul>
 <li>stm32h7xx_ll_usart.h:
 <ul>
-<li>Update “LL_USART_SetBaudRate” implementation to avoid potential division by zero</li>
+<li>Update LL_USART_SetBaudRate implementation to avoid potential division by zero</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL/LL USB</strong>:
@@ -376,7 +376,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>supporting rev.Y and rev.V devices</li>
 </ul></li>
-<li>These defines are available on each CMSIS device header file stm32h723xx.h/stm32h733xx.h …/STM32H7a3xx.h/STM32H7b3xx.h/…/stm32h743xx/stm32h773xx…</li>
+<li>These defines are available on each CMSIS device header file stm32h723xx.h/stm32h733xx.h /STM32H7a3xx.h/STM32H7b3xx.h//stm32h743xx/stm32h773xx</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL DFSDM</strong>:
@@ -390,7 +390,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>stm32h7xx_ll_bdma.h, stm32h7xx_ll_dma.h and stm32h7xx_ll_dmamux.h:
 <ul>
-<li>Remove “register” “C” keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
+<li>Remove register C keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
 <li>Add requests definitions for FMAC, CORDIC, I2C5, TIM23 and TIM24 new peripherals available on <strong>STM32H72x/3x</strong> devices</li>
 </ul></li>
 </ul></li>
@@ -406,7 +406,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>stm32h7xx_hal_dcmi.c:
 <ul>
-<li>Remove “register” “C” keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
+<li>Remove register C keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL ETH</strong>:
@@ -531,7 +531,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li>stm32h7xx_ll_hrtim.h:
 <ul>
-<li>Remove “register” “C” keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
+<li>Remove register C keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL/LL I2C</strong>:
@@ -555,7 +555,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li>stm32h7xx_ll_i2c.h
 <ul>
-<li>Remove “register” “C” keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
+<li>Remove register C keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
 <li>Fix doxygen documentation</li>
 </ul></li>
 <li>stm32h7xx_ll_i2c.c
@@ -607,7 +607,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li>stm32h7xx_ll_mdma.h
 <ul>
-<li>Remove “register” “C” keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
+<li>Remove register C keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL/LL SD/MMC</strong>: Add support for Sanitize and Discard functions:
@@ -647,14 +647,14 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>stm32h7xx_ll_sdmmc.c:
 <ul>
 <li>Update implementation of SDMMC_CmdErase to add EraseType parameter</li>
-<li>Remove “register” “C” keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
+<li>Remove register C keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL/LL OPAMP</strong>:
 <ul>
 <li>stm32h7xx_ll_opamp.h:
 <ul>
-<li>Remove “register” “C” keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
+<li>Remove register C keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL/LL OTFDEC</strong>:
@@ -690,7 +690,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>Update to delimit wakeup pins 3 and 5 definitions according to their availability (not available on <strong>STM32H72x/3x</strong> devices)</li>
 <li>Update LL_PWR_REGU_VOLTAGE_SCALE0 value to support <strong>STM32H72x/3x</strong> devices</li>
-<li>Remove “register” “C” keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
+<li>Remove register C keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
 </ul></li>
 <li>stm32h7xx_ll_pwr.c
 <ul>
@@ -740,7 +740,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>Update to USART 9/10 clock setting macros to support <strong>STM32H72x/3x</strong> devices<br />
 </li>
 <li>Update to OSPI clock setting macros to support <strong>STM32H72x/3x</strong> devices</li>
-<li>Remove “register” “C” keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
+<li>Remove register C keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
 </ul></li>
 <li>stm32h7xx_ll_rcc.c:
 <ul>
@@ -763,7 +763,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>stm32h7xx_ll_rtc.h:
 <ul>
 <li>Fix Doxygen documentation</li>
-<li>Remove “register” “C” keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
+<li>Remove register C keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
 </ul></li>
 <li>stm32h7xx_hal_rtc.c:
 <ul>
@@ -780,7 +780,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li>stm32h7xx_ll_rtc.h
 <ul>
-<li>Remove “register” “C” keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
+<li>Remove register C keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL SAI</strong>:
@@ -792,7 +792,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>stm32h7xx_hal_sai.c:
 <ul>
 <li>Update HAL_SAI_Init to add a check on master clock divider parameter and to fix SAI frequency calculation in case of SPDIF output</li>
-<li>Update SAI_Disable implementation to remove “register” “C” keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
+<li>Update SAI_Disable implementation to remove register C keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL SMARTCARD</strong>:
@@ -818,14 +818,14 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li>stm32h7xx_hal_smbus.c:
 <ul>
-<li>Update private functions implementation to use “SMBUS_HandleTypeDef type” instead of "struct __SMBUS_HandleTypeDef"</li>
+<li>Update private functions implementation to use SMBUS_HandleTypeDef type instead of "struct __SMBUS_HandleTypeDef"</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL SPDIFRX</strong>:
 <ul>
 <li>stm32h7xx_hal_spdifrx.c:
 <ul>
-<li>Remove “register” “C” keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
+<li>Remove register C keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL/LL SPI</strong>:
@@ -836,7 +836,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li>stm32h7xx_ll_spi.h
 <ul>
-<li>Remove “register” “C” keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
+<li>Remove register C keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL/LL TIM</strong>:
@@ -858,21 +858,21 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li>stm32h7xx_hal_tim.c and stm32h7xx_hal_tim_ex.c:
 <ul>
-<li>Remove private function “TIM_DMADelayPulseCplt”</li>
+<li>Remove private function TIM_DMADelayPulseCplt</li>
 <li>Update to handle channel state and DMA burst state independently allowing to use multiple DMA request with different channels of same timer<br />
 </li>
 </ul></li>
 <li>stm32h7xx_ll_tim.h
 <ul>
 <li>Fix values of defines LL_TIM_COUNTERMODE_CENTER_UP and LL_TIM_COUNTERMODE_CENTER_DOWN (values was inverted)</li>
-<li>Remove “register” “C” keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
+<li>Remove register C keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL/LL UART</strong>:
 <ul>
 <li>stm32h7xx_hal_uart.h:
 <ul>
-<li>Update implementation of UART_DIV_LPUART, UART_DIV_SAMPLING8 and UART_DIV_SAMPLING16 macros using “UARTPrescTable” table</li>
+<li>Update implementation of UART_DIV_LPUART, UART_DIV_SAMPLING8 and UART_DIV_SAMPLING16 macros using UARTPrescTable table</li>
 </ul></li>
 <li>stm32h7xx_hal_uart.c:
 <ul>
@@ -890,7 +890,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li>stm32h7xx_ll_lpuart.h
 <ul>
-<li>Remove “register” “C” keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
+<li>Remove register C keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL/LL USART</strong>:
@@ -906,7 +906,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li>stm32h7xx_ll_usart.h
 <ul>
-<li>Remove “register” “C” keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
+<li>Remove register C keyword: The register storage class specifier was deprecated in C++11 and removed in C++17</li>
 <li>Fix doxygen documentation</li>
 </ul></li>
 </ul></li>
@@ -964,7 +964,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>stm32h7xx_hal_dac.c:
 <ul>
-<li>Update HAL_DAC_ConfigChannel function implementation to fix the “DAC_ConnectOnChipPeripheral” check and settings</li>
+<li>Update HAL_DAC_ConfigChannel function implementation to fix the DAC_ConnectOnChipPeripheral check and settings</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL/LL GPIO</strong>:
@@ -1009,7 +1009,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li><strong>HAL JPEG</strong>:
 <ul>
-<li>stm32h7xx_hal_jpeg.h: Minor update for STM32 coding rules compliance (one line per variable declaration, local variables naming …)</li>
+<li>stm32h7xx_hal_jpeg.h: Minor update for STM32 coding rules compliance (one line per variable declaration, local variables naming )</li>
 </ul></li>
 <li><strong>HAL/LL LPTIM</strong>:
 <ul>
@@ -1037,13 +1037,13 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>stm32h7xx_hal_ospi.h:
 <ul>
-<li>Update “OSPIM_CfgTypeDef” structure definition to add “Req2AckTime” allowing to set the “minimum switching duration” clock cycles when OSPI signals are multiplexed in the OSPI IO Manager</li>
-<li>Add IS_OSPIM_REQ2ACKTIME macro useful when the HAL assert is enabled and allowing to check the “Req2AckTime” value validity<br />
+<li>Update OSPIM_CfgTypeDef structure definition to add Req2AckTime allowing to set the minimum switching duration clock cycles when OSPI signals are multiplexed in the OSPI IO Manager</li>
+<li>Add IS_OSPIM_REQ2ACKTIME macro useful when the HAL assert is enabled and allowing to check the Req2AckTime value validity<br />
 </li>
 </ul></li>
 <li>stm32h7xx_hal_ospi.c:
 <ul>
-<li>Update “HAL_OSPIM_Config” implementation to support OSPI signals Mux using the OSPI IO Manager</li>
+<li>Update HAL_OSPIM_Config implementation to support OSPI signals Mux using the OSPI IO Manager</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL PSSI</strong>:
@@ -1138,9 +1138,9 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>stm32h7xx_ll_dma.h
 <ul>
-<li>Add API “LL_DMA_EnableBufferableTransfer” allowing to enable bufferable transfer<br />
+<li>Add API LL_DMA_EnableBufferableTransfer allowing to enable bufferable transfer<br />
 </li>
-<li>Add API “LL_DMA_DisableBufferableTransfer” allowing to disable bufferable transfer</li>
+<li>Add API LL_DMA_DisableBufferableTransfer allowing to disable bufferable transfer</li>
 </ul></li>
 <li>stm32h7xx_hal_dma.c:
 <ul>
@@ -1154,7 +1154,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>stm32h7xx_ll_tim.h
 <ul>
-<li>Parameter “RepetitionCounter” of “LL_TIM_InitTypeDef” is now of type “uint32_t” with possible values from 0 to 0xFFFF for advanced timers</li>
+<li>Parameter RepetitionCounter of LL_TIM_InitTypeDef is now of type uint32_t with possible values from 0 to 0xFFFF for advanced timers</li>
 </ul></li>
 </ul></li>
 <li><strong>LL FMC</strong>: (Core LL driver for HAL NAND, NOR, SDRAM, SRAM, not user LL driver)
@@ -1815,58 +1815,58 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li>stm32h7xx_hal_conf_template.h:
 <ul>
-<li>Add “USE_SPI_CRC” definition set to 1 by default and customizable by the HAL user</li>
+<li>Add USE_SPI_CRC definition set to 1 by default and customizable by the HAL user</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL/LL ADC</strong>:
 <ul>
 <li>stm32h7xx_hal_adc.h:
 <ul>
-<li>Remove useless defines ADC_OVERSAMPLING_RATIO_2 to ADC_OVERSAMPLING_RATIO_1024. the oversampling ratio is filled in parameter “Ratio” of the structure “Oversampling” of the “ADC_InitTypeDef” structure with a value between 1 and 1024</li>
+<li>Remove useless defines ADC_OVERSAMPLING_RATIO_2 to ADC_OVERSAMPLING_RATIO_1024. the oversampling ratio is filled in parameter Ratio of the structure Oversampling of the ADC_InitTypeDef structure with a value between 1 and 1024</li>
 </ul></li>
 <li>stm32h7xx_hal_adc_ex.h:
 <ul>
-<li>Fix macro “IS_ADC_OVERSAMPLING_RATIO”, the allowed oversampling ratio is a value between 1 and 1024</li>
-<li>Add prototype of “HAL_ADCEx_LinearCalibration_FactorLoad” API allowing to automatically load the linear calibration factors from ADC engineering bytes (programmed during device production, specific to each device)<br />
+<li>Fix macro IS_ADC_OVERSAMPLING_RATIO, the allowed oversampling ratio is a value between 1 and 1024</li>
+<li>Add prototype of HAL_ADCEx_LinearCalibration_FactorLoad API allowing to automatically load the linear calibration factors from ADC engineering bytes (programmed during device production, specific to each device)<br />
 </li>
 </ul></li>
 <li>stm32h7xx_ll_adc.h:
 <ul>
-<li>Add definitions of ADC_LINEAR_CALIB_REG_1_ADDR to ADC_LINEAR_CALIB_REG_6_ADDR: these are the addresses with ADC linearity calibration content (programmed during device production, specific to each device) the content of these addresses is then automatically loaded by the API “HAL_ADCEx_LinearCalibration_FactorLoad”</li>
+<li>Add definitions of ADC_LINEAR_CALIB_REG_1_ADDR to ADC_LINEAR_CALIB_REG_6_ADDR: these are the addresses with ADC linearity calibration content (programmed during device production, specific to each device) the content of these addresses is then automatically loaded by the API HAL_ADCEx_LinearCalibration_FactorLoad</li>
 </ul></li>
 <li>stm32h7xx_hal_adc.c:
 <ul>
-<li>Update “HAL_ADC_ConfigChannel” implementation to set the ADC selected offset right shift</li>
+<li>Update HAL_ADC_ConfigChannel implementation to set the ADC selected offset right shift</li>
 </ul></li>
 <li>stm32h7xx_hal_adc_ex.c:
 <ul>
-<li>Update definition of “ADC_CALIBRATION_TIMEOUT” to 633600000 according to the data-sheet update</li>
-<li>Update “HAL_ADCEx_LinearCalibration_SetValue” implementation to:
+<li>Update definition of ADC_CALIBRATION_TIMEOUT to 633600000 according to the data-sheet update</li>
+<li>Update HAL_ADCEx_LinearCalibration_SetValue implementation to:
 <ul>
 <li>Enable the ADC before applying the calibration factors</li>
 <li>Respect the user linear calibration buffer order from calibration factor 0 to 5</li>
 </ul></li>
-<li>Update “HAL_ADCEx_LinearCalibration_GetValue” implementation to:
+<li>Update HAL_ADCEx_LinearCalibration_GetValue implementation to:
 <ul>
 <li>Respect the user linear calibration buffer order from calibration factor 0 to 5</li>
 </ul></li>
-<li>Add “HAL_ADCEx_LinearCalibration_FactorLoad” API allowing to automatically load the linear calibration factors from ADC engineering bytes (programmed during device production, specific to each device)</li>
-<li>Update “HAL_ADCEx_InjectedConfigChannel” implementation to set the ADC selected offset right shift</li>
+<li>Add HAL_ADCEx_LinearCalibration_FactorLoad API allowing to automatically load the linear calibration factors from ADC engineering bytes (programmed during device production, specific to each device)</li>
+<li>Update HAL_ADCEx_InjectedConfigChannel implementation to set the ADC selected offset right shift</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL CRYP</strong>:
 <ul>
 <li>stm32h7xx_hal_cryp.c:
 <ul>
-<li>Update “CRYP_GCMCCM_SetPayloadPhase_IT” implementation to improve data management in interrupt mode</li>
-<li>Update “CRYP_Workaround” to fix the implementation of the authentication tags computation phase during a GCM encryption when the size of the last payload block is inferior to 128 bits</li>
+<li>Update CRYP_GCMCCM_SetPayloadPhase_IT implementation to improve data management in interrupt mode</li>
+<li>Update CRYP_Workaround to fix the implementation of the authentication tags computation phase during a GCM encryption when the size of the last payload block is inferior to 128 bits</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL GPIO</strong>:
 <ul>
 <li>stm32h7xx_hal_gpio.c:
 <ul>
-<li>Fix implementation of “HAL_GPIO_DeInit” API in order to clear the correct external interrupt/event in SYSCFG EXTICR register</li>
+<li>Fix implementation of HAL_GPIO_DeInit API in order to clear the correct external interrupt/event in SYSCFG EXTICR register</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL/LL HRTIM</strong>:
@@ -1882,32 +1882,32 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li>stm32h7xx_hal_hrtim.c:
 <ul>
-<li>Update “HAL_HRTIM_WaveformCompareConfig” implementation to clear HRTIM_TIMCR_DELCMP2 bit field when required</li>
+<li>Update HAL_HRTIM_WaveformCompareConfig implementation to clear HRTIM_TIMCR_DELCMP2 bit field when required</li>
 </ul></li>
 <li>stm32h7xx_ll_hrtim.h:
 <ul>
-<li>Fix definitions of the output set sources (“LL_HRTIM_CROSSBAR_NONE” to “LL_HRTIM_CROSSBAR_UPDATE” replacing “LL_HRTIM_OUTPUTSET_NONE” to LL_HRTIM_OUTPUTSET_UPDATE) according to the reference manual (<strong>compatibility break</strong>)</li>
+<li>Fix definitions of the output set sources (LL_HRTIM_CROSSBAR_NONE to LL_HRTIM_CROSSBAR_UPDATE replacing LL_HRTIM_OUTPUTSET_NONE to LL_HRTIM_OUTPUTSET_UPDATE) according to the reference manual (<strong>compatibility break</strong>)</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL/LL HSEM</strong>:
 <ul>
 <li>stm32h7xx_hal_hsem.c:
 <ul>
-<li>Update “HAL_HSEM_Release” implementation to support dynamic CPU ID detection useful when code is intended to be shared between the Cortex-M4 and Cortex-M7 in a dual core device</li>
+<li>Update HAL_HSEM_Release implementation to support dynamic CPU ID detection useful when code is intended to be shared between the Cortex-M4 and Cortex-M7 in a dual core device</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL IRDA</strong>:
 <ul>
 <li>stm32h7xx_hal_irda.c:
 <ul>
-<li>Update description of “HAL_IRDA_Transmit_XXX”, “HAL_IRDA_Receive_XXX” APIs with more details about the data size management</li>
+<li>Update description of HAL_IRDA_Transmit_XXX, HAL_IRDA_Receive_XXX APIs with more details about the data size management</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL LPTIM</strong>:
 <ul>
 <li>stm32h7xx_hal_lptim.c:
 <ul>
-<li>Update “HAL_LPTIM_XXX_Start/HAL_LPTIM_XXX_Stop” and “HAL_LPTIM_XXX_Start_IT/HAL_LPTIM_XXX_Stop_IT” implementations to handle “ARROK” and “CMPOK” flags</li>
+<li>Update HAL_LPTIM_XXX_Start/HAL_LPTIM_XXX_Stop and HAL_LPTIM_XXX_Start_IT/HAL_LPTIM_XXX_Stop_IT implementations to handle ARROK and CMPOK flags</li>
 </ul></li>
 <li>stm32h7xx_hal_lptim.h:
 <ul>
@@ -1926,7 +1926,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>stm32h7xx_hal_mmc.h:
 <ul>
 <li>Comments clean-up and updates of the APIs signatures</li>
-<li>Add prototypes for “HAL_MMC_ConfigSpeedBusOperation” API allowing to configure the Bus speed mode in
+<li>Add prototypes for HAL_MMC_ConfigSpeedBusOperation API allowing to configure the Bus speed mode in
 <ul>
 <li>Auto mode: SDMMC_SPEED_MODE_AUTO (maximum supported by the detected MMC memory)</li>
 <li>Default speed: SDMMC_SPEED_MODE_DEFAULT<br />
@@ -1937,47 +1937,47 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li>stm32h7xx_hal_mmc.c:
 <ul>
-<li>Update of the “How to use this driver” documentation section</li>
-<li>Update “HAL_MMC_ReadBlocks” and “HAL_MMC_WriteBlocks” implementations to avoid overflow during data reading/writing into/from user buffer</li>
-<li>Update “HAL_MMC_IRQHandler” implementation to consider the interrupts and flag when required(context corresponds to the given flag/interrupt)</li>
-<li>Add “HAL_MMC_ConfigSpeedBusOperation” API allowing to configure the Bus speed mode</li>
+<li>Update of the How to use this driver documentation section</li>
+<li>Update HAL_MMC_ReadBlocks and HAL_MMC_WriteBlocks implementations to avoid overflow during data reading/writing into/from user buffer</li>
+<li>Update HAL_MMC_IRQHandler implementation to consider the interrupts and flag when required(context corresponds to the given flag/interrupt)</li>
+<li>Add HAL_MMC_ConfigSpeedBusOperation API allowing to configure the Bus speed mode</li>
 </ul></li>
 </ul></li>
 <li><p><strong>HAL SD</strong>:</p>
 <ul>
 <li>Updates to handle 2 SD instances with different settings regarding the transceiver presence as follow:
 <ul>
-<li>If the define “USE_SD_TRANSCEIVER” is set to 1 then user can select different transceiver settings through the parameter “TranceiverPresent” of the Init structure (SDMMC_TRANSCEIVER_PRESENT/SDMMC_TRANSCEIVER_NOT_PRESENT)</li>
-<li>If “USE_SD_TRANSCEIVER” is set to 1 and the parameter “TranceiverPresent” of the Init structure is not set (it takes the numerical value 0 which corresponds to SDMMC_TRANSCEIVER_UNKNOWN) then “TranceiverPresent” is forced to SDMMC_TRANSCEIVER_PRESENT in the “HAL_SD_Init” API:
+<li>If the define USE_SD_TRANSCEIVER is set to 1 then user can select different transceiver settings through the parameter TranceiverPresent of the Init structure (SDMMC_TRANSCEIVER_PRESENT/SDMMC_TRANSCEIVER_NOT_PRESENT)</li>
+<li>If USE_SD_TRANSCEIVER is set to 1 and the parameter TranceiverPresent of the Init structure is not set (it takes the numerical value 0 which corresponds to SDMMC_TRANSCEIVER_UNKNOWN) then TranceiverPresent is forced to SDMMC_TRANSCEIVER_PRESENT in the HAL_SD_Init API:
 <ul>
-<li>This allows legacy user code that sets “USE_SD_TRANSCEIVER” to 1 and doesn’t fill the parameter “TranceiverPresent” to continue working as the previous HAL SD version (using a transceiver)</li>
+<li>This allows legacy user code that sets USE_SD_TRANSCEIVER to 1 and doesnt fill the parameter TranceiverPresent to continue working as the previous HAL SD version (using a transceiver)</li>
 </ul></li>
-<li>If the define “USE_SD_TRANSCEIVER” is set to 0 then the parameter “TranceiverPresent” is not available and the HAL SD driver assumes no transceivers for both SD instances
+<li>If the define USE_SD_TRANSCEIVER is set to 0 then the parameter TranceiverPresent is not available and the HAL SD driver assumes no transceivers for both SD instances
 <ul>
-<li>This allows also legacy user code that sets “USE_SD_TRANSCEIVER” to 0 to continue working as the previous HAL SD version</li>
+<li>This allows also legacy user code that sets USE_SD_TRANSCEIVER to 0 to continue working as the previous HAL SD version</li>
 </ul></li>
 </ul></li>
 <li>stm32h7xx_hal_sd.h:
 <ul>
-<li>Rename “HAL_SD_CardStateType<strong>d</strong>ef” to “HAL_SD_CardStateType<strong>D</strong>ef” as per the STM32Cube coding and naming rules<br />
+<li>Rename HAL_SD_CardStateType<strong>d</strong>ef to HAL_SD_CardStateType<strong>D</strong>ef as per the STM32Cube coding and naming rules<br />
 </li>
-<li>Rename “HAL_SD_CardCSDType<strong>d</strong>ef” to “HAL_SD_CardCSDType<strong>D</strong>ef” as per the STM32Cube coding and naming rules</li>
-<li>Rename “HAL_SD_CardCIDType<strong>d</strong>ef” to “HAL_SD_CardCIDType<strong>D</strong>ef” as per the STM32Cube coding and naming rules</li>
-<li>Rename “HAL_SD_CardStatusType<strong>d</strong>ef” to “HAL_SD_CardStatusType<strong>D</strong>ef” as per the STM32Cube coding and naming rules</li>
+<li>Rename HAL_SD_CardCSDType<strong>d</strong>ef to HAL_SD_CardCSDType<strong>D</strong>ef as per the STM32Cube coding and naming rules</li>
+<li>Rename HAL_SD_CardCIDType<strong>d</strong>ef to HAL_SD_CardCIDType<strong>D</strong>ef as per the STM32Cube coding and naming rules</li>
+<li>Rename HAL_SD_CardStatusType<strong>d</strong>ef to HAL_SD_CardStatusType<strong>D</strong>ef as per the STM32Cube coding and naming rules</li>
 <li><strong>Notes: backward compatibility ensured through the stm32_hal_legacy.h file</strong></li>
 </ul></li>
 <li>stm32h7xx_hal_sd.c:
 <ul>
-<li>Update “HAL_SD_InitCard” implementation to add 74 SD card clock cycles delay required for power up before starting the SD initialization</li>
-<li>Update “HAL_SD_ReadBlocks” and “HAL_SD_WriteBlocks” implementations to avoid overflow during data reading/writing into/from user buffer</li>
-<li>Update “HAL_SD_IRQHandler” implementation to consider the interrupts and flag when required(context corresponds to the given flag/interrupt)</li>
-<li>Updates following renaming of “HAL_SD_CardStateType<strong>D</strong>ef”, “HAL_SD_CardCSDType<strong>D</strong>ef”, “HAL_SD_CardCIDType<strong>D</strong>ef”, and “HAL_SD_CardStatusType<strong>D</strong>ef”</li>
-<li>Update “HAL_SD_ConfigSpeedBusOperation” implementation to handle “SDMMC_SPEED_MODE_AUTO” and “SDMMC_SPEED_MODE_HIGH” SD card speed modes in case of no transceiver present</li>
+<li>Update HAL_SD_InitCard implementation to add 74 SD card clock cycles delay required for power up before starting the SD initialization</li>
+<li>Update HAL_SD_ReadBlocks and HAL_SD_WriteBlocks implementations to avoid overflow during data reading/writing into/from user buffer</li>
+<li>Update HAL_SD_IRQHandler implementation to consider the interrupts and flag when required(context corresponds to the given flag/interrupt)</li>
+<li>Updates following renaming of HAL_SD_CardStateType<strong>D</strong>ef, HAL_SD_CardCSDType<strong>D</strong>ef, HAL_SD_CardCIDType<strong>D</strong>ef, and HAL_SD_CardStatusType<strong>D</strong>ef</li>
+<li>Update HAL_SD_ConfigSpeedBusOperation implementation to handle SDMMC_SPEED_MODE_AUTO and SDMMC_SPEED_MODE_HIGH SD card speed modes in case of no transceiver present</li>
 </ul></li>
 </ul></li>
 <li><strong>LL SDMMC</strong>:
 <ul>
-<li>Update “SDMMC_InitTypeDef” structure to add “TranceiverPresent” field in case of the define “USE_SD_TRANSCEIVER” is not zero:
+<li>Update SDMMC_InitTypeDef structure to add TranceiverPresent field in case of the define USE_SD_TRANSCEIVER is not zero:
 <ul>
 <li>This parameter allows to handle 2 SD instances with different settings regarding the transceiver presence as described above</li>
 </ul></li>
@@ -1986,15 +1986,15 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>stm32h7xx_ll_rcc.h:
 <ul>
-<li>Add suffix “LL_RCC” to private defines “REG_SHIFT”, “POS_SHIFT”, “CONFIG_SHIFT” and “MASK_SHIFT” according to the STM32Cube coding rules and to avoid clash with other modules defines if any</li>
+<li>Add suffix LL_RCC to private defines REG_SHIFT, POS_SHIFT, CONFIG_SHIFT and MASK_SHIFT according to the STM32Cube coding rules and to avoid clash with other modules defines if any</li>
 </ul></li>
 <li>stm32h7xx_hal_rcc.c:
 <ul>
-<li>Update “HAL_RCC_DeInit” API implementation to “uwTickPrio” variable when calling “HAL_InitTick” instead of the define “TICK_INT_PRIORITY” . The variable “uwTickPrio” maintains the last user Tick priority configuration where the “TICK_INT_PRIORITY” define is the initial Tick priority applied during the “HAL_Init”</li>
+<li>Update HAL_RCC_DeInit API implementation to uwTickPrio variable when calling HAL_InitTick instead of the define TICK_INT_PRIORITY . The variable uwTickPrio maintains the last user Tick priority configuration where the TICK_INT_PRIORITY define is the initial Tick priority applied during the HAL_Init</li>
 </ul></li>
 <li>stm32h7xx_hal_rcc_ex.c:
 <ul>
-<li>Update “HAL_RCCEx_GetPeriphCLKFreq” API implementation to add support of the SDMMC peripheral clock frequency calculation</li>
+<li>Update HAL_RCCEx_GetPeriphCLKFreq API implementation to add support of the SDMMC peripheral clock frequency calculation</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL TIM</strong>:
@@ -2005,17 +2005,17 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li>stm32h7xx_hal_tim_ex.h:
 <ul>
-<li>Rename the timer remapping “TIM_TIM1_ETR_ADC1_AWD1” to “TIM_TIM1_ETR_ADC1_AWD3” defines respectively to “TIM_TIM1_ETR_ADC2_AWD1” to TIM_TIM1_ETR_ADC2_AWD3 according to the reference manual (<strong>compatibility break</strong>)<br />
+<li>Rename the timer remapping TIM_TIM1_ETR_ADC1_AWD1 to TIM_TIM1_ETR_ADC1_AWD3 defines respectively to TIM_TIM1_ETR_ADC2_AWD1 to TIM_TIM1_ETR_ADC2_AWD3 according to the reference manual (<strong>compatibility break</strong>)<br />
 </li>
-<li>Rename the timer remapping “TIM_TIM8_ETR_ADC1_AWD1” to “TIM_TIM8_ETR_ADC1_AWD3” defines respectively to “TIM_TIM8_ETR_ADC2_AWD1” to “TIM_TIM8_ETR_ADC2_AWD3” according to the reference manual (<strong>compatibility break</strong>)</li>
+<li>Rename the timer remapping TIM_TIM8_ETR_ADC1_AWD1 to TIM_TIM8_ETR_ADC1_AWD3 defines respectively to TIM_TIM8_ETR_ADC2_AWD1 to TIM_TIM8_ETR_ADC2_AWD3 according to the reference manual (<strong>compatibility break</strong>)</li>
 </ul></li>
 <li>stm32h7xx_hal_tim.c:
 <ul>
-<li>Update “HAL_TIM_OnePulse_ConfigChannel” description to add details about usage of "__HAL_TIM_ENABLE_OCxFAST" to output a waveform with a minimum delay</li>
+<li>Update HAL_TIM_OnePulse_ConfigChannel description to add details about usage of "__HAL_TIM_ENABLE_OCxFAST" to output a waveform with a minimum delay</li>
 </ul></li>
 <li>stm32h7xx_hal_tim_ex.c:
 <ul>
-<li>Update “HAL_TIMEx_ConfigBreakDeadTime” description to add details about interrupts enabling and generation</li>
+<li>Update HAL_TIMEx_ConfigBreakDeadTime description to add details about interrupts enabling and generation</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL UART</strong>:
@@ -2023,50 +2023,50 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>Update to add UART Receiver timeout management (RTOF)</li>
 <li>stm32h7xx_hal_uart.h:
 <ul>
-<li>Add definition of error code “HAL_UART_ERROR_RTO”</li>
-<li>Add definition of “UART_FLAG_RTOF” flag</li>
-<li>Add definition of “UART_IT_RTO” interrupt</li>
-<li>Add definition of “UART_CLEAR_RTOF” clear flag</li>
-<li>Add prototypes of APIs “HAL_UART_ReceiverTimeout_Config”, “HAL_UART_EnableReceiverTimeout” and “HAL_UART_DisableReceiverTimeout”</li>
+<li>Add definition of error code HAL_UART_ERROR_RTO</li>
+<li>Add definition of UART_FLAG_RTOF flag</li>
+<li>Add definition of UART_IT_RTO interrupt</li>
+<li>Add definition of UART_CLEAR_RTOF clear flag</li>
+<li>Add prototypes of APIs HAL_UART_ReceiverTimeout_Config, HAL_UART_EnableReceiverTimeout and HAL_UART_DisableReceiverTimeout</li>
 </ul></li>
 <li>stm32h7xx_hal_uart.c:
 <ul>
-<li>Update description of “HAL_UART_Transmit_XXX”, “HAL_UART_Receive_XXX” APIs with more details about the data size management</li>
-<li>Update “HAL_UART_IRQHandler” to support RTOF flag</li>
-<li>Add implementation of “HAL_UART_ReceiverTimeout_Config”, “HAL_UART_EnableReceiverTimeout” and “HAL_UART_DisableReceiverTimeout” APIs</li>
+<li>Update description of HAL_UART_Transmit_XXX, HAL_UART_Receive_XXX APIs with more details about the data size management</li>
+<li>Update HAL_UART_IRQHandler to support RTOF flag</li>
+<li>Add implementation of HAL_UART_ReceiverTimeout_Config, HAL_UART_EnableReceiverTimeout and HAL_UART_DisableReceiverTimeout APIs</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL USB</strong>:
 <ul>
 <li>stm32h7xx_hal_hcd.c
 <ul>
-<li>Update “HAL_HCD_HC_SubmitRequest” to avoid enabling do_ping during host setup</li>
-<li>Update “HCD_Port_IRQHandler” implementation to fix fast host plug/inplug issue:
+<li>Update HAL_HCD_HC_SubmitRequest to avoid enabling do_ping during host setup</li>
+<li>Update HCD_Port_IRQHandler implementation to fix fast host plug/inplug issue:
 <ul>
 <li>This update is to be used with rework done on the USB MW host process to fix process hangs during enumeration phase. The USB MW rework is part of the host USB library V3.3.3</li>
 </ul></li>
 </ul></li>
 <li>stm32h7xx_hal_pcd.c
 <ul>
-<li>Update “HAL_PCD_IRQHandler” to remove useless initialization of epnum variable in HAL_PCD_IRQHandler() for OTG instance</li>
+<li>Update HAL_PCD_IRQHandler to remove useless initialization of epnum variable in HAL_PCD_IRQHandler() for OTG instance</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL/LL USART</strong>:
 <ul>
 <li>stm32h7xx_hal_usart.c:
 <ul>
-<li>Update description of “HAL_USART_Transmit_XXX”, “HAL_USART_Receive_XXX” APIs with more details about the data size management</li>
+<li>Update description of HAL_USART_Transmit_XXX, HAL_USART_Receive_XXX APIs with more details about the data size management</li>
 </ul></li>
 <li>stm32h7xx_ll_usart.h:
 <ul>
-<li>Update “LL_USART_SetBaudRate” implementation to avoid overflow in “USART_PRESCALER_TAB” table</li>
+<li>Update LL_USART_SetBaudRate implementation to avoid overflow in USART_PRESCALER_TAB table</li>
 </ul></li>
 </ul></li>
 <li><strong>LL SYSTEM</strong>:
 <ul>
 <li>stm32h7xx_ll_system.h:
 <ul>
-<li>Add APIs “LL_ART_Enable”, “LL_ART_Disable”, “LL_ART_IsEnabled” and “LL_ART_SetBaseAddress” allowing to enable/disable and configure the Cortex-M4 “ART” instruction cache</li>
+<li>Add APIs LL_ART_Enable, LL_ART_Disable, LL_ART_IsEnabled and LL_ART_SetBaseAddress allowing to enable/disable and configure the Cortex-M4 ART instruction cache</li>
 </ul></li>
 </ul></li>
 </ul>
@@ -2078,13 +2078,13 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li><strong>HAL TIM</strong>:
 <ul>
-<li>Rename the timer remapping “TIM_TIM1_ETR_ADC1_AWD1” to “TIM_TIM1_ETR_ADC1_AWD3” defines respectively to “TIM_TIM1_ETR_ADC2_AWD1” to TIM_TIM1_ETR_ADC2_AWD3 according to the reference manual<br />
+<li>Rename the timer remapping TIM_TIM1_ETR_ADC1_AWD1 to TIM_TIM1_ETR_ADC1_AWD3 defines respectively to TIM_TIM1_ETR_ADC2_AWD1 to TIM_TIM1_ETR_ADC2_AWD3 according to the reference manual<br />
 </li>
-<li>Rename the timer remapping “TIM_TIM8_ETR_ADC1_AWD1” to “TIM_TIM8_ETR_ADC1_AWD3” defines respectively to “TIM_TIM8_ETR_ADC2_AWD1” to “TIM_TIM8_ETR_ADC2_AWD3” according to the reference manual</li>
+<li>Rename the timer remapping TIM_TIM8_ETR_ADC1_AWD1 to TIM_TIM8_ETR_ADC1_AWD3 defines respectively to TIM_TIM8_ETR_ADC2_AWD1 to TIM_TIM8_ETR_ADC2_AWD3 according to the reference manual</li>
 </ul></li>
 <li><strong>LL HRTIM</strong>:
 <ul>
-<li>Replace “LL_HRTIM_OUTPUTSET_NONE” to LL_HRTIM_OUTPUTSET_UPDATE defines by “LL_HRTIM_CROSSBAR_NONE” to “LL_HRTIM_CROSSBAR_UPDATE”</li>
+<li>Replace LL_HRTIM_OUTPUTSET_NONE to LL_HRTIM_OUTPUTSET_UPDATE defines by LL_HRTIM_CROSSBAR_NONE to LL_HRTIM_CROSSBAR_UPDATE</li>
 </ul></li>
 </ul>
 </div>
@@ -2100,7 +2100,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>Update HAL/LL drivers to be <strong>MISRA-C 2012</strong> compliant</li>
 <li>Add <strong>DUAL CORE</strong> support/APIs for system peripherals HAL and LL drivers(COMP, CORTEX, ETH, EXTI, FLASH, GPIO, HSEM, MDIOS, PWR, RCC, RTC)
 <ul>
-<li><strong>DUAL CORE</strong> features are delimited by the define <strong>“DUAL_CORE”</strong>, this define is automatically available when using a <strong>DUAL CORE</strong> device through the stm32h7XYxx CMSIS device include files</li>
+<li><strong>DUAL CORE</strong> features are delimited by the define <strong>DUAL_CORE</strong>, this define is automatically available when using a <strong>DUAL CORE</strong> device through the stm32h7XYxx CMSIS device include files</li>
 </ul></li>
 <li>Update HAL/LL PWR driver to support Step Down Convector regulator (SMPS) available on <strong>DUAL CORE</strong> lines</li>
 <li><strong>HAL</strong>: generic
@@ -2148,12 +2148,12 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>Add __HAL_COMP_COMP2_EXTID2_ENABLE_IT/EVENT macros to enable an COMP2 EXTI IT/Event for Cortex-M4</li>
 <li>Add __HAL_COMP_COMP2_EXTID2_DISABLE_IT/EVENT macros to disable an COMP2 EXTI IT/Event for Cortex-M4</li>
 <li>Add __HAL_COMP_COMP2_EXTID2_GET_FLAG and __HAL_COMP_COMP2_EXTID2_CLEAR_FLAG macros to get/clear COMP2 EXTI flag for Cortex-M4</li>
-<li>Update HAL_COMP_Init function : don’t enable the EXTI IT and event in case of <strong>DUAL CORE</strong>. User may the use either __HAL_COMP_COMP1_EXTI_ENABLE_IT/EVENT or __HAL_COMP_COMP1_EXTID2_ENABLE_IT/EVENT to enable the IT/event for either Cortex-M7 or Cortex-M4</li>
+<li>Update HAL_COMP_Init function : dont enable the EXTI IT and event in case of <strong>DUAL CORE</strong>. User may the use either __HAL_COMP_COMP1_EXTI_ENABLE_IT/EVENT or __HAL_COMP_COMP1_EXTID2_ENABLE_IT/EVENT to enable the IT/event for either Cortex-M7 or Cortex-M4</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL CORTEX</strong>:
 <ul>
-<li>Update “CORTEX MPU Region Number” define for <strong>DUAL CORE</strong> lines:
+<li>Update CORTEX MPU Region Number define for <strong>DUAL CORE</strong> lines:
 <ul>
 <li>Cortex-M4: 8 MPU regions available</li>
 <li>Cortex-M7 (or single core): 16 MPU regions available</li>
@@ -2383,7 +2383,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li>stm32h7xx_hal_rtc_ex.c:
 <ul>
-<li>Update HAL_RTCEx_SetTimeStamp_IT function : don’t enable the EXTI IT in case of <strong>DUAL CORE</strong>. User may the use either __HAL_RTC_TAMPER_TIMESTAMP_EXTI_ENABLE_IT or __HAL_RTC_ALARM_EXTID2_ENABLE_IT to enable the IT for either Cortex-M7 or Cortex-M4</li>
+<li>Update HAL_RTCEx_SetTimeStamp_IT function : dont enable the EXTI IT in case of <strong>DUAL CORE</strong>. User may the use either __HAL_RTC_TAMPER_TIMESTAMP_EXTI_ENABLE_IT or __HAL_RTC_ALARM_EXTID2_ENABLE_IT to enable the IT for either Cortex-M7 or Cortex-M4</li>
 <li>Update HAL_RTCEx_TamperTimeStampIRQHandler function to support EXTI IT clearing for Cortex-M7 or Cortex-M4</li>
 </ul></li>
 </ul></li>
@@ -2568,7 +2568,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>The STM32H7xx devices provide two instances of the SDMMC peripheral, each instance could be configured with or without an external 1.8V/3.3V transceiver:
 <ul>
-<li>The STM32H7 HAL SD driver doesn’t support Mix configuration: i.e one instance with transceiver and the other one without</li>
+<li>The STM32H7 HAL SD driver doesnt support Mix configuration: i.e one instance with transceiver and the other one without</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL I2S</strong>:
@@ -2587,7 +2587,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>Backward compatibility break introduced since <strong>v1.4.0</strong> versus <strong>v1.3.x</strong> versions:
 <ul>
 <li>Alignment with STM32F7/L4/G0 (for inter STM32 families portability)</li>
-<li>Add new field “ClockPrescaler” to “IRDA_InitTypeDef” structure"</li>
+<li>Add new field ClockPrescaler to IRDA_InitTypeDef structure"</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL SMARTCARD</strong>:
@@ -2595,9 +2595,9 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>Backward compatibility break introduced since <strong>v1.4.0</strong> versus <strong>v1.3.x</strong> versions:
 <ul>
 <li>Alignment with STM32F7/L4/G0 (for inter STM32 families portability)</li>
-<li>Remove fields “FIFOMode”, “TXFIFOThreshold” and “RXFIFOThreshold” from “SMARTCARD_InitTypeDef” structure</li>
-<li>Add new field “ClockPrescaler” to “SMARTCARD_InitTypeDef” structure"</li>
-<li>SMARTCARD RXFIFO and TXFIFO threshold level defines moved to “stm32h7xx_hal_smartcard_ex.h”</li>
+<li>Remove fields FIFOMode, TXFIFOThreshold and RXFIFOThreshold from SMARTCARD_InitTypeDef structure</li>
+<li>Add new field ClockPrescaler to SMARTCARD_InitTypeDef structure"</li>
+<li>SMARTCARD RXFIFO and TXFIFO threshold level defines moved to stm32h7xx_hal_smartcard_ex.h</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL UART</strong>:
@@ -2605,9 +2605,9 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>Backward compatibility break introduced since <strong>v1.4.0</strong> versus <strong>v1.3.x</strong> versions:
 <ul>
 <li>Alignment with STM32F7/L4/G0 (for inter STM32 families portability)</li>
-<li>Field “Prescaler” of structure “UART_InitTypeDef” renamed to ClockPrescaler</li>
-<li>remove fields “FIFOMode”, “TXFIFOThreshold” and “RXFIFOThreshold” from “UART_InitTypeDef” structure</li>
-<li>UART RXFIFO and TXFIFO threshold level defines moved to “stm32h7xx_hal_uart_ex.h”</li>
+<li>Field Prescaler of structure UART_InitTypeDef renamed to ClockPrescaler</li>
+<li>remove fields FIFOMode, TXFIFOThreshold and RXFIFOThreshold from UART_InitTypeDef structure</li>
+<li>UART RXFIFO and TXFIFO threshold level defines moved to stm32h7xx_hal_uart_ex.h</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL USART</strong>:
@@ -2615,11 +2615,11 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>Backward compatibility break introduced since <strong>v1.4.0</strong> versus <strong>v1.3.x</strong> versions:
 <ul>
 <li>Alignment with STM32F7/L4/G0 (for inter STM32 families portability)</li>
-<li>Introduce “stm32h7xx_hal_usart_ex.c” file with new Tx/Rx FIFO management APIs</li>
-<li>Field “Prescaler” of structure “USART_InitTypeDef” renamed to ClockPrescaler</li>
-<li>remove fields “NSS”, “SlaveMode”, “FIFOMode”, “TXFIFOThreshold” and “RXFIFOThreshold” from “USART_InitTypeDef” structure</li>
-<li>USART RXFIFO and TXFIFO threshold level defines moved to “stm32h7xx_hal_usart_ex.h”</li>
-<li>USART Salve Mode defines moved to “stm32h7xx_hal_usart_ex.h”</li>
+<li>Introduce stm32h7xx_hal_usart_ex.c file with new Tx/Rx FIFO management APIs</li>
+<li>Field Prescaler of structure USART_InitTypeDef renamed to ClockPrescaler</li>
+<li>remove fields NSS, SlaveMode, FIFOMode, TXFIFOThreshold and RXFIFOThreshold from USART_InitTypeDef structure</li>
+<li>USART RXFIFO and TXFIFO threshold level defines moved to stm32h7xx_hal_usart_ex.h</li>
+<li>USART Salve Mode defines moved to stm32h7xx_hal_usart_ex.h</li>
 </ul></li>
 </ul></li>
 </ul>
@@ -2640,11 +2640,11 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>Add HAL <strong>RAMECC</strong> driver</li>
 <li><strong>HAL</strong> : stm32h7xx_hal.c and stm32h7xx_hal.h and stm32h7xx_hal_conf_template.h files
 <ul>
-<li>Fix register bit field “SYSCFG_PMCR_EPIS_SEL” naming in function “HAL_SYSCFG_ETHInterfaceSelect” in stm32h7xx_hal.c:
+<li>Fix register bit field SYSCFG_PMCR_EPIS_SEL naming in function HAL_SYSCFG_ETHInterfaceSelect in stm32h7xx_hal.c:
 <ul>
 <li>Alignment with the cmsis device include files</li>
 </ul></li>
-<li>Rename internal private macro “IS_EXTI_CONFIG_LINE” to IS_HAL_EXTI_CONFIG_LINE in stm32h7xx_hal.h: to avoid conflict with HAL EXTI driver</li>
+<li>Rename internal private macro IS_EXTI_CONFIG_LINE to IS_HAL_EXTI_CONFIG_LINE in stm32h7xx_hal.h: to avoid conflict with HAL EXTI driver</li>
 <li>Update stm32h7xx_hal_conf_template.h to add HAL EXTI and HAL RAMECC</li>
 <li>Update stm32h7xx_hal_conf_template.h to to put the include of the MDMA HAL header file before the include of the JPEG and QSPI HAL header files (as JPEG and QSPI HAL drivers are using the MDMA)</li>
 <li>File stm32h7xx_hal.c, update HAL_SetFMCMemorySwappingConfig and HAL_GetFMCMemorySwappingConfig to align with Reference Manual regarding registers and bit definition naming</li>
@@ -2659,9 +2659,9 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li><strong>HAL_CRYP</strong>:
 <ul>
-<li>Improve error detection in function “CRYP_GCMCCM_SetPayloadPhase_IT”</li>
-<li>Improve padding management in function “CRYP_GCMCCM_SetPayloadPhase_IT”</li>
-<li>Fix data counter issue in function “CRYP_AESCCM_Process”</li>
+<li>Improve error detection in function CRYP_GCMCCM_SetPayloadPhase_IT</li>
+<li>Improve padding management in function CRYP_GCMCCM_SetPayloadPhase_IT</li>
+<li>Fix data counter issue in function CRYP_AESCCM_Process</li>
 </ul></li>
 <li><strong>HAL DFSDM</strong>:
 <ul>
@@ -2672,8 +2672,8 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>Add double buffering feature support for BDMA</li>
 <li>Fix DMA_FLAG_FEIF0_4 and DMA_FLAG_DMEIF0_4 numerical values (no impact on the functional behavior)</li>
 <li>Add a Clean/Reset of callbacks in HAL_DMA_DeInit()</li>
-<li>Remove FIFO error enabling in “HAL_DMA_Start_IT”. when FIFO error monitoring is requested in IT model, the macro __HAL_DMA_ENABLE_IT can be used to enable the FIFO error IT at the user Msp function</li>
-<li>Remove check on busy state within “HAL_DMA_DeInit” function : to allow forcing a de-initialization even in busy state</li>
+<li>Remove FIFO error enabling in HAL_DMA_Start_IT. when FIFO error monitoring is requested in IT model, the macro __HAL_DMA_ENABLE_IT can be used to enable the FIFO error IT at the user Msp function</li>
+<li>Remove check on busy state within HAL_DMA_DeInit function : to allow forcing a de-initialization even in busy state</li>
 </ul></li>
 <li><strong>HAL ETH</strong>:
 <ul>
@@ -2682,20 +2682,20 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li><strong>HAL FDCAN</strong>:
 <ul>
 <li>Fix counter increment in API HAL_FDCAN_ConfigFilter</li>
-<li>Fix comment description of parameter “RxFDFflag” in “FDCAN_ProtocolStatusTypeDef” structure</li>
+<li>Fix comment description of parameter RxFDFflag in FDCAN_ProtocolStatusTypeDef structure</li>
 <li>Fix comment description of defines FDCAN_FRAME_FD_NO_BRS and FDCAN_FRAME_FD_BRS</li>
-<li>Add a reset of FDCAN operation mode in the “HAL_FDCAN_Init” function</li>
+<li>Add a reset of FDCAN operation mode in the HAL_FDCAN_Init function</li>
 <li>Add Error Status callback support:
 <ul>
-<li>Add parameter “ErrorStatusCallback” in FDCAN_HandleTypeDef structure in stm32h7xx_hal_fdcan.h</li>
-<li>Add typedef “pFDCAN_ErrorStatusCallbackTypeDef” in stm32h7xx_hal_fdcan.h</li>
-<li>Add APIs “HAL_FDCAN_RegisterErrorStatusCallback” and “HAL_FDCAN_UnRegisterErrorStatusCallback”</li>
-<li>Add weak callback “HAL_FDCAN_ErrorStatusCallback”</li>
-<li>Update “HAL_FDCAN_IRQHandler” function to call the ErrorStatusCallback in case of an error status interrupt</li>
+<li>Add parameter ErrorStatusCallback in FDCAN_HandleTypeDef structure in stm32h7xx_hal_fdcan.h</li>
+<li>Add typedef pFDCAN_ErrorStatusCallbackTypeDef in stm32h7xx_hal_fdcan.h</li>
+<li>Add APIs HAL_FDCAN_RegisterErrorStatusCallback and HAL_FDCAN_UnRegisterErrorStatusCallback</li>
+<li>Add weak callback HAL_FDCAN_ErrorStatusCallback</li>
+<li>Update HAL_FDCAN_IRQHandler function to call the ErrorStatusCallback in case of an error status interrupt</li>
 </ul></li>
-<li>Improve error management by adding error codes “HAL_FDCAN_ERROR_FIFO_EMPTY” and “HAL_FDCAN_ERROR_FIFO_FULL” used in case of FIFO full in “HAL_FDCAN_AddMessageToTxFifoQ” and FIFO empty in “HAL_FDCAN_GetRxMessage” functions</li>
-<li>Fix implementation issue in “HAL_FDCAN_ResetTimeoutCounter” function</li>
-<li>Improve behavior of “HAL_FDCAN_GetRxMessage” and “HAL_FDCAN_GetTxEvent” functions : operation not allowed in HAL_FDCAN_STATE_READY state</li>
+<li>Improve error management by adding error codes HAL_FDCAN_ERROR_FIFO_EMPTY and HAL_FDCAN_ERROR_FIFO_FULL used in case of FIFO full in HAL_FDCAN_AddMessageToTxFifoQ and FIFO empty in HAL_FDCAN_GetRxMessage functions</li>
+<li>Fix implementation issue in HAL_FDCAN_ResetTimeoutCounter function</li>
+<li>Improve behavior of HAL_FDCAN_GetRxMessage and HAL_FDCAN_GetTxEvent functions : operation not allowed in HAL_FDCAN_STATE_READY state</li>
 </ul></li>
 <li><strong>HAL FLASH</strong>:
 <ul>
@@ -2703,29 +2703,29 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li><strong>HAL GPIO</strong>:
 <ul>
-<li>Add assert check of parameter GPIO_Pin in function “HAL_GPIO_DeInit”</li>
-<li>Add assert check against alternate function availability for parameter “GPIOx” in function “HAL_GPIO_Init”</li>
-<li>Improve “HAL_GPIO_TogglePin” function against reentrancy</li>
-<li>Move GPIO clearing to default values in “HAL_GPIO_DeInit” function after EXTI clearing to avoid unexpected pending interrupts issues</li>
+<li>Add assert check of parameter GPIO_Pin in function HAL_GPIO_DeInit</li>
+<li>Add assert check against alternate function availability for parameter GPIOx in function HAL_GPIO_Init</li>
+<li>Improve HAL_GPIO_TogglePin function against reentrancy</li>
+<li>Move GPIO clearing to default values in HAL_GPIO_DeInit function after EXTI clearing to avoid unexpected pending interrupts issues</li>
 </ul></li>
 <li><strong>HAL HRTIM</strong>:
 <ul>
-<li>Fix “HAL_HRTIM_FaultConfig” function regarding FLTINR1 and FLTINR2 registers settings</li>
-<li>Update “HAL_HRTIM_SimpleBaseStop_DMA”, “HAL_HRTIM_SimpleOCStop_DMA” and “HAL_HRTIM_SimplePWMStop_DMA” functions to add a check for the DMA handle against NULL pointer</li>
-<li>Fix HAL_HRTIM_SimpleOCChannelConfig,, “HAL_HRTIM_SimpleCaptureChannelConfig”, HAL_HRTIM_SimplePWMChannelConfig and “HAL_HRTIM_SimpleOnePulseChannelConfig” functions : considering parameters “pSimpleOCChannelCfg-&gt;Polarity” , “pSimpleOCChannelCfg-&gt;IdleLevel” and “pSimpleCaptureChannelCfg-&gt;EventSensitivity”</li>
+<li>Fix HAL_HRTIM_FaultConfig function regarding FLTINR1 and FLTINR2 registers settings</li>
+<li>Update HAL_HRTIM_SimpleBaseStop_DMA, HAL_HRTIM_SimpleOCStop_DMA and HAL_HRTIM_SimplePWMStop_DMA functions to add a check for the DMA handle against NULL pointer</li>
+<li>Fix HAL_HRTIM_SimpleOCChannelConfig,, HAL_HRTIM_SimpleCaptureChannelConfig, HAL_HRTIM_SimplePWMChannelConfig and HAL_HRTIM_SimpleOnePulseChannelConfig functions : considering parameters pSimpleOCChannelCfg-&gt;Polarity , pSimpleOCChannelCfg-&gt;IdleLevel and pSimpleCaptureChannelCfg-&gt;EventSensitivity</li>
 </ul></li>
 <li><strong>HAL IRDA (compatibility break)</strong>: alignment with STM32L4 (for inter STM32 families portability)
 <ul>
-<li>Add new field “ClockPrescaler” to “IRDA_InitTypeDef” structure"</li>
+<li>Add new field ClockPrescaler to IRDA_InitTypeDef structure"</li>
 </ul></li>
 <li><strong>HAL I2C</strong>:
 <ul>
 <li>ErrorCode is set to HAL_I2C_ERROR_INVALID_PARAM in all APIs when I2C handle is NULL</li>
 <li>Add and I2C restart condition for each call of HAL_I2C_Master_Sequential_xxxx_IT</li>
-<li>Rename APIs “HAL_I2C_Master_Sequential_Transmit_IT” and “HAL_I2C_Master_Seq_Receive_IT” respectively to “HAL_I2C_Master_Seq_Transmit_IT” and “HAL_I2C_Master_Seq_Receive_IT” for MISRA-C 2012 compliance</li>
-<li>Rename APIs “HAL_I2C_Slave_Sequential_Transmit_IT” and “HAL_I2C_Slave_Sequential_Receive_IT” respectively to “HAL_I2C_Slave_Seq_Transmit_IT” and “HAL_I2C_Slave_Seq_Receive_IT” for MISRA-C 2012 compliance</li>
-<li>Rename APIs “HAL_I2C_Master_Sequential_Transmit_DMA” and “HAL_I2C_Master_Seq_Receive_DMA” respectively to “HAL_I2C_Master_Seq_Transmit_DMA” and “HAL_I2C_Master_Seq_Receive_DMA” for MISRA-C 2012 compliance</li>
-<li>Rename APIs “HAL_I2C_Slave_Sequential_Transmit_DMA” and “HAL_I2C_Slave_Sequential_Receive_DMA” respectively to “HAL_I2C_Slave_Seq_Transmit_DMA” and “HAL_I2C_Slave_Seq_Receive_DMA” for MISRA-C 2012 compliance</li>
+<li>Rename APIs HAL_I2C_Master_Sequential_Transmit_IT and HAL_I2C_Master_Seq_Receive_IT respectively to HAL_I2C_Master_Seq_Transmit_IT and HAL_I2C_Master_Seq_Receive_IT for MISRA-C 2012 compliance</li>
+<li>Rename APIs HAL_I2C_Slave_Sequential_Transmit_IT and HAL_I2C_Slave_Sequential_Receive_IT respectively to HAL_I2C_Slave_Seq_Transmit_IT and HAL_I2C_Slave_Seq_Receive_IT for MISRA-C 2012 compliance</li>
+<li>Rename APIs HAL_I2C_Master_Sequential_Transmit_DMA and HAL_I2C_Master_Seq_Receive_DMA respectively to HAL_I2C_Master_Seq_Transmit_DMA and HAL_I2C_Master_Seq_Receive_DMA for MISRA-C 2012 compliance</li>
+<li>Rename APIs HAL_I2C_Slave_Sequential_Transmit_DMA and HAL_I2C_Slave_Sequential_Receive_DMA respectively to HAL_I2C_Slave_Seq_Transmit_DMA and HAL_I2C_Slave_Seq_Receive_DMA for MISRA-C 2012 compliance</li>
 </ul></li>
 <li><strong>HAL I2S</strong>:
 <ul>
@@ -2752,24 +2752,24 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li><strong>HAL LPTIM</strong>:
 <ul>
-<li>Update “HAL_LPTIM_Init” function to add a clock polarity reset</li>
+<li>Update HAL_LPTIM_Init function to add a clock polarity reset</li>
 <li>Update "__HAL_LPTIM_DISABLE" macro implementation</li>
-<li>Replace usage of global variables “tmpclksource”, “tmpIER”, “tmpCFGR”, “tmpCMP”, “tmpARR” and “tmpCFGR2” by local ones</li>
+<li>Replace usage of global variables tmpclksource, tmpIER, tmpCFGR, tmpCMP, tmpARR and tmpCFGR2 by local ones</li>
 </ul></li>
 <li><strong>HAL MDMA</strong>:
 <ul>
-<li>Remove check on busy state within “HAL_MDMA_DeInit” function : to allow forcing a de-initialization even in busy state</li>
+<li>Remove check on busy state within HAL_MDMA_DeInit function : to allow forcing a de-initialization even in busy state</li>
 </ul></li>
 <li><strong>HAL MMC</strong>:
 <ul>
-<li>Rename “BLOCKSIZE” define to “MMC_BLOCKSIZE” to avoid conflict with HAL SD definition</li>
+<li>Rename BLOCKSIZE define to MMC_BLOCKSIZE to avoid conflict with HAL SD definition</li>
 </ul></li>
 <li><strong>HAL PWR</strong>:
 <ul>
-<li>Update “HAL_PWR_DisableWakeUpPin” function to disable the Wakeup for the given wakeup pin only</li>
-<li>Fix “HAL_PWR_EnterSLEEPMode” and “HAL_PWR_EnterSTOPMode” using one single __WFE instruction in case low power mode with wait for event</li>
-<li>Fix “HAL_PWREx_EnterSTOPMode” using one single using one single __WFE instruction in case low power mode with wait for event</li>
-<li>Add API “HAL_PWREx_ClearPendingEvent” to clear pending events if any</li>
+<li>Update HAL_PWR_DisableWakeUpPin function to disable the Wakeup for the given wakeup pin only</li>
+<li>Fix HAL_PWR_EnterSLEEPMode and HAL_PWR_EnterSTOPMode using one single __WFE instruction in case low power mode with wait for event</li>
+<li>Fix HAL_PWREx_EnterSTOPMode using one single using one single __WFE instruction in case low power mode with wait for event</li>
+<li>Add API HAL_PWREx_ClearPendingEvent to clear pending events if any</li>
 </ul></li>
 <li><strong>HAL QSPI</strong>:
 <ul>
@@ -2777,8 +2777,8 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>Note : in the stm32h7xx_hal_conf.h the include of the MDMA HAL header file must be done before the include of the QSPI HAL header file (stm32h7xx_hal_conf_template.h updated accordingly)</li>
 </ul></li>
-<li>Add description of MDMA required settings in the “How to use this driver” section</li>
-<li>Fix the “HAL_QSPI_Transmit_DMA” function:
+<li>Add description of MDMA required settings in the How to use this driver section</li>
+<li>Fix the HAL_QSPI_Transmit_DMA function:
 <ul>
 <li>Add check for MDMA settings : Data size and increment mode
 <ul>
@@ -2786,7 +2786,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li>Enable the QSPI Transfer complete and errors interrupt before starting the MDMA transfer to avoid race condition</li>
 </ul></li>
-<li>Fix the “HAL_QSPI_Receive_DMA” function :
+<li>Fix the HAL_QSPI_Receive_DMA function :
 <ul>
 <li>Add check for MDMA settings : Data size and increment mode
 <ul>
@@ -2796,13 +2796,13 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li><strong>HAL RCC</strong>:
 <ul>
-<li>Add management for “Frac” parameter in PLL2 and PLL3</li>
+<li>Add management for Frac parameter in PLL2 and PLL3</li>
 <li>Add macros __HAL_RCC_MCO1_CONFIG and __HAL_RCC_MCO2_CONFIG</li>
 <li>Rework HAL_RCC_DeInit function to reset RCC registers</li>
 <li>Rework HAL_RCC_ClockConfig function to use the correct divider settings order according to the Reference Manual</li>
 <li>Fix PCLK1 Configuration in HAL_RCC_ClockConfig function : use correct register RCC-&gt;D2CFGR instead of RCC-&gt;D1CFGR.</li>
-<li>Add definitions of “RCC_SYSCLKSOURCE_STATUS_CSI”, “RCC_SYSCLKSOURCE_STATUS_HSI”, “RCC_SYSCLKSOURCE_STATUS_HSE” and “RCC_SYSCLKSOURCE_STATUS_PLLCLK”</li>
-<li>Fix “HAL_RCC_ClockConfig” implementation:
+<li>Add definitions of RCC_SYSCLKSOURCE_STATUS_CSI, RCC_SYSCLKSOURCE_STATUS_HSI, RCC_SYSCLKSOURCE_STATUS_HSE and RCC_SYSCLKSOURCE_STATUS_PLLCLK</li>
+<li>Fix HAL_RCC_ClockConfig implementation:
 <ul>
 <li>Null pointer check</li>
 <li>use "__HAL_FLASH_GET_LATENCY" macro instead of direct register access</li>
@@ -2823,14 +2823,14 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li><strong>HAL SD</strong>:
 <ul>
 <li>Fix and improve High speed and ultra-high speed behavior</li>
-<li>Add APIs “HAL_SD_ConfigSpeedBusOperation” to configure the SD card speed bus mode:
+<li>Add APIs HAL_SD_ConfigSpeedBusOperation to configure the SD card speed bus mode:
 <ul>
 <li>SDMMC_SPEED_MODE_AUTO: Max speed mode supported by the card</li>
 <li>SDMMC_SPEED_MODE_DEFAULT: Default Speed/SDR12 mode</li>
 <li>SDMMC_SPEED_MODE_HIGH: High Speed/SDR25 mode</li>
 <li>SDMMC_SPEED_MODE_ULTRA: Ultra high speed mode</li>
 </ul></li>
-<li>Remove extra function prototype “HAL_SD_SendSDStatus” from stm32h7xx_hal_sd.h</li>
+<li>Remove extra function prototype HAL_SD_SendSDStatus from stm32h7xx_hal_sd.h</li>
 <li>Fix multi-buffering feature implementation</li>
 </ul></li>
 <li><strong>HAL SPI</strong>:
@@ -2838,20 +2838,20 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>Update HAL_SPI_Transmit_DMA : checking hmdtx instead of hdmrx.</li>
 <li>Update to add Reload Feature and Duplex Packet DXP
 <ul>
-<li>Add APIs : “HAL_SPI_Reload_Transmit_IT”, “HAL_SPI_Reload_Receive_IT” and “HAL_SPI_Reload_TransmitReceive_IT”</li>
+<li>Add APIs : HAL_SPI_Reload_Transmit_IT, HAL_SPI_Reload_Receive_IT and HAL_SPI_Reload_TransmitReceive_IT</li>
 </ul></li>
 <li>Align driver with the Reference Manual regarding registers and bit definition naming</li>
 </ul></li>
 <li><strong>HAL SMARTCARD(compatibility break)</strong>: Alignment with STM32L4 (for inter STM32 families portability)
 <ul>
-<li>Remove fields “FIFOMode”, “TXFIFOThreshold” and “RXFIFOThreshold” from “SMARTCARD_InitTypeDef” structure</li>
-<li>Add new field “ClockPrescaler” to “SMARTCARD_InitTypeDef” structure"</li>
-<li>SMARTCARD RXFIFO and TXFIFO threshold level defines moved to “stm32h7xx_hal_smartcard_ex.h”</li>
+<li>Remove fields FIFOMode, TXFIFOThreshold and RXFIFOThreshold from SMARTCARD_InitTypeDef structure</li>
+<li>Add new field ClockPrescaler to SMARTCARD_InitTypeDef structure"</li>
+<li>SMARTCARD RXFIFO and TXFIFO threshold level defines moved to stm32h7xx_hal_smartcard_ex.h</li>
 <li>Introduce new APIs to manage the Tx and Rx FIFO:
 <ul>
 <li>HAL_SMARTCARDEx_EnableFifoMode, HAL_SMARTCARDEx_DisableFifoMode, HAL_SMARTCARDEx_SetTxFifoThreshold and HAL_SMARTCARDEx_SetRxFifoThreshold</li>
-<li>Introduce “HAL_SMARTCARDEx_RxFifoFullCallback” and “HAL_SMARTCARDEx_TxFifoEmptyCallback”</li>
-<li>Fix Linux compilation warning in function “HAL_SMARTCARD_Receive”</li>
+<li>Introduce HAL_SMARTCARDEx_RxFifoFullCallback and HAL_SMARTCARDEx_TxFifoEmptyCallback</li>
+<li>Fix Linux compilation warning in function HAL_SMARTCARD_Receive</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL SRAM, HAL SDRAM , HAL NOR and HAL NAND</strong>:
@@ -2862,26 +2862,26 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li><strong>HAL TIM</strong>:
 <ul>
 <li>Add a call to HAL_DMA_Abort_IT from HAL_TIM_XXX_Stop_DMA</li>
-<li>Add APIs “HAL_TIM_DMABurst_MultiWriteStart” and “HAL_TIM_DMABurst_MultiReadStart”</li>
+<li>Add APIs HAL_TIM_DMABurst_MultiWriteStart and HAL_TIM_DMABurst_MultiReadStart</li>
 </ul></li>
 <li><strong>HAL UART(compatibility break)</strong>: Alignment with STM32L4 (for inter STM32 families portability)
 <ul>
-<li>Field “Prescaler” of structure “UART_InitTypeDef” renamed to ClockPrescaler</li>
-<li>remove fields “FIFOMode”, “TXFIFOThreshold” and “RXFIFOThreshold” from “UART_InitTypeDef” structure</li>
-<li>UART RXFIFO and TXFIFO threshold level defines moved to “stm32h7xx_hal_uart_ex.h”</li>
+<li>Field Prescaler of structure UART_InitTypeDef renamed to ClockPrescaler</li>
+<li>remove fields FIFOMode, TXFIFOThreshold and RXFIFOThreshold from UART_InitTypeDef structure</li>
+<li>UART RXFIFO and TXFIFO threshold level defines moved to stm32h7xx_hal_uart_ex.h</li>
 <li>Introduce new APIs to manage the Tx and Rx FIFO:
 <ul>
 <li>HAL_UARTEx_EnableFifoMode, HAL_UARTEx_DisableFifoMode, HAL_UARTEx_SetTxFifoThreshold and HAL_UARTEx_SetRxFifoThreshold</li>
 </ul></li>
-<li>Introduce “HAL_UARTEx_RxFifoFullCallback” and “HAL_UARTEx_TxFifoEmptyCallback”</li>
+<li>Introduce HAL_UARTEx_RxFifoFullCallback and HAL_UARTEx_TxFifoEmptyCallback</li>
 </ul></li>
 <li><strong>HAL USART(compatibility break)</strong>: Alignment with STM32L4 (for inter STM32 families portability)
 <ul>
-<li>Introduce “stm32h7xx_hal_usart_ex.c” file with new Tx/Rx FIFO management APIs</li>
-<li>Field “Prescaler” of structure “USART_InitTypeDef” renamed to ClockPrescaler</li>
-<li>remove fields “NSS”, “SlaveMode”, “FIFOMode”, “TXFIFOThreshold” and “RXFIFOThreshold” from “USART_InitTypeDef” structure</li>
-<li>USART RXFIFO and TXFIFO threshold level defines moved to “stm32h7xx_hal_usart_ex.h”</li>
-<li>USART Salve Mode defines moved to “stm32h7xx_hal_usart_ex.h”</li>
+<li>Introduce stm32h7xx_hal_usart_ex.c file with new Tx/Rx FIFO management APIs</li>
+<li>Field Prescaler of structure USART_InitTypeDef renamed to ClockPrescaler</li>
+<li>remove fields NSS, SlaveMode, FIFOMode, TXFIFOThreshold and RXFIFOThreshold from USART_InitTypeDef structure</li>
+<li>USART RXFIFO and TXFIFO threshold level defines moved to stm32h7xx_hal_usart_ex.h</li>
+<li>USART Salve Mode defines moved to stm32h7xx_hal_usart_ex.h</li>
 <li>Introduce new APIs to manage the Tx and Rx FIFO:
 <ul>
 <li>HAL_USARTEx_EnableFifoMode, HAL_USARTEx_DisableFifoMode, HAL_USARTEx_SetTxFifoThreshold and HAL_USARTEx_SetRxFifoThreshold</li>
@@ -2914,30 +2914,30 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li><strong>HAL IRDA</strong>:
 <ul>
 <li>Alignment with STM32F7/L4/G0 (for inter STM32 families portability)</li>
-<li>Add new field “ClockPrescaler” to “IRDA_InitTypeDef” structure"</li>
+<li>Add new field ClockPrescaler to IRDA_InitTypeDef structure"</li>
 </ul></li>
 <li><strong>HAL SMARTCARD</strong>:
 <ul>
 <li>Alignment with STM32F7/L4/G0 (for inter STM32 families portability)</li>
-<li>Remove fields “FIFOMode”, “TXFIFOThreshold” and “RXFIFOThreshold” from “SMARTCARD_InitTypeDef” structure</li>
-<li>Add new field “ClockPrescaler” to “SMARTCARD_InitTypeDef” structure"</li>
-<li>SMARTCARD RXFIFO and TXFIFO threshold level defines moved to “stm32h7xx_hal_smartcard_ex.h”</li>
+<li>Remove fields FIFOMode, TXFIFOThreshold and RXFIFOThreshold from SMARTCARD_InitTypeDef structure</li>
+<li>Add new field ClockPrescaler to SMARTCARD_InitTypeDef structure"</li>
+<li>SMARTCARD RXFIFO and TXFIFO threshold level defines moved to stm32h7xx_hal_smartcard_ex.h</li>
 </ul></li>
 <li><strong>HAL UART</strong>:
 <ul>
 <li>Alignment with STM32F7/L4/G0 (for inter STM32 families portability)</li>
-<li>Field “Prescaler” of structure “UART_InitTypeDef” renamed to ClockPrescaler</li>
-<li>remove fields “FIFOMode”, “TXFIFOThreshold” and “RXFIFOThreshold” from “UART_InitTypeDef” structure</li>
-<li>UART RXFIFO and TXFIFO threshold level defines moved to “stm32h7xx_hal_uart_ex.h”</li>
+<li>Field Prescaler of structure UART_InitTypeDef renamed to ClockPrescaler</li>
+<li>remove fields FIFOMode, TXFIFOThreshold and RXFIFOThreshold from UART_InitTypeDef structure</li>
+<li>UART RXFIFO and TXFIFO threshold level defines moved to stm32h7xx_hal_uart_ex.h</li>
 </ul></li>
 <li><strong>HAL USART</strong>:
 <ul>
 <li>Alignment with STM32F7/L4/G0 (for inter STM32 families portability)</li>
-<li>Introduce “stm32h7xx_hal_usart_ex.c” file with new Tx/Rx FIFO management APIs</li>
-<li>Field “Prescaler” of structure “USART_InitTypeDef” renamed to ClockPrescaler</li>
-<li>remove fields “NSS”, “SlaveMode”, “FIFOMode”, “TXFIFOThreshold” and “RXFIFOThreshold” from “USART_InitTypeDef” structure</li>
-<li>USART RXFIFO and TXFIFO threshold level defines moved to “stm32h7xx_hal_usart_ex.h”</li>
-<li>USART Salve Mode defines moved to “stm32h7xx_hal_usart_ex.h”</li>
+<li>Introduce stm32h7xx_hal_usart_ex.c file with new Tx/Rx FIFO management APIs</li>
+<li>Field Prescaler of structure USART_InitTypeDef renamed to ClockPrescaler</li>
+<li>remove fields NSS, SlaveMode, FIFOMode, TXFIFOThreshold and RXFIFOThreshold from USART_InitTypeDef structure</li>
+<li>USART RXFIFO and TXFIFO threshold level defines moved to stm32h7xx_hal_usart_ex.h</li>
+<li>USART Salve Mode defines moved to stm32h7xx_hal_usart_ex.h</li>
 </ul></li>
 </ul>
 </div>

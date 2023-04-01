@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fxmac_options.c
  * Date: 2022-04-06 14:46:52
  * LastEditTime: 2022-04-06 14:46:58
- * Description:  This file is for
+ * Description: This file is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 #include "fxmac_hw.h"
@@ -459,7 +459,7 @@ FError FXmacClearOptions(FXmac *instance_p, u32 options, u32 queue_num)
         }
 
         /* Disable jumbo frames */
-        if (((options & FXMAC_JUMBO_ENABLE_OPTION) != 0x00000000U)) /* 恢复之前buffer 容量 */
+        if (((options & FXMAC_JUMBO_ENABLE_OPTION) != 0x00000000U)) /* buffer  */
         {
 
             instance_p->max_mtu_size = FXMAC_MTU;

@@ -1,15 +1,15 @@
 /*
- * @ : Copyright (c) 2021 Phytium Information Technology, Inc.
- *
- * SPDX-License-Identifier: Apache-2.0.
- *
+*@:Copyright(c)2021PhytiumInformationTechnology,Inc.
+*
+*SPDX-License-Identifier:Apache-2.0.
+*
  * @Date: 2021-04-27 17:55:22
  * @LastEditTime: 2021-04-28 08:39:20
- * @Description:  This files is for
+ * @Description: This files is for
  *
- * @Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * @ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 #ifndef FT_BSP_GPIO_HW_H
@@ -33,24 +33,24 @@ extern "C"
 #define GPIO_GROUPB_OFFSET 0xc
 
 /* offset of register map */
-#define GPIO_SWPORTA_DR 0x00  //A 组端口输出寄存器
-#define GPIO_SWPORTA_DDR 0x04 //A 组端口方向控制寄存器
-#define GPIO_EXT_PORTA 0x08   //A 组端口输入寄存器
+#define GPIO_SWPORTA_DR 0x00  //A 
+#define GPIO_SWPORTA_DDR 0x04 //A 
+#define GPIO_EXT_PORTA 0x08   //A 
 
-#define GPIO_SWPORTB_DR 0x0c  //B 组端口输出寄存器
-#define GPIO_SWPORTB_DDR 0x10 //B 组端口方向控制寄存器
-#define GPIO_EXT_PORTB 0x14   //B 组端口输入寄存器
+#define GPIO_SWPORTB_DR 0x0c  //B 
+#define GPIO_SWPORTB_DDR 0x10 //B 
+#define GPIO_EXT_PORTB 0x14   //B 
 
-#define GPIO_INTEN 0x18         //A 组端口中断使能寄存器
-#define GPIO_INTMASK 0x1c       //A 组端口中断屏蔽寄存器
-#define GPIO_INTTYPE_LEVEL 0x20 //A 组端口中断等级寄存器
-#define GPIO_INT_POLARITY 0x24  //A 组端口中断极性寄存器
-#define GPIO_INTSTATUS 0x28     //A 组端口中断状态寄存器
-#define GPIO_RAW_INTSTATUS 0x2c //A 组端口原始中断状态寄存器
+#define GPIO_INTEN 0x18         //A 
+#define GPIO_INTMASK 0x1c       //A 
+#define GPIO_INTTYPE_LEVEL 0x20 //A 
+#define GPIO_INT_POLARITY 0x24  //A 
+#define GPIO_INTSTATUS 0x28     //A 
+#define GPIO_RAW_INTSTATUS 0x2c //A 
 
-#define GPIO_LS_SYNC 0x30   //配置中断同步寄存器
-#define GPIO_DEBOUNCE 0x34  //防反跳配置寄存器
-#define GPIO_PORTA_EOI 0x38 //A 组端口中断清除寄存器
+#define GPIO_LS_SYNC 0x30   //
+#define GPIO_DEBOUNCE 0x34  //
+#define GPIO_PORTA_EOI 0x38 //A 
 
 /* misc marco */
 #define GPIO_GROUP_A 0

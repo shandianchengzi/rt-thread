@@ -318,11 +318,11 @@ int hal_spi_gpio_cfg_load(user_gpio_set_t *gpio_cfg, int32_t GPIONum, int id)
 }
 
 /*
- * 程序清单：这是一个 SPI 设备使用例程
- * 例程导出了 spi_w25q_sample 命令到控制终端
- * 命令调用格式：spi_w25q_sample spi10
- * 命令解释：命令第二个参数是要使用的SPI设备名称，为空则使用默认的SPI设备
- * 程序功能：通过SPI设备读取 w25q 的 ID 数据
+ *  SPI 
+ *  spi_w25q_sample 
+ * spi_w25q_sample spi10
+ * SPISPI
+ * SPI w25q  ID 
 */
 
 #include <rtthread.h>
@@ -347,7 +347,7 @@ static void spi_sample(int argc, char *argv[])
         cmd[i] = i + 1;
     }
 
-    /* 查找 spi 设备获取设备句柄 */
+    /*  spi  */
     spi_dev = (struct rt_spi_device *)rt_device_find(SPI_DEVICE_NAME);
     if (!spi_dev)
     {
@@ -388,5 +388,5 @@ static void spi_sample(int argc, char *argv[])
         }
     }
 }
-/* 导出到 msh 命令列表中 */
+/*  msh  */
 MSH_CMD_EXPORT(spi_sample, spi w25q sample);

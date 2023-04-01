@@ -77,40 +77,40 @@ extern "C"
  ******************************************************************************/
 /**
  *******************************************************************************
- ** \brief PCNT S1通道极性选择
+ ** \brief PCNT S1
  ** \note
  ******************************************************************************/
 typedef enum en_pcnt_s1sel
 {
-    S1P_Noinvert = 0u, ///<<S1通道极性不取反
-    S1P_Invert   = 1u, ///<<S1通道极性取反
+    S1P_Noinvert = 0u, ///<<S1
+    S1P_Invert   = 1u, ///<<S1
 }en_pcnt_s1sel_t;
 
 /**
  *******************************************************************************
- ** \brief PCNT S0通道极性选择
+ ** \brief PCNT S0
  ** \note
  ******************************************************************************/
 typedef enum en_pcnt_s0sel
 {
-    S0P_Noinvert = 0u, ///<<S0通道极性不取反
-    S0P_Invert   = 1u, ///<<S0通道极性取反
+    S0P_Noinvert = 0u, ///<<S0
+    S0P_Invert   = 1u, ///<<S0
 }en_pcnt_s0sel_t;
 
 /**
  *******************************************************************************
- ** \brief PCNT 计数方向选择
+ ** \brief PCNT 
  ** \note
  ******************************************************************************/
 typedef enum en_pcnt_direcsel
 {
-    Direct_Add   = 0u, ///<<加计数
-    Direct_Sub   = 1u, ///<<减计数
+    Direct_Add   = 0u, ///<<
+    Direct_Sub   = 1u, ///<<
 }en_pcnt_direcsel_t;
 
 /**
  *******************************************************************************
- ** \brief PCNT 计数时钟选择
+ ** \brief PCNT 
  ** \note
  ******************************************************************************/
 typedef enum en_pcnt_clksel
@@ -122,54 +122,54 @@ typedef enum en_pcnt_clksel
 
 /**
  *******************************************************************************
- ** \brief PCNT 脉冲计数模式选择
+ ** \brief PCNT 
  ** \note
  ******************************************************************************/
 typedef enum en_pcnt_modesel
 {
-    Single_Mode   = 1u, ///<<单通道脉冲计数模式
-    Special_Mode  = 2u, ///<<双通道非正交脉冲计数模式
-    Double_Mode   = 3u, ///<<双通道正交脉冲计数模式  
+    Single_Mode   = 1u, ///<<
+    Special_Mode  = 2u, ///<<
+    Double_Mode   = 3u, ///<<  
 }en_pcnt_modesel_t;
 
 /**
  ******************************************************************************
- ** \brief PCNT 状态
+ ** \brief PCNT 
  *****************************************************************************/
 typedef enum en_pcnt_status
 {
-    PCNT_S1E            = 0x80,   ///<S1通道脉冲解码错误
-    PCNT_S0E            = 0x40,   ///<S0通道脉冲解码错误   
-    PCNT_BB             = 0x20,   ///<脉冲解码错误    
-    PCNT_FE             = 0x10,   ///<采样周期脉冲解码错误
-    PCNT_DIR            = 0x08,   ///<反向改变中断    
-    PCNT_TO             = 0x04,   ///<超时中断标识   
-    PCNT_OV             = 0x02,   ///<上溢中断标识
-    PCNT_UF             = 0x01,   ///<下溢中断标识     
+    PCNT_S1E            = 0x80,   ///<S1
+    PCNT_S0E            = 0x40,   ///<S0   
+    PCNT_BB             = 0x20,   ///<    
+    PCNT_FE             = 0x10,   ///<
+    PCNT_DIR            = 0x08,   ///<    
+    PCNT_TO             = 0x04,   ///<   
+    PCNT_OV             = 0x02,   ///<
+    PCNT_UF             = 0x01,   ///<     
 }en_pcnt_status_t;
 
 /**
  ******************************************************************************
- ** \brief PCNT 整体配置结构体
+ ** \brief PCNT 
  *****************************************************************************/
 typedef struct stc_pcnt_config
 {
-    en_pcnt_s1sel_t     bS1Sel;          ///< S1通道极性选择
-	  en_pcnt_s0sel_t     bS0Sel;          ///< S0通道极性选择
-    en_pcnt_direcsel_t  u8Direc;         ///< 计数方向选择    	
-	  en_pcnt_clksel_t    u8Clk;           ///< 计数时钟选择
-    en_pcnt_modesel_t   u8Mode;          ///< 脉冲计数模式选择
-    boolean_t           bFLTEn;          ///< 滤波控制使能
-    uint8_t             u8FLTDep;        ///< 滤波阀值
-    uint8_t             u8FLTClk;        ///< 滤波时钟
-    boolean_t           bTOEn;           ///< 超时使能
-    uint16_t            u16TODep;         ///< 超时阀值
-	  uint8_t             u8IrqStatus;     ///< 中断方式
-    boolean_t           bIrqEn;           ///< 中断使能
-    func_ptr_t          pfnIrqCb;         ///< 中断回调函数
+    en_pcnt_s1sel_t     bS1Sel;          ///< S1
+	  en_pcnt_s0sel_t     bS0Sel;          ///< S0
+    en_pcnt_direcsel_t  u8Direc;         ///<     	
+	  en_pcnt_clksel_t    u8Clk;           ///< 
+    en_pcnt_modesel_t   u8Mode;          ///< 
+    boolean_t           bFLTEn;          ///< 
+    uint8_t             u8FLTDep;        ///< 
+    uint8_t             u8FLTClk;        ///< 
+    boolean_t           bTOEn;           ///< 
+    uint16_t            u16TODep;         ///< 
+	  uint8_t             u8IrqStatus;     ///< 
+    boolean_t           bIrqEn;           ///< 
+    func_ptr_t          pfnIrqCb;         ///< 
 }stc_pcnt_config_t;
 
-//PCNT 中断
+//PCNT 
 void Pcnt_IRQHandler(void);
 
 /******************************************************************************
@@ -179,25 +179,25 @@ void Pcnt_IRQHandler(void);
 /******************************************************************************
  * Global function prototypes (definition in C source)
  ******************************************************************************/
-///< PCNT初始化
+///< PCNT
 en_result_t PCNT_Init(stc_pcnt_config_t*  pstcPcntConfig);
-///< PCNT去初始化
+///< PCNT
 void PCNT_DeInit(void);
-///< PCNT 参数设置
+///< PCNT 
 en_result_t PCNT_Parameter(uint8_t start,uint8_t end);
-///< PCNT 读取PCNT 方向
+///< PCNT PCNT 
 en_pcnt_direcsel_t PCNT_Direction(void);
-///< PCNT 读取PCNT 计数值
+///< PCNT PCNT 
 uint16_t PCNT_Count(void);
-///< PCNT 读取PCNT 溢出值
+///< PCNT PCNT 
 uint16_t PCNT_TopCount(void);
-///< PCNT 设置PCNT
+///< PCNT PCNT
 void PCNT_Run(boolean_t work);
-///< PCNT获取状态
+///< PCNT
 boolean_t PCNT_GetStatus(en_pcnt_status_t enStatus);
-///< PCNT清除状态
+///< PCNT
 void PCNT_ClrStatus(en_pcnt_status_t enStatus);
-///< PCNT设置中断
+///< PCNT
 void PCNT_SetIrqStatus(en_pcnt_status_t enStatus);
 
 

@@ -5,7 +5,7 @@
  *
  * Change Logs:
  * Date           Author       Notes
- * 2017-09-06     勤为本       first version
+ * 2017-09-06            first version
  *
  * Copyright (c) 2020, duhuanpeng<548708880@qq.com>
  * legacy driver APIs from loongson 1C BSP.

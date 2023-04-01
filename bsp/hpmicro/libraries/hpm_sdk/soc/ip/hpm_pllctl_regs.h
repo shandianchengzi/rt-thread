@@ -120,8 +120,8 @@ typedef struct {
  * SS_DOWNSPREAD (RW)
  *
  * Downspread control
- * 1’b0 –> Center-Spread
- * 1’b1 –> Downspread
+ * 1b0 > Center-Spread
+ * 1b1 > Downspread
  */
 #define PLLCTL_PLL_CFG0_SS_DOWNSPREAD_MASK (0x80U)
 #define PLLCTL_PLL_CFG0_SS_DOWNSPREAD_SHIFT (7U)

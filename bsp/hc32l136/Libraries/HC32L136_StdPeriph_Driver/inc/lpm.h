@@ -42,7 +42,7 @@
 /*****************************************************************************/
 /** \file lpm.h
  **
- ** Lpm 数据结构及API声明
+ ** Lpm API
  **  
  **
  ** History:
@@ -81,43 +81,43 @@ extern "C"
 
  /**
  ******************************************************************************
- ** \brief 事件挂起使能枚举重定义 (SEVONPEND)
+ ** \brief  (SEVONPEND)
  *****************************************************************************/
 typedef enum en_lpm_sevonpend
 {
-    SevPndDisable = 0u,            ///< 事件挂起禁止
-    SevPndEnable  = 1u,            ///< 事件挂起使能
+    SevPndDisable = 0u,            ///< 
+    SevPndEnable  = 1u,            ///< 
 }en_lpm_sevonpend_t; 
  
  /**
  ******************************************************************************
- ** \brief 深度睡眠使能枚举重定义 (SLEEPDEEP)
+ ** \brief  (SLEEPDEEP)
  *****************************************************************************/
 typedef enum en_lpm_sleepdeep
 {
-    SlpDpDisable = 0u,            ///< 深度睡眠禁止
-    SlpDpEnable  = 1u,            ///< 深度睡眠使能
+    SlpDpDisable = 0u,            ///< 
+    SlpDpEnable  = 1u,            ///< 
 }en_lpm_sleepdeep_t;
 
 /**
  ******************************************************************************
- ** \brief 异常退出进睡眠使能枚举重定义 (SLEEPONEXIT)
+ ** \brief  (SLEEPONEXIT)
  *****************************************************************************/
 typedef enum en_lpm_sleeponexit
 {
-    SlpExtDisable = 0u,            ///< 异常退出进睡眠禁止
-    SlpExtEnable  = 1u,            ///< 异常退出进睡眠使能
+    SlpExtDisable = 0u,            ///< 
+    SlpExtEnable  = 1u,            ///< 
 }en_lpm_sleeponexit_t;
 
 /**
  ******************************************************************************
- ** \brief Low Power Mode 配置结构体定义 
+ ** \brief Low Power Mode  
  *****************************************************************************/
 typedef struct stc_lpm_config
 {
-    en_lpm_sevonpend_t   enSEVONPEND;        ///< 使能:每次新中断会产生一个事件,如果使用WFE休眠,则可用于唤醒处理器.
-    en_lpm_sleepdeep_t   enSLEEPDEEP;        ///< 使能:执行WFI进入深度休眠;不使能:执行WFI进入休眠.        
-    en_lpm_sleeponexit_t enSLEEPONEXIT;      ///< 使能:退出异常处理并返回时,处理器自动进入休眠模式;不使能:该特性禁止.
+    en_lpm_sevonpend_t   enSEVONPEND;        ///< :,WFE,.
+    en_lpm_sleepdeep_t   enSLEEPDEEP;        ///< :WFI;:WFI.        
+    en_lpm_sleeponexit_t enSLEEPONEXIT;      ///< :,;:.
 }stc_lpm_config_t;
 
 /******************************************************************************
@@ -127,10 +127,10 @@ typedef struct stc_lpm_config
 /******************************************************************************
  * Global function prototypes (definition in C source)
  *****************************************************************************/
-///<功能配置及操作函数
-///<低功耗模式配置
+///<
+///<
 en_result_t Lpm_Config(stc_lpm_config_t* pstcConfig);
-///<进入低功耗模式
+///<
 void Lpm_GotoLpmMode(void);
 
 //@} // LpmGroup

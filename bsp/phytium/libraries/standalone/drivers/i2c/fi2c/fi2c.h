@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fi2c.h
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:37:04
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 
@@ -59,8 +59,8 @@ extern "C"
 
 enum
 {
-    FI2C_MASTER = 0, /* i2c主设备 */
-    FI2C_SLAVE       /* i2c从设备 */
+    FI2C_MASTER = 0, /* i2c */
+    FI2C_SLAVE       /* i2c */
 };
 
 enum
@@ -71,20 +71,20 @@ enum
 
 enum
 {
-    FI2C_EVT_MASTER_TRANS_ABORTED = 0,/*master模式传输出错回调函数事件值*/
-    FI2C_EVT_MASTER_READ_DONE,        /*master模式接收完成回调函数事件值*/
-    FI2C_EVT_MASTER_WRITE_DONE,       /*master模式发送完成回调函数事件值*/
+    FI2C_EVT_MASTER_TRANS_ABORTED = 0,/*master*/
+    FI2C_EVT_MASTER_READ_DONE,        /*master*/
+    FI2C_EVT_MASTER_WRITE_DONE,       /*master*/
 
     FI2C_MASTER_INTR_EVT_NUM
 }; /* master mode evt */
 
-enum/*slave模式回调函数事件值*/
+enum/*slave*/
 {
-    FI2C_EVT_SLAVE_READ_REQUESTED = 0,  /*slave收到主机读取内容的请求*/
-    FI2C_EVT_SLAVE_WRITE_REQUESTED,     /*slave收到主机发送的写请求*/
-    FI2C_EVT_SLAVE_READ_PROCESSED,      /*在Slave发送模式下，发送完数据的最后一个字节后，在规定时间内没有收到 Master 端的回应*/
-    FI2C_EVT_SLAVE_WRITE_RECEIVED,      /*Slave收到主机发送的数据，需要存下*/
-    FI2C_EVT_SLAVE_STOP,                /*I2C总线接口上是否产生了STOP。与控制器工作在Master模式还是 Slave 模式无关。*/
+    FI2C_EVT_SLAVE_READ_REQUESTED = 0,  /*slave*/
+    FI2C_EVT_SLAVE_WRITE_REQUESTED,     /*slave*/
+    FI2C_EVT_SLAVE_READ_PROCESSED,      /*Slave Master */
+    FI2C_EVT_SLAVE_WRITE_RECEIVED,      /*Slave*/
+    FI2C_EVT_SLAVE_STOP,                /*I2CSTOPMaster Slave */
 
     FI2C_SLAVE_INTR_EVT_NUM
 }; /* slave mode evt */
@@ -147,51 +147,51 @@ typedef struct
 /************************** Function Prototypes ******************************/
 
 /* fi2c_sinit.c */
-/* 获取I2C驱动的默认配置参数 */
+/* I2C */
 const FI2cConfig *FI2cLookupConfig(u32 instance_id);
 
 /* fi2c.c */
-/* 完成I2C驱动实例的初始化，使之可以使用*/
+/* I2C*/
 FError FI2cCfgInitialize(FI2c *instance_p, const FI2cConfig *cofig_p);
 
-/* 完成I2C驱动实例去使能，清零实例数据 */
+/* I2C */
 void FI2cDeInitialize(FI2c *instance_p);
 
-/* 获取I2C模块错误码对应的错误信息 */
+/* I2C */
 const char *FI2cErrorToMessage(FError error);
 
 /* fi2c_master.c */
-/* I2C主机读，阻塞直到完成读操作或失败 */
+/* I2C */
 FError FI2cMasterReadPoll(FI2c *instance_p, u32 mem_addr, u8 mem_byte_len, u8 *buf_p, u32 buf_len);
 
-/*I2C主机读，接收中断读操作或者失败 */
+/*I2C */
 FError FI2cMasterReadIntr(FI2c *instance_p, u32 mem_addr, u8 mem_byte_len, u8 *buf_p, u32 buf_len);
 
-/* I2C主机写，中断发送直到完成写操作或失败 */
+/* I2C */
 FError FI2cMasterWriteIntr(FI2c *instance_p, u32 mem_addr, u8 mem_byte_len, const u8 *buf_p, u32 buf_len);
 
-/* I2C主机写，阻塞直到完成写操作或失败 */
+/* I2C */
 FError FI2cMasterWritePoll(FI2c *instance_p, u32 mem_addr, u8 mem_byte_len, const u8 *buf_p, u32 buf_len);
 
-/* 获取I2C的中断值*/
+/* I2C*/
 u32 FI2cGetIntr(FI2c *instance_p);
 
-/* 设置I2C主机的中断 */
+/* I2C */
 FError FI2cMasterSetupIntr(FI2c *instance_p, u32 mask);
 
-/* 主机模式中断服务函数 */
+/*  */
 void FI2cMasterIntrHandler(s32 vector, void *param);
 
-/* 注册I2C主机中断事件函数 */
+/* I2C */
 void FI2cMasterRegisterIntrHandler(FI2c *instance_p, u32 evt, FI2cEvtHandler handler);
 
-/* 设置I2C从机的中断 */
+/* I2C */
 FError FI2cSlaveSetupIntr(FI2c *instance_p);
 
-/* 从机模式中断服务函数 */
+/*  */
 void FI2cSlaveIntrHandler(s32 vector, void *param);
 
-/* 注册I2C从机中断事件函数 */
+/* I2C */
 void FI2cSlaveRegisterIntrHandler(FI2c *instance_p, u32 evt, FI2cEvtHandler handler);
 
 #ifdef __cplusplus

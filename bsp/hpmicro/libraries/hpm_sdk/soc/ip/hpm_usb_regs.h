@@ -449,7 +449,7 @@ typedef struct {
 /*
  * UPI (RWC)
  *
- * USB Host Periodic Interrupt – RWC. Default = 0b.
+ * USB Host Periodic Interrupt  RWC. Default = 0b.
  * This bit is set by the Host Controller when the cause of an interrupt is a completion of a USB transaction where the Transfer Descriptor (TD) has an interrupt on complete (IOC) bit set and the TD was from the periodic schedule.
  * This bit is also set by the Host Controller when a short packet is detected and the packet is on the periodic schedule. A short packet is when the actual number of bytes received was less than expected.
  * This bit is not used by the device controller and will always be zero.
@@ -462,7 +462,7 @@ typedef struct {
 /*
  * UAI (RWC)
  *
- * USB Host Asynchronous Interrupt – RWC. Default = 0b.
+ * USB Host Asynchronous Interrupt  RWC. Default = 0b.
  * This bit is set by the Host Controller when the cause of an interrupt is a completion of a USB transaction where the Transfer Descriptor (TD) has an interrupt on complete (IOC) bit set AND the TD was from the asynchronous schedule.
  * This bit is also set by the Host when a short packet is detected and the packet is on the asynchronous schedule. A short packet is when the actual number of bytes received was less than expected.
  * This bit is not used by the device controller and will always be zero
@@ -598,7 +598,7 @@ typedef struct {
 /*
  * SEI (RWC)
  *
- * System Error – RWC. Default = 0b.
+ * System Error  RWC. Default = 0b.
  * In the BVCI implementation of the USBHS core, this bit is not used, and will always be cleared to '0b'. In the AMBA implementation, this bit will be set to '1b' when an Error response is seen by the master interface (HRESP[1:0]=ERROR)
  */
 #define USB_USBSTS_SEI_MASK (0x10U)

@@ -56,19 +56,19 @@ typedef struct
   */
 typedef struct
 {
-    /** 年 */
+    /**  */
     uint32_t year;
-    /** 月 */
+    /**  */
     uint32_t month;
-    /** 日 */
+    /**  */
     uint32_t day;
-    /** 周 */
+    /**  */
     uint32_t week;
-    /** 时 */
+    /**  */
     uint32_t hour;
-    /** 分 */
+    /**  */
     uint32_t minute;
-    /** 秒 */
+    /**  */
     uint32_t second;
 
 } FL_RTC_InitTypeDef;

@@ -65,14 +65,14 @@ typedef struct
 #define SENSOR_Port_S67                             (SENSOR_Port_S6 | SENSOR_Port_S7)
 #define IS_SENSOR_PORT(PORT)                        ((((PORT) & (uint32_t)0xFFFFFF00) == 0x00) && ((PORT) != (uint32_t)0x00))
 
-/* �ⲿ��̬��������������Ƶ�� */
+/*  */
 #define SENSOR_PUPU_Frequency_Default               ((uint32_t)0x0000)
 #define SENSOR_PUPU_Frequency_500ms                 ((uint32_t)0x0000)
 #define SENSOR_PUPU_Frequency_1s                    ((uint32_t)0x0001)
 #define IS_SENSOR_EXT_PUPU_FREQ(FREQ)               ((FREQ) == SENSOR_PUPU_Frequency_500ms ||\
                                                      (FREQ) == SENSOR_PUPU_Frequency_1s)
 
-/* �ⲿ��̬�������������� */
+/*  */
 #define SENSOR_STATIC_SAMPLE_Default                ((uint32_t)0x0001)
 #define SENSOR_STATIC_SAMPLE_1                      ((uint32_t)0x0000)
 #define SENSOR_STATIC_SAMPLE_2                      ((uint32_t)0x0001)
@@ -81,7 +81,7 @@ typedef struct
 #define IS_SENSOR_EXT_STATIC_SAMPLE(COUNT)          ((COUNT) >= SENSOR_STATIC_SAMPLE_1 &&\
                                                      (COUNT) <= SENSOR_STATIC_SAMPLE_4)
 
-/* �ⲿ��̬�������������� */
+/*  */
 #define SENSOR_DYNAMIC_SAMPLE_Default                ((uint32_t)0x0002)
 #define SENSOR_DYNAMIC_SAMPLE_1                      ((uint32_t)0x0000)
 #define SENSOR_DYNAMIC_SAMPLE_2                      ((uint32_t)0x0001)
@@ -91,7 +91,7 @@ typedef struct
                                                       (COUNT) <= SENSOR_DYNAMIC_SAMPLE_4)
 
 
-/* �ⲿ��̬�����������������裬������Чʱ�� */
+/*  */
 #define SENSOR_PUPU_HoldTime_Default                ((uint32_t)0x0002)
 #define SENSOR_PUPU_HoldTime_1_2                    ((uint32_t)0x0000)
 #define SENSOR_PUPU_HoldTime_1_4                    ((uint32_t)0x0001)
@@ -102,7 +102,7 @@ typedef struct
                                                      (TIME) == SENSOR_PUPU_HoldTime_1_8 ||\
                                                      (TIME) == SENSOR_PUPU_HoldTime_1_16)
 
-/* ��̬���������Ƶ�� */
+/*  */
 #define SENSOR_DynamicFrequency_Default             ((uint32_t)0x0003)
 #define SENSOR_DynamicFrequency_31_25ms             ((uint32_t)0x0000)
 #define SENSOR_DynamicFrequency_125ms               ((uint32_t)0x0001)

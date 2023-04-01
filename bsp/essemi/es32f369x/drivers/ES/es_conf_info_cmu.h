@@ -28,7 +28,7 @@
 #include <ald_cmu.h>
 
 
-/* 时钟树 配置 */
+/*   */
 
 #define   ES_C_MUL_9          CMU_PLL1_OUTPUT_36M
 #define   ES_C_MUL_12         CMU_PLL1_OUTPUT_48M

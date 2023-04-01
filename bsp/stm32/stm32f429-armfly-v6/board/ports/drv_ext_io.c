@@ -53,9 +53,9 @@ static void HC574_Config_FMC(void)
     SRAM_HandleTypeDef sram2 = {0};
 
     /*
-        For LCD compatibility，select 3-0-6-1-0-0
-        3-0-5-1-0-0  : RD high level 75ns，low level 50ns. Read 8 channels of data into memory in 1us.
-        1-0-1-1-0-0  : RD high level 75ns，low level 12ns，trailing edge 12ns.
+        For LCD compatibilityselect 3-0-6-1-0-0
+        3-0-5-1-0-0  : RD high level 75nslow level 50ns. Read 8 channels of data into memory in 1us.
+        1-0-1-1-0-0  : RD high level 75nslow level 12nstrailing edge 12ns.
     */
     /* FMC_Bank1_NORSRAM2 configuration */
     timing.AddressSetupTime = 3;

@@ -13,7 +13,7 @@
 *
 * Date          : 2010.03.02
 *
-* Description   : 预先分配256个list head给list使用
+* Description   : 256list headlist
 *
 * History       :
 *
@@ -36,7 +36,7 @@ static void *list_memory_base = NULL;
 *                     ListMemoryInit
 *
 * Description:
-*    预先分配256个list head
+*    256list head
 *
 * Parameters:
 *    void
@@ -68,7 +68,7 @@ __s32 ListMemoryInit(void)
 *                     ListMemoryExit
 *
 * Description:
-*    释放分配的256个list head
+*    256list head
 *
 * Parameters:
 *    void
@@ -98,13 +98,13 @@ __s32 ListMemoryExit(void)
 *                     ListMemoryMalloc
 *
 * Description:
-*    从事先分配好的256个list head中取出没有使用的list head。
+*    256list headlist head
 *
 * Parameters:
 *    void
 *
 * Return value:
-*    返回可用的list head的地址
+*    list head
 *
 * note:
 *    void
@@ -130,7 +130,7 @@ void *ListMemoryMalloc(__u32 size, u8 *file_name, u32 line_nr)
 *                     ListMemoryFree
 *
 * Description:
-*    释放ListMemoryMalloc分配的list head
+*    ListMemoryMalloclist head
 *
 * Parameters:
 *    void

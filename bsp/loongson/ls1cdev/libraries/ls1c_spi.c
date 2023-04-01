@@ -5,10 +5,10 @@
  *
  * Change Logs:
  * Date           Author       Notes
- * 2017-10-23     勤为本       first version
+ * 2017-10-23            first version
  */
 
-// 硬件spi接口源文件
+// spi
 
 #include <string.h>
 #include "ls1c_public.h"
@@ -20,8 +20,8 @@
 
 
 /*
- * 获取指定SPI模块的基地址
- * @SPIx SPI模块的编号
+ * SPI
+ * @SPIx SPI
  */
 void *ls1c_spi_get_base(unsigned char SPIx)
 {
@@ -47,8 +47,8 @@ void *ls1c_spi_get_base(unsigned char SPIx)
 
 
 /*
- * 打印指定SPI模块的所有寄存器的值
- * @spi_base 基地址
+ * SPI
+ * @spi_base 
  */
 void ls1c_spi_print_all_regs_info(void *spi_base)
 {
@@ -66,9 +66,9 @@ void ls1c_spi_print_all_regs_info(void *spi_base)
 
 
 /*
- * 根据SPI时钟频率计算分频系数
- * @max_speed_hz SPI最大通信速度
- * @ret 分频系数
+ * SPI
+ * @max_speed_hz SPI
+ * @ret 
  */
 unsigned int ls1c_spi_get_div(unsigned int max_speed_hz)
 {
@@ -130,28 +130,28 @@ unsigned int ls1c_spi_get_div(unsigned int max_speed_hz)
 
 
 /*
- * 设置时钟
- * @spi_base 基地址
- * @max_hz 最大频率，单位hz
+ * 
+ * @spi_base 
+ * @max_hz hz
  */
 void ls1c_spi_set_clock(void *spi_base, unsigned long max_hz)
 {
     unsigned int div = 0;
     unsigned char val = 0;
 
-    // 获取分频系数
+    // 
     div = ls1c_spi_get_div(max_hz);
 
-    // 设置spr
+    // spr
     val = reg_read_8(spi_base + LS1C_SPI_SPCR_OFFSET);
-    val &= (~LS1C_SPI_SPCR_SPR_MASK);                       // spr清零
-    val |= (div & LS1C_SPI_SPCR_SPR_MASK);                  // 设置新的spr
+    val &= (~LS1C_SPI_SPCR_SPR_MASK);                       // spr
+    val |= (div & LS1C_SPI_SPCR_SPR_MASK);                  // spr
     reg_write_8(val, spi_base + LS1C_SPI_SPCR_OFFSET);
 
-    // 设置spre
+    // spre
     val = reg_read_8(spi_base + LS1C_SPI_SPER_OFFSET);
-    val &= (~LS1C_SPI_SPER_SPRE_MASK);                      // spre清零
-    val |= ((div >> 2) & LS1C_SPI_SPER_SPRE_MASK);        // 设置新的spre
+    val &= (~LS1C_SPI_SPER_SPRE_MASK);                      // spre
+    val |= ((div >> 2) & LS1C_SPI_SPER_SPRE_MASK);        // spre
     reg_write_8(val, spi_base + LS1C_SPI_SPER_OFFSET);
 
     return ;
@@ -159,10 +159,10 @@ void ls1c_spi_set_clock(void *spi_base, unsigned long max_hz)
 
 
 /*
- * 设置通信模式(时钟极性和相位)
- * @spi_base 基地址
- * @cpol 时钟极性
- * @cpha 时钟相位
+ * ()
+ * @spi_base 
+ * @cpol 
+ * @cpha 
  */
 void ls1c_spi_set_mode(void *spi_base, unsigned char cpol, unsigned char cpha)
 {
@@ -170,13 +170,13 @@ void ls1c_spi_set_mode(void *spi_base, unsigned char cpol, unsigned char cpha)
 
     val = reg_read_8(spi_base + LS1C_SPI_SPCR_OFFSET);
     
-    // 设置时钟极性--cpol
-    val &= (~LS1C_SPI_SPCR_CPOL_MASK);                  // cpol清0
-    val |= (cpol << LS1C_SPI_SPCR_CPOL_BIT);            // 写入新的cpol
+    // --cpol
+    val &= (~LS1C_SPI_SPCR_CPOL_MASK);                  // cpol0
+    val |= (cpol << LS1C_SPI_SPCR_CPOL_BIT);            // cpol
     
-    // 设置时钟相位--cpha
-    val &= (~LS1C_SPI_SPCR_CPHA_MASK);                  // cpha清0
-    val |= (cpha << LS1C_SPI_SPCR_CPHA_BIT);            // 写入新的cpha
+    // --cpha
+    val &= (~LS1C_SPI_SPCR_CPHA_MASK);                  // cpha0
+    val |= (cpha << LS1C_SPI_SPCR_CPHA_BIT);            // cpha
     
     reg_write_8(val, spi_base + LS1C_SPI_SPCR_OFFSET);
 
@@ -185,24 +185,24 @@ void ls1c_spi_set_mode(void *spi_base, unsigned char cpol, unsigned char cpha)
 
 
 /*
- * 设置指定片选为指定状态
- * @spi_base 基地址
- * @cs 片选
- * @new_status 片选引脚的新状态，取值为0或1，即高电平或低电平
+ * 
+ * @spi_base 
+ * @cs 
+ * @new_status 01
  */
 void ls1c_spi_set_cs(void *spi_base, unsigned char cs, int new_status)
 {
     unsigned char val = 0;
 
     val = reg_read_8(spi_base + LS1C_SPI_SFC_SOFTCS_OFFSET);
-    val |= 0x01 << cs ; //对应的csen=1  
+    val |= 0x01 << cs ; //csen=1  
     if (new_status)         // cs = 1
     {
-        val |= (0x10 << cs);            // 指定csn=1
+        val |= (0x10 << cs);            // csn=1
     }
     else                    // cs = 0
     {
-        val &= ~(0x10 << cs);           // 指定csn=0
+        val &= ~(0x10 << cs);           // csn=0
     }
     reg_write_8(val, spi_base + LS1C_SPI_SFC_SOFTCS_OFFSET);
 
@@ -211,8 +211,8 @@ void ls1c_spi_set_cs(void *spi_base, unsigned char cs, int new_status)
 
 
 /*
- * 等待收发完成
- * @spi_base 基地址
+ * 
+ * @spi_base 
  */
 void ls1c_spi_wait_txrx_done(void *spi_base)
 {
@@ -229,25 +229,25 @@ void ls1c_spi_wait_txrx_done(void *spi_base)
 
 
 /*
- * 清中断和标志位
- * @spi_base 基地址
+ * 
+ * @spi_base 
  */
 void ls1c_spi_clear(void *spi_base)
 {
     unsigned char val = 0;
 
-    // 清中断
+    // 
     val = reg_read_8(spi_base + LS1C_SPI_SPSR_OFFSET);
     val |= LS1C_SPI_SPSR_SPIF_MASK;
     reg_write_8(val, spi_base + LS1C_SPI_SPSR_OFFSET);
 
-    // 清溢出标志位(Write-Collision Clear)
+    // (Write-Collision Clear)
     val = reg_read_8(spi_base + LS1C_SPI_SPSR_OFFSET);
     if (LS1C_SPI_SPSR_WCOL_MASK & val)
     {
-        printf("[%s] clear register SPSR's wcol!\r\n");       // 手册和linux源码中不一样，加个打印看看
-        reg_write_8(val & ~LS1C_SPI_SPSR_WCOL_MASK, spi_base + LS1C_SPI_SPSR_OFFSET);   // 写0，linux源码中是写0
-//        reg_write_8(val | LS1C_SPI_SPSR_WCOL_MASK, spi_base + LS1C_SPI_SPSR_OFFSET);  // 写1，按照1c手册，应该写1
+        printf("[%s] clear register SPSR's wcol!\r\n");       // linux
+        reg_write_8(val & ~LS1C_SPI_SPSR_WCOL_MASK, spi_base + LS1C_SPI_SPSR_OFFSET);   // 0linux0
+//        reg_write_8(val | LS1C_SPI_SPSR_WCOL_MASK, spi_base + LS1C_SPI_SPSR_OFFSET);  // 11c1
     }
 
     return ;
@@ -256,23 +256,23 @@ void ls1c_spi_clear(void *spi_base)
 
 
 /*
- * 通过指定SPI发送接收一个字节
- * 注意，在多任务的系统中，此函数需要互斥。
- * 即保证在和某个从设备收发某个字节的过程中，不能被切换到其它任务同时与另外的在同一个SPI总线上的从设备通信
- * 因为龙芯1c的每路SPI上可能接有不同的从设备，通信频率、模式等可能不同
- * @spi_base 基地址
- * @tx_ch 待发送的数据
- * @ret 收到的数据
+ * SPI
+ * 
+ * SPI
+ * 1cSPI
+ * @spi_base 
+ * @tx_ch 
+ * @ret 
  */
 unsigned char ls1c_spi_txrx_byte(void *spi_base, unsigned char tx_ch)
 {
     unsigned char rx_ch = 0;
 
-    // 收发数据
-    reg_write_8(tx_ch, spi_base + LS1C_SPI_TxFIFO_OFFSET);      // 开始发送
-    ls1c_spi_wait_txrx_done(spi_base);                          // 等待收发完成
-    rx_ch = reg_read_8(spi_base + LS1C_SPI_RxFIFO_OFFSET);      // 读取收到的数据
-    ls1c_spi_clear(spi_base);                                   // 清中断和标志位
+    // 
+    reg_write_8(tx_ch, spi_base + LS1C_SPI_TxFIFO_OFFSET);      // 
+    ls1c_spi_wait_txrx_done(spi_base);                          // 
+    rx_ch = reg_read_8(spi_base + LS1C_SPI_RxFIFO_OFFSET);      // 
+    ls1c_spi_clear(spi_base);                                   // 
 
     return rx_ch;
 }

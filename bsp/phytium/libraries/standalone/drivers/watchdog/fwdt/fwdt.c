@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -13,7 +13,7 @@
  * FilePath: fwdt.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-07-15 17:05:09
- * Description:  This files is for wdt ctrl function implementation.
+ * Description: This files is for wdt ctrl function implementation.
  * Users can operate as a single stage watchdog or a two stages watchdog.
  * In the single stage mode, when the timeout is reached, your system will
  * be reset by WS1. The first signal (WS0) is ignored.
@@ -38,9 +38,9 @@
  * stages mode, the timeout is WOR.
  * This driver use two stages mode, when WS0=1, it can Raise the timeout interrupt.
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   Wangxiaodong   2021/8/25   init
  * 1.1   Wangxiaodong   2021/11/5   restruct
  * 1.2   Wangxiaodong   2022/7/20   add some functions
@@ -67,7 +67,7 @@
  * @msg:  Initializes a specific instance such that it is ready to be used.
  * @param {FWdtCtrl} *pctrl, instance of FWDT controller
  * @param {FWdtConfig} *input_config_p, Configuration parameters of FWdt
- * @return err code information, FWDT_SUCCESS indicates success，others indicates failed
+ * @return err code information, FWDT_SUCCESS indicates successothers indicates failed
  */
 FError FWdtCfgInitialize(FWdtCtrl *pctrl, const FWdtConfig *input_config_p)
 {
@@ -154,7 +154,7 @@ u32 FWdtGetTimeleft(FWdtCtrl *pctrl)
     u64 timeleft = 0;
     uintptr base_addr = pctrl->config.control_base_addr;
 
-    /* if the ws0 bit of register WCS is zero，indicates that there is one more timeout opportunity */
+    /* if the ws0 bit of register WCS is zeroindicates that there is one more timeout opportunity */
     if (!(FWdtReadWCS(base_addr) & FWDT_GWDT_WCS_WS0))
         timeleft += FWdtReadWOR(base_addr);
 

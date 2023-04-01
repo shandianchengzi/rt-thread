@@ -120,4 +120,4 @@ This version of PDL was validated for compatibility with the following Software 
 * [Infineon](http://www.infineon.com)
 
 ---
-© Cypress Semiconductor Corporation (an Infineon company), 2022.
+ Cypress Semiconductor Corporation (an Infineon company), 2022.

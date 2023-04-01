@@ -5,7 +5,7 @@
  *
  * Change Logs:
  * Date           Author       Notes
- * 2017-09-06     勤为本       first version
+ * 2017-09-06            first version
  */
 
 
@@ -13,20 +13,20 @@
 #include "ls1c_public.h"
 
 
-// 晶振的频率
+// 
 #define AHB_CLK                 (24000000)
 #define APB_CLK                 (AHB_CLK)
 
 
-// START_FREQ寄存器bits
+// START_FREQbits
 #define M_PLL_SHIFT             (8)
-#define M_PLL                   (0xff << M_PLL_SHIFT)       // PLL倍频系数的整数部分
+#define M_PLL                   (0xff << M_PLL_SHIFT)       // PLL
 #define FRAC_N_SHIFT            (16)
-#define FRAC_N                  (0xff << FRAC_N_SHIFT)      // PLL倍频系数的小数部分
+#define FRAC_N                  (0xff << FRAC_N_SHIFT)      // PLL
 #define DIV_SDRAM_SHIFT         (0)
 #define DIV_SDRAM               (0x3  << DIV_SDRAM_SHIFT)
 
-// CLK_DIV_PARAM寄存器bits
+// CLK_DIV_PARAMbits
 #define DIV_PIX_EN              (0x1  << 31)
 #define DIV_PIX                 (0x7f << 24)
 #define DIV_CAM_EN              (0x1  << 23)
@@ -46,8 +46,8 @@
 
 
 /*
- * 获取PLL频率
- * @ret PLL频率
+ * PLL
+ * @ret PLL
  */
 unsigned long clk_get_pll_rate(void)
 {
@@ -62,8 +62,8 @@ unsigned long clk_get_pll_rate(void)
 
 
 /*
- * 获取CPU频率
- * @ret CPU频率
+ * CPU
+ * @ret CPU
  */
 unsigned long clk_get_cpu_rate(void)
 {
@@ -73,8 +73,8 @@ unsigned long clk_get_cpu_rate(void)
     pll_rate = clk_get_pll_rate();
     ctrl = reg_read_32((volatile unsigned int *)LS1C_CLK_DIV_PARAM);
 
-    // 选择时钟来源
-    if (DIV_CPU_SEL & ctrl)     // pll分频作为时钟信号
+    // 
+    if (DIV_CPU_SEL & ctrl)     // pll
     {
         if (DIV_CPU_EN & ctrl)
         {
@@ -85,7 +85,7 @@ unsigned long clk_get_cpu_rate(void)
             cpu_rate = pll_rate / 2;
         }
     }
-    else                        // bypass模式，晶振作为时钟输入
+    else                        // bypass
     {
         cpu_rate = APB_CLK;
     }
@@ -95,8 +95,8 @@ unsigned long clk_get_cpu_rate(void)
 
 
 /*
- * 获取DDR频率
- * @ret DDR频率
+ * DDR
+ * @ret DDR
  */
 unsigned long clk_get_ddr_rate(void)
 {
@@ -129,8 +129,8 @@ unsigned long clk_get_ddr_rate(void)
 
 
 /*
- * 获取APB频率
- * @ret APB频率
+ * APB
+ * @ret APB
  */
 unsigned long clk_get_apb_rate(void)
 {
@@ -139,8 +139,8 @@ unsigned long clk_get_apb_rate(void)
 
 
 /*
- * 获取DC频率
- * @ret DC频率
+ * DC
+ * @ret DC
  */
 unsigned long clk_get_dc_rate(void)
 {

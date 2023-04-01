@@ -2,19 +2,19 @@ import os
 import rtconfig
 from building import *
 
-Import('SDK_LIB') #导入 SDK_LIB 标签
+Import('SDK_LIB') # SDK_LIB 
 
-cwd = GetCurrentDir() #获取当前目录
+cwd = GetCurrentDir() #
 
-# add general drivers #添加驱动
+# add general drivers #
 src = Split('''
 board.c
 ''')
 
-path =  [cwd]         #设置path为当前路径
+path =  [cwd]         #path
 
 group = DefineGroup('Drivers', src, depend = [''], CPPPATH = path)
 
-#定义组Drivers 将board.c添加到当前组中 无以来条件 将路径导出为头文件路径
+#Drivers board.c  
 Return('group')
-#将本脚本的配置导出给上级
+#

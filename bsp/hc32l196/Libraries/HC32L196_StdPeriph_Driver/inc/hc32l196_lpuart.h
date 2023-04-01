@@ -79,187 +79,187 @@ extern "C"
  ******************************************************************************/
  /**
  ******************************************************************************
- **\brief LPuart通道选择
+ **\brief LPuart
  ******************************************************************************/
 
 /**
  ******************************************************************************
- ** \brief lpuart 的sclk时钟源选择
+ ** \brief lpuart sclk
  ******************************************************************************/
 
 typedef enum en_lpuart_sclk_sel
 {
     LPUartMskPclk   = 0u<<11, ///<pclk
-    LPUartMskXtl    = 2u<<11, ///<外部低速晶振
-    LPUartMskRcl    = 3u<<11, ///<内部低速晶振
+    LPUartMskXtl    = 2u<<11, ///<
+    LPUartMskRcl    = 3u<<11, ///<
 } en_lpuart_sclksel_t;
 
 /**
  ******************************************************************************
- ** \brief lpuart多机模式地址帧/数据帧或者奇偶校验
+ ** \brief lpuart/
  ******************************************************************************/
 typedef enum en_lpuart_mmdorck
 {
-    LPUartDataOrAddr = 0u, ///<多机模式时，通过读写SBUF[8]决定帧为数据帧或地址帧
-    LPUartEven       = 0x4u, ///<非多机模式偶校验   
-    LPUartOdd        = 0x8u, ///<非多机模式奇校验    
+    LPUartDataOrAddr = 0u, ///<SBUF[8]
+    LPUartEven       = 0x4u, ///<   
+    LPUartOdd        = 0x8u, ///<    
 }en_lpuart_mmdorck_t;
 
 /**
  ******************************************************************************
- ** \brief lpuart多机模式及从机地址和地址掩码配置
+ ** \brief lpuart
  ******************************************************************************/
 
 typedef struct stc_lpuart_multimode
 {
-    uint8_t             u8SlaveAddr;  ///<从机地址
-    uint8_t             u8SaddEn;  ///<从及地址掩码
+    uint8_t             u8SlaveAddr;  ///<
+    uint8_t             u8SaddEn;  ///<
 }stc_lpuart_multimode_t;
 
 /**
  ******************************************************************************
- ** \brief lpuart 四种工作模式选择
+ ** \brief lpuart 
  ******************************************************************************/
 
 typedef enum en_lpuart_mode
 {
-    LPUartMskMode0 = 0x00u, ///<模式0    
-    LPUartMskMode1 = 0x40u, ///<模式1
-    LPUartMskMode2 = 0x80u, ///<模式2
-    LPUartMskMode3 = 0xc0u, ///<模式3
+    LPUartMskMode0 = 0x00u, ///<0    
+    LPUartMskMode1 = 0x40u, ///<1
+    LPUartMskMode2 = 0x80u, ///<2
+    LPUartMskMode3 = 0xc0u, ///<3
 } en_lpuart_mode_t;
 /**
  ******************************************************************************
- ** \brief lpuart stop长度选择
+ ** \brief lpuart stop
  ******************************************************************************/
 
 typedef enum en_lpuart_stop
 {
-    LPUart1bit  = 0x0000u,  ///<1位停止位 
-    LPUart1_5bit = 0x4000u, ///<1.5位停止位
-    LPUart2bit  = 0x8000u,  ///<2位停止位
+    LPUart1bit  = 0x0000u,  ///<1 
+    LPUart1_5bit = 0x4000u, ///<1.5
+    LPUart2bit  = 0x8000u,  ///<2
 } en_lpuart_stop_t;
 /**
  ******************************************************************************
- ** \brief lpuart 功能使能
+ ** \brief lpuart 
  ******************************************************************************/
 typedef enum en_lpuart_func
 {
-    LPUartRenFunc    = 4u,    ///<0-TX; ///<1-非mode0模式代表RX&TX ,mode0模式代表RX;       
-    LPUartDmaRxFunc  = 16u,   ///<DMA接收功能   
-    LPUartDmaTxFunc  = 17u,   ///<DMA发送功能
-    LPUartRtsFunc    = 18u,   ///<硬件流RTS功能
-    LPUartCtsFunc    = 19u,   ///<硬件流CTS功能
-    LPUartHdFunc     = 22u,   ///<单线半双工功能    
+    LPUartRenFunc    = 4u,    ///<0-TX; ///<1-mode0RX&TX ,mode0RX;       
+    LPUartDmaRxFunc  = 16u,   ///<DMA   
+    LPUartDmaTxFunc  = 17u,   ///<DMA
+    LPUartRtsFunc    = 18u,   ///<RTS
+    LPUartCtsFunc    = 19u,   ///<CTS
+    LPUartHdFunc     = 22u,   ///<    
 }en_lpuart_func_t;
 /**
  ******************************************************************************
- ** \brief lpuart中断使能控制
+ ** \brief lpuart
  ******************************************************************************/
 typedef enum en_lpuart_irq_sel
 {
-    LPUartRxIrq  = 0u,    ///<接收中断使能
-    LPUartTxIrq  = 1u,    ///<发送中断使能        
-    LPUartTxEIrq = 8u,    ///<TX空中断使能
-    LPUartPEIrq  = 13u,   ///<奇偶校验中断使能
-    LPUartCtsIrq = 20u,   ///<CTS信号翻转中断使能    
-    LPUartFEIrq  = 21u,   ///<帧错误中断使能 
+    LPUartRxIrq  = 0u,    ///<
+    LPUartTxIrq  = 1u,    ///<        
+    LPUartTxEIrq = 8u,    ///<TX
+    LPUartPEIrq  = 13u,   ///<
+    LPUartCtsIrq = 20u,   ///<CTS    
+    LPUartFEIrq  = 21u,   ///< 
 }en_lpuart_irq_sel_t;
 
 /**
  ******************************************************************************
- ** \brief lpuart 状态标志位
+ ** \brief lpuart 
  ******************************************************************************/
 typedef enum en_lpuart_status
 {
-    LPUartRC    = 0u,  ///<接收数据完成标记
-    LPUartTC    = 1u,  ///<发送数据完成标记
-    LPUartFE    = 2u,  ///<帧错误标记
-    LPUartTxe   = 3u,  ///<TXbuff空标记    
-    LPUartPE    = 4u,  ///<奇偶校验错误标记
-    LPUartCtsIf = 5u,  ///<CTS中断标记
-    LPUartCts   = 6u,  ///<CTS信号标记
+    LPUartRC    = 0u,  ///<
+    LPUartTC    = 1u,  ///<
+    LPUartFE    = 2u,  ///<
+    LPUartTxe   = 3u,  ///<TXbuff    
+    LPUartPE    = 4u,  ///<
+    LPUartCtsIf = 5u,  ///<CTS
+    LPUartCts   = 6u,  ///<CTS
 }en_lpuart_status_t;
 
 /**
  ******************************************************************************
- ** \brief lpuart 通道采样分频配置
+ ** \brief lpuart 
  ******************************************************************************/
 typedef enum en_lpuart_clkdiv
 {
-    LPUartMsk16Or32Div = 0u,        ///<模式0无效，模式1/3为16分频，模式2为32分频
-    LPUartMsk8Or16Div  = 0x200u,    ///<模式0无效，模式1/3为8分频，模式2为16分频
-    LPUartMsk4Or8Div   = 0x400u,    ///<模式0无效，模式1/3为4分频，模式2为8分频
+    LPUartMsk16Or32Div = 0u,        ///<01/316232
+    LPUartMsk8Or16Div  = 0x200u,    ///<01/38216
+    LPUartMsk4Or8Div   = 0x400u,    ///<01/3428
 }en_lpuart_clkdiv_t;
 
 /**
  ******************************************************************************
- ** \brief lpuart 通道Mode1和Mode3波特率计算参数
+ ** \brief lpuart Mode1Mode3
  ******************************************************************************/
 typedef struct stc_lpuart_baud
 {
-    en_lpuart_sclksel_t  enSclkSel;      ///<传输时钟源选择
-    en_lpuart_clkdiv_t   enSclkDiv;     ///<采样分频选择 
+    en_lpuart_sclksel_t  enSclkSel;      ///<
+    en_lpuart_clkdiv_t   enSclkDiv;     ///< 
     uint32_t             u32Sclk;        ///<sclk
-    uint32_t             u32Baud;        ///< 波特率
+    uint32_t             u32Baud;        ///< 
 } stc_lpuart_baud_t;
 /**
  ******************************************************************************
- ** \lpuart 总体配置
+ ** \lpuart 
  ******************************************************************************/
 typedef struct stc_lpuart_cfg
 {
-    en_lpuart_mode_t       enRunMode;      ///<四种模式配置
-    en_lpuart_mmdorck_t    enMmdorCk;      ///<校验模式
-    en_lpuart_stop_t       enStopBit;      ///<停止位长度    
-    stc_lpuart_baud_t      stcBaud;        ///<Mode1/3波特率配置                                                        
+    en_lpuart_mode_t       enRunMode;      ///<
+    en_lpuart_mmdorck_t    enMmdorCk;      ///<
+    en_lpuart_stop_t       enStopBit;      ///<    
+    stc_lpuart_baud_t      stcBaud;        ///<Mode1/3                                                        
 } stc_lpuart_cfg_t;
 
-// 总初始化处理
+// 
 en_result_t LPUart_Init(M0P_LPUART_TypeDef* LPUARTx, stc_lpuart_cfg_t* pstcCfg);
 
-// LPUART 单线模式使能/禁止
+// LPUART /
 void LPUart_HdModeEnable(M0P_LPUART_TypeDef* LPUARTx);
 void LPUart_HdModeDisable(M0P_LPUART_TypeDef* LPUARTx);
 
 
-//TB8数据设置
+//TB8
 void LPUart_SetTb8(M0P_LPUART_TypeDef* LPUARTx, boolean_t bTB8Value);
 
-//数据寄存器bit8位获取
+//bit8
 boolean_t LPUart_GetRb8(M0P_LPUART_TypeDef* LPUARTx);
 
-//中断相关设置函数使能和禁止
+//
 en_result_t LPUart_EnableIrq(M0P_LPUART_TypeDef* LPUARTx, en_lpuart_irq_sel_t enIrqSel);
 en_result_t LPUart_DisableIrq(M0P_LPUART_TypeDef* LPUARTx, en_lpuart_irq_sel_t enIrqSel);
 
-//特殊功能使能和禁止
+//
 en_result_t LPUart_EnableFunc(M0P_LPUART_TypeDef* LPUARTx, en_lpuart_func_t enFunc);
 en_result_t LPUart_DisableFunc(M0P_LPUART_TypeDef* LPUARTx, en_lpuart_func_t enFunc);
 
-//状态位获取函数
+//
 boolean_t LPUart_GetStatus(M0P_LPUART_TypeDef* LPUARTx,en_lpuart_status_t enStatus);
-//状态位的清除
+//
 en_result_t LPUart_ClrStatus(M0P_LPUART_TypeDef* LPUARTx,en_lpuart_status_t enStatus);
-//整个状态寄存器获取
+//
 uint8_t LPUart_GetIsr(M0P_LPUART_TypeDef* LPUARTx);
-//整个状态寄存器清除
+//
 en_result_t LPUart_ClrIsr(M0P_LPUART_TypeDef* LPUARTx);
 
-//数据查询方式的发送
+//
 en_result_t LPUart_SendData(M0P_LPUART_TypeDef* LPUARTx, uint8_t u8Data);
-//数据中断方式的发送
+//
 en_result_t LPUart_SendDataIt(M0P_LPUART_TypeDef* LPUARTx, uint8_t u8Data);
-//数据接收
+//
 uint8_t LPUart_ReceiveData(M0P_LPUART_TypeDef* LPUARTx);
 
-//LPUARTx通道号，enClk 时钟源选项
+//LPUARTxenClk 
 en_result_t LPUart_SelSclk(M0P_LPUART_TypeDef* LPUARTx, en_lpuart_sclksel_t enSclk);
 
-//LPUART通道多主机模式配置
+//LPUART
 en_result_t LPUart_SetMultiMode(M0P_LPUART_TypeDef* LPUARTx, stc_lpuart_multimode_t* pstcMultiCfg);
 
-//LPUART通道多主机模式从机地址配置函数
+//LPUART
 en_result_t LPUart_SetSaddr(M0P_LPUART_TypeDef* LPUARTx,uint8_t u8Addr);
 
 //@} // LPUartGroup

@@ -54,8 +54,8 @@ Options 1,0,0  // Target 'RT-Thread/44B0'
  EnvBin ()
  EnvInc ()
  EnvLib ()
- EnvReg (ÿSamsung\)
- OrgReg (ÿSamsung\)
+ EnvReg (Samsung\)
+ OrgReg (Samsung\)
  TgStat=16
  OutDir (.\obj\)
  OutName (rtthread-44b0)

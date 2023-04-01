@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fusb_msc.c
  * Date: 2022-02-11 13:33:09
  * LastEditTime: 2022-02-17 17:49:43
- * Description:  This files is for implementation of USB mass storage function
+ * Description: This files is for implementation of USB mass storage function
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   Zhugengyu  2022/2/7    init commit
  */
 
@@ -88,9 +88,9 @@ static const char *FUsbMscProtocolStrings[0x51] =
 
 /**
  * @name: FUsbMscCreateDisk
- * @msg: 调用应用程序实现的钩子函数，创建USB Disk
+ * @msg: USB Disk
  * @return {*}
- * @param {FUsbDev} *dev, USB大容量存储设备实例
+ * @param {FUsbDev} *dev, USB
  */
 static void FUsbMscCreateDisk(FUsbDev *dev)
 {
@@ -107,9 +107,9 @@ static void FUsbMscCreateDisk(FUsbDev *dev)
 
 /**
  * @name: FUsbMscRemoveDisk
- * @msg: 调用应用程序实现的钩子函数，移除USB Disk
+ * @msg: USB Disk
  * @return {*}
- * @param {FUsbDev} *dev, USB大容量存储设备实例
+ * @param {FUsbDev} *dev, USB
  */
 static void FUsbMscRemoveDisk(FUsbDev *dev)
 {
@@ -123,9 +123,9 @@ static void FUsbMscRemoveDisk(FUsbDev *dev)
 
 /**
  * @name: FUsbMscDestory
- * @msg: 移除USB大容量存储设备实例
+ * @msg: USB
  * @return {*}
- * @param {FUsbDev} *dev, USB大容量存储设备实例
+ * @param {FUsbDev} *dev, USB
  */
 static void FUsbMscDestory(FUsbDev *dev)
 {
@@ -432,7 +432,7 @@ typedef struct
  */
 /**
  * @name: FUsbMscRwBlk512
- * @msg: 读写USB大容量存储设备，以512字节为一块
+ * @msg: USB512
  * @param dev device to access
  * @param start first sector to access
  * @param n number of sectors to access
@@ -707,9 +707,9 @@ static int FUsbMscWaitReady(FUsbDev *dev)
 
 /**
  * @name: FUsbMassStorageInit
- * @msg: USB大容量存储设备的初始化函数，由应用程序注册到FUSB框架中
+ * @msg: USBFUSB
  * @return {*}
- * @param {FUsbDev} *dev, USB大容量存储设备实例
+ * @param {FUsbDev} *dev, USB
  */
 void FUsbMassStorageInit(FUsbDev *dev)
 {

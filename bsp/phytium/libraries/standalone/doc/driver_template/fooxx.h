@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,16 +14,16 @@
  * FilePath: fooxx.h
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:25:35
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 
-#ifndef  DRIVERS_模块名_FOOXX_H
-#define  DRIVERS_模块名_FOOXX_H
+#ifndef  DRIVERS__FOOXX_H
+#define  DRIVERS__FOOXX_H
 
 #ifdef __cplusplus
 extern "C"

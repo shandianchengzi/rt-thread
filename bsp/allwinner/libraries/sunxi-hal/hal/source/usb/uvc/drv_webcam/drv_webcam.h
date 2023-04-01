@@ -91,9 +91,9 @@ typedef enum  __DRV_WEBCAM_CMD_SET
     DRV_WEBCAM_CMD_RELEASE_FRAME,               //aux = frame_id, ret = EPDK_OK/EPDK_FAIL
     DRV_WEBCAM_CMD_SET_PTS,                     //**absence**//aux = pts(__u32)
     DRV_WEBCAM_CMD_GET_PTS,                     //**absence**//ret=pts(__u32)
-    DRV_WEBCAM_CMD_SET_PTS_MODE,                //**absence**//设置PTS的获取方式，aux = 0:CSI自己算PTS; 1:通过回调函数得到PTS; 2.不需要PTS
-    DRV_WEBCAM_CMD_INSTALL_CALLBACK_GET_PTS,    //**absence**//注册回调函数,得到PTS。该callback的原型为CB_GetPTS,参数*arg是__s64*的指针,表示PTS，单位us. *pbuffer = callback
-    DRV_WEBCAM_CMD_SET_FRAME_QUEUE,             //设置frame queue.必须在capture_on之前设置。因为capture off会清掉. pbuffer = __csi_frame_queue_t*,主要是设置buffer和frame_id，其他的参数还是由csidrv决定.
+    DRV_WEBCAM_CMD_SET_PTS_MODE,                //**absence**//PTSaux = 0:CSIPTS; 1:PTS; 2.PTS
+    DRV_WEBCAM_CMD_INSTALL_CALLBACK_GET_PTS,    //**absence**//,PTScallbackCB_GetPTS,*arg__s64*,PTSus. *pbuffer = callback
+    DRV_WEBCAM_CMD_SET_FRAME_QUEUE,             //frame queue.capture_oncapture off. pbuffer = __csi_frame_queue_t*,bufferframe_idcsidrv.
     DRV_WEBCAM_CMD_SET_COLOR_EFFECT,            //**absence**//aux = color effet
     DRV_WEBCAM_CMD_GET_COLOR_EFFECT,            //**absence**//ret = color effet
     DRV_WEBCAM_CMD_SET_AWB,                     //**absence**//aux = awb
@@ -128,8 +128,8 @@ typedef struct tag_WEBCAM_FRAME
     __bool              bProgressiveSrc;    // Indicating the source is progressive or not
     __bool              bTopFieldFirst;     // VPO should check this flag when bProgressiveSrc is FALSE
     __u16               eAspectRatio;       //the source picture aspect ratio
-    __rect_t            src_rect;           // source valid size, 宏块对齐的图像大小, 一般就是frame buffer了
-    __rect_t            dst_rect;           // source display size,真实图像的位置大小
+    __rect_t            src_rect;           // source valid size, , frame buffer
+    __rect_t            dst_rect;           // source display size,
     __u32               addr[3];            // data buffer address
 
     __u16               color_format; //same with __webcam_mode_t
@@ -143,7 +143,7 @@ typedef struct tag_WEBCAM_FRAME
 
 typedef struct tag_WEBCAM_FRAME_QUEUE
 {
-    __s32               num;    //有效的帧个数，num <= WEBCAM_BUFFER_NUM
+    __s32               num;    //num <= WEBCAM_BUFFER_NUM
     __webcam_frame_t    webcam_frame_array[WEBCAM_BUFFER_NUM];
 } __webcam_frame_queue_t;
 

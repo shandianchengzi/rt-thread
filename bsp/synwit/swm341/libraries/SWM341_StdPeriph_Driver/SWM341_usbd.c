@@ -1,10 +1,10 @@
 /******************************************************************************************************************************************
-* 文件名称: SWM341_usbd.c
-* 功能说明: SWM341单片机的USB设备功能驱动库
-* 技术支持: http://www.synwit.com.cn/e/tool/gbook/?bid=1
-* 注意事项:
-* 版本日期: V1.1.0      2020年11月3日
-* 升级记录:
+* : SWM341_usbd.c
+* : SWM341USB
+* : http://www.synwit.com.cn/e/tool/gbook/?bid=1
+* :
+* : V1.1.0      2020113
+* :
 *
 *
 *******************************************************************************************************************************************
@@ -34,11 +34,11 @@ static volatile uint32_t CtrlOut_Limit = 0;
 
 
 /******************************************************************************************************************************************
-* 函数名称: USBD_Init()
-* 功能说明: USB Device 初始化
-* 输    入: 无
-* 输    出: 无
-* 注意事项: 无
+* : USBD_Init()
+* : USB Device 
+*     : 
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void USBD_Init(void)
 {
@@ -92,7 +92,7 @@ void USBD_Init(void)
         pCfg += pCfg[0];
     }
 
-    USBD->FFTHR = (0xFFF << 16) | (0x000 << 0);  // 无用
+    USBD->FFTHR = (0xFFF << 16) | (0x000 << 0);  // 
 
     USBD->DEVCR = (USBD_Info.Speed << USBD_DEVCR_SPEED_Pos)  |
                   (1               << USBD_DEVCR_DEVICE_Pos) |
@@ -110,9 +110,9 @@ void USBD_Init(void)
 
 
 /******************************************************************************************************************************************
-* 函数名称: USBD_EPConfig()
-* 功能说明: USB Device Endpoint Configure
-* 输    入: uint8_t ep_reg        Endpoint Register
+* : USBD_EPConfig()
+* : USB Device Endpoint Configure
+*     : uint8_t ep_reg        Endpoint Register
 *           uint8_t ep_nbr      Endpoint Number used by host
 *           uint8_t ep_dir      Endpoint Direction, 0 Out  1 In
 *           uint8_t ep_type     Endpoint Type,      0 Control   1  Isochronous   2 Bulk   3 Interrupt
@@ -120,12 +120,12 @@ void USBD_Init(void)
 *           uint8_t cfg         Configuration number to which this endpoint belongs
 *           uint8_t intf        Interface number to which this endpoint belongs
 *           uint8_t alt         Alternate setting to which this endpoint belongs
-* 输    出: 无
-* 注意事项: 无
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void USBD_EPConfig(uint8_t ep_reg, uint8_t ep_nbr, uint8_t ep_dir, uint8_t ep_type, uint16_t ep_pksz, uint8_t cfg, uint8_t intf, uint8_t alt)
 {
-    ep_dir = ep_dir ? 1 : 0;    // for USB_EP_IN、USB_EP_OUT
+    ep_dir = ep_dir ? 1 : 0;    // for USB_EP_INUSB_EP_OUT
 
     USBD->EPCFG[ep_reg] = (ep_nbr  << USBD_EPCFG_EPNR_Pos) |
                           (ep_dir  << USBD_EPCFG_DIR_Pos)  |
@@ -149,11 +149,11 @@ void USBD_EPConfig(uint8_t ep_reg, uint8_t ep_nbr, uint8_t ep_dir, uint8_t ep_ty
 
 
 /******************************************************************************************************************************************
-* 函数名称: USBD_Open()
-* 功能说明: USB Device 打开
-* 输    入: 无
-* 输    出: 无
-* 注意事项: 无
+* : USBD_Open()
+* : USB Device 
+*     : 
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void USBD_Open(void)
 {
@@ -161,11 +161,11 @@ void USBD_Open(void)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: USBD_Close()
-* 功能说明: USB Device 关闭
-* 输    入: 无
-* 输    出: 无
-* 注意事项: 无
+* : USBD_Close()
+* : USB Device 
+*     : 
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void USBD_Close(void)
 {
@@ -179,11 +179,11 @@ void USBD_GetDescriptor(USB_Setup_Packet_t * pSetup);
 static USB_Setup_Packet_t Setup_Packet;
 USB_Setup_Packet_t * pUSB_Setup = &Setup_Packet;
 /******************************************************************************************************************************************
-* 函数名称: USBD_ProcessSetupPacket()
-* 功能说明: 处理Setup包
-* 输    入: 无
-* 输    出: 无
-* 注意事项: 无
+* : USBD_ProcessSetupPacket()
+* : Setup
+*     : 
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void USBD_ProcessSetupPacket(void)
 {
@@ -218,11 +218,11 @@ void USBD_ProcessSetupPacket(void)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: USBD_StandardRequest()
-* 功能说明: 处理标准请求
-* 输    入: 无
-* 输    出: 无
-* 注意事项: GetDescriptor、SetDescriptor、SyncFrame之外的标准命令USB模块自动处理，无需用户代码参与
+* : USBD_StandardRequest()
+* : 
+*     : 
+*     : 
+* : GetDescriptorSetDescriptorSyncFrameUSB
 ******************************************************************************************************************************************/
 void USBD_StandardRequest(USB_Setup_Packet_t * pSetup)
 {
@@ -256,11 +256,11 @@ void USBD_StandardRequest(USB_Setup_Packet_t * pSetup)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: USBD_GetDescriptor()
-* 功能说明: 处理标准请求GetDescriptor
-* 输    入: 无
-* 输    出: 无
-* 注意事项: 无
+* : USBD_GetDescriptor()
+* : GetDescriptor
+*     : 
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void USBD_GetDescriptor(USB_Setup_Packet_t * pSetup)
 {
@@ -332,11 +332,11 @@ void USBD_GetDescriptor(USB_Setup_Packet_t * pSetup)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: USBD_PrepareCtrlIn()
-* 功能说明: Prepare the first Control IN pipe
-* 输    入: 无
-* 输    出: 无
-* 注意事项: 无
+* : USBD_PrepareCtrlIn()
+* : Prepare the first Control IN pipe
+*     : 
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void USBD_PrepareCtrlIn(uint8_t buf[], uint32_t size)
 {
@@ -347,11 +347,11 @@ void USBD_PrepareCtrlIn(uint8_t buf[], uint32_t size)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: USBD_CtrlIn()
-* 功能说明: Repeat Control IN pipe. This function processes the remained data of Control IN transfer
-* 输    入: 无
-* 输    出: 无
-* 注意事项: 无
+* : USBD_CtrlIn()
+* : Repeat Control IN pipe. This function processes the remained data of Control IN transfer
+*     : 
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void USBD_CtrlIn(void)
 {
@@ -392,11 +392,11 @@ void USBD_CtrlIn(void)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: USBD_PrepareCtrlOut()
-* 功能说明: Prepare the first Control OUT pipe
-* 输    入: 无
-* 输    出: 无
-* 注意事项: 无
+* : USBD_PrepareCtrlOut()
+* : Prepare the first Control OUT pipe
+*     : 
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void USBD_PrepareCtrlOut(uint8_t *buf, uint32_t size)
 {
@@ -408,11 +408,11 @@ void USBD_PrepareCtrlOut(uint8_t *buf, uint32_t size)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: USBD_CtrlOut()
-* 功能说明: Repeat Control OUT pipe. This function processes the successive Control OUT transfer
-* 输    入: 无
-* 输    出: 无
-* 注意事项: 无
+* : USBD_CtrlOut()
+* : Repeat Control OUT pipe. This function processes the successive Control OUT transfer
+*     : 
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void USBD_CtrlOut(void)
 {
@@ -432,13 +432,13 @@ void USBD_CtrlOut(void)
 
 
 /******************************************************************************************************************************************
-* 函数名称: USBD_TxWrite()
-* 功能说明: 将要发送到主机的数据写入端点的FIFO
-* 输    入: uint8_t  epnr         endpoint number
-*           uint8_t *data           要写入FIFO的数据
-*           uint16_t size           要写入数据的个数
-* 输    出: 无
-* 注意事项: 无
+* : USBD_TxWrite()
+* : FIFO
+*     : uint8_t  epnr         endpoint number
+*           uint8_t *data           FIFO
+*           uint16_t size           
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void USBD_TxWrite(uint8_t epnr, uint8_t *data, uint16_t size)
 {
@@ -454,12 +454,12 @@ void USBD_TxWrite(uint8_t epnr, uint8_t *data, uint16_t size)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: USBD_RxRead()
-* 功能说明: 读取接收到的数据
-* 输    入: uint8_t *buff         读取到的数据存入buff
-*           uint16_t size           buff大小
-* 输    出: uint16_t              实际读取到数据的个数
-* 注意事项: 无
+* : USBD_RxRead()
+* : 
+*     : uint8_t *buff         buff
+*           uint16_t size           buff
+*     : uint16_t              
+* : 
 ******************************************************************************************************************************************/
 uint16_t USBD_RxRead(uint8_t *buff, uint16_t size)
 {
@@ -478,13 +478,13 @@ uint16_t USBD_RxRead(uint8_t *buff, uint16_t size)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: USBD_memcpy()
-* 功能说明: 访问 USB Buffer 的 memcpy
-* 输    入: void *destin          目的地址
-*           void *source            源地址
-*           uint32_t nByte          拷贝字节数
-* 输    出: 无
-* 注意事项: 访问 USB Buffer 必须使用 USBD_memcpy，不能使用库函数 memcpy
+* : USBD_memcpy()
+* :  USB Buffer  memcpy
+*     : void *destin          
+*           void *source            
+*           uint32_t nByte          
+*     : 
+* :  USB Buffer  USBD_memcpy memcpy
 ******************************************************************************************************************************************/
 void USBD_memcpy(uint8_t *destin, uint8_t *source, uint32_t nByte)
 {

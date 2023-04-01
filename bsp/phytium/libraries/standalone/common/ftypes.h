@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: ftypes.h
  * Date: 2021-05-27 13:30:03
  * LastEditTime: 2022-02-18 08:24:15
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 
@@ -50,7 +50,7 @@ typedef unsigned long boolean; /* boolean */
 typedef uint64_t _time_t;
 typedef size_t fsize_t;
 
-typedef intptr_t intptr; /* intptr_t是为了跨平台，其长度总是所在平台的位数，所以用来存放地址。 */
+typedef intptr_t intptr; /* intptr_t */
 typedef uintptr_t uintptr;
 typedef ptrdiff_t ptrdiff;
 

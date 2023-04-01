@@ -263,12 +263,12 @@ style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif;color:black">
                                           <ul>
                                             <li><font face="Verdana"
                                                 size="-1">Update
-                                                __HAL_RTC_…(__HANDLE__,
-                                                …) macros to access
+                                                __HAL_RTC_(__HANDLE__,
+                                                ) macros to access
                                                 registers through
                                                 (__HANDLE__)-&gt;Instance
                                                 pointer and avoid
-                                                “unused variable”
+                                                unused variable
                                                 warnings.</font></li>
                                             <li><font face="Verdana"
                                                 size="-1">Correct month
@@ -353,7 +353,7 @@ style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif;color:black">
                                                 the right macro to clear
                                                 I2C ADDR flag inside
                                                 I2C_Slave_ADDR() API as
-                                                it’s indicated in the
+                                                its indicated in the
                                                 reference manual.</font></li>
                                             <li><font face="Verdana"
                                                 size="-1">Update
@@ -406,7 +406,7 @@ style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif;color:black">
                                                 HAL_SMBUS_ER_IRQHandler()
                                                 API to return the
                                                 correct error code
-                                                “SMBUS_FLAG_PECERR” in
+                                                SMBUS_FLAG_PECERR in
                                                 case of packet error
                                                 occurs.</font></li>
                                           </ul>
@@ -664,7 +664,7 @@ style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif;color:black">
 
 
 
-                                        “register” keyword to be
+                                        register keyword to be
                                         compliant with new C++ rules:<o:p></o:p></span></li>
                                     <ul type="circle">
                                       <li class="MsoNormal"
@@ -1685,7 +1685,7 @@ style="font-family:&quot;Verdana&quot;,sans-serif">AF(</span></span>) to
 style="font-family:&quot;Verdana&quot;,sans-serif">GPIO_</span></span><span
                                               class="grame"><span
                                                 style="font-family:&quot;Verdana&quot;,sans-serif">TogglePin(</span></span>)
-                                            APIs to allow multi Pin’s
+                                            APIs to allow multi Pins
                                             toggling.<o:p></o:p></span></li>
                                         <li class="MsoNormal"
                                           style="color:#111111;mso-margin-top-alt:auto;
@@ -1754,7 +1754,7 @@ style="font-family:&quot;Verdana&quot;,sans-serif">GPIO_</span></span><span
                                               class="grame"><span
                                                 style="font-family:&quot;Verdana&quot;,sans-serif">OscConfig(</span></span>)
                                             API to add missing checks
-                                            and to don’t return
+                                            and to dont return
                                             HAL_ERROR if request repeats
                                             the current PLL
                                             configuration.<o:p></o:p></span></li>
@@ -3828,13 +3828,13 @@ style="font-family:&quot;Verdana&quot;,sans-serif">hardfault</span></span>
                                             Abort the right ongoing DMA
                                             transfer when memory write
                                             access request operation
-                                            failed: fix typo “<span
+                                            failed: fix typo <span
                                               class="spelle"><span
                                                 style="font-family:
-                                                &quot;Verdana&quot;,sans-serif">hdmarx</span></span>”
-                                            replaced by “<span
+                                                &quot;Verdana&quot;,sans-serif">hdmarx</span></span>
+                                            replaced by <span
                                               class="grame"><span
-                                                style="font-family:&quot;Verdana&quot;,sans-serif">hdmatx”</span></span></span><span
+                                                style="font-family:&quot;Verdana&quot;,sans-serif">hdmatx</span></span></span><span
                                             style="mso-fareast-font-family:&quot;Times
 
 
@@ -20667,7 +20667,7 @@ style="font-family:&quot;Verdana&quot;,sans-serif">HAL_CAN_Receive_IT</span></sp
                                             class="grame"><span
                                               style="font-family:&quot;Verdana&quot;,sans-serif">Read(</span></span>)
                                           API to fix wrong check on
-                                          misused parameter “Size”</span><span
+                                          misused parameter Size</span><span
                                           style="mso-fareast-font-family:&quot;Times
 
 
@@ -28244,9 +28244,9 @@ class="apple-converted-space"><span style="font-size:10.0pt;
 
 
                                             New Roman&quot;">Variant
-                                            functions with “_<span
+                                            functions with _<span
                                               class="spelle"><span
-                                                style="font-family:&quot;Verdana&quot;,sans-serif">NoReload</span></span>”
+                                                style="font-family:&quot;Verdana&quot;,sans-serif">NoReload</span></span>
                                             post fix allows to set the
                                             LTDC configuration/settings
                                             without immediate reload.
@@ -28256,11 +28256,11 @@ class="apple-converted-space"><span style="font-size:10.0pt;
                                             (on one or both layers) then
                                             applying (reload) these
                                             settings in one shot by
-                                            calling the function “<span
+                                            calling the function <span
                                               class="spelle"><span
                                                 style="font-family:&quot;Verdana&quot;,sans-serif">HAL_LTDC_</span></span><span
                                               class="grame"><span
-                                                style="font-family:&quot;Verdana&quot;,sans-serif">Reload</span></span>”</span><span
+                                                style="font-family:&quot;Verdana&quot;,sans-serif">Reload</span></span></span><span
                                             style="mso-fareast-font-family:&quot;Times
 
 
@@ -32201,9 +32201,9 @@ style="mso-special-character:line-break">
 
 
 
-                                              New Roman&quot;">“</span><span
+                                              New Roman&quot;"></span><span
                                               class="spelle"><span
-                                                style="font-family:&quot;Verdana&quot;,sans-serif">assert_param</span></span>”
+                                                style="font-family:&quot;Verdana&quot;,sans-serif">assert_param</span></span>
                                             used for parameters check is
                                             now done on the top of the
                                             exported functions : before
@@ -34741,7 +34741,7 @@ style="text-align:start;float:none;word-spacing:0px"><span
                                     tab-stops:list .5in"><span
                                       style="font-size:10.0pt;mso-bidi-font-size:
 12.0pt;font-family:Wingdings;mso-fareast-font-family:Wingdings;
-mso-bidi-font-family:Wingdings;color:black">§</span><span
+mso-bidi-font-family:Wingdings;color:black"></span><span
                                       style="font-size:7.0pt;mso-fareast-font-family:Wingdings;color:black">&nbsp;
 
 
@@ -35486,12 +35486,12 @@ style="font-family:&quot;Verdana&quot;,sans-serif">HAL_DSI_SetContentionDetectio
 
                                           New Roman&quot;">Implement
                                           workaround for the hardware
-                                          limitation: “The time to
+                                          limitation: The time to
                                           activate the clock between HS
                                           transmissions is not
                                           calculated <span
                                             class="grame"><span
-                                              style="font-family:&quot;Verdana&quot;,sans-serif">correctly”</span></span></span><span
+                                              style="font-family:&quot;Verdana&quot;,sans-serif">correctly</span></span></span><span
                                           style="mso-fareast-font-family:&quot;Times
 
 
@@ -43859,7 +43859,7 @@ style="font-family:&quot;Verdana&quot;,sans-serif">enum</span></span> <span
                                     tab-stops:list .5in"><span
                                       style="font-size:10.0pt;mso-bidi-font-size:
 12.0pt;font-family:Wingdings;mso-fareast-font-family:Wingdings;
-mso-bidi-font-family:Wingdings;color:black">§</span><span
+mso-bidi-font-family:Wingdings;color:black"></span><span
                                       style="font-size:7.0pt;mso-fareast-font-family:Wingdings;color:black">&nbsp;
 
 
@@ -44113,7 +44113,7 @@ style="font-family:&quot;Verdana&quot;,sans-serif">length&nbsp; (</span></span>P
                                     tab-stops:list .5in"><span
                                       style="font-size:10.0pt;mso-bidi-font-size:
 12.0pt;font-family:Wingdings;mso-fareast-font-family:Wingdings;
-mso-bidi-font-family:Wingdings;color:black">§</span><span
+mso-bidi-font-family:Wingdings;color:black"></span><span
                                       style="font-size:7.0pt;mso-fareast-font-family:Wingdings;color:black">&nbsp;
 
 
@@ -44171,7 +44171,7 @@ mso-bidi-font-family:Wingdings;color:black">§</span><span
                                     tab-stops:list .5in"><span
                                       style="font-size:10.0pt;mso-bidi-font-size:
 12.0pt;font-family:Wingdings;mso-fareast-font-family:Wingdings;
-mso-bidi-font-family:Wingdings;color:black">§</span><span
+mso-bidi-font-family:Wingdings;color:black"></span><span
                                       style="font-size:7.0pt;mso-fareast-font-family:Wingdings;color:black">&nbsp;
 
 
@@ -44272,7 +44272,7 @@ style="font-size:10.0pt;font-family:
                                     tab-stops:list .5in"><span
                                       style="font-size:10.0pt;mso-bidi-font-size:
 12.0pt;font-family:Wingdings;mso-fareast-font-family:Wingdings;
-mso-bidi-font-family:Wingdings;color:black">§</span><span
+mso-bidi-font-family:Wingdings;color:black"></span><span
                                       style="font-size:7.0pt;mso-fareast-font-family:Wingdings;color:black">&nbsp;
 
 
@@ -44824,7 +44824,7 @@ style="font-family:&quot;Verdana&quot;,sans-serif">FLASH_</span></span><span
                                     tab-stops:list .5in"><span
                                       style="font-size:10.0pt;mso-bidi-font-size:
 12.0pt;font-family:Wingdings;mso-fareast-font-family:Wingdings;
-mso-bidi-font-family:Wingdings;color:black">§</span><span
+mso-bidi-font-family:Wingdings;color:black"></span><span
                                       style="font-size:7.0pt;mso-fareast-font-family:Wingdings;color:black">&nbsp;
 
 
@@ -44913,7 +44913,7 @@ by&nbsp;__HAL_ETH_EXTI_SET_FALLING_E<b>DG</b>E_TRIGGER() <o:p></o:p></span></li>
                                     tab-stops:list .5in"><span
                                       style="font-size:10.0pt;mso-bidi-font-size:
 12.0pt;font-family:Wingdings;mso-fareast-font-family:Wingdings;
-mso-bidi-font-family:Wingdings;color:black">§</span><span
+mso-bidi-font-family:Wingdings;color:black"></span><span
                                       style="font-size:7.0pt;mso-fareast-font-family:Wingdings;color:black">&nbsp;
 
 
@@ -46215,7 +46215,7 @@ style="font-family:&quot;Verdana&quot;,sans-serif">HAL_RCC_C<b>S</b>SCallback</s
                                     tab-stops:list .5in"><span
                                       style="font-size:10.0pt;mso-bidi-font-size:
 12.0pt;font-family:Wingdings;mso-fareast-font-family:Wingdings;
-mso-bidi-font-family:Wingdings;color:black">§</span><span
+mso-bidi-font-family:Wingdings;color:black"></span><span
                                       style="font-size:7.0pt;mso-fareast-font-family:Wingdings;color:black">&nbsp;
 
 
@@ -46351,7 +46351,7 @@ style="font-family:&quot;Verdana&quot;,sans-serif">tmpreg</span></span>
                                     tab-stops:list .5in"><span
                                       style="font-size:10.0pt;mso-bidi-font-size:
 12.0pt;font-family:Wingdings;mso-fareast-font-family:Wingdings;
-mso-bidi-font-family:Wingdings;color:black">§</span><span
+mso-bidi-font-family:Wingdings;color:black"></span><span
                                       style="font-size:7.0pt;mso-fareast-font-family:Wingdings;color:black">&nbsp;
 
 
@@ -47090,7 +47090,7 @@ style="font-family:&quot;Verdana&quot;,sans-serif">transmit</span></span>
                                     tab-stops:list .5in"><span
                                       style="font-size:10.0pt;mso-bidi-font-size:
 12.0pt;font-family:Wingdings;mso-fareast-font-family:Wingdings;
-mso-bidi-font-family:Wingdings;color:black">§</span><span
+mso-bidi-font-family:Wingdings;color:black"></span><span
                                       style="font-size:7.0pt;mso-fareast-font-family:Wingdings;color:black">&nbsp;
 
 
@@ -47326,7 +47326,7 @@ style="font-family:&quot;Verdana&quot;,sans-serif">tmpreg</span></span>
                                     tab-stops:list .5in"><span
                                       style="font-size:10.0pt;mso-bidi-font-size:
 12.0pt;font-family:Wingdings;mso-fareast-font-family:Wingdings;
-mso-bidi-font-family:Wingdings;color:black">§</span><span
+mso-bidi-font-family:Wingdings;color:black"></span><span
                                       style="font-size:7.0pt;mso-fareast-font-family:Wingdings;color:black">&nbsp;
 
 
@@ -52856,7 +52856,7 @@ style="font-family:&quot;Verdana&quot;,sans-serif">GPIO_PIN_x</span></span><o:p>
                                     tab-stops:list .5in"><span
                                       style="font-size:10.0pt;mso-bidi-font-size:
 12.0pt;font-family:Wingdings;mso-fareast-font-family:Wingdings;
-mso-bidi-font-family:Wingdings;color:black">§</span><span
+mso-bidi-font-family:Wingdings;color:black"></span><span
                                       style="font-size:7.0pt;mso-fareast-font-family:Wingdings;color:black">&nbsp;
 
 
@@ -52947,7 +52947,7 @@ style="font-size:10.0pt;font-family:
                                     tab-stops:list .5in"><span
                                       style="font-size:10.0pt;mso-bidi-font-size:
 12.0pt;font-family:Wingdings;mso-fareast-font-family:Wingdings;
-mso-bidi-font-family:Wingdings;color:black">§</span><span
+mso-bidi-font-family:Wingdings;color:black"></span><span
                                       style="font-size:7.0pt;mso-fareast-font-family:Wingdings;color:black">&nbsp;
 
 
@@ -54013,7 +54013,7 @@ style="font-family:&quot;Verdana&quot;,sans-serif">by&nbsp; _</span></span>_USB_
 
 
 
-                                      color:black">§</span><span
+                                      color:black"></span><span
                                       style="font-size:7.0pt;mso-fareast-font-family:
                                       Wingdings;color:black">&nbsp; </span><b><span
                                         style="font-size:10.0pt;
@@ -54334,7 +54334,7 @@ style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif;color:black">
                                     tab-stops:list .5in"><span
                                       style="font-size:10.0pt;mso-bidi-font-size:
 12.0pt;font-family:Wingdings;mso-fareast-font-family:Wingdings;
-mso-bidi-font-family:Wingdings;color:black">§</span><span
+mso-bidi-font-family:Wingdings;color:black"></span><span
                                       style="font-size:7.0pt;mso-fareast-font-family:Wingdings;color:black">&nbsp;
 
 
@@ -54554,7 +54554,7 @@ mso-bidi-font-family:Wingdings;color:black">§</span><span
                                     tab-stops:list .5in"><span
                                       style="font-size:10.0pt;mso-bidi-font-size:
 12.0pt;font-family:Wingdings;mso-fareast-font-family:Wingdings;
-mso-bidi-font-family:Wingdings;color:black">§</span><span
+mso-bidi-font-family:Wingdings;color:black"></span><span
                                       style="font-size:7.0pt;mso-fareast-font-family:Wingdings;color:black">&nbsp;
 
 
@@ -55041,7 +55041,7 @@ style="font-family:&quot;Verdana&quot;,sans-serif">hirda</span></span>);</span><
                                     tab-stops:list .5in"><span
                                       style="font-size:10.0pt;mso-bidi-font-size:
 12.0pt;font-family:Wingdings;mso-fareast-font-family:Wingdings;
-mso-bidi-font-family:Wingdings;color:black">§</span><span
+mso-bidi-font-family:Wingdings;color:black"></span><span
                                       style="font-size:7.0pt;mso-fareast-font-family:Wingdings;color:black">&nbsp;
 
 

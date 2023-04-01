@@ -349,7 +349,7 @@ static int spi_sample(int argc, char *argv[])
 
 
 
-       /* 查找 spi 设备获取设备句柄 */
+       /*  spi  */
     spi_dev = (struct rt_spi_device *)rt_device_find(SPI_DEVICE_NAME);
     if (!spi_dev)
     {
@@ -358,7 +358,7 @@ static int spi_sample(int argc, char *argv[])
     else
     {
          rt_spi_configure(spi_dev, &cfg);
-        /* 方式1：使用 rt_spi_send_then_recv()发送命令读取ID */
+        /* 1 rt_spi_send_then_recv()ID */
          while(1)
        { rt_spi_send(spi_dev, m_tx_buf, 6);rt_thread_mdelay(500);}
         //rt_kprintf("use rt_spi_send_then_recv() read w25q ID is:%x%x\n", id[3], id[4]);

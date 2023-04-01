@@ -1,47 +1,47 @@
-# FSDIO 驱动程序
+# FSDIO 
 
-## 1. 概述
+## 1. 
 
-SD/SDIO/eMMC控制器，主要支持SD卡，eMMC介质的访问能力，同时支持连接SDIO接口设备，目前 FSDIO 驱动已经支持 SD 卡的访问
+SD/SDIO/eMMCSDeMMCSDIO FSDIO  SD 
 
-## 2. 功能
+## 2. 
 
-FSDIO 驱动提供了SD/MMC卡的控制访问方法，
-- 初始化SD/MMC控制器
-- 以轮询方式发送/接收数据和命令
+FSDIO SD/MMC
+- SD/MMC
+- /
 
-访问SD/MMC卡需要兼容一系列协议命令，这一部分驱动不提供，可以通过第三方框架sdmmc使用
+SD/MMCsdmmc
 
-驱动相关的源文件包括，
+
 ```
 fsdio
-    ├── fsdio.c
-    ├── fsdio.h
-    ├── fsdio_cmd.c
-    ├── fsdio_dma.c
-    ├── fsdio_g.c
-    ├── fsdio_hw.h
-    ├── fsdio_intr.c
-    ├── fsdio_pio.c
-    ├── fsdio_selftest.
+     fsdio.c
+     fsdio.h
+     fsdio_cmd.c
+     fsdio_dma.c
+     fsdio_g.c
+     fsdio_hw.h
+     fsdio_intr.c
+     fsdio_pio.c
+     fsdio_selftest.
 ```
 
-## 3. 配置方法
+## 3. 
 
-以下部分将指导您完成 FSDIO 驱动的软件配置:
+ FSDIO :
 
-- 初始化 FSDIO 控制器
-- 通过协议命令完成 SD/MMC 卡初始化
-- 通过协议命令读写 SD/MMC 卡数据
+-  FSDIO 
+-  SD/MMC 
+-  SD/MMC 
 
-## 4 应用示例
+## 4 
 
 
-### [通过协议命令读写SD卡](../../../baremetal/example/storage/sdio_cmds)
+### [SD](../../../baremetal/example/storage/sdio_cmds)
 
-## 5. API参考
+## 5. API
 
-### 5.1. 用户数据结构
+### 5.1. 
 
 #### FSdio
 
@@ -105,15 +105,15 @@ typedef struct
 typedef struct
 {
     u32 attribute; /* ds0 */
-#define FSDIO_IDMAC_DES0_DIC	BIT(1)/* 内部描述表不触发TI/RI中断 */
-#define FSDIO_IDMAC_DES0_LD	    BIT(2)/* 数据的最后一个描述符 */
-#define FSDIO_IDMAC_DES0_FD	    BIT(3)/* 数据的第一个描述符 */
-#define FSDIO_IDMAC_DES0_CH	    BIT(4)/* 链接下一个描述符地址 */
-#define FSDIO_IDMAC_DES0_ER	    BIT(5)/* 链表已经到达最后一个链表 */
-#define FSDIO_IDMAC_DES0_CES	BIT(30)/* RINTSTS寄存器错误汇总 */
-#define FSDIO_IDMAC_DES0_OWN	BIT(31)/* 描述符关联DMA，完成传输后该位置置0 */
+#define FSDIO_IDMAC_DES0_DIC	BIT(1)/* TI/RI */
+#define FSDIO_IDMAC_DES0_LD	    BIT(2)/*  */
+#define FSDIO_IDMAC_DES0_FD	    BIT(3)/*  */
+#define FSDIO_IDMAC_DES0_CH	    BIT(4)/*  */
+#define FSDIO_IDMAC_DES0_ER	    BIT(5)/*  */
+#define FSDIO_IDMAC_DES0_CES	BIT(30)/* RINTSTS */
+#define FSDIO_IDMAC_DES0_OWN	BIT(31)/* DMA0 */
     u32 non1; /* ds1 --> unused */
-    u32 len; /* ds2 bit[25:13] buffer2 size，bit[12:0] buffer1 size*/
+    u32 len; /* ds2 bit[25:13] buffer2 sizebit[12:0] buffer1 size*/
 #define FSDIO_IDMAC_DES2_BUF1_MASK      GENMASK(12, 0)
 #define FSDIO_IDMAC_DES2_BUF1_SIZE(x)  (FSDIO_IDMAC_DES2_BUF1_MASK & (x))
 #define FSDIO_IDMAC_DES2_BUF2_MASK      GENMASK(25, 13)
@@ -127,20 +127,20 @@ typedef struct
 
 ```
 
-### 5.2  错误码定义
+### 5.2  
 
-- FSDIO_SUCCESS           : 操作成功
-- FSDIO_ERR_TIMEOUT       ：操作超时失败
-- FSDIO_ERR_NOT_INIT      ：控制器未初始化
-- FSDIO_ERR_SHORT_BUF     ：缓冲区大小不足
-- FSDIO_ERR_NOT_SUPPORT   ：操作不支持
-- FSDIO_ERR_INVALID_STATE ：控制器的状态不合法
-- FSDIO_ERR_TRANS_TIMEOUT ：传输数据超时失败
-- FSDIO_ERR_CMD_TIMEOUT   ：传输命令超时失败
-- FSDIO_ERR_NO_CARD       ：卡不在位
-- FSDIO_ERR_BUSY          : 卡处于繁忙状态
+- FSDIO_SUCCESS           : 
+- FSDIO_ERR_TIMEOUT       
+- FSDIO_ERR_NOT_INIT      
+- FSDIO_ERR_SHORT_BUF     
+- FSDIO_ERR_NOT_SUPPORT   
+- FSDIO_ERR_INVALID_STATE 
+- FSDIO_ERR_TRANS_TIMEOUT 
+- FSDIO_ERR_CMD_TIMEOUT   
+- FSDIO_ERR_NO_CARD       
+- FSDIO_ERR_BUSY          : 
 
-### 5.3. 用户API接口
+### 5.3. API
 
 #### FSdioLookupConfig
 

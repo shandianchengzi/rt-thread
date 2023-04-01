@@ -139,25 +139,25 @@ static rt_err_t hpm_i2s_init(struct rt_audio_device* audio)
     init_i2s_pins(hpm_audio->base);
     board_init_i2s_clock(hpm_audio->base);
 
-    //使用DMA传输
+    //DMA
     i2s_enable_rx_dma_request(hpm_audio->base);
     i2s_enable_tx_dma_request(hpm_audio->base);
 
     i2s_get_default_config(hpm_audio->base, &i2s_config);
     i2s_config.enable_mclk_out = true;
-    i2s_config.frame_start_at_rising_edge = true;  //左对齐与右对齐方式， 对应上升沿
+    i2s_config.frame_start_at_rising_edge = true;  // 
     i2s_init(hpm_audio->base, &i2s_config);
 
     mclk_hz = clock_get_frequency(hpm_audio->clk_name);
     i2s_get_default_transfer_config(&transfer);
-    /* 初始化I2S配置, 应用使用configure ops修改属性  */
+    /* I2S, configure ops  */
     transfer.sample_rate = 24000U;
     transfer.protocol = I2S_PROTOCOL_LEFT_JUSTIFIED;
-    transfer.channel_slot_mask = I2S_CHANNEL_SLOT_MASK(0); /* 1个通道 */
+    transfer.channel_slot_mask = I2S_CHANNEL_SLOT_MASK(0); /* 1 */
     transfer.audio_depth = I2S_AUDIO_DEPTH_16_BITS;
     transfer.master_mode = true;
     hpm_audio->transfer = transfer;
-    //将初始参数记录到audio_config
+    //audio_config
     hpm_audio->audio_config.samplerate = 24000U;
     hpm_audio->audio_config.samplebits = 16;
     hpm_audio->audio_config.channels = 1;
@@ -375,7 +375,7 @@ static rt_err_t hpm_i2s_configure(struct rt_audio_device* audio, struct rt_audio
             break;
     }
 
-    /* 设置 I2S transfer */
+    /*  I2S transfer */
     if (hpm_audio->audio_config.channels == i2s_mono_left) {
         hpm_audio->transfer.channel_slot_mask = I2S_CHANNEL_SLOT_MASK(0);
     } else if (hpm_audio->audio_config.channels == i2s_mono_right) {
@@ -389,7 +389,7 @@ static rt_err_t hpm_i2s_configure(struct rt_audio_device* audio, struct rt_audio
 
     hpm_audio->transfer.sample_rate = hpm_audio->audio_config.samplerate;
 
-    //i2s dma方式仅支持采样位宽为：16bit, 32bit
+    //i2s dma16bit, 32bit
     assert(hpm_audio->audio_config.samplebits == 16 || hpm_audio->audio_config.samplebits == 32);
     hpm_audio->transfer.audio_depth = (hpm_audio->audio_config.samplebits - 16) >> 3;
 
@@ -406,7 +406,7 @@ static rt_err_t hpm_i2s_start(struct rt_audio_device* audio, int stream)
 
     struct hpm_i2s* hpm_audio = (struct hpm_i2s*)audio->parent.user_data;
 
-    /* 申请DMA resource用于I2S transfer */
+    /* DMA resourceI2S transfer */
     if (stream == AUDIO_STREAM_REPLAY) {
         hpm_dma_resource_t *dma_resource = &hpm_audio->tx_dma_resource;
         if (dma_manager_request_resource(dma_resource) == status_success) {
@@ -467,12 +467,12 @@ static rt_ssize_t hpm_i2s_transmit(struct rt_audio_device* audio, const void* wr
     RT_ASSERT(audio != RT_NULL);
     struct hpm_i2s* hpm_audio = (struct hpm_i2s*)audio->parent.user_data;
 
-    //支持采样位宽16bit, 32bit
+    //16bit, 32bit
     uint8_t data_width;
     uint8_t data_shift_byte;
     if (hpm_audio->transfer.audio_depth == I2S_AUDIO_DEPTH_16_BITS) {
         data_width = DMA_TRANSFER_WIDTH_HALF_WORD;
-        data_shift_byte = 2U ; //16位音频数据位于寄存器的高位
+        data_shift_byte = 2U ; //16
     } else {
         data_width = DMA_TRANSFER_WIDTH_WORD;
         data_shift_byte = 0U;

@@ -82,21 +82,21 @@ extern "C"
  
 /**
  *******************************************************************************
- ** \brief 系统时钟输入源类型定义
+ ** \brief 
  ** \note
  ******************************************************************************/
 typedef enum en_sysctrl_clk_source
 {
-    SysctrlClkRCH  = 0u,               ///< 内部高速时钟
-    SysctrlClkXTH  = 1u,               ///< 外部高速时钟
-    SysctrlClkRCL  = 2u,               ///< 内部低速时钟
-    SysctrlClkXTL  = 3u,               ///< 外部低速时钟
-    SysctrlClkPLL  = 4u,               ///< PLL时钟
+    SysctrlClkRCH  = 0u,               ///< 
+    SysctrlClkXTH  = 1u,               ///< 
+    SysctrlClkRCL  = 2u,               ///< 
+    SysctrlClkXTL  = 3u,               ///< 
+    SysctrlClkPLL  = 4u,               ///< PLL
 }en_sysctrl_clk_source_t;
 
 /**
  *******************************************************************************
- ** \brief RCH频率值枚举类型定义
+ ** \brief RCH
  ******************************************************************************/
 typedef enum en_sysctrl_rch_freq
 {
@@ -109,19 +109,19 @@ typedef enum en_sysctrl_rch_freq
 
 /**
  *******************************************************************************
- ** \brief XTAL驱动能力类型定义
+ ** \brief XTAL
  ******************************************************************************/
 typedef enum en_sysctrl_xtal_driver
 {
-    SysctrlXtalDriver0 = 0u,                ///< 最弱驱动能力
-    SysctrlXtalDriver1 = 1u,                ///< 弱驱动能力
-    SysctrlXtalDriver2 = 2u,                ///< 一般驱动能力
-    SysctrlXtalDriver3 = 3u,                ///< 最强驱动能力
+    SysctrlXtalDriver0 = 0u,                ///< 
+    SysctrlXtalDriver1 = 1u,                ///< 
+    SysctrlXtalDriver2 = 2u,                ///< 
+    SysctrlXtalDriver3 = 3u,                ///< 
 }en_sysctrl_xtal_driver_t;
 
 /**
  *******************************************************************************
- ** \brief XTH频率值范围选择类型定义
+ ** \brief XTH
  ******************************************************************************/
 typedef enum en_sysctrl_xth_freq
 {
@@ -133,19 +133,19 @@ typedef enum en_sysctrl_xth_freq
 
 /**
  *******************************************************************************
- ** \brief XTH时钟稳定周期数类型定义
+ ** \brief XTH
  ******************************************************************************/
 typedef enum en_sysctrl_xth_cycle
 {
-    SysctrlXthStableCycle256   = 0u,              ///< 256 个周期数
-    SysctrlXthStableCycle1024  = 1u,              ///< 1024 个周期数
-    SysctrlXthStableCycle4096  = 2u,              ///< 4096 个周期数
-    SysctrlXthStableCycle16384 = 3u,              ///< 16384 个周期数
+    SysctrlXthStableCycle256   = 0u,              ///< 256 
+    SysctrlXthStableCycle1024  = 1u,              ///< 1024 
+    SysctrlXthStableCycle4096  = 2u,              ///< 4096 
+    SysctrlXthStableCycle16384 = 3u,              ///< 16384 
 }en_sysctrl_xth_cycle_t;
 
 /**
  *******************************************************************************
- ** \brief RCL频率值枚举类型定义
+ ** \brief RCL
  ******************************************************************************/
 typedef enum en_sysctrl_rcl_freq
 {
@@ -155,59 +155,59 @@ typedef enum en_sysctrl_rcl_freq
 
 /**
  *******************************************************************************
- ** \brief RCL时钟稳定周期数类型定义
+ ** \brief RCL
  ******************************************************************************/
 typedef enum en_sysctrl_rcl_cycle
 {
-    SysctrlRclStableCycle4   = 0u,                  ///< 4 个周期数
-    SysctrlRclStableCycle16  = 1u,                  ///< 16 个周期数
-    SysctrlRclStableCycle64  = 2u,                  ///< 64 个周期数
-    SysctrlRclStableCycle256 = 3u,                  ///< 256 个周期数
+    SysctrlRclStableCycle4   = 0u,                  ///< 4 
+    SysctrlRclStableCycle16  = 1u,                  ///< 16 
+    SysctrlRclStableCycle64  = 2u,                  ///< 64 
+    SysctrlRclStableCycle256 = 3u,                  ///< 256 
 }en_sysctrl_rcl_cycle_t;
 
 /**
  *******************************************************************************
- ** \brief XTL时钟稳定周期数类型定义
+ ** \brief XTL
  ******************************************************************************/
 typedef enum en_sysctrl_xtl_cycle
 {
-    SysctrlXtlStableCycle256   = 0u,                  ///< 256 个周期数
-    SysctrlXtlStableCycle1024  = 1u,                  ///< 1024 个周期数
-    SysctrlXtlStableCycle4096  = 2u,                  ///< 4096 个周期数
-    SysctrlXtlStableCycle16384 = 3u,                  ///< 16384 个周期数
+    SysctrlXtlStableCycle256   = 0u,                  ///< 256 
+    SysctrlXtlStableCycle1024  = 1u,                  ///< 1024 
+    SysctrlXtlStableCycle4096  = 2u,                  ///< 4096 
+    SysctrlXtlStableCycle16384 = 3u,                  ///< 16384 
 }en_sysctrl_xtl_cycle_t;
 
 /**
  *******************************************************************************
- ** \brief XTL晶体振幅枚举类型定义
+ ** \brief XTL
  ******************************************************************************/
 typedef enum en_sysctrl_xtl_amp
 {
-    SysctrlXtlAmp0 = 0u,                ///< 最小振幅
-    SysctrlXtlAmp1 = 1u,                ///< 小振幅
-    SysctrlXtlAmp2 = 2u,                ///< 一般振幅
-    SysctrlXtlAmp3 = 3u,                ///< 最大振幅
+    SysctrlXtlAmp0 = 0u,                ///< 
+    SysctrlXtlAmp1 = 1u,                ///< 
+    SysctrlXtlAmp2 = 2u,                ///< 
+    SysctrlXtlAmp3 = 3u,                ///< 
 }en_sysctrl_xtl_amp_t;
 
 /**
  *******************************************************************************
- ** \brief PLL时钟稳定周期数类型定义
+ ** \brief PLL
  ******************************************************************************/
 typedef enum en_sysctrl_pll_cycle
 {
-    SysctrlPllStableCycle128   = 0u,                  ///< 128个周期数
-    SysctrlPllStableCycle256   = 1u,                  ///< 256个周期数
-    SysctrlPllStableCycle512   = 2u,                  ///< 512个周期数
-    SysctrlPllStableCycle1024  = 3u,                  ///< 1024个周期数
-    SysctrlPllStableCycle2048  = 4u,                  ///< 2048个周期数
-    SysctrlPllStableCycle4096  = 5u,                  ///< 4096个周期数
-    SysctrlPllStableCycle8192  = 6u,                  ///< 8192个周期数
-    SysctrlPllStableCycle16384 = 7u,                  ///< 16384个周期数    
+    SysctrlPllStableCycle128   = 0u,                  ///< 128
+    SysctrlPllStableCycle256   = 1u,                  ///< 256
+    SysctrlPllStableCycle512   = 2u,                  ///< 512
+    SysctrlPllStableCycle1024  = 3u,                  ///< 1024
+    SysctrlPllStableCycle2048  = 4u,                  ///< 2048
+    SysctrlPllStableCycle4096  = 5u,                  ///< 4096
+    SysctrlPllStableCycle8192  = 6u,                  ///< 8192
+    SysctrlPllStableCycle16384 = 7u,                  ///< 16384    
 }en_sysctrl_pll_cycle_t;
 
 /**
  *******************************************************************************
- ** \brief PLL输入频率范围类型定义
+ ** \brief PLL
  ******************************************************************************/
 typedef enum en_sysctrl_pll_infreq
 {
@@ -219,7 +219,7 @@ typedef enum en_sysctrl_pll_infreq
 
 /**
  *******************************************************************************
- ** \brief PLL输出频率范围类型定义
+ ** \brief PLL
  ******************************************************************************/
 typedef enum en_sysctrl_pll_outfreq
 {
@@ -232,37 +232,37 @@ typedef enum en_sysctrl_pll_outfreq
 
 /**
  *******************************************************************************
- ** \brief PLL输入时钟源类型定义
+ ** \brief PLL
  ******************************************************************************/
 typedef enum en_sysctrl_pll_clksource
 {
-    SysctrlPllXthXtal   = 0u,                  ///< XTH晶振输入的时钟
-    SysctrlPllXthIn     = 2u,                  ///< XTH从端口输入的时钟
-    SysctrlPllRch       = 3u,                  ///< RCH时钟
+    SysctrlPllXthXtal   = 0u,                  ///< XTH
+    SysctrlPllXthIn     = 2u,                  ///< XTH
+    SysctrlPllRch       = 3u,                  ///< RCH
 }en_sysctrl_pll_clksource_t;
 
 /**
  *******************************************************************************
- ** \brief PLL输入时钟源类型定义
+ ** \brief PLL
  ******************************************************************************/
 typedef enum en_sysctrl_pll_mul
 {
-    SysctrlPllMul2  = 2u,                   ///< 2倍频
-    SysctrlPllMul3  = 3u,                   ///< 3倍频
-    SysctrlPllMul4  = 4u,                   ///< 4倍频
-    SysctrlPllMul5  = 5u,                   ///< 5倍频
-    SysctrlPllMul6  = 6u,                   ///< 6倍频
-    SysctrlPllMul7  = 7u,                   ///< 7倍频
-    SysctrlPllMul8  = 8u,                   ///< 8倍频
-    SysctrlPllMul9  = 9u,                   ///< 9倍频
-    SysctrlPllMul10 = 10u,                  ///< 10倍频
-    SysctrlPllMul11 = 11u,                  ///< 11倍频
-    SysctrlPllMul12 = 12u,                  ///< 12倍频
+    SysctrlPllMul2  = 2u,                   ///< 2
+    SysctrlPllMul3  = 3u,                   ///< 3
+    SysctrlPllMul4  = 4u,                   ///< 4
+    SysctrlPllMul5  = 5u,                   ///< 5
+    SysctrlPllMul6  = 6u,                   ///< 6
+    SysctrlPllMul7  = 7u,                   ///< 7
+    SysctrlPllMul8  = 8u,                   ///< 8
+    SysctrlPllMul9  = 9u,                   ///< 9
+    SysctrlPllMul10 = 10u,                  ///< 10
+    SysctrlPllMul11 = 11u,                  ///< 11
+    SysctrlPllMul12 = 12u,                  ///< 12
 }en_sysctrl_pll_mul_t;
 
 /**
  *******************************************************************************
- ** \brief HCLK时钟分频系数类型定义
+ ** \brief HCLK
  ******************************************************************************/
 typedef enum en_sysctrl_hclk_div
 {
@@ -278,7 +278,7 @@ typedef enum en_sysctrl_hclk_div
 
 /**
  *******************************************************************************
- ** \brief PCLK分频系数
+ ** \brief PCLK
  ******************************************************************************/
 typedef enum en_sysctrl_pclk_div
 {
@@ -290,7 +290,7 @@ typedef enum en_sysctrl_pclk_div
 
 /**
  *******************************************************************************
- ** \brief RTC高速时钟补偿时钟频率数据类型定义
+ ** \brief RTC
  ******************************************************************************/
 typedef enum en_sysctrl_rtc_adjust
 {
@@ -306,47 +306,47 @@ typedef enum en_sysctrl_rtc_adjust
 
 /**
  *******************************************************************************
- ** \brief 系统控制模块其他功能数据类型定义
+ ** \brief 
  ******************************************************************************/
 typedef enum en_sysctrl_func
 {
-    SysctrlEXTHEn           = 1u,                    ///< 使能外部高速时钟从输入引脚输入
-    SysctrlEXTLEn           = 2u,                    ///< 使能外部低速速时钟从输入引脚输入
-    SysctrlXTLAlwaysOnEn    = 3u,                    ///< 使能后XTL_EN只可置位
-    SysctrlClkFuncRTCLpmEn  = 5u,                    ///< 使能RTC低功耗模式
-    SysctrlCMLockUpEn       = 6u,                    ///< 使能后CPU执行无效指令会复位MCU
-    SysctrlSWDUseIOEn       = 8u,                    ///< SWD端口设为IO功能
+    SysctrlEXTHEn           = 1u,                    ///< 
+    SysctrlEXTLEn           = 2u,                    ///< 
+    SysctrlXTLAlwaysOnEn    = 3u,                    ///< XTL_EN
+    SysctrlClkFuncRTCLpmEn  = 5u,                    ///< RTC
+    SysctrlCMLockUpEn       = 6u,                    ///< CPUMCU
+    SysctrlSWDUseIOEn       = 8u,                    ///< SWDIO
 }en_sysctrl_func_t;
 
 /**
  *******************************************************************************
- ** \brief 外设时钟门控开关类型枚举
+ ** \brief 
  ******************************************************************************/
 typedef enum en_sysctrl_peripheral_gate
 {
-    SysctrlPeripheralUart0      = 0u,       ///< 串口0
-    SysctrlPeripheralUart1      = 1u,       ///< 串口1
-    SysctrlPeripheralLpUart0    = 2u,       ///< 低功耗串口0
-    SysctrlPeripheralLpUart1    = 3u,       ///< 低功耗串口1
+    SysctrlPeripheralUart0      = 0u,       ///< 0
+    SysctrlPeripheralUart1      = 1u,       ///< 1
+    SysctrlPeripheralLpUart0    = 2u,       ///< 0
+    SysctrlPeripheralLpUart1    = 3u,       ///< 1
     SysctrlPeripheralI2c0       = 4u,       ///< I2C0
     SysctrlPeripheralI2c1       = 5u,       ///< I2C1
     SysctrlPeripheralSpi0       = 6u,       ///< SPI0
     SysctrlPeripheralSpi1       = 7u,       ///< SPI1
-    SysctrlPeripheralBaseTim    = 8u,       ///< 基础定时器TIM0/1/2
-    SysctrlPeripheralLpTim0     = 9u,       ///< 低功耗定时器0
-    SysctrlPeripheralAdvTim     = 10u,      ///< 高级定时器TIM4/5/6
-    SysctrlPeripheralTim3       = 11u,      ///< 定时器3
+    SysctrlPeripheralBaseTim    = 8u,       ///< TIM0/1/2
+    SysctrlPeripheralLpTim0     = 9u,       ///< 0
+    SysctrlPeripheralAdvTim     = 10u,      ///< TIM4/5/6
+    SysctrlPeripheralTim3       = 11u,      ///< 3
     SysctrlPeripheralOpa        = 13u,      ///< OPA
-    SysctrlPeripheralPca        = 14u,      ///< 可编程计数阵列
-    SysctrlPeripheralWdt        = 15u,      ///< 看门狗
+    SysctrlPeripheralPca        = 14u,      ///< 
+    SysctrlPeripheralWdt        = 15u,      ///< 
     SysctrlPeripheralAdcBgr     = 16u,      ///< ADC&BGR
-    SysctrlPeripheralVcLvd      = 17u,      ///< VC和LVD
+    SysctrlPeripheralVcLvd      = 17u,      ///< VCLVD
     SysctrlPeripheralRng        = 18u,      ///< RNG
     SysctrlPeripheralPcnt       = 19u,      ///< PCNT
     SysctrlPeripheralRtc        = 20u,      ///< RTC
-    SysctrlPeripheralTrim       = 21u,      ///< 时钟校准
+    SysctrlPeripheralTrim       = 21u,      ///< 
     SysctrlPeripheralLcd        = 22u,      ///< LCD
-    SysctrlPeripheralTick       = 24u,      ///< 系统定时器
+    SysctrlPeripheralTick       = 24u,      ///< 
     SysctrlPeripheralSwd        = 25u,      ///< SWD
     SysctrlPeripheralCrc        = 26u,      ///< CRC
     SysctrlPeripheralAes        = 27u,      ///< AES
@@ -354,32 +354,32 @@ typedef enum en_sysctrl_peripheral_gate
     SysctrlPeripheralDma        = 29u,      ///< DMA
     SysctrlPeripheralFlash      = 31u,      ///< Flash
     SysctrlPeripheralDac        = 35u,      ///< DAC
-    SysctrlPeripheralLpTim1     = 36u,      ///< 低功耗定时器1
+    SysctrlPeripheralLpTim1     = 36u,      ///< 1
     SysctrlPeripheralUart2      = 40u,      ///< UART2
     SysctrlPeripheralUart3      = 41u,      ///< UART3    
 }en_sysctrl_peripheral_gate_t;
 
 /**
  *******************************************************************************
- ** \brief 时钟初始化配置结构体定义
+ ** \brief 
  ******************************************************************************/
 typedef struct
 {
-    en_sysctrl_clk_source_t  enClkSrc;       ///< 时钟源选择
-    en_sysctrl_hclk_div_t    enHClkDiv;      ///< HCLK分频系数
-    en_sysctrl_pclk_div_t    enPClkDiv;      ///< PCLK分频系数
+    en_sysctrl_clk_source_t  enClkSrc;       ///< 
+    en_sysctrl_hclk_div_t    enHClkDiv;      ///< HCLK
+    en_sysctrl_pclk_div_t    enPClkDiv;      ///< PCLK
 }stc_sysctrl_clk_cfg_t;
 
 /**
  *******************************************************************************
- ** \brief 时钟初始化配置结构体定义
+ ** \brief 
  ******************************************************************************/
 typedef struct
 {
-    en_sysctrl_pll_infreq_t    enInFreq;        ///< PLL输入时钟频率范围选择
-    en_sysctrl_pll_outfreq_t   enOutFreq;       ///< PLL输出时钟频率范围选择
-    en_sysctrl_pll_clksource_t enPllClkSrc;     ///< PLL输入时钟源选择
-    en_sysctrl_pll_mul_t       enPllMul;        ///< PLL倍频系数选择
+    en_sysctrl_pll_infreq_t    enInFreq;        ///< PLL
+    en_sysctrl_pll_outfreq_t   enOutFreq;       ///< PLL
+    en_sysctrl_pll_clksource_t enPllClkSrc;     ///< PLL
+    en_sysctrl_pll_mul_t       enPllMul;        ///< PLL
 }stc_sysctrl_pll_cfg_t;
 
 /******************************************************************************
@@ -389,58 +389,58 @@ typedef struct
 /******************************************************************************
  * Global function prototypes (definition in C source)
  ******************************************************************************/
-///< 系统时钟初始化API:用于上电后，系统工作之前对主频及外设时钟进行初始化； 
-///< 注意1：使用该初始化函数前需要根据系统，必须优先设置目标内部时钟源的TRIM值或外部时钟源的频率范围，
-///< 注意2：XTH、XTL的频率范围设定，需要根据外部晶振决定，
-///< 注意3：本驱动默认宏定义：SYSTEM_XTH=32MHz,SYSTEM_XTL=32768Hz,如使用其它外部晶振，必须修改这两个宏定义的值。
+///< API: 
+///< 1TRIM
+///< 2XTHXTL
+///< 3SYSTEM_XTH=32MHz,SYSTEM_XTL=32768Hz,
 en_result_t Sysctrl_ClkInit(stc_sysctrl_clk_cfg_t *pstcCfg);
 
-///< 系统时钟去初始化API:恢复为上电默认状态->PCLK=HCLK=SystemClk=RCH4MHz
+///< API:->PCLK=HCLK=SystemClk=RCH4MHz
 en_result_t Sysctrl_ClkDeInit(void);
 
-///< 系统时钟模块的基本功能设置
-///< 注意：使能需要使用的时钟源之前，必须优先设置目标内部时钟源的TRIM值或外部时钟源的频率范围
+///< 
+///< TRIM
 en_result_t Sysctrl_ClkSourceEnable(en_sysctrl_clk_source_t enSource, boolean_t bFlag);
 
-///<外部晶振驱动配置：系统初始化Sysctrl_ClkInit()之后，可根据需要配置外部晶振的驱动能力，时钟初始化Sysctrl_ClkInit()默认为最大值;
+///<Sysctrl_ClkInit()Sysctrl_ClkInit();
 en_result_t Sysctrl_XTHDriverCfg(en_sysctrl_xtal_driver_t enDriver);
 en_result_t Sysctrl_XTLDriverCfg(en_sysctrl_xtl_amp_t enAmp, en_sysctrl_xtal_driver_t enDriver);
 
-///<时钟稳定周期设置:系统初始化Sysctrl_ClkInit()之后，可根据需要配置时钟开启后的稳定之间，默认为最大值;
+///<:Sysctrl_ClkInit();
 en_result_t Sysctrl_SetXTHStableTime(en_sysctrl_xth_cycle_t enCycle);
 en_result_t Sysctrl_SetRCLStableTime(en_sysctrl_rcl_cycle_t enCycle);
 en_result_t Sysctrl_SetXTLStableTime(en_sysctrl_xtl_cycle_t enCycle);
 en_result_t Sysctrl_SetPLLStableTime(en_sysctrl_pll_cycle_t enCycle);
 
-///<系统时钟源切换并更新系统时钟：如果需要在系统时钟初始化Sysctrl_ClkInit()之后切换主频时钟源，则使用该函数；
-///< 时钟切换前后，必须根据目标频率值设置Flash读等待周期，可配置插入周期为0、1、2，
-///< 注意!!!：当HCLK大于24MHz时，FLASH等待周期插入必须至少为1,否则程序运行可能产生未知错误
+///<Sysctrl_ClkInit()
+///< Flash012
+///< !!!HCLK24MHzFLASH1,
 en_result_t Sysctrl_SysClkSwitch(en_sysctrl_clk_source_t enSource);
 
-///< 时钟源频率设定：根据系统情况，单独设置不同时钟源的频率值;
-///< 时钟频率设置前，必须根据目标频率值设置Flash读等待周期，可配置插入周期为0、1、2，
-///< 其中XTL的时钟由外部晶振决定，无需设置。
+///< ;
+///< Flash012
+///< XTL
 en_result_t Sysctrl_SetRCHTrim(en_sysctrl_rch_freq_t enRCHFreq);
 en_result_t Sysctrl_SetRCLTrim(en_sysctrl_rcl_freq_t enRCLFreq);
 en_result_t Sysctrl_SetXTHFreq(en_sysctrl_xth_freq_t enXTHFreq);
 en_result_t Sysctrl_SetPLLFreq(stc_sysctrl_pll_cfg_t *pstcPLLCfg);
 
-///< 时钟分频设置:根据系统情况，单独设置HCLK、PCLK的分配值;
+///< :HCLKPCLK;
 en_result_t Sysctrl_SetHCLKDiv(en_sysctrl_hclk_div_t enHCLKDiv);
 en_result_t Sysctrl_SetPCLKDiv(en_sysctrl_pclk_div_t enPCLKDiv);
 
-///< 时钟频率获取：根据系统需要，获取当前HCLK及PCLK的频率值
+///< HCLKPCLK
 uint32_t Sysctrl_GetHClkFreq(void);
 uint32_t Sysctrl_GetPClkFreq(void);
 
-///< 外设门控开关/状态获取：用于控制外设模块的使能，使用该模块的功能之前，必须使能该模块的门控时钟；
+///< /
 en_result_t Sysctrl_SetPeripheralGate(en_sysctrl_peripheral_gate_t enPeripheral, boolean_t bFlag);
 boolean_t   Sysctrl_GetPeripheralGate(en_sysctrl_peripheral_gate_t enPeripheral);
 
-///< 系统功能配置：用于设置其他系统相关特殊功能；
+///< 
 en_result_t Sysctrl_SetFunc(en_sysctrl_func_t enFunc, boolean_t bFlag);
 
-///< RTC高速时钟补偿:用于设置RTC高速时钟下的频率补偿
+///< RTC:RTC
 en_result_t Sysctrl_SetRTCAdjustClkFreq(en_sysctrl_rtc_adjust_t enRtcAdj);
 
 //@} // Sysctrl Group

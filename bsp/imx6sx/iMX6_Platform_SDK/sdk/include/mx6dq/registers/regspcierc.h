@@ -893,7 +893,7 @@ typedef union _hw_pcie_rc_bist
  * In addition, you can configure each BAR to have its incoming Requests routed to either: RTRGT1
  * The following sections describe how to set up the BAR types and sizes by programming values into
  * the base address registers. For more information about routing Requests to either RTRGT1 on a
- * BAR-by- BAR basis, see îReceive Filteringî on page 85. The contents of the six BARs determine the
+ * BAR-by- BAR basis, see Receive Filtering on page 85. The contents of the six BARs determine the
  * BAR configuration. The reset values of the BARs are determined by hardware configuration options.
  * At runtime, application software can overwrite the BAR contents to reconfigure the BARs (unless
  * the affected BAR is removed during hardware configuration). Application software must observe the
@@ -907,17 +907,17 @@ typedef union _hw_pcie_rc_bist
  * BAR 1 is the upper 32 bits of the combined 64-bit BAR formed by BARs 0 and 1. Therefore, BAR 1
  * must be disabled and cannot be configured independently. BAR 0 must be a memory BAR and can be
  * either prefetchable or non-prefetchable. The contents of the BAR 0 Mask register determine the
- * number of writable bits in the 64-bit BAR, subject to the restrictions described in îBAR Mask
- * Registersî on page 536. The BAR 1 Mask register contains the upper 32 bits of the BAR 0 Mask
+ * number of writable bits in the 64-bit BAR, subject to the restrictions described in BAR Mask
+ * Registers on page 536. The BAR 1 Mask register contains the upper 32 bits of the BAR 0 Mask
  * value. BAR 0 can be disabled by writing 0 to bit 0 of the BAR 0 Mask register If BAR 0 is
  * configured as a 32-bit BAR: You can configure BAR 1 as an independent 32-bit BAR BAR 0 can be
  * configured as a memory BAR or an I/O BAR. The contents of the BAR 0 Mask register determine the
- * number of writable bits in the 32-bit BAR 0, subject to the restrictions described in îBAR Mask
- * Registersî on page 536. BAR 0 can be disabled by writing 0 to bit 0 of the BAR 0 Mask register
+ * number of writable bits in the 32-bit BAR 0, subject to the restrictions described in BAR Mask
+ * Registers on page 536. BAR 0 can be disabled by writing 0 to bit 0 of the BAR 0 Mask register
  * When BAR 0 is configured as a 32-bit BAR, BAR 1 is available as an independent 32-bit BAR
  * according to the following rules: BAR 1 can be configured as a memory BAR or an I/O BAR. The
  * contents of the BAR 1 Mask register determine the number of writable bits in the 32-bit BAR 1,
- * subject to the restrictions described in îBAR Mask Registersî on page 536. The same rules apply
+ * subject to the restrictions described in BAR Mask Registers on page 536. The same rules apply
  * for pairs 2/3 and 4/5. Offset: 0x10 (if included in the core hardware configuration)
  */
 typedef union _hw_pcie_rc_bar0
@@ -2483,7 +2483,7 @@ typedef union _hw_pcie_rc_cidr
 /*! @name Register PCIE_RC_CIDR, field DEVICE_PORT_TYPE[23:20] (RO)
  *
  * Device/Port Type Indicates the specific type of this PCI Express Function. Supported encodings
- * for RC and DM(RC mode) are: •4'b0100: Root Port of PCI Express Root Complex Note: All other
+ * for RC and DM(RC mode) are: 4'b0100: Root Port of PCI Express Root Complex Note: All other
  * encodings (including those for PCI/PCI-X bridges and RC Integrated Endpoint) are NOT supported.
  */
 //@{
@@ -3693,8 +3693,8 @@ typedef union _hw_pcie_rc_lcsr
 /*! @name Register PCIE_RC_LCSR, field LINK_BANDWIDTH_MANAGEMENT_STATUS[30] (RW)
  *
  * Link Bandwidth Management Status This bit is set by hardware to indicate that either of the
- * following has occurred without the Port transitioning through DL_Down status: •A Link retraining
- * has completed following a write of 1b to the Retrain Link bit. •Hardware has changed Link speed
+ * following has occurred without the Port transitioning through DL_Down status: A Link retraining
+ * has completed following a write of 1b to the Retrain Link bit. Hardware has changed Link speed
  * or width to attempt to correct unreliable Link operation, either through an LTSSM timeout or a
  * higher level process. This bit must be set if the Physical Layer reports a speed or width change
  * was initiated by the Downstream component that was not indicated as an autonomous change. : This
@@ -4789,8 +4789,8 @@ typedef union _hw_pcie_rc_dcsr2
  * range of 16ms to 55ms. . following encodings apply: Values not defined below are reserved.
  *
  * Values:
- * - 0000 - Default range: 50 ìs to 50 ms
- * - 0001 - 50 ìs to 100 ìs
+ * - 0000 - Default range: 50 s to 50 ms
+ * - 0001 - 50 s to 100 s
  * - 0010 - 1 ms to 10 ms
  * - 0101 - 16 ms to 55 ms
  * - 0110 - 65 ms to 210 ms
@@ -7326,9 +7326,9 @@ typedef union _hw_pcie_rc_pvccr2
 /*! @name Register PCIE_RC_PVCCR2, field VC_ARBITRATION_CAPABILITY[7:0] (RO)
  *
  * VC Arbitration Capability Indicates which VC arbitration mode(s) the device supports, writable
- * through the DBI: •Bit 0: Device supports hardware fixed arbitration scheme. For the core, the
- * scheme is 16-phase weighted round robin (WRR). •Bit 1: Device supports 32-phase WRR •Bit 2:
- * Device supports 64-phase WRR •Bit 3: Device supports 128-phase WRR •Bits 4-7: Reserved
+ * through the DBI: Bit 0: Device supports hardware fixed arbitration scheme. For the core, the
+ * scheme is 16-phase weighted round robin (WRR). Bit 1: Device supports 32-phase WRR Bit 2:
+ * Device supports 64-phase WRR Bit 3: Device supports 128-phase WRR Bits 4-7: Reserved
  */
 //@{
 #define BP_PCIE_RC_PVCCR2_VC_ARBITRATION_CAPABILITY      (0)      //!< Bit position for PCIE_RC_PVCCR2_VC_ARBITRATION_CAPABILITY.

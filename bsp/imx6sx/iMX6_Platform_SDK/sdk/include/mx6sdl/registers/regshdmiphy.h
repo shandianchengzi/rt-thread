@@ -2057,7 +2057,7 @@ typedef union _hw_hdmi_phy_pllphbyctrl
 /*! @name Register HDMI_PHY_PLLPHBYCTRL, field PLL_PH_SEL[9:0] (RW)
  *
  * PLL Phase Select This bus is a control word for the PLL's phase mixer that enables the phase of
- * pll_cko_pm_p/m to be varied ± 0.5 UI of the VCO frequency, which is 740-1,480 MHz.
+ * pll_cko_pm_p/m to be varied  0.5 UI of the VCO frequency, which is 740-1,480 MHz.
  */
 //@{
 #define BP_HDMI_PHY_PLLPHBYCTRL_PLL_PH_SEL      (0)      //!< Bit position for HDMI_PHY_PLLPHBYCTRL_PLL_PH_SEL.
@@ -2152,7 +2152,7 @@ typedef union _hw_hdmi_phy_grp_ctrl
 /*! @name Register HDMI_PHY_GRP_CTRL, field MPLL_GEAR_SHIFT[0] (RW)
  *
  * MPLL Gear Shift This bit enables or disables Rapid Locking mode, where the mpll_gear_shift bit is
- * asserted for 25 µs when coming out of reset, then deasserted before clocks are valid.
+ * asserted for 25 s when coming out of reset, then deasserted before clocks are valid.
  *
  * Values:
  * - 0 - Disable Rapid Locking mode, if the Override bit is 0.
@@ -2172,7 +2172,7 @@ typedef union _hw_hdmi_phy_grp_ctrl
 /*! @name Register HDMI_PHY_GRP_CTRL, field PLL_GEAR_SHIFT[1] (RW)
  *
  * PLL Gear Shift This bit enables or disables Rapid Locking mode, where the pll_gear_shift bit is
- * asserted for 25 µs when coming out of reset, then deasserted before clocks are valid.
+ * asserted for 25 s when coming out of reset, then deasserted before clocks are valid.
  *
  * Values:
  * - 0 - Disable Rapid Locking mode, if the Override bit is 0.
@@ -2561,7 +2561,7 @@ typedef union _hw_hdmi_phy_msm_ctrl
 /*! @name Register HDMI_PHY_MSM_CTRL, field MPLL_PH_SEL[12:3] (RW)
  *
  * MPLL Phase Select This bus is a control word for the MPLL's phase mixer and enables the phase of
- * pll_cko_pm_p /m to be varied ± 0.5 UI of the VCO frequency, which has a range of 925-1,850 MHz.
+ * pll_cko_pm_p /m to be varied  0.5 UI of the VCO frequency, which has a range of 925-1,850 MHz.
  */
 //@{
 #define BP_HDMI_PHY_MSM_CTRL_MPLL_PH_SEL      (3)      //!< Bit position for HDMI_PHY_MSM_CTRL_MPLL_PH_SEL.
@@ -2764,8 +2764,8 @@ typedef union _hw_hdmi_phy_txterm
  *
  * Digital Transmission Termination This bus defines the transmission termination (resistance)
  * value, which is set by the HDMI controller. The formula for the resistance value is: R = 50 / (1
- * - 0.125 x d_tx_term) This equation is valid only when d_tx_term equals 0-6. 000: 50 Ω 001: 56.14
- * Ω 010: 66.67 Ω 011: 80 Ω 100: 100 Ω 101: 133.33 Ω 110: 200 Ω 111: Open circuit
+ * - 0.125 x d_tx_term) This equation is valid only when d_tx_term equals 0-6. 000: 50  001: 56.14
+ *  010: 66.67  011: 80  100: 100  101: 133.33  110: 200  111: Open circuit
  */
 //@{
 #define BP_HDMI_PHY_TXTERM_D_TX_TERM      (0)      //!< Bit position for HDMI_PHY_TXTERM_D_TX_TERM.

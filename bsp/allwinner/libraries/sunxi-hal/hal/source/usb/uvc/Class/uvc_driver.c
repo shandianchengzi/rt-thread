@@ -11,7 +11,7 @@
 *
 * Date          :  2013/03/26
 *
-* Description   :  USB VIDEO CONTROL Driver中对USB接口设备的处理
+* Description   :  USB VIDEO CONTROL DriverUSB
 *
 * Others        :  NULL
 *
@@ -664,7 +664,7 @@ static int uvc_parse_streaming(UVCDev_t *UVCDev, struct usb_interface *intf)
 
     size = nformats * sizeof *format + nframes * sizeof *frame
          + nintervals * sizeof *interval;
-    format = hal_malloc(size);//注意释放
+    format = hal_malloc(size);//
     if (format == NULL) {
         hal_log_err("esMEMS_Malloc fail\n");
         ret = -ENOMEM;

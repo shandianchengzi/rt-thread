@@ -72,17 +72,17 @@
  ******************************************************************************/
 /**
  ******************************************************************************
- ** \brief wdt溢出后复位或中断配置
+ ** \brief wdt
  *****************************************************************************/
 typedef enum en_wdt_func
 {
-    WdtResetEn    = 0,   ///<复位使能
-    WdtIntEn      = 1,   ///<中断使能
+    WdtResetEn    = 0,   ///<
+    WdtIntEn      = 1,   ///<
 }en_wdt_func_t;
 
 /**
  ******************************************************************************
- ** \brief wdt当前运行时间配置数据类型定义
+ ** \brief wdt
  *****************************************************************************/
 
 typedef enum en_wdt_time
@@ -106,22 +106,22 @@ typedef enum en_wdt_time
 }en_wdt_time_t;
 
 
-//wdt初始化
+//wdt
 en_result_t Wdt_Init(en_wdt_func_t enFunc, en_wdt_time_t enTime);
 
-//wdt开始和停止
+//wdt
 void Wdt_Start(void);
-//喂狗处理
+//
 void Wdt_Feed(void);
-//喂狗处理
+//
 void Wdt_IrqClr(void);
-//wdt溢出时间设置
+//wdt
 void Wdt_WriteWdtLoad(uint8_t u8LoadValue);
-///< 当前计数时间获取
+///< 
 uint8_t Wdt_ReadWdtValue(void);
-//< 中断状态获取
+//< 
 boolean_t Wdt_GetIrqStatus(void);
-///< 运行状态获取
+///< 
 boolean_t Wdt_ReadwdtStatus(void);
 
 //@} // WdtGroup

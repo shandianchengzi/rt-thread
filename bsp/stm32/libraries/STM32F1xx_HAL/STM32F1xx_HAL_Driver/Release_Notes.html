@@ -23,14 +23,14 @@
 <div class="sectione dark">
 <center>
 <h1 id="release-notes-for-stm32f1xx-hal-drivers"><strong>Release Notes for STM32F1xx HAL Drivers</strong></h1>
-<p>Copyright © 2016 STMicroelectronics<br />
+<p>Copyright  2016 STMicroelectronics<br />
 </p>
 <a href="https://www.st.com" class="logo"><img src="../../_htmresc/st_logo.png" alt="ST logo" /></a>
 </center>
 </div>
 </div>
 <h1 id="license"><strong>License</strong></h1>
-This software component is licensed by ST under BSD 3-Clause license, the “License”; You may not use this component except in compliance with the License. You may obtain a copy of the License at:
+This software component is licensed by ST under BSD 3-Clause license, the License; You may not use this component except in compliance with the License. You may obtain a copy of the License at:
 <center>
 <a href="https://opensource.org/licenses/BSD-3-Clause">https://opensource.org/licenses/BSD-3-Clause</a>
 </center>
@@ -88,13 +88,13 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>Update I2C_MemoryTransmit_TXE_BTF() API to increment EventCount.</li>
 </ul></li>
-<li>Update to use the right macro to clear I2C ADDR flag inside I2C_Slave_ADDR() API as it’s indicated in the reference manual.</li>
+<li>Update to use the right macro to clear I2C ADDR flag inside I2C_Slave_ADDR() API as its indicated in the reference manual.</li>
 <li>Update HAL_I2C_EV_IRQHandler() and I2C_MasterTransmit_BTF() APIs to fix an issue where the transfer of the first few bytes to an I2C memory fails.</li>
 </ul></li>
 <li><strong>HAL NAND</strong> driver
 <ul>
 <li>Update functions HAL_NAND_Read_SpareArea_16b() and HAL_NAND_Write_SpareArea_16b() to fix column address calculation issue</li>
-<li>Update implementation of “HAL_NAND_Write_Page_16b” and “HAL_NAND_Read_Page_16b” APIs implementation to fix an issue with the page calculation of 8 bits memories</li>
+<li>Update implementation of HAL_NAND_Write_Page_16b and HAL_NAND_Read_Page_16b APIs implementation to fix an issue with the page calculation of 8 bits memories</li>
 </ul></li>
 <li><strong>LL USART</strong> driver
 <ul>
@@ -130,7 +130,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li><strong>HAL CAN</strong> driver
 <ul>
 <li>Update HAL_CAN_Init() API to be aligned with reference manual and to avoid timeout error:</li>
-<li>Update CAN Initialization sequence to set “request initialization” bit before exit from sleep mode.</li>
+<li>Update CAN Initialization sequence to set request initialization bit before exit from sleep mode.</li>
 </ul></li>
 <li><strong>LL UTILS</strong> driver
 <ul>
@@ -175,7 +175,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>Update to fix hardfault issue with HAL_I2C_Mem_Write_DMA() API:
 <ul>
-<li>Abort the right ongoing DMA transfer when memory write access request operation failed: fix typo “hdmarx” replaced by “hdmatx”</li>
+<li>Abort the right ongoing DMA transfer when memory write access request operation failed: fix typo hdmarx replaced by hdmatx</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL/LL GPIO</strong> driver
@@ -201,9 +201,9 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li><strong>HAL/LL GPIO</strong> driver
 <ul>
-<li>Update HAL_GPIO_TogglePin() API to allow multi Pin’s toggling.</li>
+<li>Update HAL_GPIO_TogglePin() API to allow multi Pins toggling.</li>
 <li>Update LL_GPIO_TogglePin() API to improve robustness: use BSRR register instead of ODR register.</li>
-<li>Update LL GPIO initialization sequence to avoid unwanted pulse on GPIO Pin’s</li>
+<li>Update LL GPIO initialization sequence to avoid unwanted pulse on GPIO Pins</li>
 </ul></li>
 <li><strong>HAL/LL I2S</strong> driver
 <ul>
@@ -327,7 +327,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>Replace IS_TIM_SYNCHRO_INSTANCE() macro by IS_TIM_MASTER_INSTANCE() macro.</li>
 <li>Add IS_TIM_SLAVE_INSTANCE() macro to check on TIM_SMCR_MSM bit.</li>
 </ul></li>
-<li>Remove ‘register’ storage class specifier from LL TIM driver.</li>
+<li>Remove register storage class specifier from LL TIM driver.</li>
 <li>Add new API HAL_TIM_DMABurst_MultiWriteStart() allowing to configure the DMA Burst to transfer multiple Data from the memory to the TIM peripheral</li>
 <li>Add new API HAL_TIM_DMABurst_MultiReadStart() allowing to configure the DMA Burst to transfer Data from the TIM peripheral to the memory</li>
 </ul></li>
@@ -390,7 +390,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>Add stop condition generation when NACK occurs.</li>
 </ul></li>
-<li>Update I2C_DMAXferCplt(), I2C_DMAError() and I2C_DMAAbort() APIs to fix hardfault issue when hdmatx and hdmarx parameters in i2c handle aren’t initialized (NULL pointer).
+<li>Update I2C_DMAXferCplt(), I2C_DMAError() and I2C_DMAAbort() APIs to fix hardfault issue when hdmatx and hdmarx parameters in i2c handle arent initialized (NULL pointer).
 <ul>
 <li>Add additional check on hi2c-&gt;hdmtx and hi2c-&gt;hdmarx before resetting DMA Tx/Rx complete callbacks</li>
 </ul></li>
@@ -455,7 +455,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>General updates to fix MISRA 2012 compilation errors
 <ul>
-<li>“stdio.h” include updated with “stddef.h”</li>
+<li>stdio.h include updated with stddef.h</li>
 </ul></li>
 <li>Add HAL_GetUIDw0(), HAL_GetUIDw1() and HAL_GetUIDw2() API in order to returns the unique device identifier</li>
 </ul></li>
@@ -474,7 +474,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li><strong>HAL CRC</strong> update
 <ul>
 <li>Update HAL_CRC_DeInit() API to be more safe</li>
-<li>Remove lock mechanism on the followings API’s:
+<li>Remove lock mechanism on the followings APIs:
 <ul>
 <li>HAL_CRC_Accumulate()</li>
 <li>HAL_CRC_Calculate()</li>
@@ -562,7 +562,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>Align HAL/LL SPI driver with latest updates and enhancements</li>
 <li>Fix issue in HAL_SPI_Transmit() and HAL_SPI_TransmitReceive() functions</li>
-<li>Add SPI Abort transfer API’s:
+<li>Add SPI Abort transfer APIs:
 <ul>
 <li>HAL_SPI_Abort()</li>
 <li>HAL_SPI_Abort_IT()</li>
@@ -590,7 +590,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>TIM_MasterConfigTypeDef()</li>
 <li>TIM_BreakDeadTimeConfigTypeDef()</li>
 </ul></li>
-<li>Add new TIM Callbacks API’s:
+<li>Add new TIM Callbacks APIs:
 <ul>
 <li>HAL_TIM_PeriodElapsedHalfCpltCallback()</li>
 <li>HAL_TIM_IC_CaptureHalfCpltCallback()</li>
@@ -660,7 +660,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>SJW to SyncJumpWidth, BS1 to TimeSeg1, BS2 to TimeSeg2, TTCM to TimeTriggeredMode, ABOM to AutoBusOff, AWUM to AutoWakeUp, NART to AutoRetransmission (inversed), RFLM to ReceiveFifoLocked and TXFP to TransmitFifoPriority</li>
 </ul></li>
-<li>HAL_CAN_Init() is split into both HAL_CAN_Init() and HAL_CAN_Start() API’s</li>
+<li>HAL_CAN_Init() is split into both HAL_CAN_Init() and HAL_CAN_Start() APIs</li>
 <li>HAL_CAN_Transmit() is replaced by HAL_CAN_AddTxMessage() to place Tx Request, then HAL_CAN_GetTxMailboxesFreeLevel() for polling until completion.</li>
 <li>HAL_CAN_Transmit_IT() is replaced by HAL_CAN_ActivateNotification() to enable transmit IT, then HAL_CAN_AddTxMessage() for place Tx request.</li>
 <li>HAL_CAN_Receive() is replaced by HAL_CAN_GetRxFifoFillLevel() for polling until reception, then HAL_CAN_GetRxMessage()</li>
@@ -670,7 +670,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>HAL_CAN_Slepp() is renamed as HAL_CAN_RequestSleep()</li>
 <li>HAL_CAN_TxCpltCallback() is split into HAL_CAN_TxMailbox0CompleteCallback(), HAL_CAN_TxMailbox1CompleteCallback() and HAL_CAN_TxMailbox2CompleteCallback().</li>
 <li>HAL_CAN_RxCpltCallback is split into HAL_CAN_RxFifo0MsgPendingCallback() and HAL_CAN_RxFifo1MsgPendingCallback().</li>
-<li>More complete “How to use the new driver” is detailed in the driver header section itself.</li>
+<li>More complete How to use the new driver is detailed in the driver header section itself.</li>
 </ul></li>
 </ul>
 </div>
@@ -797,7 +797,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>Add new drivers stm32f1xx_hal_timebase_rtc_alarm_template.c and stm32f1xx_hal_timebase_tim_template.c which override the native HAL time base functions (defined as weak) to either use the RTC/TIM as time base tick source. For more details about the usage of these drivers, please refer to HAL_TimeBase_RTC and HAL_TimeBase_TIM examples and FreeRTOS-based applications</li>
 </ul></li>
 <li>Fix extra warnings with GCC compiler</li>
-<li>HAL drivers clean up: update ‘uint32_t’ cast with ‘U’</li>
+<li>HAL drivers clean up: update uint32_t cast with U</li>
 <li>Update to used the new defined Bit_Pos CMSIS defines insetad of POSITION_VAL() macro</li>
 <li>Update HAL weak empty callbacks to prevent unused argument compilation warnings with some compilers by calling the following line:
 <ul>
@@ -834,11 +834,11 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>HAL CEC driver: Overall driver rework with compatibility break versus previous HAL version
 <ul>
 <li>Remove HAL CEC polling Process functions: HAL_CEC_Transmit() and HAL_CEC_Receive()</li>
-<li>Remove HAL CEC receive interrupt process function HAL_CEC_Receive_IT() and enable the “receive” mode during the Init phase</li>
+<li>Remove HAL CEC receive interrupt process function HAL_CEC_Receive_IT() and enable the receive mode during the Init phase</li>
 <li>Rename HAL_CEC_GetReceivedFrameSize() funtion to HAL_CEC_GetLastReceivedFrameSize()</li>
 <li>Add new HAL APIs: HAL_CEC_SetDeviceAddress() and HAL_CEC_ChangeRxBuffer()</li>
-<li>Remove the ‘InitiatorAddress’ field from the CEC_InitTypeDef structure and manage it as a parameter in the HAL_CEC_Transmit_IT() function</li>
-<li>Add new parameter ‘RxFrameSize’ in HAL_CEC_RxCpltCallback() function</li>
+<li>Remove the InitiatorAddress field from the CEC_InitTypeDef structure and manage it as a parameter in the HAL_CEC_Transmit_IT() function</li>
+<li>Add new parameter RxFrameSize in HAL_CEC_RxCpltCallback() function</li>
 <li>Move CEC Rx buffer pointer from CEC_HandleTypeDef structure to CEC_InitTypeDef structure</li>
 </ul></li>
 <li>HAL IWDG driver: rework overall driver for better implementation
@@ -848,7 +848,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>HAL WWDG driver: rework overall driver for better implementation
 <ul>
 <li>Remove HAL_WWDG_Start(), HAL_WWDG_Start_IT(), HAL_WWDG_MspDeInit() and HAL_WWDG_GetState() APIs</li>
-<li>Update the HAL_WWDG_Refresh(WWDG_HandleTypeDef *hwwdg, uint32_t counter) function and API by removing the “counter” parameter</li>
+<li>Update the HAL_WWDG_Refresh(WWDG_HandleTypeDef *hwwdg, uint32_t counter) function and API by removing the counter parameter</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL GENERIC</strong> update
@@ -882,7 +882,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li><strong>HAL ADC</strong> update
 <ul>
-<li>HAL_ADCEx_MultiModeStart_DMA() and HAL_ADCEx_MultiModeStop_DMA() API’s update to fix code static analyzer warning: Redundant Condition / Unreachable Computation</li>
+<li>HAL_ADCEx_MultiModeStart_DMA() and HAL_ADCEx_MultiModeStop_DMA() APIs update to fix code static analyzer warning: Redundant Condition / Unreachable Computation</li>
 </ul></li>
 <li><strong>HAL DMA</strong> update
 <ul>
@@ -901,8 +901,8 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>Several update on HAL UART driver to implement the new UART state machine:
 <ul>
-<li>Add new field in UART_HandleTypeDef structure: “rxState”, UART state information related to Rx Operations</li>
-<li>Rename “state” field in UART_HandleTypeDef structure by “gstate”: UART state information related to global Handle management and Tx Operations</li>
+<li>Add new field in UART_HandleTypeDef structure: rxState, UART state information related to Rx Operations</li>
+<li>Rename state field in UART_HandleTypeDef structure by gstate: UART state information related to global Handle management and Tx Operations</li>
 <li>Update UART process to manage the new UART states.</li>
 <li>Update __HAL_UART_RESET_HANDLE_STATE() macro to handle the new UART state parameters (gState, rxState)</li>
 </ul></li>
@@ -914,8 +914,8 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>Several update on HAL IRDA driver to implement the new UART state machine:
 <ul>
-<li>Add new field in IRDA_HandleTypeDef structure: “rxState”, IRDA state information related to Rx Operations</li>
-<li>Rename “state” field in UART_HandleTypeDef structure by “gstate”: IRDA state information related to global Handle management and Tx Operations</li>
+<li>Add new field in IRDA_HandleTypeDef structure: rxState, IRDA state information related to Rx Operations</li>
+<li>Rename state field in UART_HandleTypeDef structure by gstate: IRDA state information related to global Handle management and Tx Operations</li>
 <li>Update IRDA process to manage the new UART states.</li>
 <li>Update __HAL_IRDA_RESET_HANDLE_STATE() macro to handle the new IRDA state parameters (gState, rxState)</li>
 </ul></li>
@@ -928,8 +928,8 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>Several update on HAL SMARTCARD driver to implement the new UART state machine:
 <ul>
-<li>Add new field in SMARTCARD_HandleTypeDef structure: “rxState”, SMARTCARDstate information related to Rx Operations</li>
-<li>Rename “state” field in UART_HandleTypeDef structure by “gstate”: SMARTCARDstate information related to global Handle management and Tx Operations</li>
+<li>Add new field in SMARTCARD_HandleTypeDef structure: rxState, SMARTCARDstate information related to Rx Operations</li>
+<li>Rename state field in UART_HandleTypeDef structure by gstate: SMARTCARDstate information related to global Handle management and Tx Operations</li>
 <li>Update SMARTCARD process to manage the new UART states.</li>
 <li>Update __HAL_SMARTCARD_RESET_HANDLE_STATE() macro to handle the new SMARTCARD state parameters (gState, rxState)</li>
 </ul></li>
@@ -949,15 +949,15 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>Add __HAL_TIM_MOE_DISABLE_UNCONDITIONALLY() macro to disable Master output without check on TIM channel state.</li>
 <li>Update HAL_TIMEx_ConfigBreakDeadTime() to fix TIM BDTR register corruption.</li>
-<li>Update Input Capture polarity by removing non-supported “TIM_INPUTCHANNELPOLARITY_BOTHEDGE” define.</li>
+<li>Update Input Capture polarity by removing non-supported TIM_INPUTCHANNELPOLARITY_BOTHEDGE define.</li>
 <li>Update HAL_TIM_ConfigOCrefClear() API by removing the usage of non-existant SMCR OCCS bit.</li>
-<li>Add “AutoReloadPreload” field to TIM_Base_InitTypeDef structure and corresponding macros __HAL_TIM_ENABLE_OCxPRELOAD() and __HAL_TIM_DISABLE_OCxPRELOAD() .</li>
+<li>Add AutoReloadPreload field to TIM_Base_InitTypeDef structure and corresponding macros __HAL_TIM_ENABLE_OCxPRELOAD() and __HAL_TIM_DISABLE_OCxPRELOAD() .</li>
 <li>Update TIM_Base_SetConfig() API to set the auto-reload preload.</li>
 </ul></li>
 <li><strong>HAL I2C</strong> update
 <ul>
 <li>Update HAL_I2C_Master_Transmit() and HAL_I2C_Slave_Transmit() to avoid sending extra bytes at the end of the transmit processes</li>
-<li>Update HAL_I2C_Mem_Read() API to fix wrong check on misused parameter “Size”</li>
+<li>Update HAL_I2C_Mem_Read() API to fix wrong check on misused parameter Size</li>
 <li>Update I2C_MasterReceive_RXNE() and I2C_MasterReceive_BTF() static APIs to enhance Master sequential reception process.</li>
 </ul></li>
 <li><strong>HAL SPI</strong> update
@@ -966,10 +966,10 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>Polling mode :
 <ul>
-<li>Replace use of SPI_WaitOnFlagUnitTimeout() funnction by “if” statement to check on RXNE/TXE flage while transferring data.</li>
+<li>Replace use of SPI_WaitOnFlagUnitTimeout() funnction by if statement to check on RXNE/TXE flage while transferring data.</li>
 <li>Use API data pointer instead of SPI handle data pointer.</li>
 </ul></li>
-<li>Use a Goto implementation instead of “if..else” statements</li>
+<li>Use a Goto implementation instead of if..else statements</li>
 <li>Interrupt mode
 <ul>
 <li>Minimize access on SPI registers.</li>
@@ -1014,17 +1014,17 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>Overall driver rework with break of compatibility with HAL V1.0.5
 <ul>
 <li>Remove the HAL CEC polling Process: HAL_CEC_Transmit() and HAL_CEC_Receive()</li>
-<li>Remove the HAL CEC receive interrupt process (HAL_CEC_Receive_IT()) and manage the “Receive” mode enable within the Init phase</li>
+<li>Remove the HAL CEC receive interrupt process (HAL_CEC_Receive_IT()) and manage the Receive mode enable within the Init phase</li>
 <li>Rename HAL_CEC_GetReceivedFrameSize() function to HAL_CEC_GetLastReceivedFrameSize() function</li>
 <li>Add new HAL APIs: HAL_CEC_SetDeviceAddress() and HAL_CEC_ChangeRxBuffer()</li>
-<li>Remove the ‘InitiatorAddress’ field from the CEC_InitTypeDef structure and manage it as a parameter in the HAL_CEC_Transmit_IT() function</li>
-<li>Add new parameter ‘RxFrameSize’ in HAL_CEC_RxCpltCallback() function</li>
+<li>Remove the InitiatorAddress field from the CEC_InitTypeDef structure and manage it as a parameter in the HAL_CEC_Transmit_IT() function</li>
+<li>Add new parameter RxFrameSize in HAL_CEC_RxCpltCallback() function</li>
 <li>Move CEC Rx buffer pointer from CEC_HandleTypeDef structure to CEC_InitTypeDef structure</li>
 </ul></li>
 <li>Update driver to implement the new CEC state machine:
 <ul>
-<li>Add new “rxState” field in CEC_HandleTypeDef structure to provide the CEC state information related to Rx Operations</li>
-<li>Rename “state” field in CEC_HandleTypeDef structure to “gstate”: CEC state information related to global Handle management and Tx Operations</li>
+<li>Add new rxState field in CEC_HandleTypeDef structure to provide the CEC state information related to Rx Operations</li>
+<li>Rename state field in CEC_HandleTypeDef structure to gstate: CEC state information related to global Handle management and Tx Operations</li>
 <li>Update CEC process to manage the new CEC states.</li>
 <li>Update __HAL_CEC_RESET_HANDLE_STATE() macro to handle the new CEC state parameters (gState, rxState)</li>
 </ul></li>
@@ -1047,7 +1047,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li><strong>HAL USB PCD</strong> update
 <ul>
 <li>Flush all TX FIFOs on USB Reset</li>
-<li>Remove Lock mechanism from HAL_PCD_EP_Transmit() and HAL_PCD_EP_Receive() API’s</li>
+<li>Remove Lock mechanism from HAL_PCD_EP_Transmit() and HAL_PCD_EP_Receive() APIs</li>
 </ul></li>
 <li><strong>LL USB</strong> update
 <ul>
@@ -1084,7 +1084,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li><strong>HAL I2C</strong> update
 <ul>
 <li>Add support of I2C repeated start feature:</li>
-<li>With the following new API’s
+<li>With the following new APIs
 <ul>
 <li>HAL_I2C_Master_Sequential_Transmit_IT()</li>
 <li>HAL_I2C_Master_Sequential_Receive_IT()</li>
@@ -1131,8 +1131,8 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>Configure and enable the I2C IRQ in HAL_I2C_MspInit() function</li>
 <li>In stm32f1xx_it.c file, I2C_IRQHandler() function: add a call to HAL_I2C_IRQHandler() function</li>
 </ul></li>
-<li>Add a check if the I2C is already enabled at start of all I2C API’s.</li>
-<li>Update I2C API’s (Polling, IT, DMA interfaces) to use hi2c-&gt;XferSize and hi2c-&gt;XferCount instead of size</li>
+<li>Add a check if the I2C is already enabled at start of all I2C APIs.</li>
+<li>Update I2C APIs (Polling, IT, DMA interfaces) to use hi2c-&gt;XferSize and hi2c-&gt;XferCount instead of size</li>
 <li>parameter to help user to get information of counter in case of error</li>
 </ul></li>
 <li><strong>HAL DMA</strong> update
@@ -1148,7 +1148,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li><strong>HAL DAC</strong> update
 <ul>
-<li>Clean up: remove the following literals that aren’t used
+<li>Clean up: remove the following literals that arent used
 <ul>
 <li>DAC_WAVE_NOISE</li>
 <li>DAC_WAVE_TRIANGLE</li>

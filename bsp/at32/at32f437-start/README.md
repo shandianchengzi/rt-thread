@@ -1,63 +1,63 @@
-# AT32F437 AT-START 开发板 BSP 说明
+# AT32F437 AT-START  BSP 
 
-## 简介
+## 
 
-AT32F437 AT-START是雅特力推出的一款AT32F437系列的评估板，其搭载的MCU主要资源参数如下：
+AT32F437 AT-STARTAT32F437MCU
 
-| 硬件      | 描述           |
+|       |            |
 | --------- | ---------------|
-| 芯片型号  | AT32F437ZMT7   |
+|   | AT32F437ZMT7   |
 | CPU       | ARM Cortex M4  |
-| 主频      | 288M           |
-| 片内SRAM  | 384K可扩展512K |
-| 片内FLASH | 4032K          |
+|       | 288M           |
+| SRAM  | 384K512K |
+| FLASH | 4032K          |
 
-## 编译说明
+## 
 
-AT32F437-START板级包支持MDK4﹑MDK5﹑IAR开发环境和GCC编译器，以下是具体版本信息：
+AT32F437-STARTMDK4MDK5IARGCC
 
-| IDE/编译器 | 已测试版本                   |
+| IDE/ |                    |
 | ---------- | ---------------------------- |
 | MDK4       | MDK4.74                      |
 | MDK5       | MDK531                       |
 | IAR        | IAR8.20                      |
 | GCC        | GCC 5.4.1 20160919 (release) |
 
-## 板载资源
+## 
 
-- MCU：AT32F437ZMT7，主频 288MHz，4032K FLASH ，384K可扩展到512K RAM
-- 常用外设
-  - LED：3个，（红色PD13、白色PD14、绿色PD15）
-  - 按键：1个，KEY_USER（兼具唤醒功能，PA0)
-- 常用接口：插针串口J8
-- 调试接口，JLINK、板载的 AT-LINK SWD 下载
+- MCUAT32F437ZMT7 288MHz4032K FLASH 384K512K RAM
+- 
+  - LED3PD13PD14PD15
+  - 1KEY_USERPA0)
+- J8
+- JLINK AT-LINK SWD 
 
-## 外设支持
+## 
 
-本 BSP 目前对外设驱动的支持情况如下：
+ BSP 
 
-| 驱动      | 支持情况 |            备注            |
+|       |  |                        |
 | --------- | -------- | :------------------------: |
-| UART      | 支持     | USART1/2/3                 |
-| GPIO      | 支持     | PA0...PH7                  |
-| IIC       | 支持     | GPIO模拟I2C                |
-| SPI       | 支持     | SPI1/2                     |
-| ADC       | 支持     | ADC1/2                     |
-| PWM       | 支持     | TMR1/2                     |
-| HWTIMER   | 支持     | TMR3/4/5                   |
-| SDIO      | 支持     | SDIO1                      |
-| CAN       | 支持     | CAN1/2                     |
-| QSPI      | 支持     | QSPI1/2                    |
-| WDT       | 支持     |                            |
-| RTC       | 支持     |                            |
-| FLASH     | 支持     |                            |
-| EMAC      | 支持     |                            |
-| SDRAM     | 支持     |                            |
-| USB       | 支持     |                            |
+| UART      |      | USART1/2/3                 |
+| GPIO      |      | PA0...PH7                  |
+| IIC       |      | GPIOI2C                |
+| SPI       |      | SPI1/2                     |
+| ADC       |      | ADC1/2                     |
+| PWM       |      | TMR1/2                     |
+| HWTIMER   |      | TMR3/4/5                   |
+| SDIO      |      | SDIO1                      |
+| CAN       |      | CAN1/2                     |
+| QSPI      |      | QSPI1/2                    |
+| WDT       |      |                            |
+| RTC       |      |                            |
+| FLASH     |      |                            |
+| EMAC      |      |                            |
+| SDRAM     |      |                            |
+| USB       |      |                            |
 
-### IO在板级支持包中的映射情况
+### IO
 
-| IO号 |   板级包中的定义  |
+| IO |     |
 | ---- | ----------------- |
 | PD13 | LED2              |
 | PD14 | LED3              |
@@ -122,29 +122,29 @@ AT32F437-START板级包支持MDK4﹑MDK5﹑IAR开发环境和GCC编译器，以�
 | PB14 | USB2_DM           |
 | PB15 | USB2_DP           |
 
-## 使用说明
+## 
 
-    本章节是为刚接触 RT-Thread 的新手准备的使用说明，遵循简单的步骤即可将 RT-Thread 操作系统运行在该开发板上，看到实验效果 。
+     RT-Thread  RT-Thread  
 
-### 快速上手
+### 
 
-本 BSP 为开发者提供 MDK4、MDK5 和 IAR 工程，并且支持 GCC 开发环境。下面以 MDK5 开发环境为例，介绍如何将系统运行起来。
+ BSP  MDK4MDK5  IAR  GCC  MDK5 
 
-#### 硬件连接
+#### 
 
-使用数据线连接开发板到 PC，打开电源开关。
+ PC
 
-#### 编译下载
+#### 
 
-双击 project.uvprojx 文件，打开 MDK5 工程，编译并下载程序到开发板。
+ project.uvprojx  MDK5 
 
-> 工程默认配置使用AT-LINK SWD下载程序，在通过AT-LINK SWD连接开发板的基础上，点击下载按钮即可下载程序到开发板
+> AT-LINK SWDAT-LINK SWD
 
-#### 运行结果
+#### 
 
-下载程序成功之后，系统会自动运行，观察开发板上 LED 的运行效果，LED2/3/4 会周期性闪烁。
+ LED LED2/3/4 
 
-连接开发板对应串口到 PC , 在终端工具里打开相应的串口（115200-8-1-N），复位设备后，在串口上可以看到 RT-Thread 的输出信息:
+ PC , 115200-8-1-N RT-Thread :
 
 ```bash
  \ | /
@@ -154,14 +154,14 @@ AT32F437-START板级包支持MDK4﹑MDK5﹑IAR开发环境和GCC编译器，以�
 msh />
 ```
 
-## 注意事项
+## 
 
-AT32F437使用Ethernet且PHY时钟由CLKOUT(PA8)输出提供时，主频最好采用250Mhz。
+AT32F437EthernetPHYCLKOUT(PA8)250Mhz
 
-可在雅特力官方网站进行所需资料下载，如Keil_v5/Keil_v4/IAR等pack安装包和AT-START开发板原理图等（www.arterytek.com）
+Keil_v5/Keil_v4/IARpackAT-STARTwww.arterytek.com
 
-## 联系人信息
+## 
 
-维护人:
+:
 
 - [sheltonyu]

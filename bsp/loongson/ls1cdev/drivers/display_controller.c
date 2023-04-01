@@ -52,15 +52,15 @@ static struct rt_device_graphic_info _dc_info;
 static void pwminit(void)
 {
     pwm_info_t pwm_info;
-    pwm_info.gpio = LS1C_PWM0_GPIO06;           // pwm引脚位gpio06
-    pwm_info.mode = PWM_MODE_NORMAL;            // 正常模式--连续输出pwm波形
-    pwm_info.duty = 0.85;                       // pwm占空比 85%
-    pwm_info.period_ns = 5*1000*1000;            // pwm周期5ms
+    pwm_info.gpio = LS1C_PWM0_GPIO06;           // pwmgpio06
+    pwm_info.mode = PWM_MODE_NORMAL;            // --pwm
+    pwm_info.duty = 0.85;                       // pwm 85%
+    pwm_info.period_ns = 5*1000*1000;            // pwm5ms
 
-    /*pwm初始化，初始化后立即产生pwm波形*/
+    /*pwmpwm*/
     pwm_init(&pwm_info);
 
-    /* 使能pwm */
+    /* pwm */
     pwm_enable(&pwm_info);
 }
 int caclulate_freq(rt_uint32_t  XIN, rt_uint32_t PCLK)
@@ -71,10 +71,10 @@ int caclulate_freq(rt_uint32_t  XIN, rt_uint32_t PCLK)
     rt_uint32_t  regval;
 
 
-    pll_clk = PLL_FREQ; // 读CPU的 PLL及SDRAM 分频系数
+    pll_clk = PLL_FREQ; // CPU PLLSDRAM 
     pll_clk =( pll_clk>>8 )& 0xff;
     pll_clk = XIN *  pll_clk / 4 ;
-    pix_div = PLL_DIV_PARAM;//读CPU的 CPU/CAMERA/DC 分频系数
+    pix_div = PLL_DIV_PARAM;//CPU CPU/CAMERA/DC 
     pix_div = (pix_div>>24)&0xff;
     rt_kprintf("old pll_clk=%d, pix_div=%d\n", pll_clk, pix_div);
 
@@ -94,16 +94,16 @@ int caclulate_freq(rt_uint32_t  XIN, rt_uint32_t PCLK)
         rt_kprintf("Warning: clock source is too fast.Try smaller resolution\n");
         divider_int = 100;
     }
-    /* 配置分频寄存器 */
+    /*  */
     {
         rt_uint32_t regval = 0;
         regval = PLL_DIV_PARAM;
-        /*首先需要把分频使能位清零 */
-        regval &= ~0x80000030;    //PIX_DIV_VALID  PIX_SEL  置0
-        regval &= ~(0x3f<<24);    //PIX_DIV 清零
+        /* */
+        regval &= ~0x80000030;    //PIX_DIV_VALID  PIX_SEL  0
+        regval &= ~(0x3f<<24);    //PIX_DIV 
         regval |= divider_int << 24;
         PLL_DIV_PARAM = regval;
-        regval |= 0x80000030;    //PIX_DIV_VALID  PIX_SEL  置1
+        regval |= 0x80000030;    //PIX_DIV_VALID  PIX_SEL  1
         PLL_DIV_PARAM = regval;
     }
     rt_kprintf("new PLL_FREQ=0x%x, PLL_DIV_PARAM=0x%x\n", PLL_FREQ, PLL_DIV_PARAM);
@@ -125,7 +125,7 @@ static rt_err_t rt_dc_init(rt_device_t dev)
         if (vga_mode[i].hr == FB_XSIZE && vga_mode[i].vr == FB_YSIZE)
         {
             mode=i;
-            /* 计算时钟 配置频率*/
+            /*  */
             caclulate_freq(OSC, vga_mode[i].pclk);
             break;
         }
@@ -139,10 +139,10 @@ static rt_err_t rt_dc_init(rt_device_t dev)
 
     DC_FB_CONFIG = 0x0;
     DC_FB_CONFIG = 0x3; //    // framebuffer configuration RGB565
-    DC_DITHER_CONFIG = 0x0;  //颜色抖动配置寄存器
-    DC_DITHER_TABLE_LOW = 0x0; //颜色抖动查找表低位寄存器
-    DC_DITHER_TABLE_HIGH = 0x0; //颜色抖动查找表高位寄存器
-    DC_PANEL_CONFIG = 0x80001311; //液晶面板配置寄存器
+    DC_DITHER_CONFIG = 0x0;  //
+    DC_DITHER_TABLE_LOW = 0x0; //
+    DC_DITHER_TABLE_HIGH = 0x0; //
+    DC_PANEL_CONFIG = 0x80001311; //
     DC_PANEL_TIMING = 0x0;
 
     DC_HDISPLAY = (vga_mode[mode].hfl<<16) | vga_mode[mode].hr;
@@ -156,7 +156,7 @@ static rt_err_t rt_dc_init(rt_device_t dev)
 #elif defined(CONFIG_VIDEO_24BPP)
     DC_FB_CONFIG = 0x00100104;
     DC_FB_BUFFER_STRIDE = (FB_XSIZE*4+255)&(~255);
-#elif defined(CONFIG_VIDEO_16BPP)// 使用这个选项
+#elif defined(CONFIG_VIDEO_16BPP)// 
     DC_FB_CONFIG = 0x00100103;
     DC_FB_BUFFER_STRIDE = (FB_XSIZE*2+0x7f)&(~0x7f);
 #elif defined(CONFIG_VIDEO_15BPP)

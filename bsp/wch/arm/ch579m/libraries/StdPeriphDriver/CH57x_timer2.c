@@ -11,8 +11,8 @@
 
 /*******************************************************************************
 * Function Name  : TMR2_TimerInit
-* Description    : 定时功能初始化
-* Input          : t: 定时时间，基于当前系统时钟Tsys, 最长定时周期 67108864
+* Description    : 
+* Input          : t: Tsys,  67108864
 
 * Return         : None
 *******************************************************************************/
@@ -25,8 +25,8 @@ void TMR2_TimerInit( UINT32 t )
 
 /*******************************************************************************
 * Function Name  : TMR2_EXTSingleCounterInit
-* Description    : 外部信号计数功能初始化
-* Input          : c: 外部送入信号脉冲计数, 最长计数 67108864
+* Description    : 
+* Input          : c: ,  67108864
 * Return         : None
 *******************************************************************************/
 void TMR2_EXTSingleCounterInit( UINT32 c )
@@ -38,12 +38,12 @@ void TMR2_EXTSingleCounterInit( UINT32 c )
 
 /*******************************************************************************
 * Function Name  : TMR2_CountInit
-* Description    : 边沿计数功能初始化
-* Input          : cap: 采集计数类型
-                    CAP_NULL - 不计数
-                    Edge_To_Edge - 计数任意边沿
-                    FallEdge_To_FallEdge - 计数下降沿
-                    RiseEdge_To_RiseEdge - 计数上升沿
+* Description    : 
+* Input          : cap: 
+                    CAP_NULL - 
+                    Edge_To_Edge - 
+                    FallEdge_To_FallEdge - 
+                    RiseEdge_To_RiseEdge - 
 * Return         : None
 *******************************************************************************/
 void TMR2_CountInit( CapModeTypeDef cap )
@@ -57,7 +57,7 @@ void TMR2_CountInit( CapModeTypeDef cap )
 
 /*******************************************************************************
 * Function Name  : TMR2_PWMInit
-* Description    : PWM 输出初始化
+* Description    : PWM 
 * Input          : pr:  select wave polar
                     refer to PWMX_PolarTypeDef
                    ts:  set pwm repeat times
@@ -76,7 +76,7 @@ void TMR2_PWMInit( PWMX_PolarTypeDef pr, PWM_RepeatTsTypeDef ts )
 
 /*******************************************************************************
 * Function Name  : TMR2_CapInit
-* Description    : 外部信号捕捉功能初始化
+* Description    : 
 * Input          : cap:  select capture mode
                     refer to CapModeTypeDef
 * Return         : None
@@ -91,13 +91,13 @@ void TMR2_CapInit( CapModeTypeDef cap )
 
 /*******************************************************************************
 * Function Name  : TMR2_DMACfg
-* Description    : 配置DMA功能
+* Description    : DMA
 * Input          : s:
-                    ENABLE  - 打开
-                    DISABLE - 关闭
-                   startAddr： DMA 起始地址
-                   endAddr： DMA结束地址
-                   m：配置DMA模式
+                    ENABLE  - 
+                    DISABLE - 
+                   startAddr DMA 
+                   endAddr DMA
+                   mDMA
 * Return         : None
 *******************************************************************************/
 void TMR2_DMACfg( UINT8 s, UINT16 startAddr, UINT16 endAddr, DMAModeTypeDef m )

@@ -494,7 +494,7 @@
 #define DOEPDMAADDR_DMAADDR       BITS(0, 31)         /*!< DMA address */
 
 /* device IN endpoint-x transmit FIFO status register bits definitions */
-#define DIEPTFSTAT_IEPTFS         BITS(0, 15)         /*!< IN endpoint¡¯s Tx FIFO space remaining */
+#define DIEPTFSTAT_IEPTFS         BITS(0, 15)         /*!< IN endpoints Tx FIFO space remaining */
 
 /* USB power and clock registers bits definition */
 #define PWRCLKCTL_SHCLK           BIT(1)              /*!< stop HCLK */

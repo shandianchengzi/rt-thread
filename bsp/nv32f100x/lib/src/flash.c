@@ -81,8 +81,8 @@ uint16_t Flash_Init(void)
 {
 	uint16_t err   = FLASH_ERR_SUCCESS;
 	uint32_t clkDIV = BUS_CLK_HZ/1000000L - 1;
-	uint32_t Tpgs  =(285 *(BUS_CLK_HZ/100))/1000000L;  //update 2016.8.4 by 高重医のGG
-	uint32_t Tprog =(675*(BUS_CLK_HZ/100))/1000000L;   //by 高重医のGG
+	uint32_t Tpgs  =(285 *(BUS_CLK_HZ/100))/1000000L;  //update 2016.8.4 by GG
+	uint32_t Tprog =(675*(BUS_CLK_HZ/100))/1000000L;   //by GG
 //        printf("Tpgs= %x \n" , Tpgs);
 //        printf("Tprog= %x \n" , Tprog);   
         

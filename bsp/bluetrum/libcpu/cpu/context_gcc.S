@@ -199,10 +199,10 @@ _reswitch:
     sw      a1, rt_interrupt_to_thread, a4                        	/*set rt_interrupt_to_thread*/
     ret
 
-    //软中断服务
+    //
     .global rt_soft_isr
 rt_soft_isr:
-    li      a5, 0x4                                       			// PICPND = BIT(IRQ_SW_VECTOR); 清软中断Pending
+    li      a5, 0x4                                       			// PICPND = BIT(IRQ_SW_VECTOR); Pending
     sw      a5, PICPND(zero)
     ret
 

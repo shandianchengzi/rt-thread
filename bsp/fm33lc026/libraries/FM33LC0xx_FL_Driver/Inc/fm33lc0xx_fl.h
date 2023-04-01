@@ -63,7 +63,7 @@ extern "C" {
 
 typedef struct
 {
-    /** 中断抢占优先级 */
+    /**  */
     uint32_t preemptPriority;
 
 } FL_NVIC_ConfigTypeDef;

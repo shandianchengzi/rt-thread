@@ -76,7 +76,7 @@ extern "C"
 
 /**
  ******************************************************************************
- ** \brief LVD监测电压源选择
+ ** \brief LVD
  **
  ** \note
  ******************************************************************************/
@@ -90,7 +90,7 @@ typedef enum en_lvd_input_src
 
 /**
  ******************************************************************************
- ** \brief LVD阈值电压选择
+ ** \brief LVD
  **
  ** \note
  ******************************************************************************/
@@ -116,7 +116,7 @@ typedef enum en_lvd_threshold
 
 /**
  ******************************************************************************
- ** \brief LVD输出滤波时间
+ ** \brief LVD
  **
  ** \note
  ******************************************************************************/
@@ -134,55 +134,55 @@ typedef enum en_lvd_filter_time
 
 /**
  ******************************************************************************
- ** \brief LVD中断触发方式
+ ** \brief LVD
  **
  ** \note
  ******************************************************************************/
 typedef enum en_lvd_irq_type
 {
-    LvdIrqMskRiseFall = 3u<<12,                 ///< 上升/下降沿触发
-    LvdIrqMskHigh     = 1u<<14,                 ///< 高电平触发
-    LvdIrqMskRise     = 1u<<13,                 ///< 上升沿触发
-    LvdIrqMskFall     = 1u<<12,                 ///< 下降沿触发
+    LvdIrqMskRiseFall = 3u<<12,                 ///< /
+    LvdIrqMskHigh     = 1u<<14,                 ///< 
+    LvdIrqMskRise     = 1u<<13,                 ///< 
+    LvdIrqMskFall     = 1u<<12,                 ///< 
 }en_lvd_irq_type_t;
 
 /**
  ******************************************************************************
- ** \brief LVD触发动作选择
+ ** \brief LVD
  **
  ** \note
  ******************************************************************************/
 typedef enum en_lvd_act
 {
-    LvdActMskReset = 1u<<1,              ///< 系统复位
-    LvdActMskInt   = 0u,                 ///< NVIC中断
+    LvdActMskReset = 1u<<1,              ///< 
+    LvdActMskInt   = 0u,                 ///< NVIC
 }en_lvd_act_t;
 
 /**
  ******************************************************************************
- ** \brief LVD数字滤波使能配置
+ ** \brief LVD
  **
  ** \note
  ******************************************************************************/
 typedef enum en_lvd_filter
 {
-    LvdFilterMskEnable  = 1u<<8,         ///< 数字滤波使能
-    LvdFilterMskDisable = 0u,            ///< 数字滤波禁止
+    LvdFilterMskEnable  = 1u<<8,         ///< 
+    LvdFilterMskDisable = 0u,            ///< 
 }en_lvd_filter_t;
 
 /**
  ******************************************************************************
- ** \brief LVD配置
+ ** \brief LVD
  ** \note
  ******************************************************************************/
 typedef struct stc_lvd_cfg
 {
-    en_lvd_act_t            enAct;          ///< LVD触发动作
-    en_lvd_input_src_t      enInputSrc;     ///< LVD输入电压源
-    en_lvd_threshold_t      enThreshold;    ///< LVD监测电压
-    en_lvd_filter_t         enFilter;       ///< 是否使用输出滤波
-    en_lvd_filter_time_t    enFilterTime;   ///< 输出滤波时间
-    en_lvd_irq_type_t       enIrqType;      ///< 中断触发方式
+    en_lvd_act_t            enAct;          ///< LVD
+    en_lvd_input_src_t      enInputSrc;     ///< LVD
+    en_lvd_threshold_t      enThreshold;    ///< LVD
+    en_lvd_filter_t         enFilter;       ///< 
+    en_lvd_filter_time_t    enFilterTime;   ///< 
+    en_lvd_irq_type_t       enIrqType;      ///< 
 }stc_lvd_cfg_t;
 
 

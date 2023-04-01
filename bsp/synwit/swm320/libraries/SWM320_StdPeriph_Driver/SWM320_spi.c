@@ -1,10 +1,10 @@
 /******************************************************************************************************************************************
-* 文件名称: SWM320_spi.c
-* 功能说明: SWM320单片机的SPI功能驱动库
-* 技术支持: http://www.synwit.com.cn/e/tool/gbook/?bid=1
-* 注意事项:
-* 版本日期: V1.1.0      2017年10月25日
-* 升级记录:
+* : SWM320_spi.c
+* : SWM320SPI
+* : http://www.synwit.com.cn/e/tool/gbook/?bid=1
+* :
+* : V1.1.0      20171025
+* :
 *
 *
 *******************************************************************************************************************************************
@@ -23,12 +23,12 @@
 
 
 /******************************************************************************************************************************************
-* 函数名称: SPI_Init()
-* 功能说明: SPI同步串行接口初始化，包括帧长度设定、时序设定、速度设定、中断设定、FIFO触发设定
-* 输    入: SPI_TypeDef * SPIx        指定要被设置的SPI，有效值包括SPI0、SPI1
-*           SPI_InitStructure * initStruct  包含SPI相关设定值的结构体
-* 输    出: 无
-* 注意事项: 无
+* : SPI_Init()
+* : SPIFIFO
+*     : SPI_TypeDef * SPIx        SPISPI0SPI1
+*           SPI_InitStructure * initStruct  SPI
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void SPI_Init(SPI_TypeDef * SPIx, SPI_InitStructure * initStruct)
 {
@@ -39,11 +39,11 @@ void SPI_Init(SPI_TypeDef * SPIx, SPI_InitStructure * initStruct)
         break;
 
     case ((uint32_t)SPI1):
-        SYS->CLKEN |= (0x01 << SYS_CLKEN_SPI0_Pos);     //与SPI0使用同一位时钟使能
+        SYS->CLKEN |= (0x01 << SYS_CLKEN_SPI0_Pos);     //SPI0
         break;
     }
 
-    SPI_Close(SPIx);    //一些关键寄存器只能在SPI关闭时设置
+    SPI_Close(SPIx);    //SPI
 
     SPIx->CTRL &= ~(SPI_CTRL_FFS_Msk | SPI_CTRL_CPHA_Msk | SPI_CTRL_CPOL_Msk |
                   SPI_CTRL_SIZE_Msk | SPI_CTRL_MSTR_Msk | SPI_CTRL_CLKDIV_Msk | SPI_CTRL_SSN_H_Msk);
@@ -55,7 +55,7 @@ void SPI_Init(SPI_TypeDef * SPIx, SPI_InitStructure * initStruct)
                 (initStruct->clkDiv        << SPI_CTRL_CLKDIV_Pos) |
                 (0                         << SPI_CTRL_SSN_H_Pos);
 
-    SPIx->IF = (0x01 << SPI_IF_RFOVF_Pos);  //清除中断标志
+    SPIx->IF = (0x01 << SPI_IF_RFOVF_Pos);  //
     SPIx->IE &= ~(SPI_IE_RFHF_Msk | SPI_IE_TFHF_Msk | SPI_IE_FTC_Msk);
     SPIx->IE |= (initStruct->RXHFullIEn << SPI_IE_RFHF_Pos) |
                 (initStruct->TXEmptyIEn << SPI_IE_TFHF_Pos) |
@@ -88,11 +88,11 @@ void SPI_Init(SPI_TypeDef * SPIx, SPI_InitStructure * initStruct)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SPI_Open()
-* 功能说明: SPI打开，允许收发
-* 输    入: SPI_TypeDef * SPIx        指定要被设置的SPI，有效值包括SPI0、SPI1
-* 输    出: 无
-* 注意事项: 无
+* : SPI_Open()
+* : SPI
+*     : SPI_TypeDef * SPIx        SPISPI0SPI1
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void SPI_Open(SPI_TypeDef * SPIx)
 {
@@ -100,11 +100,11 @@ void SPI_Open(SPI_TypeDef * SPIx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SPI_Close()
-* 功能说明: SPI关闭，禁止收发
-* 输    入: SPI_TypeDef * SPIx        指定要被设置的SPI，有效值包括SPI0、SPI1
-* 输    出: 无
-* 注意事项: 无
+* : SPI_Close()
+* : SPI
+*     : SPI_TypeDef * SPIx        SPISPI0SPI1
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void SPI_Close(SPI_TypeDef * SPIx)
 {
@@ -112,11 +112,11 @@ void SPI_Close(SPI_TypeDef * SPIx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SPI_Read()
-* 功能说明: 读取一个数据
-* 输    入: SPI_TypeDef * SPIx        指定要被设置的SPI，有效值包括SPI0、SPI1
-* 输    出: uint32_t              读取到的数据
-* 注意事项: 无
+* : SPI_Read()
+* : 
+*     : SPI_TypeDef * SPIx        SPISPI0SPI1
+*     : uint32_t              
+* : 
 ******************************************************************************************************************************************/
 uint32_t SPI_Read(SPI_TypeDef * SPIx)
 {
@@ -124,12 +124,12 @@ uint32_t SPI_Read(SPI_TypeDef * SPIx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SPI_Write()
-* 功能说明: 写入一个数据
-* 输    入: SPI_TypeDef * SPIx        指定要被设置的SPI，有效值包括SPI0、SPI1
-*           uint32_t                要写入的数据
-* 输    出: 无
-* 注意事项: 无
+* : SPI_Write()
+* : 
+*     : SPI_TypeDef * SPIx        SPISPI0SPI1
+*           uint32_t                
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void SPI_Write(SPI_TypeDef * SPIx, uint32_t data)
 {
@@ -137,12 +137,12 @@ void SPI_Write(SPI_TypeDef * SPIx, uint32_t data)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SPI_WriteWithWait()
-* 功能说明: 写入一个数据并等待数据完全发送出去
-* 输    入: SPI_TypeDef * SPIx        指定要被设置的SPI，有效值包括SPI0、SPI1、SPI1
-*           uint32_t                要写入的数据
-* 输    出: 无
-* 注意事项: 无
+* : SPI_WriteWithWait()
+* : 
+*     : SPI_TypeDef * SPIx        SPISPI0SPI1SPI1
+*           uint32_t                
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void SPI_WriteWithWait(SPI_TypeDef * SPIx, uint32_t data)
 {
@@ -154,12 +154,12 @@ void SPI_WriteWithWait(SPI_TypeDef * SPIx, uint32_t data)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SPI_ReadWrite()
-* 功能说明: 发送一个数据，并返回发送过程中接收到的
-* 输    入: SPI_TypeDef * SPIx        指定要被设置的SPI，有效值包括SPI0、SPI1
-*           uint32_t data           要发送的数据
-* 输    出: uint32_t              接收到的数据
-* 注意事项: 对于同一个SPI模块，此函数不应与SPI_Write()混着用，因为SPI_Write()不清除SPI_STAT_RFNE状态
+* : SPI_ReadWrite()
+* : 
+*     : SPI_TypeDef * SPIx        SPISPI0SPI1
+*           uint32_t data           
+*     : uint32_t              
+* : SPISPI_Write()SPI_Write()SPI_STAT_RFNE
 ******************************************************************************************************************************************/
 uint32_t SPI_ReadWrite(SPI_TypeDef * SPIx, uint32_t data)
 {
@@ -170,11 +170,11 @@ uint32_t SPI_ReadWrite(SPI_TypeDef * SPIx, uint32_t data)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SPI_IsRXEmpty()
-* 功能说明: 接收FIFO是否空，如果不空则可以继续SPI_Read()
-* 输    入: SPI_TypeDef * SPIx        指定要被设置的SPI，有效值包括SPI0、SPI1
-* 输    出: uint32_t              1 接收FIFO空    0 接收FIFO非空
-* 注意事项: 无
+* : SPI_IsRXEmpty()
+* : FIFOSPI_Read()
+*     : SPI_TypeDef * SPIx        SPISPI0SPI1
+*     : uint32_t              1 FIFO    0 FIFO
+* : 
 ******************************************************************************************************************************************/
 uint32_t SPI_IsRXEmpty(SPI_TypeDef * SPIx)
 {
@@ -182,11 +182,11 @@ uint32_t SPI_IsRXEmpty(SPI_TypeDef * SPIx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SPI_IsTXFull()
-* 功能说明: 发送FIFO是否满，如果不满则可以继续SPI_Write()
-* 输    入: SPI_TypeDef * SPIx        指定要被设置的SPI，有效值包括SPI0、SPI1
-* 输    出: uint32_t              1 发送FIFO满    0 发送FIFO不满
-* 注意事项: 无
+* : SPI_IsTXFull()
+* : FIFOSPI_Write()
+*     : SPI_TypeDef * SPIx        SPISPI0SPI1
+*     : uint32_t              1 FIFO    0 FIFO
+* : 
 ******************************************************************************************************************************************/
 uint32_t SPI_IsTXFull(SPI_TypeDef * SPIx)
 {
@@ -194,11 +194,11 @@ uint32_t SPI_IsTXFull(SPI_TypeDef * SPIx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SPI_IsTXEmpty()
-* 功能说明: 发送FIFO是否空
-* 输    入: SPI_TypeDef * SPIx        指定要被设置的SPI，有效值包括SPI0、SPI1
-* 输    出: uint32_t              1 发送FIFO空    0 发送FIFO非空
-* 注意事项: 无
+* : SPI_IsTXEmpty()
+* : FIFO
+*     : SPI_TypeDef * SPIx        SPISPI0SPI1
+*     : uint32_t              1 FIFO    0 FIFO
+* : 
 ******************************************************************************************************************************************/
 uint32_t SPI_IsTXEmpty(SPI_TypeDef * SPIx)
 {
@@ -207,11 +207,11 @@ uint32_t SPI_IsTXEmpty(SPI_TypeDef * SPIx)
 
 
 /******************************************************************************************************************************************
-* 函数名称: SPI_INTRXHalfFullEn()
-* 功能说明: 接收FIFO半满中断使能
-* 输    入: SPI_TypeDef * SPIx        指定要被设置的SPI，有效值包括SPI0、SPI1
-* 输    出: 无
-* 注意事项: 无
+* : SPI_INTRXHalfFullEn()
+* : FIFO
+*     : SPI_TypeDef * SPIx        SPISPI0SPI1
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void SPI_INTRXHalfFullEn(SPI_TypeDef * SPIx)
 {
@@ -219,11 +219,11 @@ void SPI_INTRXHalfFullEn(SPI_TypeDef * SPIx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SPI_INTRXHalfFullDis()
-* 功能说明: 接收FIFO半满中断禁止
-* 输    入: SPI_TypeDef * SPIx        指定要被设置的SPI，有效值包括SPI0、SPI1
-* 输    出: 无
-* 注意事项: 无
+* : SPI_INTRXHalfFullDis()
+* : FIFO
+*     : SPI_TypeDef * SPIx        SPISPI0SPI1
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void SPI_INTRXHalfFullDis(SPI_TypeDef * SPIx)
 {
@@ -231,11 +231,11 @@ void SPI_INTRXHalfFullDis(SPI_TypeDef * SPIx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SPI_INTRXHalfFullClr()
-* 功能说明: 接收FIFO半满中断标志清除
-* 输    入: SPI_TypeDef * SPIx        指定要被设置的SPI，有效值包括SPI0、SPI1
-* 输    出: 无
-* 注意事项: 无
+* : SPI_INTRXHalfFullClr()
+* : FIFO
+*     : SPI_TypeDef * SPIx        SPISPI0SPI1
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void SPI_INTRXHalfFullClr(SPI_TypeDef * SPIx)
 {
@@ -243,11 +243,11 @@ void SPI_INTRXHalfFullClr(SPI_TypeDef * SPIx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SPI_INTRXHalfFullStat()
-* 功能说明: 接收FIFO半满中断状态
-* 输    入: SPI_TypeDef * SPIx        指定要被设置的SPI，有效值包括SPI0、SPI1
-* 输    出: uint32_t              1 接收FIFO达到半满    0 接收FIFO未达到半满
-* 注意事项: 无
+* : SPI_INTRXHalfFullStat()
+* : FIFO
+*     : SPI_TypeDef * SPIx        SPISPI0SPI1
+*     : uint32_t              1 FIFO    0 FIFO
+* : 
 ******************************************************************************************************************************************/
 uint32_t SPI_INTRXHalfFullStat(SPI_TypeDef * SPIx)
 {
@@ -255,11 +255,11 @@ uint32_t SPI_INTRXHalfFullStat(SPI_TypeDef * SPIx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SPI_INTRXFullEn()
-* 功能说明: 接收FIFO满中断使能
-* 输    入: SPI_TypeDef * SPIx        指定要被设置的SPI，有效值包括SPI0、SPI1
-* 输    出: 无
-* 注意事项: 无
+* : SPI_INTRXFullEn()
+* : FIFO
+*     : SPI_TypeDef * SPIx        SPISPI0SPI1
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void SPI_INTRXFullEn(SPI_TypeDef * SPIx)
 {
@@ -267,11 +267,11 @@ void SPI_INTRXFullEn(SPI_TypeDef * SPIx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SPI_INTRXFullDis()
-* 功能说明: 接收FIFO满中断禁止
-* 输    入: SPI_TypeDef * SPIx        指定要被设置的SPI，有效值包括SPI0、SPI1
-* 输    出: 无
-* 注意事项: 无
+* : SPI_INTRXFullDis()
+* : FIFO
+*     : SPI_TypeDef * SPIx        SPISPI0SPI1
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void SPI_INTRXFullDis(SPI_TypeDef * SPIx)
 {
@@ -279,11 +279,11 @@ void SPI_INTRXFullDis(SPI_TypeDef * SPIx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SPI_INTRXFullClr()
-* 功能说明: 接收FIFO满中断标志清除
-* 输    入: SPI_TypeDef * SPIx        指定要被设置的SPI，有效值包括SPI0、SPI1
-* 输    出: 无
-* 注意事项: 无
+* : SPI_INTRXFullClr()
+* : FIFO
+*     : SPI_TypeDef * SPIx        SPISPI0SPI1
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void SPI_INTRXFullClr(SPI_TypeDef * SPIx)
 {
@@ -291,11 +291,11 @@ void SPI_INTRXFullClr(SPI_TypeDef * SPIx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SPI_INTRXFullStat()
-* 功能说明: 接收FIFO满中断状态
-* 输    入: SPI_TypeDef * SPIx        指定要被设置的SPI，有效值包括SPI0、SPI1
-* 输    出: uint32_t              1 接收FIFO满    0 接收FIFO未满
-* 注意事项: 无
+* : SPI_INTRXFullStat()
+* : FIFO
+*     : SPI_TypeDef * SPIx        SPISPI0SPI1
+*     : uint32_t              1 FIFO    0 FIFO
+* : 
 ******************************************************************************************************************************************/
 uint32_t SPI_INTRXFullStat(SPI_TypeDef * SPIx)
 {
@@ -303,11 +303,11 @@ uint32_t SPI_INTRXFullStat(SPI_TypeDef * SPIx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SPI_INTRXOverflowEn()
-* 功能说明: 接收FIFO溢出中断使能
-* 输    入: SPI_TypeDef * SPIx        指定要被设置的SPI，有效值包括SPI0、SPI1
-* 输    出: 无
-* 注意事项: 无
+* : SPI_INTRXOverflowEn()
+* : FIFO
+*     : SPI_TypeDef * SPIx        SPISPI0SPI1
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void SPI_INTRXOverflowEn(SPI_TypeDef * SPIx)
 {
@@ -315,11 +315,11 @@ void SPI_INTRXOverflowEn(SPI_TypeDef * SPIx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SPI_INTRXOverflowDis()
-* 功能说明: 接收FIFO溢出中断禁止
-* 输    入: SPI_TypeDef * SPIx        指定要被设置的SPI，有效值包括SPI0、SPI1
-* 输    出: 无
-* 注意事项: 无
+* : SPI_INTRXOverflowDis()
+* : FIFO
+*     : SPI_TypeDef * SPIx        SPISPI0SPI1
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void SPI_INTRXOverflowDis(SPI_TypeDef * SPIx)
 {
@@ -327,11 +327,11 @@ void SPI_INTRXOverflowDis(SPI_TypeDef * SPIx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SPI_INTRXOverflowClr()
-* 功能说明: 接收FIFO溢出中断标志清除
-* 输    入: SPI_TypeDef * SPIx        指定要被设置的SPI，有效值包括SPI0、SPI1
-* 输    出: 无
-* 注意事项: 无
+* : SPI_INTRXOverflowClr()
+* : FIFO
+*     : SPI_TypeDef * SPIx        SPISPI0SPI1
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void SPI_INTRXOverflowClr(SPI_TypeDef * SPIx)
 {
@@ -339,11 +339,11 @@ void SPI_INTRXOverflowClr(SPI_TypeDef * SPIx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SPI_INTRXOverflowStat()
-* 功能说明: 接收FIFO溢出中断状态
-* 输    入: SPI_TypeDef * SPIx        指定要被设置的SPI，有效值包括SPI0、SPI1
-* 输    出: uint32_t              1 接收FIFO溢出    0 接收FIFO未溢出
-* 注意事项: 无
+* : SPI_INTRXOverflowStat()
+* : FIFO
+*     : SPI_TypeDef * SPIx        SPISPI0SPI1
+*     : uint32_t              1 FIFO    0 FIFO
+* : 
 ******************************************************************************************************************************************/
 uint32_t SPI_INTRXOverflowStat(SPI_TypeDef * SPIx)
 {
@@ -351,11 +351,11 @@ uint32_t SPI_INTRXOverflowStat(SPI_TypeDef * SPIx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SPI_INTTXHalfFullEn()
-* 功能说明: 发送FIFO半满中断使能
-* 输    入: SPI_TypeDef * SPIx        指定要被设置的SPI，有效值包括SPI0、SPI1
-* 输    出: 无
-* 注意事项: 无
+* : SPI_INTTXHalfFullEn()
+* : FIFO
+*     : SPI_TypeDef * SPIx        SPISPI0SPI1
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void SPI_INTTXHalfFullEn(SPI_TypeDef * SPIx)
 {
@@ -363,11 +363,11 @@ void SPI_INTTXHalfFullEn(SPI_TypeDef * SPIx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SPI_INTTXHalfFullDis()
-* 功能说明: 发送FIFO半满中断禁止
-* 输    入: SPI_TypeDef * SPIx        指定要被设置的SPI，有效值包括SPI0、SPI1
-* 输    出: 无
-* 注意事项: 无
+* : SPI_INTTXHalfFullDis()
+* : FIFO
+*     : SPI_TypeDef * SPIx        SPISPI0SPI1
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void SPI_INTTXHalfFullDis(SPI_TypeDef * SPIx)
 {
@@ -375,11 +375,11 @@ void SPI_INTTXHalfFullDis(SPI_TypeDef * SPIx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SPI_INTTXHalfFullClr()
-* 功能说明: 发送FIFO半满中断标志清除
-* 输    入: SPI_TypeDef * SPIx        指定要被设置的SPI，有效值包括SPI0、SPI1
-* 输    出: 无
-* 注意事项: 无
+* : SPI_INTTXHalfFullClr()
+* : FIFO
+*     : SPI_TypeDef * SPIx        SPISPI0SPI1
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void SPI_INTTXHalfFullClr(SPI_TypeDef * SPIx)
 {
@@ -387,11 +387,11 @@ void SPI_INTTXHalfFullClr(SPI_TypeDef * SPIx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SPI_INTTXHalfFullStat()
-* 功能说明: 发送FIFO半满中断状态
-* 输    入: SPI_TypeDef * SPIx        指定要被设置的SPI，有效值包括SPI0、SPI1
-* 输    出: uint32_t              1 发送FIFO达到半满    0 发送FIFO未达到半满
-* 注意事项: 无
+* : SPI_INTTXHalfFullStat()
+* : FIFO
+*     : SPI_TypeDef * SPIx        SPISPI0SPI1
+*     : uint32_t              1 FIFO    0 FIFO
+* : 
 ******************************************************************************************************************************************/
 uint32_t SPI_INTTXHalfFullStat(SPI_TypeDef * SPIx)
 {
@@ -399,11 +399,11 @@ uint32_t SPI_INTTXHalfFullStat(SPI_TypeDef * SPIx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SPI_INTTXEmptyEn()
-* 功能说明: 发送FIFO空中断使能
-* 输    入: SPI_TypeDef * SPIx        指定要被设置的SPI，有效值包括SPI0、SPI1
-* 输    出: 无
-* 注意事项: 无
+* : SPI_INTTXEmptyEn()
+* : FIFO
+*     : SPI_TypeDef * SPIx        SPISPI0SPI1
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void SPI_INTTXEmptyEn(SPI_TypeDef * SPIx)
 {
@@ -411,11 +411,11 @@ void SPI_INTTXEmptyEn(SPI_TypeDef * SPIx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SPI_INTTXEmptyDis()
-* 功能说明: 发送FIFO空中断禁止
-* 输    入: SPI_TypeDef * SPIx        指定要被设置的SPI，有效值包括SPI0、SPI1
-* 输    出: 无
-* 注意事项: 无
+* : SPI_INTTXEmptyDis()
+* : FIFO
+*     : SPI_TypeDef * SPIx        SPISPI0SPI1
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void SPI_INTTXEmptyDis(SPI_TypeDef * SPIx)
 {
@@ -423,11 +423,11 @@ void SPI_INTTXEmptyDis(SPI_TypeDef * SPIx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SPI_INTTXEmptyClr()
-* 功能说明: 发送FIFO空中断标志清除
-* 输    入: SPI_TypeDef * SPIx        指定要被设置的SPI，有效值包括SPI0、SPI1
-* 输    出: 无
-* 注意事项: 无
+* : SPI_INTTXEmptyClr()
+* : FIFO
+*     : SPI_TypeDef * SPIx        SPISPI0SPI1
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void SPI_INTTXEmptyClr(SPI_TypeDef * SPIx)
 {
@@ -435,11 +435,11 @@ void SPI_INTTXEmptyClr(SPI_TypeDef * SPIx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SPI_INTTXEmptyStat()
-* 功能说明: 发送FIFO空中断状态
-* 输    入: SPI_TypeDef * SPIx        指定要被设置的SPI，有效值包括SPI0、SPI1
-* 输    出: uint32_t              1 发送FIFO空    0 发送FIFO非空
-* 注意事项: 无
+* : SPI_INTTXEmptyStat()
+* : FIFO
+*     : SPI_TypeDef * SPIx        SPISPI0SPI1
+*     : uint32_t              1 FIFO    0 FIFO
+* : 
 ******************************************************************************************************************************************/
 uint32_t SPI_INTTXEmptyStat(SPI_TypeDef * SPIx)
 {
@@ -447,11 +447,11 @@ uint32_t SPI_INTTXEmptyStat(SPI_TypeDef * SPIx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SPI_INTTXCompleteEn()
-* 功能说明: 发送FIFO空且发送移位寄存器空中断使能
-* 输    入: SPI_TypeDef * SPIx        指定要被设置的SPI，有效值包括SPI0、SPI1
-* 输    出: 无
-* 注意事项: 无
+* : SPI_INTTXCompleteEn()
+* : FIFO
+*     : SPI_TypeDef * SPIx        SPISPI0SPI1
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void SPI_INTTXCompleteEn(SPI_TypeDef * SPIx)
 {
@@ -459,11 +459,11 @@ void SPI_INTTXCompleteEn(SPI_TypeDef * SPIx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SPI_INTTXCompleteDis()
-* 功能说明: 发送FIFO空且发送移位寄存器空中断禁止
-* 输    入: SPI_TypeDef * SPIx        指定要被设置的SPI，有效值包括SPI0、SPI1
-* 输    出: 无
-* 注意事项: 无
+* : SPI_INTTXCompleteDis()
+* : FIFO
+*     : SPI_TypeDef * SPIx        SPISPI0SPI1
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void SPI_INTTXCompleteDis(SPI_TypeDef * SPIx)
 {
@@ -471,11 +471,11 @@ void SPI_INTTXCompleteDis(SPI_TypeDef * SPIx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SPI_INTTXCompleteClr()
-* 功能说明: 发送FIFO空且发送移位寄存器空中断状态清除
-* 输    入: SPI_TypeDef * SPIx        指定要被设置的SPI，有效值包括SPI0、SPI1
-* 输    出: 无
-* 注意事项: 无
+* : SPI_INTTXCompleteClr()
+* : FIFO
+*     : SPI_TypeDef * SPIx        SPISPI0SPI1
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void SPI_INTTXCompleteClr(SPI_TypeDef * SPIx)
 {
@@ -483,11 +483,11 @@ void SPI_INTTXCompleteClr(SPI_TypeDef * SPIx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SPI_INTTXCompleteStat()
-* 功能说明: 发送FIFO空且发送移位寄存器空中断状态
-* 输    入: SPI_TypeDef * SPIx        指定要被设置的SPI，有效值包括SPI0、SPI1
-* 输    出: uint32_t              1 发送FIFO空且发送移位寄存器空    0 发送FIFO或发送移位寄存器非空
-* 注意事项: 无
+* : SPI_INTTXCompleteStat()
+* : FIFO
+*     : SPI_TypeDef * SPIx        SPISPI0SPI1
+*     : uint32_t              1 FIFO    0 FIFO
+* : 
 ******************************************************************************************************************************************/
 uint32_t SPI_INTTXCompleteStat(SPI_TypeDef * SPIx)
 {
@@ -495,11 +495,11 @@ uint32_t SPI_INTTXCompleteStat(SPI_TypeDef * SPIx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SPI_INTTXWordCompleteEn()
-* 功能说明: 发送FIFO字发送完成中断使能
-* 输    入: SPI_TypeDef * SPIx        指定要被设置的SPI，有效值包括SPI0、SPI1
-* 输    出: 无
-* 注意事项: 无
+* : SPI_INTTXWordCompleteEn()
+* : FIFO
+*     : SPI_TypeDef * SPIx        SPISPI0SPI1
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void SPI_INTTXWordCompleteEn(SPI_TypeDef * SPIx)
 {
@@ -507,11 +507,11 @@ void SPI_INTTXWordCompleteEn(SPI_TypeDef * SPIx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SPI_INTTXWordCompleteDis()
-* 功能说明: 发送FIFO字发送完成中断禁止
-* 输    入: SPI_TypeDef * SPIx        指定要被设置的SPI，有效值包括SPI0、SPI1
-* 输    出: 无
-* 注意事项: 无
+* : SPI_INTTXWordCompleteDis()
+* : FIFO
+*     : SPI_TypeDef * SPIx        SPISPI0SPI1
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void SPI_INTTXWordCompleteDis(SPI_TypeDef * SPIx)
 {
@@ -519,11 +519,11 @@ void SPI_INTTXWordCompleteDis(SPI_TypeDef * SPIx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SPI_INTTXWordCompleteClr()
-* 功能说明: 发送FIFO字发送完成中断标志清除
-* 输    入: SPI_TypeDef * SPIx        指定要被设置的SPI，有效值包括SPI0、SPI1
-* 输    出: 无
-* 注意事项: 无
+* : SPI_INTTXWordCompleteClr()
+* : FIFO
+*     : SPI_TypeDef * SPIx        SPISPI0SPI1
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void SPI_INTTXWordCompleteClr(SPI_TypeDef * SPIx)
 {
@@ -531,11 +531,11 @@ void SPI_INTTXWordCompleteClr(SPI_TypeDef * SPIx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SPI_INTTXWordCompleteStat()
-* 功能说明: 发送FIFO字发送完成中断状态
-* 输    入: SPI_TypeDef * SPIx        指定要被设置的SPI，有效值包括SPI0、SPI1
-* 输    出: uint32_t              1 发送完成中断已发生    0 发送完成中断未发生
-* 注意事项: 无
+* : SPI_INTTXWordCompleteStat()
+* : FIFO
+*     : SPI_TypeDef * SPIx        SPISPI0SPI1
+*     : uint32_t              1     0 
+* : 
 ******************************************************************************************************************************************/
 uint32_t SPI_INTTXWordCompleteStat(SPI_TypeDef * SPIx)
 {

@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fgdma_intr.c
  * Date: 2022-05-16 17:01:48
  * LastEditTime: 2022-05-16 17:01:49
- * Description:  This files is for interrupt api implmentation
+ * Description: This files is for interrupt api implmentation
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   huanghe    2021-11-5    init commit
  * 1.1   zhugengyu  2022-5-16    modify according to tech manual.
  */
@@ -56,9 +56,9 @@
 /************************** Function Prototypes ******************************/
 /**
  * @name: FGdmaChanIrqHandler
- * @msg: GDMA通道中断处理函数
- * @return {void} 无
- * @param {FGdmaChan} *chan_p, GDMA通道实例
+ * @msg: GDMA
+ * @return {void} 
+ * @param {FGdmaChan} *chan_p, GDMA
  */
 static void FGdmaChanIrqHandler(FGdmaChan *const chan_p)
 {
@@ -103,10 +103,10 @@ static void FGdmaChanIrqHandler(FGdmaChan *const chan_p)
 
 /**
  * @name: FGdmaIrqHandler
- * @msg: GDMA中断处理函数
- * @return {void} 无
- * @param {s32} vector, 中断号
- * @param {void} *args, 中断参数
+ * @msg: GDMA
+ * @return {void} 
+ * @param {s32} vector, 
+ * @param {void} *args, 
  */
 void FGdmaIrqHandler(s32 vector, void *args)
 {
@@ -136,12 +136,12 @@ void FGdmaIrqHandler(s32 vector, void *args)
 
 /**
  * @name: FGdmaChanRegisterEvtHandler
- * @msg: 注册GDMA通道事件回调函数
- * @return {void} 无
- * @param {FGdmaChan} *chan_p, GDMA通道实例
- * @param {FGdmaChanEvtType} evt, 通道事件
- * @param {FGdmaChanEvtHandler} handler, 事件回调函数
- * @param {void} *handler_arg, 事件回调函数输入参数
+ * @msg: GDMA
+ * @return {void} 
+ * @param {FGdmaChan} *chan_p, GDMA
+ * @param {FGdmaChanEvtType} evt, 
+ * @param {FGdmaChanEvtHandler} handler, 
+ * @param {void} *handler_arg, 
  */
 void FGdmaChanRegisterEvtHandler(FGdmaChan *const chan_p, FGdmaChanEvtType evt,
                                  FGdmaChanEvtHandler handler, void *handler_arg)

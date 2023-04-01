@@ -84,11 +84,11 @@
  *****************************************************************************/
 /**
  * \brief
- *          获取ADC中断状态
+ *          ADC
  *
- * \param   [in]  enAdcIrq  ADC中断类型 @ref en_adc_irq_type_t
+ * \param   [in]  enAdcIrq  ADC @ref en_adc_irq_type_t
  *
- * \retval  中断标志
+ * \retval  
  */
 boolean_t Adc_GetIrqStatus(en_adc_irq_type_t enAdcIrq)
 {
@@ -104,9 +104,9 @@ boolean_t Adc_GetIrqStatus(en_adc_irq_type_t enAdcIrq)
 
 /**
  * \brief
- *          获取ADC中断状态
+ *          ADC
  *
- * \param   [in]  enAdcIrq  ADC中断类型 @ref en_adc_irq_type_t
+ * \param   [in]  enAdcIrq  ADC @ref en_adc_irq_type_t
  *
  * \retval  Null
  */
@@ -117,11 +117,11 @@ void Adc_ClrIrqStatus(en_adc_irq_type_t enAdcIrq)
 
 /**
  * \brief
- *          ADC中断使能
+ *          ADC
  *
- * \param   无
+ * \param   
  *
- * \retval  无
+ * \retval  
  */
 void Adc_EnableIrq(void)
 {
@@ -130,11 +130,11 @@ void Adc_EnableIrq(void)
 
 /**
  * \brief
- *          ADC中断禁止
+ *          ADC
  *
- * \param   无
+ * \param   
  *
- * \retval  无
+ * \retval  
  */
 void Adc_DisableIrq(void)
 {
@@ -143,12 +143,12 @@ void Adc_DisableIrq(void)
 
 /**
  * \brief
- *          ADC初始化
+ *          ADC
  *
- * \param   [in]  pstcAdcCfg  ADC配置指针
+ * \param   [in]  pstcAdcCfg  ADC
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  */
 en_result_t Adc_Init(stc_adc_cfg_t* pstcAdcCfg)
 {
@@ -157,7 +157,7 @@ en_result_t Adc_Init(stc_adc_cfg_t* pstcAdcCfg)
         return ErrorInvalidParameter;
     }
 
-    M0P_ADC->CR0 = 0x1u;    ///< ADC 使能
+    M0P_ADC->CR0 = 0x1u;    ///< ADC 
     delay10us(2);
 
     M0P_ADC->CR0 |= (uint32_t)pstcAdcCfg->enAdcClkDiv       |
@@ -175,9 +175,9 @@ en_result_t Adc_Init(stc_adc_cfg_t* pstcAdcCfg)
 
 /**
  * \brief
- *          ADC单次转换外部中断触发源配置
+ *          ADC
  *
- * \param   [in]  enAdcTrigSel  触发源
+ * \param   [in]  enAdcTrigSel  
  *
  * \retval  en_result_t  Null
  */
@@ -196,9 +196,9 @@ void Adc_SglExtTrigCfg(en_adc_trig_sel_t enAdcTrigSel, boolean_t bValue)
 
 /**
  * \brief
- *          ADC顺序扫描转换外部中断触发源配置
+ *          ADC
  *
- * \param   [in]  enAdcTrigSel  触发源
+ * \param   [in]  enAdcTrigSel  
  * \param   [in]  TRUE or FALSE
  *
  * \retval  en_result_t  Null
@@ -218,9 +218,9 @@ void Adc_SqrExtTrigCfg(en_adc_trig_sel_t enAdcTrigSel, boolean_t bValue)
 
 /**
  * \brief
- *          ADC插队扫描转换外部中断触发源配置
+ *          ADC
  *
- * \param   [in]  enAdcTrigSel  触发源
+ * \param   [in]  enAdcTrigSel  
  * \param   [in]  TRUE or FALSE
  *
  * \retval  en_result_t  Null
@@ -241,11 +241,11 @@ void Adc_JqrExtTrigCfg(en_adc_trig_sel_t enAdcTrigSel, boolean_t bValue)
 
 /**
  * \brief
- *          ADC 单次转换开始
+ *          ADC 
  *
- * \param   无
+ * \param   
  *
- * \retval  无
+ * \retval  
  */
 
 void Adc_SGL_Start(void)
@@ -255,11 +255,11 @@ void Adc_SGL_Start(void)
 
 /**
  * \brief
- *          ADC 单次转换停止
+ *          ADC 
  *
- * \param   无
+ * \param   
  *
- * \retval  无
+ * \retval  
  */
 void Adc_SGL_Stop(void)
 {
@@ -268,11 +268,11 @@ void Adc_SGL_Stop(void)
 
 /**
  * \brief
- *          ADC 单次转换一直转换开始
+ *          ADC 
  *
- * \param   无
+ * \param   
  *
- * \retval  无
+ * \retval  
  */
 
 void Adc_SGL_Always_Start(void)
@@ -282,11 +282,11 @@ void Adc_SGL_Always_Start(void)
 
 /**
  * \brief
- *          ADC 单次转换一直转换停止
+ *          ADC 
  *
- * \param   无
+ * \param   
  *
- * \retval  无
+ * \retval  
  */
 
 void Adc_SGL_Always_Stop(void)
@@ -296,11 +296,11 @@ void Adc_SGL_Always_Stop(void)
 
 /**
  * \brief
- *          ADC 顺序扫描转换开始
+ *          ADC 
  *
- * \param   无
+ * \param   
  *
- * \retval  无
+ * \retval  
  */
 
 void Adc_SQR_Start(void)
@@ -310,11 +310,11 @@ void Adc_SQR_Start(void)
 
 /**
  * \brief
- *          ADC 顺序扫描转换停止
+ *          ADC 
  *
- * \param   无
+ * \param   
  *
- * \retval  无
+ * \retval  
  */
 void Adc_SQR_Stop(void)
 {
@@ -322,11 +322,11 @@ void Adc_SQR_Stop(void)
 }
 /**
  * \brief
- *          ADC 插队扫描转换开始
+ *          ADC 
  *
- * \param   无
+ * \param   
  *
- * \retval  无
+ * \retval  
  */
 
 void Adc_JQR_Start(void)
@@ -336,11 +336,11 @@ void Adc_JQR_Start(void)
 
 /**
  * \brief
- *          ADC 插队扫描转换停止
+ *          ADC 
  *
- * \param   无
+ * \param   
  *
- * \retval  无
+ * \retval  
  */
 void Adc_JQR_Stop(void)
 {
@@ -349,11 +349,11 @@ void Adc_JQR_Stop(void)
 
 /**
  * \brief
- *          ADC使能
+ *          ADC
  *
- * \param   无
+ * \param   
  *
- * \retval  无
+ * \retval  
  */
 void Adc_Enable(void)
 {
@@ -362,11 +362,11 @@ void Adc_Enable(void)
 
 /**
  * \brief
- *          ADC除能
+ *          ADC
  *
- * \param   无
+ * \param   
  *
- * \retval  无
+ * \retval  
  */
 void Adc_Disable(void)
 {
@@ -375,13 +375,13 @@ void Adc_Disable(void)
 
 /**
  * \brief
- *          配置顺序扫描转换模式
+ *          
  *
- * \param   [in]  pstcAdcCfg   ADC配置指针
- * \param   [in]  pstcAdcNormCfg  连续转换模式配置指针
+ * \param   [in]  pstcAdcCfg   ADC
+ * \param   [in]  pstcAdcNormCfg  
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  */
 en_result_t Adc_SqrModeCfg(stc_adc_sqr_cfg_t* pstcAdcSqrCfg)
 {
@@ -390,7 +390,7 @@ en_result_t Adc_SqrModeCfg(stc_adc_sqr_cfg_t* pstcAdcSqrCfg)
         return ErrorInvalidParameter;
     }
 
-    M0P_ADC->CR1_f.RACCCLR = 0; //ADC转换结果累加寄存器（ADC_ResultAcc）清零
+    M0P_ADC->CR1_f.RACCCLR = 0; //ADCADC_ResultAcc
     M0P_ADC->CR1_f.RACCEN  = pstcAdcSqrCfg->enResultAcc;
     M0P_ADC->CR1_f.DMASQR  = pstcAdcSqrCfg->bSqrDmaTrig;
 
@@ -401,13 +401,13 @@ en_result_t Adc_SqrModeCfg(stc_adc_sqr_cfg_t* pstcAdcSqrCfg)
 
 /**
  * \brief
- *          配置插队扫描转换模式
+ *          
  *
- * \param   [in]  pstcAdcCfg   ADC配置指针
- * \param   [in]  pstcAdcNormCfg  扫描转换模式配置指针
+ * \param   [in]  pstcAdcCfg   ADC
+ * \param   [in]  pstcAdcNormCfg  
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  */
 en_result_t Adc_JqrModeCfg(stc_adc_jqr_cfg_t* pstcAdcJqrCfg)
 {
@@ -425,12 +425,12 @@ en_result_t Adc_JqrModeCfg(stc_adc_jqr_cfg_t* pstcAdcJqrCfg)
 
 /**
  * \brief
- *          配置单次转换通道
+ *          
  *
- * \param   [in]enstcAdcSampCh 转换通道
+ * \param   [in]enstcAdcSampCh 
  *
- * \retval  en_result_t  Ok:  成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  */
 en_result_t Adc_CfgSglChannel( en_adc_samp_ch_sel_t enstcAdcSampCh)
 {
@@ -441,13 +441,13 @@ en_result_t Adc_CfgSglChannel( en_adc_samp_ch_sel_t enstcAdcSampCh)
 
 /**
  * \brief
- *          配置顺序扫描转换通道
+ *          
  *
- * \param   [in]enstcAdcSqrChMux 顺序扫描转换通道顺序
- * \param   [in]enstcAdcSampCh   转换通道
+ * \param   [in]enstcAdcSqrChMux 
+ * \param   [in]enstcAdcSampCh   
  *
- * \retval  en_result_t  Ok:  成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  */
 en_result_t Adc_CfgSqrChannel(en_adc_sqr_chmux_t enstcAdcSqrChMux, en_adc_samp_ch_sel_t enstcAdcSampCh)
 {
@@ -513,13 +513,13 @@ en_result_t Adc_CfgSqrChannel(en_adc_sqr_chmux_t enstcAdcSqrChMux, en_adc_samp_c
 }
 /**
  * \brief
- *          配置插队扫描转换通道
+ *          
  *
- * \param   [in]enstcAdcSqrChMux 插队扫描转换通道顺序
- * \param   [in]enstcAdcSampCh   转换通道
+ * \param   [in]enstcAdcSqrChMux 
+ * \param   [in]enstcAdcSampCh   
  *
- * \retval  en_result_t  Ok:  成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  */
 en_result_t Adc_CfgJqrChannel(en_adc_jqr_chmux_t enstcAdcJqrChMux, en_adc_samp_ch_sel_t enstcAdcSampCh)
 {
@@ -549,10 +549,10 @@ en_result_t Adc_CfgJqrChannel(en_adc_jqr_chmux_t enstcAdcJqrChMux, en_adc_samp_c
 
 /**
  * \brief
- *          获取采样值
+ *          
  *
  *
- * \retval  en_result_t  采样值
+ * \retval  en_result_t  
  */
 uint32_t Adc_GetSglResult(void)
 {
@@ -561,11 +561,11 @@ uint32_t Adc_GetSglResult(void)
 
 /**
  * \brief
- *          获取采样值
+ *          
  *
- * \param   [in] enstcAdcSqrChMux  顺序扫描通道序号 @ref en_adc_sqr_chmux_t
+ * \param   [in] enstcAdcSqrChMux   @ref en_adc_sqr_chmux_t
  *
- * \retval  en_result_t  采样值
+ * \retval  en_result_t  
  */
 uint32_t Adc_GetSqrResult(en_adc_sqr_chmux_t enstcAdcSqrChMux)
 {
@@ -577,11 +577,11 @@ uint32_t Adc_GetSqrResult(en_adc_sqr_chmux_t enstcAdcSqrChMux)
 
 /**
  * \brief
- *          获取插队扫描采样值
+ *          
  *
- * \param   [in] enstcAdcJqrChMux  插队扫描通道序号@ref en_adc_jqr_chmux_t
+ * \param   [in] enstcAdcJqrChMux  @ref en_adc_jqr_chmux_t
  *
- * \retval  en_result_t  采样值
+ * \retval  en_result_t  
  */
 uint32_t Adc_GetJqrResult(en_adc_jqr_chmux_t enstcAdcJqrChMux)
 {
@@ -593,10 +593,10 @@ uint32_t Adc_GetJqrResult(en_adc_jqr_chmux_t enstcAdcJqrChMux)
 
 /**
  * \brief
- *          获取累加采样值
+ *          
  *
  *
- * \retval  en_result_t  累加采样结果
+ * \retval  en_result_t  
  */
 uint32_t Adc_GetAccResult(void)
 {
@@ -606,11 +606,11 @@ uint32_t Adc_GetAccResult(void)
 
 /**
  * \brief
- *          清零累加采样值
+ *          
  *
- * \param   无
+ * \param   
  *
- * \retval  无
+ * \retval  
  */
 void Adc_ClrAccResult(void)
 {
@@ -619,11 +619,11 @@ void Adc_ClrAccResult(void)
 
 /**
  * \brief
- *          ADC比较使能(比较中断)
+ *          ADC()
  *
- * \param   [in]  pstcAdcIrqCfg  ADC比较配置 @ref stc_adc_threshold_cfg_t
+ * \param   [in]  pstcAdcIrqCfg  ADC @ref stc_adc_threshold_cfg_t
  *
- * \retval  无
+ * \retval  
  */
 
 void Adc_ThresholdCfg(stc_adc_threshold_cfg_t* pstcAdcThrCfg)

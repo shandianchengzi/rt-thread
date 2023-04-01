@@ -483,8 +483,8 @@ static void LCD_bl_close(u32 sel)
 static void LCD_panel_init(u32 sel)
 {
 #if 0
-    // 有的屏需要初始化，在这里添加。比如hv屏可能需要spi或则iic初始化，
-    // dsi屏，用LP_TX模式初始化
+    // hvspiiic
+    // dsiLP_TX
     struct disp_panel_para *panel_info = malloc(sizeof(struct disp_panel_para));
 
     bsp_disp_get_panel_info(sel, panel_info);

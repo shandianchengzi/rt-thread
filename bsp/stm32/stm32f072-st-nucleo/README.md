@@ -1,18 +1,18 @@
 # STM32F072-Nucleo BSP Introduction
 
-[中文](README_zh.md) 
+[](README_zh.md) 
 
 ## MCU: STM32F072RB @48MHz, 128KB FLASH,  16KB RAM
 
-The STM32F072x8/xB microcontrollers incorporate the high-performance ARM®Cortex®-M0 32-bit RISC core operating at up to 48 MHz frequency, high-speed embedded memories (up to 128 Kbytes of Flash memory and 16 Kbytes of SRAM), and an extensive range of enhanced peripherals and I/Os. All devices offer standard communication interfaces (two I2Cs, two SPI/I2S, one HDMI CEC and four USARTs), one USB Full-speed device (crystal-less), one CAN, one 12-bit ADC, one 12-bit DAC with two channels, seven 16-bit timers, one 32-bit timer and an advanced-control PWM timer.
+The STM32F072x8/xB microcontrollers incorporate the high-performance ARMCortex-M0 32-bit RISC core operating at up to 48 MHz frequency, high-speed embedded memories (up to 128 Kbytes of Flash memory and 16 Kbytes of SRAM), and an extensive range of enhanced peripherals and I/Os. All devices offer standard communication interfaces (two I2Cs, two SPI/I2S, one HDMI CEC and four USARTs), one USB Full-speed device (crystal-less), one CAN, one 12-bit ADC, one 12-bit DAC with two channels, seven 16-bit timers, one 32-bit timer and an advanced-control PWM timer.
 
-The STM32F072x8/xB microcontrollers operate in the -40 to +85 °C and -40 to +105 °C temperature ranges, from a 2.0 to 3.6 V power supply. A comprehensive set of power-saving modes allows the design of low-power applications.
+The STM32F072x8/xB microcontrollers operate in the -40 to +85 C and -40 to +105 C temperature ranges, from a 2.0 to 3.6 V power supply. A comprehensive set of power-saving modes allows the design of low-power applications.
 The STM32F072x8/xB microcontrollers include devices in seven different packages ranging from 48 pins to 100 pins with a die form also available upon request. Depending on the device chosen, different sets of peripherals are included.
 These features make the STM32F072x8/xB microcontrollers suitable for a wide range of applications such as application control and user interfaces, hand-held equipment, A/V receivers and digital TV, PC peripherals, gaming and GPS platforms, industrial applications, PLCs, inverters, printers, scanners, alarm systems, video intercoms and HVACs.
 
 #### KEY FEATURES
 
-- Core: ARM®32-bit Cortex®-M0 CPU, frequency up to 48 MHz
+- Core: ARM32-bit Cortex-M0 CPU, frequency up to 48 MHz
 
 - Memories
 
@@ -46,7 +46,7 @@ These features make the STM32F072x8/xB microcontrollers suitable for a wide rang
 
 - Seven-channel DMA controller
 
-- One 12-bit, 1.0 μs ADC (up to 16 channels)
+- One 12-bit, 1.0 s ADC (up to 16 channels)
 
   - Conversion range: 0 to 3.6 V
   - Separate analog supply: 2.4 V to 3.6 V
@@ -80,7 +80,7 @@ These features make the STM32F072x8/xB microcontrollers suitable for a wide rang
 
 - 96-bit unique ID
 
-- All packages ECOPACK®2
+- All packages ECOPACK2
 
 
 
@@ -95,7 +95,7 @@ These features make the STM32F072x8/xB microcontrollers suitable for a wide rang
 
 ## Maintained By
 
-[刘恒](https://github.com/lhxzui)
+[](https://github.com/lhxzui)
 
 iuzxhl@qq.com
 

@@ -94,11 +94,11 @@ struct hc_gen_dev
     const char      *product_desc;  /* product/vendor string */
     char            irq_descr[24];  /* driver + bus # */
 
-    //  struct timer_list   rh_timer;   //rh的timer
-    //  USB_OS_KERNEL_SOFT_TIMER *rh_timer; //其到时处理函数为rh_timer_func()
+    //  struct timer_list   rh_timer;   //rhtimer
+    //  USB_OS_KERNEL_SOFT_TIMER *rh_timer; //rh_timer_func()
     osal_timer_t rh_timer;
     /* drives root-hub polling */
-    struct urb      *status_urb;    //查询root hub status的urb
+    struct urb      *status_urb;    //root hub statusurb
     /* the current status urb */
 
     /*
@@ -118,7 +118,7 @@ struct hc_gen_dev
     int irq;            /* irq allocated */
     /* memory/io resource length */
     u32 power_budget;   /* in mA, 0 = no limit */
-    int state;          //如HC_GEN_DEV_STATE_RUNNING
+    int state;          //HC_GEN_DEV_STATE_RUNNING
 
     /* more shared queuing code would be good; it should support
      * smarter scheduling, handle transaction translators, etc;
@@ -151,23 +151,23 @@ static inline struct hc_gen_dev *bus_to_hcd(struct usb_virt_bus *bus)
 #define HUB_EVNET_PLUGOUT_COMPLETE  0x02
 
 //*****************************
-//具体hc的驱动注册上来的
-//具体包含如下4类:
-//包括如下部分:
-//1，中断处理
-//2，start/stop
-//3，queue/dequeue,ep en
-//4，hub queue/dequeue ,suspend/resume
+//hc
+//4:
+//:
+//1
+//2start/stop
+//3queue/dequeue,ep en
+//4hub queue/dequeue ,suspend/resume
 //*****************************
 struct hc_driver
 {
     const char  *description;   /* "ehci-hcd" etc */
     const char  *product_desc;  /* product/vendor string */
-    u32         hcd_priv_size;      //size of private data,如hc_priv结构
+    u32         hcd_priv_size;      //size of private data,hc_priv
 
     /* irq handler */
-    irqreturn_t(*irq)(struct hc_gen_dev *hcd);   //可以考虑放到下面，其实都无所谓，只是个irq申请
-    s32 flags;          //如HC_DRIVER_FLAG_HCD_USB2
+    irqreturn_t(*irq)(struct hc_gen_dev *hcd);   //irq
+    s32 flags;          //HC_DRIVER_FLAG_HCD_USB2
 
     /* called to init HCD and root hub */
     int(*reset)(struct hc_gen_dev *hcd);
@@ -183,7 +183,7 @@ struct hc_driver
     int(*urb_enqueue)(struct hc_gen_dev *hcd,
                       struct urb *urb, unsigned mem_flags);
     //manage i/o requests, device state
-    //如hcd_ops_urb_enqueue()
+    //hcd_ops_urb_enqueue()
 
     int(*urb_dequeue)(struct hc_gen_dev *hcd, struct urb *urb);
     void (*endpoint_disable)(struct hc_gen_dev *hcd,

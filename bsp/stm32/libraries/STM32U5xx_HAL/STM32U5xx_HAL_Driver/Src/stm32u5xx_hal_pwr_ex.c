@@ -537,7 +537,7 @@ void HAL_PWREx_DisableFastSoftStart(void)
    *** Stop 3 mode ***
    ===================
     [..]
-      The Stop 3 mode is based on the Cortex®-M33 Deepsleep mode combined with
+      The Stop 3 mode is based on the Cortex-M33 Deepsleep mode combined with
       peripheral clock gating. In Stop 3 mode, all clocks in the VCORE domain
       are stopped.
       The PLL, MSIS, MSIK, HSI16 and HSE oscillators are disabled.
@@ -1004,7 +1004,7 @@ __weak void HAL_PWREx_S3WUCallback(uint32_t WakeUpPin)
           The switch to the VBAT supply is controlled by the power down reset
           embedded in the Reset block.
 
-      (+) After exiting reset, the USB Type-C “dead battery” behavior is enabled,
+      (+) After exiting reset, the USB Type-C dead battery behavior is enabled,
           which may have a pull-down effect on CC1 and CC2 pins. It is
           recommended to disable it in all cases, either to stop this pull-down
           or to handover control to the UCPD (the UCPD must be initialized
@@ -1352,7 +1352,7 @@ void HAL_PWREx_DisableUCPDStandbyMode(void)
 
 /**
   * @brief  Enable dead battery behavior.
-  * @note   After exiting reset, the USB Type-C “dead battery” behavior is
+  * @note   After exiting reset, the USB Type-C dead battery behavior is
   *         enabled, which may have a pull-down effect on CC1 and CC2 pins.
   *         It is recommended to disable it in all cases, either to stop this
   *         pull-down or to handover control to the UCPD (the UCPD must be
@@ -1366,7 +1366,7 @@ void HAL_PWREx_EnableUCPDDeadBattery(void)
 
 /**
   * @brief  Disable dead battery behavior.
-  * @note   After exiting reset, the USB Type-C “dead battery” behavior is
+  * @note   After exiting reset, the USB Type-C dead battery behavior is
   *         enabled, which may have a pull-down effect on CC1 and CC2 pins.
   *         It is recommended to disable it in all cases, either to stop this
   *         pull-down or to handover control to the UCPD (the UCPD must be

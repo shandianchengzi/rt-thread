@@ -13279,7 +13279,7 @@ typedef struct
 /*************  Bit definition for ETH_MAC1USTCR register  *************/
 #define ETH_MAC1USTCR_TIC_1US_CNTR_Pos      (0U)
 #define ETH_MAC1USTCR_TIC_1US_CNTR_Msk      (0xFFFU << ETH_MAC1USTCR_TIC_1US_CNTR_Pos)          /*!< 0x00000FFF */
-#define ETH_MAC1USTCR_TIC_1US_CNTR          ETH_MAC1USTCR_TIC_1US_CNTR_Msk                      /*!< 1 ÃÂµs tick Counter */
+#define ETH_MAC1USTCR_TIC_1US_CNTR          ETH_MAC1USTCR_TIC_1US_CNTR_Msk                      /*!< 1 s tick Counter */
 #define ETH_MAC1USTCR_TIC_1US_CNTR_0        (0x1U << ETH_MAC1USTCR_TIC_1US_CNTR_Pos)            /*!< 0x00000001 */
 #define ETH_MAC1USTCR_TIC_1US_CNTR_1        (0x2U << ETH_MAC1USTCR_TIC_1US_CNTR_Pos)            /*!< 0x00000002 */
 #define ETH_MAC1USTCR_TIC_1US_CNTR_2        (0x4U << ETH_MAC1USTCR_TIC_1US_CNTR_Pos)            /*!< 0x00000004 */
@@ -24634,7 +24634,7 @@ typedef struct
 #define BSEC_DENABLE_SPNIDEN               BSEC_DENABLE_SPNIDEN_Msk            /*!< secure privilege non-invasive debug enable with signal spiden */
 #define BSEC_DENABLE_CP15SDISABLE_Pos      (7U)                                
 #define BSEC_DENABLE_CP15SDISABLE_Msk      (0x3U << BSEC_DENABLE_CP15SDISABLE_Pos) /*!< 0x00000180 */
-#define BSEC_DENABLE_CP15SDISABLE          BSEC_DENABLE_CP15SDISABLE_Msk       /*!< write access to some secure Cortex®-A7 CP15 registers disable CPDISABLE[0] applies to CPU0. CPDISABLE[1] applies to CPU1 */
+#define BSEC_DENABLE_CP15SDISABLE          BSEC_DENABLE_CP15SDISABLE_Msk       /*!< write access to some secure Cortex-A7 CP15 registers disable CPDISABLE[0] applies to CPU0. CPDISABLE[1] applies to CPU1 */
 #define BSEC_DENABLE_CP15SDISABLE_0        (0x1U << BSEC_DENABLE_CP15SDISABLE_Pos) /*!< 0x00000080 */
 #define BSEC_DENABLE_CP15SDISABLE_1        (0x2U << BSEC_DENABLE_CP15SDISABLE_Pos) /*!< 0x00000100 */
 #define BSEC_DENABLE_CFGSDISABLE_Pos       (9U)                                

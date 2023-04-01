@@ -1,6 +1,6 @@
 # CH32V307V-R1 BSP Introduction
 
-**English** | [中文](README_zh.md)
+**English** | [](README_zh.md)
 
 ## 1 Introduction
 
@@ -20,7 +20,7 @@ By reading the Quickly Get Started section developers can quickly get their hand
 
 **Features**
 
-- MCU: CH32V307VCT6, main frequency 144MHz，FLASH and RAM are available for configuration.
+- MCU: CH32V307VCT6, main frequency 144MHzFLASH and RAM are available for configuration.
 - LED: 2, user LEDs, LED1(blue), LED2(blue).
 - Button: 2, Reset, User.
 - USB: 2, Tpye-C.
@@ -98,22 +98,22 @@ Select "RT-Thread BSP Project into Workspace":
 
 ![windows](./figures/windows.png)
 
-填写项目信息，Bsp 根目录为 \rt-thread\bsp\wch\risc-v\ch32v307v-r1 目录：
+Bsp  \rt-thread\bsp\wch\risc-v\ch32v307v-r1 
 
-Fill in the project info, the BSP root directory is \rt-thread\bsp\wch\risc-v\ch32v307v-r1：
+Fill in the project info, the BSP root directory is \rt-thread\bsp\wch\risc-v\ch32v307v-r1
 
 ![config](./figures/config.png)
 
 
 #### 3.3.2 Compilation Environment
 
-工程导入后进行编译环境的设置，首先点击“打开构建设置”进入设置界面：
+
 
 After the project is imported, set the compilation environment, click "Open Build Settings" to enter the setting interface:
 
 ![set](./figures/set.png)
 
-将编译链路径复制到 Toolchain path 中：
+ Toolchain path 
 Copy the compilation chain path into the Toolchain path:
 
 ![toolchain](./figures/toolchain.png)

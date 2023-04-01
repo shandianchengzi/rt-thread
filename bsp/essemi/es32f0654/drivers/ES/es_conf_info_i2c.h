@@ -40,7 +40,7 @@
 #define ES_C_I2C_ADDR_10_MODE                I2C_ADDR_10BIT
 
 
-/* I2C 配置 */
+/* I2C  */
 
 
 

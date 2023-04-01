@@ -815,7 +815,7 @@ FlagStatus FLASH_GetFlagStatus(uint16_t FLASH_FLAG)
 }
 
 /**
-* @brief  Clears the FLASH’s pending flags.
+* @brief  Clears the FLASHs pending flags.
 * @param FLASH_FLAG: specifies the FLASH flags to clear.
 *   This parameter can be any combination of the following values:
 * @arg FLASH_FLAG_BSY: FLASH Busy flag

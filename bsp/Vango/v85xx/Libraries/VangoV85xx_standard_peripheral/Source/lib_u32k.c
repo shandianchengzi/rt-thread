@@ -138,7 +138,7 @@ void U32K_StructInit(U32K_InitType *InitStruct)
   * @brief  U32K interrupt configuration.
   * @param  U32Kx:
                 U32K0~U32K1
-            INTMask: can use the ¡®|¡¯ operator
+            INTMask: can use the | operator
                 U32K_INT_RXOV
                 U32K_INT_RXPE
                 U32K_INT_RX 
@@ -191,7 +191,7 @@ uint8_t U32K_GetINTStatus(U32K_TypeDef *U32Kx, uint32_t INTMask)
   * @brief  Clear flag status.
   * @param  U32Kx:
                 U32K0~U32K1
-            INTMask: can use the ¡®|¡¯ operator
+            INTMask: can use the | operator
                 U32K_INTSTS_RXOV
                 U32K_INTSTS_RXPE
                 U32K_INTSTS_RX 

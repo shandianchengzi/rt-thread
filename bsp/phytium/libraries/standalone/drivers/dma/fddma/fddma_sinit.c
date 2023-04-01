@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fddma_sinit.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:24:47
- * Description:  This files is for static initialization
+ * Description: This files is for static initialization
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   Zhugengyu  2022/5/13    init commit
  */
 
@@ -41,9 +41,9 @@ extern const FDdmaConfig fddma_cfg_tbl[FDDMA_INSTANCE_NUM];
 /************************** Function Prototypes ******************************/
 /**
  * @name: FDdmaLookupConfig
- * @msg: 获取DDMA实例默认配置
- * @return {const FDdmaConfig *} DDMA控制器默认配置
- * @param {u32} instance_id, DDMA实例号
+ * @msg: DDMA
+ * @return {const FDdmaConfig *} DDMA
+ * @param {u32} instance_id, DDMA
  */
 const FDdmaConfig *FDdmaLookupConfig(u32 instance_id)
 {

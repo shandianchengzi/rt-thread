@@ -99,11 +99,11 @@ static func_ptr_t    pfnLvdIrqCbk = NULL;
 
  /**
  * \brief   
- *          LVD中断服务程序
+ *          LVD
  *
- * \param   [in]  u8Param  未使用
+ * \param   [in]  u8Param  
  *
- * \retval  无
+ * \retval  
  */
 void Lvd_IRQHandler(uint8_t u8Param)
 {
@@ -116,11 +116,11 @@ void Lvd_IRQHandler(uint8_t u8Param)
 
 /**
  * \brief   
- *          使能NVIC中LVD中断
+ *          NVICLVD
  *
- * \param   无
+ * \param   
  *
- * \retval  无
+ * \retval  
  */
 static void LvdEnableNvic(void)
 {
@@ -131,11 +131,11 @@ static void LvdEnableNvic(void)
 
 /**
  * \brief   
- *          除能NVIC中LVD中断
+ *          NVICLVD
  *
- * \param   无
+ * \param   
  *
- * \retval  无
+ * \retval  
  */
 static void LvdDisableNvic(void)
 {
@@ -146,12 +146,12 @@ static void LvdDisableNvic(void)
 
 /**
  * \brief   
- *          使能LVD中断
+ *          LVD
  *
- * \param   [in]  enType  LVD中断类型
+ * \param   [in]  enType  LVD
  *
- * \retval  en_result_t  Ok:  设置成功
- * \retval  en_result_t  ErrorInvalidParameter:  无效类型
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter:  
  */
 en_result_t Lvd_EnableIrq(en_lvd_irq_type_t enType)
 {
@@ -191,11 +191,11 @@ en_result_t Lvd_EnableIrq(en_lvd_irq_type_t enType)
 
 /**
  * \brief   
- *          除能LVD中断
+ *          LVD
  *
- * \param   无
+ * \param   
  *
- * \retval  无
+ * \retval  
  */
 void Lvd_DisableIrq(void)
 {
@@ -208,11 +208,11 @@ void Lvd_DisableIrq(void)
 
 /**
  * \brief   
- *          LVD初始化
+ *          LVD
  *
- * \param   [in]  pstcConfig  LVD配置指针
+ * \param   [in]  pstcConfig  LVD
  *
- * \retval  无
+ * \retval  
  */
 void Lvd_Init(stc_lvd_config_t *pstcConfig)
 {
@@ -240,9 +240,9 @@ void Lvd_Init(stc_lvd_config_t *pstcConfig)
  * \brief   
  *          LVD deinit
  *
- * \param   无
+ * \param   
  *
- * \retval  无
+ * \retval  
  */
 void Lvd_DeInit(void)
 {
@@ -255,11 +255,11 @@ void Lvd_DeInit(void)
 
 /**
  * \brief   
- *          使能LVD
+ *          LVD
  *
- * \param   无
+ * \param   
  *
- * \retval  无
+ * \retval  
  *
  */
 void Lvd_Enable(void)
@@ -269,11 +269,11 @@ void Lvd_Enable(void)
 
 /**
  * \brief   
- *          除能LVD
+ *          LVD
  *
- * \param   无
+ * \param   
  *
- * \retval  无
+ * \retval  
  */
 void Lvd_Disable(void)
 {
@@ -282,11 +282,11 @@ void Lvd_Disable(void)
 
 /**
  * \brief   
- *          获取LVD中断标志
+ *          LVD
  *
- * \param   无
+ * \param   
  *
- * \retval  boolean_t  中断标志
+ * \retval  boolean_t  
  */
 boolean_t Lvd_GetIrqStat(void)
 {
@@ -296,11 +296,11 @@ boolean_t Lvd_GetIrqStat(void)
 
 /**
  * \brief   
- *          清除LVD中断标志
+ *          LVD
  *
- * \param   无
+ * \param   
  *
- * \retval  无
+ * \retval  
  */
 void Lvd_ClearIrq(void)
 {
@@ -309,11 +309,11 @@ void Lvd_ClearIrq(void)
 
 /**
  * \brief   
- *          获取Filter结果
+ *          Filter
  *
- * \param   无
+ * \param   
  *
- * \retval  boolean_t Fliter结果
+ * \retval  boolean_t Fliter
  */
 boolean_t Lvd_GetFilterResult(void)
 {

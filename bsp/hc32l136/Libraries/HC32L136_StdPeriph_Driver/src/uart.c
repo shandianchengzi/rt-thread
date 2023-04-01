@@ -108,11 +108,11 @@ static stc_uart_instance_data_t m_astcUartInstanceDataLut[] =
 };
 /**
  ******************************************************************************
- ** \brief  UART0/1通道 相关地址获取
+ ** \brief  UART0/1 
  **
- ** \param [in] u8Idx通道号
+ ** \param [in] u8Idx
  **
- ** \retval 通道对应的地址结构
+ ** \retval 
  **
  ******************************************************************************/
 static stc_uart_instance_data_t* UartGetInternDataPtr(uint8_t u8Idx)
@@ -132,12 +132,12 @@ static stc_uart_instance_data_t* UartGetInternDataPtr(uint8_t u8Idx)
 }
 /**
  ******************************************************************************
- ** \brief  UART通信中断使能函数设置
+ ** \brief  UART
  **
- ** \param [in] u8Idx通道号，enIrqSel发送or接收中断使能
+ ** \param [in] u8IdxenIrqSelor
  **
- ** \retval OK配置成功
- **\retval ErrorInvalidParameter配置失败
+ ** \retval OK
+ **\retval ErrorInvalidParameter
  ******************************************************************************/
 en_result_t Uart_EnableIrq(uint8_t u8Idx,
                            en_uart_irq_sel_t enIrqSel)
@@ -177,12 +177,12 @@ en_result_t Uart_EnableIrq(uint8_t u8Idx,
 }
 /**
  ******************************************************************************
- ** \brief  UART通信中断禁止函数设置
+ ** \brief  UART
  **
- ** \param [in] u8Idx通道号，enIrqSel发送or接收中断禁止
+ ** \param [in] u8IdxenIrqSelor
  **
- ** \retval OK配置成功
- **\retval ErrorInvalidParameter配置失败
+ ** \retval OK
+ **\retval ErrorInvalidParameter
  ******************************************************************************/
 en_result_t Uart_DisableIrq(uint8_t u8Idx, 
                             en_uart_irq_sel_t enIrqSel)
@@ -225,12 +225,12 @@ en_result_t Uart_DisableIrq(uint8_t u8Idx,
 }
 /**
  ******************************************************************************
- ** \brief  UART通道4种模式配置
+ ** \brief  UART4
  **
- ** \param [in] u8Idx通道号，mode哪种模式
+ ** \param [in] u8Idxmode
  **
- ** \retval OK配置成功
- **\retval ErrorInvalidParameter配置失败
+ ** \retval OK
+ **\retval ErrorInvalidParameter
  ******************************************************************************/
 en_result_t Uart_SetMode(uint8_t u8Idx,en_uart_mode_t enMode)
 {
@@ -247,12 +247,12 @@ en_result_t Uart_SetMode(uint8_t u8Idx,en_uart_mode_t enMode)
 }
 /**
  ******************************************************************************
- ** \brief  UART通道多主机模式配置
+ ** \brief  UART
  **
- ** \param [in] u8Idx通道号，stcMultiConfig多主机模式结构
+ ** \param [in] u8IdxstcMultiConfig
  **
- ** \retval OK配置成功
- **\retval ErrorInvalidParameter配置失败
+ ** \retval OK
+ **\retval ErrorInvalidParameter
  ******************************************************************************/
 en_result_t Uart_SetMultiMode(uint8_t u8Idx,stc_uart_multimode_t* pstcMultiConfig)
 {
@@ -276,12 +276,12 @@ en_result_t Uart_SetMultiMode(uint8_t u8Idx,stc_uart_multimode_t* pstcMultiConfi
 }
 /**
  ******************************************************************************
- ** \brief  UART通道多主机模式发送数据/地址帧或者奇偶校验配置TB8
+ ** \brief  UART/TB8
  **
- ** \param [in] u8Idx通道号，tb8数据or地址帧或者奇偶校验
+ ** \param [in] u8Idxtb8or
  **
- ** \retval OK配置成功
- **\retval ErrorInvalidParameter配置失败
+ ** \retval OK
+ **\retval ErrorInvalidParameter
  ******************************************************************************/
 en_result_t Uart_SetMMDOrCk(uint8_t u8Idx,en_uart_mmdorck_t enTb8)
 {
@@ -297,12 +297,12 @@ en_result_t Uart_SetMMDOrCk(uint8_t u8Idx,en_uart_mmdorck_t enTb8)
 }
 /**
  ******************************************************************************
- ** \brief 获取RB8数值
+ ** \brief RB8
  **
- ** \param [in] u8Idx通道号
+ ** \param [in] u8Idx
  **
  ** \retval RB8
- **\retval ErrorInvalidParameter配置失败
+ **\retval ErrorInvalidParameter
  ******************************************************************************/
 boolean_t Uart_GetRb8(uint8_t u8Idx)
 {
@@ -317,12 +317,12 @@ boolean_t Uart_GetRb8(uint8_t u8Idx)
 }
 /**
  ******************************************************************************
- ** \brief  UART通道多主机模式从机地址配置函数
+ ** \brief  UART
  **
- ** \param [in] u8Idx通道号，addr地址
+ ** \param [in] u8Idxaddr
  **
- ** \retval OK配置成功
- **\retval ErrorInvalidParameter配置失败
+ ** \retval OK
+ **\retval ErrorInvalidParameter
  ******************************************************************************/
 en_result_t Uart_SetSaddr(uint8_t u8Idx,uint8_t u8Addr)
 {
@@ -338,12 +338,12 @@ en_result_t Uart_SetSaddr(uint8_t u8Idx,uint8_t u8Addr)
 }
 /**
  ******************************************************************************
- ** \brief  UART通道多主机模式从机掩码配置函数
+ ** \brief  UART
  **
- ** \param [in] u8Idx通道号，addren地址掩码
+ ** \param [in] u8Idxaddren
  **
- ** \retval OK配置成功
- **\retval ErrorInvalidParameter配置失败
+ ** \retval OK
+ **\retval ErrorInvalidParameter
  ******************************************************************************/
 en_result_t Uart_SetSaddrEn(uint8_t u8Idx,uint8_t u8Addren)
 {
@@ -359,12 +359,12 @@ en_result_t Uart_SetSaddrEn(uint8_t u8Idx,uint8_t u8Addren)
 }
 /**
  ******************************************************************************
- ** \brief  UART通道停止位长度设置
+ ** \brief  UART
  **
- ** \param [in] u8Idx通道号，u8Len停止位长度
+ ** \param [in] u8Idxu8Len
  **
- ** \retval OK配置成功
- **\retval ErrorInvalidParameter配置失败
+ ** \retval OK
+ **\retval ErrorInvalidParameter
  ******************************************************************************/
 en_result_t Uart_SetStopBit(uint8_t u8Idx,uint8_t u8Len)
 {
@@ -385,11 +385,11 @@ en_result_t Uart_SetStopBit(uint8_t u8Idx,uint8_t u8Len)
 }
 /**
  ******************************************************************************
- ** \brief  UART采样频率配置
+ ** \brief  UART
  **
- ** \param [in] u8Idx通道号，u8Div采样频率
+ ** \param [in] u8Idxu8Div
  **
- ** \retval OK配置成功
+ ** \retval OK
  ******************************************************************************/
 en_result_t Uart_SetClkDiv(uint8_t u8Idx,en_uart_clkdiv_t enClkDiv)
 {
@@ -401,12 +401,12 @@ en_result_t Uart_SetClkDiv(uint8_t u8Idx,en_uart_clkdiv_t enClkDiv)
 }
 /**
  ******************************************************************************
- ** \brief  UART通道波特率配置值计算
+ ** \brief  UART
  **
- ** \param [in] u8Idx通道号，pstcBaud波特率，
+ ** \param [in] u8IdxpstcBaud
  **
- ** \retval 定时器配置值
- ** \retval 0,获取值失败,u16Scnt波特率设置值
+ ** \retval 
+ ** \retval 0,,u16Scnt
  ******************************************************************************/
 uint16_t Uart_CalScnt(uint8_t u8Idx,stc_uart_baud_t *pstcBaud)
 {
@@ -450,12 +450,12 @@ uint16_t Uart_CalScnt(uint8_t u8Idx,stc_uart_baud_t *pstcBaud)
 }
 /**
  ******************************************************************************
- ** \brief  UART通道波特率配置
+ ** \brief  UART
  **
- ** \param [in] u8Idx通道号，u16Scnt波特率设置
+ ** \param [in] u8Idxu16Scnt
  **
- ** \retval 定时器配置值
- ** \retval 0,获取值失败
+ ** \retval 
+ ** \retval 0,
  ******************************************************************************/
 en_result_t Uart_SetBaud(uint8_t u8Idx,uint16_t u16Scnt)
 {
@@ -468,11 +468,11 @@ en_result_t Uart_SetBaud(uint8_t u8Idx,uint16_t u16Scnt)
 
 /**
  ******************************************************************************
- ** \brief  UART通道波特率获取
+ ** \brief  UART
  **
- ** \param [in] u8Idx通道号,u8Mode工作模式
+ ** \param [in] u8Idx,u8Mode
  **
- ** \retval 波特率
+ ** \retval 
  ******************************************************************************/
 uint32_t Uart_GetBaud(uint8_t u8Idx,uint8_t u8Mode,uint32_t u32Pclk)
 {
@@ -519,12 +519,12 @@ uint32_t Uart_GetBaud(uint8_t u8Idx,uint8_t u8Mode,uint32_t u32Pclk)
 }
 /**
  ******************************************************************************
- ** \brief  UART通道发送或接收等功能使能设置
+ ** \brief  UART
  **
- ** \param [in] u8Idx通道号，enFunc功能
+ ** \param [in] u8IdxenFunc
  **
- ** \retval OK配置成功
- **\retval ErrorInvalidParameter配置失败
+ ** \retval OK
+ **\retval ErrorInvalidParameter
  ******************************************************************************/
 en_result_t Uart_EnableFunc(uint8_t u8Idx, en_uart_func_t enFunc)
 {
@@ -558,12 +558,12 @@ en_result_t Uart_EnableFunc(uint8_t u8Idx, en_uart_func_t enFunc)
 }
 /**
  ******************************************************************************
- ** \brief  UART通道发送或接收等功能禁止设置
+ ** \brief  UART
  **
- ** \param [in] u8Idx通道号，enFunc功能
+ ** \param [in] u8IdxenFunc
  **
- ** \retval OK配置成功
- **\retval ErrorInvalidParameter配置失败
+ ** \retval OK
+ **\retval ErrorInvalidParameter
  ******************************************************************************/
 en_result_t Uart_DisableFunc(uint8_t u8Idx, en_uart_func_t enFunc)
 {
@@ -597,11 +597,11 @@ en_result_t Uart_DisableFunc(uint8_t u8Idx, en_uart_func_t enFunc)
 }
 /**
  ******************************************************************************
- ** \brief  UART通道通信状态获取
+ ** \brief  UART
  **
- ** \param [in] u8Idx通道号
+ ** \param [in] u8Idx
  **
- ** \retval 状态值
+ ** \retval 
  ******************************************************************************/
 uint8_t Uart_GetIsr(uint8_t u8Idx)
 {
@@ -612,12 +612,12 @@ uint8_t Uart_GetIsr(uint8_t u8Idx)
 }
 /**
  ******************************************************************************
- ** \brief  UART通道通信状态获取
+ ** \brief  UART
  **
- ** \param [in] u8Idx通道号，enStatus获取哪个状态
+ ** \param [in] u8IdxenStatus
  **
- ** \retval 状态值
- **\retval ErrorInvalidParameter获取失败
+ ** \retval 
+ **\retval ErrorInvalidParameter
  ******************************************************************************/
 boolean_t Uart_GetStatus(uint8_t u8Idx,en_uart_status_t enStatus)
 {
@@ -628,7 +628,7 @@ boolean_t Uart_GetStatus(uint8_t u8Idx,en_uart_status_t enStatus)
     pstcData = UartGetInternDataPtr(u8Idx);
     if (NULL == pstcData)
     {
-        return ErrorInvalidParameter;//4，用户只需判断0或1
+        return ErrorInvalidParameter;//401
     }
     switch(enStatus)
     {
@@ -660,9 +660,9 @@ boolean_t Uart_GetStatus(uint8_t u8Idx,en_uart_status_t enStatus)
 }
 /**
  ******************************************************************************
- ** \brief  UART通道通信状态清除
+ ** \brief  UART
  **
- ** \param [in] u8Idx通道号
+ ** \param [in] u8Idx
  **
  ** \retval OK
  ******************************************************************************/
@@ -676,12 +676,12 @@ en_result_t Uart_ClrIsr(uint8_t u8Idx)
 }
 /**
  ******************************************************************************
- ** \brief  UART通道通信状态清除
+ ** \brief  UART
  **
- ** \param [in] u8Idx通道号，enStatus清除哪个状态
+ ** \param [in] u8IdxenStatus
  **
- ** \retval 状态值
- **\retval ErrorInvalidParameter清除失败
+ ** \retval 
+ **\retval ErrorInvalidParameter
  ******************************************************************************/
 en_result_t Uart_ClrStatus(uint8_t u8Idx,en_uart_status_t enStatus)
 {
@@ -717,12 +717,12 @@ en_result_t Uart_ClrStatus(uint8_t u8Idx,en_uart_status_t enStatus)
 }
 /**
  ******************************************************************************
- ** \brief  UART通道发送数据函数,查询方式调用此函数，中断方式发送不适用
+ ** \brief  UART,
  **
- ** \param [in] u8Idx通道号，Data发送数据
+ ** \param [in] u8IdxData
  **
- ** \retval Ok发送成功
- **\retval ErrorInvalidParameter发送失败
+ ** \retval Ok
+ **\retval ErrorInvalidParameter
  ******************************************************************************/
 en_result_t Uart_SendData(uint8_t u8Idx, uint8_t u8Data)
 {
@@ -740,12 +740,12 @@ en_result_t Uart_SendData(uint8_t u8Idx, uint8_t u8Data)
 }
 /**
  ******************************************************************************
- ** \brief  UART通道接收数据函数
+ ** \brief  UART
  **
- ** \param [in] u8Idx通道号
+ ** \param [in] u8Idx
  **
- ** \retval 接收数据
- **\retval ErrorInvalidParameter接收失败
+ ** \retval 
+ **\retval ErrorInvalidParameter
  ******************************************************************************/
 int Uart_ReceiveData(uint8_t u8Idx)
 {
@@ -760,11 +760,11 @@ int Uart_ReceiveData(uint8_t u8Idx)
 }
 /**
  ******************************************************************************
- ** \brief  UART通道中断处理函数
+ ** \brief  UART
  **
- ** \param [in] u8Param通道号
+ ** \param [in] u8Param
  **
- ** \retval 无
+ ** \retval 
  **
  ******************************************************************************/
 void Uart_IRQHandler(uint8_t u8Param)
@@ -782,7 +782,7 @@ void Uart_IRQHandler(uint8_t u8Param)
         {
             pstcData->stcUartInternIrqCb.pfnRxFEIrqCb();
         }
-        return;//帧出错则不进行后续数据处理
+        return;//
     }
     if(1 == pstcData->pstcInstance->ISR_f.PE)
     {
@@ -791,7 +791,7 @@ void Uart_IRQHandler(uint8_t u8Param)
         {
             pstcData->stcUartInternIrqCb.pfnPEIrqCb();
         }
-        return;//若奇偶校验出错则不进行后续数据处理
+        return;//
     }
     if(1 == pstcData->pstcInstance->ISR_f.CTSIF)
     {
@@ -820,11 +820,11 @@ void Uart_IRQHandler(uint8_t u8Param)
 }
 /**
  ******************************************************************************
- ** \brief  UART通道使能内核NVIC中断
+ ** \brief  UARTNVIC
  **
- ** \param [in] u8Idx通道号
+ ** \param [in] u8Idx
  **
- ** \retval 无
+ ** \retval 
  **
  ******************************************************************************/
 static void UartInitNvic(uint8_t u8Idx)
@@ -840,11 +840,11 @@ static void UartInitNvic(uint8_t u8Idx)
 }
 /**
  ******************************************************************************
- ** \brief  UART通道禁止内核NVIC中断
+ ** \brief  UARTNVIC
  **
- ** \param [in] u8Idx通道号
+ ** \param [in] u8Idx
  **
- ** \retval 无
+ ** \retval 
  **
  ******************************************************************************/
 static void UartDeInitNvic(uint8_t u8Idx)
@@ -860,12 +860,12 @@ static void UartDeInitNvic(uint8_t u8Idx)
 }
 /**
  ******************************************************************************
- ** \brief  UART通道初始化函数
+ ** \brief  UART
  **
- ** \param [in] u8Idx通道号，pstcConfig初始化结构体
+ ** \param [in] u8IdxpstcConfig
  **
- ** \retval OK配置成功
- **\retval ErrorInvalidParameter配置失败
+ ** \retval OK
+ **\retval ErrorInvalidParameter
  ******************************************************************************/
 en_result_t Uart_Init(uint8_t u8Idx, 
                       stc_uart_config_t* pstcConfig)

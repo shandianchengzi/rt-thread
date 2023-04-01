@@ -1,112 +1,112 @@
-# Maxim-MAX32660- EVSYS说明
+# Maxim-MAX32660- EVSYS
 
-## 简介
+## 
 
-该文件夹主要存放所有主芯片为MAX32660的板级支持包。开发板上面的主芯片是[MAX32660](https://www.maximintegrated.com/en/products/microcontrollers/MAX32660.html)
+MAX32660[MAX32660](https://www.maximintegrated.com/en/products/microcontrollers/MAX32660.html)
 
-芯片Datasheet: [MAX32660_datasheet](https://datasheets.maximintegrated.com/en/ds/MAX32660.pdf)
+Datasheet: [MAX32660_datasheet](https://datasheets.maximintegrated.com/en/ds/MAX32660.pdf)
 
-芯片User Guide：[MAX32660_UserGuide](https://pdfserv.maximintegrated.com/en/an/AN6659.pdf)
+User Guide[MAX32660_UserGuide](https://pdfserv.maximintegrated.com/en/an/AN6659.pdf)
 
-开发板介绍页面:  [MAX32660-EVSYS](https://www.maximintegrated.com/en/products/microcontrollers/MAX32660-EVSYS.html)
+:  [MAX32660-EVSYS](https://www.maximintegrated.com/en/products/microcontrollers/MAX32660-EVSYS.html)
 
-开发板datasheet： [MAX32660-EVSYS.pdf)](https://datasheets.maximintegrated.com/en/ds/MAX32660-EVSYS.pdf)
+datasheet [MAX32660-EVSYS.pdf)](https://datasheets.maximintegrated.com/en/ds/MAX32660-EVSYS.pdf)
 
-支持IDE: [keil pack](http://www.mxim.net/microcontroller/pack/Maxim.MAX32660.1.2.0.pack)， [eclipse](https://www.maximintegrated.com/en/design/software-description.html/swpart=SFW0001500A)
+IDE: [keil pack](http://www.mxim.net/microcontroller/pack/Maxim.MAX32660.1.2.0.pack) [eclipse](https://www.maximintegrated.com/en/design/software-description.html/swpart=SFW0001500A)
 
-本文主要内容如下：
 
-- 开发板资源介绍
 
-## MAX32660芯片介绍
+- 
+
+## MAX32660
 
 - RAM  96KB    0x20000000~0x20018000
 - ROM  256KB   0x0 ~ 0x40000
 - 16KB I-cache
-- UART 2个  UART0  UART1
-- GPIO  14个
-- I2C  2个 Master/Slave 高速3.4Mbps
+- UART 2  UART0  UART1
+- GPIO  14
+- I2C  2 Master/Slave 3.4Mbps
 - ARM Cortex-M4F, 96MHz
 - MPU
-- SPI 2个  Master/Slave
+- SPI 2  Master/Slave
 - I2S  Master/Slave
 - 4 channel DMA
-- 3个 32bit  Timer
+- 3 32bit  Timer
 - Watchdog
 - RTC
 
-## 开发板介绍
+## 
 
-MAX32660-EVSYS是美信官方的开发板，搭载MAX32660芯片，基于ARM Cortex-M4F内核，最高主频96MHz，具有丰富的外设资源，内核带有FPU。
+MAX32660-EVSYSMAX32660ARM Cortex-M4F96MHzFPU
 
-开发板外观如下图所示
+
 
 ![board](doc/images/board.jpg)
 
-开发板引脚连接图如图所示：
+
 
 ![pins](doc/images/pins.jpg)
 
-MAX32660-EVSYS开发板常用 **板载资源** 如下：
+MAX32660-EVSYS **** 
 
-- MCU：MAX32660
-- 板载设
-  - LED：1个，GPIO P0_13 ，高电平点亮，低电平灭 。
-  - 按键：1个，GPIO P0_12,   按下低电平，松开高电平。
-- 调试接口：板载CMSIS-DAP调试器。
+- MCUMAX32660
+- 
+  - LED1GPIO P0_13  
+  - 1GPIO P0_12,   
+- CMSIS-DAP
 
-## 外设支持
+## 
 
-本 BSP 目前对外设的支持情况如下：
+ BSP 
 
-| **片上外设** | **支持情况** |    **备注**    |
+| **** | **** |    ****    |
 | :----------------- | :----------------: | :-------------------: |
-| GPIO               |        支持        |                       |
-| UART               |        支持        | UART0, UART1(console) |
+| GPIO               |                |                       |
+| UART               |                | UART0, UART1(console) |
 | PWM                |                   |                       |
-| SPI                |        支持        |      SPI0, SPI1      |
-| RTC                |        支持        |          RTC          |
+| SPI                |                |      SPI0, SPI1      |
+| RTC                |                |          RTC          |
 | I2S                |                   |                       |
-| I2C                |        支持        |      I2C0, I2C1      |
+| I2C                |                |      I2C0, I2C1      |
 | TIMER              |                   |                       |
 | Watchdog           |                   |                       |
 
-### 进阶使用
+### 
 
-此 BSP 默认只开启了串口 的功能，更多高级功能需要利用 env 工具对 BSP 进行配置，步骤如下：
+ BSP   env  BSP 
 
-1. 在 bsp 下打开 env 工具。
-2. 输入 `menuconfig`命令配置工程，配置好之后保存退出。
-3. 输入`scons --target=mdk5/vsc命令重新生成工程。
+1.  bsp  env 
+2.  `menuconfig`
+3. `scons --target=mdk5/vsc
 
-## 注意事项
+## 
 
-目前支持keil和GCC环境
+keilGCC
 
 ## FAQ
 
-### GCC环境如何调试使用
+### GCC
 
-第一步，需要配置arm-none-eabi-gcc路径到系統环境变量中去或者在rtconfig.py中EXEC_PATH  修改路径
+arm-none-eabi-gccrtconfig.pyEXEC_PATH  
 
-第二步，添加openocd的路径，如果你安装了eclipse，添加以下路径到系统环境变量中
+openocdeclipse
 
 `C:\Maxim\Toolchain\bin`
 
-完成这两部就可以用vscode打开bsp目录了。
+vscodebsp
 
-快捷键ctrl+shift+b可以执行scons编译命令
+ctrl+shift+bscons
 
-快捷键F5可以进入调试命令
+F5
 
-如果需要调试之前执行build命令，在luanch.json里面打开注释
+buildluanch.json
 
 ```
             //"preLaunchTask": "build"
 ```
 
-## 联系人信息
+## 
 
-维护人:
+:
 
-- [supperthomas], 邮箱：<78900636@qq.com>
+- [supperthomas], <78900636@qq.com>

@@ -27,8 +27,8 @@
 #include <rtgui/rtgui_system.h>
 
 
-//竖屏幕 不需要  _ILI_HORIZONTAL_DIRECTION_
-//横屏幕 需要  _ILI_HORIZONTAL_DIRECTION_
+//   _ILI_HORIZONTAL_DIRECTION_
+//   _ILI_HORIZONTAL_DIRECTION_
 
 //#define _ILI_HORIZONTAL_DIRECTION_
 
@@ -44,7 +44,7 @@ TOUCH INT: 84
 */
 #define IS_TOUCH_UP()     gpio_get(TOUCH_INT_PIN)
 
-#define led_gpio 52    // led1指示
+#define led_gpio 52    // led1
 
 #define DUMMY                 0x00
 
@@ -84,7 +84,7 @@ s  A2-A0 MODE SER/DFR PD1-PD0
 #define TOUCH_MSR_Y     (START | MEASURE_Y | MODE_12BIT | DIFFERENTIAL | POWER_MODE0)
 
 
-/* 以下定义XPT2046 的触摸屏位置*/
+/* XPT2046 */
 #if defined(_ILI_HORIZONTAL_DIRECTION_)
 #define MIN_X_DEFAULT   2047
 #define MAX_X_DEFAULT   47
@@ -104,7 +104,7 @@ s  A2-A0 MODE SER/DFR PD1-PD0
 #define SH   10                                 // Valve value
 
 
-/*宏定义 */
+/* */
 #define TOUCH_SPI_X                 SPI1
 #define TOUCH_INT_PIN               84
 #define TOUCH_CS_PIN                49
@@ -113,21 +113,21 @@ s  A2-A0 MODE SER/DFR PD1-PD0
 #define TOUCH_MOSI_PIN              48
 
 
-/*创建结构体将需要用到的东西进行打包*/
+/**/
 struct rtgui_touch_device
 {
-    struct rt_device parent;                    /* 用于注册设备*/
+    struct rt_device parent;                    /* */
 
-    rt_uint16_t x, y;                           /* 记录读取到的位置值  */
+    rt_uint16_t x, y;                           /*   */
 
-    rt_bool_t calibrating;                      /* 触摸校准标志 */
-    rt_touch_calibration_func_t calibration_func;/* 触摸函数 函数指针 */
+    rt_bool_t calibrating;                      /*  */
+    rt_touch_calibration_func_t calibration_func;/*   */
 
-    rt_uint16_t min_x, max_x;                   /* 校准后 X 方向最小 最大值 */
-    rt_uint16_t min_y, max_y;                   /* 校准后 Y 方向最小 最大值 */
+    rt_uint16_t min_x, max_x;                   /*  X   */
+    rt_uint16_t min_y, max_y;                   /*  Y   */
 
-    struct rt_spi_device * spi_device;          /* SPI 设备 用于通信 */
-    struct rt_event event;                       /* 事件同步，用于“笔中断” */
+    struct rt_spi_device * spi_device;          /* SPI   */
+    struct rt_event event;                       /*  */
 };
 static struct rtgui_touch_device *touch = RT_NULL;
 
@@ -246,7 +246,7 @@ static void rtgui_touch_calculate(void)
                 tmpxy[1][i] >>= 4;
 #endif
             }
-            /*再次打开触摸中断*/
+            /**/
             send_buffer[0] = 1 << 7;
           touch_send_then_recv(touch->spi_device, send_buffer, 1, recv_buffer, 2);
                 touch_send_then_recv(touch->spi_device, send_buffer, 1, recv_buffer, 2);
@@ -285,7 +285,7 @@ static void rtgui_touch_calculate(void)
         } /* read touch */
 
         /* if it's not in calibration status  */
-        /*触摸值缩放*/
+        /**/
         if (touch->calibrating != RT_TRUE)
         {
             if (touch->max_x > touch->min_x)
@@ -329,7 +329,7 @@ void ls1c_touch_irqhandler(void) /* TouchScreen */
 {
   if(gpio_get(TOUCH_INT_PIN)==0)
   {
-    /* 触摸屏按下后操作 */
+    /*  */
     if (gpio_level_low == gpio_get(led_gpio))
         gpio_set(led_gpio, gpio_level_high);
     else
@@ -339,19 +339,19 @@ void ls1c_touch_irqhandler(void) /* TouchScreen */
   }
 }
 
-/*管脚初始化，配置中断打开SPI1 CS0 设备*/
+/*SPI1 CS0 */
 rt_inline void touch_init(void)
 {
-    unsigned int touch_int_gpio = TOUCH_INT_PIN;     // 触摸屏中断
+    unsigned int touch_int_gpio = TOUCH_INT_PIN;     // 
     int touch_irq = LS1C_GPIO_TO_IRQ(touch_int_gpio);
 
-    // 初始化按键中断
+    // 
     gpio_set_irq_type(touch_int_gpio, IRQ_TYPE_EDGE_FALLING);
     rt_hw_interrupt_install(touch_irq, ls1c_touch_irqhandler, RT_NULL, "touch");
     rt_hw_interrupt_umask(touch_irq);
     gpio_init(touch_int_gpio, gpio_mode_input);
 
-    // 初始化led
+    // led
     gpio_init(led_gpio, gpio_mode_output);
     gpio_set(led_gpio, gpio_level_high);
 }
@@ -420,7 +420,7 @@ static void touch_thread_entry(void *parameter)
 
     while(1)
     {
-        /* 接收到触摸中断事件 */
+        /*  */
         if(rt_event_recv(&touch->event,
                          1,
                          RT_EVENT_FLAG_OR | RT_EVENT_FLAG_CLEAR,
@@ -432,7 +432,7 @@ static void touch_thread_entry(void *parameter)
             {
                 if (IS_TOUCH_UP())
                 {
-                    /* 触摸笔抬起 */
+                    /*  */
                     /* touch up */
                     emouse.button = (RTGUI_MOUSE_BUTTON_LEFT |RTGUI_MOUSE_BUTTON_UP);
 
@@ -448,14 +448,14 @@ static void touch_thread_entry(void *parameter)
 
                     if ((touch->calibrating == RT_TRUE) && (touch->calibration_func != RT_NULL))
                     {
-                        /* 触摸校准处理 */
+                        /*  */
                         /* callback function */
                         touch->calibration_func(emouse.x, emouse.y);
 
                     }
                     else
                     {
-                        /* 向ui发送触摸坐标 */
+                        /* ui */
                         rtgui_server_post_event(&emouse.parent, sizeof(struct rtgui_event_mouse));
                     }
                     rt_kprintf("touch up: (%d, %d)\n", emouse.x, emouse.y);
@@ -490,7 +490,7 @@ static void touch_thread_entry(void *parameter)
                     emouse.x = touch->x;
                     emouse.y = touch->y;
                     _set_mouse_position(emouse.x, emouse.y);
-                    /* 光标跟随 */
+                    /*  */
                     /* init mouse button */
                     emouse.button = (RTGUI_MOUSE_BUTTON_LEFT |RTGUI_MOUSE_BUTTON_DOWN);
 
@@ -506,7 +506,7 @@ static void touch_thread_entry(void *parameter)
                         {
                             touch_previous.x = touch->x;
                             touch_previous.y = touch->y;
-                            /* 向ui发送触摸坐标 */
+                            /* ui */
                             rtgui_server_post_event(&emouse.parent, sizeof(struct rtgui_event_mouse));
                             if(touch_down == RT_FALSE)
                             {

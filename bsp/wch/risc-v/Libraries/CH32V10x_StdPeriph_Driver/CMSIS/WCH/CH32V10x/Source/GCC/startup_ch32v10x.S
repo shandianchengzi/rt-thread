@@ -179,8 +179,8 @@ handle_reset:
   	ori t0, t0, 1
 	csrw mtvec, t0
 
-  	jal  SystemInit  /* 系统时钟初始化 */
-	la t0,entry      /* rtt的入口 */
+  	jal  SystemInit  /*  */
+	la t0,entry      /* rtt */
 	csrw mepc, t0
 	mret
 

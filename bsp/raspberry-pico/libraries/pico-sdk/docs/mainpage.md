@@ -2,9 +2,9 @@
 
 The Pico SDK (Software Development Kit) provides the headers, libraries and build system necessary to write programs for the RP2040 based devices such as the Raspberry Pi Pico in C, C++ or assembly language. The Pico SDK is designed to provide an API and programming environment that is familiar both to non-embedded C developers and embedded C developers alike.
 
-A single program runs on the device at a time with a conventional main() method. Standard C/C++ libraries are supported along with APIs for accessing the RP2040’s hardware, including DMA, IRQs, and the wide variety fixed function peripherals and PIO (Programmable IO).
+A single program runs on the device at a time with a conventional main() method. Standard C/C++ libraries are supported along with APIs for accessing the RP2040s hardware, including DMA, IRQs, and the wide variety fixed function peripherals and PIO (Programmable IO).
 
-Additionally the Pico SDK provides higher level libraries for dealing with timers, USB, synchronization and multi-core programming, along with additional high level functionality built using PIO such as audio. The Pico SDK can be used to build anything from simple applications, full fledged runtime environments such as MicroPython, to low level software such as the RP2040’s on chip bootrom itself.
+Additionally the Pico SDK provides higher level libraries for dealing with timers, USB, synchronization and multi-core programming, along with additional high level functionality built using PIO such as audio. The Pico SDK can be used to build anything from simple applications, full fledged runtime environments such as MicroPython, to low level software such as the RP2040s on chip bootrom itself.
 
 This documentation is generated from the Pico SDK source tree using Doxygen. It provides basic information on the APIs used for each library, but does not provide usage information. Please refer to the Databooks for usage and more technical information.
 

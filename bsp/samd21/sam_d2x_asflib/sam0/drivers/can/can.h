@@ -369,7 +369,7 @@ struct can_extended_message_filter_element {
 /**
  * \defgroup asfdoc_sam0_can_group SAM Control Area Network (CAN) Low Level Driver
  *
- * This driver for Atmel® | SMART SAM devices provides an low level
+ * This driver for Atmel | SMART SAM devices provides an low level
  * interface for the configuration and management of the device's
  * Control Area Network functionality.
  *

@@ -88,7 +88,7 @@
 
 /**
  *******************************************************************************
- ** \brief 获取复位源类型.
+ ** \brief .
  **
  ** \param [out]  enRstFlg  @ref en_reset_flag_t     
  ** 
@@ -108,7 +108,7 @@ boolean_t Reset_GetFlag(en_reset_flag_t enRstFlg)
 
 /**
  *******************************************************************************
- ** \brief 清除复位源类型.
+ ** \brief .
  **
  ** \param [in]  pstcFlag  @ref en_reset_flag_t
  ** 
@@ -121,7 +121,7 @@ void Reset_ClearFlag(en_reset_flag_t enRstFlg)
 
 /**
  *******************************************************************************
- ** \brief 清除所有复位源类型.
+ ** \brief .
  **
  ** \param Null
  ** 
@@ -134,7 +134,7 @@ void Reset_ClearFlagAll(void)
 
 /**
  *******************************************************************************
- ** \brief 所有模块进行一次复位.
+ ** \brief .
  **
  ** 
  ** \retval  Null
@@ -149,7 +149,7 @@ void Reset_RstPeripheralAll(void)
 
 /**
  *******************************************************************************
- ** \brief 对外设源0模块进行一次复位.
+ ** \brief 0.
  **
  ** \param [in]  enPeri  @ref en_reset_peripheral0_t
  ** 
@@ -163,7 +163,7 @@ void Reset_RstPeripheral0(en_reset_peripheral0_t enPeri)
 
 /**
  *******************************************************************************
- ** \brief 对外设源1模块进行一次复位.
+ ** \brief 1.
  **
  ** \param [in]  enPeri  @ref en_reset_peripheral1_t
  ** 

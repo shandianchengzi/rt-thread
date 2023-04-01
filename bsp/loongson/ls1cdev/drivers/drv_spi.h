@@ -5,7 +5,7 @@
  *
  * Change Logs:
  * Date           Author       Notes
- * 2017-11-02     勤为本       first version
+ * 2017-11-02            first version
  */
 
 #ifndef LS1C_DRV_SPI_H
@@ -29,9 +29,9 @@ struct ls1c_spi_cs
 
 
 /*
- * 初始化并注册龙芯1c的spi总线
- * @SPI SPI总线，比如LS1C_SPI_0， LS1C_SPI_1
- * @spi_bus_name 总线名字
+ * 1cspi
+ * @SPI SPILS1C_SPI_0 LS1C_SPI_1
+ * @spi_bus_name 
  * @ret
  */
 rt_err_t ls1c_spi_bus_register(rt_uint8_t SPI, const char *spi_bus_name);

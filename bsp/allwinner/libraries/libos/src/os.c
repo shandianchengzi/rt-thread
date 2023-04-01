@@ -390,9 +390,9 @@ int32_t esCFG_GetKeyValue(char *SecName, char *KeyName, int32_t Value[], int32_t
         ;used_card_no = 0x02, when use card1
         ;used_card_no = 0x03, when use card0 & card1
         internal_card = 0x00
-        ;internal_card = 0x00, 无内置卡内置卡
-        ;internal_card = 0x01, card0 做内置卡
-        ;internal_card = 0x02, card1 做内置卡
+        ;internal_card = 0x00, 
+        ;internal_card = 0x01, card0 
+        ;internal_card = 0x02, card1 
         */
         if (!rt_strcmp("internal_card", KeyName))
         {

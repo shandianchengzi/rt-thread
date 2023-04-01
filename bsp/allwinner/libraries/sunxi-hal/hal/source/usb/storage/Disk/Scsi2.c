@@ -747,8 +747,8 @@ static int ScsiGetSenseData(__mscLun_t *mscLun)
                     ret = USB_STATUS_NOT_READY_TO_READY_TRANSITION;
                     break;
 
-                /* 见到sandisk的U盘，竟然在SENSE_UNIT_ATTENTION时, 说ASC_MEDIUM_NOT_PRESENT。
-                   为了处理这样的U盘, 这里也检查ASC_MEDIUM_NOT_PRESENT */
+                /* sandiskUSENSE_UNIT_ATTENTION, ASC_MEDIUM_NOT_PRESENT
+                   U, ASC_MEDIUM_NOT_PRESENT */
                 case ASC_MEDIUM_NOT_PRESENT :
                     hal_log_info("ERR: media is not present");
                     mscLun->MediaPresent = 0;
@@ -774,12 +774,12 @@ static int ScsiGetSenseData(__mscLun_t *mscLun)
 *                     ScsiStartStopUnit
 *
 * Description:
-*    开始 / 停止 设备工作
+*     /  
 *
 * Parameters:
-*    mscLun  : input.  命令发向的设备
-*    LoEj    : input.  加载/弹出 媒体介质
-*    Start   : input.  开始 / 停止 设备工作
+*    mscLun  : input.  
+*    LoEj    : input.  / 
+*    Start   : input.   /  
 *
 * Return value:
 *
@@ -1028,19 +1028,19 @@ int ScsiWrite(__mscLun_t *mscLun,
 *                     ScsiPreventAllowMedium
 *
 * Description:
-*     禁止/允许介质移动
+*     /
 *
 * Parameters:
-*    mscLun     :  input. 目标设备
-*    Persistent :  input. 禁止介质数据传输
-*    Prevent    :  input. 禁止介质移动
+*    mscLun     :  input. 
+*    Persistent :  input. 
+*    Prevent    :  input. 
 *
 *
 * Return value:
-*    返回命令的执行结果
+*    
 *
 * note:
-*    Persistent只能在设备枚举的时候设置, 在设备操作阶段不要使用。
+*    Persistent, 
 *
 *******************************************************************************
 */
@@ -1082,7 +1082,7 @@ int ScsiPreventAllowMedium(__mscLun_t *mscLun, unsigned int Persistent, unsigned
 *                     ScsiCDPauseResume
 *
 * Description:
-*    停止/恢复播放CD media
+*    /CD media
 *
 * Parameters:
 *
@@ -1183,14 +1183,14 @@ int ScsiCDPlayAudio10(__mscLun_t *mscLun, unsigned int Lba, unsigned int Lenght)
 *                     ScsiCDPlayAudioMSF
 *
 * Description:
-*    播放指定mfs的音乐光碟
+*    mfs
 *
 * Parameters:
 *    mscLun         :  input. Logic unit
-*    MSF            :  input. 多扇区
+*    MSF            :  input. 
 *
 * Return value:
-*    返回命令的执行情况
+*    
 *
 * note:
 *
@@ -1239,18 +1239,18 @@ int ScsiCDPlayAudioMSF(__mscLun_t *mscLun, CDROM_PlayAudioMsf_t *MSF)
 *                     ScsiCDReadToc
 *
 * Description:
-*    读取介质内容的分配表信息
+*    
 *
 * Parameters:
 *    mscLun         :  input. Logic unit
-*    MSF            :  input. 多扇区
-*    Format         :  input. 数据格式化模式
-*    StartingNumber :  input. 起始扇区
-*    Buffer         :  input. 缓冲区。存放命令执行的结果
-*    BufferLen      :  input. 缓冲区大小
+*    MSF            :  input. 
+*    Format         :  input. 
+*    StartingNumber :  input. 
+*    Buffer         :  input. 
+*    BufferLen      :  input. 
 *
 * Return value:
-*    返回命令的执行情况
+*    
 *
 * note:
 *
@@ -1302,13 +1302,13 @@ int ScsiCDReadToc(__mscLun_t *mscLun,
 *                     ScsiCDStopPlayScan
 *
 * Description:
-*    中止扫描或是播放
+*    
 *
 * Parameters:
 *    mscLun         :  input. Logic unit
 *
 * Return value:
-*    返回命令的执行情况
+*    
 *
 * note:
 *
@@ -1351,15 +1351,15 @@ int ScsiCDStopPlayScan(__mscLun_t *mscLun)
 *                     ScsiCDReadDiskInfo
 *
 * Description:
-*    读取光碟的信息
+*    
 *
 * Parameters:
 *    mscLun         :  input. Logic unit
-*    Buffer         :  input. 缓冲区。存放disk的信息
-*    BufferLen      :  input. 本次打算获得数据的长度
+*    Buffer         :  input. disk
+*    BufferLen      :  input. 
 *
 * Return value:
-*    返回命令的执行情况
+*    
 *
 * note:
 *
@@ -1420,19 +1420,19 @@ int ScsiCDReadDiscInfo(__mscLun_t *mscLun,
 *                     ScsiCDReadTrackInfo
 *
 * Description:
-*    读取光碟轨道的信息
+*    
 *
 * Parameters:
 *    mscLun             :  input. Logic unit
 *    Open               :  input.
 *    Address_or_Number  :  input.
 *    LogicalBlockAddress:  input.
-*    Buffer             :  input. 缓冲区。存放disk的信息
-*    BufferLen          :  input. 本次打算获得数据的长度
-*    ActLen             :  input. 实际取得的长度
+*    Buffer             :  input. disk
+*    BufferLen          :  input. 
+*    ActLen             :  input. 
 *
 * Return value:
-*    返回命令的执行情况
+*    
 *
 * note:
 *
@@ -1496,17 +1496,17 @@ int ScsiCDReadTrackInfo(__mscLun_t *mscLun,
 *                     ScsiDvdGetEventStatus
 *
 * Description:
-*    获得DVD的事件状态。
+*    DVD
 *
 * Parameters:
 *    mscLun         :  input. Logic unit
-*    Immed          :  input. 是否立即返回命令的执行结果
-*    ClassRequest   :  input. 类请求
-*    Buffer         :  input. 存放DVD的事件结果
-*    BufferLen      :  input. 本次打算获得数据的长度
+*    Immed          :  input. 
+*    ClassRequest   :  input. 
+*    Buffer         :  input. DVD
+*    BufferLen      :  input. 
 *
 * Return value:
-*    返回命令的执行情况
+*    
 *
 * note:
 *
@@ -1556,17 +1556,17 @@ int ScsiDvdGetEventStatus(__mscLun_t *mscLun,
 *                     ScsiDvdGetEventStatus
 *
 * Description:
-*    装载或是卸载光碟
+*    
 *
 * Parameters:
 *    mscLun :  input. Logic unit
-*    Immed  :  input. 是否立即返回命令的执行结果
-*    Start  :  input. media就绪或者停止
-*    LoUnlo :  input. 装载或是卸载
+*    Immed  :  input. 
+*    Start  :  input. media
+*    LoUnlo :  input. 
 *    Slot   :  input.
 *
 * Return value:
-*    返回命令的执行情况
+*    
 *
 * note:
 *
@@ -1617,15 +1617,15 @@ int ScsiDvdLoad(__mscLun_t *mscLun,
 *                     ScsiSetSpeed
 *
 * Description:
-*    设置光驱的读写速度
+*    
 *
 * Parameters:
 *    mscLun     :  input. Logic unit
-*    ReadSpeed  :  input. 读速度. Kbytes/second
-*    WriteSpeed :  input. 写速度. Kbytes/second
+*    ReadSpeed  :  input. . Kbytes/second
+*    WriteSpeed :  input. . Kbytes/second
 *
 * Return value:
-*    返回命令的执行情况
+*    
 *
 * note:
 *
@@ -1670,15 +1670,15 @@ int ScsiCDSetSpeed(__mscLun_t *mscLun, unsigned int ReadSpeed, unsigned int Writ
 *                     ScsiGetConfiguration
 *
 * Description:
-*    设置光驱的读写速度
+*    
 *
 * Parameters:
 *    mscLun     :  input. Logic unit
-*    ReadSpeed  :  input. 读速度. Kbytes/second
-*    WriteSpeed :  input. 写速度. Kbytes/second
+*    ReadSpeed  :  input. . Kbytes/second
+*    WriteSpeed :  input. . Kbytes/second
 *
 * Return value:
-*    返回命令的执行情况
+*    
 *
 * note:
 *

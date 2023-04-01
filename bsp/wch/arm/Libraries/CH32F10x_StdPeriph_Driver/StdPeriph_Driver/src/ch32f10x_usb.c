@@ -19,7 +19,7 @@ PUINT8  pEP3_RAM_Addr;
 /*******************************************************************************
 * Function Name  : DelsyUs
 * Description    : Microsecond Delay Time.
-* Input          : t：Microsecond number.
+* Input          : tMicrosecond number.
 * Return         : None
 *******************************************************************************/		 
 void DelsyUs( UINT16 t )
@@ -39,7 +39,7 @@ void DelsyUs( UINT16 t )
 /*******************************************************************************
 * Function Name  : DelsyMs
 * Description    : Millisecond Delay Time.
-* Input          : t：Millisecond number.
+* Input          : tMillisecond number.
 * Return         : None
 *******************************************************************************/	
 void DelsyMs( UINT16 t )
@@ -236,7 +236,7 @@ UINT8 AnalyzeRootHub( void )
 #endif
 		DisableRootHubPort( );                                                	
 		PRINT( "USB dev out\n" );
-	    RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, DISABLE); //时钟关闭使能
+	    RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, DISABLE); //
 //	    LED_HOST_MODE = 0;
 		if(s == ERR_SUCCESS) s = ERR_USB_DISCON;
   }

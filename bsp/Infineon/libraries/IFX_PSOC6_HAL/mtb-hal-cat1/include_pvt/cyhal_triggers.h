@@ -30,13 +30,13 @@
 * \{
 * Trigger connections for supported device families:
 *
-* <b>PSoC™ 6S1 Triggers:</b>
+* <b>PSoC 6S1 Triggers:</b>
 * \image html psoc6able2_trigger_layout.png width=800px
-* <b>PSoC™ 6S2 Triggers:</b>
+* <b>PSoC 6S2 Triggers:</b>
 * \image html psoc6a2m_trigger_layout.png width=800px
-* <b>PSoC™ 6S3 Triggers:</b>
+* <b>PSoC 6S3 Triggers:</b>
 * \image html psoc6a512k_trigger_layout.png width=800px
-* <b>PSoC™ 6S4 Triggers:</b>
+* <b>PSoC 6S4 Triggers:</b>
 * \image html psoc6a256k_trigger_layout.png width=800px
 * <p>
 */

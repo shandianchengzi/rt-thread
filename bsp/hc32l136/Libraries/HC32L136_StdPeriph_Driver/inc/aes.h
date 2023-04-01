@@ -42,7 +42,7 @@
 /******************************************************************************/
 /** \file crc.h
  **
- ** CRC 数据结构及API声明.
+ ** CRC API.
  **
  **   - 2016-05-04  LuX V1.0.
  **
@@ -89,9 +89,9 @@ extern "C"
 /******************************************************************************
  * Global function prototypes (definition in C source)                        
  ******************************************************************************/
-//AES 加密
+//AES 
 en_result_t AES_Encrypt(uint32_t* pu32Data, uint32_t *pu32Key, uint32_t *pu32Cipher);
-//AES 解密
+//AES 
 en_result_t AES_Decrypt(uint32_t *pu32Cipher, uint32_t *pu32Key, uint32_t* pu32Plaintext);
 
 

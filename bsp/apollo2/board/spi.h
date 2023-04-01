@@ -13,7 +13,7 @@
 
 #include <rtthread.h>
 
-/* 片选信号结构声明 */
+/*  */
 struct am_spi_cs
 {
     rt_uint32_t chip_select;

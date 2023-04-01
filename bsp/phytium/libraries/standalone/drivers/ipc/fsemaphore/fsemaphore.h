@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fsemaphore.h
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:25:35
- * Description:  This files is for semaphore user api definition
+ * Description: This files is for semaphore user api definition
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   zhugengyu  2022/5/23    init commit
  */
 
@@ -47,59 +47,59 @@ extern "C"
 /**************************** Type Definitions *******************************/
 typedef struct
 {
-    u32 id;             /* Semaphore控制器id */
-    uintptr base_addr;  /* Semaphore控制器基地址 */
-} FSemaConfig; /* Semaphore控制器配置 */
+    u32 id;             /* Semaphoreid */
+    uintptr base_addr;  /* Semaphore */
+} FSemaConfig; /* Semaphore */
 
 typedef struct _FSema FSema;
 
 typedef struct
 {
-    u32 index;                              /* Semaphore锁id */
+    u32 index;                              /* Semaphoreid */
 #define FSEMA_LOCKER_NAME_LEN       32U
-    char name[FSEMA_LOCKER_NAME_LEN];       /* Semaphore锁的名字 */
-    u32 owner;                              /* Semaphore锁的拥有者, 当前持有锁的人, 如果没有上锁就标记FSEMA_OWNER_NONE */
-    FSema *sema;                            /* Semaphore控制器实例 */
-} FSemaLocker; /* Semaphore锁实例 */
+    char name[FSEMA_LOCKER_NAME_LEN];       /* Semaphore */
+    u32 owner;                              /* Semaphore, , FSEMA_OWNER_NONE */
+    FSema *sema;                            /* Semaphore */
+} FSemaLocker; /* Semaphore */
 
 typedef struct _FSema
 {
-    FSemaConfig config;                       /* Semaphore控制器配置 */
-    u32 is_ready;                             /* Semaphore控制器初始化是否完成 */
-    FSemaLocker *locker[FSEMA_NUM_OF_LOCKER]; /* Semaphore锁实例，locker[i] == NULL 表示锁尚未分配 */
-} FSema; /* Semaphore控制器实例 */
+    FSemaConfig config;                       /* Semaphore */
+    u32 is_ready;                             /* Semaphore */
+    FSemaLocker *locker[FSEMA_NUM_OF_LOCKER]; /* Semaphorelocker[i] == NULL  */
+} FSema; /* Semaphore */
 
-typedef void (*FSemaRelaxHandler)(FSema *const instance); /* 等待下一次上锁的relax函数 */
+typedef void (*FSemaRelaxHandler)(FSema *const instance); /* relax */
 /************************** Variable Definitions *****************************/
 
 /***************** Macros (Inline Functions) Definitions *********************/
 
 /************************** Function Prototypes ******************************/
-/* 获取Semaphore的默认配置 */
+/* Semaphore */
 const FSemaConfig *FSemaLoopkupConfig(u32 instance_id);
 
-/* 初始化Semaphore控制器 */
+/* Semaphore */
 FError FSemaCfgInitialize(FSema *const instance, const FSemaConfig *config);
 
-/* 去初始化Semaphore控制器 */
+/* Semaphore */
 void FSemaDeInitialize(FSema *const instance);
 
-/* 分配和创建Semaphore锁 */
+/* Semaphore */
 FError FSemaCreateLocker(FSema *const instance, FSemaLocker *const locker);
 
-/* 强制解除Semaphore锁并删除锁实例 */
+/* Semaphore */
 FError FSemaDeleteLocker(FSemaLocker *const locker);
 
-/* 尝试获取指定Semaphore锁 */
+/* Semaphore */
 FError FSemaTryLock(FSemaLocker *const locker, u32 owner, u32 try_times, FSemaRelaxHandler relax_handler);
 
-/* 尝试释放指定Semaphore锁 */
+/* Semaphore */
 FError FSemaUnlock(FSemaLocker *const locker, u32 owner);
 
-/* 强制解除所有Semaphore锁 */
+/* Semaphore */
 FError FSemaUnlockAll(FSema *const instance);
 
-/* 检查指定Semaphore锁是否处于锁定状态 */
+/* Semaphore */
 boolean FSemaIsLocked(FSemaLocker *locker);
 
 #ifdef __cplusplus

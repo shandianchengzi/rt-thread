@@ -143,17 +143,17 @@ MSH_CMD_EXPORT(hwtimer_sample, hwtimer sample);
 #endif
 
 #ifdef BSP_USING_PWM
-#define PWM_DEV_NAME "pwm0" /* PWM设备名称 */
-#define PWM_DEV_CHANNEL 0   /* PWM通道 */
+#define PWM_DEV_NAME "pwm0" /* PWM */
+#define PWM_DEV_CHANNEL 0   /* PWM */
 
-struct rt_device_pwm *pwm_dev; /* PWM设备句柄 */
+struct rt_device_pwm *pwm_dev; /* PWM */
 
 static int pwm_sample(int argc, char *argv[])
 {
     rt_uint32_t period, pulse;
 
-    period = 500000; /* 周期为0.5ms,单位为纳秒ns */
-    pulse = 250000;  /* PWM脉冲宽度值,单位为纳秒ns */
+    period = 500000; /* 0.5ms,ns */
+    pulse = 250000;  /* PWM,ns */
 
     pwm_dev = (struct rt_device_pwm *)rt_device_find(PWM_DEV_NAME);
     if (pwm_dev == RT_NULL)
@@ -292,7 +292,7 @@ static void spi_w25q_sample(int argc, char *argv[])
         rt_strncpy(name, W25Q_SPI_DEVICE_NAME, RT_NAME_MAX);
     }
 
-    /* 查找 spi 设备获取设备句柄 */
+    /*  spi  */
     spi_dev_w25q = (struct rt_spi_device *)rt_device_find(name);
     struct rt_spi_configuration cfg;
     cfg.data_width = 8;
@@ -306,11 +306,11 @@ static void spi_w25q_sample(int argc, char *argv[])
     }
     else
     {
-        /* 方式1：使用 rt_spi_send_then_recv()发送命令读取ID */
+        /* 1 rt_spi_send_then_recv()ID */
         rt_spi_send_then_recv(spi_dev_w25q, &w25x_read_id, 1, id, 5);
         rt_kprintf("use rt_spi_send_then_recv() read w25q ID is:%x%x\n", id[3], id[4]);
 
-        /* 方式2：使用 rt_spi_transfer_message()发送命令读取ID */
+        /* 2 rt_spi_transfer_message()ID */
         struct rt_spi_message msg1, msg2;
 
         msg1.send_buf = &w25x_read_id;

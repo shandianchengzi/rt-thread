@@ -1,14 +1,14 @@
 /*
- * @ : Copyright (c) 2021 Phytium Information Technology, Inc.
- *
- * SPDX-License-Identifier: Apache-2.0.
- *
+*@:Copyright(c)2021PhytiumInformationTechnology,Inc.
+*
+*SPDX-License-Identifier:Apache-2.0.
+*
  * @Date: 2021-03-31 14:59:20
  * @LastEditTime: 2021-04-19 17:04:44
- * @Description:  This files is for implementation of sd ctrl
+ * @Description: This files is for implementation of sd ctrl
  *
- * @Modify History: * * Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * @ModifyHistory: **VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 #ifndef FTSDCTRL_H
@@ -20,7 +20,7 @@
 #define FT_SD_CTRL_DEBUG_TAG "FT_SD_CTRL"
 
 /* definition of errcode for sd module */
-#define FTSDC_SUCCESS FST_SUCCESS                                                            /* 成功 */
+#define FTSDC_SUCCESS FST_SUCCESS                                                            /*  */
 #define FTSDC_FAILURE FT_MAKE_ERRCODE(errModeSdCtrl, errBspGeneral, FST_FAILURE)             /* Normal */
 #define FTSDC_TIMEOUT FT_MAKE_ERRCODE(errModeSdCtrl, errBspGeneral, FST_TIMEOUT)             /* Timeout */
 #define FTSDC_EILSEQ FT_MAKE_ERRCODE(errModeSdCtrl, errBspGeneral, FST_EILSEQ)               /* Illegal byte sequence. */
@@ -217,7 +217,7 @@ ft_error_t FSdCtrl_SetHandler(FT_INOUT FtsdCtrl_t *pFtsdCtrl, FT_IN FSdCtrl_IrqC
                               void *FuncPtr,
                               void *Args);
 
-/* register call-backs to determinate wheather write、read and cmd is complete */
+/* register call-backs to determinate wheather writeread and cmd is complete */
 void FSdCtrl_WriteWaitRegister(FT_INOUT FtsdCtrl_t *pFtsdCtrl, FT_IN pFtsdCtrl_irqWaitCallback_t callBack);
 void FSdCtrl_ReadWaitRegister(FT_INOUT FtsdCtrl_t *pFtsdCtrl, FT_IN pFtsdCtrl_irqWaitCallback_t callBack);
 void FSdCtrl_CmdWaitRegister(FT_INOUT FtsdCtrl_t *pFtsdCtrl, FT_IN pFtsdCtrl_irqWaitCallback_t callBack);

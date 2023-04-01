@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: ftimer_tacho_intr.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 09:09:36
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 /***************************** Include Files *********************************/
@@ -46,9 +46,9 @@ static const u32 g_intrStats[FMAX_TIMER_TACHO_EVENT] =
 /************************** Function Prototypes ******************************/
 /**
  * @name: FTimerGetInterruptMask
- * @msg: 获取中断设置
- * @return {u32} 返回中断寄存器的值
- * @param {FTimerTachoCtrl} *instance_p 驱动控制数据结构
+ * @msg: 
+ * @return {u32} 
+ * @param {FTimerTachoCtrl} *instance_p 
  */
 u32 FTimerGetInterruptMask(FTimerTachoCtrl *instance_p)
 {
@@ -58,11 +58,11 @@ u32 FTimerGetInterruptMask(FTimerTachoCtrl *instance_p)
 
 /**
  * @name: FTimerSetInterruptMask
- * @msg: 设置中断
+ * @msg: 
  * @return {void}
- * @param {FTimerTachoCtrl} *instance_p 驱动控制数据结构
- * @param {enum} intrType 中断枚举类型
- * @param {boolean} enable 使能或者失能
+ * @param {FTimerTachoCtrl} *instance_p 
+ * @param {enum} intrType 
+ * @param {boolean} enable 
  */
 void FTimerSetInterruptMask(FTimerTachoCtrl *instance_p,
                             FTimerTachoEventType intrType,
@@ -85,10 +85,10 @@ void FTimerSetInterruptMask(FTimerTachoCtrl *instance_p,
 
 /**
  * @name: FTimerTachoIntrHandler
- * @msg: 中断服务函数，跳转到自己注册的回调函数(如果注册，没有注册则跳转到FTimerDefaultEvtCallback)
+ * @msg: (FTimerDefaultEvtCallback)
  * @return {void}
- * @param {s32} vector，中断向量号，此处不关心此参数
- * @param {void} *param, 中断输入参数, 指向FTimerTachoCtrl的驱动控制实例
+ * @param {s32} vector
+ * @param {void} *param, , FTimerTachoCtrl
  */
 void FTimerTachoIntrHandler(s32 vector, void *param)
 {
@@ -117,9 +117,9 @@ void FTimerTachoIntrHandler(s32 vector, void *param)
 
 /**
  * @name: FTimerDefaultEvtCallback
- * @msg: 默认中断回调函数
+ * @msg: 
  * @return {void}
- * @param {void} *param,函数输入参数指向FTimerTachoCtrl的驱动控制实例
+ * @param {void} *param,FTimerTachoCtrl
  */
 static void FTimerDefaultEvtCallback(void *param)
 {
@@ -132,10 +132,10 @@ static void FTimerDefaultEvtCallback(void *param)
 
 /**
  * @name: FTimerRegisterEvtCallback
- * @msg: 回调函数的注册函数
+ * @msg: 
  * @return {void}
- * @param {FTimerTachoCtrl} *instance_p 驱动控制数据结构
- * @param {enum} intrType 中断枚举类型
+ * @param {FTimerTachoCtrl} *instance_p 
+ * @param {enum} intrType 
  * @param {FTimerEventHandler}
  */
 void FTimerRegisterEvtCallback(FTimerTachoCtrl *instance_p,
@@ -148,9 +148,9 @@ void FTimerRegisterEvtCallback(FTimerTachoCtrl *instance_p,
 
 /**
  * @name: FTimerTachoSetIntr
- * @msg: 根据工作模式和状态设置相应的中断
+ * @msg: 
  * @return {void}
- * @param {FTimerTachoCtrl} *instance_p 驱动控制数据结构
+ * @param {FTimerTachoCtrl} *instance_p 
  */
 void FTimerTachoSetIntr(FTimerTachoCtrl *instance_p)
 {
@@ -174,7 +174,7 @@ void FTimerTachoSetIntr(FTimerTachoCtrl *instance_p)
                 FTimerRegisterEvtCallback(instance_p, FTIMER_EVENT_CYC_CMP, FTimerDefaultEvtCallback);
             }
         }
-        /*暂时屏蔽不开启翻转中断，因为cmp设置触发就是最大值，等同于翻转中断*/
+        /*cmp*/
         /*FTimerSetInterruptMask(instance_p, FTIMER_EVENT_ROLL_OVER, TRUE);*/
         if (instance_p->evt_handlers[FTIMER_EVENT_ROLL_OVER] == NULL)
         {

@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fi2c.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:36:58
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 
@@ -58,17 +58,17 @@ static const char *FI2C_ERROR_CODE_MSG[FI2C_NUM_OF_ERR_CODE] =
 
 /*****************************************************************************/
 
-/* 此文件主要为了完成用户对外接口，用户可以使用这些接口直接开始工作 */
+/*  */
 
-/* - 包括用户API的定义和实现
-   - 同时包含必要的OPTION方法，方便用户进行配置
-   - 如果驱动可以直接进行I/O操作，在此源文件下可以将API 进行实现 */
+/* - API
+   - OPTION
+   - I/OAPI  */
 
 /**
  * @name: FI2cCfgInitialize
- * @msg: 完成I2C驱动实例的初始化，使之可以使用
- * @param {FI2c} *instance_p I2C驱动实例数据
- * @param {FI2cConfig} *cofig_p I2C驱动配置数据
+ * @msg: I2C
+ * @param {FI2c} *instance_p I2C
+ * @param {FI2cConfig} *cofig_p I2C
  * @return SUCCESS if initialization was successful
  *         ERROR
  */
@@ -112,7 +112,7 @@ FError FI2cCfgInitialize(FI2c *instance_p, const FI2cConfig *input_config_p)
 
 /**
  * @name: FI2cDeInitialize
- * @msg: 完成I2C驱动实例去使能，清零实例数据
+ * @msg: I2C
  * @return {*}
  * @param {FI2c} *instance_p
  */
@@ -126,9 +126,9 @@ void FI2cDeInitialize(FI2c *instance_p)
 
 /**
  * @name: FI2cReset
- * @msg: 重置I2C控制器
+ * @msg: I2C
  * @return {*}
- * @param {FI2c} *instance_p, I2C驱动实例数据
+ * @param {FI2c} *instance_p, I2C
  */
 static FError FI2cReset(FI2c *instance_p)
 {
@@ -175,9 +175,9 @@ static FError FI2cReset(FI2c *instance_p)
 
 /**
  * @name: FI2cErrorToMessage
- * @msg: 获取I2C模块错误码对应的错误信息
- * @return {const char *}, 错误码信息，NULL表示失败
- * @param {FError} error, I2C输入错误码
+ * @msg: I2C
+ * @return {const char *}, NULL
+ * @param {FError} error, I2C
  */
 const char *FI2cErrorToMessage(FError error)
 {

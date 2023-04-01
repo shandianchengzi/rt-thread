@@ -85,10 +85,10 @@
 
 /**
 ******************************************************************************
-    ** \brief  使能相关通道的DMA DMA_CR0中的DMAEN0
+    ** \brief  DMA DMA_CR0DMAEN0
     ** 
-  ** @param  NewState  :   TRUE 或者 FALSE
-    ** \retval 无
+  ** @param  NewState  :   TRUE  FALSE
+    ** \retval 
     **
 ******************************************************************************/
 void Dac_DmaCmd(boolean_t NewState)
@@ -98,10 +98,10 @@ void Dac_DmaCmd(boolean_t NewState)
 
 /**
 ******************************************************************************
-    ** \brief  配置DAC的DMA下溢中断， DMA_CR0中的DMAUDRIE0
+    ** \brief  DACDMA DMA_CR0DMAUDRIE0
     ** 
-  ** @param  NewState  :   TRUE 或者 FALSE
-    ** \retval 无
+  ** @param  NewState  :   TRUE  FALSE
+    ** \retval 
     **
 ******************************************************************************/
 void Dac_DmaITCfg(boolean_t NewState)
@@ -111,10 +111,10 @@ void Dac_DmaITCfg(boolean_t NewState)
 
 /**
 ******************************************************************************
-    ** \brief  获取DAC的DMA下溢中断标志位状态， DMA_SR中的DMAUDR0
+    ** \brief  DACDMA DMA_SRDMAUDR0
     ** 
-    ** @param  无
-    ** \retval TRUE 或 FALSE
+    ** @param  
+    ** \retval TRUE  FALSE
     **
 ******************************************************************************/
 boolean_t Dac_GetITStatus(void)
@@ -124,10 +124,10 @@ boolean_t Dac_GetITStatus(void)
 
 /**
 ******************************************************************************
-    ** \brief  配置DAC的使能与禁止， DMA_CR0中的EN0
+    ** \brief  DAC DMA_CR0EN0
     ** 
-  ** @param  NewState  :   TRUE 或者 FALSE
-    ** \retval 无
+  ** @param  NewState  :   TRUE  FALSE
+    ** \retval 
     **
 ******************************************************************************/
 void Dac_Cmd(boolean_t NewState)
@@ -137,10 +137,10 @@ void Dac_Cmd(boolean_t NewState)
 
 /**
 ******************************************************************************
-    ** \brief  软件触发寄存器，触发DAC转换 DMA_SWTRIGR中的SWTRIG0
+    ** \brief  DAC DMA_SWTRIGRSWTRIG0
     ** 
-    ** @param  无
-    ** \retval 无
+    ** @param  
+    ** \retval 
     **
 ******************************************************************************/
 void Dac_SoftwareTriggerCmd(void)
@@ -150,10 +150,10 @@ void Dac_SoftwareTriggerCmd(void)
     
 /**
 ******************************************************************************
-** \brief  初始化DAC0
+** \brief  DAC0
     ** 
-    ** @param  DAC_InitStruct  :   用于初始化DAC0的结构体
-    ** \retval 无
+    ** @param  DAC_InitStruct  :   DAC0
+    ** \retval 
     **
 ******************************************************************************/
 void Dac_Init(stc_dac_cfg_t* DAC_InitStruct)
@@ -181,13 +181,13 @@ void Dac_Init(stc_dac_cfg_t* DAC_InitStruct)
 
 /**
 ******************************************************************************
-** \brief  向DAC0的数据保持寄存器写数据
+** \brief  DAC0
     ** 
     ** @param  DAC_Channel:   Dac_0
-    ** @param  DAC_Align  :   Right_Align 与Left_Align
-    ** @param  DAC_Bit    :   Bit8 与Bit12
-    ** @param  Data       :   所要发送的数据
-    ** \retval 无
+    ** @param  DAC_Align  :   Right_Align Left_Align
+    ** @param  DAC_Bit    :   Bit8 Bit12
+    ** @param  Data       :   
+    ** \retval 
     **
 ******************************************************************************/
 void Dac_SetChannelData(en_align_t DAC_Align, en_bitno_t DAC_Bit, uint16_t Data)
@@ -232,10 +232,10 @@ void Dac_SetChannelData(en_align_t DAC_Align, en_bitno_t DAC_Bit, uint16_t Data)
 
 /**
 ******************************************************************************
-    ** \brief  获取DAC数据输出寄存器DAC_DOR0
+    ** \brief  DACDAC_DOR0
     ** 
-    ** @param  无
-    ** \retval DAC_DOR0的值
+    ** @param  
+    ** \retval DAC_DOR0
     **
 ******************************************************************************/
 uint16_t Dac_GetDataOutputValue(void)

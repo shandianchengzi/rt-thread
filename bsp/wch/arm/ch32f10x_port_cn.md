@@ -1,16 +1,16 @@
-# CH32F10X系列BSP移植
-## 1 工程结构
+# CH32F10XBSP
+## 1 
 + wch\arm\ch32f103c8-core
 + wch\arm\Libraries
 + wch\arm\Libraries\ch32_drivers
 + wch\arm\Libraries\CH32F10x_StdPeriph_Driver
 + wch\arm\tools
 
-ch32f103c8-core为移植到具体芯片的BSP, Libraries存放的是厂商的驱动库(CH32F10x_StdPeriph_Driver等)和适配rt-thread的驱动(ch32_drivers),
-tools是在env环境下使用scons --dist所需要的依赖工具
+ch32f103c8-coreBSP, Libraries(CH32F10x_StdPeriph_Driver)rt-thread(ch32_drivers),
+toolsenvscons --dist
 
-### 1.1 已适配rt-thread的驱动(ch32_drivers)：
-现已支持以下驱动(支持的驱动，使用到的宏开关，需要实现的接口)：
+### 1.1 rt-thread(ch32_drivers)
+()
 + GPIO
    + RT_USING_PIN
 + UART 1/2/3
@@ -88,21 +88,21 @@ struct rt_hwtimer_info* ch32f1_hwtimer_info_config_get(TIM_TypeDef *timx);
 ~~~c
 void ch32f1_pwm_io_init(TIM_TypeDef *timx, rt_uint8_t channel);
 ~~~
-其中需要依赖定时器的接口：
+
 ~~~c
 void ch32f1_tim_clock_init(TIM_TypeDef *timx);
 rt_uint32_t ch32f1_tim_clock_get(TIM_TypeDef *timx);
 ~~~
 
 
-### 1.2 需要实现的接口：
-除了使用上面驱动提及的接口外，以下的接口必须实现：
+### 1.2 
+
 ~~~c
 rt_uint32_t ch32_get_sysclock_frequency(void);
 ~~~
-## 2 构建具体芯片BSP
-以ch32f103c8-core为例，在ENV环境下，使用MDK，至少需要准备
-+ ch32f103c8-core (具体的BSP名)
+## 2 BSP
+ch32f103c8-coreENVMDK
++ ch32f103c8-core (BSP)
 + ch32f103c8-core\applications
 + ch32f103c8-core\applications\SConscript
 + ch32f103c8-core\applications\main.c
@@ -121,10 +121,10 @@ rt_uint32_t ch32_get_sysclock_frequency(void);
 + ch32f103c8-core\SConstruct
 + ch32f103c8-core\template.uvprojx
 
-### 2.1 创建template.uvprojx
-新建名为template的MDK工程，删除多余的子目录target1，将目录改名为rtthread-ch32f103x，options选项栏device设置具体芯片，user编译后的动作, 如"fromelf --bin !L --output rtthread.bin"
+### 2.1 template.uvprojx
+templateMDKtarget1rtthread-ch32f103xoptionsdeviceuser, "fromelf --bin !L --output rtthread.bin"
 
-### 2.2 编写board/Kconfig
+### 2.2 board/Kconfig
 
 ~~~
 menu "Hardware Drivers Config"
@@ -136,11 +136,11 @@ config SOC_CH32F103C8
         select RT_USING_USER_MAIN
         default y
 ~~~
-SOC_CH32F103C8为具体的芯片，SOC_ARM_SERIES_CH32F103在Libraries\Kconfig下已定义。
-RT_USING_COMPONENTS_INIT，RT_USING_USER_MAIN为rt-thread设备框架默认选项。
+SOC_CH32F103C8SOC_ARM_SERIES_CH32F103Libraries\Kconfig
+RT_USING_COMPONENTS_INITRT_USING_USER_MAINrt-thread
 
 
-使用适配的驱动根据宏开关编写即可，以串口驱动为例：
+
 + BSP_USING_XXX
    + select RT_USING_XXX
       + BSP_USING_XXX1
@@ -169,21 +169,21 @@ config BSP_USING_UART
         endif
 ~~~
 
-比较特殊的定时器和PWM驱动额外定义了以下宏开关，详见ch32f103c8-core。
+PWMch32f103c8-core
 + BSP_USING_TIM
    + BSP_USING_TIM1
    + BSP_USING_TIM2
    + BSP_USING_TIM3
    + BSP_USING_TIM4
-### 2.3 在board/board.h加入接口，并在board/board.c实现
-使用适配的驱动根据宏开关编写即可,如串口驱动：
+### 2.3 board/board.hboard/board.c
+,
 + BSP_USING_XXX
 ~~~
 #ifdef BSP_USING_UART
 void ch32f1_usart_clock_and_io_init(USART_TypeDef* usartx);
 #endif
 ~~~
-比较特殊的定时器和PWM驱动使用额外定义了的宏开关
+PWM
 ~~~c
 #ifdef BSP_USING_TIM
 void ch32f1_tim_clock_init(TIM_TypeDef *timx);

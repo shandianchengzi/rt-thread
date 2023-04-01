@@ -11,7 +11,7 @@
 *
 * Date          :  2010.06.02
 *
-* Description   :  Hid 协议相关
+* Description   :  Hid 
 *
 * Others        :  NULL
 *
@@ -173,8 +173,8 @@ typedef struct _usbHidItem{
     unsigned char      tag;         /* Numeric expression specifying the function of the item   */
 
     union {
-        unsigned char   Data_u8;        /* 无符号8位数 */
-        char   Data_s8;     /* 有符号8位数 */
+        unsigned char   Data_u8;        /* 8 */
+        char   Data_s8;     /* 8 */
         unsigned short  Data_u16;
         short  Data_s16;
         unsigned int  Data_u32;
@@ -278,19 +278,19 @@ typedef struct _usbHidItem{
 
 /* Global Items. <<Device Class Definition for Human Interface Devices (HID)>> page35 */
 typedef struct _usbHidGlobalItems{
-    unsigned int UsagePage;         /* 用途类页                     */
+    unsigned int UsagePage;         /*                      */
 
-    int LogicalMinimum;     /* 最小逻辑值                    */
-    int LogicalMaximum;     /* 最大逻辑值                    */
-    int PhysicalMinimum;        /* 最小物理值                    */
-    int PhysicalMaximum;        /* 最大物理值                    */
-    int UnitExponent;           /* 单位指数                     */
-    unsigned int Unit;                  /* 单位                       */
-    unsigned int ReportSize;            /* 报告大小                     */
-    unsigned int ReportId;              /* 报告ID                         */
-    unsigned int ReportCount;           /* 报告的个数                    */
-    unsigned int Push;                  /* 项目状态表暂存到stack        */
-    unsigned int Pop;                   /* 取回stack最顶层的项目状态表     */
+    int LogicalMinimum;     /*                     */
+    int LogicalMaximum;     /*                     */
+    int PhysicalMinimum;        /*                     */
+    int PhysicalMaximum;        /*                     */
+    int UnitExponent;           /*                      */
+    unsigned int Unit;                  /*                        */
+    unsigned int ReportSize;            /*                      */
+    unsigned int ReportId;              /* ID                         */
+    unsigned int ReportCount;           /*                     */
+    unsigned int Push;                  /* stack        */
+    unsigned int Pop;                   /* stack     */
 
     unsigned int Reserved;
 }__packed usbHidGlobalItems_t;
@@ -308,12 +308,12 @@ typedef __packed struct _usbHidLocalItems{
 /* Collection Items */
 typedef struct _usbHidCollectionItems{
     unsigned int Type;      /* type of collection */
-    unsigned int Usage; /* 用途类页 */
+    unsigned int Usage; /*  */
     unsigned int Level; /* the level of collection items */
 }__packed usbHidCollectionItems_t;
 
 typedef struct _usbHidUsage{
-    unsigned int hid;               /* hid usage code, 高16为usage page, 低16位usage */
+    unsigned int hid;               /* hid usage code, 16usage page, 16usage */
     unsigned int collection_index;  /* index into collection array  */
 
     /* hidinput data */

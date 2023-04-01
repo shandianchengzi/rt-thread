@@ -116,9 +116,9 @@ enum user_features
 enum user_ntf_ind_cfg
 {
     USER_DATA_NTF_IND_DISABLE = 0,
-    ///  数据发送方式为notify
+    ///  notify
     USER_DATA_NTF    = (1 << 0),
-    ///   数据发送方式为indication
+    ///   indication
     USER_DATA_IND    = (1 << 1),
 };
 

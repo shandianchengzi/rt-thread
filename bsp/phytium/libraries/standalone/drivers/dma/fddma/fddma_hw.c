@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fddma_hw.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:24:47
- * Description:  This files is for ddma register rw operations
+ * Description: This files is for ddma register rw operations
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   Zhugengyu  2022/5/13    init commit
  */
 
@@ -51,9 +51,9 @@
 /****************************************************************************/
 /**
  * @name: FDdmaDisable
- * @msg: 去使能DDMA控制器
+ * @msg: DDMA
  * @return {*}
- * @param {uintptr} base_addr, DDMA控制器基地址
+ * @param {uintptr} base_addr, DDMA
  */
 void FDdmaDisable(uintptr base_addr)
 {
@@ -66,9 +66,9 @@ void FDdmaDisable(uintptr base_addr)
 
 /**
  * @name: FDdmaEnable
- * @msg: 使能DDMA控制器
+ * @msg: DDMA
  * @return {*}
- * @param {uintptr} base_addr, DDMA控制器基地址
+ * @param {uintptr} base_addr, DDMA
  */
 void FDdmaEnable(uintptr base_addr)
 {
@@ -81,9 +81,9 @@ void FDdmaEnable(uintptr base_addr)
 
 /**
  * @name: FDdmaSoftwareReset
- * @msg: 复位DDMA控制器
+ * @msg: DDMA
  * @return {*}
- * @param {uintptr} base_addr, DDMA控制器基地址
+ * @param {uintptr} base_addr, DDMA
  */
 void FDdmaSoftwareReset(uintptr base_addr)
 {
@@ -104,9 +104,9 @@ void FDdmaSoftwareReset(uintptr base_addr)
 
 /**
  * @name: FDdmaDisableGlobalIrq
- * @msg: 关闭DDMA全局中断
+ * @msg: DDMA
  * @return {*}
- * @param {uintptr} base_addr, DDMA控制器基地址
+ * @param {uintptr} base_addr, DDMA
  */
 void FDdmaDisableGlobalIrq(uintptr base_addr)
 {
@@ -118,9 +118,9 @@ void FDdmaDisableGlobalIrq(uintptr base_addr)
 
 /**
  * @name: FDdmaEnableGlobalIrq
- * @msg: 打开DDMA全局中断
+ * @msg: DDMA
  * @return {*}
- * @param {uintptr} base_addr, DDMA控制器基地址
+ * @param {uintptr} base_addr, DDMA
  */
 void FDdmaEnableGlobalIrq(uintptr base_addr)
 {
@@ -132,10 +132,10 @@ void FDdmaEnableGlobalIrq(uintptr base_addr)
 
 /**
  * @name: FDdmaDisableChanIrq
- * @msg: 关闭DDMA通道中断
+ * @msg: DDMA
  * @return {*}
- * @param {uintptr} base_addr, DDMA控制器基地址
- * @param {u32} chan, DDMA通道号
+ * @param {uintptr} base_addr, DDMA
+ * @param {u32} chan, DDMA
  */
 void FDdmaDisableChanIrq(uintptr base_addr, u32 chan)
 {
@@ -148,10 +148,10 @@ void FDdmaDisableChanIrq(uintptr base_addr, u32 chan)
 
 /**
  * @name: FDdmaEnableChanIrq
- * @msg: 打开DDMA通道中断
+ * @msg: DDMA
  * @return {*}
- * @param {uintptr} base_addr, DDMA控制器基地址
- * @param {u32} chan, DDMA通道号
+ * @param {uintptr} base_addr, DDMA
+ * @param {u32} chan, DDMA
  */
 void FDdmaEnableChanIrq(uintptr base_addr, u32 chan)
 {
@@ -164,10 +164,10 @@ void FDdmaEnableChanIrq(uintptr base_addr, u32 chan)
 
 /**
  * @name: FDdmaDisableChan
- * @msg: 去使能DDMA通道
- * @return {FError} FDDMA_SUCCESS 表示去使能成功
- * @param {uintptr} base_addr, DDMA控制器基地址
- * @param {u32} chan, DDMA通道号
+ * @msg: DDMA
+ * @return {FError} FDDMA_SUCCESS 
+ * @param {uintptr} base_addr, DDMA
+ * @param {u32} chan, DDMA
  */
 FError FDdmaDisableChan(uintptr base_addr, u32 chan)
 {
@@ -177,7 +177,7 @@ FError FDdmaDisableChan(uintptr base_addr, u32 chan)
     reg_val &= ~FDDMA_CHAN_CTL_EN;
     FDdmaWriteReg(base_addr, FDDMA_CHAN_CTL_OFFSET(chan), reg_val);
 
-    /* 先写该位 1’b0，随后读取到该位是 1’b0 的时候，才能复位该通道 */
+    /*  1b0 1b0  */
     do
     {
         reg_val = FDdmaReadReg(base_addr, FDDMA_CHAN_CTL_OFFSET(chan));
@@ -192,10 +192,10 @@ FError FDdmaDisableChan(uintptr base_addr, u32 chan)
 
 /**
  * @name: FDdmaEnableChan
- * @msg: 使能DDMA通道
+ * @msg: DDMA
  * @return {*}
- * @param {uintptr} base_addr, DDMA控制器基地址
- * @param {u32} chan, DDMA通道号
+ * @param {uintptr} base_addr, DDMA
+ * @param {u32} chan, DDMA
  */
 void FDdmaEnableChan(uintptr base_addr, u32 chan)
 {
@@ -209,10 +209,10 @@ void FDdmaEnableChan(uintptr base_addr, u32 chan)
 
 /**
  * @name: FDdmaClearChanIrq
- * @msg: 清除DDMA通道中断状态
+ * @msg: DDMA
  * @return {*}
- * @param {uintptr} base_addr, DDMA控制器基地址
- * @param {u32} chan, DDMA通道号
+ * @param {uintptr} base_addr, DDMA
+ * @param {u32} chan, DDMA
  */
 void FDdmaClearChanIrq(uintptr base_addr, u32 chan)
 {
@@ -223,10 +223,10 @@ void FDdmaClearChanIrq(uintptr base_addr, u32 chan)
 
 /**
  * @name: FDdmaResetChan
- * @msg: 重置DDMA通道
+ * @msg: DDMA
  * @return {*}
- * @param {uintptr} base_addr, DDMA控制器基地址
- * @param {u32} chan, DDMA通道号
+ * @param {uintptr} base_addr, DDMA
+ * @param {u32} chan, DDMA
  */
 void FDdmaResetChan(uintptr base_addr, u32 chan)
 {
@@ -252,10 +252,10 @@ void FDdmaResetChan(uintptr base_addr, u32 chan)
 
 /**
  * @name: FDdmaIsChanRunning
- * @msg: 检查通道是否在工作中
- * @return {boolean} TRUE: 在工作中
- * @param {uintptr} base_addr, DDMA控制器基地址
- * @param {u32} chan, DDMA通道号
+ * @msg: 
+ * @return {boolean} TRUE: 
+ * @param {uintptr} base_addr, DDMA
+ * @param {u32} chan, DDMA
  */
 boolean FDdmaIsChanRunning(uintptr base_addr, u32 chan)
 {
@@ -266,11 +266,11 @@ boolean FDdmaIsChanRunning(uintptr base_addr, u32 chan)
 
 /**
  * @name: FDdmaSetChanSelection
- * @msg: 将DDMA通道与外设绑定
+ * @msg: DDMA
  * @return {*}
- * @param {uintptr} base_addr, DDMA控制器基地址
- * @param {u32} chan, DDMA通道号
- * @param {u32} slave_id, 外设对应的slave id
+ * @param {uintptr} base_addr, DDMA
+ * @param {u32} chan, DDMA
+ * @param {u32} slave_id, slave id
  */
 void FDdmaSetChanSelection(uintptr base_addr, u32 chan, u32 slave_id)
 {
@@ -302,11 +302,11 @@ void FDdmaSetChanSelection(uintptr base_addr, u32 chan, u32 slave_id)
 
 /**
  * @name: FDdmaSetChanBind
- * @msg: 修改通道的绑定状态
+ * @msg: 
  * @return {*}
- * @param {uintptr} base_addr, DDMA控制器基地址
- * @param {u32} chan, DDMA通道号
- * @param {boolean} bind, TRUE: 绑定，FALSE: 解除绑定
+ * @param {uintptr} base_addr, DDMA
+ * @param {u32} chan, DDMA
+ * @param {boolean} bind, TRUE: FALSE: 
  */
 void FDdmaSetChanBind(uintptr base_addr, u32 chan, boolean bind)
 {
@@ -325,11 +325,11 @@ void FDdmaSetChanBind(uintptr base_addr, u32 chan, boolean bind)
 
 /**
  * @name: FDdmaSetChanDirection
- * @msg: 设置通道的方向
+ * @msg: 
  * @return {*}
- * @param {uintptr} base_addr, DDMA控制器基地址
- * @param {u32} chan, DDMA通道号
- * @param {boolean} is_rx, TRUE: 接收, FALSE: 发送
+ * @param {uintptr} base_addr, DDMA
+ * @param {u32} chan, DDMA
+ * @param {boolean} is_rx, TRUE: , FALSE: 
  */
 void FDdmaSetChanDirection(uintptr base_addr, u32 chan, boolean is_rx)
 {
@@ -345,11 +345,11 @@ void FDdmaSetChanDirection(uintptr base_addr, u32 chan, boolean is_rx)
 
 /**
  * @name: FDdmaSetChanTimeout
- * @msg: 设置通道超时
+ * @msg: 
  * @return {*}
- * @param {uintptr} base_addr, DDMA控制器基地址
- * @param {u32} chan, DDMA通道号
- * @param {u32} timeout, 超时设置，0表示不启用超时
+ * @param {uintptr} base_addr, DDMA
+ * @param {u32} chan, DDMA
+ * @param {u32} timeout, 0
  */
 void FDdmaSetChanTimeout(uintptr base_addr, u32 chan, u32 timeout)
 {

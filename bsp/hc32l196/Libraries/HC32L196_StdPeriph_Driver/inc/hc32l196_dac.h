@@ -64,17 +64,17 @@ extern "C"
   
 /**
  ******************************************************************************
- ** \brief 使能或者禁止指令
+ ** \brief 
  ******************************************************************************/ 
 typedef enum 
 {
-    DacDisable  = 0u,         //禁止
-    DacEnable   = 1u          //使能
+    DacDisable  = 0u,         //
+    DacEnable   = 1u          //
 }en_en_state_t;
 
 /**
  ******************************************************************************
- ** \brief 使能或者禁止DAC0通道输出缓冲器         DAC_CR0：BOFF0
+ ** \brief DAC0         DAC_CR0BOFF0
  ******************************************************************************/ 
 typedef enum 
 {
@@ -84,7 +84,7 @@ typedef enum
 
 /**
  ******************************************************************************
- ** \brief 使能或者禁止DAC0通道触发使能           DAC_CR0: TEN0
+ ** \brief DAC0           DAC_CR0: TEN0
  ******************************************************************************/ 
 typedef enum
 {
@@ -94,34 +94,34 @@ typedef enum
 
 /**
  ******************************************************************************
- ** \brief DAC0通道触发选择                       DAC_CR0: TSEL0
+ ** \brief DAC0                       DAC_CR0: TSEL0
  ******************************************************************************/ 
 typedef enum 
 {
-    DacTim0Tradc = 0u,      //TIM0_TRADC触发
-    DacTim1Tradc = 1u,      //TIM1_TRADC触发
-    DacTim2Tradc = 2u,      //TIM2_TRADC触发
-    DacTim3Tradc = 3u,      //TIM3_TRADC触发
-    DacTim4Tradc = 4u,      //TIM4_TRADC触发
-    DacTim5Tradc = 5u,      //TIM5_TRADC触发
-    DacSwTriger  = 6u,      //软件触发
-    DacExPortTriger = 7u    //外部端口触发
+    DacTim0Tradc = 0u,      //TIM0_TRADC
+    DacTim1Tradc = 1u,      //TIM1_TRADC
+    DacTim2Tradc = 2u,      //TIM2_TRADC
+    DacTim3Tradc = 3u,      //TIM3_TRADC
+    DacTim4Tradc = 4u,      //TIM4_TRADC
+    DacTim5Tradc = 5u,      //TIM5_TRADC
+    DacSwTriger  = 6u,      //
+    DacExPortTriger = 7u    //
 }en_dac_tsel_t;
 
 /**
  ******************************************************************************
- ** \brief DAC0通道噪声/三角波生产使能或禁止      DAC_CR0: WAVE0
+ ** \brief DAC0/      DAC_CR0: WAVE0
  ******************************************************************************/ 
 typedef enum
 {
-    DacWaveDisable  = 0u,   //禁止生产波
-    DacNoiseEnable  = 1u,   //使能生成噪声波
-    DacTrWaveEnable = 2u    //使能生产三角波
+    DacWaveDisable  = 0u,   //
+    DacNoiseEnable  = 1u,   //
+    DacTrWaveEnable = 2u    //
 }en_dac_wave_t;
 
 /**
  ******************************************************************************
- ** \brief DACx通道掩码/振幅选择器                DAC_CR0: MAMP0 & MAMP1
+ ** \brief DACx/                DAC_CR0: MAMP0 & MAMP1
  ******************************************************************************/
 typedef enum
 {
@@ -141,63 +141,63 @@ typedef enum
 
 /**
  ******************************************************************************
- ** \brief DACx通道DMA使能或禁止                 DAC_CR0: DMAEN0 & DMAEN1
+ ** \brief DACxDMA                 DAC_CR0: DMAEN0 & DMAEN1
  ******************************************************************************/
 
 /**
  ******************************************************************************
- ** \brief DACx通道DMA下溢中断使能或禁止         DAC_CR0: DMAUDRIE0 & DMAUDRIE1
+ ** \brief DACxDMA         DAC_CR0: DMAUDRIE0 & DMAUDRIE1
  ******************************************************************************/
 
 /**
  ******************************************************************************
- ** \brief DACx参考电压选择                       DAC_CR0: SREF0 & SREF1
+ ** \brief DACx                       DAC_CR0: SREF0 & SREF1
  ******************************************************************************/
 typedef enum
 {
-    DacVoltage1V5   = 0u,   //内部1.5V
-    DacVoltage2V5   = 1u,   //内部2.5V
-    DacVoltageExRef = 2u,   //外部参考电压ExRef(PB01)
-    DacVoltageAvcc  = 3u    //AVCC电压
+    DacVoltage1V5   = 0u,   //1.5V
+    DacVoltage2V5   = 1u,   //2.5V
+    DacVoltageExRef = 2u,   //ExRef(PB01)
+    DacVoltageAvcc  = 3u    //AVCC
 }en_dac_sref_t;
 
 /**
  ******************************************************************************
- ** \brief DACx触发选择寄存器DAC_ETRS              DAC_ETRS
+ ** \brief DACxDAC_ETRS              DAC_ETRS
  ******************************************************************************/
 typedef enum
 {
-    DacPortTrigPA9 = 0u,      //触发端口为PA9
-    DacPortTrigPB9 = 1u,      //触发端口为PB9
-    DacPortTrigPC9 = 2u,      //触发端口为PC9
-    DacPortTrigPD9 = 3u,      //触发端口为PD9
-    DacPortTrigPE9 = 4u,      //触发端口为PE9
-    DacPortTrigPF9 = 5u       //触发端口为PF9
+    DacPortTrigPA9 = 0u,      //PA9
+    DacPortTrigPB9 = 1u,      //PB9
+    DacPortTrigPC9 = 2u,      //PC9
+    DacPortTrigPD9 = 3u,      //PD9
+    DacPortTrigPE9 = 4u,      //PE9
+    DacPortTrigPF9 = 5u       //PF9
 }en_port_trig_t;
 
 /**
  ******************************************************************************
- ** \brief 对齐方式              
+ ** \brief               
  ******************************************************************************/
 typedef enum
 {
-    DacRightAlign = 0u,        //右对齐
-    DacLeftAlign  = 1u         //左对齐
+    DacRightAlign = 0u,        //
+    DacLeftAlign  = 1u         //
 }en_align_t;
 
 /**
  ******************************************************************************
- ** \brief 数据位数          
+ ** \brief           
  ******************************************************************************/
 typedef enum
 {
-    DacBit8  = 0u,               //8位
-    DacBit12 = 1u                //12位
+    DacBit8  = 0u,               //8
+    DacBit12 = 1u                //12
 }en_bitno_t;
 
 /**
  ******************************************************************************
- ** \brief 初始化配置结构体         
+ ** \brief          
  ******************************************************************************/
 typedef struct
 {

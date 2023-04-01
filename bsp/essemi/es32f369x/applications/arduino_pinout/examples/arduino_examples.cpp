@@ -52,10 +52,10 @@ void test_int()
 void setup(void)
 {
     /* put your setup code here, to run once: */
-    //串口
+    //
     Serial.write("Hello from Arduino\r\n");
 
-#ifdef ARDU_TEST_GPIO //数字管脚输出
+#ifdef ARDU_TEST_GPIO //
     pinMode(D2, OUTPUT);
     pinMode(D4, OUTPUT);
     digitalWrite(D4, 1);
@@ -67,7 +67,7 @@ void setup(void)
     pinMode(D21, INPUT);
 
 
-#ifdef ARDU_TEST_PWM //测试PWM输出
+#ifdef ARDU_TEST_PWM //PWM
     analogWriteFrequency(10);
     analogWrite(D3, 80);
     analogWrite(D5, 127);
@@ -92,11 +92,11 @@ void setup(void)
     digitalWrite(D10, HIGH);
 #endif
 
-#ifdef ARDU_TEST_INT  //中断输入
+#ifdef ARDU_TEST_INT  //
     attachInterrupt(digitalPinToInterrupt(D24), test_int, FALLING);
 #endif
 
-#ifdef ARDU_TEST_DIGITAL_READ //数字管脚输入
+#ifdef ARDU_TEST_DIGITAL_READ //
     pinMode(D20,INPUT);
     pinMode(D21,INPUT);
     pinMode(D22,INPUT);

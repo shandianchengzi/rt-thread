@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fgdma.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:25:29
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  *  1.0   huanghe    2021-11-5    init commit
  *  1.1   zhugengyu  2022-5-16    support chan alloc. and qos setting
  */
@@ -52,10 +52,10 @@ static void FGdmaReset(FGdma *const instance_p);
 
 /**
  * @name: FGdmaCfgInitialize
- * @msg: 初始化GDMA控制器实例
- * @return {FError} 返回FGDMA_SUCCESS表示初始化成功，返回其它表示失败
- * @param FGdma *const instance_p, GDMA控制器实例
- * @param const FGdmaConfig *input_config, GDMA控制器配置
+ * @msg: GDMA
+ * @return {FError} FGDMA_SUCCESS
+ * @param FGdma *const instance_p, GDMA
+ * @param const FGdmaConfig *input_config, GDMA
  */
 FError FGdmaCfgInitialize(FGdma *const instance_p, const FGdmaConfig *input_config)
 {
@@ -86,9 +86,9 @@ FError FGdmaCfgInitialize(FGdma *const instance_p, const FGdmaConfig *input_conf
 
 /**
  * @name: FGdmaDeInitialize
- * @msg: 去初始化GDMA控制器实例
- * @return {void} 无
- * @param FGdma *const instance_p, GDMA控制器实例
+ * @msg: GDMA
+ * @return {void} 
+ * @param FGdma *const instance_p, GDMA
  */
 void FGdmaDeInitialize(FGdma *const instance_p)
 {
@@ -109,10 +109,10 @@ void FGdmaDeInitialize(FGdma *const instance_p)
 
 /**
  * @name: FGdmaSetChanQos
- * @msg: 设置GDMA通道的Qos配置
- * @return {void} 无
- * @param {uintptr} base_addr, GDMA控制器基地址
- * @param {FGdmaChan} *dma_chan, GDMA通道实例
+ * @msg: GDMAQos
+ * @return {void} 
+ * @param {uintptr} base_addr, GDMA
+ * @param {FGdmaChan} *dma_chan, GDMA
  */
 static void FGdmaSetChanQos(uintptr base_addr, FGdmaChan *const dma_chan)
 {
@@ -147,11 +147,11 @@ static void FGdmaSetChanQos(uintptr base_addr, FGdmaChan *const dma_chan)
 
 /**
  * @name: FGdmaAllocateChan
- * @msg: 分配指定GDMA通道
- * @return {FError} FGDMA_SUCCESS表示分配成功，返回其它值表示分配失败
- * @param FGdma *const instance_p, GDMA控制器实例
- * @param FGdmaChan *const dma_chan, GDMA通道实例
- * @param const FGdmaChanConfig *dma_chan_config, GDMA通道配置
+ * @msg: GDMA
+ * @return {FError} FGDMA_SUCCESS
+ * @param FGdma *const instance_p, GDMA
+ * @param FGdmaChan *const dma_chan, GDMA
+ * @param const FGdmaChanConfig *dma_chan_config, GDMA
  */
 FError FGdmaAllocateChan(FGdma *const instance_p, FGdmaChan *const dma_chan,
                          const FGdmaChanConfig *dma_chan_config)
@@ -233,9 +233,9 @@ FError FGdmaAllocateChan(FGdma *const instance_p, FGdmaChan *const dma_chan,
 
 /**
  * @name: FGdmaDellocateChan
- * @msg: 释放GDMA通道
- * @return {FError} FGDMA_SUCCESS表示处理成功
- * @param FGdmaChan *const dma_chan, GDMA通道实例
+ * @msg: GDMA
+ * @return {FError} FGDMA_SUCCESS
+ * @param FGdmaChan *const dma_chan, GDMA
  */
 FError FGdmaDellocateChan(FGdmaChan *const dma_chan)
 {
@@ -274,11 +274,11 @@ FError FGdmaDellocateChan(FGdmaChan *const dma_chan)
 
 /**
  * @name: FGdmaDirectTransfer
- * @msg: 直接操作模式下发起DMA传输
- * @return {FError} FGDMA_SUCCESS表示传输成功
- * @param FGdmaChan *const chan_p, GDMA通道实例
- * @param uintptr src_addr, 传输源地址
- * @param uintptr dst_addr, 传输目的地址
+ * @msg: DMA
+ * @return {FError} FGDMA_SUCCESS
+ * @param FGdmaChan *const chan_p, GDMA
+ * @param uintptr src_addr, 
+ * @param uintptr dst_addr, 
  */
 FError FGdmaDirectTransfer(FGdmaChan *const chan_p, uintptr src_addr, uintptr dst_addr, fsize_t data_len)
 {
@@ -355,12 +355,12 @@ FError FGdmaDirectTransfer(FGdmaChan *const chan_p, uintptr src_addr, uintptr ds
 
 /**
  * @name: FGdmaSetupBDLEntry
- * @msg: 设置BDL描述符的一个条目
- * @return {FError} FGDMA_SUCCESS 表示设置成功
- * @param FGdmaBdlDesc *desc_entry, 一条BDL描述符
- * @param uintptr src_addr, 传输源地址
- * @param uintptr dst_addr, 传输目的地址
- * @param fsize_t data_len, 传输数据长度
+ * @msg: BDL
+ * @return {FError} FGDMA_SUCCESS 
+ * @param FGdmaBdlDesc *desc_entry, BDL
+ * @param uintptr src_addr, 
+ * @param uintptr dst_addr, 
+ * @param fsize_t data_len, 
  */
 FError FGdmaAppendBDLEntry(FGdmaChan *const chan_p, uintptr src_addr, uintptr dst_addr, fsize_t data_len)
 {
@@ -422,9 +422,9 @@ FError FGdmaAppendBDLEntry(FGdmaChan *const chan_p, uintptr src_addr, uintptr ds
 
 /**
  * @name: FGdmaBDLTransfer
- * @msg: BDL操作模式下发起DMA传输
- * @return {FError} FGDMA_SUCCESS 表示传输成功
- * @param FGdmaChan *const chan_p, DMA通道实例
+ * @msg: BDLDMA
+ * @return {FError} FGDMA_SUCCESS 
+ * @param FGdmaChan *const chan_p, DMA
  */
 FError FGdmaBDLTransfer(FGdmaChan *const chan_p)
 {
@@ -489,10 +489,10 @@ FError FGdmaBDLTransfer(FGdmaChan *const chan_p)
 
 /**
  * @name: FGdmaStart
- * @msg: 使能启动GDMA控制器
- * @return {FError} FGDMA_SUCCESS表示启动成功
- * @param FGdma *const instance_p, GDMA控制器实例
- * @note: 先调用此函数，后调用FGdmaAllocateChan配置特定通道
+ * @msg: GDMA
+ * @return {FError} FGDMA_SUCCESS
+ * @param FGdma *const instance_p, GDMA
+ * @note: FGdmaAllocateChan
  */
 FError FGdmaStart(FGdma *const instance_p)
 {
@@ -510,18 +510,18 @@ FError FGdmaStart(FGdma *const instance_p)
 
     reg_val = FGDMA_READREG(base_addr, FGDMA_CTL_OFFSET);
     reg_val &= ~FGDMA_CTL_OT_MASK;
-    reg_val |= FGDMA_CTL_OT_SET(FGDMA_OUTSTANDING); /* 设置传输outstanding数 */
-    reg_val |= FGDMA_CTL_ENABLE; /* 使能DMA传输 */
+    reg_val |= FGDMA_CTL_OT_SET(FGDMA_OUTSTANDING); /* outstanding */
+    reg_val |= FGDMA_CTL_ENABLE; /* DMA */
     FGDMA_WRITEREG(base_addr, FGDMA_CTL_OFFSET, reg_val);
 
-    return FGDMA_SUCCESS; // 放到初始化
+    return FGDMA_SUCCESS; // 
 }
 
 /**
  * @name: FGdmaStop
- * @msg: 停止GDMA控制器
- * @return {FError} FGDMA_SUCCESS表示处理成功
- * @param FGdma *const instance_p, GDMA控制器实例
+ * @msg: GDMA
+ * @return {FError} FGDMA_SUCCESS
+ * @param FGdma *const instance_p, GDMA
  */
 FError FGdmaStop(FGdma *const instance_p)
 {
@@ -537,7 +537,7 @@ FError FGdmaStop(FGdma *const instance_p)
         return FGDMA_ERR_NOT_INIT;
     }
 
-    /* Abort 流程 */
+    /* Abort  */
     for (chan_id = FGDMA_CHAN0_INDEX; chan_id < FGDMA_NUM_OF_CHAN; chan_id++)
     {
         if (NULL == instance_p->chans[chan_id])
@@ -547,15 +547,15 @@ FError FGdmaStop(FGdma *const instance_p)
         if (FGDMA_CHX_INT_STATE_BUSY & chan_status)
         {
             FGDMA_WARN("chan-%d has abort unfinished request !!!", chan_id);
-            FGdmaChanDisable(base_addr, chan_id); /* 关闭通道 */
-            FGdmaChanReset(base_addr, chan_id); /* 需要进行软复位，否则再次使能通道时，仍然会执行之前的请求 */
+            FGdmaChanDisable(base_addr, chan_id); /*  */
+            FGdmaChanReset(base_addr, chan_id); /*  */
         }
         else
         {
-            FGdmaChanDisable(base_addr, chan_id); /* 关闭通道 */
+            FGdmaChanDisable(base_addr, chan_id); /*  */
         }
 
-        FGdmaClearChanStatus(base_addr, chan_id, chan_status); /* 清除通道状态 */
+        FGdmaClearChanStatus(base_addr, chan_id, chan_status); /*  */
     }
 
     FGdmaDisable(base_addr);
@@ -565,9 +565,9 @@ FError FGdmaStop(FGdma *const instance_p)
 
 /**
  * @name: FGdmaSetQos
- * @msg: 设置GDMA控制器的全局Qos配置
- * @return {void} 无
- * @param {FGdma} *instance_p, GDMA控制器实例
+ * @msg: GDMAQos
+ * @return {void} 
+ * @param {FGdma} *instance_p, GDMA
  */
 static void FGdmaSetQos(FGdma *const instance_p)
 {
@@ -621,9 +621,9 @@ static void FGdmaSetQos(FGdma *const instance_p)
 
 /**
  * @name: FGdmaReset
- * @msg: 重置GDMA控制器
- * @return {void} 无
- * @param {FGdma} *instance_p, GDMA控制器实例
+ * @msg: GDMA
+ * @return {void} 
+ * @param {FGdma} *instance_p, GDMA
  */
 static void FGdmaReset(FGdma *const instance_p)
 {

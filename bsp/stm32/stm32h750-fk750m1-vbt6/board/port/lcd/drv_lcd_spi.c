@@ -26,12 +26,12 @@
 static struct drv_lcd_device _lcd;
 static rt_uint8_t lcd_bn = 0;
 
-// 因为这类SPI的屏幕，每次更新显示时，需要先配置坐标区域、再写显存，
-// 在显示字符时，如果是一个个点去写坐标写显存，会非常慢，
-// 因此开辟一片缓冲区，先将需要显示的数据写进缓冲区，最后再批量写入显存。
-// 用户可以根据实际情况去修改此处缓冲区的大小，
-// 例如，用户需要显示32*32的汉字时，需要的大小为 32*32*2 = 2048 字节（每个像素点占2字节）
-static uint16_t LCD_Buff[1024]; // LCD缓冲区，16位宽（每个像素点占2字节）
+// SPI
+// 
+// 
+// 
+// 32*32 32*32*2 = 2048 2
+static uint16_t LCD_Buff[1024]; // LCD162
 
 static void set_lcd_backlight(rt_uint8_t value)
 {
@@ -61,8 +61,8 @@ static void lcd_writedata_8bit(uint8_t lcd_data)
 
 static void lcd_writedata_16bit(uint16_t lcd_data)
 {
-    uint8_t lcd_data_buff[2];         // 数据发送区
-    lcd_data_buff[0] = lcd_data >> 8; // 将数据拆分
+    uint8_t lcd_data_buff[2];         // 
+    lcd_data_buff[0] = lcd_data >> 8; // 
     lcd_data_buff[1] = lcd_data;
 
     rt_pin_write(LCD_CMD_DATA_PIN, PIN_HIGH); // data
@@ -90,15 +90,15 @@ void lcd_writebuff(uint16_t *databuff, uint16_t datasize)
 
 void lcd_setaddress(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2)
 {
-    lcd_writecommand(0x2a); //  列地址设置，即X坐标
+    lcd_writecommand(0x2a); //  X
     lcd_writedata_16bit(x1);
     lcd_writedata_16bit(x2);
 
-    lcd_writecommand(0x2b); //  行地址设置，即Y坐标
+    lcd_writecommand(0x2b); //  Y
     lcd_writedata_16bit(y1);
     lcd_writedata_16bit(y2);
 
-    lcd_writecommand(0x2c); //  开始写入显存，即要显示的颜色数据
+    lcd_writecommand(0x2c); //  
 }
 
 void lcd_clear(uint32_t color)
@@ -107,7 +107,7 @@ void lcd_clear(uint32_t color)
     struct stm32_spi *spi_drv =  rt_container_of(((struct rt_spi_device *)_lcd.lcd_spi_dev)->bus, struct stm32_spi, spi_bus);
     SPI_HandleTypeDef *spi_handle = &spi_drv->handle;
 
-    lcd_setaddress(0, 0, LCD_WIDTH - 1, LCD_HEIGHT - 1); // 设置坐标
+    lcd_setaddress(0, 0, LCD_WIDTH - 1, LCD_HEIGHT - 1); // 
 
     rt_pin_write(LCD_CMD_DATA_PIN, PIN_HIGH); // data
 
@@ -133,7 +133,7 @@ void lcd_clearrect(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint
     struct stm32_spi *spi_drv =  rt_container_of(((struct rt_spi_device *)_lcd.lcd_spi_dev)->bus, struct stm32_spi, spi_bus);
     SPI_HandleTypeDef *spi_handle = &spi_drv->handle;
 
-    lcd_setaddress(x, y, x + width - 1, y + height - 1); // 设置坐标
+    lcd_setaddress(x, y, x + width - 1, y + height - 1); // 
 
     rt_pin_write(LCD_CMD_DATA_PIN, PIN_HIGH); // data
 
@@ -159,7 +159,7 @@ void lcd_copybuffer(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uin
     struct stm32_spi *spi_drv =  rt_container_of(((struct rt_spi_device *)_lcd.lcd_spi_dev)->bus, struct stm32_spi, spi_bus);
     SPI_HandleTypeDef *spi_handle = &spi_drv->handle;
 
-    lcd_setaddress(x, y, x + width - 1, y + height - 1); // 设置坐标
+    lcd_setaddress(x, y, x + width - 1, y + height - 1); // 
 
     rt_pin_write(LCD_CMD_DATA_PIN, PIN_HIGH); // data
 
@@ -181,7 +181,7 @@ void lcd_copybuffer(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uin
 
 void lcd_drawpoint(uint16_t x, uint16_t y, uint32_t color)
 {
-    lcd_setaddress(x, y, x, y); //  设置坐标
+    lcd_setaddress(x, y, x, y); //  
     lcd_writedata_16bit(color);
 }
 
@@ -249,22 +249,22 @@ void lcd_drawline(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, uint32_t c
 
 void lcd_drawline_v(uint16_t x, uint16_t y, uint16_t height, uint32_t color)
 {
-    uint16_t i; // 计数变量
+    uint16_t i; // 
     for (i = 0; i < height; i++) {
-        LCD_Buff[i] = color; // 写入缓冲区
+        LCD_Buff[i] = color; // 
     }
-    lcd_setaddress(x, y, x, y + height - 1); // 设置坐标
-    lcd_writebuff(LCD_Buff, height); // 写入显存
+    lcd_setaddress(x, y, x, y + height - 1); // 
+    lcd_writebuff(LCD_Buff, height); // 
 }
 
 void lcd_drawline_h(uint16_t x, uint16_t y, uint16_t width, uint32_t color)
 {
-    uint16_t i; // 计数变量
+    uint16_t i; // 
     for (i = 0; i < width; i++) {
-        LCD_Buff[i] = color; // 写入缓冲区
+        LCD_Buff[i] = color; // 
     }
-    lcd_setaddress(x, y, x + width - 1, y); // 设置坐标
-    lcd_writebuff(LCD_Buff, width); // 写入显存
+    lcd_setaddress(x, y, x + width - 1, y); // 
+    lcd_writebuff(LCD_Buff, width); // 
 }
 
 static rt_err_t stm32_lcd_init(struct drv_lcd_device *lcd)
@@ -285,16 +285,16 @@ static rt_err_t stm32_lcd_init(struct drv_lcd_device *lcd)
 
     // init lcd
     rt_thread_mdelay(10);
-    lcd_writecommand(0x36);   // 显存访问控制 指令，用于设置访问显存的方式
-    lcd_writedata_8bit(0x00); // 配置成 从上到下、从左到右，RGB像素格式 垂直显示
-    // lcd_writedata_8bit(0x70); // 横屏显示
-    // lcd_writedata_8bit(0xA0); // 横屏显示，并上下翻转，RGB像素格式
-    // lcd_writedata_8bit(0xC0); // 垂直显示，并上下翻转，RGB像素格式
+    lcd_writecommand(0x36);   //  
+    lcd_writedata_8bit(0x00); //  RGB 
+    // lcd_writedata_8bit(0x70); // 
+    // lcd_writedata_8bit(0xA0); // RGB
+    // lcd_writedata_8bit(0xC0); // RGB
 
-    lcd_writecommand(0x3A);   // 接口像素格式 指令，用于设置使用 12位、16位还是18位色
-    lcd_writedata_8bit(0x05); // 此处配置成 16位 像素格式
+    lcd_writecommand(0x3A);   //   121618
+    lcd_writedata_8bit(0x05); //  16 
 
-    // 接下来很多都是电压设置指令，直接使用厂家给设定值
+    // 
     lcd_writecommand(0xB2);
     lcd_writedata_8bit(0x0C);
     lcd_writedata_8bit(0x0C);
@@ -302,32 +302,32 @@ static rt_err_t stm32_lcd_init(struct drv_lcd_device *lcd)
     lcd_writedata_8bit(0x33);
     lcd_writedata_8bit(0x33);
 
-    lcd_writecommand(0xB7);   // 栅极电压设置指令
-    lcd_writedata_8bit(0x35); // VGH = 13.26V，VGL = -10.43V
+    lcd_writecommand(0xB7);   // 
+    lcd_writedata_8bit(0x35); // VGH = 13.26VVGL = -10.43V
 
-    lcd_writecommand(0xBB);   // 公共电压设置指令
+    lcd_writecommand(0xBB);   // 
     lcd_writedata_8bit(0x19); // VCOM = 1.35V
 
     lcd_writecommand(0xC0);
     lcd_writedata_8bit(0x2C);
 
-    lcd_writecommand(0xC2);   // VDV 和 VRH 来源设置
-    lcd_writedata_8bit(0x01); // VDV 和 VRH 由用户自由配置
+    lcd_writecommand(0xC2);   // VDV  VRH 
+    lcd_writedata_8bit(0x01); // VDV  VRH 
 
-    lcd_writecommand(0xC3);   // VRH电压 设置指令
-    lcd_writedata_8bit(0x12); // VRH电压 = 4.6+( vcom+vcom offset+vdv)
+    lcd_writecommand(0xC3);   // VRH 
+    lcd_writedata_8bit(0x12); // VRH = 4.6+( vcom+vcom offset+vdv)
 
-    lcd_writecommand(0xC4);   // VDV电压 设置指令
-    lcd_writedata_8bit(0x20); // VDV电压 = 0v
+    lcd_writecommand(0xC4);   // VDV 
+    lcd_writedata_8bit(0x20); // VDV = 0v
 
-    lcd_writecommand(0xC6);   // 正常模式的帧率控制指令
-    lcd_writedata_8bit(0x0F); // 设置屏幕控制器的刷新帧率为60帧
+    lcd_writecommand(0xC6);   // 
+    lcd_writedata_8bit(0x0F); // 60
 
-    lcd_writecommand(0xD0);   // 电源控制指令
-    lcd_writedata_8bit(0xA4); // 无效数据，固定写入0xA4
-    lcd_writedata_8bit(0xA1); // AVDD = 6.8V ，AVDD = -4.8V ，VDS = 2.3V
+    lcd_writecommand(0xD0);   // 
+    lcd_writedata_8bit(0xA4); // 0xA4
+    lcd_writedata_8bit(0xA1); // AVDD = 6.8V AVDD = -4.8V VDS = 2.3V
 
-    lcd_writecommand(0xE0); // 正极电压伽马值设定
+    lcd_writecommand(0xE0); // 
     lcd_writedata_8bit(0xD0);
     lcd_writedata_8bit(0x04);
     lcd_writedata_8bit(0x0D);
@@ -343,7 +343,7 @@ static rt_err_t stm32_lcd_init(struct drv_lcd_device *lcd)
     lcd_writedata_8bit(0x1F);
     lcd_writedata_8bit(0x23);
 
-    lcd_writecommand(0xE1); // 负极电压伽马值设定
+    lcd_writecommand(0xE1); // 
     lcd_writedata_8bit(0xD0);
     lcd_writedata_8bit(0x04);
     lcd_writedata_8bit(0x0C);
@@ -359,23 +359,23 @@ static rt_err_t stm32_lcd_init(struct drv_lcd_device *lcd)
     lcd_writedata_8bit(0x20);
     lcd_writedata_8bit(0x23);
 
-    lcd_writecommand(0x21); // 打开反显，因为面板是常黑型，操作需要反过来
+    lcd_writecommand(0x21); // 
 
-    // 退出休眠指令，LCD控制器在刚上电、复位时，会自动进入休眠模式 ，因此操作屏幕之前，需要退出休眠
-    lcd_writecommand(0x11); // 退出休眠 指令
-    rt_thread_mdelay(120);  // 需要等待120ms，让电源电压和时钟电路稳定下来
+    // LCD 
+    lcd_writecommand(0x11); //  
+    rt_thread_mdelay(120);  // 120ms
 
-    // 打开显示指令，LCD控制器在刚上电、复位时，会自动关闭显示
-    lcd_writecommand(0x29); // 打开显示
+    // LCD
+    lcd_writecommand(0x29); // 
 
     // set spi handler to ensure SPI_Transmit_Ext/SPI_TransmitBuffer_Ext function can be used
     struct stm32_spi *spi_drv =  rt_container_of(((struct rt_spi_device *)lcd->lcd_spi_dev)->bus, struct stm32_spi, spi_bus);
     SPI_HandleTypeDef *spi_handle = &spi_drv->handle;
     Set_SPI_Handle_Ext(spi_handle);
 
-    lcd_clear(0xFFFFFF);                   // 清屏
+    lcd_clear(0xFFFFFF);                   // 
 
-    // 全部设置完毕之后，打开背光
+    // 
     set_lcd_backlight(1);
 
     LOG_D("lcd init ok");

@@ -1,12 +1,12 @@
-# 大疆STM32F407 Robomaster C型开发板的Arduino生态兼容说明
+# STM32F407 Robomaster CArduino
 
-## 1 RTduino - RT-Thread的Arduino生态兼容层
+## 1 RTduino - RT-ThreadArduino
 
-大疆STM32F407 Robomaster C型开发板已经完整适配了[RTduino软件包](https://github.com/RTduino/RTduino)，即RT-Thread的Arduino生态兼容层。用户可以按照Arduino的编程习惯来操作该BSP，并且可以使用大量Arduino社区丰富的库，是对RT-Thread生态的极大增强。更多信息，请参见[RTduino软件包说明文档](https://github.com/RTduino/RTduino)。
+STM32F407 Robomaster C[RTduino](https://github.com/RTduino/RTduino)RT-ThreadArduinoArduinoBSPArduinoRT-Thread[RTduino](https://github.com/RTduino/RTduino)
 
-### 1.1 如何开启针对本BSP的Arduino生态兼容层
+### 1.1 BSPArduino
 
-Env 工具下敲入 menuconfig 命令，或者 RT-Thread Studio IDE 下选择 RT-Thread Settings：
+Env  menuconfig  RT-Thread Studio IDE  RT-Thread Settings
 
 ```Kconfig
 Hardware Drivers Config --->
@@ -14,26 +14,26 @@ Hardware Drivers Config --->
         [*] Compatible with Arduino Ecosystem (RTduino)
 ```
 
-## 2 Arduino引脚排布
+## 2 Arduino
 
-更多引脚布局相关信息参见 [pins_arduino.c](pins_arduino.c) 和 [pins_arduino.h](pins_arduino.h)。
+ [pins_arduino.c](pins_arduino.c)  [pins_arduino.h](pins_arduino.h)
 
-| Arduino引脚编号  | STM32引脚编号 | 5V容忍 | 备注  |
+| Arduino  | STM32 | 5V |   |
 | ------------------- | --------- | ---- | ------------------------------------------------------------------------- |
-| 0 (D0) | PH11 | 是 | 板载用户LED |
-| 1 (D1) | PB7 | 是 | Serial-RX，默认被RT-Thread的UART设备框架uart1接管 |
-| 2 (D2) | PA9 | 是 | Serial-TX，默认被RT-Thread的UART设备框架uart1接管 |
-| 3 (D3) | PG9 | 是 | Serial-RX，默认被RT-Thread的UART设备框架uart6接管 |
-| 4 (D4) | PG14 | 是 | Serial-TX，默认被RT-Thread的UART设备框架uart6接管 |
-| 5 (D5) | PF1 | 否 | I2C1-SCL，默认被RT-Thread的I2C设备框架i2c1接管 |
-| 6 (D6) | PF0 | 否 | I2C1-SDA，默认被RT-Thread的I2C设备框架i2c1接管 |
-| 7 (D7) | PE9 | 是 | PWM1-CH1，默认被RT-Thread的PWM设备框架pwm1接管 |
-| 8 (D8) | PE11 | 是 | PWM1-CH2，默认被RT-Thread的PWM设备框架pwm1接管 |
-| 9 (D9) | PE13 | 是 | PWM1-CH3，默认被RT-Thread的PWM设备框架pwm1接管 |
-| 10 (D10) | PE14 | 是 | PWM1-CH4，默认被RT-Thread的PWM设备框架pwm1接管 |
-| 11 (D11) | PC6 | 是 | PWM8-CH1，默认被RT-Thread的PWM设备框架pwm8接管 |
-| 12 (D12) | PI6 | 是 | PWM8-CH2，默认被RT-Thread的PWM设备框架pwm8接管 |
-| 13 (D13) | PI7 | 是 | PWM8-CH3，默认被RT-Thread的PWM设备框架pwm8接管 |
-| 14 (A0) | -- |  | 芯片内部温度 ADC，默认被RT-Thread的ADC设备框架adc1接管 |
-| 15 (A1) | -- |  | 芯片内部参考电压 ADC，默认被RT-Thread的ADC设备框架adc1接管 |
+| 0 (D0) | PH11 |  | LED |
+| 1 (D1) | PB7 |  | Serial-RXRT-ThreadUARTuart1 |
+| 2 (D2) | PA9 |  | Serial-TXRT-ThreadUARTuart1 |
+| 3 (D3) | PG9 |  | Serial-RXRT-ThreadUARTuart6 |
+| 4 (D4) | PG14 |  | Serial-TXRT-ThreadUARTuart6 |
+| 5 (D5) | PF1 |  | I2C1-SCLRT-ThreadI2Ci2c1 |
+| 6 (D6) | PF0 |  | I2C1-SDART-ThreadI2Ci2c1 |
+| 7 (D7) | PE9 |  | PWM1-CH1RT-ThreadPWMpwm1 |
+| 8 (D8) | PE11 |  | PWM1-CH2RT-ThreadPWMpwm1 |
+| 9 (D9) | PE13 |  | PWM1-CH3RT-ThreadPWMpwm1 |
+| 10 (D10) | PE14 |  | PWM1-CH4RT-ThreadPWMpwm1 |
+| 11 (D11) | PC6 |  | PWM8-CH1RT-ThreadPWMpwm8 |
+| 12 (D12) | PI6 |  | PWM8-CH2RT-ThreadPWMpwm8 |
+| 13 (D13) | PI7 |  | PWM8-CH3RT-ThreadPWMpwm8 |
+| 14 (A0) | -- |  |  ADCRT-ThreadADCadc1 |
+| 15 (A1) | -- |  |  ADCRT-ThreadADCadc1 |
 

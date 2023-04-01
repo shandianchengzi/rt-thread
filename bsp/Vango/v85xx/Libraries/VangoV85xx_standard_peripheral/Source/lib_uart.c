@@ -47,7 +47,7 @@ void UART_DeInit(UART_TypeDef *UARTx)
   * @brief  UART initialization.
   * @param  UARTx: UART0~UART5
             InitStruct:UART configuration.
-                Mode: (between UART_MODE_RX and UART_MODE_TX, can use the ¡®|¡¯ operator)
+                Mode: (between UART_MODE_RX and UART_MODE_TX, can use the | operator)
                     UART_MODE_RX
                     UART_MODE_TX
                     UART_MODE_OFF
@@ -158,7 +158,7 @@ uint8_t UART_GetFlag(UART_TypeDef *UARTx, uint32_t FlagMask)
 /**
   * @brief  Clear peripheral flag.
   * @param  UARTx: UART0~UART5
-            FlagMask: status to clear, can use the ¡®|¡¯ operator.
+            FlagMask: status to clear, can use the | operator.
             --UART_FLAG_TXDONE 
             --UART_FLAG_RXPE     
             --UART_FLAG_RXOV     
@@ -177,7 +177,7 @@ void UART_ClearFlag(UART_TypeDef *UARTx, uint32_t FlagMask)
 /**
   * @brief  Enable or disable the specified UART interrupts.
   * @param  UARTx: UART0~UART5
-            INTMask: can use the ¡®|¡¯ operator.
+            INTMask: can use the | operator.
             --UART_INT_TXDONE
             --UART_INT_RXPE   
             --UART_INT_RXOV   
@@ -234,7 +234,7 @@ uint8_t UART_GetINTStatus(UART_TypeDef *UARTx, uint32_t INTMask)
 /**
   * @brief  Clear interrupt status.
   * @param  UARTx: UART0~UART5
-            INTMask: status to clear, can use the ¡®|¡¯ operator.
+            INTMask: status to clear, can use the | operator.
             --UART_INTSTS_TXDONE
             --UART_INTSTS_RXPE  
             --UART_INTSTS_RXOV  

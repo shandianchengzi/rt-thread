@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fusb_private.h
  * Date: 2022-02-11 13:33:11
  * LastEditTime: 2022-02-18 09:21:22
- * Description:  This files is for definition of internal function interface
+ * Description: This files is for definition of internal function interface
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   Zhugengyu  2022/2/7    init commit
  */
 
@@ -49,56 +49,56 @@
 #define FUSB_REG64_SET_BITS(x, a, b)                  (u64)((((u64)(x)) << b) & GENMASK_ULL(a, b))
 
 /************************** Function Prototypes ******************************/
-/* 创建USB控制器实例，添加到USB实例的Hc链表中 */
+/* USBUSBHc */
 FUsbHc *FUsbAllocateHc(FUsb *instance);
 
-/* 删除USB控制器实例，从USB实例的Hc链表中删去 */
+/* USBUSBHc */
 void FUsbDetachHc(FUsbHc *controller);
 
-/* 初始化USB设备 */
+/* USB */
 FUsbDev *FUsbInitDevEntry(FUsbHc *controller, int slot_id);
 
-/* 根据USB设备速度，选择最大包长度 */
+/* USB */
 int FUsbDecodeMaxPacketSz0(FUsbSpeed speed, u8 bMaxPacketSize0);
 
-/* 据设备速度获取最大包长度 */
+/*  */
 int FUsbSpeedtoDefaultMaxPacketSz(FUsbSpeed speed);
 
-/* 配置USB配置描述符解析器 */
+/* USB */
 FError FUsbSetupConfigParser(FUsbDev *dev, const void *buf, u32 buf_len);
 
-/* 去初始化USB配置描述符解析器 */
+/* USB */
 void FUsbRevokeConfigParser(FUsbDev *dev);
 
-/* 初始化字符串描述符解析器 */
+/*  */
 void FUsbSetupStringParser(FUsbDev *dev);
 
-/* 去初始化字符串描述符解析器 */
+/*  */
 void FUsbRevokeStringParser(FUsbDev *dev);
 
-/* 检索字符串描述符，保存在FUsbStringParser结构中 */
+/* FUsbStringParser */
 FError FUsbSearchStringDescriptor(FUsb *instance, FUsbDev *dev, u8 id);
 
-/* 获取刚刚检索到的字符串描述符内容 */
+/*  */
 const char *FUsbGetString(const FUsbDev *const dev);
 
-/* 从配置描述符解析器中获取指定类型的描述符（端点描述符/接口描述符） */
+/* / */
 const FUsbDescriptor *FUsbGetDescriptorFromParser(FUsbConfigParser *parser, FUsbDescriptorType type);
 
-/* 默认的USB设备初始化函数 */
+/* USB */
 void FUsbNopDevInit(FUsbDev *dev);
 
-/* 默认的USB设备初始化函数 */
+/* USB */
 void FUsbGenericDevInit(FUsbDev *dev);
 
-/* 打印设备描述符信息 */
+/*  */
 void FUsbDumpDeviceDescriptor(const FUsbDeviceDescriptor *descriptor);
 
-/* 打印配置描述符信息 */
+/*  */
 void FUsbDumpConfigDescriptor(const FUsbConfigurationDescriptor *descriptor);
 
-/* 打印接口描述符信息 */
+/*  */
 void FUsbDumpInterfaceDescriptor(const FUsbInterfaceDescriptor *descriptor);
 
-/* 打印端点描述符信息 */
+/*  */
 void FUsbDumpEndpointDescriptor(const FUsbEndpointDescriptor *descriptor);

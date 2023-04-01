@@ -9,7 +9,7 @@ typedef enum {
     USBH_MSC_FAIL,
     USBH_MSC_PHASE_ERROR,
     USBH_MSC_BUSY = 0xFF,
-} USBH_MSC_Status;  // 见 CSW.bCSWStatus 取值
+} USBH_MSC_Status;  //  CSW.bCSWStatus 
 
 
 USBH_MSC_Status USBH_MSC_TestUnitReady(void);

@@ -4,7 +4,7 @@ hpm sdk
 :::{eval-rst}
 .. toctree::
    :maxdepth: 1
-   :caption: 目录
+   :caption: 
    :name: HPM README Document
 
    CHANGELOG

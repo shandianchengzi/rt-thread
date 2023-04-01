@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fsdmmc.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:55:23
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   zhugengyu  2021/12/2    init
  */
 
@@ -55,19 +55,19 @@
 
 /*****************************************************************************/
 
-/* 此文件主要为了完成用户对外接口，用户可以使用这些接口直接开始工作 */
+/*  */
 
-/* - 包括用户API的定义和实现
-   - 同时包含必要的OPTION方法，方便用户进行配置
-   - 如果驱动可以直接进行I/O操作，在此源文件下可以将API 进行实现 */
+/* - API
+   - OPTION
+   - I/OAPI  */
 
 /**
  * @name: FSdmmcCfgInitialize
- * @msg: 初始化FSDMMC控制器, 使之可以使用
- * @return {FError} 驱动初始化的错误码信息，FSDMMC_SUCCESS 表示初始化成功，其它返回值表示初始化失败
- * @param {FSdmmc} *instance_p FSDMMC驱动控制数据
- * @param {FSdmmcConfig} *input_config_p FSDMMC用户输入配置
- * @note 输入配置通过FSdmmcLookupConfig获取，用户按照需要修改后传入此函数
+ * @msg: FSDMMC, 
+ * @return {FError} FSDMMC_SUCCESS 
+ * @param {FSdmmc} *instance_p FSDMMC
+ * @param {FSdmmcConfig} *input_config_p FSDMMC
+ * @note FSdmmcLookupConfig
  */
 FError FSdmmcCfgInitialize(FSdmmc *instance_p, const FSdmmcConfig *input_config_p)
 {
@@ -117,9 +117,9 @@ FError FSdmmcCfgInitialize(FSdmmc *instance_p, const FSdmmcConfig *input_config_
 
 /**
  * @name: FSdmmcDeInitialize
- * @msg: 去使能FSDMMC控制器, 清零实例数据
+ * @msg: FSDMMC, 
  * @return {*}
- * @param {FSdmmc} *instance_p FSDMMC驱动控制数据
+ * @param {FSdmmc} *instance_p FSDMMC
  */
 void FSdmmcDeInitialize(FSdmmc *instance_p)
 {
@@ -133,9 +133,9 @@ void FSdmmcDeInitialize(FSdmmc *instance_p)
 
 /**
  * @name: FSdmmcMakeRawCmd
- * @msg: 组装生成待发送的命令
+ * @msg: 
  * @return {*}
- * @param {FSdmmcCmd} *cmd_p 命令控制数据
+ * @param {FSdmmcCmd} *cmd_p 
  */
 u32 FSdmmcMakeRawCmd(FSdmmcCmd *cmd_p)
 {
@@ -149,7 +149,7 @@ u32 FSdmmcMakeRawCmd(FSdmmcCmd *cmd_p)
     raw_cmd |= FSDMMC_CMD_SETTING_CMDI(cmd_p->cmdidx);
 
     if (cmd_p->flag & FSDMMC_CMD_FLAG_ADTC)
-        raw_cmd |= FSDMMC_CMD_SETTING_TRTY(0b10); /* adtc指令 */
+        raw_cmd |= FSDMMC_CMD_SETTING_TRTY(0b10); /* adtc */
 
     if (0 == (cmd_p->flag & FSDMMC_CMD_FLAG_EXP_RESP))
         raw_cmd |= FSDMMC_CMD_NO_RESP;
@@ -163,10 +163,10 @@ u32 FSdmmcMakeRawCmd(FSdmmcCmd *cmd_p)
 
 /**
  * @name: FSdmmcWaitCmdEnd
- * @msg: 阻塞等待命令发送完成，获取命令返回的响应
- * @return {FError} FSDMMC_SUCCESS表示命令发送成功，其它表示命令发送失败
- * @param {uintptr} base_addr FSDMMC控制器基地址
- * @param {FSdmmcCmd} *cmd_p 命令控制数据
+ * @msg: 
+ * @return {FError} FSDMMC_SUCCESS
+ * @param {uintptr} base_addr FSDMMC
+ * @param {FSdmmcCmd} *cmd_p 
  */
 static FError FSdmmcWaitCmdEnd(uintptr base_addr, FSdmmcCmd *cmd_p)
 {
@@ -206,10 +206,10 @@ static FError FSdmmcWaitCmdEnd(uintptr base_addr, FSdmmcCmd *cmd_p)
 
 /**
  * @name: FSdmmcSendCmd
- * @msg: 发送命令
- * @return {FError} FSDMMC_SUCCESS表示命令发送成功，其它表示命令发送失败
- * @param {uintptr} base_addr FSDMMC控制器基地址
- * @param {FSdmmcCmd} *cmd_p 命令控制数据
+ * @msg: 
+ * @return {FError} FSDMMC_SUCCESS
+ * @param {uintptr} base_addr FSDMMC
+ * @param {FSdmmcCmd} *cmd_p 
  */
 void FSdmmcSendCmd(uintptr base_addr, FSdmmcCmd *cmd_p)
 {
@@ -221,10 +221,10 @@ void FSdmmcSendCmd(uintptr base_addr, FSdmmcCmd *cmd_p)
 
 /**
  * @name: FSdmmcTransferCmdPoll
- * @msg: 通过FSDMMC轮询方式发送命令，阻塞等待命令返回
+ * @msg: FSDMMC
  * @return {*}
- * @param {uintptr} base_addr FSDMMC控制器基地址
- * @param {FSdmmcCmd} *cmd_p 命令控制数据
+ * @param {uintptr} base_addr FSDMMC
+ * @param {FSdmmcCmd} *cmd_p 
  */
 static FError FSdmmcTransferCmdPoll(uintptr base_addr, FSdmmcCmd *cmd_p)
 {
@@ -235,10 +235,10 @@ static FError FSdmmcTransferCmdPoll(uintptr base_addr, FSdmmcCmd *cmd_p)
 
 /**
  * @name: FSdmmcSendAdtcCmd
- * @msg: 发送ADTC命令
+ * @msg: ADTC
  * @return {*}
- * @param {uintptr} base_addr FSDMMC控制器基地址
- * @param {FSdmmcCmd} *cmd_p 命令控制数据
+ * @param {uintptr} base_addr FSDMMC
+ * @param {FSdmmcCmd} *cmd_p 
  */
 static void FSdmmcSendAdtcCmd(uintptr base_addr, FSdmmcCmd *cmd_p)
 {
@@ -246,18 +246,18 @@ static void FSdmmcSendAdtcCmd(uintptr base_addr, FSdmmcCmd *cmd_p)
     u32 raw_cmd = FSdmmcMakeRawCmd(cmd_p);
 
     FSdmmcClearNormalInterruptStatus(base_addr);
-    raw_cmd |= FSDMMC_CMD_SETTING_TRTY(0b10); /* adtc指令 */
+    raw_cmd |= FSDMMC_CMD_SETTING_TRTY(0b10); /* adtc */
     FSDMMC_WRITE_REG(base_addr, FSDMMC_CMD_SETTING_REG_OFFSET, raw_cmd);
     return;
 }
 
 /**
  * @name: FSdmmcSendData
- * @msg: 发送数据
+ * @msg: 
  * @return {*}
- * @param {uintptr} base_addr FSDMMC控制器基地址
- * @param {boolean} read TREU: 读数据 FALSE: 写数据
- * @param {FSdmmcCmd} *cmd_p 命令控制数据
+ * @param {uintptr} base_addr FSDMMC
+ * @param {boolean} read TREU:  FALSE: 
+ * @param {FSdmmcCmd} *cmd_p 
  */
 FError FSdmmcSendData(uintptr base_addr, boolean read, FSdmmcCmd *cmd_p)
 {
@@ -310,10 +310,10 @@ FError FSdmmcSendData(uintptr base_addr, boolean read, FSdmmcCmd *cmd_p)
 
 /**
  * @name: FSdmmcTransferDataPoll
- * @msg: 通过FSDMMC轮询方式发送数据，阻塞等待数据返回
+ * @msg: FSDMMC
  * @return {*}
- * @param {uintptr} base_addr FSDMMC控制器基地址
- * @param {FSdmmcCmd} *cmd_p 待发送数据
+ * @param {uintptr} base_addr FSDMMC
+ * @param {FSdmmcCmd} *cmd_p 
  */
 static FError FSdmmcTransferDataPoll(uintptr base_addr, FSdmmcCmd *cmd_p)
 {
@@ -340,11 +340,11 @@ static FError FSdmmcTransferDataPoll(uintptr base_addr, FSdmmcCmd *cmd_p)
 
 /**
  * @name: FSdmmcPollTransfer
- * @msg: 通过FSDMMC轮询方式发送/接收数据和命令
- * @return {FError} 驱动初始化的错误码信息，FSDMMC_SUCCESS 表示发送/接收成功，其它返回值表示发送/接收失败
- * @param {FSdmmc} *instance_p FSDMMC驱动控制数据
- * @param {FSdmmcCmd} *cmd_data_p FSDMMC数据和命令
- * @note FSDMMC控制器初始化后才能调用此函数
+ * @msg: FSDMMC/
+ * @return {FError} FSDMMC_SUCCESS //
+ * @param {FSdmmc} *instance_p FSDMMC
+ * @param {FSdmmcCmd} *cmd_data_p FSDMMC
+ * @note FSDMMC
  */
 FError FSdmmcPollTransfer(FSdmmc *instance_p, FSdmmcCmd *cmd_data_p)
 {

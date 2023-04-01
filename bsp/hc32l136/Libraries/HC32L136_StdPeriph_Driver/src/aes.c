@@ -85,14 +85,14 @@
  ******************************************************************************/
 /**
  * \brief   
- *          ADC初始化
+ *          ADC
  *
- * \param   [in]   pu32Data    待加密数据
- * \param   [in]   pu32Key     加密KEY
- * \param   [out]  pu32Cipher  加密后数据
+ * \param   [in]   pu32Data    
+ * \param   [in]   pu32Key     KEY
+ * \param   [out]  pu32Cipher  
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  */
 en_result_t AES_Encrypt(uint32_t* pu32Data, uint32_t *pu32Key, uint32_t *pu32Cipher)
 {
@@ -129,14 +129,14 @@ en_result_t AES_Encrypt(uint32_t* pu32Data, uint32_t *pu32Key, uint32_t *pu32Cip
 
 /**
  * \brief   
- *          ADC初始化
+ *          ADC
  *
- * \param   [in]   pu32Cipher  待解密数据
- * \param   [in]   pu32Key     加密KEY
- * \param   [out]  pu32Data    解密后数据
+ * \param   [in]   pu32Cipher  
+ * \param   [in]   pu32Key     KEY
+ * \param   [out]  pu32Data    
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  */
 en_result_t AES_Decrypt(uint32_t *pu32Cipher,uint32_t *pu32Key, uint32_t* pu32Plaintext)
 {

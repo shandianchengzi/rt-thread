@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fusb.c
  * Date: 2022-02-11 13:33:11
  * LastEditTime: 2022-02-18 09:22:06
- * Description:  This files is for implmentation of USB user API
+ * Description: This files is for implmentation of USB user API
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0  Zhugengyu  2022/2/8     init commit
  */
 
@@ -47,11 +47,11 @@
 
 /**
  * @name: FUsbCfgInitialize
- * @msg: 初始化USB实例
- * @return {FError} 初始化错误码
- * @param {FUsb} *instance, USB实例
- * @param {const FUsbConfig} *input_config, USB输入配置
- * @note 在PCIE模式下，USB Hc实例在PCIE总线发现控制器后创建
+ * @msg: USB
+ * @return {FError} 
+ * @param {FUsb} *instance, USB
+ * @param {const FUsbConfig} *input_config, USB
+ * @note PCIEUSB HcPCIE
  */
 FError FUsbCfgInitialize(FUsb *instance, const FUsbConfig *input_config)
 {
@@ -77,9 +77,9 @@ FError FUsbCfgInitialize(FUsb *instance, const FUsbConfig *input_config)
 
 /**
  * @name: FUsbDeInitialize
- * @msg: 去初始化USB实例
+ * @msg: USB
  * @return {*}
- * @param {FUsb} *instance, USB实例
+ * @param {FUsb} *instance, USB
  */
 void FUsbDeInitialize(FUsb *instance)
 {
@@ -98,9 +98,9 @@ void FUsbDeInitialize(FUsb *instance)
 
 /**
  * @name: FUsbPoll
- * @msg: 轮询所有的USB控制器连接的所有设备, 更新设备拓扑
+ * @msg: USB, 
  * @return {*}
- * @param {FUsb} *instance, USB实例
+ * @param {FUsb} *instance, USB
  */
 void FUsbPoll(FUsb *instance)
 {
@@ -133,9 +133,9 @@ void FUsbPoll(FUsb *instance)
 
 /**
  * @name: FUsbExit
- * @msg: 关闭所有的USB控制器，移除所有连接的设备
+ * @msg: USB
  * @return {*}
- * @param {FUsb} *instance, USB实例
+ * @param {FUsb} *instance, USB
  */
 void FUsbExit(FUsb *instance)
 {
@@ -165,11 +165,11 @@ void FUsbExit(FUsb *instance)
 
 /**
  * @name: FUsbMempAllocate
- * @msg: 从USB内存池分配一块内存，并清零分配的空间
- * @return {void *} 分配的内存空间，如果失败返回NULL
- * @param {FUsb} *instance, USB实例
- * @param {size_t} size, 请求分配的字节数
- * @param {size_t} align, 分配空间的对齐方式，起始地址按align字节对齐
+ * @msg: USB
+ * @return {void *} NULL
+ * @param {FUsb} *instance, USB
+ * @param {size_t} size, 
+ * @param {size_t} align, align
  */
 void *FUsbMempAllocate(FUsb *instance, size_t size, size_t align)
 {
@@ -187,10 +187,10 @@ void *FUsbMempAllocate(FUsb *instance, size_t size, size_t align)
 
 /**
  * @name: FUsbMempFree
- * @msg: 释放从USB内存池分配的空间
+ * @msg: USB
  * @return {*}
- * @param {FUsb} *instance, USB实例
- * @param {void} *ptr, 待释放空间的首地址
+ * @param {FUsb} *instance, USB
+ * @param {void} *ptr, 
  */
 void FUsbMempFree(FUsb *instance, void *ptr)
 {
@@ -240,9 +240,9 @@ void FUsbMempFreeTag(FUsb *instance, void *ptr)
 
 /**
  * @name: FUsbAllocateHc
- * @msg: 创建USB控制器实例，添加到USB实例的Hc链表中
+ * @msg: USBUSBHc
  * @return {*}
- * @param {FUsb} *instance, USB实例
+ * @param {FUsb} *instance, USB
  */
 FUsbHc *FUsbAllocateHc(FUsb *instance)
 {
@@ -256,9 +256,9 @@ FUsbHc *FUsbAllocateHc(FUsb *instance)
 
 /**
  * @name: FUsbDetachHc
- * @msg: 删除USB控制器实例，从USB实例的Hc链表中删去
+ * @msg: USBUSBHc
  * @return {*}
- * @param {FUsbHc} *controller, USB控制器实例
+ * @param {FUsbHc} *controller, USB
  */
 void FUsbDetachHc(FUsbHc *controller)
 {
@@ -273,10 +273,10 @@ void FUsbDetachHc(FUsbHc *controller)
 
 /**
  * @name: FUsbFindValidInitFunc
- * @msg: 寻找特定USB设备的初始化函数
+ * @msg: USB
  * @return {*}
- * @param {FUsb} *instance, USB实例
- * @param {FUsbDevIndex} *index, 特定USB设备的索引
+ * @param {FUsb} *instance, USB
+ * @param {FUsbDevIndex} *index, USB
  */
 static FUsbDevInitHandler FUsbFindValidInitFunc(FUsb *instance, const FUsbDevIndex *index)
 {
@@ -302,11 +302,11 @@ static FUsbDevInitHandler FUsbFindValidInitFunc(FUsb *instance, const FUsbDevInd
 
 /**
  * @name: FUsbAssignDevInitFunc
- * @msg: 指定特定USB设备的初始化函数，供创建USB设备实例时使用
- * @return {FError} 处理返回错误码
- * @param {FUsb} *instance, USB实例
- * @param {FUsbDevIndex} *index, 特定USB设备的索引
- * @param {FUsbDevInitHandler} handler, 特定USB设备的初始化函数
+ * @msg: USBUSB
+ * @return {FError} 
+ * @param {FUsb} *instance, USB
+ * @param {FUsbDevIndex} *index, USB
+ * @param {FUsbDevInitHandler} handler, USB
  */
 FError FUsbAssignDevInitFunc(FUsb *instance, const FUsbDevIndex *index, FUsbDevInitHandler handler)
 {
@@ -328,10 +328,10 @@ FError FUsbAssignDevInitFunc(FUsb *instance, const FUsbDevIndex *index, FUsbDevI
 
 /**
  * @name: FUsbInitDevEntry
- * @msg: 初始化USB设备
+ * @msg: USB
  * @return {*}
  * @param {FUsbHc} *controller, USB Hc
- * @param {int} slot_id，slot号
+ * @param {int} slot_idslot
  */
 FUsbDev *FUsbInitDevEntry(FUsbHc *controller, int slot_id)
 {
@@ -365,11 +365,11 @@ FUsbDev *FUsbInitDevEntry(FUsbHc *controller, int slot_id)
 
 /**
  * @name: FUsbGetAllDevEntries
- * @msg: 获取USB控制器上连接的所有USB设备实例
- * @return {size_t} 实际获取的USB设备实例数目
- * @param {FUsbHc} *controller, USB控制器实例
- * @param {FUsbDev} *devs, 放置USB设备实例的缓冲区
- * @param {size_t} max_dev_num, 最多可以获取的USB设备实例数目
+ * @msg: USBUSB
+ * @return {size_t} USB
+ * @param {FUsbHc} *controller, USB
+ * @param {FUsbDev} *devs, USB
+ * @param {size_t} max_dev_num, USB
  */
 size_t FUsbGetAllDevEntries(FUsbHc *controller, FUsbDev *devs[], size_t max_dev_num)
 {
@@ -396,10 +396,10 @@ size_t FUsbGetAllDevEntries(FUsbHc *controller, FUsbDev *devs[], size_t max_dev_
 
 /**
  * @name: FUsbDecodeMaxPacketSz0
- * @msg: 根据USB设备速度，选择最大包长度
- * @return {*} 输出最大包长度
- * @param {FUsbSpeed} speed, USB设备速度类型
- * @param {u8} bMaxPacketSize0, 输入最大包长度
+ * @msg: USB
+ * @return {*} 
+ * @param {FUsbSpeed} speed, USB
+ * @param {u8} bMaxPacketSize0, 
  */
 int FUsbDecodeMaxPacketSz0(FUsbSpeed speed, u8 bMaxPacketSize0)
 {
@@ -447,12 +447,12 @@ int FUsbDecodeMaxPacketSz0(FUsbSpeed speed, u8 bMaxPacketSize0)
 
 /**
  * @name: FUsbSetFeature
- * @msg: 标准USB主机请求，使能设备/接口/端点的某个特性
- * @return {FUsbTransCode} 控制传输的返回值，小于0表示失败，大于0表示成功传输的字节数目
- * @param {FUsbDev} *dev, USB设备实例
- * @param {int} endp, 设备号(0x00)/接口号/端点号
- * @param {int} feature, 待使能的特性
- * @param {int} rtype, 请求类型，由FUsbGenerateReqType生成
+ * @msg: USB//
+ * @return {FUsbTransCode} 00
+ * @param {FUsbDev} *dev, USB
+ * @param {int} endp, (0x00)//
+ * @param {int} feature, 
+ * @param {int} rtype, FUsbGenerateReqType
  */
 FUsbTransCode FUsbSetFeature(FUsbDev *dev, int endp, int feature, int rtype)
 {
@@ -471,13 +471,13 @@ FUsbTransCode FUsbSetFeature(FUsbDev *dev, int endp, int feature, int rtype)
 
 /**
  * @name: FUsbGetStatus
- * @msg: 标准USB主机请求，获取设备/接口/端点的状态
- * @return {FUsbTransCode} 控制传输的返回值，小于0表示失败，大于0表示成功传输的字节数目
- * @param {FUsbDev} *dev, USB设备实例
- * @param {int} intf，设备号(0x00)/接口号/端点号
- * @param {int} rtype, 请求类型，由FUsbGenerateReqType生成
- * @param {int} len, Data Stage的数据长度
- * @param {void} *data, Data Stage的数据缓冲区
+ * @msg: USB//
+ * @return {FUsbTransCode} 00
+ * @param {FUsbDev} *dev, USB
+ * @param {int} intf(0x00)//
+ * @param {int} rtype, FUsbGenerateReqType
+ * @param {int} len, Data Stage
+ * @param {void} *data, Data Stage
  */
 FUsbTransCode FUsbGetStatus(FUsbDev *dev, int intf, int rtype, int len, void *data)
 {
@@ -496,14 +496,14 @@ FUsbTransCode FUsbGetStatus(FUsbDev *dev, int intf, int rtype, int len, void *da
 
 /**
  * @name: FUsbGetDescriptor
- * @msg: 标准USB主机请求，获取指定描述符
- * @return {FUsbTransCode} 控制传输的返回值，小于0表示失败，大于0表示成功传输的字节数目
- * @param {FUsbDev} *dev, USB设备实例
- * @param {int} rtype, 请求类型，由FUsbGenerateReqType生成
- * @param {FUsbDescriptorType} desc_type, 描述符类型
- * @param {int} desc_idx, 描述符索引
- * @param {void} *data, Data Stage的数据缓冲区
- * @param {size_t} len, Data Stage的数据长度
+ * @msg: USB
+ * @return {FUsbTransCode} 00
+ * @param {FUsbDev} *dev, USB
+ * @param {int} rtype, FUsbGenerateReqType
+ * @param {FUsbDescriptorType} desc_type, 
+ * @param {int} desc_idx, 
+ * @param {void} *data, Data Stage
+ * @param {size_t} len, Data Stage
  */
 FUsbTransCode FUsbGetDescriptor(FUsbDev *dev, int rtype, FUsbDescriptorType desc_type, int desc_idx, void *data,
                                 size_t len)
@@ -535,15 +535,15 @@ FUsbTransCode FUsbGetDescriptor(FUsbDev *dev, int rtype, FUsbDescriptorType desc
 
 /**
  * @name: FUsbGetStringDescriptor
- * @msg: USB主机请求，获取字符串描述符
- * @return {int} 控制传输的返回值，小于0表示失败，大于0表示成功传输的字节数目
- * @param {FUsbDev} *dev, USB设备实例
- * @param {int} rtype, 请求类型，由FUsbGenerateReqType生成
- * @param {int} desc_type, 描述符类型
- * @param {int} desc_idx, 描述符索引
- * @param {int} lang_id, 语言类型
- * @param {void} *data, Data Stage的数据缓冲区
- * @param {size_t} len, Data Stage的数据长度
+ * @msg: USB
+ * @return {int} 00
+ * @param {FUsbDev} *dev, USB
+ * @param {int} rtype, FUsbGenerateReqType
+ * @param {int} desc_type, 
+ * @param {int} desc_idx, 
+ * @param {int} lang_id, 
+ * @param {void} *data, Data Stage
+ * @param {size_t} len, Data Stage
  */
 FUsbTransCode FUsbGetStringDescriptor(FUsbDev *dev, int rtype, FUsbDescriptorType desc_type, int desc_idx, int lang_id, void *data, size_t len)
 {
@@ -572,9 +572,9 @@ FUsbTransCode FUsbGetStringDescriptor(FUsbDev *dev, int rtype, FUsbDescriptorTyp
 
 /**
  * @name: FUsbSetConfiguration
- * @msg: 标准USB主机请求，设置配置值
- * @return {FUsbTransCode} 控制传输的返回值，小于0表示失败，大于0表示成功传输的字节数目
- * @param {FUsbDev} *dev, USB设备实例
+ * @msg: USB
+ * @return {FUsbTransCode} 00
+ * @param {FUsbDev} *dev, USB
  */
 FUsbTransCode FUsbSetConfiguration(FUsbDev *dev)
 {
@@ -592,12 +592,12 @@ FUsbTransCode FUsbSetConfiguration(FUsbDev *dev)
 
 /**
  * @name: FUsbClearFeature
- * @msg: 标准USB主机请求，去使能设备/接口/端点的某个特性
- * @return {FUsbTransCode} 控制传输的返回值，小于0表示失败，大于0表示成功传输的字节数目
- * @param {FUsbDev} *dev, USB设备实例
- * @param {int} endp, 设备号(0x00)/接口号/端点号
- * @param {int} feature，待去除的特性
- * @param {int} rtype, 请求类型，由FUsbGenerateReqType生成
+ * @msg: USB//
+ * @return {FUsbTransCode} 00
+ * @param {FUsbDev} *dev, USB
+ * @param {int} endp, (0x00)//
+ * @param {int} feature
+ * @param {int} rtype, FUsbGenerateReqType
  */
 FUsbTransCode FUsbClearFeature(FUsbDev *dev, int endp, int feature, int rtype)
 {
@@ -616,9 +616,9 @@ FUsbTransCode FUsbClearFeature(FUsbDev *dev, int endp, int feature, int rtype)
 
 /**
  * @name: FUsbSpeedtoDefaultMaxPacketSz
- * @msg: 根据设备速度获取最大包长度
- * @return {int} 最大包长度
- * @param {FUsbSpeed} speed, 设备速度类型
+ * @msg: 
+ * @return {int} 
+ * @param {FUsbSpeed} speed, 
  */
 int FUsbSpeedtoDefaultMaxPacketSz(FUsbSpeed speed)
 {
@@ -639,11 +639,11 @@ int FUsbSpeedtoDefaultMaxPacketSz(FUsbSpeed speed)
 
 /**
  * @name: FUsbDecodeInterval
- * @msg: 获取USB传输间隔时间
- * @return {int} 传输间隔时间, 0表示失败
- * @param {FUsbSpeed} speed, USB设备速度类型
- * @param {FUsbEpType} type, 端点类型
- * @param {unsigned char} bInterval, 设置的间隔时间
+ * @msg: USB
+ * @return {int} , 0
+ * @param {FUsbSpeed} speed, USB
+ * @param {FUsbEpType} type, 
+ * @param {unsigned char} bInterval, 
  */
 static int FUsbDecodeInterval(FUsbSpeed speed, const FUsbEpType type, const unsigned char bInterval)
 {
@@ -698,12 +698,12 @@ static int FUsbDecodeInterval(FUsbSpeed speed, const FUsbEpType type, const unsi
 
 /**
  * @name: FUsbSetAddress
- * @msg: 获取USB设备的描述符信息，根据USB设备类型完成配置和初始化
- * @return {FUsbDevAddr} 为USB设备分配的地址，-1表示USB设备初始化失败
- * @param {FUsbHc} *controller, USB控制器实例
- * @param {FUsbSpeed} speed, USB设备速度类型
- * @param {int} hubport, USB设备连接的Hub端口号
- * @param {int} hubaddr, USB设备连接Hub的地址
+ * @msg: USBUSB
+ * @return {FUsbDevAddr} USB-1USB
+ * @param {FUsbHc} *controller, USB
+ * @param {FUsbSpeed} speed, USB
+ * @param {int} hubport, USBHub
+ * @param {int} hubaddr, USBHub
  */
 static FUsbDevAddr FUsbSetAddress(FUsbHc *controller, FUsbSpeed speed, int hubport, int hubaddr)
 {
@@ -924,10 +924,10 @@ static FUsbDevAddr FUsbSetAddress(FUsbHc *controller, FUsbSpeed speed, int hubpo
 
 /**
  * @name: FUsbDetachDev
- * @msg: 从USB主机移除指定USB设备(USB设备驱动使用)
+ * @msg: USBUSB(USB)
  * @return {*}
- * @param {FUsbHc} *controller, USB控制器实例
- * @param {int} devno, USB设备索引
+ * @param {FUsbHc} *controller, USB
+ * @param {int} devno, USB
  * @note Should be called by the hub drivers whenever a physical detach occurs
  * and can be called by USB class drivers if they are unsatisfied with a
  * malfunctioning device.
@@ -960,12 +960,12 @@ void FUsbDetachDev(FUsbHc *controller, int devno)
 
 /**
  * @name: FUsbAttachDev
- * @msg: 向USB主机添加USB设备(USB设备驱动使用)
- * @return {FUsbDevAddr} 分配的USB设备地址
- * @param {FUsbHc} *controller, USB控制器实例
- * @param {int} hubaddress, Hub地址
- * @param {int} port, 连接的Port
- * @param {FUsbSpeed} speed, USB设备的设置速度类型
+ * @msg: USBUSB(USB)
+ * @return {FUsbDevAddr} USB
+ * @param {FUsbHc} *controller, USB
+ * @param {int} hubaddress, Hub
+ * @param {int} port, Port
+ * @param {FUsbSpeed} speed, USB
  */
 FUsbDevAddr FUsbAttachDev(FUsbHc *controller, int hubaddress, int port, FUsbSpeed speed)
 {
@@ -988,9 +988,9 @@ FUsbDevAddr FUsbAttachDev(FUsbHc *controller, int hubaddress, int port, FUsbSpee
 
 /**
  * @name: FUsbGenericDestory
- * @msg: 一般USB设备去初始化函数
+ * @msg: USB
  * @return {*}
- * @param {FUsbDev} *dev, USB设备实例
+ * @param {FUsbDev} *dev, USB
  */
 static void FUsbGenericDestory(FUsbDev *dev)
 {
@@ -1002,9 +1002,9 @@ static void FUsbGenericDestory(FUsbDev *dev)
 
 /**
  * @name: FUsbGenericDevInit
- * @msg: 默认的USB设备初始化函数
+ * @msg: USB
  * @return {*}
- * @param {FUsbDev} *dev, USB设备实例
+ * @param {FUsbDev} *dev, USB
  */
 void FUsbGenericDevInit(FUsbDev *dev)
 {

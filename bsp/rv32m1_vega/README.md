@@ -1,6 +1,6 @@
 # RISC-V RV32M1 VEGA Board BSP(Board Support Package) Execution Instruction
 
-[中文页](README_zh.md) |
+[](README_zh.md) |
 
 ## Introduction
 
@@ -27,7 +27,7 @@ It's recommended to use the [env tool](https://www.rt-thread.io/download.html?do
 scons
 ```
 
-If successfully compiled, a new 'rtthread.elf' and 'rtthread.bin' file will be generated. ‘rtthread.bin' needs to be burned to the device and run.
+If successfully compiled, a new 'rtthread.elf' and 'rtthread.bin' file will be generated. rtthread.bin' needs to be burned to the device and run.
 
 ## Burn and Execution
 

@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: faarch32.h
  * Date: 2022-02-10 14:53:41
  * LastEditTime: 2022-02-17 17:28:37
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   Huanghe     2021/7/3     init
  * 1.1   Wangxiaodong  2021/9/24    modify sys_icc_bpr_set and sys_icc_bpr_get
  */
@@ -36,7 +36,7 @@ extern "C"
 #define __ASM __asm
 #define __STATIC_INLINE static inline
 #define __STRINGIFY(x) #x
-/* C语言实现MCR指令 */
+/* CMCR */
 #define __MCR(coproc, opcode_1, src, CRn, CRm, opcode_2)                                                                                                   \
     __ASM volatile("MCR " __STRINGIFY(p##coproc) ", " __STRINGIFY(opcode_1) ", "                                                                           \
                                                                             "%0, " __STRINGIFY(c##CRn) ", " __STRINGIFY(c##CRm) ", " __STRINGIFY(opcode_2) \
@@ -44,7 +44,7 @@ extern "C"
                    : "r"(src)                                                                                                                              \
                    : "memory");
 
-/* C语言实现MRC指令 */
+/* CMRC */
 #define __MRC(coproc, opcode_1, CRn, CRm, opcode_2)                                                                                                                \
     (                                                                                                                                                              \
         {                                                                                                                                                          \
@@ -55,7 +55,7 @@ extern "C"
             __dst;                                                                                                                                                 \
         })
 
-/* C语言实现MRRC指令 */
+/* CMRRC */
 #define __MRRC(coproc, opcode_1, dst_1, dst_2, CRm) (                                              \
     {                                                                                              \
         __asm__ __volatile__(                                                                      \

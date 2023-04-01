@@ -128,9 +128,9 @@ void DCMI_SetCROPConfig(uint8_t OnOff, uint32_t VStart, uint32_t HStart, uint32_
     }
 }
 /**
- * @brief 摄像头捕获开关
+ * @brief 
  *
- * @param OnOff 0： 关 1： 开
+ * @param OnOff 0  1 
  */
 void DCMI_CaptureSwitch(uint8_t OnOff, uint32_t BufLen, uint32_t ImageW, uint32_t ImageH, uint8_t DataByte, uint32_t *OutH)
 {

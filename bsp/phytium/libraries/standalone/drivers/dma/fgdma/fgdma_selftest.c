@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fgdma_selftest.c
  * Date: 2022-05-20 13:39:27
  * LastEditTime: 2022-05-20 13:39:27
- * Description:  This files is for self test implementation
+ * Description: This files is for self test implementation
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   huanghe    2021-11-5    init commit
  * 1.1   zhugengyu  2022-5-16    modify according to tech manual.
  */
@@ -47,10 +47,10 @@
 /****************************************************************************/
 /**
  * @name: FGdmaDumpRegisterVals
- * @msg: 打印当前的GDMA寄存器值
- * @return {void} 无
- * @param {uintptr} base_addr, GDMA控制器基地址
- * @param {u32} max_chan, 打印从 0 ~ max_chan 的通道寄存器值
+ * @msg: GDMA
+ * @return {void} 
+ * @param {uintptr} base_addr, GDMA
+ * @param {u32} max_chan,  0 ~ max_chan 
  */
 void FGdmaDumpRegisterVals(uintptr base_addr, u32 max_chan)
 {

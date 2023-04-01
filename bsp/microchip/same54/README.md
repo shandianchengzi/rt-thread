@@ -1,6 +1,6 @@
 # SAME54P20A BSP Introduction
 
-[中文](README_zh.md) 
+[](README_zh.md) 
 - MCU: ATSAME54P20A @120MHz, 1MB FLASH, 256KB RAM
 - E54: Cortex-M4F + Advanced Feature Set + Ethernet + 2x CAN-FD
 - Pin: G=48 pins, J=64 pins, N=100 pins, P=128 pins
@@ -11,7 +11,7 @@
 #### KEY FEATURES
 
 #### Core
-  - 32-bit Arm® Cortex®-M4 core with single-precision FPU and 4 KB combined instruction cache and data cache; frequency up to 120 MHz, MPU, 403 CoreMark® at 120 MHz, and DSP instructions
+  - 32-bit Arm Cortex-M4 core with single-precision FPU and 4 KB combined instruction cache and data cache; frequency up to 120 MHz, MPU, 403 CoreMark at 120 MHz, and DSP instructions
 
 #### Memories
   - 1 MB/512 KB/256 KB in-system self-programmable Flash with:
@@ -43,8 +43,8 @@
   - Compliant with JDEC specification, MMC memory cards V4.51
   - One Quad I/O Serial Peripheral Interface (QSPI)
   - Dedicated AHB memory zone
-  - One Ethernet MAC (SAM E53 and SAM E54)– 10/100 Mbps in MII and RMII with dedicated DMA
-  - IEEE® 1588 Precision Time Protocol (PTP) support
+  - One Ethernet MAC (SAM E53 and SAM E54) 10/100 Mbps in MII and RMII with dedicated DMA
+  - IEEE 1588 Precision Time Protocol (PTP) support
   - IEEE 1588 Time Stamping Unit (TSU) support
   - IEEE802.3AZ energy efficiency support
   - Support for 802.1AS and 1588 precision clock synchronization protocol
@@ -92,7 +92,7 @@
   - Up to 99 programmable I/O pins
 
 #### Qualification
-  - AEC-Q100 Grade 1 (-40°C to 125°C)
+  - AEC-Q100 Grade 1 (-40C to 125C)
 
 #### Package Type
   - VQFN48,    48-lead VQFN, 7x7 mm,   pitch 0.5 mm, I/O Pins up to 37

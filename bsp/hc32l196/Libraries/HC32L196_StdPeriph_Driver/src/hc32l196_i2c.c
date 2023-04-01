@@ -66,11 +66,11 @@
 
 /**
  ******************************************************************************
- ** \brief  I2C设置波特率配置寄存器
+ ** \brief  I2C
  **
- ** \param [in] u8Tm 波特率配置值
+ ** \param [in] u8Tm 
  **
- ** \retval enRet 成功或失败
+ ** \retval enRet 
  **
  ******************************************************************************/
  en_result_t I2C_SetBaud(M0P_I2C_TypeDef* I2Cx, uint8_t u8Tm)
@@ -84,11 +84,11 @@
  }
  /**
  ******************************************************************************
- ** \brief  I2C功能设置相关函数
+ ** \brief  I2C
  **
- ** \param [in] enFunc功能参数
+ ** \param [in] enFunc
  **
- ** \retval enRet 成功或失败
+ ** \retval enRet 
  **
  ******************************************************************************/
 en_result_t I2C_SetFunc(M0P_I2C_TypeDef* I2Cx, en_i2c_func_t enFunc)
@@ -102,11 +102,11 @@ en_result_t I2C_SetFunc(M0P_I2C_TypeDef* I2Cx, en_i2c_func_t enFunc)
 }
  /**
  ******************************************************************************
- ** \brief  I2C功能清除相关函数
+ ** \brief  I2C
  **
- ** \param [in] enFunc功能参数
+ ** \param [in] enFunc
  **
- ** \retval enRet 成功或失败
+ ** \retval enRet 
  **
  ******************************************************************************/
  en_result_t I2C_ClearFunc(M0P_I2C_TypeDef* I2Cx, en_i2c_func_t enFunc)
@@ -120,11 +120,11 @@ en_result_t I2C_SetFunc(M0P_I2C_TypeDef* I2Cx, en_i2c_func_t enFunc)
  }
  /**
  ******************************************************************************
- ** \brief  I2C获取中断标记函数
+ ** \brief  I2C
  **
- ** \param 无
+ ** \param 
  **
- ** \retval bIrq中断标记
+ ** \retval bIrq
  **
  ******************************************************************************/
 boolean_t I2C_GetIrq(M0P_I2C_TypeDef* I2Cx)
@@ -140,11 +140,11 @@ boolean_t I2C_GetIrq(M0P_I2C_TypeDef* I2Cx)
 }
 /**
  ******************************************************************************
- ** \brief  I2C清除中断标记函数
+ ** \brief  I2C
  **
- ** \param 无
+ ** \param 
  **
- ** \retval bIrq中断标记
+ ** \retval bIrq
  **
  ******************************************************************************/
 en_result_t I2C_ClearIrq(M0P_I2C_TypeDef* I2Cx)
@@ -158,11 +158,11 @@ en_result_t I2C_ClearIrq(M0P_I2C_TypeDef* I2Cx)
 }
  /**
  ******************************************************************************
- ** \brief  I2C获取相关状态
+ ** \brief  I2C
  **
- ** \param 无
+ ** \param 
  **
- ** \retval I2C状态
+ ** \retval I2C
  **
  ******************************************************************************/
 uint8_t I2C_GetState(M0P_I2C_TypeDef* I2Cx)
@@ -176,11 +176,11 @@ uint8_t I2C_GetState(M0P_I2C_TypeDef* I2Cx)
 
 /**
  ******************************************************************************
- ** \brief  字节数据写函数
+ ** \brief  
  **
- ** \param  u8Data写数据
+ ** \param  u8Data
  **
- ** \retval 写数据是否成功
+ ** \retval 
  **
  ******************************************************************************/
 en_result_t I2C_WriteByte(M0P_I2C_TypeDef* I2Cx, uint8_t u8Data)
@@ -194,11 +194,11 @@ en_result_t I2C_WriteByte(M0P_I2C_TypeDef* I2Cx, uint8_t u8Data)
 }
 /**
  ******************************************************************************
- ** \brief  字节数据读函数
+ ** \brief  
  **
- ** \param  无
+ ** \param  
  **
- ** \retval 读取数据
+ ** \retval 
  **
  ******************************************************************************/
 uint8_t I2C_ReadByte(M0P_I2C_TypeDef* I2Cx)
@@ -212,11 +212,11 @@ uint8_t I2C_ReadByte(M0P_I2C_TypeDef* I2Cx)
 
 /**
  ******************************************************************************
- ** \brief  I2C模块初始化
+ ** \brief  I2C
  **
- ** \param pstcI2CCfg初始化配置结构体
+ ** \param pstcI2CCfg
  **
- ** \retval 初始化是否成功
+ ** \retval 
  **
  ******************************************************************************/
 en_result_t I2C_Init(M0P_I2C_TypeDef* I2Cx, stc_i2c_cfg_t *pstcI2CCfg)

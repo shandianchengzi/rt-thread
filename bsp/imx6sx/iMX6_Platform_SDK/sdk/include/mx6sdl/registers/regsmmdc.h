@@ -2257,13 +2257,13 @@ typedef union _hw_mmdc_mdscr
  * specifies how often a refresh cycle occurs and how many refresh commands will be executed every
  * refresh cycle. For further information see . The following tables show examples of possible
  * refresh schemes. Refresh rate example for REF_SEL = 0 REFR[2:0] Number of refresh commands every
- * 64KHz Average periodic refresh rate (tREFI) System Refresh period 0x0 1 15.6 μs tRFC 0x1 2 7.8 μs
- * 2*tRFC 0x3 4 3.9μs 4*tRFC 0x7 8 1.95 μs 8*tRFC Refresh rate example for REF_SEL = 1 REFR[2:0]
+ * 64KHz Average periodic refresh rate (tREFI) System Refresh period 0x0 1 15.6 s tRFC 0x1 2 7.8 s
+ * 2*tRFC 0x3 4 3.9s 4*tRFC 0x7 8 1.95 s 8*tRFC Refresh rate example for REF_SEL = 1 REFR[2:0]
  * Number of refresh commands every 32KHz Average periodic refresh rate (tREFI) System Refresh
- * period 0x1 2 15.6 μs 2*tRFC 0x3 4 7.8 μs 4*tRFC 0x7 8 3.9μs 8*tRFC Refresh rate example for
+ * period 0x1 2 15.6 s 2*tRFC 0x3 4 7.8 s 4*tRFC 0x7 8 3.9s 8*tRFC Refresh rate example for
  * REF_SEL = 2@ 400MHz REFR[2:0] Number of refresh commands every refresh cycle REF_CNT Average
- * periodic refresh rate (tREFI) System Refresh period 0x0 1 0x618 3.9 μs tRFC 0x1 2 0xC30 3.9 μs
- * 2*tRFC 0x2 3 0x1248 3.9μs 3*tRFC 0x3 4 0x1860 3.9 μs 4*tRFC Other refresh configurations are also
+ * periodic refresh rate (tREFI) System Refresh period 0x0 1 0x618 3.9 s tRFC 0x1 2 0xC30 3.9 s
+ * 2*tRFC 0x2 3 0x1248 3.9s 3*tRFC 0x3 4 0x1860 3.9 s 4*tRFC Other refresh configurations are also
  * allowed; the configuration values in the tables above are only examples for obtaining the desired
  * average periodic refresh rate. If the required average periodic refresh rate (tREFI) is kept, all
  * of the rows will be refreshed in every refresh window. Because the memory device issues

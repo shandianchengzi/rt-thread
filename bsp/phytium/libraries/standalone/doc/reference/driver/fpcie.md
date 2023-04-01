@@ -1,63 +1,63 @@
-# FPCIE 驱动程序
+# FPCIE 
 
-## 1. 概述
-
-
-- PCIe总线使用端到端的连接方式，在一条PCIe链路的两端只能各连接一个设备，这两个设备互为是数据发送端和数据接收端。PCIe总线除了总线链路外，还具有多个层次，发送端发送数据时将通过这些层次，而接收端接收数据时也使用这些层次。似
-
-- FPCIE 模块内置两个 PCIE 单元（PCI-E Unit，PEU），分别为 PEU0 和 PEU1。每个 PEU 包含 3 个控制器：C0、C1 和 C2。当 PEU 拆分模式为 X16 时，C1 不可见。
-
-- 本模块特点如下
-
-1. 支持 Root Complex 和 End Point 两种模式；
-2. 共 34 lane，两路 X16（可拆分为 2 个 X8）和两路 X1；
-3. 内部集成 DMA 引擎，一读一写两个通道。
-
-## 2. 功能
+## 1. 
 
 
-- 驱动相关的源文件如下，
+- PCIePCIePCIe
+
+- FPCIE  PCIE PCI-E UnitPEU PEU0  PEU1 PEU  3 C0C1  C2 PEU  X16 C1 
+
+- 
+
+1.  Root Complex  End Point 
+2.  34 lane X16 2  X8 X1
+3.  DMA 
+
+## 2. 
+
+
+- 
 - drivers/pcie/fpcie
 
 ```
 .
-├── fpcie.c
-├── fpcie.h
-├── fpcie.md
-├── fpcie_common.h
-├── fpcie_config.c
-├── fpcie_dma.c
-├── fpcie_dma.h
-├── fpcie_ep.c
-├── fpcie_g.c
-├── fpcie_hw.c
-├── fpcie_hw.h
-├── fpcie_misc.c
-├── fpcie_sinit.c
-├── fpcir_intx.c
-└── fspim.md
+ fpcie.c
+ fpcie.h
+ fpcie.md
+ fpcie_common.h
+ fpcie_config.c
+ fpcie_dma.c
+ fpcie_dma.h
+ fpcie_ep.c
+ fpcie_g.c
+ fpcie_hw.c
+ fpcie_hw.h
+ fpcie_misc.c
+ fpcie_sinit.c
+ fpcir_intx.c
+ fspim.md
 ```
 
-## 3. 配置方法
+## 3. 
 
-以下部分将指导您完成 PCIE 驱动的软件配置:
+ PCIE :
 
-- 初始化PCIE控制器
-- 通过API 获取特定设备的 bar 空间地址
-- 使用INTX 中断响应设备中断响应函数
-- 使用DMA模式完成数据通信
+- PCIE
+- API  bar 
+- INTX 
+- DMA
 
-## 4. 应用示例
+## 4. 
 
 "/baremetal/example/peripheral/fpcie_probe "
 
-## 5. API参考
+## 5. API
 
-### 5.1 用户数据结构
+### 5.1 
 
 
 
-- 中断注册回调函数
+- 
 
 ```c 
    typedef struct
@@ -68,7 +68,7 @@
     } FPcieIntxFun;
 ```
 
-- 初始化配置空间地址
+- 
 
 ```c
     struct FPcieRegion {
@@ -81,7 +81,7 @@
     };
 ```
 
-- 驱动配置数据
+- 
 
 ```c
     typedef struct
@@ -115,7 +115,7 @@
     } FPcieConfig;
 ```
 
-- 驱动控制数据
+- 
 
 ```c
     typedef struct
@@ -127,7 +127,7 @@
         struct FPcieRegion mem_prefetch;
         struct FPcieRegion mem_io;
 
-        s32  bus_max; /* 当前最大bus num */
+        s32  bus_max; /* bus num */
 
         FPcieIrqCallBack fpcie_dma_rx_cb;
         void *dma_rx_args;
@@ -153,7 +153,7 @@
 ```
 
 
-- 配置空间标记参数
+- 
 
 ```
 #define FPCIE_REGION_MEM		0x00000000	/* PCI memory space */
@@ -162,7 +162,7 @@
 ```
 
 
-- 配置空间中对应的bar 标号
+- bar 
 
 ```
 #define FPCIE_BAR_0 0
@@ -174,9 +174,9 @@
 ```
 
 
-### 5.2 错误码定义
+### 5.2 
 
-- 模块错误码编号：0x1090000
+- 0x1090000
 - [0x0] FT_SUCCESS
 - [0x1090001] FPCIE_ERR_INVALID_PARAM 
 - [0x1090002] FPCIE_ERR_OUTOF_BUS 
@@ -187,12 +187,12 @@
 - [0x1090007] FPCIE_NOT_FOUND 
 
 
-### 5.3 用户API接口
+### 5.3 API
 
 
 #### FPcieLookupConfig
 
-- 获取FPCIE驱动的默认配置参数
+- FPCIE
 
 ```c
 const FPcieConfig *FPcieLookupConfig(u32 instance_id)
@@ -200,21 +200,21 @@ const FPcieConfig *FPcieLookupConfig(u32 instance_id)
 
 Note:
 
-- 用户可以通过此接口获取驱动默认配置的副本，进行修改后，作为`FPcieCfgInitialize`函数的入参使用
+- `FPcieCfgInitialize`
 
 Input:
 
-- u32 instance_id, 选择的FPcie控制器实例号
+- u32 instance_id, FPcie
 
 Return:
 
-- const FPcieConfig *, 返回的默认驱动配置，返回NULL表示失败
+- const FPcieConfig *, NULL
 
 
 
 #### FPcieCfgInitialize
 
-- 初始化配置空间和FPCIE 实例
+- FPCIE 
 
 ```c
 FError FPcieCfgInitialize(FPcie *instance_p, FPcieConfig *config_p)
@@ -222,22 +222,22 @@ FError FPcieCfgInitialize(FPcie *instance_p, FPcieConfig *config_p)
 
 Note:
 
-- 用户可以使用'FPcieLookupConfig'所产生的配置参数进行初始化，也可以自己组织配置参数进行初始化
+- 'FPcieLookupConfig'
 
 Input:
 
-- FPcie *instance_p 指向FPcie实例的指针。
+- FPcie *instance_p FPcie
 
-- FPcieConfig *config_p 指向FPcieConfig的指针。
+- FPcieConfig *config_p FPcieConfig
 
 Return :
 
-- 成功返回 FT_SUCCESS
+-  FT_SUCCESS
 
 
 #### FPcieDmaDescSet
 
-- PCIE DMA描述符分组包
+- PCIE DMA
 
 ```c
 FError FPcieDmaDescSet(uintptr axi_addr,
@@ -249,22 +249,22 @@ FError FPcieDmaDescSet(uintptr axi_addr,
 
 Note:
 
-- 用户使用dma 方式进行PCIE 数据传输时，用此函数将源地址与目标地址进行组合打包
+- dma PCIE 
 
 
 Input:
 
-- uintptr axi_addr 内存地址，可以为接收地址也可为发送地址
+- uintptr axi_addr 
 
-- uintptr bar_addr 需要通信function中对应的bar寄存器中分配的地址空间，可以为接收地址也可为发送地址
+- uintptr bar_addr functionbar
 
-- u32 length       需要传输的字节长度
+- u32 length       
 
-- struct FPcieDmaDescriptor *next_desc 是下一个需要发送的描述符  
+- struct FPcieDmaDescriptor *next_desc   
 
 Output:
 
-- struct FPcieDmaDescriptor *desc 需要要配置的描述符
+- struct FPcieDmaDescriptor *desc 
 
 
 
@@ -272,7 +272,7 @@ Output:
 
 Note:
 
-- 通过dma的方式读取Pcie function
+- dmaPcie function
 
 ```c
 void FPcieDmaRead(uintptr bar_address, struct FPcieDmaDescriptor *desc)
@@ -280,13 +280,13 @@ void FPcieDmaRead(uintptr bar_address, struct FPcieDmaDescriptor *desc)
 
 Input:
 
-- uintptr bar_address 基地地址寄存器的值
+- uintptr bar_address 
 
-- struct FPcieDmaDescriptor *desc  接收描述符的起始地址
+- struct FPcieDmaDescriptor *desc  
 
 #### FPcieDmaWrite
 
-- 通过dma的方式写入Pcie function
+- dmaPcie function
 
 ```c
 void FPcieDmaWrite(uintptr bar_address, struct FPcieDmaDescriptor *desc)
@@ -294,14 +294,14 @@ void FPcieDmaWrite(uintptr bar_address, struct FPcieDmaDescriptor *desc)
 
 Input:
 
-- uintptr bar_address 基地地址寄存器的值
+- uintptr bar_address 
 
-- struct FPcieDmaDescriptor *desc  发送描述符的起始地址
+- struct FPcieDmaDescriptor *desc  
 
 
 #### FPcieDmaPollDone
 
-- 轮询等待DMA完成
+- DMA
 
 ```c
 FError FPcieDmaPollDone(struct FPcieDmaDescriptor *desc, u32 wait_cnt)
@@ -309,13 +309,13 @@ FError FPcieDmaPollDone(struct FPcieDmaDescriptor *desc, u32 wait_cnt)
 
 Input:
 
-- struct FPcieDmaDescriptor *desc  Desc是需要等待完成的dma 描述符
+- struct FPcieDmaDescriptor *desc  Descdma 
 
-- u32 wait_cnt 是需要等待结束的计数  
+- u32 wait_cnt   
 
 ####  FPcieFetchDeviceInBus
 
-- 该功能用于扫描整个总线上的树形结构，并且对其中的节点进行初始化与配置空间的设置
+- 
 
 ```c
 FError FPcieFetchDeviceInBus(FPcie *instance_p, u32 bus_num)
@@ -323,18 +323,18 @@ FError FPcieFetchDeviceInBus(FPcie *instance_p, u32 bus_num)
 
 Input:
 
-- FPcie *instance_p 指向FPcie实例的指针。
+- FPcie *instance_p FPcie
 
-- u32 bus_num 扫描对应总线上已经连接的网桥/端点。  
+- u32 bus_num /  
 
 Output:
 
-- FError FT_SUCCESS 为成功
+- FError FT_SUCCESS 
 
 
 #### FPcieFindDeviceNum
 
-- 根据输入的Vendor ID 与 Device ID ，获取当前PCIE 总线上一共存在多少此类设备
+- Vendor ID  Device ID PCIE 
 
 ```c
 u32  FPcieFindDeviceNum(FPcie *instance_p, u32 bus_num,u32 vendor_id,u32 device_id)
@@ -342,53 +342,53 @@ u32  FPcieFindDeviceNum(FPcie *instance_p, u32 bus_num,u32 vendor_id,u32 device_
 
 Input:
 
-- FPcie *instance_p 指向FPcie实例的指针。
+- FPcie *instance_p FPcie
 
-- u32 bus_num 需要查找的bus号
+- u32 bus_num bus
 
-- u32 vendor_id 目标 Vendor ID
+- u32 vendor_id  Vendor ID
 
-- u32 device_id 目标 Device ID
+- u32 device_id  Device ID
 
 Output:
 
-- u32 return 所需查找设备的数量
+- u32 return 
 
 
 
 #### FPcieGetBusDeviceBarInfo
 
-- 通过Vendor ID和device ID获取对应的function id、device id 和 bar 空间
+- Vendor IDdevice IDfunction iddevice id  bar 
 
 ```c
 FError FPcieGetBusDeviceBarInfo(FPcie *instance_p,u32 bus,u32 vendor_id,u32 device_id,u32 bar_num ,u32 *device_p,u32 *function_p,uintptr *bar_addr_p)
 ```
 
 Input:
-- FPcie *instance_p 指向FPcie实例的指针。
+- FPcie *instance_p FPcie
 
-- u32 bus 需要查找的bus号
+- u32 bus bus
 
-- u32 vendor_id 目标 Vendor ID
+- u32 vendor_id  Vendor ID
 
-- u32 device_id 目标 Device ID
+- u32 device_id  Device ID
 
-- u32 bar_num 需要查找对应bar空间的编号
+- u32 bar_num bar
 
 Output:
 
-- u32 * device_p 需要获取对应设备号的指针
+- u32 * device_p 
 
-- u32 * function_p 需要获取对应功能号的指针
+- u32 * function_p 
 
-- uintptr * bar_addr_p 需要获取对应bar地址空间的指针
+- uintptr * bar_addr_p bar
 
-- FError return FT_SUCCESS 为成功
+- FError return FT_SUCCESS 
 
 
 #### FPcieSearchFunByClass
 
-- 使用 class code 获取设备的信息
+-  class code 
 
 ```c
 u32 FPcieSearchFunByClass(FPcie *instance_p,u32 class_code,FPcieSearchFunNode *node_p ,u32 node_num)
@@ -396,23 +396,23 @@ u32 FPcieSearchFunByClass(FPcie *instance_p,u32 class_code,FPcieSearchFunNode *n
 
 Input:
 
-- FPcie *instance_p 指向FPcie实例的指针。
+- FPcie *instance_p FPcie
 
-- u32 class_code 对应的类号
+- u32 class_code 
 
-- FPcieSearchFunNode * node_p 是一个存放特定函数信息缓冲区的指针
+- FPcieSearchFunNode * node_p 
 
-- u32 node_num 缓冲器的数量
+- u32 node_num 
 
 Output:
 
-- u32 return 输出中的实际节点的个数
+- u32 return 
 
 
 
 #### FPcieIntxIrqHandler
 
-- fpcie的Intx中断服务函数
+- fpcieIntx
 
 ```c
 void FPcieIntxIrqHandler(s32 vector, void *args)
@@ -420,14 +420,14 @@ void FPcieIntxIrqHandler(s32 vector, void *args)
 
 Input:
 
-- s32 vector 中断向量号
+- s32 vector 
 
-- void * args 需要传入的参数
+- void * args 
 
 
 #### FPcieIntxRegiterIrqHandler
 
-- 使用bus id、device id 和function id在INTX上注册中断响应函数  
+- bus iddevice id function idINTX  
 
 ```c
 FError FPcieIntxRegiterIrqHandler(FPcie *instance_p,
@@ -439,12 +439,12 @@ FError FPcieIntxRegiterIrqHandler(FPcie *instance_p,
 
 Input:
 
-- FPcie *instance_p 指向FPcie实例的指针。
+- FPcie *instance_p FPcie
 
-- u32 bus       需要配置的bus id
+- u32 bus       bus id
 
-- u32 device    需要配置的device id
+- u32 device    device id
 
-- u32 function  需要配置的function id
+- u32 function  function id
 
-- FPcieIntxFun * intx_fun_p 是用户用来注册回调函数信息的指针
+- FPcieIntxFun * intx_fun_p 

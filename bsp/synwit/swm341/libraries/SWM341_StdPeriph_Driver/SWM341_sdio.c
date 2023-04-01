@@ -1,10 +1,10 @@
 /******************************************************************************************************************************************
-* 文件名称: SWM341_sdio.c
-* 功能说明: SWM341单片机的SDIO接口驱动库
-* 技术支持: http://www.synwit.com.cn/e/tool/gbook/?bid=1
-* 注意事项: 为了通用性、兼容性、易用性，只支持以512字节为单位的读写
-* 版本日期: V1.1.0      2017年10月25日
-* 升级记录:
+* : SWM341_sdio.c
+* : SWM341SDIO
+* : http://www.synwit.com.cn/e/tool/gbook/?bid=1
+* : 512
+* : V1.1.0      20171025
+* :
 *
 *
 *******************************************************************************************************************************************
@@ -25,11 +25,11 @@
 SD_CardInfo SD_cardInfo;
 
 /******************************************************************************************************************************************
-* 函数名称: SDIO_Init()
-* 功能说明: SDIO读写SD卡初始化，初始化成高速4线模式、读写以512字节大小进行
-* 输    入: uint32_t freq         SDIO_CLK时钟频率
-* 输    出: uint32_t              SD_RES_OK 操作成功    SD_RES_ERR 操作失败    SD_RES_TIMEOUT 操作超时
-* 注意事项: 无
+* : SDIO_Init()
+* : SDIOSD4512
+*     : uint32_t freq         SDIO_CLK
+*     : uint32_t              SD_RES_OK     SD_RES_ERR     SD_RES_TIMEOUT 
+* : 
 ******************************************************************************************************************************************/
 uint32_t SDIO_Init(uint32_t freq)
 {
@@ -37,7 +37,7 @@ uint32_t SDIO_Init(uint32_t freq)
     uint32_t resp, resps[4];
 
     SYS->CLKSEL &= ~SYS_CLKSEL_SDIO_Msk;
-    if(SystemCoreClock > 80000000)      //SDIO时钟需要小于52MHz
+    if(SystemCoreClock > 80000000)      //SDIO52MHz
         SYS->CLKSEL |= (2 << SYS_CLKSEL_SDIO_Pos);  //SDCLK = SYSCLK / 4
     else
         SYS->CLKSEL |= (0 << SYS_CLKSEL_SDIO_Pos);  //SDCLK = SYSCLK / 2
@@ -64,7 +64,7 @@ uint32_t SDIO_Init(uint32_t freq)
 
     SDIO_SendCmd(SD_CMD_GO_IDLE_STATE, 0x00, SD_RESP_NO, 0);                //CMD0: GO_IDLE_STATE
 
-    res = SDIO_SendCmd(SD_CMD_SEND_IF_COND, 0x1AA, SD_RESP_32b, &resp);     //CMD8: SEND_IF_COND, 检测工作电压、检测是否支持SD 2.0
+    res = SDIO_SendCmd(SD_CMD_SEND_IF_COND, 0x1AA, SD_RESP_32b, &resp);     //CMD8: SEND_IF_COND, SD 2.0
     if(res != SD_RES_OK)
         return res;
 
@@ -77,50 +77,50 @@ uint32_t SDIO_Init(uint32_t freq)
         if(res != SD_RES_OK)
             return res;
 
-        if(resp != 0x120) return SD_RES_ERR;    //不是SD卡，可能是MMC卡
+        if(resp != 0x120) return SD_RES_ERR;    //SDMMC
 
         if(SD_cardInfo.CardType == SDIO_STD_CAPACITY_SD_CARD_V2_0)
             SDIO_SendCmd(SD_CMD_SD_APP_OP_COND, 0x80100000|0x40000000, SD_RESP_32b, &resp);
         else
             SDIO_SendCmd(SD_CMD_SD_APP_OP_COND, 0x80100000|0x00000000, SD_RESP_32b, &resp);
-    } while(((resp >> 31) & 0x01) == 0);        //上电没完成时resp[31] == 0
+    } while(((resp >> 31) & 0x01) == 0);        //resp[31] == 0
 
     if(((resp >> 30) & 0x01) == 1) SD_cardInfo.CardType = SDIO_HIGH_CAPACITY_SD_CARD;
 
 
-    SDIO_SendCmd(SD_CMD_ALL_SEND_CID, 0x00, SD_RESP_128b, resps);           //CMD2: SD_CMD_ALL_SEND_CID，获取CID
+    SDIO_SendCmd(SD_CMD_ALL_SEND_CID, 0x00, SD_RESP_128b, resps);           //CMD2: SD_CMD_ALL_SEND_CIDCID
 
     parseCID(resps);
 
 
-    SDIO_SendCmd(SD_CMD_SET_REL_ADDR, 0x00, SD_RESP_32b, &resp);            //CMD3: SD_CMD_SET_REL_ADDR，设置RCA
+    SDIO_SendCmd(SD_CMD_SET_REL_ADDR, 0x00, SD_RESP_32b, &resp);            //CMD3: SD_CMD_SET_REL_ADDRRCA
 
     SD_cardInfo.RCA = resp >> 16;
 
 
-    SDIO_SendCmd(SD_CMD_SEND_CSD, SD_cardInfo.RCA << 16, SD_RESP_128b, resps);  //CMD9: SD_CMD_SEND_CSD，获取CSD
+    SDIO_SendCmd(SD_CMD_SEND_CSD, SD_cardInfo.RCA << 16, SD_RESP_128b, resps);  //CMD9: SD_CMD_SEND_CSDCSD
 
     parseCSD(resps);
 
-    if(SD_cardInfo.CardBlockSize < 0x200) return SD_RES_ERR;    //本驱动只支持以512字节为单位的读写，所以最大读写单位必须不小于512
+    if(SD_cardInfo.CardBlockSize < 0x200) return SD_RES_ERR;    //512512
 
 
     SDIO->CR2 &= ~(SDIO_CR2_SDCLKEN_Msk | SDIO_CR2_SDCLKDIV_Msk);
     SDIO->CR2 |= (1 << SDIO_CR2_SDCLKEN_Pos) |
-                 (calcSDCLKDiv(freq) << SDIO_CR2_SDCLKDIV_Pos); //初始化完成，SDCLK切换到高速
+                 (calcSDCLKDiv(freq) << SDIO_CR2_SDCLKDIV_Pos); //SDCLK
 
 
-    SDIO_SendCmd(SD_CMD_SEL_DESEL_CARD, SD_cardInfo.RCA << 16, SD_RESP_32b_busy, &resp);    //CMD7: 选中卡，从Standy模式进入Transfer模式
+    SDIO_SendCmd(SD_CMD_SEL_DESEL_CARD, SD_cardInfo.RCA << 16, SD_RESP_32b_busy, &resp);    //CMD7: StandyTransfer
     SDIO->IF = SDIO_IF_TRXDONE_Msk;
 
     SDIO_SendCmd(SD_CMD_APP_CMD, SD_cardInfo.RCA << 16, SD_RESP_32b, &resp);
 
-    SDIO_SendCmd(SD_CMD_APP_SD_SET_BUSWIDTH, SD_BUSWIDTH_4b, SD_RESP_32b, &resp);   //切换成4位总线模式
+    SDIO_SendCmd(SD_CMD_APP_SD_SET_BUSWIDTH, SD_BUSWIDTH_4b, SD_RESP_32b, &resp);   //4
 
     SDIO->CR1 |= (1 << SDIO_CR1_4BIT_Pos);
 
 
-    SDIO_SendCmd(SD_CMD_SET_BLOCKLEN, 512, SD_RESP_32b, &resp);     //固定块大小位512字节
+    SDIO_SendCmd(SD_CMD_SET_BLOCKLEN, 512, SD_RESP_32b, &resp);     //512
 
     SD_cardInfo.CardBlockSize = 512;
 
@@ -130,12 +130,12 @@ uint32_t SDIO_Init(uint32_t freq)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SDIO_BlockWrite()
-* 功能说明: 向SD卡写入数据
-* 输    入: uint32_t block_addr       SD卡块地址，每块512字节
-*           uint32_t buff[]         要写入的数据
-* 输    出: uint32_t              SD_RES_OK 操作成功    SD_RES_ERR 操作失败    SD_RES_TIMEOUT 操作超时
-* 注意事项: 无
+* : SDIO_BlockWrite()
+* : SD
+*     : uint32_t block_addr       SD512
+*           uint32_t buff[]         
+*     : uint32_t              SD_RES_OK     SD_RES_ERR     SD_RES_TIMEOUT 
+* : 
 ******************************************************************************************************************************************/
 uint32_t SDIO_BlockWrite(uint32_t block_addr, uint32_t buff[])
 {
@@ -161,13 +161,13 @@ uint32_t SDIO_BlockWrite(uint32_t block_addr, uint32_t buff[])
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SDIO_MultiBlockWrite()
-* 功能说明: 向SD卡写入多块数据
-* 输    入: uint32_t block_addr       SD卡块地址，每块512字节
-*           uint16_t block_cnt      要写入的块数
-*           uint32_t buff[]         要写入的数据
-* 输    出: uint32_t              SD_RES_OK 操作成功    SD_RES_ERR 操作失败    SD_RES_TIMEOUT 操作超时
-* 注意事项: 无
+* : SDIO_MultiBlockWrite()
+* : SD
+*     : uint32_t block_addr       SD512
+*           uint16_t block_cnt      
+*           uint32_t buff[]         
+*     : uint32_t              SD_RES_OK     SD_RES_ERR     SD_RES_TIMEOUT 
+* : 
 ******************************************************************************************************************************************/
 uint32_t SDIO_MultiBlockWrite(uint32_t block_addr, uint16_t block_cnt, uint32_t buff[])
 {
@@ -196,13 +196,13 @@ uint32_t SDIO_MultiBlockWrite(uint32_t block_addr, uint16_t block_cnt, uint32_t 
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SDIO_DMABlockWrite()
-* 功能说明: 通过DMA向SD卡写入多块数据
-* 输    入: uint32_t block_addr       SD卡块地址，每块512字节
-*           uint16_t block_cnt      要写入的块数
-*           uint32_t buff[]         要写入的数据
-* 输    出: uint32_t              SD_RES_OK 操作成功    SD_RES_ERR 操作失败    SD_RES_TIMEOUT 操作超时
-* 注意事项: 无
+* : SDIO_DMABlockWrite()
+* : DMASD
+*     : uint32_t block_addr       SD512
+*           uint16_t block_cnt      
+*           uint32_t buff[]         
+*     : uint32_t              SD_RES_OK     SD_RES_ERR     SD_RES_TIMEOUT 
+* : 
 ******************************************************************************************************************************************/
 uint32_t SDIO_DMABlockWrite(uint32_t block_addr, uint16_t block_cnt, uint32_t buff[])
 {
@@ -225,12 +225,12 @@ uint32_t SDIO_DMABlockWrite(uint32_t block_addr, uint16_t block_cnt, uint32_t bu
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SDIO_BlockRead()
-* 功能说明: 从SD卡读出数据
-* 输    入: uint32_t block_addr       SD卡块地址，每块512字节
-*           uint32_t buff[]         读出的数据
-* 输    出: uint32_t              SD_RES_OK 操作成功    SD_RES_ERR 操作失败    SD_RES_TIMEOUT 操作超时
-* 注意事项: 无
+* : SDIO_BlockRead()
+* : SD
+*     : uint32_t block_addr       SD512
+*           uint32_t buff[]         
+*     : uint32_t              SD_RES_OK     SD_RES_ERR     SD_RES_TIMEOUT 
+* : 
 ******************************************************************************************************************************************/
 uint32_t SDIO_BlockRead(uint32_t block_addr, uint32_t buff[])
 {
@@ -256,13 +256,13 @@ uint32_t SDIO_BlockRead(uint32_t block_addr, uint32_t buff[])
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SDIO_MultiBlockRead()
-* 功能说明: 从SD卡读出多块数据
-* 输    入: uint32_t block_addr       SD卡块地址，每块512字节
-*           uint16_t block_cnt      要读出的块数
-*           uint32_t buff[]         读出的数据
-* 输    出: uint32_t              SD_RES_OK 操作成功    SD_RES_ERR 操作失败    SD_RES_TIMEOUT 操作超时
-* 注意事项: 无
+* : SDIO_MultiBlockRead()
+* : SD
+*     : uint32_t block_addr       SD512
+*           uint16_t block_cnt      
+*           uint32_t buff[]         
+*     : uint32_t              SD_RES_OK     SD_RES_ERR     SD_RES_TIMEOUT 
+* : 
 ******************************************************************************************************************************************/
 uint32_t SDIO_MultiBlockRead(uint32_t block_addr, uint16_t block_cnt, uint32_t buff[])
 {
@@ -291,13 +291,13 @@ uint32_t SDIO_MultiBlockRead(uint32_t block_addr, uint16_t block_cnt, uint32_t b
 }
 
 /******************************************************************************************************************************************
-* 函数名称: SDIO_DMABlockRead()
-* 功能说明: 通过DMA从SD卡读出多块数据
-* 输    入: uint32_t block_addr       SD卡块地址，每块512字节
-*           uint16_t block_cnt      要读出的块数
-*           uint32_t buff[]         读出的数据
-* 输    出: uint32_t              SD_RES_OK 操作成功    SD_RES_ERR 操作失败    SD_RES_TIMEOUT 操作超时
-* 注意事项: 无
+* : SDIO_DMABlockRead()
+* : DMASD
+*     : uint32_t block_addr       SD512
+*           uint16_t block_cnt      
+*           uint32_t buff[]         
+*     : uint32_t              SD_RES_OK     SD_RES_ERR     SD_RES_TIMEOUT 
+* : 
 ******************************************************************************************************************************************/
 uint32_t SDIO_DMABlockRead(uint32_t block_addr, uint16_t block_cnt, uint32_t buff[])
 {
@@ -320,18 +320,18 @@ uint32_t SDIO_DMABlockRead(uint32_t block_addr, uint16_t block_cnt, uint32_t buf
 }
 
 /******************************************************************************************************************************************
-* 函数名称: _SDIO_SendCmd()
-* 功能说明: SDIO向SD卡发送命令
-* 输    入: uint32_t cmd          命令索引
-*           uint32_t arg            命令参数
-*           uint32_t resp_type      响应类型，取值SD_RESP_NO、SD_RESP_32b、SD_RESP_128b、SD_RESP_32b_busy
-*           uint32_t *resp_data     响应内容
-*           uint32_t have_data      是否有数据传输
-*           uint32_t data_read      1 读SD卡    0 写SD卡
-*           uint16_t block_cnt      读写块个数
-*           uint32_t use_dma        1 使用DMA搬运数据
-* 输    出: uint32_t              SD_RES_OK 操作成功    SD_RES_ERR 操作失败    SD_RES_TIMEOUT 操作超时
-* 注意事项: 无
+* : _SDIO_SendCmd()
+* : SDIOSD
+*     : uint32_t cmd          
+*           uint32_t arg            
+*           uint32_t resp_type      SD_RESP_NOSD_RESP_32bSD_RESP_128bSD_RESP_32b_busy
+*           uint32_t *resp_data     
+*           uint32_t have_data      
+*           uint32_t data_read      1 SD    0 SD
+*           uint16_t block_cnt      
+*           uint32_t use_dma        1 DMA
+*     : uint32_t              SD_RES_OK     SD_RES_ERR     SD_RES_TIMEOUT 
+* : 
 ******************************************************************************************************************************************/
 uint32_t _SDIO_SendCmd(uint32_t cmd, uint32_t arg, uint32_t resp_type, uint32_t *resp_data, uint32_t have_data, uint32_t data_read, uint16_t block_cnt, uint32_t use_dma)
 {
@@ -374,8 +374,8 @@ uint32_t _SDIO_SendCmd(uint32_t cmd, uint32_t arg, uint32_t resp_type, uint32_t 
     }
     else if(resp_type == SD_RESP_128b)
     {
-        //寄存器中将CID/CSD[127-8]依次存放在了RESP3-0[119-0]，最低位的CRC被丢掉
-        //读出数据时调整了顺序，将CID/CSD[127-8]存放在resp_data0-3[127-8]，最低8位填充0x00
+        //CID/CSD[127-8]RESP3-0[119-0]CRC
+        //CID/CSD[127-8]resp_data0-3[127-8]80x00
         resp_data[0] = (SDIO->RESP[3] << 8) + ((SDIO->RESP[2] >> 24) & 0xFF);
         resp_data[1] = (SDIO->RESP[2] << 8) + ((SDIO->RESP[1] >> 24) & 0xFF);
         resp_data[2] = (SDIO->RESP[1] << 8) + ((SDIO->RESP[0] >> 24) & 0xFF);

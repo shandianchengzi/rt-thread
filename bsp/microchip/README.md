@@ -1,6 +1,6 @@
 # 1. Microchip BSP Introduction
 
-Supported Microchip SAM (ARM Cortex-Mx Core) MCU is as following：
+Supported Microchip SAM (ARM Cortex-Mx Core) MCU is as following
 
 ## ARM Cortex-M23 Series
 - saml10 | 3.3V Cortex-M23 with ultra low power
@@ -17,7 +17,7 @@ Supported Microchip SAM (ARM Cortex-Mx Core) MCU is as following：
 ## ARM Cortex-M7 Series
 - same70 | 3.3V 300MHz Cortex-M7 core with CAN-FD/High speed USB/Ethernet support
 
-## Directory description：
+## Directory description
 	* applications: 
 		* user main function entrance,
 		* driver example - like i2c, can, adc ...

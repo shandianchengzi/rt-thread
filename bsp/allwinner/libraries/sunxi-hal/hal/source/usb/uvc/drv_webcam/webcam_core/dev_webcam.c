@@ -39,7 +39,7 @@ __s32 translate_frame_id_to_index(__s32 frame_id)
 
 static __s32  webcam_irq_handle(__u32* addr0, __u32* addr1, __u32* addr2 )
 {
-    __s32 frame_id;//index切切不要用全局变量
+    __s32 frame_id;//index
 
     hal_log_info("webcam irq\n");
     if(first_flag==0)
@@ -48,7 +48,7 @@ static __s32  webcam_irq_handle(__u32* addr0, __u32* addr1, __u32* addr2 )
         hal_log_info("webcam first irq\n");
         frame_id = pWebcamDevNode->free2->delete_element(pWebcamDevNode->free2);
         if (frame_id != -1)
-        {//在free中请求buffer成功
+        {//freebuffer
 
             __s32 index = translate_frame_id_to_index(frame_id);
 
@@ -96,7 +96,7 @@ static __s32  webcam_irq_handle(__u32* addr0, __u32* addr1, __u32* addr2 )
     hal_log_info("pWebcamDevNode->pts_flag=%d pWebcamDevNode->pts=%d\n",pWebcamDevNode->pts_flag,(pWebcamDevNode->pts&0xffffffff));
     frame_id = pWebcamDevNode->free2->delete_element(pWebcamDevNode->free2);
     hal_log_info("frame_id=%x\n",frame_id);
-    if (frame_id != -1)//在free中请求buffer成功
+    if (frame_id != -1)//freebuffer
     {
         __s32 nTmpIndex = translate_frame_id_to_index(frame_id);
 
@@ -137,7 +137,7 @@ __s32 webcam_check_mode_valid(void)
             (webcam_mode_all.webcam_mode[i].size.height   == webcam_mode.size.height)&&
             (webcam_mode_all.webcam_mode[i].webcam_buf_scrab_mode    == webcam_mode.webcam_buf_scrab_mode) )  {
             hal_log_err("webcam_check_mode_valid:%d\n",i);
-            //webcam_dev_set_mode(i); //设置模式
+            //webcam_dev_set_mode(i); //
             valid_mode_idx = i;
             return EPDK_OK;
         }
@@ -260,7 +260,7 @@ __s32 DEV_WEBCAM_Ioctrl(__hdle hWebcam, __u32 cmd, __s32 aux, void *pbuffer)
             }
 
             pWebcamDevNode->webcam_frame_num = pFrameQueue->num;
-            for (i=0; i<pFrameQueue->num; i++)   //现在num就等于WEBCAM_BUFFER_NUM，为下一步修改做准备
+            for (i=0; i<pFrameQueue->num; i++)   //numWEBCAM_BUFFER_NUM
             {
                 //WEBCAM_BUFFER_NUM
                 memcpy(&pWebcamDevNode->webcam_frame[i], &pFrameQueue->webcam_frame_array[i], sizeof(__webcam_frame_t));
@@ -271,7 +271,7 @@ __s32 DEV_WEBCAM_Ioctrl(__hdle hWebcam, __u32 cmd, __s32 aux, void *pbuffer)
         case DRV_WEBCAM_CMD_CAPTURE_ON:
         {
             __s32 frame_id;
-            __s32 index;//index切切不要用全局变量
+            __s32 index;//index
 
             if (webcam_check_mode_valid() != EPDK_OK)
             {
@@ -280,7 +280,7 @@ __s32 DEV_WEBCAM_Ioctrl(__hdle hWebcam, __u32 cmd, __s32 aux, void *pbuffer)
             }
             else
             {
-                webcam_dev_set_mode(valid_mode_idx); //设置模式
+                webcam_dev_set_mode(valid_mode_idx); //
             }
 
             pWebcamDevNode->pts = 0;
@@ -313,7 +313,7 @@ __s32 DEV_WEBCAM_Ioctrl(__hdle hWebcam, __u32 cmd, __s32 aux, void *pbuffer)
                 hal_log_info("DRV_WEBCAM_CMD_CAPTURE_ON: have cb\n");
                 frame_id = pWebcamDevNode->free2->delete_element(pWebcamDevNode->free2);
                 if (frame_id != -1)
-                {//在free中请求buffer成功
+                {//freebuffer
                     index = translate_frame_id_to_index(frame_id);
                     pWebcamDevNode->tran_cb(pWebcamDevNode->webcam_frame[index].addr[0], (__u32)NULL, (__u32)NULL);
                     pWebcamDevNode->frame_id_last = frame_id;
@@ -345,14 +345,14 @@ __s32 DEV_WEBCAM_Ioctrl(__hdle hWebcam, __u32 cmd, __s32 aux, void *pbuffer)
             pWebcamDevNode->capture     = CAPTURE_NONE;
             pWebcamDevNode->used_addr0  = (__u32)NULL;
             pWebcamDevNode->used_addr1  = (__u32)NULL;
-            //WEBCAM_capture_video_stop();//关中断发生器
+            //WEBCAM_capture_video_stop();//
             first_flag=0;
             lost_frame_num=0;
 
             hal_log_info("DRV_WEBCAM_CMD_CAPTURE_OFF pWebcamDevNode->tran_cb=%x\n",pWebcamDevNode->tran_cb);
             ret = EPDK_OK;
 
-            //清掉webcam_frame数组，即full2, free2数组，也可以不清. 为简单起见,这里不清数组.
+            //webcam_framefull2, free2. ,.
             //initial_webcam_linklist_manager(&full2, WEBCAM_LISTTYPE_FULL);
             //initial_webcam_linklist_manager(&free2, WEBCAM_LISTTYPE_FREE);
             pWebcamDevNode->full2->initial(pWebcamDevNode->full2, WEBCAM_LISTTYPE_FULL);
@@ -376,7 +376,7 @@ __s32 DEV_WEBCAM_Ioctrl(__hdle hWebcam, __u32 cmd, __s32 aux, void *pbuffer)
         case DRV_WEBCAM_CMD_REQUEST_FRAME:
         {
             __s32 index;
-            __s32 frame_id;//index切切不要用全局变量
+            __s32 frame_id;//index
 
             frame_id = pWebcamDevNode->full2->delete_element(pWebcamDevNode->full2);
             if (frame_id != -1){
@@ -517,7 +517,7 @@ __s32 DEV_WEBCAM_Ioctrl(__hdle hWebcam, __u32 cmd, __s32 aux, void *pbuffer)
                 //hal_log_info("DRV_WENCAM_CMD_WEBCAM_INSERT 1\n");
                 frame_id = pWebcamDevNode->free2->delete_element(pWebcamDevNode->free2);
                 if (frame_id != -1)
-                {//在free中请求buffer成功
+                {//freebuffer
                     index = translate_frame_id_to_index(frame_id);
                     pWebcamDevNode->tran_cb(pWebcamDevNode->webcam_frame[index].addr[0], (__u32)NULL, (__u32)NULL);
                     pWebcamDevNode->frame_id_last = frame_id;

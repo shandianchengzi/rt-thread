@@ -54,8 +54,8 @@ Options 1,0,0  // Target 'driverlib'
  EnvBin ()
  EnvInc ()
  EnvLib ()
- EnvReg (ÿLuminary\)
- OrgReg (ÿLuminary\)
+ EnvReg (Luminary\)
+ OrgReg (Luminary\)
  TgStat=0
  OutDir (.\rvmdk\)
  OutName (driverlib)

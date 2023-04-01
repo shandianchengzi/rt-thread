@@ -58,15 +58,15 @@
   */
 
 /**
-  * @brief  复位IWDT外设
+  * @brief  IWDT
   *
-  * @note   此函数只能用于配制前复位外设，因为IWDT开启后不可以关闭
+  * @note   IWDT
   *
-  * @param  IWDTx 外设入口地址
+  * @param  IWDTx 
   *
-  * @retval 错误状态，可能值：
-  *         -FL_PASS 外设寄存器值恢复复位值
-  *         -FL_FAIL 未成功执行
+  * @retval 
+  *         -FL_PASS 
+  *         -FL_FAIL 
   */
 FL_ErrorStatus FL_IWDT_DeInit(IWDT_Type *IWDTx)
 {
@@ -75,46 +75,46 @@ FL_ErrorStatus FL_IWDT_DeInit(IWDT_Type *IWDTx)
 }
 
 /**
-  * @brief  配置IWDT
+  * @brief  IWDT
   *
-  * @note   IWTD使能后将无法关闭，直到下一次芯片复位
+  * @note   IWTD
   *
-  * @param  IWDTx  外设入口地址
-  * @param  IWDT_InitStruct 指向 @ref FL_IWDT_InitTypeDef 结构体的指针
+  * @param  IWDTx  
+  * @param  IWDT_InitStruct  @ref FL_IWDT_InitTypeDef 
   *
-  * @retval 错误状态，可能值：
-  *         -FL_PASS 配置成功
-  *         -FL_FAIL 配置过程发生错误
+  * @retval 
+  *         -FL_PASS 
+  *         -FL_FAIL 
   */
 FL_ErrorStatus FL_IWDT_Init(IWDT_Type *IWDTx, FL_IWDT_InitTypeDef *IWDT_InitStruct)
 {
     FL_ErrorStatus status = FL_PASS;
-    /* 入口参数检查 */
+    /*  */
     assert_param(IS_IWDT_INSTANCE(IWDTx));
     assert_param(IS_FL_IWDT_WINDOWSVEL(IWDT_InitStruct->iwdtWindows));
     assert_param(IS_FL_IWDT_OVERFLOWPERIOD(IWDT_InitStruct->overflowPeriod));
-    /* 开启总线时钟 */
+    /*  */
     FL_RCC_EnableGroup1BusClock(FL_RCC_GROUP1_BUSCLK_IWDT);
-    /* 配置独立看门狗溢出周期 */
+    /*  */
     FL_IWDT_SetPeriod(IWDTx, IWDT_InitStruct->overflowPeriod);
-    /* 配置独立看门狗清狗窗口*/
+    /* */
     FL_IWDT_WriteWindow(IWDTx, IWDT_InitStruct->iwdtWindows);
-    /* 启动看门狗 */
+    /*  */
     FL_IWDT_ReloadCounter(IWDTx);
     return status;
 }
 
 /**
-  * @brief  将 @ref FL_IWDT_InitTypeDef 结构体初始化为默认配置
-  * @param  IWDT_InitStruct 指向 @ref FL_IWDT_InitTypeDef 结构体的指针
+  * @brief   @ref FL_IWDT_InitTypeDef 
+  * @param  IWDT_InitStruct  @ref FL_IWDT_InitTypeDef 
   *
   * @retval None
   */
 void FL_IWDT_StructInit(FL_IWDT_InitTypeDef *IWDT_InitStruct)
 {
-    /* 默认不使用窗口 */
+    /*  */
     IWDT_InitStruct->iwdtWindows    = 0;
-    /*最长溢出时间*/
+    /**/
     IWDT_InitStruct->overflowPeriod = FL_IWDT_PERIOD_500MS;
 }
 

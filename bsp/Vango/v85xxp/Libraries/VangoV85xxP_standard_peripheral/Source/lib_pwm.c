@@ -491,7 +491,7 @@ void PWM_ILineConfig(uint32_t InSelection, uint32_t ILine)
                 PWM_CHANNEL_0
                 PWM_CHANNEL_1
                 PWM_CHANNEL_2
-  * @retval  INx¡¯s input value when the TAR is equal to CCRx
+  * @retval  INxs input value when the TAR is equal to CCRx
   */
 uint8_t PWM_GetSCCI(PWM_Type *PWMx, uint32_t Channel)
 {

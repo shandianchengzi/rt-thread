@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fpl011_intr.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 09:06:30
- * Description:  This files is for uart irq functions
+ * Description: This files is for uart irq functions
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 
@@ -47,7 +47,7 @@ static void FPl011SendDataHandler(FPl011 *uart_p, u32 InterruptStatus);
 
 /**
  * @name: FPl011GetInterruptMask
- * @msg:  此函数获取所有串口中断的mask。
+ * @msg:  mask
  * @param  uart_p
  * @return  mask
  */

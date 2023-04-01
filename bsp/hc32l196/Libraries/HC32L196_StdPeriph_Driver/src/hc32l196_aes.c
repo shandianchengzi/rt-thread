@@ -86,12 +86,12 @@
  
 /**
  * \brief   
- *          AES 加密
+ *          AES 
  *
- * \param   [in]   pstcAesCfg    AES 配置结构体 @ref stc_aes_cfg_t
+ * \param   [in]   pstcAesCfg    AES  @ref stc_aes_cfg_t
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  */
 en_result_t AES_Encrypt(stc_aes_cfg_t* pstcAesCfg)
 {
@@ -144,12 +144,12 @@ en_result_t AES_Encrypt(stc_aes_cfg_t* pstcAesCfg)
 
 /**
  * \brief   
- *          AES 解密
+ *          AES 
  *
- * \param   [in]   pstcAesCfg    AES 配置结构体 @ref stc_aes_cfg_t
+ * \param   [in]   pstcAesCfg    AES  @ref stc_aes_cfg_t
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  */
 en_result_t AES_Decrypt(stc_aes_cfg_t* pstcAesCfg)
 {

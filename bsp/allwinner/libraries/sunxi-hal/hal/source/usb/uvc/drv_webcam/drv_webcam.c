@@ -20,7 +20,7 @@
 #include "drv_webcam_i.h"
 #include <hal_osal.h>
 
-extern __s32 WEBCAM_DEV_NODE_Init_Part1(void);  //WEBCAM_DEV_NODE的初始化的第一部分
+extern __s32 WEBCAM_DEV_NODE_Init_Part1(void);  //WEBCAM_DEV_NODE
 //extern __s32 WEBCAM_DEV_NODE_Init_Part2(__u32 webcam_channle,__u32 system);
 extern __s32 WEBCAM_DEV_NODE_Exit(void);
 
@@ -36,7 +36,7 @@ __s32 DRV_WEBCAM_MInit(void)
     extern void* esDEV_DevReg(const char *classname, const char *name, const __dev_devop_t *pDevOp, void *pOpenArg);
     hal_log_info("DRV_WEBCAM_MInit\n");
 
-    //WEBCAM设备节点的初始化，此时这些设备均未注册
+    //WEBCAM
     memset(&webcam_drv, 0, sizeof(__webcam_drv_t));
     if(EPDK_OK == WEBCAM_DEV_NODE_Init_Part1())
     {

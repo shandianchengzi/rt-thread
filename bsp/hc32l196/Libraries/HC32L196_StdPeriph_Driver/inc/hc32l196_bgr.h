@@ -42,7 +42,7 @@
 /******************************************************************************/
 /** \file bgr.h
  **
- ** BGR 数据结构及API声明.
+ ** BGR API.
  **
  **   - 2018-04-21  LuX V1.0.
  **
@@ -89,10 +89,10 @@ extern "C"
 /******************************************************************************
  * Global function prototypes (definition in C source)                        
  ******************************************************************************/
-///<内部温度传感器使能/关闭
+///</
 void Bgr_TempSensorEnable(void);
 void Bgr_TempSensorDisable(void);
-///<BGR使能/关闭
+///<BGR/
 void Bgr_BgrEnable(void);
 void Bgr_BgrDisable(void);
 

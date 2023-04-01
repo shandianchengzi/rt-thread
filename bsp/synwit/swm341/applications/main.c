@@ -8,8 +8,8 @@
  */
 
 /***************************************************************
-由于和mmcsd_cmd.h中的ERASE重名，
-修改SWM341.h中 FMC_TpyeDef中ERASE寄存器为FMC_ERASE
+mmcsd_cmd.hERASE
+SWM341.h FMC_TpyeDefERASEFMC_ERASE
 ***************************************************************/
 
 #include <rtthread.h>
@@ -87,10 +87,10 @@ MSH_CMD_EXPORT(adc_vol_sample, adc voltage convert sample);
 #ifdef BSP_USING_DAC
 #include <stdlib.h>
 
-#define DAC_DEV_NAME        "dac"  /* DAC 设备名称 */
-#define DAC_DEV_CHANNEL     0       /* DAC 通道 */
-#define REFER_VOLTAGE       330         /* 参考电压 3.3V,数据精度乘以100保留2位小数*/
-#define CONVERT_BITS        (1 << 12)   /* 转换位数为12位 */
+#define DAC_DEV_NAME        "dac"  /* DAC  */
+#define DAC_DEV_CHANNEL     0       /* DAC  */
+#define REFER_VOLTAGE       330         /*  3.3V,1002*/
+#define CONVERT_BITS        (1 << 12)   /* 12 */
 
 static int dac_vol_sample(int argc, char *argv[])
 {
@@ -98,7 +98,7 @@ static int dac_vol_sample(int argc, char *argv[])
     rt_uint32_t value, vol;
     rt_err_t ret = RT_EOK;
 
-    /* 查找设备 */
+    /*  */
     dac_dev = (rt_dac_device_t)rt_device_find(DAC_DEV_NAME);
     if (dac_dev == RT_NULL)
     {
@@ -106,37 +106,37 @@ static int dac_vol_sample(int argc, char *argv[])
         return -RT_ERROR;
     }
 
-    /* 打开通道 */
+    /*  */
     ret = rt_dac_enable(dac_dev, DAC_DEV_CHANNEL);
 
-    /* 设置输出值 */
+    /*  */
     value = atoi(argv[1]);
     rt_dac_write(dac_dev, DAC_DEV_CHANNEL, value);
     rt_kprintf("the value is :%d \n", value);
 
-    /* 转换为对应电压值 */
+    /*  */
     vol = value * REFER_VOLTAGE / CONVERT_BITS;
     rt_kprintf("the voltage is :%d.%02d \n", vol / 100, vol % 100);
     rt_thread_mdelay(500);
-    /* 关闭通道 */
+    /*  */
     ret = rt_dac_disable(dac_dev, DAC_DEV_CHANNEL);
 
     return ret;
 }
-/* 导出到 msh 命令列表中 */
+/*  msh  */
 MSH_CMD_EXPORT(dac_vol_sample, dac voltage convert sample);
 #endif
 
 #ifdef BSP_USING_CAN
-#define CAN_DEV_NAME       "can0"      /* CAN 设备名称 */
+#define CAN_DEV_NAME       "can0"      /* CAN  */
 
-static struct rt_semaphore rx_sem;     /* 用于接收消息的信号量 */
-static rt_device_t can_dev;            /* CAN 设备句柄 */
+static struct rt_semaphore rx_sem;     /*  */
+static rt_device_t can_dev;            /* CAN  */
 
-/* 接收数据回调函数 */
+/*  */
 static rt_err_t can_rx_call(rt_device_t dev, rt_size_t size)
 {
-    /* CAN 接收到数据后产生中断，调用此回调函数，然后发送接收信号量 */
+    /* CAN  */
     rt_sem_release(&rx_sem);
 
     return RT_EOK;
@@ -148,33 +148,33 @@ static void can_rx_thread(void *parameter)
     rt_err_t res;
     struct rt_can_msg rxmsg = {0};
 
-    /* 设置接收回调函数 */
+    /*  */
     rt_device_set_rx_indicate(can_dev, can_rx_call);
 
 #ifdef RT_CAN_USING_HDR
     struct rt_can_filter_item items[5] =
     {
-        RT_CAN_FILTER_ITEM_INIT(0x100, 0, 0, 0, 0x700, RT_NULL, RT_NULL), /* std,match ID:0x100~0x1ff，hdr 为 - 1，设置默认过滤表 */
-        RT_CAN_FILTER_ITEM_INIT(0x300, 0, 0, 0, 0x700, RT_NULL, RT_NULL), /* std,match ID:0x300~0x3ff，hdr 为 - 1 */
-        RT_CAN_FILTER_ITEM_INIT(0x211, 0, 0, 0, 0x7ff, RT_NULL, RT_NULL), /* std,match ID:0x211，hdr 为 - 1 */
-        RT_CAN_FILTER_STD_INIT(0x486, RT_NULL, RT_NULL),                  /* std,match ID:0x486，hdr 为 - 1 */
-        {0x555, 0, 0, 0, 0x7ff, 7,}                                       /* std,match ID:0x555，hdr 为 7，指定设置 7 号过滤表 */
+        RT_CAN_FILTER_ITEM_INIT(0x100, 0, 0, 0, 0x700, RT_NULL, RT_NULL), /* std,match ID:0x100~0x1ffhdr  - 1 */
+        RT_CAN_FILTER_ITEM_INIT(0x300, 0, 0, 0, 0x700, RT_NULL, RT_NULL), /* std,match ID:0x300~0x3ffhdr  - 1 */
+        RT_CAN_FILTER_ITEM_INIT(0x211, 0, 0, 0, 0x7ff, RT_NULL, RT_NULL), /* std,match ID:0x211hdr  - 1 */
+        RT_CAN_FILTER_STD_INIT(0x486, RT_NULL, RT_NULL),                  /* std,match ID:0x486hdr  - 1 */
+        {0x555, 0, 0, 0, 0x7ff, 7,}                                       /* std,match ID:0x555hdr  7 7  */
     };
-    struct rt_can_filter_config cfg = {5, 1, items}; /* 一共有 5 个过滤表 */
-    /* 设置硬件过滤表 */
+    struct rt_can_filter_config cfg = {5, 1, items}; /*  5  */
+    /*  */
     res = rt_device_control(can_dev, RT_CAN_CMD_SET_FILTER, &cfg);
     RT_ASSERT(res == RT_EOK);
 #endif
 
     while (1)
     {
-        /* hdr 值为 - 1，表示直接从 uselist 链表读取数据 */
+        /* hdr  - 1 uselist  */
         v .hdr = -1;
-        /* 阻塞等待接收信号量 */
+        /*  */
         rt_sem_take(&rx_sem, RT_WAITING_FOREVER);
-        /* 从 CAN 读取一帧数据 */
+        /*  CAN  */
         rt_device_read(can_dev, 0, &rxmsg, sizeof(rxmsg));
-        /* 打印数据 ID 及内容 */
+        /*  ID  */
         rt_kprintf("ID:%x", rxmsg.id);
         for (i = 0; i < 8; i++)
         {
@@ -201,7 +201,7 @@ int can_sample(int argc, char *argv[])
     {
         rt_strncpy(can_name, CAN_DEV_NAME, RT_NAME_MAX);
     }
-    /* 查找 CAN 设备 */
+    /*  CAN  */
     can_dev = rt_device_find(can_name);
     if (!can_dev)
     {
@@ -209,13 +209,13 @@ int can_sample(int argc, char *argv[])
         return -RT_ERROR;
     }
 
-    /* 初始化 CAN 接收信号量 */
+    /*  CAN  */
     rt_sem_init(&rx_sem, "rx_sem", 0, RT_IPC_FLAG_FIFO);
 
-    /* 以中断接收及发送方式打开 CAN 设备 */
+    /*  CAN  */
     res = rt_device_open(can_dev, RT_DEVICE_FLAG_INT_TX | RT_DEVICE_FLAG_INT_RX);
     RT_ASSERT(res == RT_EOK);
-    /* 创建数据接收线程 */
+    /*  */
     thread = rt_thread_create("can_rx", can_rx_thread, RT_NULL, 1024, 25, 10);
     if (thread != RT_NULL)
     {
@@ -226,11 +226,11 @@ int can_sample(int argc, char *argv[])
         rt_kprintf("create can_rx thread failed!\n");
     }
 
-    msg.id = 0x78;              /* ID 为 0x78 */
-    msg.ide = RT_CAN_STDID;     /* 标准格式 */
-    msg.rtr = RT_CAN_DTR;       /* 数据帧 */
-    msg.len = 8;                /* 数据长度为 8 */
-    /* 待发送的 8 字节数据 */
+    msg.id = 0x78;              /* ID  0x78 */
+    msg.ide = RT_CAN_STDID;     /*  */
+    msg.rtr = RT_CAN_DTR;       /*  */
+    msg.len = 8;                /*  8 */
+    /*  8  */
     msg.data[0] = 0x00;
     msg.data[1] = 0x11;
     msg.data[2] = 0x22;
@@ -239,7 +239,7 @@ int can_sample(int argc, char *argv[])
     msg.data[5] = 0x55;
     msg.data[6] = 0x66;
     msg.data[7] = 0x77;
-    /* 发送一帧 CAN 数据 */
+    /*  CAN  */
     size = rt_device_write(can_dev, 0, &msg, sizeof(msg));
     if (size == 0)
     {
@@ -248,7 +248,7 @@ int can_sample(int argc, char *argv[])
 
     return res;
 }
-/* 导出到 msh 命令列表中 */
+/*  msh  */
 MSH_CMD_EXPORT(can_sample, can device sample);
 #endif
 #ifdef BSP_USING_TIM
@@ -314,17 +314,17 @@ MSH_CMD_EXPORT(hwtimer_sample, hwtimer sample);
 #endif
 
 #ifdef BSP_USING_PWM
-#define PWM_DEV_NAME "pwm0" /* PWM设备名称 */
-#define PWM_DEV_CHANNEL 0   /* PWM通道 */
+#define PWM_DEV_NAME "pwm0" /* PWM */
+#define PWM_DEV_CHANNEL 0   /* PWM */
 
-struct rt_device_pwm *pwm_dev; /* PWM设备句柄 */
+struct rt_device_pwm *pwm_dev; /* PWM */
 
 static int pwm_sample(int argc, char *argv[])
 {
     rt_uint32_t period, pulse;
 
-    period = 500000; /* 周期为0.5ms，单位为纳秒ns */
-    pulse = 100000;  /* PWM脉冲宽度值，单位为纳秒ns */
+    period = 500000; /* 0.5msns */
+    pulse = 100000;  /* PWMns */
 
     pwm_dev = (struct rt_device_pwm *)rt_device_find(PWM_DEV_NAME);
     if (pwm_dev == RT_NULL)
@@ -446,7 +446,7 @@ static int rt_hw_spi_flash_init(void)
 
     return RT_EOK;
 }
-/* 导出到自动初始化 */
+/*  */
 INIT_COMPONENT_EXPORT(rt_hw_spi_flash_init);
 
 static void spi_w25q_sample(int argc, char *argv[])
@@ -465,7 +465,7 @@ static void spi_w25q_sample(int argc, char *argv[])
         rt_strncpy(name, W25Q_SPI_DEVICE_NAME, RT_NAME_MAX);
     }
 
-    /* 查找 spi 设备获取设备句柄 */
+    /*  spi  */
     spi_dev_w25q = (struct rt_spi_device *)rt_device_find(name);
     if (!spi_dev_w25q)
     {
@@ -473,11 +473,11 @@ static void spi_w25q_sample(int argc, char *argv[])
     }
     else
     {
-        /* 方式1：使用 rt_spi_send_then_recv()发送命令读取ID */
+        /* 1 rt_spi_send_then_recv()ID */
         rt_spi_send_then_recv(spi_dev_w25q, &w25x_read_id, 1, id, 5);
         rt_kprintf("use rt_spi_send_then_recv() read w25q ID is:%x%x\n", id[3], id[4]);
 
-        /* 方式2：使用 rt_spi_transfer_message()发送命令读取ID */
+        /* 2 rt_spi_transfer_message()ID */
         struct rt_spi_message msg1, msg2;
 
         msg1.send_buf = &w25x_read_id;
@@ -498,7 +498,7 @@ static void spi_w25q_sample(int argc, char *argv[])
         rt_kprintf("use rt_spi_transfer_message() read w25q ID is:%x%x\n", id[3], id[4]);
     }
 }
-/* 导出到 msh 命令列表中 */
+/*  msh  */
 MSH_CMD_EXPORT(spi_w25q_sample, spi w25q sample);
 
 #ifdef RT_USING_DFS_ELMFAT
@@ -673,7 +673,7 @@ static void crypto_sample(void)
             .last_val = 0x00000000,
             .poly = 0x04C11DB7,
             .width = 8,
-            .xorout = 0x00000000, //不支持XOR
+            .xorout = 0x00000000, //XOR
             .flags = 0,
         };
 
@@ -706,22 +706,22 @@ MSH_CMD_EXPORT(crypto_sample, crypto sample);
 #define THREAD_STACK_SIZE 512
 #define THREAD_TIMESLICE 5
 
-/* 线程入口 */
+/*  */
 void thread1_entry(void *parameter)
 {
     int i;
-    char *ptr = RT_NULL; /* 内存块的指针 */
+    char *ptr = RT_NULL; /*  */
 
     for (i = 0;; i++)
     {
-        /* 每次分配 (1 << i) 大小字节数的内存空间 */
+        /*  (1 << i)  */
         ptr = rt_malloc(1 << i);
 
-        /* 如果分配成功 */
+        /*  */
         if (ptr != RT_NULL)
         {
             rt_kprintf("get memory :%d byte\n", (1 << i));
-            /* 释放内存块 */
+            /*  */
             rt_free(ptr);
             rt_kprintf("free memory :%d byte\n", (1 << i));
             ptr = RT_NULL;
@@ -738,7 +738,7 @@ int dynmem_sample(void)
 {
     rt_thread_t tid = RT_NULL;
 
-    /* 创建线程 1 */
+    /*  1 */
     tid = rt_thread_create("thread1",
                            thread1_entry, RT_NULL,
                            THREAD_STACK_SIZE,
@@ -749,7 +749,7 @@ int dynmem_sample(void)
 
     return 0;
 }
-/* 导出到 msh 命令列表中 */
+/*  msh  */
 MSH_CMD_EXPORT(dynmem_sample, dynmem sample);
 #endif
 
@@ -782,7 +782,7 @@ static rt_sem_t     gt9147_sem = RT_NULL;
 static rt_device_t  dev = RT_NULL;
 static struct       rt_touch_data *read_data;
 
-/* 读取数据线程入口函数 */
+/*  */
 static void gt9147_entry(void *parameter)
 {
     struct rt_touch_data *read_data;
@@ -790,9 +790,9 @@ static void gt9147_entry(void *parameter)
 
     while (1)
     {
-        /* 请求信号量 */
+        /*  */
         rt_sem_take(gt9147_sem, RT_WAITING_FOREVER);
-        /* 读取五个点的触摸信息 */
+        /*  */
         if (rt_device_read(dev, 0, read_data, 5) == 5)
         {
             for (rt_uint8_t i = 0; i < 5; i++)
@@ -808,24 +808,24 @@ static void gt9147_entry(void *parameter)
                 }
             }
         }
-        /* 打开中断 */
+        /*  */
         rt_device_control(dev, RT_TOUCH_CTRL_ENABLE_INT, RT_NULL);
     }
 }
 
-/* 接收回调函数 */
+/*  */
 static rt_err_t rx_callback(rt_device_t dev, rt_size_t size)
 {
-    /* 关闭中断 */
+    /*  */
     rt_device_control(dev, RT_TOUCH_CTRL_DISABLE_INT, RT_NULL);
-    /* 释放信号量 */
+    /*  */
     rt_sem_release(gt9147_sem);
     return 0;
 }
 
 static int gt9147_sample(void)
 {
-    /* 查找 Touch 设备 */
+    /*  Touch  */
     dev = rt_device_find("gt9147");
 
     if (dev == RT_NULL)
@@ -833,15 +833,15 @@ static int gt9147_sample(void)
         rt_kprintf("can't find device:%s\n", "touch");
         return -1;
     }
-    /* 以中断的方式打开设备 */
+    /*  */
     if (rt_device_open(dev, RT_DEVICE_FLAG_INT_RX) != RT_EOK)
     {
         rt_kprintf("open device failed!");
         return -1;
     }
-    /* 设置接收回调 */
+    /*  */
     rt_device_set_rx_indicate(dev, rx_callback);
-    /* 创建信号量 */
+    /*  */
     gt9147_sem = rt_sem_create("dsem", 0, RT_IPC_FLAG_PRIO);
 
     if (gt9147_sem == RT_NULL)
@@ -849,14 +849,14 @@ static int gt9147_sample(void)
         rt_kprintf("create dynamic semaphore failed.\n");
         return -1;
     }
-    /* 创建读取数据线程 */
+    /*  */
     gt9147_thread = rt_thread_create("thread1",
                                      gt9147_entry,
                                      RT_NULL,
                                      THREAD_STACK_SIZE,
                                      THREAD_PRIORITY,
                                      THREAD_TIMESLICE);
-    /* 启动线程 */
+    /*  */
     if (gt9147_thread != RT_NULL)
         rt_thread_startup(gt9147_thread);
 

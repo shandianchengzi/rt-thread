@@ -2,7 +2,7 @@
 
 ## **Introduction**
 
-The NuMicro® MA35D1 series is a heterogeneous multi-core microprocessor targeted to high-end edge IIoT gateway. It is based on dual 64-bit Arm® Cortex®-A35 cores with speed up to 1 GHz, and one 180 MHz Arm® Cortex®-M4 core. Based on the high-performance cores, the MA35D1 series facilities the tiny AI/ML for edge computing.
+The NuMicro MA35D1 series is a heterogeneous multi-core microprocessor targeted to high-end edge IIoT gateway. It is based on dual 64-bit Arm Cortex-A35 cores with speed up to 1 GHz, and one 180 MHz Arm Cortex-M4 core. Based on the high-performance cores, the MA35D1 series facilities the tiny AI/ML for edge computing.
 
 The NuMaker-IoT-MA35D1 evaluation board provides the Ethernet and connectivity features of Nuvoton NuMicro MA35D1 series microprocessors, based on MA35D16F987C (LQFP216 package, and stacking a 512 MB DDR). The NuMaker-IoT-MA35D1 includes rich peripherals such as one set of Gigabit Ethernet, one set of Megabit Ethernet, high-speed USB2.0 Host and device, one set of SD3.0 in MicroSD slot, one set of CAN FD, and RS-485 and RS232 serial communication ports. Furthermore, the NuMaker-IoT-MA35D1 provides discrete power supply to be the reference design. It also provides compatible headers with Raspberry Pi and Arduino UNO for minimizing effort in connecting popular sensors and modules to the system.
 

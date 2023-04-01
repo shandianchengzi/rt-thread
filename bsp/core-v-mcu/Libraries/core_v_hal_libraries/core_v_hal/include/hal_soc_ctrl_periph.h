@@ -88,22 +88,22 @@ typedef struct
 
 /*! @name CL_BYPASS */
 /* Bypass Maestro PMU controller configuration bitfield:
-  - 1’b0: disabled
-  - 1’b1: enabled */
+  - 1b0: disabled
+  - 1b1: enabled */
 #define SOC_CTRL_CL_BYPASS_BYP_POW_MASK                              (0x1)
 #define SOC_CTRL_CL_BYPASS_BYP_POW_SHIFT                             (0)
 #define SOC_CTRL_CL_BYPASS_BYP_POW(val)                              (((uint32_t)(((uint32_t)(val)) << SOC_CTRL_CL_BYPASS_BYP_POW_SHIFT)) & SOC_CTRL_CL_BYPASS_BYP_POW_MASK)
 
 /* Bypass Maestro PMU configuration selection configuration bitfield:
-  - 1’b0: use default
-  - 1’b1: use user configuration (bitfields from bits 3 to 15 of CL_BYPASS register) */
+  - 1b0: use default
+  - 1b1: use user configuration (bitfields from bits 3 to 15 of CL_BYPASS register) */
 #define SOC_CTRL_CL_BYPASS_BYP_CFG_MASK                              (0x2)
 #define SOC_CTRL_CL_BYPASS_BYP_CFG_SHIFT                             (1)
 #define SOC_CTRL_CL_BYPASS_BYP_CFG(val)                              (((uint32_t)(((uint32_t)(val)) << SOC_CTRL_CL_BYPASS_BYP_CFG_SHIFT)) & SOC_CTRL_CL_BYPASS_BYP_CFG_MASK)
 
 /* Cluster state configuration and status bitfield:
-  - 1’b0: off
-  - 1’b1: on
+  - 1b0: off
+  - 1b1: on
   Status information is correct only when bypass mode is enabled. */
 #define SOC_CTRL_CL_BYPASS_CL_STATE_MASK                             (0x8)
 #define SOC_CTRL_CL_BYPASS_CL_STATE_SHIFT                            (3)
@@ -120,15 +120,15 @@ typedef struct
 #define SOC_CTRL_CL_BYPASS_PROG_DEL(val)                             (((uint32_t)(((uint32_t)(val)) << SOC_CTRL_CL_BYPASS_PROG_DEL_SHIFT)) & SOC_CTRL_CL_BYPASS_PROG_DEL_MASK)
 
 /* Bypass cluster clock and reset control by Maestro PMU configuration bitfield:
-  - 1’b0: disabled
-  - 1’b1: enabled */
+  - 1b0: disabled
+  - 1b1: enabled */
 #define SOC_CTRL_CL_BYPASS_BYP_CLK_MASK                              (0x200)
 #define SOC_CTRL_CL_BYPASS_BYP_CLK_SHIFT                             (9)
 #define SOC_CTRL_CL_BYPASS_BYP_CLK(val)                              (((uint32_t)(((uint32_t)(val)) << SOC_CTRL_CL_BYPASS_BYP_CLK_SHIFT)) & SOC_CTRL_CL_BYPASS_BYP_CLK_MASK)
 
 /* Cluster clock gate configuration bitfield:
-  - 1’b0: disabled
-  - 1’b1: enabled
+  - 1b0: disabled
+  - 1b1: enabled
   It should always be used before switching cluster FLL to shutdown or retentive mode. */
 #define SOC_CTRL_CL_BYPASS_CG_MASK                                   (0x400)
 #define SOC_CTRL_CL_BYPASS_CG_SHIFT                                  (10)
@@ -136,22 +136,22 @@ typedef struct
 #define READ_SOC_CTRL_CL_BYPASS_CG(val)                              (((uint32_t)(((uint32_t)(val)) & SOC_CTRL_CL_BYPASS_CG_MASK)) >> SOC_CTRL_CL_BYPASS_CG_SHIFT)
 
 /* Cluster FLL shutdown configuration bitfield:
-  - 1’b0: FLL on
-  - 1’b1: FLL shutdown mode */
+  - 1b0: FLL on
+  - 1b1: FLL shutdown mode */
 #define SOC_CTRL_CL_BYPASS_FLL_PWD_MASK                              (0x800)
 #define SOC_CTRL_CL_BYPASS_FLL_PWD_SHIFT                             (11)
 #define SOC_CTRL_CL_BYPASS_FLL_PWD(val)                              (((uint32_t)(((uint32_t)(val)) << SOC_CTRL_CL_BYPASS_FLL_PWD_SHIFT)) & SOC_CTRL_CL_BYPASS_FLL_PWD_MASK)
 
 /* Cluster FLL retentive configuration bitfield:
-  - 1’b0: FLL on
-  - 1’b1: FLL retentive mode */
+  - 1b0: FLL on
+  - 1b1: FLL retentive mode */
 #define SOC_CTRL_CL_BYPASS_FLL_RET_MASK                              (0x1000)
 #define SOC_CTRL_CL_BYPASS_FLL_RET_SHIFT                             (12)
 #define SOC_CTRL_CL_BYPASS_FLL_RET(val)                              (((uint32_t)(((uint32_t)(val)) << SOC_CTRL_CL_BYPASS_FLL_RET_SHIFT)) & SOC_CTRL_CL_BYPASS_FLL_RET_MASK)
 
 /* Cluster reset configuration bitfield:
-  - 1’b0: nothing
-  - 1’b1: reset the cluster */
+  - 1b0: nothing
+  - 1b1: reset the cluster */
 #define SOC_CTRL_CL_BYPASS_RST_MASK                                  (0x2000)
 #define SOC_CTRL_CL_BYPASS_RST_SHIFT                                 (13)
 #define SOC_CTRL_CL_BYPASS_RST(val)                                  (((uint32_t)(((uint32_t)(val)) << SOC_CTRL_CL_BYPASS_RST_SHIFT)) & SOC_CTRL_CL_BYPASS_RST_MASK)
@@ -380,8 +380,8 @@ typedef struct
 #define SOC_CTRL_SAFE_PMU_SLEEPCTRL_BTTYPE(val)                      (((uint32_t)(((uint32_t)(val)) << SOC_CTRL_SAFE_PMU_SLEEPCTRL_BTTYPE_SHIFT)) & SOC_CTRL_SAFE_PMU_SLEEPCTRL_BTTYPE_MASK)
 
 /* Cluster state to restore after warm boot:
-  - 1’b0: off
-  - 1’b1: on */
+  - 1b0: off
+  - 1b1: on */
 #define SOC_CTRL_SAFE_PMU_SLEEPCTRL_CL_WAKE_MASK                     (0x100000)
 #define SOC_CTRL_SAFE_PMU_SLEEPCTRL_CL_WAKE_SHIFT                    (20)
 #define SOC_CTRL_SAFE_PMU_SLEEPCTRL_CL_WAKE(val)                     (((uint32_t)(((uint32_t)(val)) << SOC_CTRL_SAFE_PMU_SLEEPCTRL_CL_WAKE_SHIFT)) & SOC_CTRL_SAFE_PMU_SLEEPCTRL_CL_WAKE_MASK)
@@ -587,17 +587,17 @@ typedef union
     struct
     {
         /* Bypass Maestro PMU controller configuration bitfield:
-        - 1’b0: disabled
-        - 1’b1: enabled */
+        - 1b0: disabled
+        - 1b1: enabled */
         uint32_t byp_pow:1;
         /* Bypass Maestro PMU configuration selection configuration bitfield:
-        - 1’b0: use default
-        - 1’b1: use user configuration (bitfields from bits 3 to 15 of CL_BYPASS register) */
+        - 1b0: use default
+        - 1b1: use user configuration (bitfields from bits 3 to 15 of CL_BYPASS register) */
         uint32_t byp_cfg:1;
         uint32_t reserved_0:1;
         /* Cluster state configuration and status bitfield:
-        - 1’b0: off
-        - 1’b1: on
+        - 1b0: off
+        - 1b1: on
         Status information is correct only when bypass mode is enabled. */
         uint32_t cl_state:1;
         /* Max current allowed on cluster TRC configuration bitfield. */
@@ -605,25 +605,25 @@ typedef union
         /* Number of REFCLK 32kHz after cluster power ok has arised to release TR isolation configuration bitfield. */
         uint32_t prog_del:2;
         /* Bypass cluster clock and reset control by Maestro PMU configuration bitfield:
-        - 1’b0: disabled
-        - 1’b1: enabled */
+        - 1b0: disabled
+        - 1b1: enabled */
         uint32_t byp_clk:1;
         /* Cluster clock gate configuration bitfield:
-        - 1’b0: disabled
-        - 1’b1: enabled
+        - 1b0: disabled
+        - 1b1: enabled
         It should always be used before switching cluster FLL to shutdown or retentive mode. */
         uint32_t cg:1;
         /* Cluster FLL shutdown configuration bitfield:
-        - 1’b0: FLL on
-        - 1’b1: FLL shutdown mode */
+        - 1b0: FLL on
+        - 1b1: FLL shutdown mode */
         uint32_t fll_pwd:1;
         /* Cluster FLL retentive configuration bitfield:
-        - 1’b0: FLL on
-        - 1’b1: FLL retentive mode */
+        - 1b0: FLL on
+        - 1b1: FLL retentive mode */
         uint32_t fll_ret:1;
         /* Cluster reset configuration bitfield:
-        - 1’b0: nothing
-        - 1’b1: reset the cluster */
+        - 1b0: nothing
+        - 1b1: reset the cluster */
         uint32_t rst:1;
         /* ? */
         uint32_t byp_iso:1;
@@ -809,8 +809,8 @@ typedef union
         - 2'b10: retentive deep sleep */
         uint32_t bttype:2;
         /* Cluster state to restore after warm boot:
-        - 1’b0: off
-        - 1’b1: on */
+        - 1b0: off
+        - 1b1: on */
         uint32_t cl_wake:1;
     } field;
     uint32_t word;

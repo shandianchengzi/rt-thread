@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fspim.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 09:08:32
- * Description:  This files is for spim api implementation
+ * Description: This files is for spim api implementation
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   zhugengyu  2021-12-3   init commit
  * 1.1   zhugengyu  2022-4-15   support test mode
  * 1.2   zhugengyu  2022-5-13   support spi dma
@@ -65,18 +65,18 @@ static const char *FSPIM_ERROR_CODE_MSG[FSPIM_NUM_OF_ERR_CODE] =
 
 /*****************************************************************************/
 
-/* 此文件主要为了完成用户对外接口，用户可以使用这些接口直接开始工作 */
+/*  */
 
-/* - 包括用户API的定义和实现
-   - 同时包含必要的OPTION方法，方便用户进行配置
-   - 如果驱动可以直接进行I/O操作，在此源文件下可以将API 进行实现 */
+/* - API
+   - OPTION
+   - I/OAPI  */
 
 /*
  * @name: FSpimCfgInitialize
  * @msg:  Initializes a specific instance such that it is ready to be used.
- * @param {FSpim} *instance_p FSPIM驱动控制数据
- * @param {FSpimConfig} *config_p FSPIM驱动配置数据
- * @return 驱动初始化的错误码信息，FSPIM_SUCCESS 表示初始化成功，其它返回值表示初始化失败
+ * @param {FSpim} *instance_p FSPIM
+ * @param {FSpimConfig} *config_p FSPIM
+ * @return FSPIM_SUCCESS 
  */
 FError FSpimCfgInitialize(FSpim *instance_p, const FSpimConfig *input_config_p)
 {
@@ -118,8 +118,8 @@ FError FSpimCfgInitialize(FSpim *instance_p, const FSpimConfig *input_config_p)
 /**
  * @name: FSpimDeInitialize
  * @msg: DeInitialization function for the device instance
- * @return {无}
- * @param {FSpim} *instance_p FSPIM驱动控制数据
+ * @return {}
+ * @param {FSpim} *instance_p FSPIM
  */
 void FSpimDeInitialize(FSpim *instance_p)
 {
@@ -133,8 +133,8 @@ void FSpimDeInitialize(FSpim *instance_p)
 
 /**
  * @name: FSpimReset
- * @msg: 重置FSPIM控制器
- * @return {FError} FSPIM_SUCCESS表示重置成功，其它返回值表示重置失败
+ * @msg: FSPIM
+ * @return {FError} FSPIM_SUCCESS
  * @param {FSpim} *instance_p
  */
 FError FSpimReset(FSpim *instance_p)
@@ -145,40 +145,40 @@ FError FSpimReset(FSpim *instance_p)
     u32 reg_val;
     u32 fifo;
 
-    /* 禁用SPI控制器 */
+    /* SPI */
     FSpimSetEnable(base_addr, FALSE);
 
-    /* 选择数据长度和帧格式 */
+    /*  */
     reg_val = FSPIM_CTRL_R0_DFS(FSPIM_DEFAULT_DFS) |
               FSPIM_CTRL_R0_FRF(FSPIM_DEFAULT_FRF) |
               FSPIM_CTRL_R0_CFS(FSPIM_DEFAULT_CFS);
 
     if (instance_p->config.en_test)
     {
-        reg_val |= FSPIM_CTRL_R0_SLV_SRL(FSPIM_SRL_TEST); /* 设置测试模式，TX Fifo和RX Fifo内部短接 */
+        reg_val |= FSPIM_CTRL_R0_SLV_SRL(FSPIM_SRL_TEST); /* TX FifoRX Fifo */
     }
     else
     {
-        reg_val |= FSPIM_CTRL_R0_SLV_SRL(FSPIM_SRL_NORAML); /* 设置为正常模式 */
+        reg_val |= FSPIM_CTRL_R0_SLV_SRL(FSPIM_SRL_NORAML); /*  */
     }
 
     FSpimSetCtrlR0(base_addr, reg_val);
 
-    /* 选择串行时钟极性和相位 */
+    /*  */
     FSpimSetCpha(base_addr, instance_p->config.cpha);
     FSpimSetCpol(base_addr, instance_p->config.cpol);
 
-    /* 设置传输模式 */
+    /*  */
     FSpimSetTransMode(base_addr, FSPIM_TRANS_MODE_RX_TX);
 
-    /* 禁用slave */
+    /* slave */
     FSpimSetSlaveEnable(base_addr, FALSE);
 
-    /* 禁用SPI 中断，设置slave设备 */
+    /* SPI slave */
     FSpimMaskIrq(base_addr, FSPIM_IMR_ALL_BITS);
     FSpimSelSlaveDev(base_addr, instance_p->config.slave_dev_id);
 
-    /* 获取SPI RX/TX FIFO 深度 */
+    /* SPI RX/TX FIFO  */
     if (0 == instance_p->tx_fifo_len)
     {
         fifo = FSpimGetTxFifoDepth(base_addr);
@@ -225,7 +225,7 @@ FError FSpimReset(FSpim *instance_p)
 
     FSPIM_WRITE_REG32(base_addr, FSPIM_RX_SAMPLE_DLY_OFFSET, FSPIM_DEFAULT_RSD);
 
-    /* 使能SPI控制器 */
+    /* SPI */
     FSpimSetEnable(base_addr, TRUE);
 
     return ret;
@@ -233,8 +233,8 @@ FError FSpimReset(FSpim *instance_p)
 
 /**
  * @name: FSpimGetTxRound
- * @msg: 计算当前FIFO支持的发送字节数
- * @return {fsize_t} 当前TX FIFO可以容纳的字节数
+ * @msg: FIFO
+ * @return {fsize_t} TX FIFO
  * @param {FSpim} *instance_p
  */
 static fsize_t FSpimGetTxRound(FSpim *instance_p)
@@ -260,8 +260,8 @@ static fsize_t FSpimGetTxRound(FSpim *instance_p)
 
 /**
  * @name: FSpimFifoTx
- * @msg: 利用Fifo进行发送
- * @return {无}
+ * @msg: Fifo
+ * @return {}
  * @param {FSpim} *instance_p
  */
 void FSpimFifoTx(FSpim *instance_p)
@@ -306,8 +306,8 @@ void FSpimFifoTx(FSpim *instance_p)
 
 /**
  * @name: FSpimGetRxRound
- * @msg: 获取当前Fifo支持的接收字节数
- * @return {fsize_t} 当前RX FIFO可以容纳的字节数
+ * @msg: Fifo
+ * @return {fsize_t} RX FIFO
  * @param {FSpim} *instance_p
  */
 static fsize_t FSpimGetRxRound(FSpim *instance_p)
@@ -323,8 +323,8 @@ static fsize_t FSpimGetRxRound(FSpim *instance_p)
 
 /**
  * @name: FSpimFifoRx
- * @msg: 利用Fifo进行接收
- * @return {无}
+ * @msg: Fifo
+ * @return {}
  * @param {FSpim} *instance_p
  */
 void FSpimFifoRx(FSpim *instance_p)
@@ -373,14 +373,14 @@ void FSpimFifoRx(FSpim *instance_p)
 
 /**
  * @name: FSpimTransferPollFifo
- * @msg: 先发送后接收数据 (阻塞处理)，利用Fifo进行处理
- * @return {FError} FSPIM_SUCCESS表示处理成功，其它返回值表示处理失败
- * @param {FSpim} *instance_p 驱动控制数据
- * @param {void} *tx_buf 写缓冲区，可以为空，为空时表示只关注读数据，此时驱动会发送0xff读数据
- * @param {void} *rx_buf 读缓冲区, 可以为空，为空时表示值关注写数据，此时SPI总线上返回的数据会被抛弃
- * @param {fsize_t} len 进行传输的长度，如果tx_buf或者rx_buf不为空，则两个buf的长度必须为len
-    - 使用此函数前需要确保FSPIM驱动初始化成功
-    - 从函数不会使用中断，会按照TX FIFO的深度进行传输，每次发送填满TX FIFO后触发发送/接收动作
+ * @msg:  ()Fifo
+ * @return {FError} FSPIM_SUCCESS
+ * @param {FSpim} *instance_p 
+ * @param {void} *tx_buf 0xff
+ * @param {void} *rx_buf , SPI
+ * @param {fsize_t} len tx_bufrx_bufbuflen
+    - FSPIM
+    - TX FIFOTX FIFO/
  */
 FError FSpimTransferPollFifo(FSpim *instance_p, const void *tx_buf, void *rx_buf, fsize_t len)
 {
@@ -439,12 +439,12 @@ FError FSpimTransferPollFifo(FSpim *instance_p, const void *tx_buf, void *rx_buf
 
 /**
  * @name: FSpimTransferByInterrupt
- * @msg: 先发送后接收数据 (中断处理)，利用Fifo进行处理
- * @return {FError} FSPIM_SUCCESS表示处理成功，其它返回值表示处理失败
- * @param {FSpim} *instance_p 驱动控制数据
- * @param {void} *tx_buf 写缓冲区
- * @param {void} *rx_buf 读缓冲区
- * @param {fsize_t} len 读写缓冲区长度 （必须相等）
+ * @msg:  ()Fifo
+ * @return {FError} FSPIM_SUCCESS
+ * @param {FSpim} *instance_p 
+ * @param {void} *tx_buf 
+ * @param {void} *rx_buf 
+ * @param {fsize_t} len  
  */
 FError FSpimTransferByInterrupt(FSpim *instance_p, const void *tx_buf, void *rx_buf, fsize_t len)
 {
@@ -485,7 +485,7 @@ FError FSpimTransferByInterrupt(FSpim *instance_p, const void *tx_buf, void *rx_
     instance_p->rx_buff = rx_buf;
     instance_p->rx_buff_end = instance_p->rx_buff + len;
 
-    /* 设置中断触发的时机，fifo填满一半，或者所有的数据填完 */
+    /* fifo */
     tx_level = min(instance_p->tx_fifo_len / 2, instance_p->length / data_width);
     FSpimSetTxFifoThreshold(base_addr, tx_level);
     FSpimUmaskIrq(base_addr, FSPIM_IMR_TXEIS | FSPIM_IMR_TXOIS | FSPIM_IMR_RXUIS | FSPIM_IMR_RXOIS);
@@ -499,11 +499,11 @@ FError FSpimTransferByInterrupt(FSpim *instance_p, const void *tx_buf, void *rx_
 
 /**
  * @name: FSpimTransferDMA
- * @msg: 启动SPIM DMA数据传输
- * @return {FError} FSPIM_SUCCESS表示启动DMA传输成功，其它值表示失败
- * @param {FSpim} *instance_p, 驱动控制数据
- * @param {boolean} tx, TRUE: 启动发送DMA
- * @param {boolean} rx, TRUE: 启动接收DMA
+ * @msg: SPIM DMA
+ * @return {FError} FSPIM_SUCCESSDMA
+ * @param {FSpim} *instance_p, 
+ * @param {boolean} tx, TRUE: DMA
+ * @param {boolean} rx, TRUE: DMA
  */
 FError FSpimTransferDMA(FSpim *instance_p, boolean tx, boolean rx)
 {
@@ -559,10 +559,10 @@ FError FSpimTransferDMA(FSpim *instance_p, boolean tx, boolean rx)
 
 /**
  * @name: FSpimSetChipSelection
- * @msg: 设置片选信号
+ * @msg: 
  * @return {NONE}
- * @param {FSpim} *instance_p, 驱动控制数据
- * @param {boolean} on, TRUE: 片选打开, FALSE: 片选关闭
+ * @param {FSpim} *instance_p, 
+ * @param {boolean} on, TRUE: , FALSE: 
  */
 void FSpimSetChipSelection(FSpim *instance_p, boolean on)
 {
@@ -597,9 +597,9 @@ void FSpimSetChipSelection(FSpim *instance_p, boolean on)
 
 /**
  * @name: FSpimErrorToMessage
- * @msg: 获取FSPIM模块错误码对应的错误信息
- * @return {const char *}, 错误码信息，NULL表示失败
- * @param {FError} error, FSPIM输入错误码
+ * @msg: FSPIM
+ * @return {const char *}, NULL
+ * @param {FError} error, FSPIM
  */
 const char *FSpimErrorToMessage(FError error)
 {

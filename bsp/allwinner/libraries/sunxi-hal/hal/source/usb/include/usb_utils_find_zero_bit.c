@@ -33,15 +33,15 @@
 *             find_next_zero_bit
 *
 * Description:
-*     在地址连续的n个int字节中，从指定bit位开始查找第一个为0的bit的位.
+*     nintbit0bit.
 *
 * Parameters:
-*     addr    :   起始地址.
-*     size    :   n个字节的总长度,(32 * n).
-*     offset  :   开始查找的bit位.
+*     addr    :   .
+*     size    :   n,(32 * n).
+*     offset  :   bit.
 *
 *  Return value:
-*     查找成功，返回查找到的第一个为0的bit位。查找失败，则返回0xffffffff。
+*     0bit0xffffffff
 *
 ******************************************************************************
 */
@@ -49,24 +49,24 @@ u32 find_next_zero_bit(const volatile u32 *addr, u32 size, u32 offset)
 {
     u32 *p = (u32 *) addr ;
     u32 bit = FIND_NEXT_ZERO_BIT_NOT_FOUND;
-    int k;      //字节中的偏移量
+    int k;      //
     int i, j;
-    int n;      //int字节的个数
-    int m;      //所在字节的位置
+    int n;      //int
+    int m;      //
     n = size / 32;
     k = 32 - (offset % 32);
     m = offset / 32;
 
-    //offset为0 ~ size-1
+    //offset0 ~ size-1
     if (size > FIND_NEXT_ZERO_BIT_MAX_SIZE || offset >= size || m > n)
     {
         return bit;
     }
 
-    //从offsize位置向前查找，直到结尾
+    //offsize
     for (j = 0; j < (n - m); j++)
     {
-        if (j == 0) //offsize所在的字节
+        if (j == 0) //offsize
         {
             for (i = 0; i < k; i++)
             {
@@ -81,7 +81,7 @@ u32 find_next_zero_bit(const volatile u32 *addr, u32 size, u32 offset)
                 }
             }
         }
-        else  //offsize所在字节的下j个字节
+        else  //offsizej
         {
             for (i = 0; i < 32; i++)
             {
@@ -99,10 +99,10 @@ u32 find_next_zero_bit(const volatile u32 *addr, u32 size, u32 offset)
         }
     }
 
-    //从addr位置向前查找，直到offsize处停止
+    //addroffsize
     for (j = 0; j <= m; j++)
     {
-        if (j != m) //从addr位置向前查找
+        if (j != m) //addr
         {
             for (i = 0; i < 32; i++)
             {
@@ -117,7 +117,7 @@ u32 find_next_zero_bit(const volatile u32 *addr, u32 size, u32 offset)
                 }
             }
         }
-        else  //offsize所在的字节
+        else  //offsize
         {
             for (i = 0; i < (32 - k); i++)
             {

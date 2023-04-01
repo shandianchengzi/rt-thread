@@ -1,74 +1,74 @@
-# GD32  ARM系列 BSP 制作教程
+# GD32  ARM BSP 
 
-## 1. BSP 框架介绍
+## 1. BSP 
 
-BSP 框架结构如下图所示：
+BSP 
 
-![BSP 框架图](./figures/frame.png)
+![BSP ](./figures/frame.png)
 
-GD32 ARM系列BSP架构主要分为三个部分：libraries、tools和具体的Boards，其中libraries包含了GD32的通用库，包括每个系列的Firmware Library以及适配RT-Thread的drivers；tools是生成工程的Python脚本工具；另外就是Boards文件，当然这里的Boards有很多，我这里值列举了GD32407V-START。
+GD32 ARMBSPlibrariestoolsBoardslibrariesGD32Firmware LibraryRT-ThreaddriverstoolsPythonBoardsBoardsGD32407V-START
 
-## 2. 知识准备
+## 2. 
 
-制作一个 BSP 的过程就是构建一个新系统的过程，因此想要制作出好用的 BSP，要对 RT-Thread 系统的构建过程有一定了解，需要的知识准备如下所示：
+ BSP  BSP RT-Thread 
 
-- 掌握  GD32 ARM系列 BSP 的使用方法
+-   GD32 ARM BSP 
   
-  了解 BSP 的使用方法，可以阅读 [BSP 说明文档](../README.md) 中使用教程表格内的文档。
+   BSP  [BSP ](../README.md) 
 
-- 了解 Scons 工程构建方法
+-  Scons 
   
-  RT-Thread 使用 Scons 作为系统的构建工具，因此了解 Scons 的常用命令对制作新 BSP 是基本要求。
+  RT-Thread  Scons  Scons  BSP 
 
-- 了解设备驱动框架
+- 
   
-  在 RT-Thread 系统中，应用程序通过设备驱动框架来操作硬件，因此了解设备驱动框架，对添加 BSP 驱动是很重要的。
+   RT-Thread  BSP 
 
-- 了解 Kconfig 语法
+-  Kconfig 
   
-  RT-Thread 系统通过 menuconfig 的方式进行配置，而 menuconfig 中的选项是由 Kconfig 文件决定的，因此想要对 RT-Thread 系统进行配置，需要对 kconfig 语法有一定了解。
+  RT-Thread  menuconfig  menuconfig  Kconfig  RT-Thread  kconfig 
 
-## 3. BSP移植
+## 3. BSP
 
-### 3.1 Keil环境准备
+### 3.1 Keil
 
-目前市面通用的MDK for ARM版本有Keil 4和Keil 5：使用Keil 4建议安装4.74及以上；使用Keil 5建议安装5.20以上版本。本文的MDK是5.30。
+MDK for ARMKeil 4Keil 5Keil 44.74Keil 55.20MDK5.30
 
-从MDK的官网可以下载得到MDK的安装包，然后安装即可。
+MDKMDK
 
-[MDK下载地址](https://www.keil.com/download/product/)
+[MDK](https://www.keil.com/download/product/)
 
 ![MDK_KEIL](./figures/mdk_keil.png)
 
-安装完成后会自动打开，我们将其关闭。
 
-接下来我们下载GD32F4xx的软件支持包。
 
-[下载地址](http://www.gd32mcu.com/cn/download)
+GD32F4xx
+
+[](http://www.gd32mcu.com/cn/download)
 
  ![Download](./figures/dowmload.png)
 
-下载好后双击GigaDevice.GD32F4xx_DFP.2.1.0.pack运行即可：
+GigaDevice.GD32F4xx_DFP.2.1.0.pack
 
  ![install paxk](./figures/install_pack.png)
 
-点击[Next]即可安装完成。
+[Next]
 
  ![finish](./figures/pack_finish.png)
 
-安装成功后，重新打开Keil，则可以在File->Device Database中出现Gigadevice的下拉选项，点击可以查看到相应的型号。
+KeilFile->Device DatabaseGigadevice
 
  ![Gigadevice](./figures/Gigadevice.png)
 
-### 3.2 BSP工程制作
+### 3.2 BSP
 
-**1.构建基础工程**
+**1.**
 
-首先看看RT-Thread代码仓库中已有很多BSP，而我要移植的是Cortex-M4内核。这里我找了一个相似的内核，把它复制一份，并修改文件名为：gd32407v-start。这样就有一个基础的工程。然后就开始增删改查，完成最终的BSP，几乎所有的BSP的制作都是如此。
+RT-ThreadBSPCortex-M4gd32407v-startBSPBSP
 
-**2.修改BSP构建脚本**
+**2.BSP**
 
-bsp/gd32/arm/gd32407v-start/SConstruct修改后的内容如下：
+bsp/gd32/arm/gd32407v-start/SConstruct
 
 ```python
 import os
@@ -133,37 +133,37 @@ objs.extend(SConscript(os.path.join(libraries_path_prefix, 'Drivers', 'SConscrip
 DoBuilding(TARGET, objs)
 ```
 
-该文件用于链接所有的依赖文件，主要修改固件库路径，并调用make进行编译。
+make
 
-**3.修改KEIL的模板工程**
+**3.KEIL**
 
-双击：template.uvprojx即可修改模板工程。
+template.uvprojx
 
-修改为对应芯片设备:
+:
 
  ![Chip](./figures/chip.png)
 
-修改FLASH和RAM的配置:
+FLASHRAM:
 
  ![storage](./figures/storage.png)
 
-修改可执行文件名字：
+
 
 ![rename](./figures/rename.png)
 
-修改默认调试工具：CMSIS-DAP Debugger。
+CMSIS-DAP Debugger
 
 ![Debug](./figures/debug.png)
 
-修改编程算法：GD32F4xx FMC。
+GD32F4xx FMC
 
 ![FMC](./figures/FMC.png)
 
-**4.修改board文件夹**
+**4.board**
 
-(1) 修改bsp/gd32/arm/gd32407v-start/board/linker_scripts/link.icf
+(1) bsp/gd32/arm/gd32407v-start/board/linker_scripts/link.icf
 
-修改后的内容如下：
+
 
 ```
 /*###ICF### Section handled by ICF editor, don't touch! /
@@ -208,11 +208,11 @@ place in RAM_region   { readwrite,
 place in RAM1_region  { section .sram };
 ```
 
-该文件是IAR编译的链接脚本，根据《GD32F407xx_Datasheet_Rev2.1》可知，GD32F407VKT6的flash大小为3072KB，SRAM大小为192KB，因此需要设置ROM和RAM的起始地址和堆栈大小等。
+IARGD32F407xx_Datasheet_Rev2.1GD32F407VKT6flash3072KBSRAM192KBROMRAM
 
-(2) 修改bsp/gd32/arm/gd32407v-start/board/linker_scripts/link.ld
+(2) bsp/gd32/arm/gd32407v-start/board/linker_scripts/link.ld
 
-修改后的内容如下：
+
 
 ```
 /* Program Entry, set to mark it as "used" and avoid gc */
@@ -354,10 +354,10 @@ SECTIONS
 }
 ```
 
-该文件是GCC编译的链接脚本，根据《GD32F407xx_Datasheet_Rev2.1》可知，GD32F407VKT6的flash大小为3072KB，SRAM大小为192KB，因此CODE和DATA 的LENGTH分别设置为3072KB和192KB，其他芯片类似，但其实地址都是一样的。
+GCCGD32F407xx_Datasheet_Rev2.1GD32F407VKT6flash3072KBSRAM192KBCODEDATA LENGTH3072KB192KB
 
-(3) 修改bsp/gd32/arm/gd32407v-start/board/linker_scripts/link.sct
-修改后的内容如下：
+(3) bsp/gd32/arm/gd32407v-start/board/linker_scripts/link.sct
+
 
 ```
 ; *************************************************************
@@ -376,11 +376,11 @@ LR_IROM1 0x08000000 0x00300000  {    ; load region size_region
 }
 ```
 
-该文件是MDK的连接脚本，根据《GD32F407xx_Datasheet_Rev2.1》手册，因此需要将 LR_IROM1 和 ER_IROM1 的参数设置为 0x00300000；RAM 的大小为192k，因此需要将 RW_IRAM1 的参数设置为 0x00030000。
+MDKGD32F407xx_Datasheet_Rev2.1 LR_IROM1  ER_IROM1  0x00300000RAM 192k RW_IRAM1  0x00030000
 
-(4) 修改bsp/gd32/arm/gd32407v-start/board/board.h文件
+(4) bsp/gd32/arm/gd32407v-start/board/board.h
 
-修改后内容如下：
+
 
 ```c
 #ifndef __BOARD_H__
@@ -422,11 +422,11 @@ extern int __bss_end;
 #endif
 ```
 
-值得注意的是，不同的编译器规定的堆栈内存的起始地址 HEAP_BEGIN 和结束地址 HEAP_END。这里 HEAP_BEGIN 和 HEAP_END 的值需要和前面的链接脚本是一致的，需要结合实际去修改。
+ HEAP_BEGIN  HEAP_END HEAP_BEGIN  HEAP_END 
 
-(5) 修改bsp/gd32/arm/gd32407v-start/board/board.c文件
+(5) bsp/gd32/arm/gd32407v-start/board/board.c
 
-修改后的文件如下：
+
 
 ```c
 #include <stdint.h>
@@ -505,10 +505,10 @@ void SystemClock_Config(void)
 }
 ```
 
-该文件重点关注的就是SystemClock_Config配置，SystemCoreClock的定义在system_gd32f4xx.c中定义的。
+SystemClock_ConfigSystemCoreClocksystem_gd32f4xx.c
 
-(6) 修改bsp/gd32/arm/gd32407v-start/board/Kconfig文件
-修改后内容如下：
+(6) bsp/gd32/arm/gd32407v-start/board/Kconfig
+
 
 ```config
 menu "Hardware Drivers Config"
@@ -596,11 +596,11 @@ endmenu
 endmenu
 ```
 
-这个文件就是配置板子驱动的，这里可根据实际需求添加。
 
-(7) 修改bsp/gd32/arm/gd32407v-start/board/SConscript文件
 
-修改后内容如下：
+(7) bsp/gd32/arm/gd32407v-start/board/SConscript
+
+
 
 ```python
 import os
@@ -633,34 +633,34 @@ group = DefineGroup('Drivers', src, depend = [''], CPPPATH = path, CPPDEFINES = 
 Return('group')
 ```
 
-该文件主要添加board文件夹的.c文件和头文件路径。另外根据开发环境选择相应的汇编文件，和前面的libraries的SConscript语法是一样，文件的结构都是类似的，这里就没有注释了。
+board.clibrariesSConscript
 
-到这里，基本所有的依赖脚本都配置完成了，接下来将通过menuconfig配置工程。
+menuconfig
 
-**5.menuconfig配置**
-关闭套接字抽象层。
+**5.menuconfig**
+
 
 ![Disable socket](./figures/disable_socket.png)
 
-关闭网络设备接口。
+
 
 ![Disable net](./figures/disable_net.png)
 
-关闭LWIP协议栈。
+LWIP
 
 ![Disable lwip](./figures/disable_lwip.png)
 
-GD32407V-START板载没有以太网，因此这里主要是关闭网络相关的内容，当然GD32407V-START的资源丰富，不关这些其实也不影响，如果是其他MCU，根据实际需求自行修改吧。
+GD32407V-STARTGD32407V-STARTMCU
 
-**6.驱动修改**
-一个基本的BSP中，串口是必不可少的，所以还需要编写串口驱动，这里使用的串口2作为调试串口。
-板子上还有LED灯，主要要编写GPIO驱动即可。
+**6.**
+BSP2
+LEDGPIO
 
-关于串口和LED的驱动可以查看源码，这里就不贴出来了。
+LED
 
-**7.应用开发**
+**7.**
 
-笔者在applications的main.c中添加LED的应用代码，
+applicationsmain.cLED
 
 ```c
 #include <stdio.h>
@@ -690,128 +690,128 @@ int main(void)
 }
 ```
 
-当然，这需要GPIO驱动的支持。
+GPIO
 
-**8.使用ENV编译工程**
-在env中执行：scons 
+**8.ENV**
+envscons 
 
 ![scons](./figures/scons.png)
 
-编译成功打印信息如下：
+
 
 ![scons_success](./figures/scons_success.png)
 
-**9.使用env生成MDK工程**
-在env中执行：scons --target=mdk5
+**9.envMDK**
+envscons --target=mdk5
 
 ![scons_mdk5](./figures/scons_mdk5.png)
 
-生成MDK工程后，打开MDK工程进行编译
+MDKMDK
 
 ![MDK Build](./figures/MDK_Build.png)
 
-成功编译打印信息如下：
+
 
 ![MDK Build success](./figures/MDK_Build_Success.png)
 
-### 3.3 使用GD-Link 下载调试GD32
+### 3.3 GD-Link GD32
 
-前面使用ENV和MDK成功编译可BSP，那么接下来就是下载调试环节，下载需要下载器，而GD32部分开发板自带GD-link，可以用开发板上自带的GD-link调试仿真代码，不带的可外接GD-link模块，还是很方便的。具体操作方法如下。
+ENVMDKBSPGD32GD-linkGD-linkGD-link
 
-1.第一次使用GD-link插入电脑后，会自动安装驱动。
+1.GD-link
 
-在Options for Target -> Debug 中选择“CMSIS-DAP Debugger”，值得注意的是，只有Keil4.74以上的版本和Keil5才支持CMSIS-DAP Debugger选项。
+Options for Target -> Debug CMSIS-DAP DebuggerKeil4.74Keil5CMSIS-DAP Debugger
 
  ![CMSIS-DAP Debugger](./figures/CMSIS-DAP_Debugger.png)
 
-2.在Options for Target -> Debug ->Settings勾选SWJ、 Port选择 SW。右框IDcode会出现”0xXBAXXXXX”。
+2.Options for Target -> Debug ->SettingsSWJ Port SWIDcode0xXBAXXXXX
 
  ![setting1](./figures/setting1.png)
 
-3.在Options for Target -> Debug ->Settings -> Flash Download中添加GD32的flash算法。
+3.Options for Target -> Debug ->Settings -> Flash DownloadGD32flash
 
  ![setting2](./figures/setting2.png)
 
-4.单击下图的快捷方式“debug”， 即可使用GD-Link进行仿真。
+4.debug GD-Link
 
  ![GD link debug](./figures/gdlink_debug.png)
 
-当然啦，也可使用GD-Link下载程序。
+GD-Link
 
  ![GD link download](./figures/gdlink_download.png)
 
-下载程序成功后，打印信息如下：
+
 
 ![download success](./figures/download_success.png)
 
-接上串口，打印信息如下：
+
 
 ![UART print](./figures/com_print.png)
 
-同时LED会不断闪烁。
+LED
 
-### 3.4 RT-Thread studio开发
+### 3.4 RT-Thread studio
 
-当然，该工程也可导出使用rt-thread studio开发。
+rt-thread studio
 
-先使用scons --dist导出工程。
+scons --dist
 
 ![scons dist](./figures/scons_dist.png)
 
-再将工程导入rt-thread studio中
+rt-thread studio
 
  ![import_rt-thread_studio](./figures/import_rt-thread_studio.png)
 
-最后，就可在rt-thread studio就可进行开发工作了。
+rt-thread studio
 
 ![rt-thread_studio](./figures/rt-thread_studio.png)
 
-## 4. 规范
+## 4. 
 
-本章节介绍 RT-Thread GD32 系列 BSP 制作与提交时应当遵守的规范 。开发人员在 BSP 制作完成后，可以根据本规范提出的检查点对制作的 BSP 进行检查，确保 BSP 在提交前有较高的质量 。
+ RT-Thread GD32  BSP   BSP  BSP  BSP  
 
-### 4.1 BSP 制作规范
+### 4.1 BSP 
 
-GD32 BSP 的制作规范主要分为 3 个方面：工程配置，ENV 配置和 IDE 配置。在已有的 GD32 系列 BSP 的模板中，已经根据下列规范对模板进行配置。在制作新 BSP 的过程中，拷贝模板进行修改时，需要注意的是不要修改这些默认的配置。BSP 制作完成后，需要对新制作的 BSP 进行功能测试，功能正常后再进行代码提交。
+GD32 BSP  3 ENV  IDE  GD32  BSP  BSP BSP  BSP 
 
-下面将详细介绍 BSP 的制作规范。
+ BSP 
 
-#### 4.1.1 工程配置
+#### 4.1.1 
 
-- 遵从RT-Thread 编码规范，代码注释风格统一
-- main 函数功能保持一致
-  - 如果有 LED 的话，main 函数里**只放一个**  LED 1HZ 闪烁的程序
-- 在 `rt_hw_board_init` 中需要完成堆的初始化：调用 `rt_system_heap_init`
-- 默认只初始化 GPIO 驱动和 FinSH 对应的串口驱动，不使用 DMA
-- 当使能板载外设驱动时，应做到不需要修改代码就能编译下载使用
-- 提交前应检查 GCC/MDK/IAR 三种编译器直接编译或者重新生成后编译是否成功
-- 使用 `dist` 命令对 BSP 进行发布，检查使用 `dist` 命令生成的工程是否可以正常使用
+- RT-Thread 
+- main 
+  -  LED main ****  LED 1HZ 
+-  `rt_hw_board_init`  `rt_system_heap_init`
+-  GPIO  FinSH  DMA
+- 
+-  GCC/MDK/IAR 
+-  `dist`  BSP  `dist` 
 
-#### 4.1.2 ENV 配置
+#### 4.1.2 ENV 
 
-- 系统心跳统一设置为 1000（宏：RT_TICK_PER_SECOND）
-- BSP 中需要打开调试选项中的断言（宏：RT_DEBUG）
-- 系统空闲线程栈大小统一设置为 256（宏：IDLE_THREAD_STACK_SIZE）
-- 开启组件自动初始化（宏：RT_USING_COMPONENTS_INIT）
-- 需要开启 user main 选项（宏：RT_USING_USER_MAIN）
-- 默认关闭 libc（宏：RT_USING_LIBC）
-- FinSH 默认只使用 MSH 模式（宏：FINSH_USING_MSH_ONLY）
+-  1000RT_TICK_PER_SECOND
+- BSP RT_DEBUG
+-  256IDLE_THREAD_STACK_SIZE
+- RT_USING_COMPONENTS_INIT
+-  user main RT_USING_USER_MAIN
+-  libcRT_USING_LIBC
+- FinSH  MSH FINSH_USING_MSH_ONLY
 
-#### 4.1.3 IDE 配置
+#### 4.1.3 IDE 
 
-- 使能下载代码后自动运行
-- 使能 C99 支持
-- 使能 One ELF Section per Function（MDK）
-- MDK/IAR 生成的临时文件分别放到build下的 MDK/IAR 文件夹下
-- MDK/GCC/IAR 生成 bin 文件名字统一成 rtthread.bin
+- 
+-  C99 
+-  One ELF Section per FunctionMDK
+- MDK/IAR build MDK/IAR 
+- MDK/GCC/IAR  bin  rtthread.bin
 
-### 4.2 BSP 提交规范
+### 4.2 BSP 
 
-- 提交前请认真修改 BSP 的 README.md 文件，README.md 文件的外设支持表单只填写 BSP 支持的外设，可参考其他 BSP 填写。查看文档[《GD32 ARM系列驱动介绍》](./GD32 ARM系列驱动介绍.md)了解驱动分类。
-- 提交 BSP 分为 2 个阶段提交：
-  - 第一阶段：基础 BSP 包括串口驱动和 GPIO 驱动，能运行 FinSH 控制台。完成 MDK4、MDK5 、IAR 和 GCC 编译器支持，如果芯片不支持某款编译器（比如MDK4）可以不用做。 BSP 的 README.md 文件需要填写第二阶段要完成的驱动。
-  - 第二阶段：完成板载外设驱动支持，所有板载外设使用 menuconfig 配置后就能直接使用。若开发板没有板载外设，则此阶段可以不用完成。不同的驱动要分开提交，方便 review 和合并。
-- 只提交 BSP 必要的文件，删除无关的中间文件，能够提交的文件请对照其他 BSP。
-- 提交 GD32 不同系列的 Library 库时，请参考 f1/f4 系列的 HAL 库，删除多余库文件
-- 提交前要对 BSP 进行编译测试，确保在不同编译器下编译正常
-- 提交前要对 BSP 进行功能测试，确保 BSP 的在提交前符合工程配置章节中的要求
+-  BSP  README.md README.md  BSP  BSP [GD32 ARM](./GD32 ARM.md)
+-  BSP  2 
+  -  BSP  GPIO  FinSH  MDK4MDK5 IAR  GCC MDK4 BSP  README.md 
+  -  menuconfig  review 
+-  BSP  BSP
+-  GD32  Library  f1/f4  HAL 
+-  BSP 
+-  BSP  BSP 

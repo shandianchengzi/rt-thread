@@ -154,7 +154,7 @@ __weak void HAL_ADC_MspInit(ADC_HandleTypeDef* hadc)
         { ADC_CHANNEL_VBAT_EN, GPIOA, GPIO_PIN_1 },
         { ADC_CHANNEL_EXT2_EN, GPIOB, GPIO_PIN_1 },
         { ADC_CHANNEL_EXT3_EN, GPIOB, GPIO_PIN_2 },
-        { 0xffffffff, 0 }, //结束标志
+        { 0xffffffff, 0 }, //
     };
     /*
       NOTE : This function should be modified by the user.
@@ -801,7 +801,7 @@ uint32_t HAL_ADC_GetValue(ADC_HandleTypeDef *hadc)
  * Description: Poll for ADC event.
  * input      : hadc : pointer to a ADC_HandleTypeDef structure that contains
  *                     the configuration information for ADC module
- *            : EventType: the ADC event type. can be ：ADC_SR_AWD,ADC_SR_OVERF,ADC_SR_EOG,ADC_SR_JEOC,ADC_SR_EOC
+ *            : EventType: the ADC event type. can be ADC_SR_AWD,ADC_SR_OVERF,ADC_SR_EOG,ADC_SR_JEOC,ADC_SR_EOC
  *            : Timeout : Polling timeout.
  * return     : HAL_StatusTypeDef
  ************************************************************************/

@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fxhci.c
  * Date: 2022-02-11 13:33:12
  * LastEditTime: 2022-02-18 09:17:20
- * Description:  This files is for implmentation of XHCI driver
+ * Description: This files is for implmentation of XHCI driver
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   Zhugengyu  2022/2/7    init commit
  */
 
@@ -60,11 +60,11 @@ static u8 *FXhciPollIntrQueue(void *queue);
  */
 /**
  * @name: FXhciAlign
- * @msg: 分配一段对齐的内存
+ * @msg: 
  * @return {*}
- * @param {FXhci} *xhci, XHCI控制器实例
- * @param {size_t} min_align, 对齐方式
- * @param {size_t} size, 请求的字节数目
+ * @param {FXhci} *xhci, XHCI
+ * @param {size_t} min_align, 
+ * @param {size_t} size, 
  */
 void *FXhciAlign(FXhci *const xhci, const size_t min_align, const size_t size)
 {
@@ -104,10 +104,10 @@ void *FXhciAlignTag(FXhci *const xhci, const size_t min_align, const size_t size
 
 /**
  * @name: FXhciClearTrb
- * @msg: 清空TRB，反转TRB的Cycle state
+ * @msg: TRBTRBCycle state
  * @return {*}
- * @param {FXhciTrb} *trb, TRB实例
- * @param {int} pcs, TRB ring的Cycle state
+ * @param {FXhciTrb} *trb, TRB
+ * @param {int} pcs, TRB ringCycle state
  */
 void FXhciClearTrb(FXhciTrb *const trb, const int pcs)
 {
@@ -123,10 +123,10 @@ void FXhciClearTrb(FXhciTrb *const trb, const int pcs)
 
 /**
  * @name: FXhciInitCycleRing
- * @msg: 初始化TRB ring
+ * @msg: TRB ring
  * @return {*}
- * @param {FXhciTransRing} *tr, TRB ring实例
- * @param {size_t} ring_size, TRB ring中的TRB数目
+ * @param {FXhciTransRing} *tr, TRB ring
+ * @param {size_t} ring_size, TRB ringTRB
  */
 void FXhciInitCycleRing(FXhciTransRing *const tr, const size_t ring_size)
 {
@@ -147,14 +147,14 @@ void FXhciInitCycleRing(FXhciTransRing *const tr, const size_t ring_size)
 
 /**
  * @name: FXhciHandShake
- * @msg: 等待XHCI状态，完成握手
- * @return {FError} 等待返回值
- * @param {FXhci} *xhci, xhci实例
- * @param {FXhciHandShakeType} type, 等待类型，e.g 等待Op寄存器
- * @param {uintptr} reg_off, 寄存器偏移量
- * @param {u32} mask, 寄存器掩码位
- * @param {u32} wait_for, 等待的状态，如果状态到达，成功退出
- * @param {s32} timeout, 等待的tick超时
+ * @msg: XHCI
+ * @return {FError} 
+ * @param {FXhci} *xhci, xhci
+ * @param {FXhciHandShakeType} type, e.g Op
+ * @param {uintptr} reg_off, 
+ * @param {u32} mask, 
+ * @param {u32} wait_for, 
+ * @param {s32} timeout, tick
  */
 static FError FXhciHandShake(FXhci *xhci, FXhciHandShakeType type, uintptr reg_off, u32 mask, u32 wait_for, s32 timeout)
 {
@@ -176,9 +176,9 @@ static FError FXhciHandShake(FXhci *xhci, FXhciHandShakeType type, uintptr reg_o
 
 /**
  * @name: FXhciWaitReady
- * @msg: 等待XHCI控制器重置完成
+ * @msg: XHCI
  * @return {*}
- * @param {FXhci} *xhci, xhci实例
+ * @param {FXhci} *xhci, xhci
  */
 static FError FXhciWaitReady(FXhci *const xhci)
 {
@@ -196,10 +196,10 @@ static FError FXhciWaitReady(FXhci *const xhci)
 
 /**
  * @name: FXhciHcInit
- * @msg: 创建XHCI USB 控制器实例，完成初始化
- * @return {FUsbHc *} XHCI控制器实例
- * @param {FUsb} *instance, USB实例
- * @param {uintptr} base_addr, XHCI控制器基地址
+ * @msg: XHCI USB 
+ * @return {FUsbHc *} XHCI
+ * @param {FUsb} *instance, USB
+ * @param {uintptr} base_addr, XHCI
  */
 FUsbHc *FXhciHcInit(FUsb *instance, uintptr base_addr)
 {
@@ -394,9 +394,9 @@ _free_controller:
 
 /**
  * @name: FXhciReset
- * @msg: 重置XHCI控制器
+ * @msg: XHCI
  * @return {*}
- * @param {FUsbHc} *controller, USB Hc控制器
+ * @param {FUsbHc} *controller, USB Hc
  */
 static FUsbTransCode FXhciReset(FUsbHc *const controller)
 {
@@ -424,9 +424,9 @@ static FUsbTransCode FXhciReset(FUsbHc *const controller)
 
 /**
  * @name: FXhciReinit
- * @msg: 重新初始化XHCI控制器
+ * @msg: XHCI
  * @return {*}
- * @param {FUsbHc} *controller, USB Hc控制器
+ * @param {FUsbHc} *controller, USB Hc
  */
 static void FXhciReinit(FUsbHc *controller)
 {
@@ -509,9 +509,9 @@ static void FXhciReinit(FUsbHc *controller)
 
 /**
  * @name: FXhciShutdown
- * @msg: 关闭XHCI控制器
+ * @msg: XHCI
  * @return {*}
- * @param {FUsbHc} *controller, USB Hc控制器
+ * @param {FUsbHc} *controller, USB Hc
  */
 static void FXhciShutdown(FUsbHc *const controller)
 {
@@ -555,9 +555,9 @@ static void FXhciShutdown(FUsbHc *const controller)
 
 /**
  * @name: FXhciStart
- * @msg: 启动XHCI控制器
+ * @msg: XHCI
  * @return {*}
- * @param {FUsbHc} *controller, USB Hc控制器
+ * @param {FUsbHc} *controller, USB Hc
  */
 static void FXhciStart(FUsbHc *controller)
 {
@@ -566,7 +566,7 @@ static void FXhciStart(FUsbHc *controller)
     FASSERT(xhci);
     u32 reg_val;
 
-    /* setting the USBCMD register Run/Stop (R/S) bit to ‘1’ */
+    /* setting the USBCMD register Run/Stop (R/S) bit to 1 */
     reg_val = FXhciReadOper32(&xhci->mmio, FXHCI_REG_OP_USBCMD);
     reg_val |= FXHCI_REG_OP_USBCMD_RUN_STOP;
     FXhciWriteOper32(&xhci->mmio, FXHCI_REG_OP_USBCMD, reg_val);
@@ -581,9 +581,9 @@ static void FXhciStart(FUsbHc *controller)
 
 /**
  * @name: FXhciStop
- * @msg: 停止XHCI控制器
+ * @msg: XHCI
  * @return {*}
- * @param {FUsbHc} *controller, USB Hc控制器
+ * @param {FUsbHc} *controller, USB Hc
  */
 static void FXhciStop(FUsbHc *controller)
 {
@@ -592,7 +592,7 @@ static void FXhciStop(FUsbHc *controller)
     FASSERT(xhci);
     u32 reg_val;
 
-    /* setting the USBCMD register Run/Stop (R/S) bit to ‘0’ */
+    /* setting the USBCMD register Run/Stop (R/S) bit to 0 */
     reg_val = FXhciReadOper32(&xhci->mmio, FXHCI_REG_OP_USBCMD);
     reg_val &= ~FXHCI_REG_OP_USBCMD_RUN_STOP;
     FXhciWriteOper32(&xhci->mmio, FXHCI_REG_OP_USBCMD, reg_val);
@@ -607,10 +607,10 @@ static void FXhciStop(FUsbHc *controller)
 
 /**
  * @name: FXhciResetEp
- * @msg: 重置XHCI端点
- * @return {FError} 返回错误码
- * @param {FUsbDev} *dev, 端点所在的USB设备实例
- * @param {FUsbEndpoint} *ep, 端点实例
+ * @msg: XHCI
+ * @return {FError} 
+ * @param {FUsbDev} *dev, USB
+ * @param {FUsbEndpoint} *ep, 
  */
 static FError FXhciResetEp(FUsbDev *const dev, FUsbEndpoint *const ep)
 {
@@ -668,9 +668,9 @@ static FError FXhciResetEp(FUsbDev *const dev, FUsbEndpoint *const ep)
 
 /**
  * @name: FXhciEnqueueTrb
- * @msg: TRB入队，向TRB ring加入一条TRB
+ * @msg: TRBTRB ringTRB
  * @return {*}
- * @param {FXhciTransRing} *tr, TRB ring实例
+ * @param {FXhciTransRing} *tr, TRB ring
  */
 static void FXhciEnqueueTrb(FXhciTransRing *const tr)
 {
@@ -702,9 +702,9 @@ static void FXhciEnqueueTrb(FXhciTransRing *const tr)
 
 /**
  * @name: FXhciRingDoorbell
- * @msg: 提醒Hc处理刚加入的TRB
+ * @msg: HcTRB
  * @return {*}
- * @param {FUsbEndpoint} *ep, 端点实例
+ * @param {FUsbEndpoint} *ep, 
  */
 static void FXhciRingDoorbell(FUsbEndpoint *const ep)
 {
@@ -721,14 +721,14 @@ static void FXhciRingDoorbell(FUsbEndpoint *const ep)
 
 /**
  * @name: FXhciEnqueueTD
- * @msg: 填充一条TRB
+ * @msg: TRB
  * @return {*}
- * @param {FXhciTransRing} *tr, TRB ring实例
- * @param {int} ep, 端点实例
- * @param {size_t} mps, 最大包长度
- * @param {int} dalen, 数据长度
- * @param {void} *data, 数据缓冲区
- * @param {int} dir, 发送方向
+ * @param {FXhciTransRing} *tr, TRB ring
+ * @param {int} ep, 
+ * @param {size_t} mps, 
+ * @param {int} dalen, 
+ * @param {void} *data, 
+ * @param {int} dir, 
  */
 static void FXhciEnqueueTD(FXhciTransRing *const tr, const int ep, const size_t mps,
                            const int dalen, void *const data, const int dir)
@@ -808,14 +808,14 @@ static void FXhciEnqueueTD(FXhciTransRing *const tr, const int ep, const size_t 
 
 /**
  * @name: FXhciControl
- * @msg: XHCI控制传输
- * @return {FXhciTransCode} 传输返回值
- * @param {FUsbDev} *dev, USB设备实例
- * @param {FUsbDirection} dir, 控制传输类型, IN, OUT, SETUP
- * @param {int} drlen, USB请求长度
- * @param {void} *devreq, USB请求，参考FUsbDevReq
- * @param {int} dalen, 控制传输数据长度
- * @param {unsigned char} *src, 控制传输数据
+ * @msg: XHCI
+ * @return {FXhciTransCode} 
+ * @param {FUsbDev} *dev, USB
+ * @param {FUsbDirection} dir, , IN, OUT, SETUP
+ * @param {int} drlen, USB
+ * @param {void} *devreq, USBFUsbDevReq
+ * @param {int} dalen, 
+ * @param {unsigned char} *src, 
  */
 static FXhciTransCode FXhciControl(FUsbDev *const dev, const FUsbDirection dir,
                                    const int drlen, void *const devreq, const int dalen,
@@ -856,7 +856,7 @@ static FXhciTransCode FXhciControl(FUsbDev *const dev, const FUsbDirection dir,
     FXHCI_TRB_SET(TL, setup, drlen/*8*/); /* Transfer length */
     FXHCI_TRB_SET(TRT, setup, (dalen > 0) ? ((dir == FUSB_OUT) ? FXHCI_TRB_TRT_OUT_DATA : FXHCI_TRB_TRT_IN_DATA) : FXHCI_TRB_TRT_NO_DATA);
     FXHCI_TRB_SET(TT, setup, FXHCI_TRB_SETUP_STAGE); /* TRB Type */
-    FXHCI_TRB_SET(IDT, setup, 1); /* Immediate Data (IDT). shall be set to ‘1’ in a Setup Stage TRB */
+    FXHCI_TRB_SET(IDT, setup, 1); /* Immediate Data (IDT). shall be set to 1 in a Setup Stage TRB */
     FXHCI_TRB_SET(IOC, setup, 1); /* Interrupt On Completion (IOC) */
     FXhciEnqueueTrb(tr);
 
@@ -929,9 +929,9 @@ static FXhciTransCode FXhciControl(FUsbDev *const dev, const FUsbDirection dir,
 
 /**
  * @name: FXhciBulk
- * @msg: XHCI块传输
+ * @msg: XHCI
  * @return {FXhciTransCode}
- * @param {FUsbEndpoint} *ep, 端点实例
+ * @param {FUsbEndpoint} *ep, 
  * @param {int} size,
  * @param {u8} *src
  * @param {int} finalize
@@ -1001,10 +1001,10 @@ static FXhciTransCode FXhciBulk(FUsbEndpoint *const ep, const int size, u8 *cons
 
 /**
  * @name: FXhciNextTrb
- * @msg: 获取下一个可用的TRB
- * @return {FXhciTrb*} 可用的TRB
- * @param {FXhciTrb} *cur, 当前TRB
- * @param {int} *pcs, 传入的待反转的Cycle state
+ * @msg: TRB
+ * @return {FXhciTrb*} TRB
+ * @param {FXhciTrb} *cur, TRB
+ * @param {int} *pcs, Cycle state
  */
 static FXhciTrb *FXhciNextTrb(FXhciTrb *cur, int *const pcs)
 {
@@ -1024,12 +1024,12 @@ static FXhciTrb *FXhciNextTrb(FXhciTrb *cur, int *const pcs)
 
 /**
  * @name: FXhciCreateIntrQueue
- * @msg: 创建XHCI的中断队列
- * @return {void *} 成功则返回指向中断队列的指针，失败返回NULL
- * @param {FUsbEndpoint} *ep, 端点实例
- * @param {int} reqsize, 中断队列可接受的请求字节数
- * @param {int} reqcount, 中断队列可接受的最大请求数目
- * @param {int} reqtiming, 请求超时
+ * @msg: XHCI
+ * @return {void *} NULL
+ * @param {FUsbEndpoint} *ep, 
+ * @param {int} reqsize, 
+ * @param {int} reqcount, 
+ * @param {int} reqtiming, 
  * @note create and hook-up an intr queue into device schedul
  */
 static void *FXhciCreateIntrQueue(FUsbEndpoint *const ep, const int reqsize, const int reqcount,
@@ -1130,10 +1130,10 @@ _free_return:
 
 /**
  * @name: FXhciDestoryIntrQueue
- * @msg: 删除中断队列
+ * @msg: 
  * @return {*}
- * @param {FUsbEndpoint} *ep, 端点实例
- * @param {void} *q, 中断队列
+ * @param {FUsbEndpoint} *ep, 
+ * @param {void} *q, 
  * @note remove queue from device schedule, dropping all data that came in
  */
 static void FXhciDestoryIntrQueue(FUsbEndpoint *const ep, void *const q)
@@ -1178,9 +1178,9 @@ static void FXhciDestoryIntrQueue(FUsbEndpoint *const ep, void *const q)
 
 /**
  * @name: FXhciPollIntrQueue
- * @msg: 轮询一次中断队列进行处理
+ * @msg: 
  * @return {*}
- * @param {void} *q, 中断队列
+ * @param {void} *q, 
  * @note read one intr-packet from queue, if available. extend the queue for new input.
    return NULL if nothing new available.
    Recommended use: while (data=poll_intr_queue(q)) process(data);

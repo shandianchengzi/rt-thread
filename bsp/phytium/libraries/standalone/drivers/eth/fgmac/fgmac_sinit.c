@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,16 +14,16 @@
  * FilePath: fgmac_sinit.c
  * Date: 2022-04-06 14:46:52
  * LastEditTime: 2022-04-06 14:46:58
- * Description:  This file is for
+ * Description: This file is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 
 /* - This file contains the implementation of driver's static initialization functionality.
-- 驱动静态初始化  */
+-   */
 
 /***************************** Include Files *********************************/
 
@@ -44,11 +44,11 @@ extern const FGmacConfig FGMAC_CONFIG_TBL[GMAC_INSTANCE_NUM];
 /************************** Function Prototypes ******************************/
 /**
  * @name: FGmacLookupConfig
- * @msg: 获取FGMAC驱动的默认配置参数
- * @return {const FGmacConfig *}, 驱动默认配置
- * @param {u32} instance_id, 驱动控制器号
- * @note 返回FGMAC的默认配置，复制后修改配置
- *       需要确认当前平台支持输入的instance_id
+ * @msg: FGMAC
+ * @return {const FGmacConfig *}, 
+ * @param {u32} instance_id, 
+ * @note FGMAC
+ *       instance_id
  */
 const FGmacConfig *FGmacLookupConfig(u32 instance_id)
 {

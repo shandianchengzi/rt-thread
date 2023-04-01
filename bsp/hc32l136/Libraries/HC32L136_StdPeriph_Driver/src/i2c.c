@@ -67,11 +67,11 @@ static func_ptr_t pfnI2c0tCallback = NULL;
 static func_ptr_t pfnI2c1tCallback = NULL;
 /**
  ******************************************************************************
- ** \brief  I2C设置波特率配置寄存器
+ ** \brief  I2C
  **
- ** \param [in] u8Tm 波特率配置值
+ ** \param [in] u8Tm 
  **
- ** \retval enRet 成功或失败
+ ** \retval enRet 
  **
  ******************************************************************************/
  en_result_t I2C_SetBaud(en_i2c_channel_t enCh,uint8_t u8Tm)
@@ -91,11 +91,11 @@ static func_ptr_t pfnI2c1tCallback = NULL;
  }
  /**
  ******************************************************************************
- ** \brief  I2C功能设置相关函数
+ ** \brief  I2C
  **
- ** \param [in] enFunc功能参数
+ ** \param [in] enFunc
  **
- ** \retval enRet 成功或失败
+ ** \retval enRet 
  **
  ******************************************************************************/
 en_result_t I2C_SetFunc(en_i2c_channel_t enCh,en_i2c_func_t enFunc)
@@ -159,11 +159,11 @@ en_result_t I2C_SetFunc(en_i2c_channel_t enCh,en_i2c_func_t enFunc)
 }
  /**
  ******************************************************************************
- ** \brief  I2C功能清除相关函数
+ ** \brief  I2C
  **
- ** \param [in] enFunc功能参数
+ ** \param [in] enFunc
  **
- ** \retval enRet 成功或失败
+ ** \retval enRet 
  **
  ******************************************************************************/
  en_result_t I2C_ClearFunc(en_i2c_channel_t enCh,en_i2c_func_t enFunc)
@@ -226,11 +226,11 @@ en_result_t I2C_SetFunc(en_i2c_channel_t enCh,en_i2c_func_t enFunc)
  }
  /**
  ******************************************************************************
- ** \brief  I2C获取中断标记函数
+ ** \brief  I2C
  **
- ** \param 无
+ ** \param 
  **
- ** \retval bIrq中断标记
+ ** \retval bIrq
  **
  ******************************************************************************/
 boolean_t I2C_GetIrq(en_i2c_channel_t enCh)
@@ -249,11 +249,11 @@ boolean_t I2C_GetIrq(en_i2c_channel_t enCh)
 }
 /**
  ******************************************************************************
- ** \brief  I2C清除中断标记函数
+ ** \brief  I2C
  **
- ** \param 无
+ ** \param 
  **
- ** \retval bIrq中断标记
+ ** \retval bIrq
  **
  ******************************************************************************/
 en_result_t I2C_ClearIrq(en_i2c_channel_t enCh)
@@ -272,11 +272,11 @@ en_result_t I2C_ClearIrq(en_i2c_channel_t enCh)
 }
  /**
  ******************************************************************************
- ** \brief  I2C获取相关状态
+ ** \brief  I2C
  **
- ** \param 无
+ ** \param 
  **
- ** \retval I2C状态
+ ** \retval I2C
  **
  ******************************************************************************/
 uint8_t I2C_GetState(en_i2c_channel_t enCh)
@@ -294,11 +294,11 @@ uint8_t I2C_GetState(en_i2c_channel_t enCh)
 }
 /**
  ******************************************************************************
- ** \brief  I2C写从机地址函数
+ ** \brief  I2C
  **
- ** \param u8SlaveAddr从机地址
+ ** \param u8SlaveAddr
  **
- ** \retval I2C写成功与否状态
+ ** \retval I2C
  **
  ******************************************************************************/
  en_result_t I2C_WriteSlaveAddr(en_i2c_channel_t enCh,stc_i2c_addr_t *pstcSlaveAddr)
@@ -320,11 +320,11 @@ uint8_t I2C_GetState(en_i2c_channel_t enCh)
 }
 /**
  ******************************************************************************
- ** \brief  字节写从机函数
+ ** \brief  
  **
- ** \param u8Data写数据
+ ** \param u8Data
  **
- ** \retval 写数据是否成功
+ ** \retval 
  **
  ******************************************************************************/
 en_result_t I2C_WriteByte(en_i2c_channel_t enCh,uint8_t u8Data)
@@ -343,11 +343,11 @@ en_result_t I2C_WriteByte(en_i2c_channel_t enCh,uint8_t u8Data)
 }
 /**
  ******************************************************************************
- ** \brief  字节读从机函数
+ ** \brief  
  **
- ** \param 无
+ ** \param 
  **
- ** \retval 读取数据
+ ** \retval 
  **
  ******************************************************************************/
 uint8_t I2C_ReadByte(en_i2c_channel_t enCh)
@@ -365,11 +365,11 @@ uint8_t I2C_ReadByte(en_i2c_channel_t enCh)
 }
  /**
  ******************************************************************************
- ** \brief  主机发送函数
+ ** \brief  
  **
- ** \param u8Addr从机内存地址，pu8Data写数据，u32Len写数据长度
+ ** \param u8Addrpu8Datau32Len
  **
- ** \retval 写数据是否成功
+ ** \retval 
  **
  ******************************************************************************/
 en_result_t I2C_MasterWriteData(en_i2c_channel_t enCh,uint8_t u8DevAddr,uint8_t u8Addr,uint8_t *pu8Data,uint32_t u32Len)
@@ -387,10 +387,10 @@ en_result_t I2C_MasterWriteData(en_i2c_channel_t enCh,uint8_t u8DevAddr,uint8_t 
 		{
 			case 0x08:
 				I2C_ClearFunc(enCh,I2cStart_En);
-				I2C_WriteByte(enCh,u8DevAddr);//从设备地址发送
+				I2C_WriteByte(enCh,u8DevAddr);//
 				break;
 			case 0x18:
-				I2C_WriteByte(enCh,u8Addr);//从设备内存地址发送
+				I2C_WriteByte(enCh,u8Addr);//
 				break;
 			case 0x28:	
 				I2C_WriteByte(enCh,pu8Data[u8i++]);
@@ -407,7 +407,7 @@ en_result_t I2C_MasterWriteData(en_i2c_channel_t enCh,uint8_t u8DevAddr,uint8_t 
 		}			
 		if(u8i>u32Len)
 		{
-			I2C_SetFunc(enCh,I2cStop_En);//此顺序不能调换，出停止条件
+			I2C_SetFunc(enCh,I2cStop_En);//
 			I2C_ClearIrq(enCh);
 			break;
 		}
@@ -418,11 +418,11 @@ en_result_t I2C_MasterWriteData(en_i2c_channel_t enCh,uint8_t u8DevAddr,uint8_t 
 }
  /**
  ******************************************************************************
- ** \brief  从机发送函数
+ ** \brief  
  **
- ** \param pu8Data发送数据缓存，u32Len发送数据长度
+ ** \param pu8Datau32Len
  **
- ** \retval 发送数据是否成功
+ ** \retval 
  **
  ******************************************************************************/
  en_result_t I2C_SlaveWriteData(en_i2c_channel_t enCh,uint8_t *pu8Data,uint32_t *u32Len)
@@ -457,11 +457,11 @@ en_result_t I2C_MasterWriteData(en_i2c_channel_t enCh,uint8_t u8DevAddr,uint8_t 
  }
  /**
  ******************************************************************************
- ** \brief  从机接收函数
+ ** \brief  
  **
- ** \param pu8Data接收数据存放缓存，u32Len接收数据指针
+ ** \param pu8Datau32Len
  **
- ** \retval 接收数据是否成功
+ ** \retval 
  **
  ******************************************************************************/
 en_result_t I2C_SlaveReadData(en_i2c_channel_t enCh,uint8_t *pu8Data,uint32_t *pu32Len)
@@ -501,11 +501,11 @@ en_result_t I2C_SlaveReadData(en_i2c_channel_t enCh,uint8_t *pu8Data,uint32_t *p
 
 /**
  ******************************************************************************
- ** \brief  主机接收函数
+ ** \brief  
  **
- ** \param u8Addr从机内存地址，pu8Data读数据存放缓存，u32Len读数据长度
+ ** \param u8Addrpu8Datau32Len
  **
- ** \retval 读数据是否成功
+ ** \retval 
  **
  ******************************************************************************/
  en_result_t I2C_MasterReadData(en_i2c_channel_t enCh,uint8_t u8DevAddr,uint8_t *pu8Data,uint8_t u8Addr,uint32_t u32Len)
@@ -534,7 +534,7 @@ en_result_t I2C_SlaveReadData(en_i2c_channel_t enCh,uint8_t *pu8Data,uint32_t *p
 				break;
 			case 0x10:
 				I2C_ClearFunc(enCh,I2cStart_En);
-				I2C_WriteByte(enCh,u8DevAddr|0x01);//从机地址发送OK
+				I2C_WriteByte(enCh,u8DevAddr|0x01);//OK
 				break;
 			case 0x40:
 				if(u32Len>1)
@@ -561,7 +561,7 @@ en_result_t I2C_SlaveReadData(en_i2c_channel_t enCh,uint8_t *pu8Data,uint32_t *p
 				I2C_SetFunc(enCh,I2cStart_En);
 				break;
 			default:
-				I2C_SetFunc(enCh,I2cStart_En);//其他错误状态，重新发送起始条件
+				I2C_SetFunc(enCh,I2cStart_En);//
 				break;
 		}
 		I2C_ClearIrq(enCh);
@@ -575,11 +575,11 @@ en_result_t I2C_SlaveReadData(en_i2c_channel_t enCh,uint8_t *pu8Data,uint32_t *p
 }
 /**
  ******************************************************************************
- ** \brief  I2C模块初始化
+ ** \brief  I2C
  **
- ** \param pstcI2CCfg初始化配置结构体
+ ** \param pstcI2CCfg
  **
- ** \retval 初始化是否成功
+ ** \retval 
  **
  ******************************************************************************/
 en_result_t I2C_Init(en_i2c_channel_t enCh,stc_i2c_config_t *pstcI2CCfg)
@@ -615,11 +615,11 @@ en_result_t I2C_Init(en_i2c_channel_t enCh,stc_i2c_config_t *pstcI2CCfg)
 }
 /**
  ******************************************************************************
- ** \brief  I2C模块关闭初始化
+ ** \brief  I2C
  **
- ** \param 无
+ ** \param 
  **
- ** \retval 设置是否成功
+ ** \retval 
  **
  ******************************************************************************/
  en_result_t I2C_DeInit(en_i2c_channel_t enCh)
@@ -638,11 +638,11 @@ en_result_t I2C_Init(en_i2c_channel_t enCh,stc_i2c_config_t *pstcI2CCfg)
  }
  /**
  ******************************************************************************
- ** \brief  I2C模块中断处理函数
+ ** \brief  I2C
  **
- ** \param u8Param 无意义
+ ** \param u8Param 
  **
- ** \retval  无
+ ** \retval  
  **
  ******************************************************************************/
 void I2c_IRQHandler(uint8_t u8Param)

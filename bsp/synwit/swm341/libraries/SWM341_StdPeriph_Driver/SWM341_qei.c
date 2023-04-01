@@ -1,10 +1,10 @@
 /******************************************************************************************************************************************
-* 文件名称: SWM341_qei.c
-* 功能说明: SWM341单片机的正交编码器接口QEI功能驱动库
-* 技术支持: http://www.synwit.com.cn/e/tool/gbook/?bid=1
-* 注意事项:
-* 版本日期: V1.0.0      2013年06月30日
-* 升级记录:
+* : SWM341_qei.c
+* : SWM341QEI
+* : http://www.synwit.com.cn/e/tool/gbook/?bid=1
+* :
+* : V1.0.0      20130630
+* :
 *
 *
 *******************************************************************************************************************************************
@@ -23,12 +23,12 @@
 
 
 /******************************************************************************************************************************************
-* 函数名称: QEI_Init()
-* 功能说明: 正交编码器接口QEI初始化
-* 输    入: QEI_TypeDef * QEIx        指定要被设置的正交编码器接口，有效值包括QEI
-*           QEI_InitStructure * initStruct      包含正交编码器接口相关设定值的结构体
-* 输    出: 无
-* 注意事项: 无
+* : QEI_Init()
+* : QEI
+*     : QEI_TypeDef * QEIx        QEI
+*           QEI_InitStructure * initStruct      
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void QEI_Init(QEI_TypeDef * QEIx,QEI_InitStructure * initStruct)
 {
@@ -39,7 +39,7 @@ void QEI_Init(QEI_TypeDef * QEIx,QEI_InitStructure * initStruct)
         break;
     }
 
-    QEI_Stop(QEIx);     //配置前关闭QEI模块
+    QEI_Stop(QEIx);     //QEI
 
     QEIx->CR = (initStruct->swapAB << QEI_CR_ABSWAP_Pos) |
                (initStruct->mode   << QEI_CR_X2X4_Pos)   |
@@ -63,11 +63,11 @@ void QEI_Init(QEI_TypeDef * QEIx,QEI_InitStructure * initStruct)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: QEI_Start()
-* 功能说明: 启动指定QEI
-* 输    入: QEI_TypeDef * QEIx        指定要被设置的正交编码器接口，有效值包括QEI
-* 输    出: 无
-* 注意事项: 无
+* : QEI_Start()
+* : QEI
+*     : QEI_TypeDef * QEIx        QEI
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void QEI_Start(QEI_TypeDef * QEIx)
 {
@@ -75,11 +75,11 @@ void QEI_Start(QEI_TypeDef * QEIx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: QEI_Stop()
-* 功能说明: 关闭指定QEI
-* 输    入: QEI_TypeDef * QEIx        指定要被设置的正交编码器接口，有效值包括QEI
-* 输    出: 无
-* 注意事项: 无
+* : QEI_Stop()
+* : QEI
+*     : QEI_TypeDef * QEIx        QEI
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void QEI_Stop(QEI_TypeDef * QEIx)
 {
@@ -87,12 +87,12 @@ void QEI_Stop(QEI_TypeDef * QEIx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: QEI_IntEn()
-* 功能说明: QEI中断使能
-* 输    入: QEI_TypeDef * QEIx        指定要被设置的正交编码器接口，有效值包括QEI
-*           uint32_t it             interrupt type，取值QEI_INT_INDEX、QEI_INT_MATCH、QEI_INT_CNTOV、QEI_INT_ERROR 及其或
-* 输    出: 无
-* 注意事项: 无
+* : QEI_IntEn()
+* : QEI
+*     : QEI_TypeDef * QEIx        QEI
+*           uint32_t it             interrupt typeQEI_INT_INDEXQEI_INT_MATCHQEI_INT_CNTOVQEI_INT_ERROR 
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void QEI_IntEn(QEI_TypeDef * QEIx, uint32_t it)
 {
@@ -107,12 +107,12 @@ void QEI_IntEn(QEI_TypeDef * QEIx, uint32_t it)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: QEI_IntDis()
-* 功能说明: QEI中断关闭
-* 输    入: QEI_TypeDef * QEIx        指定要被设置的正交编码器接口，有效值包括QEI
-*           uint32_t it             interrupt type，取值QEI_INT_INDEX、QEI_INT_MATCH、QEI_INT_CNTOV、QEI_INT_ERROR 及其或
-* 输    出: 无
-* 注意事项: 无
+* : QEI_IntDis()
+* : QEI
+*     : QEI_TypeDef * QEIx        QEI
+*           uint32_t it             interrupt typeQEI_INT_INDEXQEI_INT_MATCHQEI_INT_CNTOVQEI_INT_ERROR 
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void QEI_IntDis(QEI_TypeDef * QEIx, uint32_t it)
 {
@@ -120,12 +120,12 @@ void QEI_IntDis(QEI_TypeDef * QEIx, uint32_t it)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: QEI_IntClr()
-* 功能说明: QEI中断标志清除
-* 输    入: QEI_TypeDef * QEIx        指定要被设置的正交编码器接口，有效值包括QEI
-*           uint32_t it             interrupt type，取值QEI_INT_INDEX、QEI_INT_MATCH、QEI_INT_CNTOV、QEI_INT_ERROR 及其或
-* 输    出: 无
-* 注意事项: 无
+* : QEI_IntClr()
+* : QEI
+*     : QEI_TypeDef * QEIx        QEI
+*           uint32_t it             interrupt typeQEI_INT_INDEXQEI_INT_MATCHQEI_INT_CNTOVQEI_INT_ERROR 
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void QEI_IntClr(QEI_TypeDef * QEIx, uint32_t it)
 {
@@ -133,12 +133,12 @@ void QEI_IntClr(QEI_TypeDef * QEIx, uint32_t it)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: QEI_IntStat()
-* 功能说明: QEI中断状态查询
-* 输    入: QEI_TypeDef * QEIx        指定要被设置的正交编码器接口，有效值包括QEI
-*           uint32_t it             interrupt type，取值QEI_INT_INDEX、QEI_INT_MATCH、QEI_INT_CNTOV、QEI_INT_ERROR 及其或
-* 输    出: uint32_t              0 没有中断发生    非0值 有中断发生
-* 注意事项: 无
+* : QEI_IntStat()
+* : QEI
+*     : QEI_TypeDef * QEIx        QEI
+*           uint32_t it             interrupt typeQEI_INT_INDEXQEI_INT_MATCHQEI_INT_CNTOVQEI_INT_ERROR 
+*     : uint32_t              0     0 
+* : 
 ******************************************************************************************************************************************/
 uint32_t QEI_IntStat(QEI_TypeDef * QEIx, uint32_t it)
 {

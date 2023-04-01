@@ -269,16 +269,16 @@ void GetDateTime(int32_t * date, int32_t * time)
   Date Format:
    A FAT directory entry date stamp is a 16-bit field that is basically a date
    relative to the MS-DOS epoch of 01/01/1980.
-     Bits  0–4: Day of month, valid value range 1-31 inclusive
-     Bits  5–8: Month of year, 1 = January, valid value range 1–12 inclusive
-     Bits 9–15: Count of years from 1980, valid value range 0–127 inclusive (1980–2107)
+     Bits  04: Day of month, valid value range 1-31 inclusive
+     Bits  58: Month of year, 1 = January, valid value range 112 inclusive
+     Bits 915: Count of years from 1980, valid value range 0127 inclusive (19802107)
 
   Time Format:
    A FAT directory entry time stamp is a 16-bit field that has a granularity
    of 2 seconds.  The valid time range is from Midnight 00:00:00 to 23:59:58.
-     Bits   0–4: 2-second count, valid value range 0–29 inclusive (0 – 58 seconds)
-     Bits  5–10: Minutes, valid value range 0–59 inclusive
-     Bits 11–15: Hours, valid value range 0–23 inclusive
+     Bits   04: 2-second count, valid value range 029 inclusive (0  58 seconds)
+     Bits  510: Minutes, valid value range 059 inclusive
+     Bits 1115: Hours, valid value range 023 inclusive
 <
 ----------------------------------------------------------------------------*/
 RtStatus_t CreateShortDirRecord(uint8_t * filename, // SFN

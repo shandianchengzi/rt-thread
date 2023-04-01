@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fnand_option.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:56:51
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 
@@ -30,9 +30,9 @@
  * @msg:
  * @note:
  * @param {FNand} *instance_p is the pointer to the FNand instance.
- * @param {u32} options is configuration options ，use FNAND_OPS_INTER_MODE_SELECT to select nand flash interface
+ * @param {u32} options is configuration options use FNAND_OPS_INTER_MODE_SELECT to select nand flash interface
  * @param {u32} value is set value
- * @return {FError}  FT_SUCCESS set option is ok ，FNAND_ERR_INVAILD_PARAMETER options is invalid
+ * @return {FError}  FT_SUCCESS set option is ok FNAND_ERR_INVAILD_PARAMETER options is invalid
  */
 FError FNandSetOption(FNand *instance_p, u32 options, u32 value)
 {

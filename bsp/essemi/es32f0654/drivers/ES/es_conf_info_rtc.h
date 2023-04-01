@@ -23,7 +23,7 @@
 #include <ald_cmu.h>
 #include <ald_rtc.h>
 
-/* RTC 配置 */
+/* RTC  */
 
 #define ES_C_RTC_SOURCE_LRC      RTC_SOURCE_LRC
 #define ES_C_RTC_SOURCE_LOSC      RTC_SOURCE_LOSC

@@ -17,7 +17,7 @@
 
 static struct rt_completion urb_completion;
 
-//USB接收缓存区
+//USB
 __align(4) UINT8 usb_rx_buf[MAX_PACKET_SIZE];   // IN, must even address
 __align(4) UINT8 usb_tx_buf[MAX_PACKET_SIZE];   // OUT, must even address
 
@@ -25,32 +25,32 @@ static struct uhcd uhcd;
 
 static rt_err_t drv_reset_port(rt_uint8_t port)
 {
-    //关闭中断
+    //
     R8_USB_INT_EN = 0x00;
 
-    R8_USB_DEV_AD = (R8_USB_DEV_AD & RB_UDA_GP_BIT) | (0x00 & MASK_USB_ADDR);   //设置地址
-    R8_UHOST_CTRL &= ~RB_UH_PORT_EN;    // 关掉端口
+    R8_USB_DEV_AD = (R8_USB_DEV_AD & RB_UDA_GP_BIT) | (0x00 & MASK_USB_ADDR);   //
+    R8_UHOST_CTRL &= ~RB_UH_PORT_EN;    // 
 
-    //判断设备速度
+    //
     if (R8_USB_MIS_ST & RB_UMS_DM_LEVEL)
     {
-        //低速
-        R8_USB_CTRL |= RB_UC_LOW_SPEED; // 默认为低速
-        R8_UHOST_CTRL = (R8_UHOST_CTRL | RB_UH_LOW_SPEED) | RB_UH_BUS_RESET;    // 默认为低速,开始复位
+        //
+        R8_USB_CTRL |= RB_UC_LOW_SPEED; // 
+        R8_UHOST_CTRL = (R8_UHOST_CTRL | RB_UH_LOW_SPEED) | RB_UH_BUS_RESET;    // ,
     }
     else
     {
-        //全速
-        R8_USB_CTRL &= ~ RB_UC_LOW_SPEED;   // 默认为全速
-        R8_UHOST_CTRL = (R8_UHOST_CTRL & ~RB_UH_LOW_SPEED) | RB_UH_BUS_RESET;   // 默认为全速,开始复位
+        //
+        R8_USB_CTRL &= ~ RB_UC_LOW_SPEED;   // 
+        R8_UHOST_CTRL = (R8_UHOST_CTRL & ~RB_UH_LOW_SPEED) | RB_UH_BUS_RESET;   // ,
     }
 
-    rt_thread_mdelay(15); // 复位时间10mS到20mS
-    R8_UHOST_CTRL = R8_UHOST_CTRL & ~ RB_UH_BUS_RESET;  // 结束复位
+    rt_thread_mdelay(15); // 10mS20mS
+    R8_UHOST_CTRL = R8_UHOST_CTRL & ~ RB_UH_BUS_RESET;  // 
     rt_thread_mdelay(1);
-    R8_UHOST_CTRL |= RB_UH_PORT_EN; //打开端口
-    R8_USB_INT_FG = RB_UIF_DETECT;  // 清中断标志
-    //打开中断
+    R8_UHOST_CTRL |= RB_UH_PORT_EN; //
+    R8_USB_INT_FG = RB_UIF_DETECT;  // 
+    //
     R8_USB_INT_EN = RB_UIF_TRANSFER | RB_UIE_DETECT;
 
     return RT_EOK;
@@ -64,10 +64,10 @@ static int drv_pipe_xfer(upipe_t pipe, rt_uint8_t token, void *buffer, int nbyte
     rt_uint8_t usb_pid, res_pid;
     UINT8 *tog = (UINT8 *)pipe->user_data;
 
-    //设置目标usb地址
+    //usb
     R8_USB_DEV_AD = (R8_USB_DEV_AD & RB_UDA_GP_BIT) | (pipe->inst->address & MASK_USB_ADDR);
 
-    //判断是in还是out操作
+    //inout
     if (pipe->ep.bEndpointAddress & USB_DIR_IN)
     {
         usb_pid = USB_PID_IN; //in
@@ -80,16 +80,16 @@ static int drv_pipe_xfer(upipe_t pipe, rt_uint8_t token, void *buffer, int nbyte
         R8_UH_TX_LEN = nbytes;
     }
 
-    //设置数据TOG
+    //TOG
     switch (usb_pid)
     {
     case USB_PID_IN:
-        if (nbytes == 0) *tog = USB_PID_DATA1; //状态反馈
+        if (nbytes == 0) *tog = USB_PID_DATA1; //
         R8_UH_RX_CTRL = (*tog == USB_PID_DATA1) ? RB_UH_R_TOG : 0x00;
         break;
 
     case USB_PID_OUT:
-        if (nbytes == 0) *tog = USB_PID_DATA1; //状态反馈
+        if (nbytes == 0) *tog = USB_PID_DATA1; //
         R8_UH_TX_CTRL = (*tog == USB_PID_DATA1) ? RB_UH_T_TOG : 0x00;
         break;
 
@@ -100,7 +100,7 @@ static int drv_pipe_xfer(upipe_t pipe, rt_uint8_t token, void *buffer, int nbyte
         break;
     }
 
-    //usb枚举的时候加大重试次数，提高usb设备枚举成功率
+    //usbusb
     if ((pipe->ep.bmAttributes & USB_EP_ATTR_TYPE_MASK) == USB_EP_ATTR_CONTROL)
     {
         retry_count = 1000;
@@ -108,7 +108,7 @@ static int drv_pipe_xfer(upipe_t pipe, rt_uint8_t token, void *buffer, int nbyte
 
     for (i = 0; i < retry_count; i++)
     {
-        //传输
+        //
         R8_UH_EP_PID = (usb_pid << 4) | (pipe->ep.bEndpointAddress & 0x0F);
         res = rt_completion_wait(&urb_completion, timeouts);
         if (res != RT_EOK)
@@ -116,39 +116,39 @@ static int drv_pipe_xfer(upipe_t pipe, rt_uint8_t token, void *buffer, int nbyte
             return res;
         }
 
-        //判断是否需要反转数据
+        //
         if (R8_USB_INT_ST & RB_UIS_TOG_OK)
         {
-            *tog = (*tog == USB_PID_DATA0) ? USB_PID_DATA1 : USB_PID_DATA0;//翻转
+            *tog = (*tog == USB_PID_DATA0) ? USB_PID_DATA1 : USB_PID_DATA0;//
         }
 
         res_pid = R8_USB_INT_ST & MASK_UIS_H_RES;
 
         switch (res_pid)
         {
-        case USB_PID_ACK://发送成功
+        case USB_PID_ACK://
             pipe->status = UPIPE_STATUS_OK;
             if (pipe->callback != RT_NULL) pipe->callback(pipe);
             return nbytes;
-        case USB_PID_DATA0: //收到数据
-        case USB_PID_DATA1: //收到数据
+        case USB_PID_DATA0: //
+        case USB_PID_DATA1: //
             pipe->status = UPIPE_STATUS_OK;
             if (pipe->callback != RT_NULL) pipe->callback(pipe);
-            //拷贝数据到buffer
+            //buffer
             if (usb_pid == USB_PID_IN)
             {
                 rt_memcpy(buffer, usb_rx_buf, R8_USB_RX_LEN);
                 return R8_USB_RX_LEN;
             }
             return nbytes;
-        case USB_PID_NAK: //数据未就绪
+        case USB_PID_NAK: //
             if (pipe->ep.bmAttributes == USB_EP_ATTR_INT)
             {
                 rt_thread_delay((pipe->ep.bInterval * RT_TICK_PER_SECOND / 1000) > 0 ? (pipe->ep.bInterval * RT_TICK_PER_SECOND / 1000) : 1);
             }
             rt_thread_mdelay(1);
-            continue;//重试
-        case USB_PID_STALL: //传输停止
+            continue;//
+        case USB_PID_STALL: //
             pipe->status = UPIPE_STATUS_STALL;
             if (pipe->callback != RT_NULL) pipe->callback(pipe);
             return 0;
@@ -168,7 +168,7 @@ static rt_err_t drv_open_pipe(upipe_t pipe)
     pipe->pipe_index = pipe->inst->address & MASK_USB_ADDR;
     pipe->user_data = rt_malloc(sizeof(UINT8));
 
-    //默认发送DATA0
+    //DATA0
     if (pipe->ep.bEndpointAddress & USB_DIR_IN)
     {
         *(UINT8 *)pipe->user_data = USB_PID_DATA0;
@@ -215,7 +215,7 @@ static rt_err_t hcd_init(rt_device_t dev)
 
     R8_USB_INT_EN = RB_UIF_TRANSFER | RB_UIE_DETECT;
 
-    //开启中断
+    //
     NVIC_EnableIRQ(USB_IRQn);
 
     rt_completion_init(&urb_completion);
@@ -227,12 +227,12 @@ void USB_IRQHandler()
 {
     rt_interrupt_enter();
 
-    //USB连接断开中断
+    //USB
     if (R8_USB_INT_FG & RB_UIF_DETECT)
     {
-        R8_USB_INT_FG = RB_UIF_DETECT;//清除中断
+        R8_USB_INT_FG = RB_UIF_DETECT;//
 
-        //检查USB设备连接状态
+        //USB
         if ((R8_USB_MIS_ST & RB_UMS_DEV_ATTACH) != 0)
         {
             rt_usbh_root_hub_connect_handler(&uhcd, 1, RT_FALSE);
@@ -247,26 +247,26 @@ void USB_IRQHandler()
 
     if (R8_USB_INT_FG & RB_UIF_TRANSFER)
     {
-        R8_UH_EP_PID = 0x00; //停止发送
+        R8_UH_EP_PID = 0x00; //
 
-        R8_USB_INT_FG = RB_UIF_TRANSFER;//清除中断
+        R8_USB_INT_FG = RB_UIF_TRANSFER;//
 
         rt_completion_done(&urb_completion);
     }
 
     if (R8_USB_INT_FG & RB_UIF_SUSPEND)
     {
-        R8_USB_INT_FG = RB_UIF_SUSPEND;//清除中断
+        R8_USB_INT_FG = RB_UIF_SUSPEND;//
     }
 
     if (R8_USB_INT_FG & RB_UIF_HST_SOF)
     {
-        R8_USB_INT_FG = RB_UIF_HST_SOF;//清除中断
+        R8_USB_INT_FG = RB_UIF_HST_SOF;//
     }
 
     if (R8_USB_INT_FG & RB_UIF_FIFO_OV)
     {
-        R8_USB_INT_FG = RB_UIF_FIFO_OV;//清除中断
+        R8_USB_INT_FG = RB_UIF_FIFO_OV;//
     }
 
     rt_interrupt_leave();

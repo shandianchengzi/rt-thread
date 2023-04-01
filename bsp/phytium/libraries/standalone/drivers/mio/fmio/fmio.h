@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fmio.h
  * Date: 2022-06-21 15:40:06
  * LastEditTime: 2022-06-21 15:40:06
- * Description:  This file is for
+ * Description: This file is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 #ifndef DRIVERS_MIO_FMIO_H
@@ -60,19 +60,19 @@ typedef struct
 } FMioCtrl;
 
 /************************** Function Prototypes ******************************/
-/*获取MIO的配置信息*/
+/*MIO*/
 const FMioConfig *FMioLookupConfig(u32 instance_id);
 
-/*初始化MIO的功能*/
+/*MIO*/
 FError FMioFuncInit(FMioCtrl *instance_p, u32 mio_type);
 
-/*去初始化*/
+/**/
 FError FMioFuncDeinit(FMioCtrl *instance_p);
 
-/*获取功能配置的基地址*/
+/**/
 uintptr FMioFuncGetAddress(FMioCtrl *instance_p, u32 mio_type);
 
-/*获取功能的中断号*/
+/**/
 u32 FMioFuncGetIrqNum(FMioCtrl *instance_p, u32 mio_type);
 
 #ifdef __cplusplus

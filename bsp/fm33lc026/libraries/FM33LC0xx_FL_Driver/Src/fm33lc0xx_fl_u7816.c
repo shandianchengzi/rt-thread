@@ -88,40 +88,40 @@
   */
 
 /**
-  * @brief  复位U7816外设
-  * @param  U7816x 外设入口地址
-  * @retval 错误状态，可能值：
-  *         -FL_PASS 外设寄存器值恢复复位值
-  *         -FL_FAIL 未成功执行
+  * @brief  U7816
+  * @param  U7816x 
+  * @retval 
+  *         -FL_PASS 
+  *         -FL_FAIL 
   */
 FL_ErrorStatus FL_U7816_DeInit(U7816_Type *U7816x)
 {
     assert_param(IS_FL_U7816_INSTANCE(U7816x));
-    /* 使能外设复位 */
+    /*  */
     FL_RCC_EnablePeripheralReset();
-    /* 复位U7816外设寄存器 */
+    /* U7816 */
     FL_RCC_EnableResetAPB1Peripheral(FL_RCC_RSTAPB_U7816);
     FL_RCC_DisableResetAPB1Peripheral(FL_RCC_RSTAPB_U7816);
-    /* 关闭外设总线始时钟和工作时钟 */
+    /*  */
     FL_RCC_DisableGroup3BusClock(FL_RCC_GROUP3_BUSCLK_U7816);
-    /* 锁定外设复位 */
+    /*  */
     FL_RCC_DisablePeripheralReset();
     return FL_PASS;
 }
 
 /**
-  * @brief  配置U7816
-  * @param  U7816x 外设入口地址
-  * @param  U7816_InitStruct 指向 @ref FL_U7816_InitTypeDef 结构体的指针
-  * @retval 错误状态，可能值：
-  *         -FL_PASS 外设寄存器值恢复复位值
-  *         -FL_FAIL 未成功执行
+  * @brief  U7816
+  * @param  U7816x 
+  * @param  U7816_InitStruct  @ref FL_U7816_InitTypeDef 
+  * @retval 
+  *         -FL_PASS 
+  *         -FL_FAIL 
   */
 FL_ErrorStatus FL_U7816_Init(U7816_Type *U7816x, FL_U7816_InitTypeDef *U7816_InitStruct)
 {
     uint32_t Fclk;
     uint32_t tempClkdiv;
-    /* 参数检查 */
+    /*  */
     assert_param(IS_FL_U7816_INSTANCE(U7816x));
     assert_param(IS_FL_U7816_CLOCK_FRQUENCE(U7816_InitStruct->outputClockFreqence));
     assert_param(IS_FL_U7816_TX_PARITHERROR_AUTO_RETRY(U7816_InitStruct->txAutoRetry));
@@ -135,13 +135,13 @@ FL_ErrorStatus FL_U7816_Init(U7816_Type *U7816x, FL_U7816_InitTypeDef *U7816_Ini
     assert_param(IS_FL_U7816_BIT_DIRECTION(U7816_InitStruct->transferOrder));
     assert_param(IS_FL_U7816_AUTO_PULL(U7816_InitStruct->strongPullUp));
     assert_param(IS_FL_U7816_TX_GUARD(U7816_InitStruct->txGuardTime));
-    /* 时钟使能 */
+    /*  */
     FL_RCC_EnableGroup3BusClock(FL_RCC_GROUP3_BUSCLK_U7816);
-    /* 卡时钟 */
+    /*  */
     Fclk = FL_RCC_GetAPB1ClockFreq();
     tempClkdiv = Fclk / U7816_InitStruct->outputClockFreqence - 1;
     FL_U7816_WriteClockDivision(U7816x, tempClkdiv);
-    /* 发送收到error signal后自动重发 */
+    /* error signal */
     if(U7816_InitStruct->txAutoRetry == FL_ENABLE)
     {
         FL_U7816_EnableTXParityErrorAutoRetry(U7816x);
@@ -150,11 +150,11 @@ FL_ErrorStatus FL_U7816_Init(U7816_Type *U7816x, FL_U7816_InitTypeDef *U7816_Ini
     {
         FL_U7816_DisableTXParityErrorAutoRetry(U7816x);
     }
-    /* 发送失败重试次数 */
+    /*  */
     FL_U7816_SetRetryCount(U7816x, U7816_InitStruct->retryCnt);
-    /* 发送一次之间的保护时间单位etu */
+    /* etu */
     FL_U7816_SetTXGuardTime(U7816x, U7816_InitStruct->txGuardTime);
-    /* 强上拉*/
+    /* */
     if(U7816_InitStruct->strongPullUp == FL_ENABLE)
     {
         FL_U7816_EnablePullup(U7816x);
@@ -163,7 +163,7 @@ FL_ErrorStatus FL_U7816_Init(U7816_Type *U7816x, FL_U7816_InitTypeDef *U7816_Ini
     {
         FL_U7816_DisablePullup(U7816x);
     }
-    /* 块保护,插入block guard time */
+    /* ,block guard time */
     if(U7816_InitStruct->blockGuard == FL_ENABLE)
     {
         FL_U7816_EnableBlockGuardTime(U7816x);
@@ -172,15 +172,15 @@ FL_ErrorStatus FL_U7816_Init(U7816_Type *U7816x, FL_U7816_InitTypeDef *U7816_Ini
     {
         FL_U7816_DisableBlockGuardTime(U7816x);
     }
-    /* 校验位 */
+    /*  */
     FL_U7816_SetParity(U7816x, U7816_InitStruct->parity);
-    /* 接收一次之间的保护时间单位etu */
+    /* etu */
     FL_U7816_SetRXGuardTime(U7816x, U7816_InitStruct->rxGuardTime);
-    /* 错误之后的保护时间单位etu */
+    /* etu */
     FL_U7816_SetErrorGuardTime(U7816x, U7816_InitStruct->errorGuardTime);
-    /* 错误信号时间 单位etu */
+    /*  etu */
     FL_U7816_SetErrorSignalWidth(U7816x, U7816_InitStruct->errorSignalWidth);
-    /* 接收校验错是否自动重发error signal */
+    /* error signal */
     if(U7816_InitStruct->rxAutoErrorSignal == FL_ENABLE)
     {
         FL_U7816_EnableRXParityErrorAutoRetry(U7816x);
@@ -189,18 +189,18 @@ FL_ErrorStatus FL_U7816_Init(U7816_Type *U7816x, FL_U7816_InitTypeDef *U7816_Ini
     {
         FL_U7816_DisableRXParityErrorAutoRetry(U7816x);
     }
-    /* 传输bit方向 */
+    /* bit */
     FL_U7816_SetBitOrder(U7816x, U7816_InitStruct->transferOrder);
     /* baud */
     FL_U7816_WriteBaudRate(U7816x, U7816_InitStruct->baud);
-    /* 额外保护时间单位etu */
+    /* etu */
     FL_U7816_WriteExtraGuardTime(U7816x, U7816_InitStruct->extraGuardTime);
     return FL_PASS;
 }
 
 /**
-  * @brief  将 @ref FL_U7816_InitTypeDef 结构体初始化为默认配置
-  * @param  U7816_InitStruct 指向 @ref FL_U7816_InitTypeDef 结构体的指针
+  * @brief   @ref FL_U7816_InitTypeDef 
+  * @param  U7816_InitStruct  @ref FL_U7816_InitTypeDef 
   *
   * @retval None
   */

@@ -28,8 +28,8 @@ Options 1,0,0  // Target 'RT-Thread Mini2440'
  EnvBin ()
  EnvInc ()
  EnvLib ()
- EnvReg (ÿSamsung\)
- OrgReg (ÿSamsung\)
+ EnvReg (Samsung\)
+ OrgReg (Samsung\)
  TgStat=16
  OutDir (.\obj\)
  OutName (rtthread-mini2440)

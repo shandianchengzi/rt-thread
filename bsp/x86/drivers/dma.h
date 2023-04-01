@@ -69,7 +69,7 @@
 #define DMA_MODE_CASCADE        0xC0        /* pass thru DREQ->HRQ, DACK<-HLDA only */
 
 /*
- * 启用指定的DMA通道
+ * DMA
  */
 static __inline__ void EnableDma(unsigned int dmanr)
 {
@@ -80,7 +80,7 @@ static __inline__ void EnableDma(unsigned int dmanr)
 }
 
 /*
- * 禁用指定的DMA通道
+ * DMA
  */
 static __inline__ void DisableDma(unsigned int dmanr)
 {
@@ -91,7 +91,7 @@ static __inline__ void DisableDma(unsigned int dmanr)
 }
 
 /*
- * 清空DMA 晶体计数器
+ * DMA 
  */
 static __inline__ void ClearDmaFF(unsigned int dmanr)
 {
@@ -102,7 +102,7 @@ static __inline__ void ClearDmaFF(unsigned int dmanr)
 }
 
 /*
- * 清空DMA 晶体计数器
+ * DMA 
  */
 static __inline__ void SetDmaMode(unsigned int dmanr, char mode)
 {
@@ -113,7 +113,7 @@ static __inline__ void SetDmaMode(unsigned int dmanr, char mode)
 }
 
 /*
- *  设定DMA 页面寄存器
+ *  DMA 
  */
 static __inline__ void SetDmaPage(unsigned int dmanr, char pagenr)
 {
@@ -144,7 +144,7 @@ static __inline__ void SetDmaPage(unsigned int dmanr, char pagenr)
 
 
 /*
- * 设定DMA 传输高速缓冲区地址
+ * DMA 
  */
 static __inline__ void SetDmaAddr(unsigned int dmanr, unsigned int a)
 {
@@ -160,7 +160,7 @@ static __inline__ void SetDmaAddr(unsigned int dmanr, unsigned int a)
 
 
 /*
- * 设定DMA 传输块数
+ * DMA 
  */
 static __inline__ void SetDmaCount(unsigned int dmanr, unsigned int count)
 {
@@ -176,7 +176,7 @@ static __inline__ void SetDmaCount(unsigned int dmanr, unsigned int count)
 
 
 /*
- *  获得DMA 传输剩余块数
+ *  DMA 
  */
 static __inline__ int GetDmaResidue(unsigned int dmanr)
 {

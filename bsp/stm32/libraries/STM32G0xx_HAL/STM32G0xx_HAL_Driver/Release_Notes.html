@@ -25,11 +25,11 @@
 <div class="col-sm-12 col-lg-4">
 <center>
 <h1 id="release-notes-forstm32g0xx-hal-drivers"><small>Release Notes for</small><mark>STM32G0xx HAL Drivers</mark></h1>
-<p>Copyright © 2018 STMicroelectronics</p>
+<p>Copyright  2018 STMicroelectronics</p>
 <a href="https://www.st.com" class="logo"><img src="_htmresc/st_logo_2020.png" alt="ST logo" /></a>
 </center>
 <h1 id="license">License</h1>
-<p>This software component is licensed by ST under BSD 3-Clause license, the “License”; You may not use this component except in compliance with the License. You may obtain a copy of the License at:</p>
+<p>This software component is licensed by ST under BSD 3-Clause license, the License; You may not use this component except in compliance with the License. You may obtain a copy of the License at:</p>
 <p><a href="https://opensource.org/licenses/BSD-3-Clause">https://opensource.org/licenses/BSD-3-Clause</a></p>
 <h1 id="purpose">Purpose</h1>
 <p>The STM32Cube HAL and LL, an STM32 abstraction layer embedded software, ensure maximized portability across STM32 portfolio.</p>
@@ -99,7 +99,7 @@
 </ul></li>
 <li><p><strong>HAL COMP</strong> update</p>
 <ul>
-<li>Update wait_loop_index computation so delay in us is always multiplicated by at least value “1”.</li>
+<li>Update wait_loop_index computation so delay in us is always multiplicated by at least value 1.</li>
 </ul></li>
 <li><p><strong>HAL IWDG</strong> update</p>
 <ul>
@@ -136,8 +136,8 @@
 <li><p><strong>HAL UART</strong> update</p>
 <ul>
 <li>Update HAL_UART_IRQHandler() API to handle receiver timeout interrupt.</li>
-<li>Update UART receive processes (IT and DMA) to handle the UART receive’s timeout interrupt.</li>
-<li>Fix erroneous UART’s handle state in case of error returned after DMA reception start within UART_Start_Receive_DMA().</li>
+<li>Update UART receive processes (IT and DMA) to handle the UART receives timeout interrupt.</li>
+<li>Fix erroneous UARTs handle state in case of error returned after DMA reception start within UART_Start_Receive_DMA().</li>
 <li>Correction on UART ReceptionType management in case of ReceptionToIdle API are called from RxEvent callback.</li>
 <li>Handling of UART concurrent register access in case of race condition between Tx and Rx transfers (HAL UART and LL LPUART).</li>
 <li>Remove an invalid FIFO mode configuration from UART_SetConfig() as it is not is not member of UART_InitTypeDef Structure.</li>
@@ -168,7 +168,7 @@
 </ul></li>
 <li><p><strong>HAL/LL ADC</strong> update</p>
 <ul>
-<li>Update wait_loop_index computation so delay in us is always multiplicated by at least value “1”.</li>
+<li>Update wait_loop_index computation so delay in us is always multiplicated by at least value 1.</li>
 <li>Fix wrong internal regulator stabilization time to be aligned with the datasheet: 20us instead of 10us.</li>
 </ul></li>
 <li><p><strong>HAL USB</strong> update</p>
@@ -325,7 +325,7 @@
 <td style="text-align: left;">[ADC] HAL ADC value from channel TempSensor wrong at 1st read</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">[ADC] LL [GithHub][HAL_LL] Issue with ‘register’ storage class specifier, should be removed</td>
+<td style="text-align: left;">[ADC] LL [GithHub][HAL_LL] Issue with register storage class specifier, should be removed</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">[ADC] ADC must manage CCRDY flag during configuration</td>
@@ -340,7 +340,7 @@
 <td style="text-align: left;">[ADC] ADC AUTDLY and DMA</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">[COMP] LL [GithHub][HAL_LL] Issue with ‘register’ storage class specifier, should be removed</td>
+<td style="text-align: left;">[COMP] LL [GithHub][HAL_LL] Issue with register storage class specifier, should be removed</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">[COMP] Improve PDF document generation</td>
@@ -397,7 +397,7 @@
 <td style="text-align: left;">[DMA] LOCK UNLOCK process to modify, as LOCK is done at Start and UNLOCK is done at Completion processus</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">[DMA] Exti interrupt doesn’t need to be enabled when it used as the DMAMUX synchronization</td>
+<td style="text-align: left;">[DMA] Exti interrupt doesnt need to be enabled when it used as the DMAMUX synchronization</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">[DMAMUX] correct warning during chm generation</td>
@@ -406,7 +406,7 @@
 <td style="text-align: left;">[DMA] LL_DMA_ClearFlag_GIx : add text informing user not to clear GIx when channel on</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">[DMA] two requests are missing for TIM16 and TIM17 (i.e. renaming according to RM)</td>
+<td style="text-align: left;">[DMA] two requests are missing for TIM16 and TIM17 (i.e.renaming according to RM)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">[EXTI] Use of <strong>LINE</strong> as a macro parameter conflicts with standard C usage</td>
@@ -466,7 +466,7 @@
 <td style="text-align: left;">[GPIO] LL - LL_GPIO_Init() generate undesired pulse</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">[GPIO] HAL - bug on HAL_GPIO_TogglePin: doesn’t allow toggle multiple pin</td>
+<td style="text-align: left;">[GPIO] HAL - bug on HAL_GPIO_TogglePin: doesnt allow toggle multiple pin</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">[GPIO-LL] Correct issue with LL_GPIO_TogglePin function</td>
@@ -475,13 +475,13 @@
 <td style="text-align: left;">[GPIO] HAL_GPIO_DeInit() bug on EXTI management</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">[I2C] LL - [GithHub][HAL_LL] Issue with ‘register’ storage class specifier, should be removed</td>
+<td style="text-align: left;">[I2C] LL - [GithHub][HAL_LL] Issue with register storage class specifier, should be removed</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">[I2C] I2C slave interrupt handling issue</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">[I2C][MISRAC2012-Rule-2.2_c] Value assigned to variable `tmpITFlags’ is never used</td>
+<td style="text-align: left;">[I2C][MISRAC2012-Rule-2.2_c] Value assigned to variable `tmpITFlags is never used</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">[I2C] Incorrectly enable interrupts in I2C_Enable_IRQ routine when InterruptRequest = I2C_XFER_CPLT_IT</td>
@@ -496,7 +496,7 @@
 <td style="text-align: left;">[I2C] Correct compilation Warning: variable "tmp" was set but never used</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">[I2C][CHM generation] <span class="citation" data-cites="ref">@ref</span> IS_xxx macro can’t be resolved since CMSIS file is not included</td>
+<td style="text-align: left;">[I2C][CHM generation] <span class="citation" data-cites="ref">@ref</span> IS_xxx macro cant be resolved since CMSIS file is not included</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">[IWDG] LL - IWDG start-up timeout insufficiently low</td>
@@ -541,7 +541,7 @@
 <td style="text-align: left;">[RCC] [McuAStyle] - HAL and LL code update for obvious rules violation</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">[RTC] LL/HAL - Issue with ‘register’ storage class specifier, should be removed</td>
+<td style="text-align: left;">[RTC] LL/HAL - Issue with register storage class specifier, should be removed</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">[RCC] Constants <strong>RCC_CFGR_</strong> shall be removed from CMSIS</td>
@@ -586,16 +586,16 @@
 <td style="text-align: left;">[SPI] HAL - SPI Tx DMA request is disabled in Rx DMA transfer complete callback function</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">[SPI] HAL - [I2S] HAL_I2S_DMAStop doesn’t check the BSY flag as described in RM0390</td>
+<td style="text-align: left;">[SPI] HAL - [I2S] HAL_I2S_DMAStop doesnt check the BSY flag as described in RM0390</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">[SPI] HAL - MISRA C 2012 - regression on I2S</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">[SPI] HAL - HAL_SPI_Receive doesn’t work after HAL_SPI_Transmit in half-duplex mode</td>
+<td style="text-align: left;">[SPI] HAL - HAL_SPI_Receive doesnt work after HAL_SPI_Transmit in half-duplex mode</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">[SPI] LL/HAL Issue with ‘register’ storage class specifier, should be removed</td>
+<td style="text-align: left;">[SPI] LL/HAL Issue with register storage class specifier, should be removed</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">[SPI] SPI Tx DMA request is disabled in Rx DMA transfer complete callback function</td>
@@ -619,7 +619,7 @@
 <td style="text-align: left;">[TIM] HAL_TIM_DMABurst_(Read/Write)Stop returns HAL_ERROR when called while DMA transfer is completed</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">[TIM] LL/HAL Issue with ‘register’ storage class specifier, should be removed</td>
+<td style="text-align: left;">[TIM] LL/HAL Issue with register storage class specifier, should be removed</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">[TIM] LL - COUNTERMODE defines are inverted for TIM_CR1_CMS in ll_tim.h</td>
@@ -646,7 +646,7 @@
 <td style="text-align: left;">[UART] Implementation of HAL UART enhanced reception services (ReceptionToIdle) <strong>API update</strong></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">[UART] LL/HAL Issue with ‘register’ storage class specifier, should be removed</td>
+<td style="text-align: left;">[UART] LL/HAL Issue with register storage class specifier, should be removed</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">[UART] HAL MISRA C 2012 - regression on UART</td>
@@ -682,13 +682,13 @@
 <td style="text-align: left;">[USART] Fix typos introduced in some APIs descriptions</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">[USART] [CHM documentation] <span class="citation" data-cites="ref">@ref</span> IS_xxx macro can’t be resolved since CMSIS file is not included</td>
+<td style="text-align: left;">[USART] [CHM documentation] <span class="citation" data-cites="ref">@ref</span> IS_xxx macro cant be resolved since CMSIS file is not included</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">[USART] LL/HAL Issue with ‘register’ storage class specifier, should be removed</td>
+<td style="text-align: left;">[USART] LL/HAL Issue with register storage class specifier, should be removed</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">[USART][CHM documentation] <span class="citation" data-cites="ref">@ref</span> IS_xxx macro can’t be resolved since CMSIS file is not included</td>
+<td style="text-align: left;">[USART][CHM documentation] <span class="citation" data-cites="ref">@ref</span> IS_xxx macro cant be resolved since CMSIS file is not included</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">[VREFBUF] G0 Family has only one VREBUF calibration point, Range 1</td>
@@ -981,7 +981,7 @@
 <td style="text-align: left;">[LL ADC] Potential infinite wait in while loop of LL_ADC_DeInit()</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">[ADC] Embedded SW code comments or document must use ‘’Peripheral’’ rather than ‘’IP’’</td>
+<td style="text-align: left;">[ADC] Embedded SW code comments or document must use Peripheral rather than IP</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">[LL COMP] redefinition of registers address MUST be volatile (_IO)</td>

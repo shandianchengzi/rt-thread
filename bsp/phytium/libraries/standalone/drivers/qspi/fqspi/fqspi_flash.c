@@ -55,7 +55,7 @@ static const FQspiFlashInfo flash_info_table[] = FQSPI_FLASH_INFO_TABLE;
  * @name: FQspiFlashDetect
  * @msg:  detect qspi flash information, include id, type, capacity, set qspi capacity register.
  * @param {FQspiCtrl} *pctrl, instance of FQSPI controller
- * @return {FError} err code information, FQSPI_SUCCESS indicates success，others indicates failed
+ * @return {FError} err code information, FQSPI_SUCCESS indicates successothers indicates failed
  */
 FError FQspiFlashDetect(FQspiCtrl *pctrl)
 {
@@ -102,7 +102,7 @@ FError FQspiFlashDetect(FQspiCtrl *pctrl)
  * @name: FQspiFlashReset
  * @msg:  qspi Flash soft reset, FQSPI_CMD_ENABLE_RESET and FQSPI_CMD_RESET.
  * @param {FQspiCtrl} *pctrl, instance of FQSPI controller
- * @return {FError} err code information, FQSPI_SUCCESS indicates success，others indicates failed
+ * @return {FError} err code information, FQSPI_SUCCESS indicates successothers indicates failed
  */
 static FError FQspiFlashReset(FQspiCtrl *pctrl)
 {
@@ -132,7 +132,7 @@ static FError FQspiFlashReset(FQspiCtrl *pctrl)
  * @param {u8} cmd, read register value command, include RDID, RDSR1, RDSR2, RDCR...
  * @param {u8} *buf, read buffer
  * @param {size_t} len, read length
- * @return {FError} err code information, FQSPI_SUCCESS indicates success，others indicates failed
+ * @return {FError} err code information, FQSPI_SUCCESS indicates successothers indicates failed
  */
 FError FQspiFlashSpecialInstruction(FQspiCtrl *pctrl, u8 cmd, u8 *buf, size_t len)
 {
@@ -179,10 +179,10 @@ FError FQspiFlashSpecialInstruction(FQspiCtrl *pctrl, u8 cmd, u8 *buf, size_t le
  * @name: FQspiFlashReadSfdp
  * @msg: Read flash Serial Flash Discoverable Parameters
  * @param {FQspiCtrl} *pctrl, instance of FQSPI controller
- * @param {u32} offset，Relative Byte Address Offset
+ * @param {u32} offsetRelative Byte Address Offset
  * @param {u8} *buf, read buffer
  * @param {size_t} len, read length
- * @return {FError} err code information, FQSPI_SUCCESS indicates success，others indicates failed
+ * @return {FError} err code information, FQSPI_SUCCESS indicates successothers indicates failed
  */
 FError FQspiFlashReadSfdp(FQspiCtrl *pctrl, u32 offset, u8 *buf, size_t len)
 {
@@ -232,10 +232,10 @@ FError FQspiFlashReadSfdp(FQspiCtrl *pctrl, u32 offset, u8 *buf, size_t len)
  * @name: FQspiFlashReadReg
  * @msg: Read Qspi register value
  * @param {FQspiCtrl} *pctrl, instance of FQSPI controller
- * @param {u32} offset，Relative Byte Address Offset
+ * @param {u32} offsetRelative Byte Address Offset
  * @param {u8} *buf, read buffer
  * @param {size_t} len, read length
- * @return {FError} err code information, FQSPI_SUCCESS indicates success，others indicates failed
+ * @return {FError} err code information, FQSPI_SUCCESS indicates successothers indicates failed
  */
 FError FQspiFlashReadReg(FQspiCtrl *pctrl, u32 offset, u8 *buf, size_t len)
 {
@@ -375,8 +375,8 @@ size_t FQspiFlashReadData(FQspiCtrl *pctrl, u32 chip_addr, u8 *buf, size_t len)
  * @name: FQspiFlashReadDataConfig
  * @msg:  read flash data configuration
  * @param {FQspiCtrl} *pctrl, instance of FQSPI controller
- * @param {u8} command, command to read flash，see the Flash manual for details
- * @return {FError} err code information, FQSPI_SUCCESS indicates success，others indicates failed 表示配置成功，其它返回值表示配置失败
+ * @param {u8} command, command to read flashsee the Flash manual for details
+ * @return {FError} err code information, FQSPI_SUCCESS indicates successothers indicates failed 
  */
 FError FQspiFlashReadDataConfig(FQspiCtrl *pctrl, u8 command)
 {
@@ -529,11 +529,11 @@ FError FQspiFlashReadDataConfig(FQspiCtrl *pctrl, u8 command)
  * @name: FQspiFlashWriteData
  * @msg:  write flash data
  * @param {FQspiCtrl} *pctrl, instance of FQSPI controller
- * @param {u8} command, command to write flash，see the Flash manual for details
+ * @param {u8} command, command to write flashsee the Flash manual for details
  * @param {u32} chip_addr, The start address of the chip to write
  * @param {u8} *buf, write buffer
  * @param {size_t} len, write length
- * @return {FError} err code information, FQSPI_SUCCESS indicates success，others indicates failed 表示写入成功，其它返回值表示写入失败
+ * @return {FError} err code information, FQSPI_SUCCESS indicates successothers indicates failed 
  */
 FError FQspiFlashWriteData(FQspiCtrl *pctrl, u8 command, u32 chip_addr, const u8 *buf, size_t len)
 {
@@ -653,11 +653,11 @@ FError FQspiFlashWriteData(FQspiCtrl *pctrl, u8 command, u32 chip_addr, const u8
  * @name: FQspiFlashPortReadData
  * @msg:  read flash data use register port
  * @param {FQspiCtrl} *pctrl, instance of FQSPI controller
- * @param {u8} cmd, command to read flash，see the Flash manual for details
+ * @param {u8} cmd, command to read flashsee the Flash manual for details
  * @param {u32} chip_addr, The start address of the chip to read
  * @param {u8} *buf, read buffer
  * @param {size_t} len, read length
- * @return {FError} err code information, FQSPI_SUCCESS indicates success，others indicates failed
+ * @return {FError} err code information, FQSPI_SUCCESS indicates successothers indicates failed
  */
 FError FQspiFlashPortReadData(FQspiCtrl *pctrl, u8 cmd, u32 chip_addr, u8 *buf, size_t len)
 {
@@ -713,11 +713,11 @@ FError FQspiFlashPortReadData(FQspiCtrl *pctrl, u8 cmd, u32 chip_addr, u8 *buf, 
  * @name: FQspiFlashPortWriteData
  * @msg:  write flash data use register port
  * @param {FQspiCtrl} *pctrl, instance of FQSPI controller
- * @param {u8} cmd, command to write flash，see the Flash manual for details
+ * @param {u8} cmd, command to write flashsee the Flash manual for details
  * @param {u32} chip_addr, The start address of the chip to write
  * @param {u8} *buf, write buffer
  * @param {size_t} len, write length
- * @return {FError} err code information, FQSPI_SUCCESS indicates success，others indicates failed
+ * @return {FError} err code information, FQSPI_SUCCESS indicates successothers indicates failed
  */
 FError FQspiFlashPortWriteData(FQspiCtrl *pctrl, u8 cmd, u32 chip_addr, u8 *buf, size_t len)
 {
@@ -777,8 +777,8 @@ FError FQspiFlashPortWriteData(FQspiCtrl *pctrl, u8 cmd, u32 chip_addr, u8 *buf,
  * @msg:  erase flash data
  * @param {FQspiCtrl} *pctrl, instance of FQSPI controller
  * @param {u8} command, command to erase flash, see the Flash manual for details
- * @param {u32} offset，Relative Byte Address Offset
- * @return {FError} err code information, FQSPI_SUCCESS indicates success，others indicates failed 表示擦除成功，其它返回值表示擦除失败
+ * @param {u32} offsetRelative Byte Address Offset
+ * @return {FError} err code information, FQSPI_SUCCESS indicates successothers indicates failed 
  */
 FError FQspiFlashErase(FQspiCtrl *pctrl, u8 command, u32 offset)
 {
@@ -863,7 +863,7 @@ FError FQspiFlashErase(FQspiCtrl *pctrl, u8 command, u32 offset)
  * @name: FQspiFlashEnableWrite
  * @msg:  Flash write enable
  * @param {FQspiCtrl} *pctrl, instance of FQSPI controller
- * @return {FError} err code information, FQSPI_SUCCESS indicates success，others indicates failed 表示执行成功，其它返回值表示执行失败
+ * @return {FError} err code information, FQSPI_SUCCESS indicates successothers indicates failed 
  */
 FError FQspiFlashEnableWrite(FQspiCtrl *pctrl)
 {
@@ -904,7 +904,7 @@ FError FQspiFlashEnableWrite(FQspiCtrl *pctrl)
  * @name: FQspiFlashDisableWrite
  * @msg:  Flash write disable
  * @param {FQspiCtrl} *pctrl, instance of FQSPI controller
- * @return {FError} err code information, FQSPI_SUCCESS indicates success，others indicates failed 表示执行成功，其它返回值表示执行失败
+ * @return {FError} err code information, FQSPI_SUCCESS indicates successothers indicates failed 
  */
 FError FQspiFlashDisableWrite(FQspiCtrl *pctrl)
 {
@@ -940,10 +940,10 @@ FError FQspiFlashDisableWrite(FQspiCtrl *pctrl)
  * @name: FQspiFlashWriteReg
  * @msg: write flash register
  * @param {FQspiCtrl} *pctrl, instance of FQSPI controller
- * @param {u8} command, command to write flash register，see the Flash manual for details
+ * @param {u8} command, command to write flash registersee the Flash manual for details
  * @param {u8} *buf, write buffer
  * @param {size_t} len, write length
- * @return {FError} err code information, FQSPI_SUCCESS indicates success，others indicates failed 表示写入成功，其它返回值表示写入失败
+ * @return {FError} err code information, FQSPI_SUCCESS indicates successothers indicates failed 
  */
 FError FQspiFlashWriteReg(FQspiCtrl *pctrl, u8 command, const u8 *buf, size_t len)
 {
@@ -1000,7 +1000,7 @@ FError FQspiFlashWriteReg(FQspiCtrl *pctrl, u8 command, const u8 *buf, size_t le
  * @name: FQspiFlashWaitForCmd
  * @msg: wait flash command execution complete
  * @param {FQspiCtrl} *pctrl, instance of FQSPI controller
- * @return {FError} err code information, FQSPI_SUCCESS indicates success，others indicates failed 表示成功完成，其它返回值表示失败
+ * @return {FError} err code information, FQSPI_SUCCESS indicates successothers indicates failed 
  */
 FError FQspiFlashWaitForCmd(FQspiCtrl *pctrl)
 {

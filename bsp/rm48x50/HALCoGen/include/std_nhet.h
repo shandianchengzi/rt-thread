@@ -842,7 +842,7 @@ typedef union
 } SCNT_INSTRUCTION;
 
 
-
+
 /*---------------------------------------------*/
 /* ACNT INSTRUCTION                            */
 /*---------------------------------------------*/
@@ -2229,7 +2229,7 @@ typedef union
   DJZ_FIELDS  djz   ; 
   HET_MEMORY   memory ;
 } DJZ_INSTRUCTION;
-
+
 /*---------------------------------------------*/
 /* PWCNT INSTRUCTION                           */
 /*---------------------------------------------*/

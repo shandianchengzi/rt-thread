@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fi2c_intr.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:36:38
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 /***************************** Include Files *********************************/
@@ -70,10 +70,10 @@ static inline void FI2cSlaveCallEvtHandler(FI2c *instance_p, u32 evt, void *para
 
 /**
  * @name: FI2cStubHandler
- * @msg: 主机模式下的I2C中断默认回调函数
+ * @msg: I2C
  * @return {*}
- * @param {void} *instance_p I2C驱动实例数据
- * @param {void} *param, 中断输入参数
+ * @param {void} *instance_p I2C
+ * @param {void} *param, 
  */
 static void FI2cStubHandler(void *instance_p, void *param)
 {
@@ -88,9 +88,9 @@ static void FI2cStubHandler(void *instance_p, void *param)
 
 /**
  * @name: FI2cMasterIntrTxEmptyHandler
- * @msg: 主机模式下的I2C TX_FIFO空中断处理函数
+ * @msg: I2C TX_FIFO
  * @return {*}
- * @param {void} *instance_p I2C驱动实例数据
+ * @param {void} *instance_p I2C
  */
 static void FI2cMasterIntrTxEmptyHandler(FI2c *instance_p)
 {
@@ -159,9 +159,9 @@ static void FI2cMasterIntrTxEmptyHandler(FI2c *instance_p)
 
 /**
  * @name: FI2cMasterIntrRxFullHandler
- * @msg: 主机模式下的I2C RX_FIFO满处理函数，可通过FI2C_SET_RX_TL(address,level);设置触发level
+ * @msg: I2C RX_FIFOFI2C_SET_RX_TL(address,level);level
  * @return {*}
- * @param {void} *instance_p I2C驱动实例数据
+ * @param {void} *instance_p I2C
  */
 static void FI2cMasterIntrRxFullHandler(FI2c *instance_p)
 {
@@ -189,10 +189,10 @@ static void FI2cMasterIntrRxFullHandler(FI2c *instance_p)
 
 /**
  * @name: FI2cMasterIntrHandler
- * @msg: 主机模式下的I2C中断响应函数
+ * @msg: I2C
  * @return {*}
  * @param {s32} vector
- * @param {void} *param, 中断输入参数
+ * @param {void} *param, 
  */
 void FI2cMasterIntrHandler(s32 vector, void *param)
 {
@@ -239,11 +239,11 @@ void FI2cMasterIntrHandler(s32 vector, void *param)
 }
 /**
  * @name: FI2cMasterRegisterIntrHandler
- * @msg: 注册I2C主机中断事件函数
+ * @msg: I2C
  * @return {*}
- * @param {FI2c} *instance_p I2C驱动实例数据
- * @param {u32} evt 中断事件，参考 FI2C_MASTER_INTR_EVT_NUM
- * @param {FI2cEvtHandler} handler 中断事件回调函数
+ * @param {FI2c} *instance_p I2C
+ * @param {u32} evt  FI2C_MASTER_INTR_EVT_NUM
+ * @param {FI2cEvtHandler} handler 
  */
 void FI2cMasterRegisterIntrHandler(FI2c *instance_p, u32 evt, FI2cEvtHandler handler)
 {
@@ -253,9 +253,9 @@ void FI2cMasterRegisterIntrHandler(FI2c *instance_p, u32 evt, FI2cEvtHandler han
 
 /**
  * @name: FI2cMasterGetIntr
- * @msg: 获取I2C主机的中断
- * @return {u32 } 返回中断寄存器值
- * @param {FI2c} *instance_p I2C驱动实例数据
+ * @msg: I2C
+ * @return {u32 } 
+ * @param {FI2c} *instance_p I2C
  */
 u32 FI2cGetIntr(FI2c *instance_p)
 {
@@ -273,10 +273,10 @@ u32 FI2cGetIntr(FI2c *instance_p)
 }
 /**
  * @name: FI2cMasterSetupIntr
- * @msg: 设置I2C主机的中断
- * @return {FError *} 返回错误码
- * @param {FI2c} *instance_p I2C驱动实例数据
- * @param {u32} mask 需要操作的中断寄存器位
+ * @msg: I2C
+ * @return {FError *} 
+ * @param {FI2c} *instance_p I2C
+ * @param {u32} mask 
  */
 FError FI2cMasterSetupIntr(FI2c *instance_p, u32 mask)
 {
@@ -315,10 +315,10 @@ FError FI2cMasterSetupIntr(FI2c *instance_p, u32 mask)
 
 /**
  * @name: FI2cSlaveIntrHandler
- * @msg: I2C从机的中断响应函数
+ * @msg: I2C
  * @return {*}
  * @param {s32} vector
- * @param {void} *param, 输入参数
+ * @param {void} *param, 
  */
 void FI2cSlaveIntrHandler(s32 vector, void *param)
 {
@@ -389,11 +389,11 @@ void FI2cSlaveIntrHandler(s32 vector, void *param)
 
 /**
  * @name: FI2cSlaveRegisterIntrHandler
- * @msg: 注册I2C从机中断事件函数
+ * @msg: I2C
  * @return {*}
- * @param {FI2c} *instance_p I2C驱动实例数据
- * @param {u32} evt 中断事件，参考 FI2C_SLAVE_INTR_EVT_NUM
- * @param {FI2cEvtHandler} handler 中断事件回调函数
+ * @param {FI2c} *instance_p I2C
+ * @param {u32} evt  FI2C_SLAVE_INTR_EVT_NUM
+ * @param {FI2cEvtHandler} handler 
  */
 void FI2cSlaveRegisterIntrHandler(FI2c *instance_p, u32 evt, FI2cEvtHandler handler)
 {
@@ -403,8 +403,8 @@ void FI2cSlaveRegisterIntrHandler(FI2c *instance_p, u32 evt, FI2cEvtHandler hand
 
 /**
  * @name: FI2cSlaveSetupIntr
- * @msg: 设置I2C从机的中断
- * @return {FError *} 返回错误码
+ * @msg: I2C
+ * @return {FError *} 
  * @param {FI2c} *instance_p
  */
 FError FI2cSlaveSetupIntr(FI2c *instance_p)
@@ -438,8 +438,8 @@ FError FI2cSlaveSetupIntr(FI2c *instance_p)
             FI2C_INFO("evt :%d.is default.\r\n", evt);
         }
     }
-    FI2C_SET_RX_TL(instance_p->config.base_addr, 0);/* 0 表示接收缓冲区大于等于 1 时触发中断 */
-    FI2C_SET_TX_TL(instance_p->config.base_addr, 0);/* 0 表示发送缓冲区大于等于 1 时触发中断 */
+    FI2C_SET_RX_TL(instance_p->config.base_addr, 0);/* 0  1  */
+    FI2C_SET_TX_TL(instance_p->config.base_addr, 0);/* 0  1  */
     mask = FI2C_GET_INTRRUPT_MASK(base_addr);
     mask |= (FI2C_INTR_SLAVE_DEF_MASK);
     FI2C_SET_INTRRUPT_MASK(base_addr, mask);

@@ -25,11 +25,11 @@
 #define USB_FIFO_DW_DAX (128)
 
 /**
-  * 结构说明：调试控制寄存器(USBPHY_CR1)结构
-  * 偏移地址：0x0108
-  * 初 始 值：0x004921AE
-  * 属    性：RW
-  * 宽    度：32bit
+  * (USBPHY_CR1)
+  * 0x0108
+  *   0x004921AE
+  *     RW
+  *     32bit
   */
 typedef union _USBPHY_CR1_TypeDef
 {
@@ -58,18 +58,18 @@ typedef union _USBPHY_CR1_TypeDef
 } USBPHY_CR1_TypeDef;
 
 /**
-  * 结构说明：调试控制寄存器(USBPHY_CR3)结构
-  * 偏移地址：0x010C
-  * 初 始 值：0x00000000
-  * 属    性：RW
-  * 宽    度：32bit
+  * (USBPHY_CR3)
+  * 0x010C
+  *   0x00000000
+  *     RW
+  *     32bit
   */
 typedef union _USBPHY_CR3_TypeDef
 {
     uint32_t d32;
     struct{
-        uint32_t idpullup                   : 1;    /* 用于操作 USB PHY的idpullup，启动PHY探测ID状态 */
-        uint32_t iddig                      : 1;    /* PHY 输出的ID状态信号，用于软件查询 */
+        uint32_t idpullup                   : 1;    /*  USB PHYidpullupPHYID */
+        uint32_t iddig                      : 1;    /* PHY ID */
         uint32_t reserved2_31               : 29;
     } b;
 } USBPHY_CR3_TypeDef;
@@ -87,8 +87,8 @@ typedef struct
             __IO uint8_t suspend_mode   : 1;
             __IO uint8_t resume         : 1;
             __IO uint8_t reset          : 1;
-            __IO uint8_t HS_mode        : 1;    //不支持
-            __IO uint8_t HS_enab        : 1;    //不支持
+            __IO uint8_t HS_mode        : 1;    //
+            __IO uint8_t HS_enab        : 1;    //
             __IO uint8_t soft_conn      : 1;     /* Periphera mode only */
             __IO uint8_t ISO_update     : 1;     /* Periphera mode only */
         } POWER_b;
@@ -1443,14 +1443,14 @@ static int prvUSB_SetupEPFifo(HANDLE hUSB)
     uint8_t Len;
     uint16_t FifoStart = (64 >> 3);
     uint16_t UseFifo = 64;
-    //ep0使用默认的64byte
+    //ep064byte
 
     USB_OTG->INDEX = 0;
     USB_OTG->TXFIFOSZ = 3;
     USB_OTG->RXFIFOSZ = 3;
     USB_OTG->TXFIFOADD = 0;
     USB_OTG->RXFIFOADD = 0;
-    USB_OTG->CSR0H_DEV_b.flush_fifo = 1;    //刷新EP0的FIFO
+    USB_OTG->CSR0H_DEV_b.flush_fifo = 1;    //EP0FIFO
     hwUSB->EpCtrl[0].MaxPacketLen = 64;
     for(i = 1; i < USB_EP_MAX; i++)
     {

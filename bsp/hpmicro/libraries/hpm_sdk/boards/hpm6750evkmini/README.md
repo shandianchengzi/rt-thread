@@ -2,7 +2,7 @@
 
 ## Overview
 
-The HPM6750 is a dual-core flashless MCU running 816Mhz. It has a 2MB continuous on-chip ram. Also, it provides various memory interfaces, including SDRAM, Quad SPI NOR Flash, SD/eMMC. It integrates rich audio and video interfaces, including LCD, pixel DMA, camera， and I2S audio interfaces.
+The HPM6750 is a dual-core flashless MCU running 816Mhz. It has a 2MB continuous on-chip ram. Also, it provides various memory interfaces, including SDRAM, Quad SPI NOR Flash, SD/eMMC. It integrates rich audio and video interfaces, including LCD, pixel DMA, camera and I2S audio interfaces.
 
  ![hpm6750evkmini](../../doc/images/boards/hpm6750evkmini/hpm6750evkmini.png "hpm6750evkmini")
 ## Hardware
@@ -57,14 +57,14 @@ The HPM6750 is a dual-core flashless MCU running 816Mhz. It has a 2MB continuous
 | SPI2.MISO   | P1[21] |
 | SPI2.MOSI   | P1[19] |
 
-- I2C Pin：
+- I2C Pin
 
 | Function | Position |
 | ---- | -------- |
 | I2C0.SCL    | P1[13] |
 | I2C0.SDA    | P1[15] |
 
-- UART for core1 debug console：
+- UART for core1 debug console
 
 | Function | Position |
 | ---- | -------- |

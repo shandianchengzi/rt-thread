@@ -50,9 +50,9 @@
 #include <hal_osal.h>
 
 hal_spinlock_t gen_hcd_lock;
-//static USB_OS_KERNEL_EVENT *usb_bus_list_lock;  //用来保护usb virt bus的，虽然目前用不到
-hal_sem_t   usb_bus_list_lock;  //用来保护usb virt bus的，虽然目前用不到
-//但是当我们支持多个物理hcd的时候必须用
+//static USB_OS_KERNEL_EVENT *usb_bus_list_lock;  //usb virt bus
+hal_sem_t   usb_bus_list_lock;  //usb virt bus
+//hcd
 
 /*
  * usb_hcd_start_port_resume - a root-hub port is sending a resume signal
@@ -94,7 +94,7 @@ void usb_hcd_end_port_resume(struct usb_virt_bus *bus, int portnum)
 ********************************************************************************
 *                     usb_release_bandwidth
 * Description:
-*     释放带宽
+*     
 * Arguments:
 *     hcd       : input.
 *     hep       : input.
@@ -126,7 +126,7 @@ void usb_release_bandwidth(struct usb_host_virt_dev *dev, struct urb *urb, int i
 ********************************************************************************
 *                     usb_release_bandwidth
 * Description:
-*     把urb 从list中摘出来, 但是没有callback
+*     urb list, callback
 * Arguments:
 *     hcd       : input.
 *     hep       : input.
@@ -174,8 +174,8 @@ static void urb_unlink(struct urb *urb)
 ********************************************************************************
 *                     usb_hcd_giveback_urb
 * Description:
-*     urb callback函数, 这里只是把urb从list里面摘出来,并且callback, 后面的事交给
-* device driver处理
+*     urb callback, urblist,callback, 
+* device driver
 * Arguments:
 *     hcd       : input. host controller
 *     urb       : input.
@@ -210,8 +210,8 @@ void usb_hcd_giveback_urb(struct hc_gen_dev *hcd, struct urb *urb)
                         : DMA_TO_DEVICE);
     }
     */
-    urb->complete(urb); //如果是rh 的status urb ,这个时候的use_count = 2
-    //见hub_status_req_complete()
+    urb->complete(urb); //rh status urb ,use_count = 2
+    //hub_status_req_complete()
     // _urb_done_complete_callback
 
     usb_dec32((&urb->use_count));
@@ -222,9 +222,9 @@ void usb_hcd_giveback_urb(struct hc_gen_dev *hcd, struct urb *urb)
         //wake_up (&usb_kill_urb_queue);
     }
 
-    /*不能在这里就将urb了解了 ，
-    //这么做非常不明智，所以由urb的申请者去处理它的归宿:)
-        //当没有人使用的时候才
+    /*urb 
+    //urb:)
+        //
         if(urb->use_count == 0){
             usb_free_urb (urb);
         }else{
@@ -238,7 +238,7 @@ void usb_hcd_giveback_urb(struct hc_gen_dev *hcd, struct urb *urb)
 ********************************************************************************
 *                     usb_bus_init
 * Description:
-*     内部函数--只是初始化usb_bus结构
+*     --usb_bus
 * Arguments:
 *     hcd       : input.
 *     hep       : input.
@@ -274,10 +274,10 @@ static void usb_bus_init(struct usb_virt_bus *bus)
 ********************************************************************************
 *                     unlink1
 * Description:
-*     快速删除urb, 并且callback
+*     urb, callback
 * Arguments:
 *     hcd       : input. host controller device
-*     urb       : input. 请求被删除的urb
+*     urb       : input. urb
 * Return value:
 *     void
 * note:
@@ -288,14 +288,14 @@ static int unlink1(struct hc_gen_dev *hcd, struct urb *urb)
 {
     int     value;
 
-    //--<1>--roothub的urb就让roothub自己处理
+    //--<1>--roothuburbroothub
     if (urb->dev == hcd->self.root_hub)
     {
         value = rh_urb_dequeue(hcd, urb);
     }
     else
     {
-        //--<2>--其他的urb就dequeue
+        //--<2>--urbdequeue
         /* The only reason an HCD might fail this call is if
          * it has not yet fully queued the urb to begin with.
          * Such failures should be harmless. */
@@ -375,7 +375,7 @@ void usb_hc_died(struct hc_gen_dev *hcd)
 ********************************************************************************
 *                     register_root_hub
 * Description:
-*     注册root hub dev, root hub's USB address (always 1).
+*     root hub dev, root hub's USB address (always 1).
 * Arguments:
 *     hcd      : input.
 *     usb_dev  : input.
@@ -392,7 +392,7 @@ static int _register_root_hub(struct usb_host_virt_dev *usb_dev,
     u8 err = 0;
     const int devnum = 1;
     int retval = 0;
-    //--<1>--初始化virt_dev
+    //--<1>--virt_dev
     usb_dev->devnum = devnum;
     usb_dev->bus->devnum_next = devnum + 1;
     memset(&usb_dev->bus->devmap.devicemap, 0, sizeof(struct usb_devmap));
@@ -402,7 +402,7 @@ static int _register_root_hub(struct usb_host_virt_dev *usb_dev,
     hal_sem_wait(usb_bus_list_lock);
     usb_dev->bus->root_hub = usb_dev;
     usb_dev->ep0.desc.wMaxPacketSize = 64;
-    //--<2>--获得rh设备描述符
+    //--<2>--rh
     retval = usb_get_device_descriptor(usb_dev, USB_DT_DEVICE_SIZE);
 
     if (retval != sizeof usb_dev->descriptor)
@@ -414,7 +414,7 @@ static int _register_root_hub(struct usb_host_virt_dev *usb_dev,
         return (retval < 0) ? retval : -EMSGSIZE;
     }
 
-    //--<3>--创建新设备
+    //--<3>--
     usb_lock_device(usb_dev);
     retval = usb_new_device(usb_dev);
     usb_unlock_device(usb_dev);
@@ -448,7 +448,7 @@ static int _register_root_hub(struct usb_host_virt_dev *usb_dev,
 ********************************************************************************
 *                     usb_create_hc_gen_dev
 * Description:
-*     创建，并初始化usb_hcd
+*     usb_hcd
 * Arguments:
 *     driver    : input.
 *     bus_name  : input.
@@ -463,7 +463,7 @@ struct hc_gen_dev *usb_create_hc_gen_dev(const struct hc_driver *driver, const c
     struct hc_gen_dev *hcd;
     u8 ret = 0;
 
-    //--<1>--初始化host controller device
+    //--<1>--host controller device
     //hcd = kzalloc(sizeof(*hcd) + driver->hcd_priv_size, GFP_KERNEL);
     hcd = malloc(sizeof(*hcd) + driver->hcd_priv_size);
     if (!hcd)
@@ -478,7 +478,7 @@ struct hc_gen_dev *usb_create_hc_gen_dev(const struct hc_driver *driver, const c
     hcd->self.bus_name      = bus_name;
     hcd->self.point_gen_hcd = hcd;
     //*****************************
-    //创建root hub poll的timer
+    //root hub polltimer
     //*****************************
     //--<2>--create and start timer
     //USB_HOST_RH_TIMEROUT = 10000, 5s
@@ -507,7 +507,7 @@ struct hc_gen_dev *usb_create_hc_gen_dev(const struct hc_driver *driver, const c
         return NULL;
     }
 
-    //--<3>--匹配hcd设备的驱动
+    //--<3>--hcd
     hcd->driver         = driver;
     hcd->product_desc   = (driver->product_desc) ? driver->product_desc : "USB Host Controller";
     return hcd;
@@ -517,7 +517,7 @@ struct hc_gen_dev *usb_create_hc_gen_dev(const struct hc_driver *driver, const c
 ********************************************************************************
 *                     usb_add_hc_gen_dev
 * Description:
-*     添加一个新设备到总线上, 分配buff,并向usb总线注册rh
+*     , buff,usbrh
 * Arguments:
 *     hcd       : input.
 *     irqnum    : input.
@@ -544,7 +544,7 @@ s32 usb_add_hc_gen_dev(struct hc_gen_dev *hcd, u32  irqnum, u32 irqflags)
 
     /*version 1, we consider only one host*/
 
-    //--<1>--为rh 创建一个usb_device结构
+    //--<1>--rh usb_device
     rh_dev = usb_host_alloc_virt_dev(NULL, &hcd->self, 0);
     if (rh_dev == NULL)
     {
@@ -554,10 +554,10 @@ s32 usb_add_hc_gen_dev(struct hc_gen_dev *hcd, u32  irqnum, u32 irqflags)
     }
 
     hal_log_info("----3--usb_add_hc_gen_dev\n");
-    //--<2>--此hcd设备支持的速度
+    //--<2>--hcd
     rh_dev->speed = (hcd->driver->flags & HC_DRIVER_FLAG_HCD_USB2) ? USB_SPEED_HIGH : USB_SPEED_FULL;
 
-    //--<3>--start这个设备
+    //--<3>--start
     if ((retval = hcd->driver->start(hcd)) < 0)
     {
         hal_log_err("PANIC : usb_add_hc_gen_dev() :startup error %d", retval);
@@ -579,7 +579,7 @@ s32 usb_add_hc_gen_dev(struct hc_gen_dev *hcd, u32  irqnum, u32 irqflags)
     hal_log_info("hcd->remote_wakeup=%d\n", hcd->remote_wakeup);
 
     hal_log_info("----5--usb_add_hc_gen_dev\n");
-    //--<4>--注册root hub, 即添加一个usb_host_virt_dev
+    //--<4>--root hub, usb_host_virt_dev
     //linux-4.9 register_root_hub(hcd)
     if ((retval = _register_root_hub(rh_dev, hcd)) != 0)
     {
@@ -615,7 +615,7 @@ err_hcd_driver_start:
 ********************************************************************************
 *                     usb_remove_hc_gen_dev
 * Description:
-*     删除hcd设备
+*     hcd
 * Arguments:
 *     hcd       : input.
 * Return value:
@@ -643,10 +643,10 @@ void usb_remove_hc_gen_dev(struct hc_gen_dev *hcd)
     sr = hal_spin_lock_irqsave(&gen_hcd_lock);
     hcd->rh_registered = 0;
     hal_spin_unlock_irqrestore(&gen_hcd_lock, sr);
-    //--<1>--断开这个设备
+    //--<1>--
     usb_disconnect(&hcd->self.root_hub);
     hcd->poll_rh = 0;
-    //--<2>--停止并且删除timer
+    //--<2>--timer
     sr =  hal_spin_lock_irqsave(&gen_hcd_lock);
     ret = osal_timer_stop(hcd->rh_timer);
 
@@ -667,11 +667,11 @@ void usb_remove_hc_gen_dev(struct hc_gen_dev *hcd)
     }
 
     hal_spin_unlock_irqrestore(&gen_hcd_lock, sr);
-    //--<3>--停止hcd设备
+    //--<3>--hcd
     hcd->driver->stop(hcd);
     hcd->state = HC_GEN_DEV_STATE_HALT;
 
-    //--<4>--释放这个设备所有的资源
+    //--<4>--
     if (hcd->self.root_hub)
     {
         usb_host_free_virt_dev(hcd->self.root_hub);
@@ -688,7 +688,7 @@ void usb_remove_hc_gen_dev(struct hc_gen_dev *hcd)
 ********************************************************************************
 *                     usb_remove_hc_gen_dev
 * Description:
-*     hcd的抽象ops
+*     hcdops
 * Arguments:
 *     hcd       : input.
 * Return value:
@@ -718,9 +718,9 @@ int hcd_ops_get_frame_number(struct usb_host_virt_dev *udev)
 ********************************************************************************
 *                     hcd_ops_submit_urb
 * Description:
-*     提交urb, hcd的抽象ops。其实就是为了区分发往的目的地:
-*                         1，rh，则走特殊通道
-*                         2，物理device,走正规渠道
+*     urb, hcdops:
+*                         1rh
+*                         2device,
 * Arguments:
 *     urb       : input.
 *     mem_flags : input.
@@ -743,7 +743,7 @@ int hcd_ops_submit_urb(struct urb *urb, unsigned mem_flags)
         return -ENODEV;
     }
 
-    //--<1>--通过urb找到hcd
+    //--<1>--urbhcd
     hcd = urb->dev->bus->hcpriv;
     /*
      * Atomically queue the urb,  first to our records, then to the HCD.
@@ -751,7 +751,7 @@ int hcd_ops_submit_urb(struct urb *urb, unsigned mem_flags)
      * i/o completion (normal or fault) or unlinking.
      */
     // FIXME:  verify that quiescing hc works right (RH cleans up)
-    //--<2>--通过urb找到ep
+    //--<2>--urbep
     cpu_sr = hal_spin_lock_irqsave(&gen_hcd_lock);
     ep = (usb_pipein(urb->pipe) ? urb->dev->ep_in : urb->dev->ep_out)[usb_pipeendpoint(urb->pipe)];
 
@@ -772,7 +772,7 @@ int hcd_ops_submit_urb(struct urb *urb, unsigned mem_flags)
             case HC_GEN_DEV_STATE_RUNNING:
             case HC_GEN_DEV_STATE_RESUMING:
             {
-                //--<3>--添加到urb_list
+                //--<3>--urb_list
                 INIT_LIST_HEAD(&(urb->urb_list));
                 urb->unlinked = 0;
                 list_add_tail(&(urb->urb_list), &(ep->urb_list));
@@ -806,7 +806,7 @@ int hcd_ops_submit_urb(struct urb *urb, unsigned mem_flags)
 
     urb->ep = ep;
 
-    //--<4>--目标设备为rh
+    //--<4>--rh
     if (urb->dev == hcd->self.root_hub)
     {
         /* NOTE:  requirement on hub callers (usbfs and the hub
@@ -830,7 +830,7 @@ int hcd_ops_submit_urb(struct urb *urb, unsigned mem_flags)
                 && !(urb->transfer_flags & URB_NO_TRANSFER_DMA_MAP))
             urb->transfer_dma = __va_to_pa((unsigned long)urb->transfer_buffer);
 
-    //--<5>--物理外设
+    //--<5>--
     //status = hcd->driver->urb_enqueue(hcd, ep, urb, mem_flags);
     status = hcd->driver->urb_enqueue(hcd, urb, mem_flags);
 done:
@@ -848,7 +848,7 @@ done:
         }
 
 #endif
-        //这个做法不合理，不能释放，这个urb是别人的。
+        //urb
         //usb_free_urb (urb);
     }
 
@@ -866,7 +866,7 @@ done:
 ********************************************************************************
 *                     hcd_ops_unlink_urb
 * Description:
-*     hcd的抽象ops
+*     hcdops
 * Arguments:
 *     urb       : input.
 *     status    : input.
@@ -902,7 +902,7 @@ int hcd_ops_unlink_urb(struct urb *urb, int status)
         return -ENODEV;
     }
 
-    //--<1>--通过urb找到ep
+    //--<1>--urbep
      ep = (usb_pipein(urb->pipe) ? urb->dev->ep_in : urb->dev->ep_out)[usb_pipeendpoint(urb->pipe)];
 
      if (!ep)
@@ -924,7 +924,7 @@ int hcd_ops_unlink_urb(struct urb *urb, int status)
      * unlinking it.
      */
     sr = hal_spin_lock_irqsave(&urb->lock_urb);
-    //--<1>--通过urb找到hcd
+    //--<1>--urbhcd
     hcd = urb->dev->bus->hcpriv;
 
     if (hcd == NULL)
@@ -1003,7 +1003,7 @@ done:
 ********************************************************************************
 *                     hcd_ops_buffer_alloc
 * Description:
-*     申请连续的物理内存
+*     
 * Arguments:
 *     hcd       : input.
 *     mem_flags : input.
@@ -1035,7 +1035,7 @@ void *hcd_ops_buffer_alloc(struct usb_virt_bus *bus,
 ********************************************************************************
 *                     hcd_ops_buffer_free
 * Description:
-*     释放申请的物理内存
+*     
 * Arguments:
 *     hcd       : input.
 *     mem_flags : input.
@@ -1073,7 +1073,7 @@ void hcd_ops_buffer_free(struct usb_virt_bus *bus,
 ********************************************************************************
 *                     hcd_ops_endpoint_disable
 * Description:
-*     hcd的抽象ops
+*     hcdops
 * Arguments:
 *     hcd       : input.
 *     mem_flags : input.

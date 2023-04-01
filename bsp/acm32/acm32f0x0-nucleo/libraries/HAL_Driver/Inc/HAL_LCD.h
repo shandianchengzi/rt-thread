@@ -256,8 +256,8 @@ typedef struct
   * @{
   */
 
-#define LCD_Driving_Waveform_A                    ((uint32_t)0x00000000U) /*!< A类波形*/
-#define LCD_Driving_Waveform_B                     LCD_CR0_WSEL           /*!< B类波形 */
+#define LCD_Driving_Waveform_A                    ((uint32_t)0x00000000U) /*!< A*/
+#define LCD_Driving_Waveform_B                     LCD_CR0_WSEL           /*!< B */
 #define IS_LCD_Driving_Waveform(__Driving_Waveform__)         (((__Driving_Waveform__) == LCD_Driving_Waveform_A) || \
                                                                 ((__Driving_Waveform__) == LCD_Driving_Waveform_B))
 /**
@@ -268,9 +268,9 @@ typedef struct
   * @{
   */
 
-#define LCD_BiasSrc_InRes_Seg31_35_Normal                   ((uint32_t)0x00000000U) /*!< LCD Bias来源：内部电阻分压，且SEG31-35可以作为SEG/IO*/
-#define LCD_BiasSrc_InRes_Seg31_35_Cap                      LCD_CR0_MOD_0           /*!< LCD Bias来源：内部电阻分压，且SEG31-35用于外接电容滤波，SEG/IO功能关闭 */
-#define LCD_BiasSrc_ExRes_Seg31_35_Cap                      LCD_CR0_MOD_1           /*!< LCD Bias来源：外部电阻分压，且SEG31-35用于外接分压电阻和滤波电容，SEG/IO功能关闭 */
+#define LCD_BiasSrc_InRes_Seg31_35_Normal                   ((uint32_t)0x00000000U) /*!< LCD BiasSEG31-35SEG/IO*/
+#define LCD_BiasSrc_InRes_Seg31_35_Cap                      LCD_CR0_MOD_0           /*!< LCD BiasSEG31-35SEG/IO */
+#define LCD_BiasSrc_ExRes_Seg31_35_Cap                      LCD_CR0_MOD_1           /*!< LCD BiasSEG31-35SEG/IO */
 #define IS_LCD_BiasSrc(__BiasSrc__)                         (((__BiasSrc__) == LCD_BiasSrc_InRes_Seg31_35_Normal) || \
                                                           ((__BiasSrc__) == LCD_BiasSrc_InRes_Seg31_35_Cap)||\
                                                           ((__BiasSrc__) == LCD_BiasSrc_ExRes_Seg31_35_Cap))
@@ -282,8 +282,8 @@ typedef struct
   * @{
   */
 
-#define LCD_DisplayMode_0                        ((uint32_t)0x00000000U) /*!< LCD RAM显示模式0*/
-#define LCD_DisplayMode_1                          LCD_CR1_MODE           /*!< LCD RAM显示模式1 */
+#define LCD_DisplayMode_0                        ((uint32_t)0x00000000U) /*!< LCD RAM0*/
+#define LCD_DisplayMode_1                          LCD_CR1_MODE           /*!< LCD RAM1 */
 #define IS_LCD_DisplayMode(__DisplayMode__)                         (((__DisplayMode__) == LCD_DisplayMode_0)||\
                                                                     ((__DisplayMode__) == LCD_DisplayMode_1))
 /**
@@ -295,8 +295,8 @@ typedef struct
   * @{
   */
 
-#define LCD_StaticPower_NormalPower                                 ((uint32_t)0x00000000U) /*!< LCD RAM显示模式0*/
-#define LCD_StaticPower_LowPower                                     LCD_CR0_STATIC           /*!< LCD RAM显示模式1 */
+#define LCD_StaticPower_NormalPower                                 ((uint32_t)0x00000000U) /*!< LCD RAM0*/
+#define LCD_StaticPower_LowPower                                     LCD_CR0_STATIC           /*!< LCD RAM1 */
 #define IS_LCD_StaticPower(__StaticPower__)                         (((__StaticPower__) == LCD_StaticPower_NormalPower) || \
                                                                     ((__StaticPower__) == LCD_StaticPower_LowPower))
 /**
@@ -308,10 +308,10 @@ typedef struct
   * @{
   */
 
-#define LCD_LCDFrequency_64HZ                                    ((uint32_t)0x00000000U)           /*!< LCD扫描频率选择*/
-#define LCD_LCDFrequency_128HZ                                     LCD_CR0_LCDCLK_0           /*!< LCD扫描频率选择 */
-#define LCD_LCDFrequency_256HZ                                     LCD_CR0_LCDCLK_1           /*!< LCD扫描频率选择 */
-#define LCD_LCDFrequency_512HZ                                     ((LCD_CR0_LCDCLK_0 | LCD_CR0_LCDCLK_1))           /*!< LCD扫描频率选择*/
+#define LCD_LCDFrequency_64HZ                                    ((uint32_t)0x00000000U)           /*!< LCD*/
+#define LCD_LCDFrequency_128HZ                                     LCD_CR0_LCDCLK_0           /*!< LCD */
+#define LCD_LCDFrequency_256HZ                                     LCD_CR0_LCDCLK_1           /*!< LCD */
+#define LCD_LCDFrequency_512HZ                                     ((LCD_CR0_LCDCLK_0 | LCD_CR0_LCDCLK_1))           /*!< LCD*/
 #define IS_LCD_LCDFrequency(__LCDFrequency__)                      (((__LCDFrequency__) == LCD_LCDFrequency_64HZ) || \
                                                                     ((__LCDFrequency__) == LCD_LCDFrequency_128HZ)||\
                                                                     ((__LCDFrequency__) == LCD_LCDFrequency_256HZ)||\
@@ -323,20 +323,20 @@ typedef struct
  /** @defgroup BlinkEN
   * @{
   */
-#define LCD_BlinkEN_Disable                                 ((uint32_t)0x00000000U)     /*!<LCD闪屏配置使能*/
-#define LCD_BlinkEN_Enable                                     LCD_CR1_BLINKEN           /*!< LCD闪屏配置使能 */
+#define LCD_BlinkEN_Disable                                 ((uint32_t)0x00000000U)     /*!<LCD*/
+#define LCD_BlinkEN_Enable                                     LCD_CR1_BLINKEN           /*!< LCD */
 #define IS_LCD_BlinkEN(__BlinkEN__)                         (((__BlinkEN__) == LCD_BlinkEN_Disable) || \
                                                              ((__BlinkEN__) == LCD_BlinkEN_Enable))
 /**
   * @}
   */
-#define IS_LCD_BlinkFrequency(__BlinkFrequency__)           ((__BlinkFrequency__)<= ((uint8_t)0x3F)) /*!<LCD闪屏配置*/
+#define IS_LCD_BlinkFrequency(__BlinkFrequency__)           ((__BlinkFrequency__)<= ((uint8_t)0x3F)) /*!<LCD*/
 
  /** @defgroup BiasRes
   * @{
   */
-#define LCD_BiasRes_240k                                    ((uint32_t)0x00000000U)     /*!<LCD闪屏配置使能*/
-#define LCD_BiasRes_4M                                       LCD_CR1_RSEL           /*!< LCD闪屏配置使能 */
+#define LCD_BiasRes_240k                                    ((uint32_t)0x00000000U)     /*!<LCD*/
+#define LCD_BiasRes_4M                                       LCD_CR1_RSEL           /*!< LCD */
 #define IS_LCD_BiasRes(__BiasRes__)                         (((__BiasRes__) == LCD_BiasRes_240k) || \
                                                              ((__BiasRes__) == LCD_BiasRes_4M))
 /**
@@ -346,9 +346,9 @@ typedef struct
   /** @defgroup DriveMod
   * @{
   */
-#define LCD_DriveMod_Res240k4M                                    ((uint32_t)0x00000000U)     /*!<LCD闪屏配置使能*/
-#define LCD_DriveMod_Res60k                                       LCD_CR1_MODSEL_0           /*!< LCD闪屏配置使能 */
-#define LCD_DriveMod_FC                                        LCD_CR1_MODSEL_1           /*!< LCD闪屏配置使能 */
+#define LCD_DriveMod_Res240k4M                                    ((uint32_t)0x00000000U)     /*!<LCD*/
+#define LCD_DriveMod_Res60k                                       LCD_CR1_MODSEL_0           /*!< LCD */
+#define LCD_DriveMod_FC                                        LCD_CR1_MODSEL_1           /*!< LCD */
 #define IS_LCD_DriveMod(__DriveMod__)                         (((__DriveMod__) == LCD_DriveMod_Res240k4M) || \
                                                              ((__DriveMod__) == LCD_DriveMod_Res60k)|| \
                                                              ((__DriveMod__) == LCD_DriveMod_FC))
@@ -360,8 +360,8 @@ typedef struct
  /** @defgroup FastCharge
   * @{
   */
-#define LCD_FastCharge_Disable                                 ((uint32_t)0x00000000U)     /*!<LCD闪屏配置使能*/
-#define LCD_FastCharge_Enable                                     LCD_CR1_FCC           /*!< LCD闪屏配置使能 */
+#define LCD_FastCharge_Disable                                 ((uint32_t)0x00000000U)     /*!<LCD*/
+#define LCD_FastCharge_Enable                                     LCD_CR1_FCC           /*!< LCD */
 #define IS_LCD_FastCharge(__FastCharge__)                         (((__FastCharge__) == LCD_FastCharge_Disable) || \
                                                                     ((__FastCharge__) == LCD_FastCharge_Enable))
 /**
@@ -371,7 +371,7 @@ typedef struct
  /** @defgroup LCD_Contrast
   * @{
   */
-#define LCD_Contrast_531VDD                                     ((uint32_t)0x00000000U)    /*!<LCD对比度调整*/
+#define LCD_Contrast_531VDD                                     ((uint32_t)0x00000000U)    /*!<LCD*/
 #define LCD_Contrast_562VDD                                       (LCD_CR0_CONTRAST_0)
 #define LCD_Contrast_593VDD                                       (LCD_CR0_CONTRAST_1)
 #define LCD_Contrast_623VDD                                       (LCD_CR0_CONTRAST_1|LCD_CR0_CONTRAST_0)

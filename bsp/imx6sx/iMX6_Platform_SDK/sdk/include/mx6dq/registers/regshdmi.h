@@ -23584,7 +23584,7 @@ typedef union _hw_hdmi_csc_cfg
 /*! @name Register HDMI_CSC_CFG, field DECMODE[1:0] (RW)
  *
  * Chroma decimation configuration: decmode[1:0] Chroma decimation 00 decimation disabled 01 H d?
- * z?=1 10 H d? z?=1/ 4?1/ 2 z?1?1/4 z?2 11 H d? z?Þ211=?5?12 z?2?22 z?4?39 z?6?65 z?8?109 z?10?204
+ * z?=1 10 H d? z?=1/ 4?1/ 2 z?1?1/4 z?2 11 H d? z?211=?5?12 z?2?22 z?4?39 z?6?65 z?8?109 z?10?204
  * z?12?648 z?14?1024 z?15?648 z?16?204 z?18?109 z?20?65 z?22?39 z?24?22 z?26?12 z?28?5 z?30 00
  * decimation disabled 01 H d (z) = 1 10 H d (Z)=1/4 + 1/2z -1 1+1/4z -2 11H d (z)x2 11 =-5+12z -2
  * +22z -4 +39z -8 +109z -10 -204z -12 +648z -14 +1024z -15 +648z -16 -204z -18 +109z -20 -65z -22

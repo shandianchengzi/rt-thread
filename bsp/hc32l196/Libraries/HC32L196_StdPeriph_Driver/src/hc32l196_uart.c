@@ -72,12 +72,12 @@
 
 /**
  ******************************************************************************
- ** \brief  UART通信中断使能函数设置
+ ** \brief  UART
  **
- ** \param [in] UARTx通道号，enIrqSel发送or接收中断使能
+ ** \param [in] UARTxenIrqSelor
  **
- ** \retval OK配置成功
- ** \retval ErrorInvalidParameter配置失败
+ ** \retval OK
+ ** \retval ErrorInvalidParameter
  ******************************************************************************/
 en_result_t Uart_EnableIrq(M0P_UART_TypeDef* UARTx, en_uart_irq_sel_t enIrqSel)
 {
@@ -87,12 +87,12 @@ en_result_t Uart_EnableIrq(M0P_UART_TypeDef* UARTx, en_uart_irq_sel_t enIrqSel)
 }
 /**
  ******************************************************************************
- ** \brief  UART通信中断禁止函数设置
+ ** \brief  UART
  **
- ** \param [in] UARTx通道号，enIrqSel发送or接收中断禁止
+ ** \param [in] UARTxenIrqSelor
  **
- ** \retval OK配置成功
- ** \retval ErrorInvalidParameter配置失败
+ ** \retval OK
+ ** \retval ErrorInvalidParameter
  ******************************************************************************/
 en_result_t Uart_DisableIrq(M0P_UART_TypeDef* UARTx, en_uart_irq_sel_t enIrqSel)
 {
@@ -103,12 +103,12 @@ en_result_t Uart_DisableIrq(M0P_UART_TypeDef* UARTx, en_uart_irq_sel_t enIrqSel)
 
 /**
  ******************************************************************************
- ** \brief  UART通道多主机模式配置
+ ** \brief  UART
  **
- ** \param [in] UARTx通道号，stcMultiCfg多主机模式结构
+ ** \param [in] UARTxstcMultiCfg
  **
- ** \retval OK配置成功
- ** \retval ErrorInvalidParameter配置失败
+ ** \retval OK
+ ** \retval ErrorInvalidParameter
  ******************************************************************************/
 en_result_t Uart_SetMultiMode(M0P_UART_TypeDef* UARTx, stc_uart_multimode_t* pstcMultiCfg)
 {
@@ -129,9 +129,9 @@ en_result_t Uart_SetMultiMode(M0P_UART_TypeDef* UARTx, stc_uart_multimode_t* pst
 
 /**
  ******************************************************************************
- ** \brief  UART单线半双工模式使能
+ ** \brief  UART
  **
- ** \param [in] UARTx 通道号
+ ** \param [in] UARTx 
  **
  ** \retval Null
  ******************************************************************************/
@@ -142,9 +142,9 @@ void Uart_HdModeEnable(M0P_UART_TypeDef* UARTx)
 
 /**
  ******************************************************************************
- ** \brief  UART单线半双工模式关闭
+ ** \brief  UART
  **
- ** \param [in] UARTx 通道号
+ ** \param [in] UARTx 
  **
  ** \retval Null
  ******************************************************************************/
@@ -155,10 +155,10 @@ void Uart_HdModeDisable(M0P_UART_TypeDef* UARTx)
 
 /**
  ******************************************************************************
- ** \brief  UART通道多机模式发送数据/地址帧配置TB8
+ ** \brief  UART/TB8
  **
- ** \param [in] UARTx 通道号
- ** \param [in] TRUE-TB8为地址帧标志；FALSE-TB8为数据帧标志；
+ ** \param [in] UARTx 
+ ** \param [in] TRUE-TB8FALSE-TB8
  **
  ** \retval Null
  ******************************************************************************/
@@ -170,9 +170,9 @@ void Uart_SetTb8(M0P_UART_TypeDef* UARTx, boolean_t bTB8Value)
 
 /**
  ******************************************************************************
- ** \brief 获取RB8数值
+ ** \brief RB8
  **
- ** \param [in] UARTx通道号
+ ** \param [in] UARTx
  **
  ** \retval RB8
  ******************************************************************************/
@@ -183,12 +183,12 @@ boolean_t Uart_GetRb8(M0P_UART_TypeDef* UARTx)
 
 /**
  ******************************************************************************
- ** \brief  UART通道多主机模式从机地址配置函数
+ ** \brief  UART
  **
- ** \param [in] UARTx通道号，addr地址
+ ** \param [in] UARTxaddr
  **
- ** \retval OK配置成功
- ** \retval ErrorInvalidParameter配置失败
+ ** \retval OK
+ ** \retval ErrorInvalidParameter
  ******************************************************************************/
 en_result_t Uart_SetSaddr(M0P_UART_TypeDef* UARTx,uint8_t u8Addr)
 {
@@ -199,12 +199,12 @@ en_result_t Uart_SetSaddr(M0P_UART_TypeDef* UARTx,uint8_t u8Addr)
 
 /**
  ******************************************************************************
- ** \brief  UART通道发送或接收等功能使能设置
+ ** \brief  UART
  **
- ** \param [in] UARTx通道号，enFunc功能
+ ** \param [in] UARTxenFunc
  **
- ** \retval OK配置成功
- ** \retval ErrorInvalidParameter配置失败
+ ** \retval OK
+ ** \retval ErrorInvalidParameter
  ******************************************************************************/
 en_result_t Uart_EnableFunc(M0P_UART_TypeDef* UARTx, en_uart_func_t enFunc)
 {    
@@ -214,12 +214,12 @@ en_result_t Uart_EnableFunc(M0P_UART_TypeDef* UARTx, en_uart_func_t enFunc)
 }
 /**
  ******************************************************************************
- ** \brief  UART通道发送或接收等功能禁止设置
+ ** \brief  UART
  **
- ** \param [in] UARTx通道号，enFunc功能
+ ** \param [in] UARTxenFunc
  **
- ** \retval OK配置成功
- ** \retval ErrorInvalidParameter配置失败
+ ** \retval OK
+ ** \retval ErrorInvalidParameter
  ******************************************************************************/
 en_result_t Uart_DisableFunc(M0P_UART_TypeDef* UARTx, en_uart_func_t enFunc)
 {
@@ -229,11 +229,11 @@ en_result_t Uart_DisableFunc(M0P_UART_TypeDef* UARTx, en_uart_func_t enFunc)
 }
 /**
  ******************************************************************************
- ** \brief  UART通道通信状态获取
+ ** \brief  UART
  **
- ** \param [in] UARTx通道号
+ ** \param [in] UARTx
  **
- ** \retval 状态值
+ ** \retval 
  ******************************************************************************/
 uint8_t Uart_GetIsr(M0P_UART_TypeDef* UARTx)
 {
@@ -242,11 +242,11 @@ uint8_t Uart_GetIsr(M0P_UART_TypeDef* UARTx)
 
 /**
  ******************************************************************************
- ** \brief  UART通道通信状态获取
+ ** \brief  UART
  **
- ** \param [in] UARTx通道号，enStatus获取哪个状态
+ ** \param [in] UARTxenStatus
  **
- ** \retval 状态值
+ ** \retval 
  ******************************************************************************/
 boolean_t Uart_GetStatus(M0P_UART_TypeDef* UARTx, en_uart_status_t enStatus)
 {
@@ -261,12 +261,12 @@ boolean_t Uart_GetStatus(M0P_UART_TypeDef* UARTx, en_uart_status_t enStatus)
 }
 /**
  ******************************************************************************
- ** \brief  UART通道通信状态清除
+ ** \brief  UART
  **
- ** \param [in] UARTx通道号
+ ** \param [in] UARTx
  **
  ** \retval OK
- ** \retval ErrorInvalidParameter清除失败
+ ** \retval ErrorInvalidParameter
  ******************************************************************************/
 en_result_t Uart_ClrIsr(M0P_UART_TypeDef* UARTx)
 {
@@ -275,12 +275,12 @@ en_result_t Uart_ClrIsr(M0P_UART_TypeDef* UARTx)
 }
 /**
  ******************************************************************************
- ** \brief  UART通道通信状态清除
+ ** \brief  UART
  **
- ** \param [in] UARTx通道号，enStatus清除哪个状态
+ ** \param [in] UARTxenStatus
  **
  ** \retval OK
- ** \retval ErrorInvalidParameter清除失败
+ ** \retval ErrorInvalidParameter
  ******************************************************************************/
 en_result_t Uart_ClrStatus(M0P_UART_TypeDef* UARTx,en_uart_status_t enStatus)
 {
@@ -292,12 +292,12 @@ en_result_t Uart_ClrStatus(M0P_UART_TypeDef* UARTx,en_uart_status_t enStatus)
 }
 /**
  ******************************************************************************
- ** \brief  UART通道发送数据函数,查询方式调用此函数，中断方式发送不适用
+ ** \brief  UART,
  **
- ** \param [in] UARTx通道号，Data发送数据
+ ** \param [in] UARTxData
  **
- ** \retval Ok发送成功
- ** \retval ErrorInvalidParameter发送失败
+ ** \retval Ok
+ ** \retval ErrorInvalidParameter
  ******************************************************************************/
 en_result_t Uart_SendDataPoll(M0P_UART_TypeDef* UARTx, uint8_t u8Data)
 {
@@ -312,12 +312,12 @@ en_result_t Uart_SendDataPoll(M0P_UART_TypeDef* UARTx, uint8_t u8Data)
 
 /**
  ******************************************************************************
- ** \brief  UART通道发送数据函数,中断方式调用此函数
+ ** \brief  UART,
  **
- ** \param [in] UARTx通道号，Data发送数据
+ ** \param [in] UARTxData
  **
- ** \retval Ok发送成功
- ** \retval ErrorInvalidParameter发送失败
+ ** \retval Ok
+ ** \retval ErrorInvalidParameter
  ******************************************************************************/
 en_result_t Uart_SendDataIt(M0P_UART_TypeDef* UARTx, uint8_t u8Data)
 { 
@@ -328,11 +328,11 @@ en_result_t Uart_SendDataIt(M0P_UART_TypeDef* UARTx, uint8_t u8Data)
 
 /**
  ******************************************************************************
- ** \brief  UART通道接收数据函数
+ ** \brief  UART
  **
- ** \param [in] UARTx通道号
+ ** \param [in] UARTx
  **
- ** \retval 接收数据
+ ** \retval 
  ******************************************************************************/
 uint8_t Uart_ReceiveData(M0P_UART_TypeDef* UARTx)
 {
@@ -341,12 +341,12 @@ uint8_t Uart_ReceiveData(M0P_UART_TypeDef* UARTx)
 
 /**
  ******************************************************************************
- ** \brief  UART通道初始化函数
+ ** \brief  UART
  **
- ** \param [in] UARTx通道号，pstcCfg初始化结构体 @ref stc_uart_cfg_t
+ ** \param [in] UARTxpstcCfg @ref stc_uart_cfg_t
  **
- ** \retval OK配置成功
- ** \retval ErrorInvalidParameter配置失败
+ ** \retval OK
+ ** \retval ErrorInvalidParameter
  ******************************************************************************/
 en_result_t Uart_Init(M0P_UART_TypeDef* UARTx, stc_uart_cfg_t* pstcCfg)
 {
@@ -372,7 +372,7 @@ en_result_t Uart_Init(M0P_UART_TypeDef* UARTx, stc_uart_cfg_t* pstcCfg)
         u16OverShift = u32Over[pstcCfg->stcBaud.enClkDiv/UartMsk8Or16Div];
         f32Scnt = (float32_t)(pstcCfg->stcBaud.u32Pclk)/(float32_t)(pstcCfg->stcBaud.u32Baud<<u16OverShift);        
         UARTx->SCNT = (uint16_t)(float32_t)(f32Scnt + 0.5f);
-        Uart_EnableFunc(UARTx,UartRenFunc);       ///<使能收发
+        Uart_EnableFunc(UARTx,UartRenFunc);       ///<
     }
     
     

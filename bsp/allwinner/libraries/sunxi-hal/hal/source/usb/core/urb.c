@@ -14,7 +14,7 @@
 * Date : 2008.07.xx
 *
 * Description :
-*       usb request block的相关操作，包括分配/释放，发送/撤回
+*       usb request block//
 * History :
 *******************************************************************************
 */
@@ -38,7 +38,7 @@ void usb_kill_urb(struct urb *urb);
 
 
 
-//用来打印msc_info结构
+//msc_info
 void _debug_print_urb(struct urb *urb_input)
 {
     //__inf(" = %x",urb_input-> );
@@ -74,11 +74,11 @@ void _debug_print_urb(struct urb *urb_input)
 ***********************************************************
 *
 * Description   :
-*               初始化urb
+*               urb
 * Arguments  :
 *   @urb        :
 * Returns       :
-*               无
+*               
 * Notes         :
 *
 ***********************************************************
@@ -98,7 +98,7 @@ void usb_init_urb(struct urb *urb)
 ***********************************************************
 *
 * Description   :
-*               分配urb，并初始化urb
+*               urburb
 * Arguments  :
 *   @urb        :
 * Returns       :
@@ -126,7 +126,7 @@ struct urb *usb_alloc_urb(int iso_packets)
 ***********************************************************
 *
 * Description   :
-*               释放urb
+*               urb
 * Arguments  :
 *   @urb        :
 * Returns       :
@@ -153,14 +153,14 @@ void usb_free_urb(struct urb *urb)
 *                     usb_submit_urb
 *
 * Description:
-*     发送urb
+*     urb
 *
 * Arguments:
-*     urb        :  input.  待提交的urb
+*     urb        :  input.  urb
 *     mem_flags  :  input.
 *
 * Returns:
-*     返回命令的执行结果
+*     
 * note:
 *
 *************************************************************************************
@@ -201,7 +201,7 @@ int usb_submit_urb(struct urb *urb, unsigned mem_flags)
         return -EHOSTUNREACH;
     }
 
-    //--<3>--构造URB
+    //--<3>--URB
     urb_sn_now ++;
     urb->urb_sn        = urb_sn_now;
     urb->status        = -EINPROGRESS;
@@ -410,7 +410,7 @@ int usb_submit_urb(struct urb *urb, unsigned mem_flags)
 ***********************************************************
 *
 * Description   :
-*               撤回urb
+*               urb
 * Arguments  :
 *   @urb        :
 * Returns       :
@@ -450,7 +450,7 @@ int usb_unlink_urb(struct urb *urb)
 *
 ***********************************************************
 */
-/* 和usb_unlink_urb()的区别 */
+/* usb_unlink_urb() */
 void usb_kill_urb(struct urb *urb)
 {
     uint32_t flags;

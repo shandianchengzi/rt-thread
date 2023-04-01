@@ -1,125 +1,125 @@
-# LPM低功耗配置说明
+# LPM
 
-## 基础知识
+## 
 
-低功耗的本质是系统空闲时 CPU 停止工作，中断或事件唤醒后继续工作。在 RTOS 中，通常包含一个 IDLE 任务，该任务的优先级最低且一直保持就绪状态，当高优先级任务未就绪时，OS 执行 IDLE 任务。一般地，未进行低功耗处理时，CPU 在 IDLE 任务中循环执行空指令。RT-Thread 的电源管理组件在 IDLE 任务中，通过对 CPU 、时钟和设备等进行管理，从而有效降低系统的功耗。
+ CPU  RTOS  IDLE OS  IDLE CPU  IDLE RT-Thread  IDLE  CPU 
 
-![PM工作原理](picture/pm_ostick.png) 
+![PM](picture/pm_ostick.png) 
 
-在上图所示，当高优先级任务运行结束或被挂起时，系统将进入 IDLE 任务中。在 IDLE 任务执行后，它将判断系统是否可以进入到休眠状态（以节省功耗）。如果可以进入休眠， 将根据芯片情况关闭部分硬件模块，OS Tick 也非常有可能进入暂停状态。此时电源管理框架会根据系统定时器情况，计算出下一个超时时间点，并设置低功耗定时器，让设备能够在这个时刻点唤醒，并进行后续的工作。当系统被（低功耗定时器中断或其他唤醒中断源）唤醒后，系统也需要知道睡眠时间长度是多少，并对OS Tick 进行补偿，让系统的OS tick值调整为一个正确的值。
+ IDLE  IDLE  OS Tick OS Tick OS tick
 
-### [PM组件](https://www.rt-thread.org/document/site/#/rt-thread-version/rt-thread-standard/programming-manual/pm/pm)
+### [PM](https://www.rt-thread.org/document/site/#/rt-thread-version/rt-thread-standard/programming-manual/pm/pm)
 
-PM组件是RT-Thread系统中针对电源管理而设计的基础功能组件， 组件采用分层设计思想，分离架构和芯片相关的部分，提取公共部分作为核心。支持多种运行模式和休眠模式的管理切换，以及低功耗定时器的管理。
+PMRT-Thread 
 
-PM 组件有以下特点：
+PM 
 
-- PM 组件是基于模式来管理功耗
-- PM 组件可以根据模式自动更新设备的频率配置，确保在不同的运行模式都可以正常工作
-- PM 组件可以根据模式自动管理设备的挂起和恢复，确保在不同的休眠模式下可以正确的挂起和恢复
-- PM 组件支持可选的休眠时间补偿，让依赖 OS Tick 的应用可以透明使用
-- PM 组件向上层提供设备接口，如果使用了设备文件系统组件，那么也可以用文件系统接口来访问
+- PM 
+- PM 
+- PM 
+- PM  OS Tick 
+- PM 
 
-PM组件支持的休眠模式有：
+PM
 
-| 模式                   |             描述                     |
+|                    |                                  |
 | -------------------- | ---------------------------------- |
-| PM_SLEEP_MODE_NONE     | 系统处于活跃状态，未采取任何的降低功耗状态  |
-| PM_SLEEP_MODE_IDLE     | **空闲模式**，该模式在系统空闲时停止 CPU 和部分时钟，任意事件或中断均可以唤醒 |
-| PM_SLEEP_MODE_LIGHT    | **轻度睡眠模式**，CPU 停止，多数时钟和外设停止，唤醒后需要进行时间补偿 |
-| PM_SLEEP_MODE_DEEP     | **深度睡眠模式**，CPU 停止，仅少数低功耗外设工作，可被特殊中断唤醒 |
-| PM_SLEEP_MODE_STANDBY  | **待机模式**，CPU 停止，设备上下文丢失(可保存至特殊外设)，唤醒后通常复位 |
-| PM_SLEEP_MODE_SHUTDOWN | **关断模式**，比 Standby 模式功耗更低， 上下文通常不可恢复， 唤醒后复位 |
+| PM_SLEEP_MODE_NONE     |   |
+| PM_SLEEP_MODE_IDLE     | **** CPU  |
+| PM_SLEEP_MODE_LIGHT    | ****CPU  |
+| PM_SLEEP_MODE_DEEP     | ****CPU  |
+| PM_SLEEP_MODE_STANDBY  | ****CPU () |
+| PM_SLEEP_MODE_SHUTDOWN | **** Standby    |
 
-### RA系列LPM功能
+### RALPM
 
-RA2 MCU支持的LPM类型有:
+RA2 MCULPM:
 
 - Sleep mode
 - Software Standby mode 
 - Snooze mode 
 
-| 休眠模式                | 描述                                                         |
+|                 |                                                          |
 | ----------------------- | ------------------------------------------------------------ |
-| LPM_MODE_SLEEP          | **睡眠模式**，CPU停止工作，但其内部寄存器的内容被保留。其他外围功能在单片机中不停止。休眠模式下可用的复位或中断会导致MCU取消休眠模式。在这种模式下，所有的中断源都可用来取消Sleep模式。 |
-| LPM_MODE_STANDBY        | **软件待机模式**，CPU、大部分片上外设功能和振荡器停止运行。但是，CPU内部寄存器的内容和SRAM数据、芯片上外围功能的状态和I/O端口状态都被保留。软件待机模式可以显著降低功耗，因为大多数振荡器在这种模式下停止。 |
-| LPM_MODE_STANDBY_SNOOZE | **小睡模式**，是软件待机模式的扩展，在这种模式下，有限的外设模块可以在不唤醒CPU的情况下运行。通过配置中断源，可以通过软件待机模式进入小睡模式。类似地，系统可以通过snooze模式支持的中断从snooze模式中唤醒。 |
+| LPM_MODE_SLEEP          | ****CPUMCUSleep |
+| LPM_MODE_STANDBY        | ****CPUCPUSRAMI/O |
+| LPM_MODE_STANDBY_SNOOZE | ****CPUsnoozesnooze |
 
-低功耗模式转换和触发源如图所示。
+
 
 ![image-20220705161631226](picture/lpm_mode.png)
 
-不同模式间的切换如图所示，从图中也可以看出三种模式的功耗关系是Sleep>Snooze>Standby。
+Sleep>Snooze>Standby
 
-RA2芯片的休眠模式对应PM组件的模式关系：
+RA2PM
 
-| RA2芯片                 | PM组件                |
+| RA2                 | PM                |
 | ----------------------- | --------------------- |
 | LPM_MODE_SLEEP          | PM_SLEEP_MODE_IDLE    |
 | LPM_MODE_STANDBY        | PM_SLEEP_MODE_DEEP    |
 | LPM_MODE_STANDBY_SNOOZE | PM_SLEEP_MODE_STANDBY |
 
 
-## 配置LPM功能
+## LPM
 
-要使用RA2系列芯片的LPM功能，需要进入bsp\renesas\ra2l1-cpk目录。
+RA2LPMbsp\renesas\ra2l1-cpk
 
-- 在menuconfig中使能LPM驱动，并勾选要开启的休眠模式，然后保存配置，生成MDK5工程。
+- menuconfigLPMMDK5
 
 ![image-20220705172537997](picture/lpm_config.png)
 
-- 打开PM组件和驱动后，需要增加idle的线程栈大小，可改为1024。
+- PMidle1024
 
 ![image-20220708183500091](picture/lpm_idle.png) 
 
-- 打开生成的MDK5工程project.uvprojx，然后打开FSP配置工具添加LPM相关配置。下图是需要添加的stack，包括三种LPM模式的配置以及低功耗定时器AGT1。
+- MDK5project.uvprojxFSPLPMstackLPMAGT1
 
 ![image-20220705183404587](picture/lpm_config1.png)
 
-- 创建LPM如下图所示新建r_lpm，**需要根据使用的模式进行配置且不同模式要创建不同的r_lpm**。下面将分别介绍三种不同模式的配置，创建步骤就不再赘述。
+- LPMr_lpm**r_lpm**
 
 ![image-20220705185012409](picture/lpm_config2.png) 
 
-### Sleep mode休眠模式
+### Sleep mode
 
-创建出r_lpm后需要修改Name和Low Power Mode这两个配置项。Name需要改为g_lpm_sleep，因为在驱动文件中已经定义了sleep模式对应的stack名称。Low Power Mode选择Sleep mode即可。
+r_lpmNameLow Power ModeNameg_lpm_sleepsleepstackLow Power ModeSleep mode
 
 ![image-20220705185611562](picture/lpm_config3.png) 
 
-### Standby mode软件待机模式
+### Standby mode
 
-Name需要改为g_lpm_sw_standby。Low Power Mode选择Software Standby mode即可。
+Nameg_lpm_sw_standbyLow Power ModeSoftware Standby mode
 
-另外在此模式下还需要配置唤醒MCU的中断源，因为会使用到AGT1做为低功耗定时器所以AGT1的中断需要勾选。如果在应用中还需要其他中断源在此模式下唤醒MCU，则勾选对应选项即可。
+MCUAGT1AGT1MCU
 
 ![image-20220705185734682](picture/lpm_config4.png) 
 
-### Snooze mode小睡模式
+### Snooze mode
 
-Name需要改为g_lpm_sw_standby_with_snooze。Low Power Mode选择Snooze mode即可。
+Nameg_lpm_sw_standby_with_snoozeLow Power ModeSnooze mode
 
-另外在此模式下同样要配置唤醒MCU的中断源，因为会使用到AGT1做为低功耗定时器所以AGT1的中断需要勾选。如果在应用中还需要其他中断源在此模式下唤醒MCU，则勾选对应选项即可。
+MCUAGT1AGT1MCU
 
 ![image-20220705185903034](picture/lpm_config5.png) 
 
-### AGT1低功耗定时器
+### AGT1
 
-在驱动中使用了MCU的AGT1做为PM组件的低功耗定时器，用于在休眠状态下的系统时钟补偿。
+MCUAGT1PM
 
 ![image-20220706140137904](picture/lpm_config6.png) 
 
-完成上述配置步骤就已经把LPM低功耗模式的相关配置做完了。然后再根据应用要实现的功能配置其他外设。
+LPM
 
 
-## 低功耗DEMO
+## DEMO
 
-上文介绍了在RT-Thread的RA2L1上怎么配置LPM的不同模式，接下来就用一个小DEMO来验证下MCU在各种模式下的工作情况。
+RT-ThreadRA2L1LPMDEMOMCU
 
-低功耗DEMO要实现的功能是，在CPK-RA2L1开发板上用S1按钮切换不同的低功耗模式，并在msh中打印出模式切换的提示信息。要实现这个功能需要在刚才的基础上添加一个低功耗的唤醒源。
+DEMOCPK-RA2L1S1msh
 
-### 添加配置
+### 
 
-- 创建IRQ中断，IRQ中断选择通道3，详细配置如下。
+- IRQIRQ3
 
 ![image-20220706180228630](picture/lpm_demo1.png) 
 
@@ -127,15 +127,15 @@ Name需要改为g_lpm_sw_standby_with_snooze。Low Power Mode选择Snooze mode�
 
 ![image-20220706180438089](picture/lpm_demo2.png) 
 
-- 在刚才的Snooze和Standby模式的配置里添加IRQ3的唤醒源
+- SnoozeStandbyIRQ3
 
 ![image-20220706181018705](picture/lpm_demo5.png) 
 
 ![image-20220706180846002](picture/lpm_demo4.png) 
 
-- 然后保存并生成配置代码。
+- 
 
-### 添加测试代码
+### 
 
 ```c
 #include <rtthread.h>
@@ -275,17 +275,17 @@ static void pm_mode_init(void)
 
 void pm_test_entry(void* para)
 {
-    /* 唤醒回调函数初始化 */
+    /*  */
 	wakeup_init();
 
-    /* 电源管理初始化 */
+    /*  */
     pm_mode_init();
 
 	lptimer_init();
 	
     while (1)
     {
-        /* 等待唤醒事件 */
+        /*  */
         if (rt_event_recv(wakeup_event,
                             WAKEUP_EVENT_BUTTON,
                             RT_EVENT_FLAG_AND | RT_EVENT_FLAG_CLEAR,
@@ -311,14 +311,14 @@ MSH_CMD_EXPORT(pm_test, pm_test);
 #endif
 ```
 
-将DEMO代码加入到工程中，可以直接添加到hal_entry.c或新建一个源文件。
+DEMOhal_entry.c
 
 
-### 测试验证
+### 
 
-然后编译下载。开发板连接串口工具，输入`pm_test`命令启动测试DEMO。
+`pm_test`DEMO
 
-按下S1按钮切换工作模式，在DEEP、STANDBY模式下会启动低功耗定时器，当定时唤醒后会打印出回调接口的提示信息。
+S1DEEPSTANDBY
 
 ![image-20220706183705384](picture/lpm_demo6.png) 
 

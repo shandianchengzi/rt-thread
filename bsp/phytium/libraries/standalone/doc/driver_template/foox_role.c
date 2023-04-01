@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,18 +14,18 @@
  * FilePath: foox_role.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:25:03
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 
 /*
-    - 一些驱动模块，直接操作硬件的I/O接口，无法实现有意义的操作，此时需要针对中间件或者用户使用习惯设计此模块 （i2c,nand,eth）
-    - 部分场景适用, 分角色的 I/O 操作
-    - 此模块的函数原型，在fooxx.h 中声明一次，方便用户或者中间件层调用
+    - I/O i2c,nand,eth
+    - ,  I/O 
+    - fooxx.h 
 
 */
 

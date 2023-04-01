@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: frtc.h
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 09:02:51
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   Wangxiaodong 2021/8/26   init
  */
 
@@ -37,14 +37,14 @@ extern "C"
 
 typedef struct
 {
-    uintptr control_base_addr; /* rtc控制寄存器基地址 */
+    uintptr control_base_addr; /* rtc */
     const char *instance_name; /* instance name */
-} FRtcConfig;                  /* rtc配置 */
+} FRtcConfig;                  /* rtc */
 
 typedef struct
 {
-    FRtcConfig config;  /* rtc配置 */
-    u32 is_ready;       /* rtc初始化完成标志 */
+    FRtcConfig config;  /* rtc */
+    u32 is_ready;       /* rtc */
 } FRtcCtrl;
 
 typedef struct

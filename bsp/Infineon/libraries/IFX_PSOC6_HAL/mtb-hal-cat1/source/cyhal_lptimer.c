@@ -331,15 +331,15 @@ static uint32_t _cyhal_lptimer_set_delay_common(cyhal_lptimer_t *obj, uint32_t d
     /**
      * - 16 bit Counter0 (C0) & Counter1 (C1) are cascaded to generated a 32 bit counter.
      * - Counter2 (C2) is a free running counter.
-     * - C0 continues counting after reaching its match value. On PSoC™ 4 Counter1 is reset on
-     * match. On PSoC™ 6 it continues counting.
-     * - An interrupt is generated when C1 reaches the match value. On PSoC™ 4 this happens when
-     * the counter increments to the same value as match. On PSoC™ 6 this happens when it increments
+     * - C0 continues counting after reaching its match value. On PSoC 4 Counter1 is reset on
+     * match. On PSoC 6 it continues counting.
+     * - An interrupt is generated when C1 reaches the match value. On PSoC 4 this happens when
+     * the counter increments to the same value as match. On PSoC 6 this happens when it increments
      * past the match value.
      *
      * EXAMPLE:
      * Supposed T=C0=C1=0, and we need to trigger an interrupt at T=0x18000.
-     * We set C0_match to 0x8000 and C1 match to 2 on PSoC™ 4 and 1 on PSoC™ 6.
+     * We set C0_match to 0x8000 and C1 match to 2 on PSoC 4 and 1 on PSoC 6.
      * At T = 0x8000, C0_value matches C0_match so C1 get incremented. C1/C0=0x18000.
      * At T = 0x18000, C0_value matches C0_match again so C1 get incremented from 1 to 2.
      * When C1 get incremented from 1 to 2 the interrupt is generated.

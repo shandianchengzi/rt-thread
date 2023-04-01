@@ -1,82 +1,82 @@
-# ft2004 四核开发板 BSP 说明
+# ft2004  BSP 
 
-## 简介
+## 
 
-本文档为 飞腾技术公司 ft2000/4 开发板的 BSP (板级支持包) 说明。
+  ft2000/4  BSP () 
 
-主要内容如下：
 
-- 开发板资源介绍
-- BSP 外设支持
-- 使用方法
-- 相关实验
 
-### 1. 开发板资源介绍
+- 
+- BSP 
+- 
+- 
 
-FT-2000/4 是一款面向桌面应用的高性能通用 4 核处理器。每 2 个核构成 1
-个处理器核簇（Cluster），并共享 L2 Cache。主要技术特征如下：
+### 1. 
 
-- 兼容 ARM v8 64 位指令系统，兼容 32 位指令
-- 支持单精度、双精度浮点运算指令
-- 支持 ASIMD 处理指令
-- 集成 2 个 DDR4 通道，可对 DDR 存储数据进行实时加密
-- 集成 34 Lane PCIE3.0 接口：2 个 X16（每个可拆分成 2 个 X8），2 个 X1
-- 集成 2 个 GMAC，RGMII 接口，支持 10/100/1000 自适应
-- 集成 1 个 SD 卡控制器，兼容 SD 2.0 规范
-- 集成 1 个 HDAudio，支持音频输出，可同时支持最多 4 个 Codec
-- 集成 SM2、SM3、SM4 模块
-- 集成 4 个 UART，1 个 LPC，32 个 GPIO，4 个 I2C，1 个 QSPI，2 个通
-  用 SPI，2 个 WDT，16 个外部中断（和 GPIO 共用 IO）
-- 集成温度传感器
+FT-2000/4  4  2  1
+Cluster L2 Cache
 
-### 2. BSP 外设支持
+-  ARM v8 64  32 
+- 
+-  ASIMD 
+-  2  DDR4  DDR 
+-  34 Lane PCIE3.0 2  X16 2  X82  X1
+-  2  GMACRGMII  10/100/1000 
+-  1  SD  SD 2.0 
+-  1  HDAudio 4  Codec
+-  SM2SM3SM4 
+-  4  UART1  LPC32  GPIO4  I2C1  QSPI2 
+   SPI2  WDT16  GPIO  IO
+- 
 
-| 外设名   | 支持情况 | 备注                   |
+### 2. BSP 
+
+|    |  |                    |
 | -------- | -------- | ---------------------- |
-| ft_gicv3 | 支持     | gicv3 中断控制器       |
-| ft_gmac  | 支持     | ft gmac 千兆网卡控制器 |
-| ft_i2c   | 支持     | FT I2C                 |
-| ft_qspi  | 支持     | FT qspi 控制器         |
-| ft_sd    | 支持     | FT mmcsd 控制器        |
-| ft_uart  | 支持     | PrimeCell PL011        |
-| ft_spi   | 支持     | FT spi 控制器          |
-| ft_gpio  | 支持     | FT gpio 控制器         |
-| ft_can   | 支持     | FT can 控制器          |
+| ft_gicv3 |      | gicv3        |
+| ft_gmac  |      | ft gmac  |
+| ft_i2c   |      | FT I2C                 |
+| ft_qspi  |      | FT qspi          |
+| ft_sd    |      | FT mmcsd         |
+| ft_uart  |      | PrimeCell PL011        |
+| ft_spi   |      | FT spi           |
+| ft_gpio  |      | FT gpio          |
+| ft_can   |      | FT can           |
 
-### 3. 使用方法
+### 3. 
 
-#### ubuntu 上环境搭建
+#### ubuntu 
 
-1. 在 ubuntu 环境下通过指令，下载并安装交叉编译链
+1.  ubuntu 
 
 ```
 sudo apt-get install gcc-arm-none-eabi
 ```
 
-2. 安装之后，通过指令，确定交叉编译链安装完毕
+2. 
 
 ```
 arm-none-eabi-gcc -v
 ```
 
-3. 搭建 tftp 环境
+3.  tftp 
 
-   - 在主机安装 tftp 服务
-     > 使用 ubuntu 完成下列操作
+   -  tftp 
+     >  ubuntu 
 
    ```
    sudo apt-get install tftp-hpa tftpd-hpa
    sudo apt-get install xinetd
    ```
 
-   - 新建 tftboot 目录，如:
+   -  tftboot :
      `/mnt/d/tftboot`
 
-   > 需要给 tftboot 目录执行权限`chmod 777 /**/tftboot`
+   >  tftboot `chmod 777 /**/tftboot`
 
-   - 配置主机 tftpboot 服务
+   -  tftpboot 
 
-   新建并配置文件/etc/xinetd.d/tftp
+   /etc/xinetd.d/tftp
 
    ```
    # /etc/xinetd.d/tftp
@@ -96,14 +96,14 @@ arm-none-eabi-gcc -v
    }
    ```
 
-   - 启动主机 tftp 服务
+   -  tftp 
 
    ```
    sudo service tftpd-hpa start
    ```
 
-   - 修改主机 tftp 配置
-     修改/etc/default/tftpd-hpa
+   -  tftp 
+     /etc/default/tftpd-hpa
 
    ```
    sudo nano /etc/default/tftpd-hpa
@@ -115,15 +115,15 @@ arm-none-eabi-gcc -v
    TFTP_OPTIONS="-l -c -s"
    ```
 
-   - 重启主机 tftp 服务
-     > 每次开机要重启一次
+   -  tftp 
+     > 
 
    ```
    sudo service tftpd-hpa restart
    ```
 
-   - 测试主机 tftp 服务的可用性
-     > 登录 tftp 服务，获取一个文件
+   -  tftp 
+     >  tftp 
 
    ```
    $ tftp 192.168.4.50
@@ -131,73 +131,73 @@ arm-none-eabi-gcc -v
    tftp> q
    ```
 
-#### 执行
+#### 
 
-1. 将本 bsp 包拷贝至 RT-THREAD bsp/目录下
+1.  bsp  RT-THREAD bsp/
 
-1. 在 Ubuntu 终端下，切换至 bsp 目录
+1.  Ubuntu  bsp 
 
 ```
 cd rt-thread/bsp/ft2004
 ```
 
-3. 使用 scons -c 清空工程缓存
+3.  scons -c 
 
-4. 使用 scons --menuconfig 配置需要的外设
+4.  scons --menuconfig 
 
 ![](./figures/onchipPeripheral.png)
 
-5. 使用 scons 编译代码,得到 rtthread.bin，并将 rtthread.bin 放入之前配置的 tftp 路径下。
+5.  scons , rtthread.bin rtthread.bin  tftp 
 
-6. 连接开发板对应串口到 PC, 在终端工具里打开相应的串口（115200-8-1-N）。
+6.  PC, 115200-8-1-N
 
-7. 将开发板网线接入局域网中
+7. 
 
-8. 本开发板自带 uboot，使用 uboot 自带 指令进行将 bin 文件下载至 ram 中
+8.  uboot uboot   bin  ram 
 
 ```
-setenv ipaddr 192.168.x.x      # 设置开发板ip
-setenv serverip 192.168.x.x    # 设置tftp服务器ip
-setenv gatewayip 192.168.x.x   # 设置网关ip
-tftpboot 80100000 rtthread.bin # 在主机 /tftpboot目录中的rtthread.bin文件下载到开发板内存的80100000地址中。
+setenv ipaddr 192.168.x.x      # ip
+setenv serverip 192.168.x.x    # tftpip
+setenv gatewayip 192.168.x.x   # ip
+tftpboot 80100000 rtthread.bin #  /tftpbootrtthread.bin80100000
 ```
 
-7. 执行跳转指令，便可以正常执行
+7. 
 
 ```
 bootvx32 80100000
-或
+
 boot32 80100000
 ```
 
-![](./figures/启动演示图.png)
+![](./figures/.png)
 
-### 5. 相关实验
+### 5. 
 
-#### 网卡
+#### 
 
-- 主机 ping 本机 指令 sudo ping 192.168.3.20 (默认)
+-  ping   sudo ping 192.168.3.20 ()
 
-- rtt ping 主机 指令 ping 192.168.x.x (根据实际情况)
+- rtt ping   ping 192.168.x.x ()
 
-- 通过界面
+- 
 
-![](./figures/rttPing通过界面.png)
+![](./figures/rttPing.png)
 
-#### sd 卡调试
+#### sd 
 
-- 通过基本命令进行，mv ，echo ，ls ，cd ，rm ....
+- mv echo ls cd rm ....
 
-![](./figures/rttsd调试.png)
+![](./figures/rttsd.png)
 
-#### spi flash 卡调试
+#### spi flash 
 
-- 找一块有 spi flash 插槽的 ft-2004 开发板，插入 sf25s 或 gd25q 系列 spi flash
-- 配置 rt-thread 的编译选项，打开 BSP_USE_SPI 和 BSP_USE_GPIO 配置，关闭 BSP_USE_QSPI 配置，打开 rt-thread 的 SFUD 调试开关
-- 编译 rt-thread，加载版本启动，启动后显示 spi flash probe 成功
-- 执行 sf 基本操作，read, write, erase
+-  spi flash  ft-2004  sf25s  gd25q  spi flash
+-  rt-thread  BSP_USE_SPI  BSP_USE_GPIO  BSP_USE_QSPI  rt-thread  SFUD 
+-  rt-thread spi flash probe 
+-  sf read, write, erase
 
-#### 推荐指令
+#### 
 
 1. sf probe S25FS256
 
@@ -209,27 +209,27 @@ boot32 80100000
 
 5. sf erase 0x1FFF000 16
 
-#### can 测试
+#### can 
 
-1. 使用 scons menuconfig 选中 Enable Can
+1.  scons menuconfig  Enable Can
 
-2. 然后选中 Enable can0 ，Enable can0 work in loop back
+2.  Enable can0 Enable can0 work in loop back
 
-3. 烧录程序并且烧录
+3. 
 
-4. 打开 can 盒，将波特率设为 1000000
+4.  can  1000000
 
-5. 然后通过 can 盒发送对应的数据（标准帧，扩展帧），就可以看见回复同样的内容
+5.  can 
 
-## 6. 参考资源
+## 6. 
 
 - ARM Architecture Reference Manual
 
-- FT-2000／4 软件编程手册-V1.4
+- FT-20004 -V1.4
 
-## 7. 联系人信息
+## 7. 
 
-请联系飞腾嵌入式软件部
+
 
 huanghe@phytium.com.cn
 

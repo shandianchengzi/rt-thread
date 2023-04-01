@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fsdmmc_intr.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:54:53
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   zhugengyu  2021/12/2    init
  */
 
@@ -58,11 +58,11 @@ extern FError FSdmmcSendData(uintptr base_addr, boolean read, FSdmmcCmd *cmd_p);
 /*****************************************************************************/
 /**
  * @name: FSdmmcGetInterruptMask
- * @msg: 获取FSDMMC的中断掩码
- * @return {u32} 中断掩码
- * @param {uintptr} base_addr FSDMMC控制器基地址
- * @param {u32} intr_type FSDMMC中断类型, 参考FSDMMC_INTR_NUM
- * @note FSDMMC控制器初始化后才能调用此函数
+ * @msg: FSDMMC
+ * @return {u32} 
+ * @param {uintptr} base_addr FSDMMC
+ * @param {u32} intr_type FSDMMC, FSDMMC_INTR_NUM
+ * @note FSDMMC
  */
 u32 FSdmmcGetInterruptMask(uintptr base_addr, u32 intr_type)
 {
@@ -89,12 +89,12 @@ u32 FSdmmcGetInterruptMask(uintptr base_addr, u32 intr_type)
 
 /**
  * @name: FSdmmcSetInterruptMask
- * @msg: 设置FSDMMC的中断掩码
- * @param {uintptr} base_addr FSDMMC控制器基地址
- * @param {u32} intr_type FSDMMC中断类型, 参考FSDMMC_INTR_NUM
- * @param {u32} mask 中断掩码
- * @param {boolean} enable TRUE:打开中断, FALSE:关闭中断
- * @note FSDMMC控制器初始化后才能调用此函数
+ * @msg: FSDMMC
+ * @param {uintptr} base_addr FSDMMC
+ * @param {u32} intr_type FSDMMC, FSDMMC_INTR_NUM
+ * @param {u32} mask 
+ * @param {boolean} enable TRUE:, FALSE:
+ * @note FSDMMC
  */
 void FSdmmcSetInterruptMask(uintptr base_addr, u32 intr_type, u32 mask, boolean enable)
 {
@@ -127,11 +127,11 @@ void FSdmmcSetInterruptMask(uintptr base_addr, u32 intr_type, u32 mask, boolean 
 
 /**
  * @name: FSdmmcCmdInterrupHandler
- * @msg: 命令中断响应函数
- * @return {*} 无
- * @param {s32} vector 中断向量号
- * @param {void} *param 中断响应输入参数
- * @note 此函数用于设置FSDMMC中断时注册，用户可以自定义一个中断响应函数替换此函数
+ * @msg: 
+ * @return {*} 
+ * @param {s32} vector 
+ * @param {void} *param 
+ * @note FSDMMC
  */
 void FSdmmcCmdInterrupHandler(s32 vector, void *param)
 {
@@ -143,17 +143,17 @@ void FSdmmcCmdInterrupHandler(s32 vector, void *param)
     /* clear interrupts */
     status = FSDMMC_READ_REG(base_addr, FSDMMC_NORMAL_INT_STATUS_REG_OFFSET);
 
-    if (status & FSDMMC_NORMAL_INT_STATUS_CR) /* 卡移除中断 */
+    if (status & FSDMMC_NORMAL_INT_STATUS_CR) /*  */
     {
         FSdmmcCallEvtHandler(instance_p->evt_handler[FSDMMC_EVT_CARD_REMOVED], instance_p);
     }
 
-    if (status & FSDMMC_NORMAL_INT_STATUS_CC) /* 命令完成中断 */
+    if (status & FSDMMC_NORMAL_INT_STATUS_CC) /*  */
     {
         FSdmmcCallEvtHandler(instance_p->evt_handler[FSDMMC_EVT_CMD_DONE], instance_p);
     }
 
-    if (status & FSDMMC_NORMAL_INT_STATUS_EI) /* 命令错误中断 */
+    if (status & FSDMMC_NORMAL_INT_STATUS_EI) /*  */
     {
         FSdmmcCallEvtHandler(instance_p->evt_handler[FSDMMC_EVT_CMD_ERROR], instance_p);
     }
@@ -163,11 +163,11 @@ void FSdmmcCmdInterrupHandler(s32 vector, void *param)
 
 /**
  * @name: FSdmmcDmaInterrupHandler
- * @msg: DMA中断响应函数
+ * @msg: DMA
  * @return {*}
- * @param {s32} vector 中断向量号
- * @param {void} *param 中断响应输入参数
- * @note 此函数用于设置FSDMMC中断时注册，用户可以自定义一个中断响应函数替换此函数
+ * @param {s32} vector 
+ * @param {void} *param 
+ * @note FSDMMC
  */
 void FSdmmcDmaInterrupHandler(s32 vector, void *param)
 {
@@ -179,42 +179,42 @@ void FSdmmcDmaInterrupHandler(s32 vector, void *param)
     /* clear interrupts */
     status = FSDMMC_READ_REG(base_addr, FSDMMC_BD_ISR_REG_OFFSET);
 
-    if (status & FSDMMC_BD_ISR_REG_DAIS) /* DMA 错误中断 */
+    if (status & FSDMMC_BD_ISR_REG_DAIS) /* DMA  */
     {
         FSdmmcCallEvtHandler(instance_p->evt_handler[FSDMMC_EVT_DATA_ERROR], instance_p);
     }
 
-    if (status & FSDMMC_BD_ISR_REG_RESPE) /* 读 SD 卡操作，AXI BR 通道完成中断 */
+    if (status & FSDMMC_BD_ISR_REG_RESPE) /*  SD AXI BR  */
     {
         FSdmmcCallEvtHandler(instance_p->evt_handler[FSDMMC_EVT_DATA_READ_DONE], instance_p);
     }
 
-    if (status & FSDMMC_BD_ISR_REG_DATFRAX) /* AXI 总线强制释放中断*/
+    if (status & FSDMMC_BD_ISR_REG_DATFRAX) /* AXI */
     {
         FSDMMC_ERROR("FSDMMC_BD_ISR_REG_DATFRAX");
     }
 
-    if (status & FSDMMC_BD_ISR_REG_NRCRC) /* 无 CRC 响应中断*/
+    if (status & FSDMMC_BD_ISR_REG_NRCRC) /*  CRC */
     {
         FSDMMC_ERROR("FSDMMC_BD_ISR_REG_NRCRC");
     }
 
-    if (status & FSDMMC_BD_ISR_REG_TRE) /* CRC 响应错误中断*/
+    if (status & FSDMMC_BD_ISR_REG_TRE) /* CRC */
     {
         FSDMMC_ERROR("FSDMMC_BD_ISR_REG_TRE");
     }
 
-    if (status & FSDMMC_BD_ISR_REG_CMDE) /* 命令响应错误中断*/
+    if (status & FSDMMC_BD_ISR_REG_CMDE) /* */
     {
         FSDMMC_ERROR("FSDMMC_BD_ISR_REG_CMDE");
     }
 
-    if (status & FSDMMC_BD_ISR_REG_DTE) /* 超时中断*/
+    if (status & FSDMMC_BD_ISR_REG_DTE) /* */
     {
         FSDMMC_ERROR("FSDMMC_BD_ISR_REG_DTE");
     }
 
-    if (status & FSDMMC_BD_ISR_REG_TRS) /* DMA 传输完成中断*/
+    if (status & FSDMMC_BD_ISR_REG_TRS) /* DMA */
     {
         FSdmmcCallEvtHandler(instance_p->evt_handler[FSDMMC_EVT_DATA_WRITE_DONE], instance_p);
     }
@@ -224,11 +224,11 @@ void FSdmmcDmaInterrupHandler(s32 vector, void *param)
 
 /**
  * @name: FSdmmcErrInterrupHandler
- * @msg: 错误中断响应函数
+ * @msg: 
  * @return {*}
- * @param {s32} vector 中断向量号
- * @param {void} *param 中断响应输入参数
- * @note 此函数用于设置FSDMMC中断时注册，用户可以自定义一个中断响应函数替换此函数
+ * @param {s32} vector 
+ * @param {void} *param 
+ * @note FSDMMC
  */
 void FSdmmcErrInterrupHandler(s32 vector, void *param)
 {
@@ -239,22 +239,22 @@ void FSdmmcErrInterrupHandler(s32 vector, void *param)
 
     status = FSDMMC_READ_REG(base_addr, FSDMMC_ERROR_INT_STATUS_REG_OFFSET);
 
-    if (status & FSDMMC_ERROR_INT_STATUS_CNR) /* 命令响应错误中断 */
+    if (status & FSDMMC_ERROR_INT_STATUS_CNR) /*  */
     {
         FSdmmcCallEvtHandler(instance_p->evt_handler[FSDMMC_EVT_CMD_RESP_ERROR], instance_p);
     }
 
-    if (status & FSDMMC_ERROR_INT_STATUS_CIR) /* 命令索引错误中断 */
+    if (status & FSDMMC_ERROR_INT_STATUS_CIR) /*  */
     {
         FSDMMC_ERROR("FSDMMC_ERROR_INT_STATUS_CIR");
     }
 
-    if (status & FSDMMC_ERROR_INT_STATUS_CCRCE) /* 命令 CRC 错误中断 */
+    if (status & FSDMMC_ERROR_INT_STATUS_CCRCE) /*  CRC  */
     {
         FSDMMC_ERROR("FSDMMC_ERROR_INT_STATUS_CCRCE");
     }
 
-    if (status & FSDMMC_ERROR_INT_STATUS_CTE) /* 命令超时错误中断 */
+    if (status & FSDMMC_ERROR_INT_STATUS_CTE) /*  */
     {
         FSDMMC_ERROR("FSDMMC_ERROR_INT_STATUS_CTE");
     }
@@ -265,13 +265,13 @@ void FSdmmcErrInterrupHandler(s32 vector, void *param)
 
 /**
  * @name: FSdmmcRegisterInterruptHandler
- * @msg: 注册中断事件响应函数
+ * @msg: 
  * @return {*}
- * @param {FSdmmc} *instance_p FSDMMC驱动控制数据
- * @param {u32} event FSDMMC中断事件类型，参考FSDMMC_EVT_NUM
- * @param {FSdmmcEventHandler} handler, FSDMMC中断事件响应函数
- * @note 此函数用于设置FSDMMC中断时注册，被注册的函数被FSdmmcCmdInterrupHandler、FSdmmcErrInterrupHandler
- * 和FSdmmcDmaInterrupHandler调用
+ * @param {FSdmmc} *instance_p FSDMMC
+ * @param {u32} event FSDMMCFSDMMC_EVT_NUM
+ * @param {FSdmmcEventHandler} handler, FSDMMC
+ * @note FSDMMCFSdmmcCmdInterrupHandlerFSdmmcErrInterrupHandler
+ * FSdmmcDmaInterrupHandler
  */
 void FSdmmcRegisterInterruptHandler(FSdmmc *instance_p, u32 event, FSdmmcEventHandler handler)
 {
@@ -281,11 +281,11 @@ void FSdmmcRegisterInterruptHandler(FSdmmc *instance_p, u32 event, FSdmmcEventHa
 
 /**
  * @name: FSdmmcInterruptTransfer
- * @msg: 通过FSDMMC中断方式发送/接收数据和命令
- * @return {FError} 驱动初始化的错误码信息，FSDMMC_SUCCESS 表示发送/接收成功，其它返回值表示发送/接收失败
- * @param {FSdmmc} *instance_p FSDMMC驱动控制数据
- * @param {FSdmmcCmd} *cmd_data_p FSDMMC数据和命令
- * @note FSDMMC控制器初始化后才能调用此函数，使用前需要确保FSDMMC中断设置完成
+ * @msg: FSDMMC/
+ * @return {FError} FSDMMC_SUCCESS //
+ * @param {FSdmmc} *instance_p FSDMMC
+ * @param {FSdmmcCmd} *cmd_data_p FSDMMC
+ * @note FSDMMCFSDMMC
  */
 FError FSdmmcInterruptTransfer(FSdmmc *instance_p, FSdmmcCmd *cmd_data_p)
 {

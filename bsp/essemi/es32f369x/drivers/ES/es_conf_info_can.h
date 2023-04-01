@@ -29,10 +29,10 @@
 #include <ald_gpio.h>
 
 
-/*默认的CAN硬件过滤器的编号   0 */
+/*CAN   0 */
 #define ES_C_CAN_DEFAULT_FILTER_NUMBER   0
 
-/*硬件过滤器，过滤帧类型*/
+/**/
 #define ES_C_CAN_FILTER_FRAME_TYPE       0
 
 
@@ -43,7 +43,7 @@
 
 
 
-/* CAN 配置 */
+/* CAN  */
 
 /* codes_main */
 

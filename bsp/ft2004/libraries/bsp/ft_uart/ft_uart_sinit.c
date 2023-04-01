@@ -1,15 +1,15 @@
 /*
- * @ : Copyright (c) 2021 Phytium Information Technology, Inc.
- *
- * SPDX-License-Identifier: Apache-2.0.
- *
+*@:Copyright(c)2021PhytiumInformationTechnology,Inc.
+*
+*SPDX-License-Identifier:Apache-2.0.
+*
  * @Date: 2021-04-07 09:53:07
  * @LastEditTime: 2021-04-07 13:44:56
- * @Description:  This files is for uart static init
+ * @Description: This files is for uart static init
  *
- * @Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * @ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 #include "ft_uart.h"
@@ -19,7 +19,7 @@ extern FUart_Config_t FUart_Config_tTable[FT_UART_NUM];
 
 /**
  * @name: Ft_Uart_LookupConfig
- * @msg:  获取串口的基本配置
+ * @msg:  
  * @param {u16} InstanceId FT_UARTX_ID
  * @return {*}
  */

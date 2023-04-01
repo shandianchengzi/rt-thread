@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fpcie.h
  * Date: 2022-02-10 14:55:11
  * LastEditTime: 2022-02-18 08:59:37
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 
@@ -99,12 +99,12 @@ enum pci_size_t
 #define FPCIE_BAR_5 5
 
 /*  PCI-E Unit controller selection */
-#define FPCIE_PEU0_C0 0 /* pcie 0  0号控制器 */
-#define FPCIE_PEU0_C1 1 /* pcie 0  1号控制器 */
-#define FPCIE_PEU0_C2 2 /* pcie 0  2号控制器 */
-#define FPCIE_PEU1_C0 3 /* pcie 1  0号控制器 */
-#define FPCIE_PEU1_C1 4 /* pcie 1  1号控制器 */
-#define FPCIE_PEU1_C2 5 /* pcie 1  2号控制器 */
+#define FPCIE_PEU0_C0 0 /* pcie 0  0 */
+#define FPCIE_PEU0_C1 1 /* pcie 0  1 */
+#define FPCIE_PEU0_C2 2 /* pcie 0  2 */
+#define FPCIE_PEU1_C0 3 /* pcie 1  0 */
+#define FPCIE_PEU1_C1 4 /* pcie 1  1 */
+#define FPCIE_PEU1_C2 5 /* pcie 1  2 */
 
 
 #define FPCIE_REGION_EXIST_FLG 1
@@ -210,7 +210,7 @@ typedef struct
     struct FPcieRegion mem_prefetch;
     struct FPcieRegion mem_io;
 
-    s32  bus_max; /* 当前最大bus num */
+    s32  bus_max; /* bus num */
 
     FPcieIrqCallBack fpcie_dma_rx_cb;
     void *dma_rx_args;
@@ -224,7 +224,7 @@ typedef struct
     FPcieIrqCallBack fpcie_dma_tx_error_cb;
     void *dma_tx_error_args;
 
-    FPcieIntxFun inta_fun[128];     //假设最高支持128个pcie 节点
+    FPcieIntxFun inta_fun[128];     //128pcie 
 
     FPcieIntxFun intb_fun[128];
 

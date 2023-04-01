@@ -1,55 +1,55 @@
-# FSATA 驱动程序
+# FSATA 
 
-## 1. 概述
+## 1. 
 
-串口硬盘SATA(Serial ATA)与以往的并口硬盘PATA(Parallel ATA)相比，数据传输速度更加快捷，并支持热插拔；
-SATA总线使用嵌入式时钟信号，具备了更强的纠错能力，能对传输指令进行检查，如果发现错误会自动矫正，提高了数据传输的可靠性；
+SATA(Serial ATA)PATA(Parallel ATA)
+SATA
 
-## 2. 功能
+## 2. 
 
-AHCI控制器驱动提供了SATA的控制访问方法，
-- 初始化AHCI控制器
-- 以PIO方式发送/接收数据和命令
-- 以DMA方式发送/接收数据和命令
-- 设置AHCI控制器的中断工作模式和中断响应函数
+AHCISATA
+- AHCI
+- PIO/
+- DMA/
+- AHCI
 
-驱动相关的源文件包括，
+
 ```
 fsata
 
-    ├── fsata_g.c
-    ├── fsata_hw.c
-    ├── fsata_hw.h
-    ├── fsata_intr.c
-    ├── fsata_sinit.c
-    ├── fsata.c
-    └── fsata.h
+     fsata_g.c
+     fsata_hw.c
+     fsata_hw.h
+     fsata_intr.c
+     fsata_sinit.c
+     fsata.c
+     fsata.h
 ```
 
-## 3. 配置方法
+## 3. 
 
-以下部分将指导您完成 fsata 驱动的软件配置:
+ fsata :
 
-- 初始化ahci控制器
-- 通过协议命令读写sata数据
+- ahci
+- sata
 
-## 4 应用示例
+## 4 
 
-### [读写sata二进制数据](../../../baremetal/example/peripheral/sata)
+### [sata](../../../baremetal/example/peripheral/sata)
 
-### [通过文件系统使用sata](../../../baremetal/example/storage/sata_fatfs)
+### [sata](../../../baremetal/example/storage/sata_fatfs)
 
-## 5. API参考
+## 5. API
 
-### 5.1. 用户数据结构
+### 5.1. 
 
-- fsata控制数据
+- fsata
 
 ```c
 typedef struct
 {
-	FSataConfig config; 	/* sata配置 */
-	u32 is_ready;		/* sata初始化完成标志 */
+	FSataConfig config; 	/* sata */
+	u32 is_ready;		/* sata */
 	u32 private_data;
 	FSataAhciIoPorts port[FSATA_AHCI_MAX_PORTS];
 	u16 *ataid[FSATA_AHCI_MAX_PORTS];
@@ -71,15 +71,15 @@ typedef struct
 } FSataCtrl;
 ```
 
-- fsata配置数据
+- fsata
 
 ```c
 typedef struct
 {
-	uintptr base_addr; /* sata控制寄存器基地址 */
+	uintptr base_addr; /* sata */
 	const char *instance_name; /* instance name */
 	u32 irq_num;     /* Irq number */
-} FSataConfig; /* sata配置 */
+} FSataConfig; /* sata */
 ```
 
 - fsata port memmory
@@ -96,7 +96,7 @@ typedef struct
 } FSataAhciIoPorts;
 ```
 
-- fsata属性
+- fsata
 ```c
 typedef struct
 {
@@ -113,7 +113,7 @@ typedef struct
 }FSataInfo;
 ```
 
-- fsata中断类型和中断事件
+- fsata
 ```c
 #define	FSATA_PORT_IRQ_COLD_PRES	BIT(31) /* cold presence detect */
 #define	FSATA_PORT_IRQ_TF_ERR		BIT(30) /* task file error */
@@ -135,19 +135,19 @@ typedef struct
 #define	FSATA_PORT_IRQ_D2H_REG_FIS	BIT(0) /* D2H Register FIS rx'd */
 ```
 
-### 5.2  错误码定义
+### 5.2  
 
 - FSATA_SUCCESS : success
-- FSATA_ERR_INVAILD_PARAMETER : 参数无效
-- FSATA_ERR_TIMEOUT : 数据或者命令传输等待超时
-- FSATA_ERR_OPERATION : 错误操作
-- FSATA_UNKNOWN_DEVICE : 未知设备
+- FSATA_ERR_INVAILD_PARAMETER : 
+- FSATA_ERR_TIMEOUT : 
+- FSATA_ERR_OPERATION : 
+- FSATA_UNKNOWN_DEVICE : 
 
-### 5.3. 用户API接口
+### 5.3. API
 
 #### FSataLookupConfig
 
-- 获取Fata控制器默认配置
+- Fata
 
 ```c
 const FSataConfig *FSataLookupConfig(void);
@@ -155,7 +155,7 @@ const FSataConfig *FSataLookupConfig(void);
 
 Note:
 
-- 获取默认配置参数，包括中断号，instance_name等
+- instance_name
 
 Input:
 
@@ -163,11 +163,11 @@ Input:
 
 Return:
 
-- {const FSataConfig *}  fsata默认配置，返回NULL如果找不到默认配置
+- {const FSataConfig *}  fsataNULL
 
 #### FSataCfgInitialize
 
-- 初始化fsata控制器, 使之可以使用
+- fsata, 
 
 ```c
 FError FSataCfgInitialize(FSataCtrl *instance_p, const FSataConfig *input_config_p);
@@ -175,20 +175,20 @@ FError FSataCfgInitialize(FSataCtrl *instance_p, const FSataConfig *input_config
 
 Note:
 
-- 输入配置通过FSataLookupConfig获取，用户按照需要修改后传入此函数
+- FSataLookupConfig
 
 Input:
 
-- {FSataCtrl} *instance_p fsata驱动控制数据
-- {FSataConfig} *input_config_p fsata用户输入配置
+- {FSataCtrl} *instance_p fsata
+- {FSataConfig} *input_config_p fsata
 
 Return:
 
-- {FError} 驱动初始化的错误码信息，FSATA_SUCCESS 表示初始化成功，其它返回值表示初始化失败
+- {FError} FSATA_SUCCESS 
 
 #### FSataAhciInit
 
-- 初始化ahci, 使之可以使用
+- ahci, 
 
 ```c
 FError FSataAhciInit(FSataCtrl *instance_p);
@@ -196,20 +196,20 @@ FError FSataAhciInit(FSataCtrl *instance_p);
 
 Note:
 
-- 包含ahci初始化和port memory的内存分配输入，用户需保证mem的大小足够
+- ahciport memorymem
 
 Input:
 
-- {FSataCtrl} *instance_p fsata驱动控制数据
+- {FSataCtrl} *instance_p fsata
 
 Return:
 
-- {FError} 驱动初始化的错误码信息，FSATA_SUCCESS 表示初始化成功，其它返回值表示初始化失败
+- {FError} FSATA_SUCCESS 
 
 
 #### FSataAhciReadInfo
 
-- 读取sata信息，包括型号、容量等，通过串口输出
+- sata
 
 ```c
 FError FSataAhciReadInfo(FSataCtrl *instance_p, u8 port);
@@ -217,20 +217,20 @@ FError FSataAhciReadInfo(FSataCtrl *instance_p, u8 port);
 
 Note:
 
-- 输入配置通过FSataLookupConfig获取，用户按照需要修改后传入此函数
+- FSataLookupConfig
 
 Input:
 
-- {FSataCtrl} *instance_p fsata驱动控制数据
-- {u8} port fsata的port端口号
+- {FSataCtrl} *instance_p fsata
+- {u8} port fsataport
 
 Return:
 
-- {FError} 驱动初始化的错误码信息，FSATA_SUCCESS 表示初始化成功，其它返回值表示初始化失败
+- {FError} FSATA_SUCCESS 
 
 #### FSataReadWrite
 
-- pio方式读写sata数据
+- piosata
 
 ```c
 FError FSataReadWrite(FSataCtrl *instance_p, u8 port, u32 start,
@@ -239,24 +239,24 @@ FError FSataReadWrite(FSataCtrl *instance_p, u8 port, u32 start,
 
 Note:
 
-- 以pio方式读写sata数据，需注意传入的buffer是否完整
+- piosatabuffer
 
 Input:
 
-- {FSataCtrl} *instance_p fsata驱动控制数据
-- {u8} port fsata的port端口号
-- {u32} start 读写的起始block
-- {u16} blk_cnt 读写的block个数
-- {u8} *buffer 读写数据的缓存地址
-- {u8} is_write 读/写的标志位
+- {FSataCtrl} *instance_p fsata
+- {u8} port fsataport
+- {u32} start block
+- {u16} blk_cnt block
+- {u8} *buffer 
+- {u8} is_write /
 
 Return:
 
-- {FError} 驱动初始化的错误码信息，FSATA_SUCCESS 表示初始化成功，其它返回值表示初始化失败
+- {FError} FSATA_SUCCESS 
 
 #### FSataFPDmaReadWrite
 
-- dma方式读写sata数据
+- dmasata
 
 ```c
 FError FSataFPDmaReadWrite(FSataCtrl *instance_p, u8 port, u32 start,
@@ -265,20 +265,20 @@ FError FSataFPDmaReadWrite(FSataCtrl *instance_p, u8 port, u32 start,
 
 Note:
 
-- 以dma方式读写sata数据，需注意传入的buffer是否完整
+- dmasatabuffer
 
 Input:
 
-- {FSataCtrl} *instance_p fsata驱动控制数据
-- {u8} port fsata的port端口号
-- {u32} start 读写的起始block
-- {u16} blk_cnt 读写的block个数
-- {u8} *buffer 读写数据的缓存地址
-- {u8} is_write 读/写的标志位
+- {FSataCtrl} *instance_p fsata
+- {u8} port fsataport
+- {u32} start block
+- {u16} blk_cnt block
+- {u8} *buffer 
+- {u8} is_write /
 
 Return:
 
-- {FError} 驱动初始化的错误码信息，FSATA_SUCCESS 表示初始化成功，其它返回值表示初始化失败
+- {FError} FSATA_SUCCESS 
 
 /* set specific sata irq function entry */
 FError FSataSetHandler(FSataCtrl *instance_p, u32 handler_type,
@@ -287,7 +287,7 @@ FError FSataSetHandler(FSataCtrl *instance_p, u32 handler_type,
 
 #### FSataSetHandler
 
-- 设置各中断的处理函数
+- 
 
 ```c
 FError FSataSetHandler(FSataCtrl *instance_p, u32 handler_type,
@@ -296,15 +296,15 @@ FError FSataSetHandler(FSataCtrl *instance_p, u32 handler_type,
 
 Note:
 
-- 根据中断类型，设置对应的回调函数和参数传入
+- 
 
 Input:
 
-- {FSataCtrl} *instance_p fsata驱动控制数据
-- {u32} handler_type 中断类型
-- {void} *func_pointer 回调函数入口
-- {void} *call_back_ref 回调函数参数
+- {FSataCtrl} *instance_p fsata
+- {u32} handler_type 
+- {void} *func_pointer 
+- {void} *call_back_ref 
 
 Return:
 
-- {FError} 驱动初始化的错误码信息，FSATA_SUCCESS 表示初始化成功，其它返回值表示初始化失败
+- {FError} FSATA_SUCCESS 

@@ -688,8 +688,8 @@ typedef union _hw_spdc_panel_init_set
 
 /*! @name Register SPDC_PANEL_INIT_SET, field UD[7] (RW)
  *
- * Select gate driver IC scanning direction up or down. 0x0 DOWN -Scan down; First line=Gm◊ Gm-1 ◊…◊
- * G2 ◊ Last line=G1. 0x1 UP -Scan up; First line=G1 ◊ G2 ◊ … ◊ Gm-1 ◊ Last line=Gm.
+ * Select gate driver IC scanning direction up or down. 0x0 DOWN -Scan down; First line=Gm Gm-1 
+ * G2  Last line=G1. 0x1 UP -Scan up; First line=G1  G2    Gm-1  Last line=Gm.
  */
 //@{
 #define BP_SPDC_PANEL_INIT_SET_UD      (7)      //!< Bit position for SPDC_PANEL_INIT_SET_UD.
@@ -709,8 +709,8 @@ typedef union _hw_spdc_panel_init_set
 
 /*! @name Register SPDC_PANEL_INIT_SET, field RL[8] (RW)
  *
- * Select source driver IC scanning direction right or left. 0x0 LEFT -Shift left; First data=Sn ◊
- * Sn-1 ◊ …◊ S2 ◊ Last data=S1. 0x1 RIGHT -Shift right: First data=S1◊ S2 ◊ …◊ Sn-1 ◊ Last data=Sn.
+ * Select source driver IC scanning direction right or left. 0x0 LEFT -Shift left; First data=Sn 
+ * Sn-1   S2  Last data=S1. 0x1 RIGHT -Shift right: First data=S1 S2   Sn-1  Last data=Sn.
  */
 //@{
 #define BP_SPDC_PANEL_INIT_SET_RL      (8)      //!< Bit position for SPDC_PANEL_INIT_SET_RL.

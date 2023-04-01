@@ -798,17 +798,17 @@ typedef union _hw_pcie_ep_bist
  * upper 32 bits of the combined 64-bit BAR formed by BARs 0 and 1. Therefore, BAR 1 must be
  * disabled and cannot be configured independently. BAR 0 must be a memory BAR and can be either
  * prefetchable or non-prefetchable. The contents of the BAR 0 Mask register determine the number of
- * writable bits in the 64-bit BAR, subject to the restrictions described in îBAR Mask Registersî on
+ * writable bits in the 64-bit BAR, subject to the restrictions described in BAR Mask Registers on
  * page 536. The BAR 1 Mask register contains the upper 32 bits of the BAR 0 Mask value. BAR 0 can
  * be disabled by writing 0 to bit 0 of the BAR 0 Mask register If BAR 0 is configured as a 32-bit
  * BAR: You can configure BAR 1 as an independent 32-bit BAR BAR 0 can be configured as a memory BAR
  * or an I/O BAR. The contents of the BAR 0 Mask register determine the number of writable bits in
- * the 32-bit BAR 0, subject to the restrictions described in îBAR Mask Registersî on page 536. BAR
+ * the 32-bit BAR 0, subject to the restrictions described in BAR Mask Registers on page 536. BAR
  * 0 can be disabled by writing 0 to bit 0 of the BAR 0 Mask register When BAR 0 is configured as a
  * 32-bit BAR, BAR 1 is available as an independent 32-bit BAR according to the following rules: BAR
  * 1 can be configured as a memory BAR or an I/O BAR. The contents of the BAR 1 Mask register
  * determine the number of writable bits in the 32-bit BAR 1, subject to the restrictions described
- * in îBAR Mask Registersî on page 536. The same rules apply for pairs 2/3 and 4/5. Offset: 0x10 (if
+ * in BAR Mask Registers on page 536. The same rules apply for pairs 2/3 and 4/5. Offset: 0x10 (if
  * included in the core hardware configuration)
  */
 typedef union _hw_pcie_ep_bar0
@@ -3294,9 +3294,9 @@ typedef union _hw_pcie_ep_pvccr2
 /*! @name Register PCIE_EP_PVCCR2, field VC_ARBITRATION_CAPABILITY[7:0] (RO)
  *
  * VC Arbitration Capability Indicates which VC arbitration mode(s) the device supports, writable
- * through the DBI: •Bit 0: Device supports hardware fixed arbitration scheme. For the core, the
- * scheme is 16-phase weighted round robin (WRR). •Bit 1: Device supports 32-phase WRR •Bit 2:
- * Device supports 64-phase WRR •Bit 3: Device supports 128-phase WRR •Bits 4-7: Reserved
+ * through the DBI: Bit 0: Device supports hardware fixed arbitration scheme. For the core, the
+ * scheme is 16-phase weighted round robin (WRR). Bit 1: Device supports 32-phase WRR Bit 2:
+ * Device supports 64-phase WRR Bit 3: Device supports 128-phase WRR Bits 4-7: Reserved
  */
 //@{
 #define BP_PCIE_EP_PVCCR2_VC_ARBITRATION_CAPABILITY      (0)      //!< Bit position for PCIE_EP_PVCCR2_VC_ARBITRATION_CAPABILITY.

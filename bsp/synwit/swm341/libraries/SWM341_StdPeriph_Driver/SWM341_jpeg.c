@@ -1,10 +1,10 @@
 /******************************************************************************************************************************************
-* 文件名称: SWM341_jpeg.c
-* 功能说明: SWM341单片机的JPEG解码器驱动库
-* 技术支持: http://www.synwit.com.cn/e/tool/gbook/?bid=1
-* 注意事项:
-* 版本日期: V1.1.0      2017年10月25日
-* 升级记录:
+* : SWM341_jpeg.c
+* : SWM341JPEG
+* : http://www.synwit.com.cn/e/tool/gbook/?bid=1
+* :
+* : V1.1.0      20171025
+* :
 *
 *
 *******************************************************************************************************************************************
@@ -26,12 +26,12 @@
 
 
 /******************************************************************************************************************************************
-* 函数名称: JPEG_Init()
-* 功能说明: JPEG解码器初始化
-* 输    入: JPEG_TypeDef * JPEGx  指定要被设置的JPEG解码器，有效值包括JPEG
-*           JPEG_InitStructure * initStruct    包含JPEG解码器相关设定值的结构体
-* 输    出: 无
-* 注意事项: 无
+* : JPEG_Init()
+* : JPEG
+*     : JPEG_TypeDef * JPEGx  JPEGJPEG
+*           JPEG_InitStructure * initStruct    JPEG
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void JPEG_Init(JPEG_TypeDef * JPEGx, JPEG_InitStructure * initStruct)
 {
@@ -64,13 +64,13 @@ void JPEG_Init(JPEG_TypeDef * JPEGx, JPEG_InitStructure * initStruct)
 
 
 /******************************************************************************************************************************************
-* 函数名称: JPEG_Decode()
-* 功能说明: JPEG解码器解码
-* 输    入: JPEG_TypeDef * JPEGx  指定要被设置的JPEG解码器，有效值包括JPEG
-*           jfif_info_t * jfif_info     要解码图像的信息
-*           jpeg_outset_t * jpeg_outset 解码输出设定
-* 输    出: 无
-* 注意事项: 无
+* : JPEG_Decode()
+* : JPEG
+*     : JPEG_TypeDef * JPEGx  JPEGJPEG
+*           jfif_info_t * jfif_info     
+*           jpeg_outset_t * jpeg_outset 
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void JPEG_Decode(JPEG_TypeDef * JPEGx, jfif_info_t * jfif_info, jpeg_outset_t * jpeg_outset)
 {
@@ -263,11 +263,11 @@ void JPEG_Decode(JPEG_TypeDef * JPEGx, jfif_info_t * jfif_info, jpeg_outset_t * 
 
 
 /******************************************************************************************************************************************
-* 函数名称: JPEG_DecodeBusy()
-* 功能说明: JPEG解码器忙查询
-* 输    入: JPEG_TypeDef * JPEGx  指定要被设置的JPEG解码器，有效值包括JPEG
-* 输    出: uint32_t              1 正在解码    0 空闲，未在解码
-* 注意事项: 无
+* : JPEG_DecodeBusy()
+* : JPEG
+*     : JPEG_TypeDef * JPEGx  JPEGJPEG
+*     : uint32_t              1     0 
+* : 
 ******************************************************************************************************************************************/
 uint32_t JPEG_DecodeBusy(JPEG_TypeDef * JPEGx)
 {

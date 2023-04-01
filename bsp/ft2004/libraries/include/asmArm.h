@@ -1,8 +1,8 @@
 /*
- * @ : Copyright (c) 2021 Phytium Information Technology, Inc.
- *
- * SPDX-License-Identifier: Apache-2.0.
- *
+*@:Copyright(c)2021PhytiumInformationTechnology,Inc.
+*
+*SPDX-License-Identifier:Apache-2.0.
+*
  * @Date: 2021-01-20 10:07:04
  * @LastEditTime: 2021-05-24 14:36:34
  * @LastEditors: Please set LastEditors

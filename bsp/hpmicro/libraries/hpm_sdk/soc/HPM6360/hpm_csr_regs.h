@@ -302,7 +302,7 @@
  * 13:Load page fault
  * 14:Reserved
  * 15:Store/AMO page fault
- * 32：Stack overflow exception
+ * 32Stack overflow exception
  * 33:Stack underflow exception
  * 40-47:Reserved
  */
@@ -414,7 +414,7 @@
 /*
  * FS (RW)
  *
- * FS holds the status of the architectural states of the floating-point unit, including the fcsr CSR and f0 – f31 floating-point data registers. The value of this field is zero and read-only if the processor does not have FPU.
+ * FS holds the status of the architectural states of the floating-point unit, including the fcsr CSR and f0  f31 floating-point data registers. The value of this field is zero and read-only if the processor does not have FPU.
  * This field is primarily managed by software. The processor hardware assists the state managements in two regards:
  * Attempts to access fcsr or any f register raise an illegal-instruction exception when FS is Off.
  * Otherwise, FS is updated to the Dirty state by any instruction that updates fcsr or any f register.
@@ -1036,7 +1036,7 @@
 /*
  * FS (RW)
  *
- * FS holds the status of the architectural states of the floating-point unit, including the fcsr CSR and f0 – f31 floating-point data registers. The value of this field is zero and read-only if the processor does not have FPU. This field is primarily managed by software. The processor hardware assists the state
+ * FS holds the status of the architectural states of the floating-point unit, including the fcsr CSR and f0  f31 floating-point data registers. The value of this field is zero and read-only if the processor does not have FPU. This field is primarily managed by software. The processor hardware assists the state
  * managements in two regards:
  * Attempts to access fcsr or any f register raise an illegal-instruction exception when FS is Off.
  * FS is updated to the Dirty state with the execution of any instruction that updates fcsr or any f register when FS is Initial or Clean. Changing the setting of this field has no effect on the contents of the floating-point register states. In particular, setting FS to Off does not destroy the states, nor does setting FS to Initial clear the contents.
@@ -2580,7 +2580,7 @@
 /*
  * MASKMAX (RO)
  *
- * Indicates the largest naturally aligned range supported by the hardware is 2ˆ12 bytes.
+ * Indicates the largest naturally aligned range supported by the hardware is 212 bytes.
  */
 #define CSR_MCONTROL_MASKMAX_MASK (0x7E00000UL)
 #define CSR_MCONTROL_MASKMAX_SHIFT (21U)
@@ -2974,11 +2974,11 @@
  * type is supported by the currently selected trigger. If the currently selected trigger does not exist, this field contains 1.
  * 0:When this bit is set, there is no trigger at this tselect
  * 1:Reserved and hardwired to 0.
- * 2：When this bit is set, the selected trigger supports type of address/data match trigger
+ * 2When this bit is set, the selected trigger supports type of address/data match trigger
  * 3:When this bit is set, the selected trigger supports type of instruction count trigger.
  * 4:When this bit is set, the selected trigger supports type of interrupt trigger
  * 5:When this bit is set, the selected trigger supports type of exception trigger
- * 15:When this bit is set, the selected trigger exists (so enumeration shouldn’t terminate), but is not currently available.
+ * 15:When this bit is set, the selected trigger exists (so enumeration shouldnt terminate), but is not currently available.
  * Others:Reserved for future use.
  */
 #define CSR_TINFO_INFO_MASK (0xFFFFU)
@@ -3164,7 +3164,7 @@
 /*
  * PRV (RW)
  *
- * The privilege level that the hart was operating in when Debug Mode was entered. The external debugger can modify this value to change the hart’s privilege level when exiting Debug Mode.
+ * The privilege level that the hart was operating in when Debug Mode was entered. The external debugger can modify this value to change the harts privilege level when exiting Debug Mode.
  * 0:User/Application
  * 1:Supervisor
  * 2:Reserved
@@ -4013,7 +4013,7 @@
  *
  * The ID of RAM that caused parity/ECC errors.
  * This bit is updated on parity/ECC error exceptions.
- * 0–1:Reserved
+ * 01:Reserved
  * 2:Tag RAM of I-Cache
  * 3:Data RAM of I-Cache
  * 4:Tag RAM of D-Cache
@@ -4022,7 +4022,7 @@
  * 7:Data RAM of TLB
  * 8:ILM
  * 9:DLM
- * 10–15:Reserved
+ * 1015:Reserved
  */
 #define CSR_MECC_CODE_RAMID_MASK (0x3C0000UL)
 #define CSR_MECC_CODE_RAMID_SHIFT (18U)
@@ -5295,13 +5295,13 @@
  * 16:Imprecise ECC error
  * 17;Bus write transaction error
  * 18:Performance Counter overflow
- * 19–31:Reserved
+ * 1931:Reserved
  * 32:Stack overflow exception
  * 33:Stack underflow exception
  * 34:ACE disabled exception
- * 35–39:Reserved
- * 40–47:ACE exception
- * ≥48:Reserved
+ * 3539:Reserved
+ * 4047:ACE exception
+ * 48:Reserved
  */
 #define CSR_DDCAUSE_MAINTYPE_MASK (0xFFU)
 #define CSR_DDCAUSE_MAINTYPE_SHIFT (0U)

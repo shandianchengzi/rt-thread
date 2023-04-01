@@ -206,7 +206,7 @@ static uint8_t _cyhal_audioss_get_block_from_irqn(_cyhal_system_irq_t irqn)
     }
 }
 
-#if defined(COMPONENT_CAT2) /* PSoCâ„¢ 4 uses a PCLK */
+#if defined(COMPONENT_CAT2) /* PSoC 4 uses a PCLK */
 #define _CYHAL_AUDIOSS_USES_PCLK
 static const en_clk_dst_t _cyhal_audioss_clock[] =
 {

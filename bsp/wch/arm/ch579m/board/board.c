@@ -39,12 +39,12 @@ void SysTick_Handler(void)
 
 void rt_hw_board_init()
 {
-    // 打开PLL
+    // PLL
     PWR_UnitModCfg(ENABLE, UNIT_SYS_PLL);
-    // 设置外部40M做主频
+    // 40M
     SetSysClock(CLK_SOURCE_PLL_40MHz);
     SysTick_Config(GetSysClock() / RT_TICK_PER_SECOND);
-    //开启中断
+    //
     NVIC_SetPriority(SysTick_IRQn, 0);
     NVIC_EnableIRQ(SysTick_IRQn);
 

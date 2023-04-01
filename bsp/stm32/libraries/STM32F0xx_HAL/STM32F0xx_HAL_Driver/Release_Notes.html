@@ -23,14 +23,14 @@
 <div class="sectione dark">
 <center>
 <h1 id="release-notes-for-stm32f0xx-hal-drivers"><strong>Release Notes for STM32F0xx HAL Drivers</strong></h1>
-<p>Copyright © 2016 STMicroelectronics<br />
+<p>Copyright  2016 STMicroelectronics<br />
 </p>
 <a href="https://www.st.com" class="logo"><img src="../../_htmresc/st_logo.png" alt="ST logo" /></a>
 </center>
 </div>
 </div>
 <h1 id="license"><strong>License</strong></h1>
-This software component is licensed by ST under BSD 3-Clause license, the “License”; You may not use this component except in compliance with the License. You may obtain a copy of the License at:
+This software component is licensed by ST under BSD 3-Clause license, the License; You may not use this component except in compliance with the License. You may obtain a copy of the License at:
 <center>
 <a href="https://opensource.org/licenses/BSD-3-Clause">https://opensource.org/licenses/BSD-3-Clause</a>
 </center>
@@ -61,7 +61,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li><strong>LL/HAL DAC</strong> update
 <ul>
-<li>Remove ‘register’ storage class specifier from LL DAC driver.</li>
+<li>Remove register storage class specifier from LL DAC driver.</li>
 </ul></li>
 <li><strong>LL/HAL TIM</strong> update
 <ul>
@@ -75,7 +75,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li><strong>HAL UART</strong> update
 <ul>
-<li>Fix erroneous UART’s handle state in case of error returned after DMA reception start within UART_Start_Receive_DMA().</li>
+<li>Fix erroneous UARTs handle state in case of error returned after DMA reception start within UART_Start_Receive_DMA().</li>
 <li>Correction on UART ReceptionType management in case of ReceptionToIdle API are called from RxEvent callback</li>
 <li>Handling of UART concurrent register access in case of race condition between Tx and Rx transfers (HAL UART and LL LPUART)</li>
 </ul></li>
@@ -83,7 +83,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>Update HAL_CAN_Init() API to be aligned with STM32F3 documentation and to avoid timeout error:
 <ul>
-<li>Update CAN Initialization sequence to set “request initialization” bit before exit from sleep mode.</li>
+<li>Update CAN Initialization sequence to set request initialization bit before exit from sleep mode.</li>
 </ul></li>
 </ul></li>
 <li><strong>LL FMC</strong> update
@@ -113,7 +113,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li><strong>HAL RTC</strong> update
 <ul>
-<li>Update __HAL_RTC_…(__HANDLE__, …) macros to access registers through (__HANDLE__)-&gt;Instance pointer and avoid “unused variable” warnings.</li>
+<li>Update __HAL_RTC_(__HANDLE__, ) macros to access registers through (__HANDLE__)-&gt;Instance pointer and avoid unused variable warnings.</li>
 <li>Correct month management in IS_LL_RTC_MONTH() macro</li>
 </ul></li>
 <li><strong>LL USART</strong> update
@@ -123,8 +123,8 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li><strong>HAL NAND</strong> update
 <ul>
-<li>Update implementation of “HAL_NAND_Read_SpareArea_16b” and “HAL_NAND_Write_SpareArea_16b” to fix an issue with the spare area Column address calculation</li>
-<li>Update implementation of “HAL_NAND_Write_Page_16b” and “HAL_NAND_Read_Page_16b” APIs implementation to fix an issue with the page calculation of 8 bits memories</li>
+<li>Update implementation of HAL_NAND_Read_SpareArea_16b and HAL_NAND_Write_SpareArea_16b to fix an issue with the spare area Column address calculation</li>
+<li>Update implementation of HAL_NAND_Write_Page_16b and HAL_NAND_Read_Page_16b APIs implementation to fix an issue with the page calculation of 8 bits memories</li>
 </ul></li>
 <li><strong>HAL USB_FS</strong> update
 <ul>
@@ -140,7 +140,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <h2 id="main-changes-1">Main Changes</h2>
 <ul>
 <li>Patch release to fix known defects and enhancements implementation.</li>
-<li>Remove “register” keyword to be compliant with new C++ rules:
+<li>Remove register keyword to be compliant with new C++ rules:
 <ul>
 <li>The register storage class specifier was deprecated in C++11 and removed in C++17</li>
 </ul></li>
@@ -152,7 +152,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>__packed</li>
 <li>__NOINLINE</li>
 </ul></li>
-<li>Remove compile switch “USE_HAL_LEGACY” on #include “Legacy/stm32_hal_legacy.h”</li>
+<li>Remove compile switch USE_HAL_LEGACY on #include Legacy/stm32_hal_legacy.h</li>
 <li>Update HAL TimeBase TIM, RTC alarm and RTC WakeUp templates for more robustness
 <ul>
 <li>Update HAL_InitTick() API to properly store the priority when using the non-default time base.</li>
@@ -169,7 +169,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li><strong>HAL TSC</strong> update
 <ul>
-<li>Update the HAL_TSC_Init() API to add new check condition on “PulseGeneratorPrescaler” Parameter</li>
+<li>Update the HAL_TSC_Init() API to add new check condition on PulseGeneratorPrescaler Parameter</li>
 </ul></li>
 <li><strong>HAL FLASH</strong> update
 <ul>
@@ -204,7 +204,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li><strong>HAL/LL TIM</strong> update
 <ul>
-<li>Update Encoder input interface to don’t allow both input polarity configuration
+<li>Update Encoder input interface to dont allow both input polarity configuration
 <ul>
 <li>Replace IS_TIM_IC_POLARITY() macro by IS_TIM_ENCODERINPUT_POLARITY() macro.</li>
 </ul></li>
@@ -264,7 +264,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li><strong>HAL/LL GPIO</strong> update
 <ul>
-<li>Update GPIO initialization sequence to avoid unwanted pulse on GPIO Pin’s</li>
+<li>Update GPIO initialization sequence to avoid unwanted pulse on GPIO Pins</li>
 <li>Update HAL_GPIO_TogglePin() API to allow the toggling of many pins</li>
 </ul></li>
 <li><strong>HAL/LL I2C</strong> update
@@ -273,7 +273,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>Add stop condition generation when NACK occurs.</li>
 </ul></li>
-<li>Update I2C_DMAXferCplt(), I2C_DMAError() and I2C_DMAAbort() APIs to fix hardfault issue when hdmatx and hdmarx parameters in i2c handle aren’t initialized (NULL pointer).
+<li>Update I2C_DMAXferCplt(), I2C_DMAError() and I2C_DMAAbort() APIs to fix hardfault issue when hdmatx and hdmarx parameters in i2c handle arent initialized (NULL pointer).
 <ul>
 <li>Add additional check on hi2c-&gt;hdmtx and hi2c-&gt;hdmarx before resetting DMA Tx/Rx complete callbacks</li>
 </ul></li>
@@ -322,7 +322,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>Update HAL driver to allow user to change systick period to 1ms, 10 ms or 100 ms :
 <ul>
-<li>Add the following API’s :
+<li>Add the following APIs :
 <ul>
 <li>HAL_GetTickPrio(): Returns a tick priority.</li>
 <li>HAL_SetTickFreq(): Sets new tick frequency.</li>
@@ -615,7 +615,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>HAL_CAN_Slepp() is renamed as HAL_CAN_RequestSleep()</li>
 <li>HAL_CAN_TxCpltCallback() is split into HAL_CAN_TxMailbox0CompleteCallback(), HAL_CAN_TxMailbox1CompleteCallback() and HAL_CAN_TxMailbox2CompleteCallback().</li>
 <li>HAL_CAN_RxCpltCallback is split into HAL_CAN_RxFifo0MsgPendingCallback() and HAL_CAN_RxFifo1MsgPendingCallback().</li>
-<li>More complete “How to use the new driver” is detailed in the driver header section itself.</li>
+<li>More complete How to use the new driver is detailed in the driver header section itself.</li>
 </ul></li>
 <li><strong>HAL FLASH</strong> update
 <ul>
@@ -728,7 +728,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 </ul></li>
 <li><strong>HAL SMBUS</strong>
 <ul>
-<li>Add new feature “ZONE READ/WRITE” : The ZONE_READ and ZONE_WRITE protocols are used to simultaneously read from or write to some or all of the devices on a bus. New options defined (SMBUS_OTHER_FRAME_NO_PEC, SMBUS_OTHER_FRAME_WITH_PEC, SMBUS_OTHER_AND_LAST_FRAME_NO_PEC, SMBUS_OTHER_AND_LAST_FRAME_WITH_PEC).</li>
+<li>Add new feature ZONE READ/WRITE : The ZONE_READ and ZONE_WRITE protocols are used to simultaneously read from or write to some or all of the devices on a bus. New options defined (SMBUS_OTHER_FRAME_NO_PEC, SMBUS_OTHER_FRAME_WITH_PEC, SMBUS_OTHER_AND_LAST_FRAME_NO_PEC, SMBUS_OTHER_AND_LAST_FRAME_WITH_PEC).</li>
 <li>New API : Digital/Analog filter configuration with HAL_SMBUS_ConfigAnalogFilter() and HAL_SMBUS_ConfigDigitalFilter().</li>
 </ul></li>
 <li><strong>HAL PCD</strong>
@@ -741,7 +741,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>MISRA C 2004 rule 10.6 (U suffix applied to all constants of unsigned type).</li>
 <li>MISRA C 2004 rule 11.5 (no cast that removes any const or volatile qualification from the type addressed by a pointer).</li>
 <li>Remove useless cast (uint32_t ) cast in case of U suffix.</li>
-<li>Replace hard coded POSITION definition in driver by the associated PPP_xxx_pos CMSIS define (PPP could be I2C, USART …).</li>
+<li>Replace hard coded POSITION definition in driver by the associated PPP_xxx_pos CMSIS define (PPP could be I2C, USART ).</li>
 </ul></li>
 <li><strong>LL GPIO</strong>
 <ul>
@@ -810,7 +810,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>HAL CEC driver: Overall driver rework with compatibility break versus previous HAL version
 <ul>
 <li>Remove HAL CEC polling Process functions: HAL_CEC_Transmit() and HAL_CEC_Receive()</li>
-<li>Remove HAL CEC receive interrupt process function HAL_CEC_Receive_IT() and enable the “receive” mode during the Init phase</li>
+<li>Remove HAL CEC receive interrupt process function HAL_CEC_Receive_IT() and enable the receive mode during the Init phase</li>
 <li>Rename HAL_CEC_GetReceivedFrameSize() funtion to HAL_CEC_GetLastReceivedFrameSize()</li>
 <li>Add new HAL APIs: HAL_CEC_SetDeviceAddress() and HAL_CEC_ChangeRxBuffer()</li>
 <li>Remove the InitiatorAddress field from the CEC_InitTypeDef structure and manage it as a parameter in the HAL_CEC_Transmit_IT() function</li>
@@ -823,7 +823,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>Update HAL Driver compliancy with:
 <ul>
 <li>MISRA C 2004 rule 10.6 (U suffix applied to all constants of unsigned type)</li>
-<li>MISRA C 2004 rule 14.8 (the statement forming the body of a switch, while, do … while, or for statement shall be a compound statement)</li>
+<li>MISRA C 2004 rule 14.8 (the statement forming the body of a switch, while, do  while, or for statement shall be a compound statement)</li>
 </ul></li>
 </ul></li>
 <li><strong>HAL IWDG</strong>
@@ -851,7 +851,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <li>Overall driver rework with break of compatibility with HAL V1.4.0
 <ul>
 <li>Remove the HAL CEC polling Process: HAL_CEC_Transmit() and HAL_CEC_Receive()</li>
-<li>Remove the HAL CEC receive interrupt process (HAL_CEC_Receive_IT()) and manage the “Receive” mode enable within the Init phase</li>
+<li>Remove the HAL CEC receive interrupt process (HAL_CEC_Receive_IT()) and manage the Receive mode enable within the Init phase</li>
 <li>Rename HAL_CEC_GetReceivedFrameSize() function to HAL_CEC_GetLastReceivedFrameSize() function</li>
 <li>Add new HAL APIs: HAL_CEC_SetDeviceAddress() and HAL_CEC_ChangeRxBuffer()</li>
 <li>Remove the InitiatorAddress field from the CEC_InitTypeDef structure and manage it as a parameter in the HAL_CEC_Transmit_IT() function</li>
@@ -882,7 +882,7 @@ This software component is licensed by ST under BSD 3-Clause license, the “Lic
 <ul>
 <li>Polling mode:
 <ul>
-<li>Replace the use of SPI_WaitOnFlagUnitTimeout() function by “if” statement to check on RXNE/TXE flage while transferring data</li>
+<li>Replace the use of SPI_WaitOnFlagUnitTimeout() function by if statement to check on RXNE/TXE flage while transferring data</li>
 </ul></li>
 <li>Interrupt mode:</li>
 <li>Minimize access on SPI registers</li>

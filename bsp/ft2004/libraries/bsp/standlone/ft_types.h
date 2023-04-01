@@ -1,15 +1,15 @@
 /*
- * @ : Copyright (c) 2021 Phytium Information Technology, Inc.
- *
- * SPDX-License-Identifier: Apache-2.0.
- *
+*@:Copyright(c)2021PhytiumInformationTechnology,Inc.
+*
+*SPDX-License-Identifier:Apache-2.0.
+*
  * @Date: 2021-04-07 09:53:07
  * @LastEditTime: 2021-05-11 10:18:14
- * @Description:  This files is for definition of system-level types
+ * @Description: This files is for definition of system-level types
  *
- * @Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * @ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 #ifndef FT_TYPES_H
@@ -38,9 +38,9 @@
 
 #define __STATIC_INLINE static inline
 
-#define FT_OUT   /* 表示输出参数，指针指向的值会修改，且不会读  */
-#define FT_IN    /* 表示输入参数，指针指向的值不会修改 */
-#define FT_INOUT /* 表示输入输出参数，指针指向的值会修改，且会读取 */
+#define FT_OUT   /*   */
+#define FT_IN    /*  */
+#define FT_INOUT /*  */
 #define FT_IO volatile
 
 typedef char s8;

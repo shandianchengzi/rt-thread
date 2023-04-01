@@ -1,6 +1,6 @@
 # STM32F469-ST-DISCO BSP Introduction
 
-[中文](README_zh.md) 
+[](README_zh.md) 
 
 This document records the instruction of the BSP (board support package) that provided by the RT-Thread development team for the STM32F469-ST-DISCO development board.
 
@@ -14,7 +14,7 @@ By reading the ***Quickly Get Started*** section developers can quickly get thei
 
 ## Resources Introduction
 
-The STM32F469 Discovery kit allows users to easily develop applications with the STM32F469 high-performance MCUs with ARM®Cortex®-M4 core and Chrom-ART Accelerator™. The discovery kit enables a wide range of use cases taking advantage of premium graphics, audio, multi-sensor support, WVGA color display, security, memory extension and connectivity features. 
+The STM32F469 Discovery kit allows users to easily develop applications with the STM32F469 high-performance MCUs with ARMCortex-M4 core and Chrom-ART Accelerator. The discovery kit enables a wide range of use cases taking advantage of premium graphics, audio, multi-sensor support, WVGA color display, security, memory extension and connectivity features. 
 
 [![board](https://github.com/RT-Thread/rt-thread/raw/master/bsp/stm32/stm32f469-st-disco/figures/board.png)](https://github.com/RT-Thread/rt-thread/blob/master/bsp/stm32/stm32f469-st-disco/figures/board.png)
 
@@ -25,10 +25,10 @@ Features:
 - External FLASH: 7LL12D9NOR, 16MB
 - Common-used Peripherals:
   - LED: 4, LD1(Green, PG6), LD2(Orange, PD4), LD3(Red,PD5), LD4(Blue, PK3)
-  - Button: 1, USER( has wake-up feature, PA0）
-  - LCD：4 inches 800x480 pixel TFT
+  - Button: 1, USER( has wake-up feature, PA0
+  - LCD4 inches 800x480 pixel TFT
   - Audio: SAI Audio DAC
-- Common-used interface: Arduino UNO V3 、MicroSD Card、Audio、LCD、I2C, etc.
+- Common-used interface: Arduino UNO V3 MicroSD CardAudioLCDI2C, etc.
 - Debugging interface, standard ST-LINK/V2-1 SWD 
 
 More info about this board, please check [ST Official](https://www.st.com/en/evaluation-tools/32f469idiscovery.html). 
@@ -39,19 +39,19 @@ Each peripheral supporting condition for this BSP is as follows:
 
 | **On-board Peripherals** | **Support** | Remark                                                    |
 | ------------------------ | ----------- | --------------------------------------------------------- |
-| SDRAM                    | √           | 16MB                                                      |
-| LCD                      | √           | MIPI LCD, otm8009a                                        |
-| SDCARD                   | √           | Support hot swapping, plug-in detection interval of 200ms |
-| TOUCH                    | √           | ft6206                                                    |
+| SDRAM                    |            | 16MB                                                      |
+| LCD                      |            | MIPI LCD, otm8009a                                        |
+| SDCARD                   |            | Support hot swapping, plug-in detection interval of 200ms |
+| TOUCH                    |            | ft6206                                                    |
 | **On-chip Peripherals**  | **Support** | **Remark**                                                |
-| GPIO                     | √           |                                                           |
+| GPIO                     |            |                                                           |
 | USART                    | v           | USART3                                                    |
-| SPI                      | √           | SPI3                                                      |
-| QSPI                     | √           |                                                           |
-| I2C                      | √           | I2C                                                       |
-| FLASH                    | √           | Fits to [FAL](https://github.com/RT-Thread-packages/fal)  |
-| SDI                      | √           |                                                           |
-| USB Device               | √           |                                                           |
+| SPI                      |            | SPI3                                                      |
+| QSPI                     |            |                                                           |
+| I2C                      |            | I2C                                                       |
+| FLASH                    |            | Fits to [FAL](https://github.com/RT-Thread-packages/fal)  |
+| SDI                      |            |                                                           |
+| USB Device               |            |                                                           |
 | **Expansion Module**     | **Support** | **Remark**                                                |
 | N/A                      | N/A         | N/A                                                       |
 

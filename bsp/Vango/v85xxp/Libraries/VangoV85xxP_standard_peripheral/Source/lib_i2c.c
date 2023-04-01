@@ -301,7 +301,7 @@ void I2C_ClearINTStatus(void)
                     I2C_SUBADDR_2BYTE   (Slave device sub-address type: 2 bytes)
                     I2C_SUBADDR_OTHER   (Slave device sub-address type: othres)
   * @retval 0: true
-            £¡0£ºstatus code
+            0status code
                 bit15~8    status code(true)
                 bit7~0     status code(false)
   */
@@ -426,7 +426,7 @@ uint16_t I2C_MasterReadBytes(I2C_WRType *InitStruct)
                     I2C_SUBADDR_2BYTE   (Slave device sub-address type: 2 bytes)
                     I2C_SUBADDR_OTHER   (Slave device sub-address type: othres)
   * @retval 0: true
-            £¡0£ºstatus code
+            0status code
                 bit15~8    status code(true)
                 bit7~0     status code(false)
   */

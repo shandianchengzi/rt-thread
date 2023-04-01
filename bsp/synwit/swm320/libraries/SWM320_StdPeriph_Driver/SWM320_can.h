@@ -5,14 +5,14 @@
 #define CAN_FRAME_EXT   1
 
 typedef struct {
-    uint8_t  Mode;          //CAN_MODE_NORMAL、CAN_MODE_LISTEN、CAN_MODE_SELFTEST
-    uint8_t  CAN_BS1;       //CAN_BS1_1tq、CAN_BS1_2tq、... ... 、CAN_BS1_16tq
-    uint8_t  CAN_BS2;       //CAN_BS2_1tq、CAN_BS2_2tq、... ... 、CAN_BS2_8tq
-    uint8_t  CAN_SJW;       //CAN_SJW_1tq、CAN_SJW_2tq、CAN_SJW_3tq、CAN_SJW_4tq
-    uint32_t Baudrate;      //波特率，即位传输速率，取值1--1000000
-    uint8_t  FilterMode;    //CAN_FILTER_16b、CAN_FILTER_32b
+    uint8_t  Mode;          //CAN_MODE_NORMALCAN_MODE_LISTENCAN_MODE_SELFTEST
+    uint8_t  CAN_BS1;       //CAN_BS1_1tqCAN_BS1_2tq... ... CAN_BS1_16tq
+    uint8_t  CAN_BS2;       //CAN_BS2_1tqCAN_BS2_2tq... ... CAN_BS2_8tq
+    uint8_t  CAN_SJW;       //CAN_SJW_1tqCAN_SJW_2tqCAN_SJW_3tqCAN_SJW_4tq
+    uint32_t Baudrate;      //1--1000000
+    uint8_t  FilterMode;    //CAN_FILTER_16bCAN_FILTER_32b
     union {
-        uint32_t FilterMask32b;     //FilterCheck & (~FilterMask) == ID & (~FilterMask)的Message通过过滤
+        uint32_t FilterMask32b;     //FilterCheck & (~FilterMask) == ID & (~FilterMask)Message
         struct {                    // 0 must match    1 don't care
             uint16_t FilterMask16b1;
             uint16_t FilterMask16b2;
@@ -25,15 +25,15 @@ typedef struct {
             uint16_t FilterCheck16b2;
         };
     };
-    uint8_t  RXNotEmptyIEn;     //接收FIFO非空，有数据可读
-    uint8_t  RXOverflowIEn;     //接收FIFO溢出，有数据丢失
-    uint8_t  ArbitrLostIEn;     //控制器丢失仲裁变成接收方
-    uint8_t  ErrPassiveIEn;     //接收/发送错误计数值达到127
+    uint8_t  RXNotEmptyIEn;     //FIFO
+    uint8_t  RXOverflowIEn;     //FIFO
+    uint8_t  ArbitrLostIEn;     //
+    uint8_t  ErrPassiveIEn;     ///127
 } CAN_InitStructure;
 
-#define CAN_MODE_NORMAL     0   //常规模式
-#define CAN_MODE_LISTEN     1   //监听模式
-#define CAN_MODE_SELFTEST   2   //自测模式
+#define CAN_MODE_NORMAL     0   //
+#define CAN_MODE_LISTEN     1   //
+#define CAN_MODE_SELFTEST   2   //
 
 #define CAN_BS1_1tq         0
 #define CAN_BS1_2tq         1
@@ -66,15 +66,15 @@ typedef struct {
 #define CAN_SJW_3tq         2
 #define CAN_SJW_4tq         3
 
-#define CAN_FILTER_16b      0   //两个16位过滤器
-#define CAN_FILTER_32b      1   //一个32位过滤器
+#define CAN_FILTER_16b      0   //16
+#define CAN_FILTER_32b      1   //32
 
 typedef struct {
-    uint32_t id;        //消息ID
-    uint8_t  format;    //帧格式：CAN_FRAME_STD、CAN_FRAME_EXT
-    uint8_t  remote;    //消息是否为远程帧
-    uint8_t  size;      //接收到的数据个数
-    uint8_t  data[8];   //接收到的数据
+    uint32_t id;        //ID
+    uint8_t  format;    //CAN_FRAME_STDCAN_FRAME_EXT
+    uint8_t  remote;    //
+    uint8_t  size;      //
+    uint8_t  data[8];   //
 } CAN_RXMessage;
 
 

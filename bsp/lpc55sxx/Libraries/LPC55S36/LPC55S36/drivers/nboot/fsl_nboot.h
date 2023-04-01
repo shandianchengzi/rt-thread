@@ -255,7 +255,7 @@ nboot_status_t NBOOT_ContextDeinit(nboot_context_t *context);
  * function. The NBOOT context has to be initialized by the function nboot_context_init before calling
  * this function. Please note that this API is intended to be used only by users who needs to split
  * FW update process (loading of SB3.1 file) to partial steps to customize whole operation.
- * For regular SB3.1 processing, please use API described in chapter ¡°SBloader APIs¡±.
+ * For regular SB3.1 processing, please use API described in chapter SBloader APIs.
  *
  * @param nbootCtx Pointer to nboot_context_t structure.
  * @param manifest Pointer to the input manifest buffer
@@ -275,7 +275,7 @@ nboot_status_protected_t NBOOT_Sb3LoadManifest(nboot_context_t *context,
  * The NBOOT context has to be initialized by the function nboot_context_init before calling this function.
  * Please note that this API is intended to be used only by users who needs to split FW update process
  * (loading of SB3.1 file) to partial steps to customize whole operation. For regular SB3.1 processing,
- * please use API described in chapter ¡°SBloader APIs¡±.
+ * please use API described in chapter SBloader APIs.
  *
  * @param context Pointer to nboot_context_t structure.
  * @param block Pointer to the input SB3.1 data block

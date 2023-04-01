@@ -28,10 +28,10 @@
 #define UART_MSB(base)		HWREG8(base + 0x01)
 
 /* interrupt enable register */
-#define	IER_IRxE	0x1	/* 接收有效数据中断使能 */
-#define	IER_ITxE	0x2	/* 传输保存寄存器为空中断使能 */
-#define	IER_ILE	    0x4	/* 接收器线路状态中断使能 */
-#define	IER_IME	    0x8	/* Modem状态中断使能 */
+#define	IER_IRxE	0x1	/*  */
+#define	IER_ITxE	0x2	/*  */
+#define	IER_ILE	    0x4	/*  */
+#define	IER_IME	    0x8	/* Modem */
 
 /* interrupt identification register */
 #define	IIR_IMASK	0xf	/* mask */
@@ -53,7 +53,7 @@
 #define	FIFO_TRIGGER_8	0x80	/* trigger at 8 chars */
 #define	FIFO_TRIGGER_14	0xc0	/* trigger at 14 chars */
 
-// 线路控制寄存器
+// 
 /* character format control register */
 #define	CFCR_DLAB	0x80	/* divisor latch */
 #define	CFCR_SBREAK	0x40	/* send break */

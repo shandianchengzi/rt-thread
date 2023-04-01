@@ -225,7 +225,7 @@ void SDRAM_Init (void)
     LPC_EMC->DynamicWR         = 2 - 1; /* 2CLK,  */
     LPC_EMC->DynamicRC         = EMC_NS2CLK(63, nsPerClk); /* H57V2562GTR-75C tRC=63ns(min)*/
     LPC_EMC->DynamicRFC        = EMC_NS2CLK(63, nsPerClk); /* H57V2562GTR-75C tRFC=tRC */
-    LPC_EMC->DynamicXSR        = 0x0000000F; /* exit self-refresh to active, 不知道，设为最久  */
+    LPC_EMC->DynamicXSR        = 0x0000000F; /* exit self-refresh to active,   */
     LPC_EMC->DynamicRRD        = EMC_NS2CLK(63, nsPerClk); /* 3clk, tRRD=15ns(min) */
     LPC_EMC->DynamicMRD        = 2 - 1; /* 2clk, tMRD=2clk(min) */
 

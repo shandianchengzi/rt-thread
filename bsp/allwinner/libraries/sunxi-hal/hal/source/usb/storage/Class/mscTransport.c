@@ -33,13 +33,13 @@
 *                     mscUrbCallBack
 *
 * Description:
-*    urb call back����
+*    urb call back
 *
 * Parameters:
-*    urb : input. ��Ҫ������URB
+*    urb : input. URB
 *
 * Return value:
-*    ��
+*    
 *
 * note:
 *
@@ -113,14 +113,14 @@ static void mscTimeOut(void *parg)
 *                     mscUsbTransport
 *
 * Description:
-*    ����URB
+*    URB
 *
 * Parameters:
-*    mscDev   :  input. Ŀ���豸
-*    TimeOut  :  input. ��ʱʱ��
+*    mscDev   :  input. 
+*    TimeOut  :  input. 
 *
 * Return value:
-*    ����URB��״̬
+*    URB
 *
 * note:
 *
@@ -149,7 +149,7 @@ static int mscUsbTransport(__mscDev_t *mscDev, unsigned int TimeOut)
     mscDev->CurrentUrb->actual_length = 0;
     mscDev->CurrentUrb->error_count   = 0;
     mscDev->CurrentUrb->status        = 0;
-    /* ����buffer���䷽ʽ, �������msc��buff, �Ͳ���ʹ��DMA�� ��Ϊbuffer, Ҫpalloc������ */
+    /* buffer, mscbuff, DMA buffer, palloc */
     mscDev->CurrentUrb->transfer_flags = URB_ASYNC_UNLINK;
 //    mscDev->CurrentUrb->transfer_flags = URB_ASYNC_UNLINK | URB_NO_SETUP_DMA_MAP;
 
@@ -220,21 +220,21 @@ static int mscUsbTransport(__mscDev_t *mscDev, unsigned int TimeOut)
 *                     mscCtrlMsg
 *
 * Description:
-*    ���Ϳ�������
+*    
 *
 * Parameters:
-*    mscDev         :  input.  Ŀ���豸
-*    Pipe           :  input.  URB�ܵ�
-*    Request        :  input.  ��������
-*    RequestType    :  input.  ������������
-*    Value          :  input.  ֵ
-*    Index          :  input.  ����
-*    Buffer         :  input.  ������
-*    BufferLen      :  input.  ��������С
-*    TimeOut        :  input.  URB��ʱʱ��
+*    mscDev         :  input.  
+*    Pipe           :  input.  URB
+*    Request        :  input.  
+*    RequestType    :  input.  
+*    Value          :  input.  
+*    Index          :  input.  
+*    Buffer         :  input.  
+*    BufferLen      :  input.  
+*    TimeOut        :  input.  URB
 *
 * Return value:
-*    ����URB��״̬
+*    URB
 *
 * note:
 *
@@ -257,7 +257,7 @@ static int mscSendCtrlReq(__mscDev_t *mscDev,
         return USB_ERR_BAD_ARGUMENTS;
     }
 
-    /* ���ctrl���� */
+    /* ctrl */
     mscDev->CtrlReq->bRequest     = Request;
     mscDev->CtrlReq->bRequestType = RequestType;
     mscDev->CtrlReq->wValue       = cpu_to_le16(Value);
@@ -282,14 +282,14 @@ static int mscSendCtrlReq(__mscDev_t *mscDev,
 *                     mscClearHalt
 *
 * Description:
-*    ���ep����״̬
+*    ep
 *
 * Parameters:
-*    mscDev     :  input. Ŀ���豸
-*    Pipe       :  input. urb��pipe
+*    mscDev     :  input. 
+*    Pipe       :  input. urbpipe
 *
 * Return value:
-*    ����URB��ִ�н��
+*    URB
 *
 * note:
 *
@@ -339,17 +339,17 @@ static int mscClearHalt(__mscDev_t *mscDev, unsigned int Pipe)
 *                     AnalyseBlukUrbState
 *
 * Description:
-*    ����Bulk Urb��״̬
+*    Bulk Urb
 *
 * Parameters:
-*    mscDev     :  input. Ŀ���豸
-*    UrbState   :  input. URB��ִ��״̬
-*    Pipe       :  input. urb��pipe
-*    WantLen    :  input. ԭ���봫������ݳ���
-*    ActLen     :  input. ʵ�ʴ�������ݳ���
+*    mscDev     :  input. 
+*    UrbState   :  input. URB
+*    Pipe       :  input. urbpipe
+*    WantLen    :  input. 
+*    ActLen     :  input. 
 *
 * Return value:
-*    ����USB����Ľ��
+*    USB
 *
 * note:
 *
@@ -437,18 +437,18 @@ static int AnalyseBulkUrbState(__mscDev_t *mscDev,
 *                     mscSendBlukReq
 *
 * Description:
-*    ����bulk����
+*    bulk
 *
 * Parameters:
-*    mscDev     :  input. Ŀ���豸
-*    Pipe       :  input. urb��pipe
-*    Buffer     :  input. ������
-*    BufferLen  :  input. ��������С
-*    ActLen     :  input. ʵ�ʴ�������ݳ���
-*    TimeOut    :  input. URB��ʱʱ��
+*    mscDev     :  input. 
+*    Pipe       :  input. urbpipe
+*    Buffer     :  input. 
+*    BufferLen  :  input. 
+*    ActLen     :  input. 
+*    TimeOut    :  input. URB
 *
 * Return value:
-*    ����USB����Ľ��
+*    USB
 *
 * note:
 *
@@ -491,13 +491,13 @@ static int mscSendBulkReq(__mscDev_t *mscDev,
 *                     GetMaxLun
 *
 * Description:
-*    ������Lun������������豸���ʧ�ܣ���ô��Ĭ���豸ֻ��1��Lun
+*    Lun1Lun
 *
 * Parameters:
-*    mscDev  :  input. Ŀ���豸
+*    mscDev  :  input. 
 *
 * Return value:
-*    Lun ����
+*    Lun 
 *
 * note:
 *
@@ -620,13 +620,13 @@ static int mscBoReset(__mscDev_t *mscDev)
 *                     mscPortReset
 *
 * Description:
-*    reset �豸
+*    reset 
 *
 * Parameters:
-*    mscDev  :  input. Ŀ���豸
+*    mscDev  :  input. 
 *
 * Return value:
-*    ���سɹ�����ʧ��
+*    
 *
 * note:
 *
@@ -775,8 +775,8 @@ int mscBoTransport(__mscDev_t *mscDev, __ScsiCmnd_t *ScsiCmnd)
                              &ActLen,
                              TimeOut);
 
-        /* ��Щ�豸��read/write��������ݴ�������У������ep stall��
-           �����������������clear feature�ǲ����ģ�������Ҫ�����ش���
+        /* read/writeep stall
+           clear feature
           */
         if (ret == USB_STOR_XFER_STALLED)
         {

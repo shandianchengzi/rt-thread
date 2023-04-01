@@ -48,28 +48,28 @@ extern "C" {
   */
 typedef struct
 {
-    /* 内部时钟源 */
+    /*  */
     uint32_t clockSource;
 
-    /* 预分频器的时钟源 可选择内部时钟, 也可选择外部时钟 */
+    /*  ,  */
     uint32_t prescalerClockSource;
 
-    /* 预分频系数 */
+    /*  */
     uint32_t prescaler;
 
-    /* 重装值 */
+    /*  */
     uint32_t autoReload;
 
-    /* 定时器工作模式选择 */
+    /*  */
     uint32_t mode;
 
-    /* 单次计数使能 */
+    /*  */
     uint32_t onePulseMode;
 
-    /* ETR异步计数边沿 */
+    /* ETR */
     uint32_t countEdge;
 
-    /* ETR触发计数边沿 */
+    /* ETR */
     uint32_t triggerEdge;
 
 } FL_LPTIM32_InitTypeDef;
@@ -79,10 +79,10 @@ typedef struct
   */
 typedef struct
 {
-    /* 比较值 */
+    /*  */
     uint32_t compareValue;
 
-    /* 比较输出极性 */
+    /*  */
     uint32_t OCPolarity;
 
 } FL_LPTIM32_OC_InitTypeDef;
@@ -92,10 +92,10 @@ typedef struct
   */
 typedef struct
 {
-    /* 通道1捕获源 */
+    /* 1 */
     uint32_t ICSource;
 
-    /* 输入捕获极性 */
+    /*  */
     uint32_t ICEdge;
 
 } FL_LPTIM32_IC_InitTypeDef;

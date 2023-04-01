@@ -161,7 +161,7 @@ static rt_ssize_t touch_readpoint(struct rt_touch_device *touch, void *buf, rt_s
 
     current_driver->ops->read_point(data, touch_num);
 
-    /* touch up事件是上次转换后的，所以不需要执行转换 */
+    /* touch up */
     if ((RT_TOUCH_EVENT_NONE != data->event) && (RT_TOUCH_EVENT_UP != data->event))
     {
         x = data->x_coordinate;

@@ -48,10 +48,10 @@ extern "C" {
   */
 typedef struct
 {
-    /** 主机时使用的时钟源*/
+    /** */
     uint32_t clockSource;
 
-    /** I2C通讯速率*/
+    /** I2C*/
     uint32_t baudRate;
 
 } FL_I2C_MasterMode_InitTypeDef;
@@ -61,16 +61,16 @@ typedef struct
   */
 typedef struct
 {
-    /** 从机模式从机地址 */
+    /**  */
     uint32_t ownAddr;
 
-    /** 从机模式自动回应ACK */
+    /** ACK */
     uint32_t ACK;
 
-    /** 从机模式地址位宽 */
+    /**  */
     uint32_t ownAddrSize10bit;
 
-    /** 从机时钟延展*/
+    /** */
     uint32_t SCLSEN;
 
 } FL_I2C_SlaveMode_InitTypeDef;

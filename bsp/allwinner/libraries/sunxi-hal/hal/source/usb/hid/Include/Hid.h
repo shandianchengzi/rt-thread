@@ -11,7 +11,7 @@
 *
 * Date          :  2010/06/02
 *
-* Description   :  Hid Driver中对USB接口设备的描述
+* Description   :  Hid DriverUSB
 *
 * Others        :  NULL
 *

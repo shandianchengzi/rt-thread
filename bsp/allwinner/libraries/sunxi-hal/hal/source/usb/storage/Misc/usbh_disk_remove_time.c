@@ -38,7 +38,7 @@ static unsigned int usbh_disk_time[USBH_DISK_REMOVE_TIME_UNIT];
 * Returns:
 *    void
 * note:
-*    无
+*    
 *
 *********************************************************************
 */
@@ -69,7 +69,7 @@ void usbh_disk_save_time(unsigned int time)
 * Returns:
 *    void
 * note:
-*    无
+*    
 *
 *********************************************************************
 */
@@ -100,7 +100,7 @@ void usbh_disk_del_time(unsigned int time)
 * Returns:
 *    void
 * note:
-*    无
+*    
 *
 *********************************************************************
 */
@@ -131,7 +131,7 @@ unsigned int get_max_disk_time(void)
 * Returns:
 *    void
 * note:
-*    无
+*    
 *
 *********************************************************************
 */
@@ -151,7 +151,7 @@ void usbh_disk_time_init(void)
 * Returns:
 *    void
 * note:
-*    无
+*    
 *
 *********************************************************************
 */

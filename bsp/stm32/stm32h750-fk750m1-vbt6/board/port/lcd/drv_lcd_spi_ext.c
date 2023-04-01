@@ -97,18 +97,18 @@ void LCD_SPI_CloseTransfer(SPI_HandleTypeDef *hspi)
 }
 
 /**
- * @brief  专为屏幕清屏而修改，将需要清屏的颜色批量传输
- * @param  pData  : 要写入的数据
- * @param  Size   : 数据大小
+ * @brief  
+ * @param  pData  : 
+ * @param  Size   : 
  * @retval status
  */
 
 rt_err_t SPI_Transmit_Ext(uint16_t pData, uint32_t Size)
 {
     uint32_t tickstart;
-    uint32_t Timeout = 1000;  // 超时判断
-    uint32_t LCD_pData_32bit; // 按32位传输时的数据
-    uint32_t LCD_TxDataCount; // 传输计数
+    uint32_t Timeout = 1000;  // 
+    uint32_t LCD_pData_32bit; // 32
+    uint32_t LCD_TxDataCount; // 
     rt_err_t errorcode = RT_EOK;
     SPI_HandleTypeDef *hspi = spi_handle;
 
@@ -137,8 +137,8 @@ rt_err_t SPI_Transmit_Ext(uint16_t pData, uint32_t Size)
     hspi->State     = HAL_SPI_STATE_BUSY_TX;
     hspi->ErrorCode = HAL_SPI_ERROR_NONE;
 
-    LCD_TxDataCount = Size;                  // 传输的数据长度
-    LCD_pData_32bit = (pData << 16) | pData; // 按32位传输时，合并2个像素点的颜色
+    LCD_TxDataCount = Size;                  // 
+    LCD_pData_32bit = (pData << 16) | pData; // 322
 
     /*Init field not used in handle to zero */
     hspi->pRxBuffPtr  = NULL;
@@ -152,7 +152,7 @@ rt_err_t SPI_Transmit_Ext(uint16_t pData, uint32_t Size)
         SPI_1LINE_TX(hspi);
     }
 
-    // 不使用硬件 TSIZE 控制，此处设置为0，即不限制传输的数据长度
+    //  TSIZE 0
     MODIFY_REG(hspi->Instance->CR2, SPI_CR2_TSIZE, 0);
 
     /* Enable SPI peripheral */
@@ -194,14 +194,14 @@ rt_err_t SPI_Transmit_Ext(uint16_t pData, uint32_t Size)
         SET_BIT(hspi->ErrorCode, HAL_SPI_ERROR_FLAG);
     }
 
-    SET_BIT((hspi)->Instance->CR1, SPI_CR1_CSUSP); // 请求挂起SPI传输
-    /* 等待SPI挂起 */
+    SET_BIT((hspi)->Instance->CR1, SPI_CR1_CSUSP); // SPI
+    /* SPI */
     if (LCD_SPI_WaitOnFlagUntilTimeout(hspi, SPI_FLAG_SUSP, RESET, tickstart, Timeout) != HAL_OK) {
         SET_BIT(hspi->ErrorCode, HAL_SPI_ERROR_FLAG);
     }
     LCD_SPI_CloseTransfer(hspi); /* Call standard close procedure with error check */
 
-    SET_BIT((hspi)->Instance->IFCR, SPI_IFCR_SUSPC); // 清除挂起标志位
+    SET_BIT((hspi)->Instance->IFCR, SPI_IFCR_SUSPC); // 
 
     /* Process Unlocked */
     __HAL_UNLOCK(hspi);
@@ -215,16 +215,16 @@ rt_err_t SPI_Transmit_Ext(uint16_t pData, uint32_t Size)
 }
 
 /**
- * @brief  专为批量写入数据修改，使之不限长度的传输数据
- * @param  pData  : 要写入的数据
- * @param  Size   : 数据大小
+ * @brief  
+ * @param  pData  : 
+ * @param  Size   : 
  * @retval status
  */
 rt_err_t SPI_TransmitBuffer_Ext(uint16_t *pData, uint32_t Size)
 {
     uint32_t tickstart;
-    uint32_t Timeout = 1000;  // 超时判断
-    uint32_t LCD_TxDataCount; // 传输计数
+    uint32_t Timeout = 1000;  // 
+    uint32_t LCD_TxDataCount; // 
     rt_err_t errorcode = RT_EOK;
     SPI_HandleTypeDef *hspi = spi_handle;
 
@@ -253,7 +253,7 @@ rt_err_t SPI_TransmitBuffer_Ext(uint16_t *pData, uint32_t Size)
     hspi->State     = HAL_SPI_STATE_BUSY_TX;
     hspi->ErrorCode = HAL_SPI_ERROR_NONE;
 
-    LCD_TxDataCount = Size; // 传输的数据长度
+    LCD_TxDataCount = Size; // 
 
     /*Init field not used in handle to zero */
     hspi->pRxBuffPtr  = NULL;
@@ -267,7 +267,7 @@ rt_err_t SPI_TransmitBuffer_Ext(uint16_t *pData, uint32_t Size)
         SPI_1LINE_TX(hspi);
     }
 
-    // 不使用硬件 TSIZE 控制，此处设置为0，即不限制传输的数据长度
+    //  TSIZE 0
     MODIFY_REG(hspi->Instance->CR2, SPI_CR2_TSIZE, 0);
 
     /* Enable SPI peripheral */
@@ -311,14 +311,14 @@ rt_err_t SPI_TransmitBuffer_Ext(uint16_t *pData, uint32_t Size)
         SET_BIT(hspi->ErrorCode, HAL_SPI_ERROR_FLAG);
     }
 
-    SET_BIT((hspi)->Instance->CR1, SPI_CR1_CSUSP); // 请求挂起SPI传输
-    /* 等待SPI挂起 */
+    SET_BIT((hspi)->Instance->CR1, SPI_CR1_CSUSP); // SPI
+    /* SPI */
     if (LCD_SPI_WaitOnFlagUntilTimeout(hspi, SPI_FLAG_SUSP, RESET, tickstart, Timeout) != HAL_OK) {
         SET_BIT(hspi->ErrorCode, HAL_SPI_ERROR_FLAG);
     }
     LCD_SPI_CloseTransfer(hspi); /* Call standard close procedure with error check */
 
-    SET_BIT((hspi)->Instance->IFCR, SPI_IFCR_SUSPC); // 清除挂起标志位
+    SET_BIT((hspi)->Instance->IFCR, SPI_IFCR_SUSPC); // 
 
     /* Process Unlocked */
     __HAL_UNLOCK(hspi);

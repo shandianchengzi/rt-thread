@@ -1,10 +1,10 @@
 /******************************************************************************************************************************************
-* 文件名称: SWM341_can.c
-* 功能说明: SWM341单片机的CAN模块驱动库
-* 技术支持: http://www.synwit.com.cn/e/tool/gbook/?bid=1
-* 注意事项:
-* 版本日期: V1.1.0      2017年10月25日
-* 升级记录:
+* : SWM341_can.c
+* : SWM341CAN
+* : http://www.synwit.com.cn/e/tool/gbook/?bid=1
+* :
+* : V1.1.0      20171025
+* :
 *
 *
 *******************************************************************************************************************************************
@@ -23,12 +23,12 @@
 
 
 /******************************************************************************************************************************************
-* 函数名称: CAN_Init()
-* 功能说明: CAN接口初始化
-* 输    入: CAN_TypeDef * CANx    指定要被设置的CAN接口，有效值包括CAN0、CAN1
-*           CAN_InitStructure * initStruct    包含CAN接口相关设定值的结构体
-* 输    出: 无
-* 注意事项: 无
+* : CAN_Init()
+* : CAN
+*     : CAN_TypeDef * CANx    CANCAN0CAN1
+*           CAN_InitStructure * initStruct    CAN
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void CAN_Init(CAN_TypeDef * CANx, CAN_InitStructure * initStruct)
 {
@@ -45,7 +45,7 @@ void CAN_Init(CAN_TypeDef * CANx, CAN_InitStructure * initStruct)
         break;
     }
 
-    CAN_Close(CANx);    //一些关键寄存器只能在CAN关闭时设置
+    CAN_Close(CANx);    //CAN
 
     CANx->CR &= ~(CAN_CR_LOM_Msk | CAN_CR_STM_Msk);
     CANx->CR |= (initStruct->Mode << CAN_CR_LOM_Pos);
@@ -59,7 +59,7 @@ void CAN_Init(CAN_TypeDef * CANx, CAN_InitStructure * initStruct)
 
     CANx->BT2 = ((brp >> 6) << CAN_BT2_BRP_Pos);
 
-    CANx->RXERR = 0;    //只能在复位模式下清除
+    CANx->RXERR = 0;    //
     CANx->TXERR = 0;
 
     CANx->IE = (initStruct->RXNotEmptyIEn << CAN_IE_RXDA_Pos)    |
@@ -93,40 +93,40 @@ void CAN_Init(CAN_TypeDef * CANx, CAN_InitStructure * initStruct)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: CAN_Open()
-* 功能说明: CAN接口打开
-* 输    入: CAN_TypeDef * CANx    指定要被设置的CAN接口，有效值包括CAN0、CAN1
-* 输    出: 无
-* 注意事项: 无
+* : CAN_Open()
+* : CAN
+*     : CAN_TypeDef * CANx    CANCAN0CAN1
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void CAN_Open(CAN_TypeDef * CANx)
 {
-    CANx->CR &= ~(0x01 << CAN_CR_RST_Pos);  //退出复位模式，进入工作模式
+    CANx->CR &= ~(0x01 << CAN_CR_RST_Pos);  //
 }
 
 /******************************************************************************************************************************************
-* 函数名称: CAN_Close()
-* 功能说明: CAN接口关闭
-* 输    入: CAN_TypeDef * CANx    指定要被设置的CAN接口，有效值包括CAN0、CAN1
-* 输    出: 无
-* 注意事项: 无
+* : CAN_Close()
+* : CAN
+*     : CAN_TypeDef * CANx    CANCAN0CAN1
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void CAN_Close(CAN_TypeDef * CANx)
 {
-    CANx->CR |= (0x01 << CAN_CR_RST_Pos);   //进入复位模式，不能发送和接收数据
+    CANx->CR |= (0x01 << CAN_CR_RST_Pos);   //
 }
 
 /******************************************************************************************************************************************
-* 函数名称: CAN_Transmit()
-* 功能说明: CAN发送数据
-* 输    入: CAN_TypeDef * CANx    指定要被设置的CAN接口，有效值包括CAN0、CAN1
-*           uint32_t format     CAN_FRAME_STD 标准帧    CAN_FRAME_EXT 扩展帧
-*           uint32_t id         消息ID
-*           uint8_t data[]      要发送的数据
-*           uint32_t size       要发送的数据的个数
-*           uint32_t once       只发送一次，即使发送失败（仲裁丢失、发送出错、NAK）也不尝试重发
-* 输    出: 无
-* 注意事项: 无
+* : CAN_Transmit()
+* : CAN
+*     : CAN_TypeDef * CANx    CANCAN0CAN1
+*           uint32_t format     CAN_FRAME_STD     CAN_FRAME_EXT 
+*           uint32_t id         ID
+*           uint8_t data[]      
+*           uint32_t size       
+*           uint32_t once       NAK
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void CAN_Transmit(CAN_TypeDef * CANx, uint32_t format, uint32_t id, uint8_t data[], uint32_t size, uint32_t once)
 {
@@ -181,14 +181,14 @@ void CAN_Transmit(CAN_TypeDef * CANx, uint32_t format, uint32_t id, uint8_t data
 }
 
 /******************************************************************************************************************************************
-* 函数名称: CAN_TransmitRequest()
-* 功能说明: CAN发送远程请求，请求远程节点发送数据
-* 输    入: CAN_TypeDef * CANx    指定要被设置的CAN接口，有效值包括CAN0、CAN1
-*           uint32_t format     CAN_FRAME_STD 标准帧    CAN_FRAME_EXT 扩展帧
-*           uint32_t id         消息ID
-*           uint32_t once       只发送一次，即使发送失败（仲裁丢失、发送出错、NAK）也不尝试重发
-* 输    出: 无
-* 注意事项: 无
+* : CAN_TransmitRequest()
+* : CAN
+*     : CAN_TypeDef * CANx    CANCAN0CAN1
+*           uint32_t format     CAN_FRAME_STD     CAN_FRAME_EXT 
+*           uint32_t id         ID
+*           uint32_t once       NAK
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void CAN_TransmitRequest(CAN_TypeDef * CANx, uint32_t format, uint32_t id, uint32_t once)
 {
@@ -224,12 +224,12 @@ void CAN_TransmitRequest(CAN_TypeDef * CANx, uint32_t format, uint32_t id, uint3
 }
 
 /******************************************************************************************************************************************
-* 函数名称: CAN_Receive()
-* 功能说明: CAN接收数据
-* 输    入: CAN_TypeDef * CANx    指定要被设置的CAN接口，有效值包括CAN0、CAN1
-*           CAN_RXMessage *msg  接收到的消息存储在此结构体变量中
-* 输    出: 无
-* 注意事项: 无
+* : CAN_Receive()
+* : CAN
+*     : CAN_TypeDef * CANx    CANCAN0CAN1
+*           CAN_RXMessage *msg  
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void CAN_Receive(CAN_TypeDef * CANx, CAN_RXMessage *msg)
 {
@@ -262,11 +262,11 @@ void CAN_Receive(CAN_TypeDef * CANx, CAN_RXMessage *msg)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: CAN_TXComplete()
-* 功能说明: 发送是否完成
-* 输    入: CAN_TypeDef * CANx    指定要被设置的CAN接口，有效值包括CAN0、CAN1
-* 输    出: uint32_t          1 已经完成    0 还未完成
-* 注意事项: 发送被Abort也会触发发送完成，但不会触发发送成功
+* : CAN_TXComplete()
+* : 
+*     : CAN_TypeDef * CANx    CANCAN0CAN1
+*     : uint32_t          1     0 
+* : Abort
 ******************************************************************************************************************************************/
 uint32_t CAN_TXComplete(CAN_TypeDef * CANx)
 {
@@ -274,11 +274,11 @@ uint32_t CAN_TXComplete(CAN_TypeDef * CANx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: CAN_TXSuccess()
-* 功能说明: 发送是否成功
-* 输    入: CAN_TypeDef * CANx    指定要被设置的CAN接口，有效值包括CAN0、CAN1
-* 输    出: uint32_t          1 发送成功    0 发送失败
-* 注意事项: 无
+* : CAN_TXSuccess()
+* : 
+*     : CAN_TypeDef * CANx    CANCAN0CAN1
+*     : uint32_t          1     0 
+* : 
 ******************************************************************************************************************************************/
 uint32_t CAN_TXSuccess(CAN_TypeDef * CANx)
 {
@@ -286,11 +286,11 @@ uint32_t CAN_TXSuccess(CAN_TypeDef * CANx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: CAN_AbortTransmit()
-* 功能说明: 终止发送
-* 输    入: CAN_TypeDef * CANx    指定要被设置的CAN接口，有效值包括CAN0、CAN1
-* 输    出: 无
-* 注意事项: 正在进行的发送无法终止，但执行此命令后若发送失败不会再重发
+* : CAN_AbortTransmit()
+* : 
+*     : CAN_TypeDef * CANx    CANCAN0CAN1
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void CAN_AbortTransmit(CAN_TypeDef * CANx)
 {
@@ -298,11 +298,11 @@ void CAN_AbortTransmit(CAN_TypeDef * CANx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: CAN_TXBufferReady()
-* 功能说明: TX Buffer是否准备好可以写入消息
-* 输    入: CAN_TypeDef * CANx    指定要被设置的CAN接口，有效值包括CAN0、CAN1
-* 输    出: uint32_t          1 已准备好    0 未准备好
-* 注意事项: 无
+* : CAN_TXBufferReady()
+* : TX Buffer
+*     : CAN_TypeDef * CANx    CANCAN0CAN1
+*     : uint32_t          1     0 
+* : 
 ******************************************************************************************************************************************/
 uint32_t CAN_TXBufferReady(CAN_TypeDef * CANx)
 {
@@ -310,11 +310,11 @@ uint32_t CAN_TXBufferReady(CAN_TypeDef * CANx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: CAN_RXDataAvailable()
-* 功能说明: RX FIFO中是否有数据可读出
-* 输    入: CAN_TypeDef * CANx    指定要被设置的CAN接口，有效值包括CAN0、CAN1
-* 输    出: uint32_t          1 有数据可读出    0 没有数据
-* 注意事项: 无
+* : CAN_RXDataAvailable()
+* : RX FIFO
+*     : CAN_TypeDef * CANx    CANCAN0CAN1
+*     : uint32_t          1     0 
+* : 
 ******************************************************************************************************************************************/
 uint32_t CAN_RXDataAvailable(CAN_TypeDef * CANx)
 {
@@ -322,15 +322,15 @@ uint32_t CAN_RXDataAvailable(CAN_TypeDef * CANx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: CAN_SetBaudrate()
-* 功能说明: 设置波特率
-* 输    入: CAN_TypeDef * CANx    指定要被设置的CAN接口，有效值包括CAN0、CAN1
-*           uint32_t baudrate   波特率，即位传输速率
-*           uint32_t CAN_bs1    CAN_BS1_1tq、CAN_BS1_2tq、... ... 、CAN_BS1_16tq
-*           uint32_t CAN_bs2    CAN_BS2_1tq、CAN_BS2_2tq、... ... 、CAN_BS2_8tq
-*           uint32_t CAN_sjw    CAN_SJW_1tq、CAN_SJW_2tq、CAN_SJW_3tq、CAN_SJW_4tq
-* 输    出: 无
-* 注意事项: 设置前需要先调用CAN_Close()关闭CAN模块
+* : CAN_SetBaudrate()
+* : 
+*     : CAN_TypeDef * CANx    CANCAN0CAN1
+*           uint32_t baudrate   
+*           uint32_t CAN_bs1    CAN_BS1_1tqCAN_BS1_2tq... ... CAN_BS1_16tq
+*           uint32_t CAN_bs2    CAN_BS2_1tqCAN_BS2_2tq... ... CAN_BS2_8tq
+*           uint32_t CAN_sjw    CAN_SJW_1tqCAN_SJW_2tqCAN_SJW_3tqCAN_SJW_4tq
+*     : 
+* : CAN_Close()CAN
 ******************************************************************************************************************************************/
 void CAN_SetBaudrate(CAN_TypeDef * CANx, uint32_t baudrate, uint32_t CAN_bs1, uint32_t CAN_bs2, uint32_t CAN_sjw)
 {
@@ -347,54 +347,54 @@ void CAN_SetBaudrate(CAN_TypeDef * CANx, uint32_t baudrate, uint32_t CAN_bs1, ui
 }
 
 /******************************************************************************************************************************************
-* 函数名称: CAN_SetFilter32b()
-* 功能说明: 设置接收滤波器，模式为1个32位滤波器
-* 输    入: CAN_TypeDef * CANx    指定要被设置的CAN接口，有效值包括CAN0、CAN1
-*           uint32_t filter     要设置的滤波器，有效值有CAN_FILTER_1、CAN_FILTER_2、...、CAN_FILTER_16
-*           uint32_t check      与mask一起决定了接收到的Message是否是自己需要的：check & mask == ID & mask的Message通过过滤
+* : CAN_SetFilter32b()
+* : 132
+*     : CAN_TypeDef * CANx    CANCAN0CAN1
+*           uint32_t filter     CAN_FILTER_1CAN_FILTER_2...CAN_FILTER_16
+*           uint32_t check      maskMessagecheck & mask == ID & maskMessage
 *           uint32_t mask
-* 输    出: 无
-* 注意事项: 只能在关闭时设置
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void CAN_SetFilter32b(CAN_TypeDef * CANx, uint32_t filter, uint32_t check, uint32_t mask)
 {
     CANx->AFM |= (1 << filter);
 
-    CANx->ACR[filter] = __REV(check << 3);      // 高29位
+    CANx->ACR[filter] = __REV(check << 3);      // 29
     CANx->AMR[filter] = __REV(~(mask << 3));
 
     CANx->AFE |= (1 << filter);
 }
 
 /******************************************************************************************************************************************
-* 函数名称: CAN_SetFilter16b()
-* 功能说明: 设置接收滤波器，模式为2个16位滤波器
-* 输    入: CAN_TypeDef * CANx    指定要被设置的CAN接口，有效值包括CAN0、CAN1
-*           uint32_t filter     要设置的滤波器，有效值有CAN_FILTER_1、CAN_FILTER_2、...、CAN_FILTER_16
-*           uint16_t check1     与mask一起决定了接收到的Message是否是自己需要的：check & mask == ID & mask的Message通过过滤
+* : CAN_SetFilter16b()
+* : 216
+*     : CAN_TypeDef * CANx    CANCAN0CAN1
+*           uint32_t filter     CAN_FILTER_1CAN_FILTER_2...CAN_FILTER_16
+*           uint16_t check1     maskMessagecheck & mask == ID & maskMessage
 *           uint16_t mask1
 *           uint16_t check2
 *           uint16_t mask2
-* 输    出: 无
-* 注意事项: 只能在关闭时设置
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void CAN_SetFilter16b(CAN_TypeDef * CANx, uint32_t filter, uint16_t check1, uint16_t mask1, uint16_t check2, uint16_t mask2)
 {
     CANx->AFM &= ~(1 << filter);
 
-    CANx->ACR[filter] = __REV((check1 << 5) | (check2 << 21));      // 高11位
+    CANx->ACR[filter] = __REV((check1 << 5) | (check2 << 21));      // 11
     CANx->AMR[filter] = __REV(~((mask1 << 5) | (mask2 << 21)));
 
     CANx->AFE |= (1 << filter);
 }
 
 /******************************************************************************************************************************************
-* 函数名称: CAN_INTEn()
-* 功能说明: 使能指定中断
-* 输    入: CAN_TypeDef * CANx    指定要被设置的CAN接口，有效值包括CAN0、CAN1
-*           uint32_t it         interrupt type，有效值包括CAN_INT_RX_NOTEMPTY、CAN_INT_RX_OVERFLOW、CAN_INT_TX_EMPTY、...
-* 输    出: 无
-* 注意事项: 无
+* : CAN_INTEn()
+* : 
+*     : CAN_TypeDef * CANx    CANCAN0CAN1
+*           uint32_t it         interrupt typeCAN_INT_RX_NOTEMPTYCAN_INT_RX_OVERFLOWCAN_INT_TX_EMPTY...
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void CAN_INTEn(CAN_TypeDef * CANx, uint32_t it)
 {
@@ -402,12 +402,12 @@ void CAN_INTEn(CAN_TypeDef * CANx, uint32_t it)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: CAN_INTDis()
-* 功能说明: 关闭指定中断
-* 输    入: CAN_TypeDef * CANx    指定要被设置的CAN接口，有效值包括CAN0、CAN1
-*           uint32_t it         interrupt type，有效值包括CAN_INT_RX_NOTEMPTY、CAN_INT_RX_OVERFLOW、CAN_INT_TX_EMPTY、...
-* 输    出: 无
-* 注意事项: 无
+* : CAN_INTDis()
+* : 
+*     : CAN_TypeDef * CANx    CANCAN0CAN1
+*           uint32_t it         interrupt typeCAN_INT_RX_NOTEMPTYCAN_INT_RX_OVERFLOWCAN_INT_TX_EMPTY...
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void CAN_INTDis(CAN_TypeDef * CANx, uint32_t it)
 {
@@ -415,11 +415,11 @@ void CAN_INTDis(CAN_TypeDef * CANx, uint32_t it)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: CAN_INTStat()
-* 功能说明: 查询指定中断状态
-* 输    入: CAN_TypeDef * CANx    指定要被设置的CAN接口，有效值包括CAN0、CAN1
-* 输    出: uint32_t          当前中断状态
-* 注意事项: CANx->IF读取清零，因此在中断ISR中只能读取一次，不能多次读取
+* : CAN_INTStat()
+* : 
+*     : CAN_TypeDef * CANx    CANCAN0CAN1
+*     : uint32_t          
+* : CANx->IFISR
 ******************************************************************************************************************************************/
 uint32_t CAN_INTStat(CAN_TypeDef * CANx)
 {

@@ -681,7 +681,7 @@ int swm_sdio_init(void)
 #endif
     NVIC_EnableIRQ(SDIO_IRQn);
     SYS->CLKDIV &= ~SYS_CLKDIV_SDIO_Msk;
-    if (SystemCoreClock > 80000000)                //SDIO时钟需要小于52MHz
+    if (SystemCoreClock > 80000000)                //SDIO52MHz
         SYS->CLKDIV |= (2 << SYS_CLKDIV_SDIO_Pos); //SDCLK = SYSCLK / 4
     else
         SYS->CLKDIV |= (1 << SYS_CLKDIV_SDIO_Pos); //SDCLK = SYSCLK / 2

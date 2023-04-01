@@ -111,7 +111,7 @@ output_fmt    [^%\n]+
 ")"                                 return yy::parser::make_RPAREN(loc);
 "+"                                 return yy::parser::make_PLUS(loc);
 "--"                                return yy::parser::make_POST_DECREMENT(loc);
-"−−"                                return yy::parser::make_POST_DECREMENT(loc);
+""                                return yy::parser::make_POST_DECREMENT(loc);
 "-"                                 return yy::parser::make_MINUS(loc);
 "*"                                 return yy::parser::make_MULTIPLY(loc);
 "/"                                 return yy::parser::make_DIVIDE(loc);

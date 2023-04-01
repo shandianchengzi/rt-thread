@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fcan.c
  * Date: 2021-04-29 10:21:53
  * LastEditTime: 2022-02-18 08:29:20
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 #include "string.h"
@@ -52,7 +52,7 @@ typedef struct
     u32 brp_inc;
 } FCanBittimingConst;
 
-/* 仲裁段速率默认值 */
+/*  */
 static const FCanBittimingConst FCanArbBitConst =
 {
     .tseg1_min = FCAN_ARB_TSEG1_MIN, /* Time segement 1 = prop_seg + phase_seg1 */
@@ -65,7 +65,7 @@ static const FCanBittimingConst FCanArbBitConst =
     .brp_inc = FCAN_ARB_BRP_INC,
 };
 
-/* 数据段速率默认值 */
+/*  */
 static const FCanBittimingConst FCanDataBitConst =
 {
     .tseg1_min = FCAN_DATA_TSEG1_MIN, /* Time segement 1 = prop_seg + phase_seg1 */
@@ -125,7 +125,7 @@ static s32 FCanUpdateSamplePoint(const FCanBittimingConst *btc,
  * @param {u32} target_baudrate, parameters of target baudrate
  * @param {u32} target_sample_point, parameters of target sample point, 0 means the general configuration is used
  * @param {FCanSegmentType} target_segment, specifies which target is to be selected. followed by FCAN_ARB_SEGMENT or FCAN_DATA_SEGMENT
- * @return err code information, FCAN_SUCCESS indicates success，others indicates failed
+ * @return err code information, FCAN_SUCCESS indicates successothers indicates failed
  */
 static FError FCanCalcBittiming(FCanBaudrateConfig *bt_p, u32 target_baudrate, u32 target_sample_point, FCanSegmentType target_segment)
 {
@@ -428,7 +428,7 @@ void FCanDeInitialize(FCanCtrl *instance_p)
  * @msg:  Initializes a specific instance such that it is ready to be used.
  * @param {FCanCtrl} *instance_p, instance of FCanCtrl controller
  * @param {FCanConfig} *input_config_p, configuration parameters of FCanCtrl
- * @return err code information, FCAN_SUCCESS indicates success，others indicates failed
+ * @return err code information, FCAN_SUCCESS indicates successothers indicates failed
  */
 FError FCanCfgInitialize(FCanCtrl *instance_p, const FCanConfig *input_config_p)
 {
@@ -465,7 +465,7 @@ FError FCanCfgInitialize(FCanCtrl *instance_p, const FCanConfig *input_config_p)
  * @param {FCanCtrl} *instance_p, pointer to a FCanCtrl structure that contains
  *                the configuration information for the specified can module.
  * @param {FCanStatus} *status_p, pointer to can status, include send and receive, error and fifo count .
- * @return err code information, FCAN_SUCCESS indicates success，others indicates failed.
+ * @return err code information, FCAN_SUCCESS indicates successothers indicates failed.
  */
 FError FCanStatusGet(FCanCtrl *instance_p, FCanStatus *status_p)
 {
@@ -500,7 +500,7 @@ FError FCanStatusGet(FCanCtrl *instance_p, FCanStatus *status_p)
  * @param {FCanCtrl} *instance_p, pointer to a FCanCtrl structure that contains
  *                the configuration information for the specific can module.
  * @param {FCanFrame} *frame_p, can message receive struct.
- * @return err code information, FCAN_SUCCESS indicates success，others indicates failed.
+ * @return err code information, FCAN_SUCCESS indicates successothers indicates failed.
  */
 FError FCanRecv(FCanCtrl *instance_p, FCanFrame *frame_p)
 {
@@ -610,7 +610,7 @@ FError FCanRecv(FCanCtrl *instance_p, FCanFrame *frame_p)
  * @param {FCanCtrl} *instance_p, pointer to a FCanCtrl structure that contains
  *                the configuration information for the specific can module.
  * @param {FCanFrame} *frame_p, can message send struct.
- * @return err code information, FCAN_SUCCESS indicates success，others indicates failed.
+ * @return err code information, FCAN_SUCCESS indicates successothers indicates failed.
  */
 FError FCanSend(FCanCtrl *instance_p, FCanFrame *frame_p)
 {
@@ -801,7 +801,7 @@ static FError FCanSetTiming(FCanCtrl *instance_p, FCanBaudrateConfig *bittiming_
  *        For example, if sample point is 0.75, set target_sample_point = 750.
  *        Or manual config baudrate parameters.
  * @param {FCanSegmentType} segment, specifies data segment or arbitration segment is selected. followed by FCAN_ARB_SEGMENT or FCAN_DATA_SEGMENT
- * @return err code information, FQSPI_SUCCESS indicates success，others indicates failed
+ * @return err code information, FQSPI_SUCCESS indicates successothers indicates failed
  * @note this function is to set arb and data segment baudrate, according to the prop_seg,
  * phase_seg1, phase_seg2 ,brp and sjw parameters, users can use this function to set can baudrate.
  * A formula to calculate baudrate is:
@@ -886,7 +886,7 @@ FError FCanBaudrateSet(FCanCtrl *instance_p, FCanBaudrateConfig *baudrate_p)
  * @msg:  Enable or disable can.
  * @param {FCanCtrl} *instance_p, instance of FCanCtrl controller
  * @param {boolean} enable, TRUE-enable canfd, FALSE-disable canfd.
- * @return err code information, FCAN_SUCCESS indicates success，others indicates failed
+ * @return err code information, FCAN_SUCCESS indicates successothers indicates failed
  */
 FError FCanEnable(FCanCtrl *instance_p, boolean enable)
 {
@@ -913,7 +913,7 @@ FError FCanEnable(FCanCtrl *instance_p, boolean enable)
  * @param {FCanIdMaskConfig} *id_mask_p, include filter register index, umask id and mask id
  *  id indicates a specific ID can receive
  *  mask indicates mask the corresponding bit of the id
- * @return err code information, FCAN_SUCCESS indicates success，others indicates failed
+ * @return err code information, FCAN_SUCCESS indicates successothers indicates failed
  */
 FError FCanIdMaskFilterSet(FCanCtrl *instance_p, FCanIdMaskConfig *id_mask_p)
 {
@@ -997,7 +997,7 @@ void FCanIdMaskFilterDisable(FCanCtrl *instance_p)
  * @msg:  Enable can interrupt.
  * @param {FCanCtrl} *instance_p, instance of FCanCtrl controller
  * @param {FCanIntrEventType} event_type, interrupt event type
- * @return err code information, FCAN_SUCCESS indicates success，others indicates failed
+ * @return err code information, FCAN_SUCCESS indicates successothers indicates failed
  */
 FError FCanInterruptEnable(FCanCtrl *instance_p, FCanIntrEventType event_type)
 {
@@ -1036,7 +1036,7 @@ FError FCanInterruptEnable(FCanCtrl *instance_p, FCanIntrEventType event_type)
  * @msg:  Enable or disable can fd.
  * @param {FCanCtrl} *instance_p, instance of FCanCtrl controller
  * @param {boolean} enable, TRUE-enable canfd, FALSE-disable canfd.
- * @return err code information, FCAN_SUCCESS indicates success，others indicates failed
+ * @return err code information, FCAN_SUCCESS indicates successothers indicates failed
  */
 FError FCanFdEnable(FCanCtrl *instance_p, boolean enable)
 {

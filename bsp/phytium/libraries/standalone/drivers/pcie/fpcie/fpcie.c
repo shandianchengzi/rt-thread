@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fpcie.c
  * Date: 2022-02-10 14:55:11
  * LastEditTime: 2022-02-18 08:59:28
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 /***************************** Include Files *********************************/
@@ -67,12 +67,12 @@ static void FPcieShowRegion(const char *name, struct FPcieRegion *region)
 
 /**
  * @name: FPcieRegionConfigInit
- * @msg:  初始化PEU 用于分配的地址空间
+ * @msg:  PEU 
  * @param {FPcie} *instance_p is a pointer to the FPcie instance.
- * @param {FPcieRegion} *regs 地址空间对应的指针
- * @param {u32} regs_num 传入regs 结构体的数量
+ * @param {FPcieRegion} *regs 
+ * @param {u32} regs_num regs 
  */
-//用于资源初始化到instance_p中
+//instance_p
 static void FPcieRegionConfigInit(FPcie *instance_p, struct FPcieRegion *regs, u32 regs_num)
 {
     u32 i ;
@@ -115,7 +115,7 @@ static void FPcieRegionConfigInit(FPcie *instance_p, struct FPcieRegion *regs, u
  * @param {FPcieConfig} *config_p pointer to FPcieConfig instrance Pointer.
  * @return FError
  */
-FError FPcieCfgInitialize(FPcie *instance_p, FPcieConfig *config_p) //用于从全局配置数据中获取数据，初始化instance_p
+FError FPcieCfgInitialize(FPcie *instance_p, FPcieConfig *config_p) //instance_p
 {
     fsize_t i;
     struct FPcieRegion mem_region = {0} ;
@@ -130,20 +130,20 @@ FError FPcieCfgInitialize(FPcie *instance_p, FPcieConfig *config_p) //用于从�
     memset(instance_p, 0, sizeof(FPcie));
     memcpy(&instance_p->config, config_p, sizeof(FPcieConfig));
 
-    /* 为枚举过程中，涉及的配置空间提供地址划分 */
-    /* mem32 地址 */          //使用获取到的硬件信息，来初始化mem32
+    /*  */
+    /* mem32  */          //mem32
     mem_region.phys_start = instance_p->config.npmem_base_addr ;
     mem_region.bus_start = instance_p->config.npmem_base_addr ;
     mem_region.size = instance_p->config.npmem_size ;
     mem_region.flags = FPCIE_REGION_MEM ;
 
-    /* mem64 地址 */          //使用获取到的硬件信息，来初始化mem64
+    /* mem64  */          //mem64
     prefetch_region.phys_start = instance_p->config.pmem_base_addr ;
     prefetch_region.bus_start = instance_p->config.pmem_base_addr ;
     prefetch_region.size  = instance_p->config.pmem_size ;
     prefetch_region.flags = (PCI_REGION_PREFETCH | FPCIE_REGION_MEM);
 
-    /* memio 地址 */          //使用获取到的硬件信息，来初始化io
+    /* memio  */          //io
     io_region.phys_start = instance_p->config.io_base_addr ;
     io_region.bus_start = instance_p->config.io_base_addr ;
     io_region.size  = instance_p->config.io_size ;
@@ -160,7 +160,7 @@ FError FPcieCfgInitialize(FPcie *instance_p, FPcieConfig *config_p) //用于从�
 
     instance_p->is_ready = FT_COMPONENT_IS_READY;
 
-    /* 关闭当前所有misc 中断  */
+    /* misc   */
     // FPcieMiscIrqDisable(instance_p, FPCIE_PEU0_C0);
     // FPcieMiscIrqDisable(instance_p, FPCIE_PEU0_C1);
     // FPcieMiscIrqDisable(instance_p, FPCIE_PEU0_C2);
@@ -168,7 +168,7 @@ FError FPcieCfgInitialize(FPcie *instance_p, FPcieConfig *config_p) //用于从�
     // FPcieMiscIrqDisable(instance_p, FPCIE_PEU1_C1);
     // FPcieMiscIrqDisable(instance_p, FPCIE_PEU1_C2);
 
-    /* 清空ep模式下所有配置地址 */
+    /* ep */
     // for (i = 0; i <= FPCIE_PEU1_C2; i++)
     // {
     //     /* code */
@@ -519,7 +519,7 @@ void FPcieAutoPrescanSetupBridge(FPcie *instance_p, u32 bdf, int sub_bus)
     FPcieEcamReadConfig16bit(instance_p->config.ecam, bdf, FPCIE_PREF_MEMORY_BASE_REG, &prefechable_64) ;
     prefechable_64 &= FPCIE_PREF_RANGE_TYPE_MASK;
 
-    /* Configure bus number registers *///暂时只有一个pcie配置空间的做法，如果多个pci配置空间，则需当前bus减去该配置空间对应设备的起始bus号
+    /* Configure bus number registers *///pciepcibusbus
     FPcieEcamWriteConfig8bit(instance_p->config.ecam, bdf, FPCIE_PRIMARY_BUS_REG, FPCIE_BUS(bdf));
     FPcieEcamWriteConfig8bit(instance_p->config.ecam, bdf, FPCIE_SECONDARY_BUS_REG, sub_bus);
     FPcieEcamWriteConfig8bit(instance_p->config.ecam, bdf, FPCIE_SUBORDINATE_BUS_REG, 0xff);
@@ -603,7 +603,7 @@ void FPcieAutoPostscanSetupBridge(FPcie *instance_p, u32 bdf, int sub_bus)
     pci_io = &(instance_p->mem_io);
 
     /* Configure bus number registers */
-    FPcieEcamWriteConfig8bit(instance_p->config.ecam, bdf, FPCIE_SUBORDINATE_BUS_REG, sub_bus);//配置一下subordinate-bus，可能在固件下不一定必须用
+    FPcieEcamWriteConfig8bit(instance_p->config.ecam, bdf, FPCIE_SUBORDINATE_BUS_REG, sub_bus);//subordinate-bus
 
     if (pci_mem->exist_flg & FPCIE_REGION_EXIST_FLG)
     {
@@ -690,7 +690,7 @@ int FPcieAutoConfigDevice(FPcie *instance_p, u32 bdf)
     pci_prefetch = &(instance_p->mem_prefetch);
     pci_io = &(instance_p->mem_io);
 
-    FPcieEcamReadConfig16bit(instance_p->config.ecam, bdf, FPCIE_CLASS_DEVICE_REG, &class) ;//读取classcode编号
+    FPcieEcamReadConfig16bit(instance_p->config.ecam, bdf, FPCIE_CLASS_DEVICE_REG, &class) ;//classcode
 
     switch (class)
     {
@@ -744,7 +744,7 @@ FError FPcieBindBusDevices(FPcie *instance_p, u32 bus_num, u32 parent_bdf, struc
     found_multi = false;
     end = FPCIE_BDF(bus_num, FT_PCIE_CFG_MAX_NUM_OF_DEV - 1,
                     FT_PCIE_CFG_MAX_NUM_OF_FUN - 1);
-    for (bdf = FPCIE_BDF(bus_num, 0, 0); bdf <= end;    //使用bus的seq成员来进行扫描，其实相当于secondory_bus号
+    for (bdf = FPCIE_BDF(bus_num, 0, 0); bdf <= end;    //busseqsecondory_bus
             bdf += FPCIE_BDF(0, 0, 1))
     {
         u32 class;
@@ -774,8 +774,8 @@ FError FPcieBindBusDevices(FPcie *instance_p, u32 bus_num, u32 parent_bdf, struc
         if (!FPCIE_FUNC(bdf))
             found_multi = header_type & 0x80;
 
-        FPcieEcamReadConfig16bit(instance_p->config.ecam, bdf, FPCIE_DEVICE_ID_REG, &device) ;  //读取deviceid
-        FPcieEcamReadConfig32bit(instance_p->config.ecam, bdf, FPCI_CLASS_REVISION, &class) ; //读取classcode
+        FPcieEcamReadConfig16bit(instance_p->config.ecam, bdf, FPCIE_DEVICE_ID_REG, &device) ;  //deviceid
+        FPcieEcamReadConfig32bit(instance_p->config.ecam, bdf, FPCI_CLASS_REVISION, &class) ; //classcode
         class >>= 8;
 
         FPcieEcamReadConfig8bit(instance_p->config.ecam, bdf, FPCIE_CLASS_CODE_REG, &class_show) ;
@@ -829,7 +829,7 @@ FError FPcieBindBusDevices(FPcie *instance_p, u32 bus_num, u32 parent_bdf, struc
         bus->ChildN[dev_count] = bdf;
         dev_count++;
 
-        //这里可以将当前的device，保存到全局变量中，供别的驱动来查询。
+        //device
         instance_p->scaned_bdf_array[instance_p->scaned_bdf_count] = bdf;
         (instance_p->scaned_bdf_count)++;
 
@@ -858,6 +858,6 @@ FError FPcieScanBus(FPcie *instance_p, u32 bus_num, u32 parent_bdf)
             FPcieAutoConfigDevice(instance_p, bdf);
         }
     }
-    instance_p->is_scaned = 1;  //表示已经扫描完成
+    instance_p->is_scaned = 1;  //
 }
 

@@ -1,10 +1,10 @@
 /******************************************************************************************************************************************
-* 文件名称: SWM320_adc.c
-* 功能说明: SWM320单片机的ADC数模转换器功能驱动库
-* 技术支持: http://www.synwit.com.cn/e/tool/gbook/?bid=1
-* 注意事项:
-* 版本日期: V1.1.0      2017年10月25日
-* 升级记录:
+* : SWM320_adc.c
+* : SWM320ADC
+* : http://www.synwit.com.cn/e/tool/gbook/?bid=1
+* :
+* : V1.1.0      20171025
+* :
 *******************************************************************************************************************************************
 * @attention
 *
@@ -21,12 +21,12 @@
 
 
 /******************************************************************************************************************************************
-* 函数名称: ADC_Init()
-* 功能说明: ADC模数转换器初始化
-* 输    入: ADC_TypeDef * ADCx        指定要被设置的ADC，有效值包括ADC0、ADC1
-*           ADC_InitStructure * initStruct      包含ADC各相关定值的结构体
-* 输    出: 无
-* 注意事项: 无
+* : ADC_Init()
+* : ADC
+*     : ADC_TypeDef * ADCx        ADCADC0ADC1
+*           ADC_InitStructure * initStruct      ADC
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void ADC_Init(ADC_TypeDef * ADCx, ADC_InitStructure * initStruct)
 {
@@ -41,7 +41,7 @@ void ADC_Init(ADC_TypeDef * ADCx, ADC_InitStructure * initStruct)
         break;
     }
 
-    ADC_Close(ADCx);        //一些关键寄存器只能在ADC关闭时设置
+    ADC_Close(ADCx);        //ADC
 
     if(initStruct->clk_src == ADC_CLKSRC_HRC)
     {
@@ -80,7 +80,7 @@ void ADC_Init(ADC_TypeDef * ADCx, ADC_InitStructure * initStruct)
                   (initStruct->trig_src << ADC_CTRL_TRIG_Pos) |
                   (initStruct->Continue << ADC_CTRL_CONT_Pos);
 
-    ADCx->IF = 0xFFFFFFFF;  //清除中断标志
+    ADCx->IF = 0xFFFFFFFF;  //
 
     ADCx->IE &= ~(ADC_IE_CH0EOC_Msk | ADC_IE_CH1EOC_Msk | ADC_IE_CH2EOC_Msk | ADC_IE_CH3EOC_Msk |
                   ADC_IE_CH4EOC_Msk | ADC_IE_CH5EOC_Msk | ADC_IE_CH6EOC_Msk | ADC_IE_CH7EOC_Msk);
@@ -153,11 +153,11 @@ void ADC_Init(ADC_TypeDef * ADCx, ADC_InitStructure * initStruct)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: ADC_Open()
-* 功能说明: ADC开启，可以软件启动、或硬件触发ADC转换
-* 输    入: ADC_TypeDef * ADCx        指定要被设置的ADC，可取值包括ADC
-* 输    出: 无
-* 注意事项: 无
+* : ADC_Open()
+* : ADCADC
+*     : ADC_TypeDef * ADCx        ADCADC
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void ADC_Open(ADC_TypeDef * ADCx)
 {
@@ -165,11 +165,11 @@ void ADC_Open(ADC_TypeDef * ADCx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: ADC_Close()
-* 功能说明: ADC关闭，无法软件启动、或硬件触发ADC转换
-* 输    入: ADC_TypeDef * ADCx        指定要被设置的ADC，可取值包括ADC
-* 输    出: 无
-* 注意事项: 无
+* : ADC_Close()
+* : ADCADC
+*     : ADC_TypeDef * ADCx        ADCADC
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void ADC_Close(ADC_TypeDef * ADCx)
 {
@@ -177,11 +177,11 @@ void ADC_Close(ADC_TypeDef * ADCx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: ADC_Start()
-* 功能说明: 软件触发模式下启动ADC转换
-* 输    入: ADC_TypeDef * ADCx        指定要被设置的ADC，可取值包括ADC
-* 输    出: 无
-* 注意事项: 无
+* : ADC_Start()
+* : ADC
+*     : ADC_TypeDef * ADCx        ADCADC
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void ADC_Start(ADC_TypeDef * ADCx)
 {
@@ -189,11 +189,11 @@ void ADC_Start(ADC_TypeDef * ADCx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: ADC_Stop()
-* 功能说明: 软件触发模式下停止ADC转换
-* 输    入: ADC_TypeDef * ADCx        指定要被设置的ADC，可取值包括ADC
-* 输    出: 无
-* 注意事项: 无
+* : ADC_Stop()
+* : ADC
+*     : ADC_TypeDef * ADCx        ADCADC
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void ADC_Stop(ADC_TypeDef * ADCx)
 {
@@ -220,12 +220,12 @@ static uint32_t chn2idx(uint32_t chn)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: ADC_Read()
-* 功能说明: 从指定通道读取转换结果
-* 输    入: ADC_TypeDef * ADCx        指定要被设置的ADC，可取值包括ADC
-*           uint32_t chn            要读取转换结果的通道，有效值ADC_CH0、ADC_CH1、... ... 、ADC_CH7
-* 输    出: uint32_t              读取到的转换结果
-* 注意事项: 无
+* : ADC_Read()
+* : 
+*     : ADC_TypeDef * ADCx        ADCADC
+*           uint32_t chn            ADC_CH0ADC_CH1... ... ADC_CH7
+*     : uint32_t              
+* : 
 ******************************************************************************************************************************************/
 uint32_t ADC_Read(ADC_TypeDef * ADCx, uint32_t chn)
 {
@@ -234,18 +234,18 @@ uint32_t ADC_Read(ADC_TypeDef * ADCx, uint32_t chn)
 
     dat = ADCx->CH[idx].DATA;
 
-    ADCx->CH[idx].STAT = 0x01;      //清除EOC标志
+    ADCx->CH[idx].STAT = 0x01;      //EOC
 
     return dat;
 }
 
 /******************************************************************************************************************************************
-* 函数名称: ADC_IsEOC()
-* 功能说明: 指定通道是否End Of Conversion
-* 输    入: ADC_TypeDef * ADCx        指定要被设置的ADC，可取值包括ADC
-*           uint32_t chn            要查询状态的通道，有效值ADC_CH0、ADC_CH1、... ... 、ADC_CH7
-* 输    出: uint32_t              1 该通道完成了转换    0 该通道未完成转换
-* 注意事项: 无
+* : ADC_IsEOC()
+* : End Of Conversion
+*     : ADC_TypeDef * ADCx        ADCADC
+*           uint32_t chn            ADC_CH0ADC_CH1... ... ADC_CH7
+*     : uint32_t              1     0 
+* : 
 ******************************************************************************************************************************************/
 uint32_t ADC_IsEOC(ADC_TypeDef * ADCx, uint32_t chn)
 {
@@ -255,12 +255,12 @@ uint32_t ADC_IsEOC(ADC_TypeDef * ADCx, uint32_t chn)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: ADC_ChnSelect()
-* 功能说明: ADC通道选通，模数转换会在选通的通道上依次采样转换
-* 输    入: ADC_TypeDef * ADCx        指定要被设置的ADC，可取值包括ADC
-*           uint32_t chns           要选通的通道，有效值ADC_CH0、ADC_CH1、... ... 、ADC_CH7及其组合（即“按位或”运算）
-* 输    出: 无
-* 注意事项: 无
+* : ADC_ChnSelect()
+* : ADC
+*     : ADC_TypeDef * ADCx        ADCADC
+*           uint32_t chns           ADC_CH0ADC_CH1... ... ADC_CH7
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void ADC_ChnSelect(ADC_TypeDef * ADCx, uint32_t chns)
 {
@@ -270,12 +270,12 @@ void ADC_ChnSelect(ADC_TypeDef * ADCx, uint32_t chns)
 
 
 /******************************************************************************************************************************************
-* 函数名称: ADC_IntEOCEn()
-* 功能说明: 转换完成中断使能
-* 输    入: ADC_TypeDef * ADCx        指定要被设置的ADC，可取值包括ADC
-*           uint32_t chn            要设置的通道，有效值ADC_CH0、ADC_CH1、... ... 、ADC_CH7
-* 输    出: 无
-* 注意事项: 无
+* : ADC_IntEOCEn()
+* : 
+*     : ADC_TypeDef * ADCx        ADCADC
+*           uint32_t chn            ADC_CH0ADC_CH1... ... ADC_CH7
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void ADC_IntEOCEn(ADC_TypeDef * ADCx, uint32_t chn)
 {
@@ -285,12 +285,12 @@ void ADC_IntEOCEn(ADC_TypeDef * ADCx, uint32_t chn)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: ADC_IntEOCDis()
-* 功能说明: 转换完成中断禁止
-* 输    入: ADC_TypeDef * ADCx        指定要被设置的ADC，可取值包括ADC
-*           uint32_t chn            要设置的通道，有效值ADC_CH0、ADC_CH1、... ... 、ADC_CH7
-* 输    出: 无
-* 注意事项: 无
+* : ADC_IntEOCDis()
+* : 
+*     : ADC_TypeDef * ADCx        ADCADC
+*           uint32_t chn            ADC_CH0ADC_CH1... ... ADC_CH7
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void ADC_IntEOCDis(ADC_TypeDef * ADCx, uint32_t chn)
 {
@@ -300,12 +300,12 @@ void ADC_IntEOCDis(ADC_TypeDef * ADCx, uint32_t chn)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: ADC_IntEOCClr()
-* 功能说明: 转换完成中断标志清除
-* 输    入: ADC_TypeDef * ADCx        指定要被设置的ADC，可取值包括ADC
-*           uint32_t chn            要设置的通道，有效值ADC_CH0、ADC_CH1、... ... 、ADC_CH7
-* 输    出: 无
-* 注意事项: 无
+* : ADC_IntEOCClr()
+* : 
+*     : ADC_TypeDef * ADCx        ADCADC
+*           uint32_t chn            ADC_CH0ADC_CH1... ... ADC_CH7
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void ADC_IntEOCClr(ADC_TypeDef * ADCx, uint32_t chn)
 {
@@ -315,12 +315,12 @@ void ADC_IntEOCClr(ADC_TypeDef * ADCx, uint32_t chn)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: ADC_IntEOCStat()
-* 功能说明: 转换完成中断状态
-* 输    入: ADC_TypeDef * ADCx        指定要被设置的ADC，可取值包括ADC
-*           uint32_t chn            要查询的通道，有效值ADC_CH0、ADC_CH1、... ... 、ADC_CH7
-* 输    出: uint32_t              1 该通道完成了转换    0 该通道未完成转换
-* 注意事项: 无
+* : ADC_IntEOCStat()
+* : 
+*     : ADC_TypeDef * ADCx        ADCADC
+*           uint32_t chn            ADC_CH0ADC_CH1... ... ADC_CH7
+*     : uint32_t              1     0 
+* : 
 ******************************************************************************************************************************************/
 uint32_t ADC_IntEOCStat(ADC_TypeDef * ADCx, uint32_t chn)
 {
@@ -330,12 +330,12 @@ uint32_t ADC_IntEOCStat(ADC_TypeDef * ADCx, uint32_t chn)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: ADC_IntOVFEn()
-* 功能说明: 数据溢出中断使能
-* 输    入: ADC_TypeDef * ADCx        指定要被设置的ADC，可取值包括ADC
-*           uint32_t chn            要设置的通道，有效值ADC_CH0、ADC_CH1、... ... 、ADC_CH7
-* 输    出: 无
-* 注意事项: 无
+* : ADC_IntOVFEn()
+* : 
+*     : ADC_TypeDef * ADCx        ADCADC
+*           uint32_t chn            ADC_CH0ADC_CH1... ... ADC_CH7
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void ADC_IntOVFEn(ADC_TypeDef * ADCx, uint32_t chn)
 {
@@ -345,12 +345,12 @@ void ADC_IntOVFEn(ADC_TypeDef * ADCx, uint32_t chn)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: ADC_IntOVFDis()
-* 功能说明: 数据溢出中断禁止
-* 输    入: ADC_TypeDef * ADCx        指定要被设置的ADC，可取值包括ADC
-*           uint32_t chn            要设置的通道，有效值ADC_CH0、ADC_CH1、... ... 、ADC_CH7
-* 输    出: 无
-* 注意事项: 无
+* : ADC_IntOVFDis()
+* : 
+*     : ADC_TypeDef * ADCx        ADCADC
+*           uint32_t chn            ADC_CH0ADC_CH1... ... ADC_CH7
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void ADC_IntOVFDis(ADC_TypeDef * ADCx, uint32_t chn)
 {
@@ -360,12 +360,12 @@ void ADC_IntOVFDis(ADC_TypeDef * ADCx, uint32_t chn)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: ADC_IntOVFClr()
-* 功能说明: 数据溢出中断标志清除
-* 输    入: ADC_TypeDef * ADCx        指定要被设置的ADC，可取值包括ADC
-*           uint32_t chn            要设置的通道，有效值ADC_CH0、ADC_CH1、... ... 、ADC_CH7
-* 输    出: 无
-* 注意事项: 无
+* : ADC_IntOVFClr()
+* : 
+*     : ADC_TypeDef * ADCx        ADCADC
+*           uint32_t chn            ADC_CH0ADC_CH1... ... ADC_CH7
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void ADC_IntOVFClr(ADC_TypeDef * ADCx, uint32_t chn)
 {
@@ -375,12 +375,12 @@ void ADC_IntOVFClr(ADC_TypeDef * ADCx, uint32_t chn)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: ADC_IntOVFStat()
-* 功能说明: 数据溢出中断状态
-* 输    入: ADC_TypeDef * ADCx        指定要被设置的ADC，可取值包括ADC
-*           uint32_t chn            要查询的通道，有效值ADC_CH0、ADC_CH1、... ... 、ADC_CH7
-* 输    出: uint32_t              1 该通道完成了转换    0 该通道未完成转换
-* 注意事项: 无
+* : ADC_IntOVFStat()
+* : 
+*     : ADC_TypeDef * ADCx        ADCADC
+*           uint32_t chn            ADC_CH0ADC_CH1... ... ADC_CH7
+*     : uint32_t              1     0 
+* : 
 ******************************************************************************************************************************************/
 uint32_t ADC_IntOVFStat(ADC_TypeDef * ADCx, uint32_t chn)
 {
@@ -390,12 +390,12 @@ uint32_t ADC_IntOVFStat(ADC_TypeDef * ADCx, uint32_t chn)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: ADC_IntHFULLEn()
-* 功能说明: FIFO半满中断使能
-* 输    入: ADC_TypeDef * ADCx        指定要被设置的ADC，可取值包括ADC
-*           uint32_t chn            要设置的通道，有效值ADC_CH0、ADC_CH1、... ... 、ADC_CH7
-* 输    出: 无
-* 注意事项: 无
+* : ADC_IntHFULLEn()
+* : FIFO
+*     : ADC_TypeDef * ADCx        ADCADC
+*           uint32_t chn            ADC_CH0ADC_CH1... ... ADC_CH7
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void ADC_IntHFULLEn(ADC_TypeDef * ADCx, uint32_t chn)
 {
@@ -405,12 +405,12 @@ void ADC_IntHFULLEn(ADC_TypeDef * ADCx, uint32_t chn)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: ADC_IntHFULLDis()
-* 功能说明: FIFO半满中断禁止
-* 输    入: ADC_TypeDef * ADCx        指定要被设置的ADC，可取值包括ADC
-*           uint32_t chn            要设置的通道，有效值ADC_CH0、ADC_CH1、... ... 、ADC_CH7
-* 输    出: 无
-* 注意事项: 无
+* : ADC_IntHFULLDis()
+* : FIFO
+*     : ADC_TypeDef * ADCx        ADCADC
+*           uint32_t chn            ADC_CH0ADC_CH1... ... ADC_CH7
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void ADC_IntHFULLDis(ADC_TypeDef * ADCx, uint32_t chn)
 {
@@ -420,12 +420,12 @@ void ADC_IntHFULLDis(ADC_TypeDef * ADCx, uint32_t chn)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: ADC_IntHFULLClr()
-* 功能说明: FIFO半满中断标志清除
-* 输    入: ADC_TypeDef * ADCx        指定要被设置的ADC，可取值包括ADC
-*           uint32_t chn            要设置的通道，有效值ADC_CH0、ADC_CH1、... ... 、ADC_CH7
-* 输    出: 无
-* 注意事项: 无
+* : ADC_IntHFULLClr()
+* : FIFO
+*     : ADC_TypeDef * ADCx        ADCADC
+*           uint32_t chn            ADC_CH0ADC_CH1... ... ADC_CH7
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void ADC_IntHFULLClr(ADC_TypeDef * ADCx, uint32_t chn)
 {
@@ -435,12 +435,12 @@ void ADC_IntHFULLClr(ADC_TypeDef * ADCx, uint32_t chn)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: ADC_IntHFULLStat()
-* 功能说明: FIFO半满中断状态
-* 输    入: ADC_TypeDef * ADCx        指定要被设置的ADC，可取值包括ADC
-*           uint32_t chn            要查询的通道，有效值ADC_CH0、ADC_CH1、... ... 、ADC_CH7
-* 输    出: uint32_t              1 该通道完成了转换    0 该通道未完成转换
-* 注意事项: 无
+* : ADC_IntHFULLStat()
+* : FIFO
+*     : ADC_TypeDef * ADCx        ADCADC
+*           uint32_t chn            ADC_CH0ADC_CH1... ... ADC_CH7
+*     : uint32_t              1     0 
+* : 
 ******************************************************************************************************************************************/
 uint32_t ADC_IntHFULLStat(ADC_TypeDef * ADCx, uint32_t chn)
 {
@@ -450,12 +450,12 @@ uint32_t ADC_IntHFULLStat(ADC_TypeDef * ADCx, uint32_t chn)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: ADC_IntFULLEn()
-* 功能说明: FIFO满中断使能
-* 输    入: ADC_TypeDef * ADCx        指定要被设置的ADC，可取值包括ADC
-*           uint32_t chn            要设置的通道，有效值ADC_CH0、ADC_CH1、... ... 、ADC_CH7
-* 输    出: 无
-* 注意事项: 无
+* : ADC_IntFULLEn()
+* : FIFO
+*     : ADC_TypeDef * ADCx        ADCADC
+*           uint32_t chn            ADC_CH0ADC_CH1... ... ADC_CH7
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void ADC_IntFULLEn(ADC_TypeDef * ADCx, uint32_t chn)
 {
@@ -465,12 +465,12 @@ void ADC_IntFULLEn(ADC_TypeDef * ADCx, uint32_t chn)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: ADC_IntFULLDis()
-* 功能说明: FIFO满中断禁止
-* 输    入: ADC_TypeDef * ADCx        指定要被设置的ADC，可取值包括ADC
-*           uint32_t chn            要设置的通道，有效值ADC_CH0、ADC_CH1、... ... 、ADC_CH7
-* 输    出: 无
-* 注意事项: 无
+* : ADC_IntFULLDis()
+* : FIFO
+*     : ADC_TypeDef * ADCx        ADCADC
+*           uint32_t chn            ADC_CH0ADC_CH1... ... ADC_CH7
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void ADC_IntFULLDis(ADC_TypeDef * ADCx, uint32_t chn)
 {
@@ -480,12 +480,12 @@ void ADC_IntFULLDis(ADC_TypeDef * ADCx, uint32_t chn)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: ADC_IntFULLClr()
-* 功能说明: FIFO满中断标志清除
-* 输    入: ADC_TypeDef * ADCx        指定要被设置的ADC，可取值包括ADC
-*           uint32_t chn            要设置的通道，有效值ADC_CH0、ADC_CH1、... ... 、ADC_CH7
-* 输    出: 无
-* 注意事项: 无
+* : ADC_IntFULLClr()
+* : FIFO
+*     : ADC_TypeDef * ADCx        ADCADC
+*           uint32_t chn            ADC_CH0ADC_CH1... ... ADC_CH7
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void ADC_IntFULLClr(ADC_TypeDef * ADCx, uint32_t chn)
 {
@@ -495,12 +495,12 @@ void ADC_IntFULLClr(ADC_TypeDef * ADCx, uint32_t chn)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: ADC_IntFULLStat()
-* 功能说明: FIFO满中断状态
-* 输    入: ADC_TypeDef * ADCx        指定要被设置的ADC，可取值包括ADC
-*           uint32_t chn            要查询的通道，有效值ADC_CH0、ADC_CH1、... ... 、ADC_CH7
-* 输    出: uint32_t              1 该通道完成了转换    0 该通道未完成转换
-* 注意事项: 无
+* : ADC_IntFULLStat()
+* : FIFO
+*     : ADC_TypeDef * ADCx        ADCADC
+*           uint32_t chn            ADC_CH0ADC_CH1... ... ADC_CH7
+*     : uint32_t              1     0 
+* : 
 ******************************************************************************************************************************************/
 uint32_t ADC_IntFULLStat(ADC_TypeDef * ADCx, uint32_t chn)
 {

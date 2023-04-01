@@ -28,7 +28,7 @@ int sd_check_thread_entry(void *p)
 {
     rt_uint8_t old_sd_check = 0;
 
-    /* 挂载sd0分区 */
+    /* sd0 */
     if (RT_NULL != rt_device_find("sd0p0"))
     {
         if (dfs_mount("sd0p0", "/", "elm", 0, 0) == 0)
@@ -41,7 +41,7 @@ int sd_check_thread_entry(void *p)
             return -1;
         }
 
-        /* 挂载sd1分区 */
+        /* sd1 */
         if (RT_NULL != rt_device_find("sd0p1"))
         {
             if (dfs_mount("sd0p1", "/", "elm", 0, 0) == 0)
@@ -63,7 +63,7 @@ int sd_check_thread_entry(void *p)
 #endif
             {
                 sd_mmc1_init();
-                /* 挂载sd2分区 */
+                /* sd2 */
                 if (RT_NULL != rt_device_find("sd1p0"))
                 {
 

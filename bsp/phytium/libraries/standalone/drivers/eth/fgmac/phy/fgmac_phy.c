@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fgmac_phy.c
  * Date: 2022-04-06 14:46:52
  * LastEditTime: 2022-04-06 14:46:53
- * Description:  This file is for
+ * Description: This file is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 /***************************** Include Files *********************************/
@@ -57,22 +57,22 @@
 
 /*****************************************************************************/
 
-/* 此文件主要为了完成用户对外接口，用户可以使用这些接口直接开始工作 */
+/*  */
 
-/* - 包括用户API的定义和实现
-   - 同时包含必要的OPTION方法，方便用户进行配置
-   - 如果驱动可以直接进行I/O操作，在此源文件下可以将API 进行实现 */
+/* - API
+   - OPTION
+   - I/OAPI  */
 
-/* - 包括用户API的定义和实现
-   - 同时包含必要的OPTION方法，方便用户进行配置
-   - 如果驱动可以直接进行I/O操作，在此源文件下可以将API 进行实现 */
+/* - API
+   - OPTION
+   - I/OAPI  */
 
 /**
  * @name: FGmacWaitPhyAutoNegotiationEnd
  * @msg: wait fgmac phy auto negotiation complete
  * @param {FGmac} *instance_p, instance of FGmac controller
  * @param {u32} phy_address, phy address connect to fgmac
- * @return err code information, FGMAC_SUCCESS indicates success，others indicates failed
+ * @return err code information, FGMAC_SUCCESS indicates successothers indicates failed
  */
 static FError FGmacWaitPhyAutoNegotiationEnd(FGmac *instance_p, u32 phy_address)
 {
@@ -109,7 +109,7 @@ static FError FGmacWaitPhyAutoNegotiationEnd(FGmac *instance_p, u32 phy_address)
  * @msg: fgmac phy auto negotiation configuration
  * @param {FGmac} *instance_p, instance of FGmac controller
  * @param {u32} phy_address, phy address connect to fgmac
- * @return err code information, FGMAC_SUCCESS indicates success，others indicates failed
+ * @return err code information, FGMAC_SUCCESS indicates successothers indicates failed
  */
 static FError FGmacPhyAutoNegotiation(FGmac *instance_p, u32 phy_address)
 {
@@ -166,7 +166,7 @@ static FError FGmacPhyAutoNegotiation(FGmac *instance_p, u32 phy_address)
  * @msg: fgmac phy not negotiation configuration
  * @param {FGmac} *instance_p, instance of FGmac controller
  * @param {u32} phy_address, phy address connect to fgmac
- * @return err code information, FGMAC_SUCCESS indicates success，others indicates failed
+ * @return err code information, FGMAC_SUCCESS indicates successothers indicates failed
  */
 static FError FGmacPhyNoneNegotiation(FGmac *instance_p, u32 phy_address)
 {
@@ -179,13 +179,13 @@ static FError FGmacPhyNoneNegotiation(FGmac *instance_p, u32 phy_address)
     if (FGMAC_SUCCESS != ret)
         return ret;
 
-    /* 设置半双工模式 */
+    /*  */
     if (FGMAC_PHY_MODE_FULLDUPLEX == instance_p->config.duplex_mode)
         control_reg |= FGMAC_PHY_MII_CR_DUPLEX_MODE;
     else
         control_reg &= ~(FGMAC_PHY_MII_CR_DUPLEX_MODE);
 
-    /* 设置速度bit6|bit13, 10b-1000M, 01b-100M, 00b-10M */
+    /* bit6|bit13, 10b-1000M, 01b-100M, 00b-10M */
     switch (instance_p->config.speed)
     {
     case FGMAC_PHY_SPEED_1000:
@@ -227,7 +227,7 @@ static FError FGmacPhyNoneNegotiation(FGmac *instance_p, u32 phy_address)
  * @param {u32} phy_address, phy address connect to fgmac
  * @param {u16} phy_reg, phy register offset to write
  * @param {u16} phy_reg_val, value write to phy register
- * @return err code information, FGMAC_SUCCESS indicates success，others indicates failed
+ * @return err code information, FGMAC_SUCCESS indicates successothers indicates failed
  */
 FError FGmacWritePhyReg(FGmac *instance_p, u32 phy_address, u16 phy_reg, u16 phy_reg_val)
 {
@@ -256,7 +256,7 @@ FError FGmacWritePhyReg(FGmac *instance_p, u32 phy_address, u16 phy_reg, u16 phy
  * @param {u32} phy_address, phy address connect to fgmac
  * @param {u16} phy_reg, phy register offset to read
  * @param {u16} *phy_reg_val_p, phy register value pointer
- * @return err code information, FGMAC_SUCCESS indicates success，others indicates failed
+ * @return err code information, FGMAC_SUCCESS indicates successothers indicates failed
  */
 FError FGmacReadPhyReg(FGmac *instance_p, u32 phy_address, u16 phy_reg, u16 *phy_reg_val_p)
 {
@@ -289,7 +289,7 @@ FError FGmacReadPhyReg(FGmac *instance_p, u32 phy_address, u16 phy_reg, u16 *phy
  * @name: FGmacPhyDetect
  * @msg: detect fgmac phy, and get phy addr
  * @param {FGmac} *instance_p, instance of FGmac controller
- * @return err code information, FGMAC_SUCCESS indicates success，others indicates failed
+ * @return err code information, FGMAC_SUCCESS indicates successothers indicates failed
  */
 FError FGmacPhyDetect(FGmac *instance_p)
 {
@@ -345,7 +345,7 @@ FError FGmacPhyDetect(FGmac *instance_p)
  * @msg: detect fgmac phy, and get phy addr
  * @param {FGmac} *instance_p, instance of FGmac controller
  * @param {u32} phy_address, phy address connect to fgmac
- * @return err code information, FGMAC_SUCCESS indicates success，others indicates failed
+ * @return err code information, FGMAC_SUCCESS indicates successothers indicates failed
  */
 FError FGmacPhyReset(FGmac *instance_p, u32 phy_address)
 {
@@ -365,7 +365,7 @@ FError FGmacPhyReset(FGmac *instance_p, u32 phy_address)
  * @msg: read phy special status register to get speed and duplex mode
  * @param {FGmac} *instance_p, instance of FGmac controller
  * @param {u32} phy_address, phy address connect to fgmac
- * @return err code information, FGMAC_SUCCESS indicates success，others indicates failed
+ * @return err code information, FGMAC_SUCCESS indicates successothers indicates failed
  */
 static FError FGmacGetPhySpecialStatus(FGmac *instance_p, u32 phy_address)
 {
@@ -405,7 +405,7 @@ static FError FGmacGetPhySpecialStatus(FGmac *instance_p, u32 phy_address)
  * @name: FGmacPhyCfgInitialize
  * @msg: fgmac phy configuration
  * @param {FGmac} *instance_p, instance of FGmac controller
- * @return err code information, FGMAC_SUCCESS indicates success，others indicates failed
+ * @return err code information, FGMAC_SUCCESS indicates successothers indicates failed
  */
 FError FGmacPhyCfgInitialize(FGmac *instance_p)
 {
@@ -424,7 +424,7 @@ FError FGmacPhyCfgInitialize(FGmac *instance_p)
 
     for (phy_addr = 0; phy_addr <= instance_p->phy_addr; phy_addr++)
     {
-        /* 计算出当前位置 */
+        /*  */
         if (instance_p->phy_valid_mask & (1 << phy_addr))
         {
             /* set phy power down and set phy Normal operation  */
@@ -480,7 +480,7 @@ FError FGmacPhyCfgDeInitialize(FGmac *instance_p)
 
     for (phy_addr = 0; phy_addr <= instance_p->phy_addr; phy_addr++)
     {
-        /* 计算出当前位置 */
+        /*  */
         if (instance_p->phy_valid_mask & (1 << phy_addr))
         {
             /* set phy power down and set phy Normal operation  */
@@ -494,7 +494,7 @@ FError FGmacPhyCfgDeInitialize(FGmac *instance_p)
  * @name: FGmacPhyAwaken
  * @msg: fgmac phy awaken
  * @param {FGmac} *instance_p, instance of FGmac controller
- * @return err code information, FGMAC_SUCCESS indicates success，others indicates failed
+ * @return err code information, FGMAC_SUCCESS indicates successothers indicates failed
  */
 FError  FGmacPhyAwaken(FGmac *instance_p)
 {

@@ -499,7 +499,7 @@ typedef struct {
  * Data to transmit or the received data
  * For writes, data is enqueued to the TX FIFO. The least significant byte is always transmitted first. If the TX FIFO is full and the SPIActive bit of the status register is 1, the ready signal hready/pready will be deasserted to insert wait states to the transfer.
  * For reads, data is read and dequeued from the RX FIFO. The least significant byte is the first received byte. If the RX FIFO is empty and the SPIActive bit of the status register is 1, the ready signal hready/pready will be deasserted to insert wait states to the transfer.
- * The FIFOs decouple the speed of the SPI transfers and the software鈥檚 generation/consumption of data. When the TX FIFO is empty, SPI transfers will hold until more data is written to the TX FIFO; when the RX FIFO is full, SPI transfers will hold until there is more room in the RX FIFO.
+ * The FIFOs decouple the speed of the SPI transfers and the software generation/consumption of data. When the TX FIFO is empty, SPI transfers will hold until more data is written to the TX FIFO; when the RX FIFO is full, SPI transfers will hold until there is more room in the RX FIFO.
  * If more data is written to the TX FIFO than the write transfer count (WrTranCnt), the remaining data will stay in the TX FIFO for the next transfer or until the TX FIFO is reset.
  */
 #define SPI_DATA_DATA_MASK (0xFFFFFFFFUL)
@@ -687,7 +687,7 @@ typedef struct {
  *
  * Enable the End of SPI Transfer interrupt.
  * Control whether interrupts are triggered when SPI transfers end.
- * (In slave mode, end of read status transaction doesn鈥檛 trigger this interrupt.)
+ * (In slave mode, end of read status transaction doesn trigger this interrupt.)
  */
 #define SPI_INTREN_ENDINTEN_MASK (0x10U)
 #define SPI_INTREN_ENDINTEN_SHIFT (4U)

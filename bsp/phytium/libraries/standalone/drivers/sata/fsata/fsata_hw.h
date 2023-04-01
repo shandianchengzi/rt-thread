@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fsata_hw.h
  * Date: 2022-02-10 14:55:11
  * LastEditTime: 2022-02-18 09:03:41
- * Description:  This files is for ctrl of sata functions
+ * Description: This files is for ctrl of sata functions
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 #ifndef BSP_DRIVERS_FSATA_HW_H
@@ -134,19 +134,19 @@ extern "C"
 
 /**
  * @name: SATA_READ_REG32
- * @msg:  读取SATA寄存器
- * @param {u32} addr 定时器的基地址
- * @param {u32} reg_offset   定时器的寄存器的偏移
- * @return {u32} 寄存器参数
+ * @msg:  SATA
+ * @param {u32} addr 
+ * @param {u32} reg_offset   
+ * @return {u32} 
  */
 #define FSATA_READ_REG32(addr, reg_offset) FtIn32((addr) + (u32)reg_offset)
 
 /**
  * @name: SATA_WRITE_REG32
- * @msg:  写入SATA寄存器
- * @param {u32} addr 定时器的基地址
- * @param {u32} reg_offset   定时器的寄存器的偏移
- * @param {u32} reg_value    写入寄存器参数
+ * @msg:  SATA
+ * @param {u32} addr 
+ * @param {u32} reg_offset   
+ * @param {u32} reg_value    
  * @return {void}
  */
 #define FSATA_WRITE_REG32(addr, reg_offset, reg_value) FtOut32((addr) + (u32)reg_offset, (u32)reg_value)

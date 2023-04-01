@@ -48,7 +48,7 @@ static rt_err_t uart_configure(struct rt_serial_device *serial, struct serial_co
     FPl011SetRxFifoThreadhold(uart_hw, FPL011IFLS_RXIFLSEL_1_4);
     FPl011SetTxFifoThreadHold(uart_hw, FPL011IFLS_TXIFLSEL_1_2);
 
-    //<! 打开接收中断
+    //<! 
     intr_mask = uart->config.isr_event_mask;
     FPl011SetInterruptMask(uart_hw, intr_mask);
     FPl011SetOptions(uart_hw, FPL011_OPTION_UARTEN | FPL011_OPTION_RXEN | FPL011_OPTION_TXEN | FPL011_OPTION_FIFOEN);

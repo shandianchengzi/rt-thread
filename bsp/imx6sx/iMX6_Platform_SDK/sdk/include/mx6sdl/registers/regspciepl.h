@@ -502,14 +502,14 @@ typedef union _hw_pcie_pl_aflacr
  * L0s Entrance Latency Values correspond to:
  *
  * Values:
- * - 000 - 1 ìs
- * - 001 - 2 ìs
- * - 010 - 3 ìs
- * - 011 - 4 ìs
- * - 100 - 5 ìs
- * - 101 - 6 ìs
- * - 110 - 7 ìs
- * - 111 - 7 ìs
+ * - 000 - 1 s
+ * - 001 - 2 s
+ * - 010 - 3 s
+ * - 011 - 4 s
+ * - 100 - 5 s
+ * - 101 - 6 s
+ * - 110 - 7 s
+ * - 111 - 7 s
  */
 //@{
 #define BP_PCIE_PL_AFLACR_L0S_ENTRANCE_LATENCY      (24)      //!< Bit position for PCIE_PL_AFLACR_L0S_ENTRANCE_LATENCY.
@@ -532,14 +532,14 @@ typedef union _hw_pcie_pl_aflacr
  * L1 Entrance Latency Values correspond to:
  *
  * Values:
- * - 000 - 1 ìs
- * - 001 - 2 ìs
- * - 010 - 4 ìs
- * - 011 - 8 ìs
- * - 100 - 16 ìs
- * - 101 - 32 ìs
- * - 110 - 64 ìs
- * - 111 - 64 ìs
+ * - 000 - 1 s
+ * - 001 - 2 s
+ * - 010 - 4 s
+ * - 011 - 8 s
+ * - 100 - 16 s
+ * - 101 - 32 s
+ * - 110 - 64 s
+ * - 111 - 64 s
  */
 //@{
 #define BP_PCIE_PL_AFLACR_L1_ENTRANCE_LATENCY      (27)      //!< Bit position for PCIE_PL_AFLACR_L1_ENTRANCE_LATENCY.
@@ -1338,11 +1338,11 @@ typedef union _hw_pcie_pl_strfm2
 /*! @name Register PCIE_PL_STRFM2, field MASK_RADM_FILTERING_AND_ERROR_HANDLING_RULES[31:0] (RW)
  *
  * Mask RADM Filtering and Error Handling Rules: Mask 2 It defaults to 0x0 There are several mask
- * bits used to turn off the filtering and error handling rules . •[31:4]: Reserved •[3]:
+ * bits used to turn off the filtering and error handling rules . [31:4]: Reserved [3]:
  * `CX_FLT_MASK_HANDLE_FLUSH - 0: Disable Core Filter to handle flush request - 1: Enable Core
- * Filter to handle flush request •[2]: `CX_FLT_MASK_DABORT_4UCPL - 0: Enable DLLP abort for
- * unexpected CPL - 1: Do not enable DLLP abort for unexpected CPL •[1]: `CX_FLT_MASK_VENMSG1_DROP -
- * 0: Vendor MSG Type 1 dropped silently - 1: Vendor MSG Type 1 not dropped •[0]:
+ * Filter to handle flush request [2]: `CX_FLT_MASK_DABORT_4UCPL - 0: Enable DLLP abort for
+ * unexpected CPL - 1: Do not enable DLLP abort for unexpected CPL [1]: `CX_FLT_MASK_VENMSG1_DROP -
+ * 0: Vendor MSG Type 1 dropped silently - 1: Vendor MSG Type 1 not dropped [0]:
  * `CX_FLT_MASK_VENMSG0_DROP - 0: Vendor MSG Type 0 dropped with UR error reporting - 1: Vendor MSG
  * Type 0 not dropped
  */
@@ -4207,7 +4207,7 @@ typedef union _hw_pcie_pl_iaturc1
  * TC Outbound : When the address of an outbound TLP is matched to this region, then the TC field of
  * the TLP is changed to the value in this register. Inbound : When the TC field of an inbound TLP
  * is matched to this value, then address translation will proceed 1 . This check is only performed
- * if the ìTC Match Enable bit of the ìiATU Control 2 Register is set.
+ * if the TC Match Enable bit of the iATU Control 2 Register is set.
  */
 //@{
 #define BP_PCIE_PL_IATURC1_TC      (5)      //!< Bit position for PCIE_PL_IATURC1_TC.
@@ -4230,7 +4230,7 @@ typedef union _hw_pcie_pl_iaturc1
  * TD Outbound : When the address of an outbound TLP is matched to this region, then the TD field of
  * the TLP is changed to the value in this register. Inbound : When the TD field of an inbound TLP
  * is matched to this value, then address translation will proceed1. This check is only performed if
- * the ìTD Match Enable bit of the ìiATU Control 2 Register is set.
+ * the TD Match Enable bit of the iATU Control 2 Register is set.
  */
 //@{
 #define BP_PCIE_PL_IATURC1_TD      (8)      //!< Bit position for PCIE_PL_IATURC1_TD.
@@ -4253,7 +4253,7 @@ typedef union _hw_pcie_pl_iaturc1
  * ATTR Outbound : When the address of an outbound TLP is matched to this region, then the ATTR
  * field of the TLP is changed to the value in this register. Inbound : When the ATTR field of an
  * inbound TLP is matched to this value, then address translation will proceed 1 . This check is
- * only performed if the ìATTR Match Enable bit of the ìiATU Control 2 Register is set.
+ * only performed if the ATTR Match Enable bit of the iATU Control 2 Register is set.
  */
 //@{
 #define BP_PCIE_PL_IATURC1_ATTR      (9)      //!< Bit position for PCIE_PL_IATURC1_ATTR.
@@ -4298,10 +4298,10 @@ typedef union _hw_pcie_pl_iaturc1
  * TLP is taken from this 3-bit register. The value in this register must be 0x0 Inbound MEM/IO :
  * When the Address and BAR matching logic in the core indicate that a MEM/IO transaction matches a
  * BAR in the function corresponding to this value, then address translation will proceed 1 . This
- * check is only performed if the ìFunction Number Match Enable bit of the ìiATU Control 2 Register
+ * check is only performed if the Function Number Match Enable bit of the iATU Control 2 Register
  * is set. Inbound CFG0/CFG1 : When the destination function number as specified in the routing ID
  * of the TLP header matches the function, then address translation will proceed1. This check is
- * only performed if the ìFunction Number Match Enable bit of the ìiATU Control 2 Register is set.
+ * only performed if the Function Number Match Enable bit of the iATU Control 2 Register is set.
  */
 //@{
 #define BP_PCIE_PL_IATURC1_FUNCTION_NUMBER      (20)      //!< Bit position for PCIE_PL_IATURC1_FUNCTION_NUMBER.
@@ -4385,7 +4385,7 @@ typedef union _hw_pcie_pl_iaturc2
  * translated TLP TYPE field is Msg or MsgD; then the Message field of the TLP is changed to the
  * value in this register. Inbound : When the TYPE field of an inbound Msg/MsgD TLP is matched to
  * this value, then address translation will proceed 1 . This check is only performed if the
- * ìFunction Message Code Match Enable bit of the is set.
+ * Function Message Code Match Enable bit of the is set.
  */
 //@{
 #define BP_PCIE_PL_IATURC2_MESSAGE_CODE      (0)      //!< Bit position for PCIE_PL_IATURC2_MESSAGE_CODE.
@@ -4407,7 +4407,7 @@ typedef union _hw_pcie_pl_iaturc2
  *
  * BAR Number Outbound : Not used. Inbound : When the BAR number of an inbound MEM or IO TLP - that
  * is matched by the normal internal BAR address matching mechanism - is the same as this field,
- * address translation will proceed 1 .This check is only performed if the ìMatch Mode bit of the is
+ * address translation will proceed 1 .This check is only performed if the Match Mode bit of the is
  * set. IO translation would require either 00100b or 00101b in the inbound TLP TYPE; the BAR Number
  * set in the range 000b - 101b and that BAR configured as an IO BAR.
  *

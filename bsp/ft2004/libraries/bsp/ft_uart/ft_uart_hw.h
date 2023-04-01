@@ -1,14 +1,14 @@
 /*
- * @ : Copyright (c) 2021 Phytium Information Technology, Inc.
- *
- * SPDX-License-Identifier: Apache-2.0.
- *
+*@:Copyright(c)2021PhytiumInformationTechnology,Inc.
+*
+*SPDX-License-Identifier:Apache-2.0.
+*
  * @Date: 2021-03-31 14:59:20
  * @LastEditTime: 2021-04-02 14:14:34
- * @Description:  This files is for definition of uart register
+ * @Description: This files is for definition of uart register
  *
- * @Modify History: * * Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * @ModifyHistory: **VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 #ifndef FT_UART_HW_H
@@ -31,41 +31,41 @@ extern "C"
  * @{
  */
 
-#define UARTDR_OFFSET 0U  /* 数据寄存器 */
-#define UARTRSR_OFFSET 4U /* 接收状态寄存器/错误清除寄存器 */
+#define UARTDR_OFFSET 0U  /*  */
+#define UARTRSR_OFFSET 4U /* / */
 #define UARTECR_OFFSET UARTRSR_OFFSET
-#define UARTFTR_OFFSET 0x18U    /* 标志寄存器 */
-#define UARTILPR_OFFSET 0x020U  /* 低功耗计数寄存器 */
-#define UARTIBRD_OFFSET 0x024U  /* 波特率整数值配置寄存器 */
-#define UARTFBRD_OFFSET 0x028U  /* 波特率小数值配置寄存器 */
-#define UARTLCR_H_OFFSET 0x02cU /* 线控寄存器 */
-#define UARTCR_OFFSET 0x030U    /* 控制寄存器 */
-#define UARTIFLS_OFFSET 0x034U  /* FIFO阈值选择寄存器 */
-#define UARTIMSC_OFFSET 0x038U  /* 中断屏蔽选择清除寄存器 */
-#define UARTRIS_OFFSET 0x03cU   /* 中断状态寄存器 */
-#define UARTMIS_OFFSET 0x040U   /* 中断屏蔽状态寄存器 */
-#define UARTICR_OFFSET 0x044U   /* 中断清除寄存器 */
-#define UARTDMACR_OFFSET 0x048U /* DMA控制寄存器 */
+#define UARTFTR_OFFSET 0x18U    /*  */
+#define UARTILPR_OFFSET 0x020U  /*  */
+#define UARTIBRD_OFFSET 0x024U  /*  */
+#define UARTFBRD_OFFSET 0x028U  /*  */
+#define UARTLCR_H_OFFSET 0x02cU /*  */
+#define UARTCR_OFFSET 0x030U    /*  */
+#define UARTIFLS_OFFSET 0x034U  /* FIFO */
+#define UARTIMSC_OFFSET 0x038U  /*  */
+#define UARTRIS_OFFSET 0x03cU   /*  */
+#define UARTMIS_OFFSET 0x040U   /*  */
+#define UARTICR_OFFSET 0x044U   /*  */
+#define UARTDMACR_OFFSET 0x048U /* DMA */
 
-    /* 数据寄存器 RW */
+    /*  RW */
 
-#define UARTDR_OE 0x800U /* 如果接收到数据并且接收的 FIFO 已满，该位设置为 1 */
-#define UARTDR_BE 0x400U /* 突发错误 */
-#define UARTDR_PE 0x200U /*  奇偶校验错误。 */
-#define UARTDR_FE 0x100U /*  帧错误。 */
+#define UARTDR_OE 0x800U /*  FIFO  1 */
+#define UARTDR_BE 0x400U /*  */
+#define UARTDR_PE 0x200U /*   */
+#define UARTDR_FE 0x100U /*   */
 #define UARTDR_ALLE (UARTDR_OE | UARTDR_BE | UARTDR_PE | UARTDR_FE)
-#define UARTDR_DATA 0xffU /* R 接收数据 ，W 传输数据  */
+#define UARTDR_DATA 0xffU /* R  W   */
 
-    /* 接收状态寄存器 RW */
+    /*  RW */
 
-#define UARTRSR_OE 0x8U /* 溢出错误。 */
-#define UARTRSR_BE 0x4U /* 突发错误 */
-#define UARTRSR_PE 0x2U /* 奇偶校验错误。 */
-#define UARTRSR_FE 0x1U /* 帧错误 */
+#define UARTRSR_OE 0x8U /*  */
+#define UARTRSR_BE 0x4U /*  */
+#define UARTRSR_PE 0x2U /*  */
+#define UARTRSR_FE 0x1U /*  */
 
-#define UARTECR_CLE 0xffU /* 清除 */
+#define UARTECR_CLE 0xffU /*  */
 
-/* 标志寄存器  RO */
+/*   RO */
 #define UARTFTR_RI 0x100U  /* Ring indicator */
 #define UARTFTR_TXFE 0x80U /* Transmit FIFO empty */
 #define UARTFTR_RXFF 0x40U /*  Receive FIFO full */
@@ -76,16 +76,16 @@ extern "C"
 #define UARTFTR_DSR 0x02U  /* Data set ready.  */
 #define UARTFTR_CTS 0x1U   /* Clear to send */
 
-/* IrDA 低功耗计数寄存器 RW */
+/* IrDA  RW */
 #define UARTILPR_ILPDVSR 0xffU /* 8-bit low-power divisor value. These bits are cleared to 0 at reset */
 
-/* 波特率整数值配置寄存器 RW */
+/*  RW */
 #define UARTIBRD_BAUD_DIVFRAC 0xffffU /* The fractional baud rate divisor. */
 
-/* 波特率小数值配置寄存器 RW */
+/*  RW */
 #define UARTFBRD_BAUD_DIVFRAC 0x3fU /* The fractional baud rate divisor. */
 
-/* 线控寄存器 RW */
+/*  RW */
 #define UARTLCR_H_SPS 0x80U  /* Stick parity select.  */
 #define UARTLCR_H_WLEN 0x60U /*  Word length. */
 #define UARTLCR_H_FEN 0x10U  /*  Enable FIFOs. */
@@ -94,7 +94,7 @@ extern "C"
 #define UARTLCR_H_PEN 0x02U  /*  Parity enable. */
 #define UARTLCR_H_BRK 0x01U  /* send break  */
 
-/* 控制寄存器  RW */
+/*   RW */
 #define UARTCR_CTSEN 0x8000U /* CTS hardware flow control enable.  */
 #define UARTCR_RTSEN 0x4000U /* RTS hardware flow control enable.  */
 #define UARTCR_OUT2 0x2000U  /* This bit is the complement of the UART Out2 (nUARTOut2) modem status output. */
@@ -108,11 +108,11 @@ extern "C"
 #define UARTCR_SIREN 0x2U    /*  SIR enable. */
 #define UARTCR_UARTEN 0x1U   /* UART enable. */
 
-/* FIFO阈值选择寄存器 RW  */
+/* FIFO RW  */
 #define UARTIFLS_RXIFLSEL 0x38U /* Receive interrupt FIFO level select. */
 #define UARTIFLS_TXIFLSEL 0x7U  /* Transmit interrupt FIFO level select. */
 
-/* 中断屏蔽选择清除寄存器  RW */
+/*   RW */
 #define UARTIMSC_OEIM 0x400U /* Overrun error interrupt mask.  */
 #define UARTIMSC_BEIM 0x200U /* Break error interrupt mask  */
 #define UARTIMSC_PEIM 0x100U /* Parity error interrupt mask.  */
@@ -126,7 +126,7 @@ extern "C"
 #define UARTIMSC_RIMIM 0x1U  /* nUARTRI modem interrupt mask.  */
 #define UARTIMSC_ALLM 0x3ffU /* all interrupt mask */
 
-    /* 中断状态寄存器   RO */
+    /*    RO */
 
 #define UARTRIS_OEIS 0x400U /* Overrun error interrupt mask.  */
 #define UARTRIS_BEIS 0x200U /* Break error interrupt mask  */
@@ -140,7 +140,7 @@ extern "C"
 #define UARTRIS_CTSMIS 0x2U /* nUARTCTS modem interrupt mask.  */
 #define UARTRIS_RIMIS 0x1U  /* nUARTRI modem interrupt mask.  */
 
-    /* 中断屏蔽状态寄存器 R0  */
+    /*  R0  */
 
 #define UARTMIS_OEMIS 0x400U /* Overrun error interrupt mask.  */
 #define UARTMIS_BEMIS 0x200U /* Break error interrupt mask  */
@@ -154,7 +154,7 @@ extern "C"
 #define UARTMIS_CTSMMIS 0x2U /* nUARTCTS modem interrupt mask.  */
 #define UARTMIS_RIMMIS 0x1U  /* nUARTRI modem interrupt mask.  */
 
-/* 中断清除寄存器 WO */
+/*  WO */
 #define UARTICR_OEIC 0x400U /* Overrun error interrupt mask.  */
 #define UARTICR_BEIC 0x200U /* Break error interrupt mask  */
 #define UARTICR_PEIC 0x100U /* Parity error interrupt mask.  */
@@ -167,7 +167,7 @@ extern "C"
 #define UARTICR_CTSMIC 0x2U /* nUARTCTS modem interrupt mask.  */
 #define UARTICR_RIMIC 0x1U  /* nUARTRI modem interrupt mask.  */
 
-/* DMA控制寄存器 RW */
+/* DMA RW */
 #define UARTDMACR_DMAONERR 0x4U /* DMA on error. */
 #define UARTDMACR_TXDMAE 0x2U   /* Transmit DMA enable. */
 #define UARTDMACR_RXDMAE 0x1U   /* Receive DMA enable. */
@@ -176,37 +176,37 @@ extern "C"
 
 /**
  * @name: FT_UART_ReadReg
- * @msg:  读取串口寄存器
- * @param {u32} BaseAddress 串口的基地址
- * @param {u32} RegOffset   串口的寄存器的偏移
- * @return {u32} 寄存器参数
+ * @msg:  
+ * @param {u32} BaseAddress 
+ * @param {u32} RegOffset   
+ * @return {u32} 
  */
 #define FT_UART_ReadReg(BaseAddress, RegOffset) Ft_in32(BaseAddress + (u32)RegOffset)
 
 /**
  * @name: FT_UART_WriteReg
- * @msg:  写入串口寄存器
- * @param {u32} BaseAddress 串口的基地址
- * @param {u32} RegOffset   串口的寄存器的偏移
- * @param {u32} RegisterValue 写入寄存器参数
+ * @msg:  
+ * @param {u32} BaseAddress 
+ * @param {u32} RegOffset   
+ * @param {u32} RegisterValue 
  * @return {void}
  */
 #define FT_UART_WriteReg(BaseAddress, RegOffset, RegisterValue) Ft_out32(BaseAddress + (u32)RegOffset, (u32)RegisterValue)
 
 /**
  * @name: FT_UART_ISRECEIVEDATA
- * @msg:  用于确认是否接收到数据
- * @param {u32} BaseAddress 串口的基地址
- * @return {bool} true 是存在数据 ， false 是不存在数据
+ * @msg:  
+ * @param {u32} BaseAddress 
+ * @return {bool} true   false 
  *
  */
 #define FT_UART_IsReceiveData(BaseAddress) (Ft_in32(BaseAddress + UARTFTR_OFFSET) & UARTFTR_RXFE)
 
 /**
  * @name: FT_UART_ISTRANSMITFULL
- * @msg:  用于确认是否能够发送数据
- * @param {u32} BaseAddress 串口的基地址
- * @return {bool} true 是数据已满 ， false 可以发送数据
+ * @msg:  
+ * @param {u32} BaseAddress 
+ * @return {bool} true   false 
  */
 #define FT_UART_IsTransmitFull(BaseAddress) ((Ft_in32(BaseAddress + UARTFTR_OFFSET) & (u32)UARTFTR_TXFF) == UARTFTR_TXFF)
 

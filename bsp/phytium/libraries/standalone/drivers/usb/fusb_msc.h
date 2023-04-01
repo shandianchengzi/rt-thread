@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fusb_msc.h
  * Date: 2022-02-11 13:33:09
  * LastEditTime: 2022-02-17 17:50:46
- * Description:  This files is for definition of USB mass storage function
+ * Description: This files is for definition of USB mass storage function
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   Zhugengyu  2022/2/7    init commit
  */
 
@@ -95,9 +95,9 @@ typedef struct
 
 /**
  * @name: FUsbMscGetCapcityMB
- * @msg: 获取USB大容量存储设备的容量，单位MB
- * @return {fsize_t} 容量，MB
- * @param {FUsbDev} *dev, USB大容量存储设备实例
+ * @msg: USBMB
+ * @return {fsize_t} MB
+ * @param {FUsbDev} *dev, USB
  */
 static inline u32 FUsbMscGetCapcityMB(FUsbDev *dev)
 {
@@ -109,9 +109,9 @@ static inline u32 FUsbMscGetCapcityMB(FUsbDev *dev)
 
 /**
  * @name: FUsbMscGetBlkSize
- * @msg: 获取USB大容量存储设备的块大小
- * @return {*} 块大小，字节数
- * @param {FUsbDev} *dev, USB大容量存储设备实例
+ * @msg: USB
+ * @return {*} 
+ * @param {FUsbDev} *dev, USB
  */
 static inline u32 FUsbMscGetBlkSize(FUsbDev *dev)
 {
@@ -121,9 +121,9 @@ static inline u32 FUsbMscGetBlkSize(FUsbDev *dev)
 
 /**
  * @name: FUsbMscGetBlkNum
- * @msg: 获取USB大容量存储设备块数目
- * @return {*} 块数目
- * @param {FUsbDev} *dev, USB大容量存储设备实例
+ * @msg: USB
+ * @return {*} 
+ * @param {FUsbDev} *dev, USB
  */
 static inline u32 FUsbMscGetBlkNum(FUsbDev *dev)
 {
@@ -132,10 +132,10 @@ static inline u32 FUsbMscGetBlkNum(FUsbDev *dev)
 }
 
 /************************** Function Prototypes ******************************/
-/* 读写USB大容量存储设备，以512字节为一块 */
+/* USB512 */
 int FUsbMscRwBlk512(FUsbDev *dev, int start, int n, FUsbMassStorageDirection dir, u8 *buf);
 
-/* USB大容量存储设备的初始化函数，由应用程序注册到FUSB框架中 */
+/* USBFUSB */
 void FUsbMassStorageInit(FUsbDev *dev);
 
 /**

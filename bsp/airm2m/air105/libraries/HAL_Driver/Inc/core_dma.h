@@ -52,13 +52,13 @@ uint8_t DMA_CheckStreamBusy(uint8_t Stream);
 int DMA_ConfigStream(uint8_t Stream, void *Config);
 int DMA_StartStream(uint8_t Stream, const void *Data, uint32_t Len, CBFuncEx_t CB, void *pUserData, uint8_t NeedIrq);
 /**
- * @brief 强制启动DMA传输
- * @param Stream DMA流序号
- * @param Data DMA缓存
- * @param Len DMA缓存长度
- * @param CB 完成或者出错回调。完成时，回调函数参数pParam为0，出错为0xffffffff
- * @param NeedIrq 是否需要中断
- * @return 无
+ * @brief DMA
+ * @param Stream DMA
+ * @param Data DMA
+ * @param Len DMA
+ * @param CB pParam00xffffffff
+ * @param NeedIrq 
+ * @return 
  */
 void DMA_ForceStartStream(uint8_t Stream, const void *Data, uint32_t Len, CBFuncEx_t CB, void *pUserData, uint8_t NeedIrq);
 void DMA_ClearStreamFlag(uint8_t Stream);

@@ -113,13 +113,13 @@ static func_ptr_t pfnVc1IrqCb = NULL;
 
 /**
  * \brief   
- *          指定VC通道中断使能/除能
+ *          VC/
  *
- * \param   [in]  enChannel  VC通道号
- * \param   [in]  bFlag      使能/除能标志
+ * \param   [in]  enChannel  VC
+ * \param   [in]  bFlag      /
  *
- * \retval  en_result_t    Ok:  设置成功
- * \retval  en_result_t    ErrorInvalidParameter:  无效参数
+ * \retval  en_result_t    Ok:  
+ * \retval  en_result_t    ErrorInvalidParameter:  
  */
 static en_result_t VcEnableIrq(en_vc_channel_t enChannel, boolean_t bFlag)
 {
@@ -159,11 +159,11 @@ static en_result_t VcEnableIrq(en_vc_channel_t enChannel, boolean_t bFlag)
 
 /**
  * \brief   
- *          使能NVIC中VC中断
+ *          NVICVC
  *
- * \param   [in]  enIrqn  中断号
+ * \param   [in]  enIrqn  
  *
- * \retval  无
+ * \retval  
  */
 static void VcEnableNvic(IRQn_Type enIrqn)
 {
@@ -174,11 +174,11 @@ static void VcEnableNvic(IRQn_Type enIrqn)
 
 /**
  * \brief   
- *          除能NVIC中VC中断
+ *          NVICVC
  *
- * \param   [in]  enIrqn  中断号
+ * \param   [in]  enIrqn  
  *
- * \retval  无
+ * \retval  
  */
 static void VcDisableNvic(IRQn_Type enIrqn)
 {
@@ -189,11 +189,11 @@ static void VcDisableNvic(IRQn_Type enIrqn)
 
 /**
  * \brief   
- *          VC中断服务程序
+ *          VC
  *
- * \param   [in]  u8Param  VC通道号
+ * \param   [in]  u8Param  VC
  *
- * \retval  无
+ * \retval  
  */
 void Vc_IRQHandler(uint8_t u8Param)
 {
@@ -227,13 +227,13 @@ void Vc_IRQHandler(uint8_t u8Param)
 
 /**
  * \brief   
- *          配置VC中断触发方式
+ *          VC
  *
- * \param   [in]  enChannel  VC通道号
- * \param   [in]  enSel      中断触发方式选择
+ * \param   [in]  enChannel  VC
+ * \param   [in]  enSel      
  *
- * \retval  en_result_t    Ok:  设置成功
- * \retval  en_result_t    ErrorInvalidParameter:  无效参数
+ * \retval  en_result_t    Ok:  
+ * \retval  en_result_t    ErrorInvalidParameter:  
  */
 en_result_t Vc_ConfigIrq(en_vc_channel_t enChannel, en_vc_irq_sel_t enSel)
 {
@@ -275,13 +275,13 @@ en_result_t Vc_ConfigIrq(en_vc_channel_t enChannel, en_vc_irq_sel_t enSel)
 
 /**
  * \brief   
- *          获取VC状态
+ *          VC
  *
- * \param   [in]  enChannel  VC通道号
- * \param   [in]  enStat     VC状态类型
+ * \param   [in]  enChannel  VC
+ * \param   [in]  enStat     VC
  *
- * \retval  boolean_t  TRUE:   状态为高
- * \retval  boolean_t  FALSE:  状态为低
+ * \retval  boolean_t  TRUE:   
+ * \retval  boolean_t  FALSE:  
  */
 boolean_t Vc_GetStat(en_vc_channel_t enChannel, en_vc_stat_t enStat)
 {
@@ -324,11 +324,11 @@ boolean_t Vc_GetStat(en_vc_channel_t enChannel, en_vc_stat_t enStat)
 
 /**
  * \brief   
- *          清除VC中断标志
+ *          VC
  *
- * \param   [in]  enChannel  VC通道号
+ * \param   [in]  enChannel  VC
  *
- * \retval  无
+ * \retval  
  */
 void Vc_ClearIrq(en_vc_channel_t enChannel)
 {
@@ -346,12 +346,12 @@ void Vc_ClearIrq(en_vc_channel_t enChannel)
 
 /**
  * \brief   
- *          指定VC通道中断使能
+ *          VC
  *
- * \param   [in]  enChannel  VC通道号
+ * \param   [in]  enChannel  VC
  *
- * \retval  en_result_t    Ok:  设置成功
- * \retval  en_result_t    ErrorInvalidParameter:  无效参数
+ * \retval  en_result_t    Ok:  
+ * \retval  en_result_t    ErrorInvalidParameter:  
  */
 en_result_t Vc_EnableIrq(en_vc_channel_t enChannel)
 {
@@ -360,12 +360,12 @@ en_result_t Vc_EnableIrq(en_vc_channel_t enChannel)
 
 /**
  * \brief   
- *          指定VC通道中断除能
+ *          VC
  *
- * \param   [in]  enChannel  VC通道号
+ * \param   [in]  enChannel  VC
  *
- * \retval  en_result_t    Ok:  设置成功
- *                         ErrorInvalidParameter:  无效参数
+ * \retval  en_result_t    Ok:  
+ *                         ErrorInvalidParameter:  
  */
 en_result_t Vc_DisableIrq(en_vc_channel_t enChannel)
 {
@@ -374,12 +374,12 @@ en_result_t Vc_DisableIrq(en_vc_channel_t enChannel)
 
 /**
  * \brief   
- *          VC模块初始化
+ *          VC
  *
- * \param   [in]  pstcGeneralConfig  VC模块配置指针
+ * \param   [in]  pstcGeneralConfig  VC
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  */
 en_result_t Vc_DACInit(stc_vc_dac_config_t *pstcDacConfig)
 {
@@ -405,11 +405,11 @@ en_result_t Vc_DACInit(stc_vc_dac_config_t *pstcDacConfig)
 
 /**
  * \brief   
- *          VC模块deinit
+ *          VCdeinit
  *
- * \param   无
+ * \param   
  *
- * \retval  无
+ * \retval  
  */
 void Vc_DACDeInit(void)
 {
@@ -420,13 +420,13 @@ void Vc_DACDeInit(void)
 
 /**
  * \brief   
- *          VC通道初始化
+ *          VC
  *
- * \param   [in]  enChannel  VC通道号
- * \param   [in]  pstcChannelConfig  VC通道配置指针
+ * \param   [in]  enChannel  VC
+ * \param   [in]  pstcChannelConfig  VC
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  */
 en_result_t Vc_ChannelInit(en_vc_channel_t enChannel,
                             stc_vc_channel_config_t *pstcChannelConfig)
@@ -508,12 +508,12 @@ en_result_t Vc_ChannelInit(en_vc_channel_t enChannel,
 
 /**
  * \brief   
- *          VC通道Deinit
+ *          VCDeinit
  *
- * \param   [in]  enChannel  VC通道号
+ * \param   [in]  enChannel  VC
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  */
 en_result_t Vc_ChannelDeInit(en_vc_channel_t enChannel)
 {
@@ -559,12 +559,12 @@ en_result_t Vc_ChannelDeInit(en_vc_channel_t enChannel)
 
 /**
  * \brief   
- *          VC通道使能
+ *          VC
  *
- * \param   [in]  enChannel  VC通道号
+ * \param   [in]  enChannel  VC
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  */
 en_result_t Vc_EnableChannel(en_vc_channel_t enChannel)
 {
@@ -586,12 +586,12 @@ en_result_t Vc_EnableChannel(en_vc_channel_t enChannel)
 
 /**
  * \brief   
- *          VC通道除能
+ *          VC
  *
- * \param   [in]  enChannel  VC通道号
+ * \param   [in]  enChannel  VC
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  */
 en_result_t Vc_DisableChannel(en_vc_channel_t enChannel)
 {
@@ -613,12 +613,12 @@ en_result_t Vc_DisableChannel(en_vc_channel_t enChannel)
 
 /**
  * \brief   
- *          VC输出滤波使能
+ *          VC
  *
- * \param   [in]  enChannel  VC通道号
+ * \param   [in]  enChannel  VC
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  */
 en_result_t Vc_EnableFilter(en_vc_channel_t enChannel)
 {
@@ -640,12 +640,12 @@ en_result_t Vc_EnableFilter(en_vc_channel_t enChannel)
 
 /**
  * \brief   
- *          VC输出滤波除能
+ *          VC
  *
- * \param   [in]  enChannel  VC通道号
+ * \param   [in]  enChannel  VC
  *
- * \retval  en_result_t  Ok:  配置成功
- * \retval  en_result_t  ErrorInvalidParameter: 无效参数
+ * \retval  en_result_t  Ok:  
+ * \retval  en_result_t  ErrorInvalidParameter: 
  */
 en_result_t Vc_DisableFilter(en_vc_channel_t enChannel)
 {

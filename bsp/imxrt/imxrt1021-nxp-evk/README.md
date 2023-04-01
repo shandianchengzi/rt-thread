@@ -1,6 +1,6 @@
 # NXP i. MX RT1020 EVK BSP(Board Support Package) Execution Instruction.
 
-[中文页](README_zh.md) |
+[](README_zh.md) |
 
 ## Introduction
 
@@ -16,7 +16,7 @@ By reading the Quickly Get Started section developers can quickly get their hand
 
 ## Board Resources Introduction
 
-The i.MX RT1020 EVK is a 2-layer low-cost through-hole USB-powered PCB. At its heart lies the i.MX RT1020 crossover MCU in LQFP144 package, featuring NXP’s advanced implementation of the Arm® Cortex®-M7 core. This core operates at speeds up to 500 MHz to provide high CPU performance and excellent real-time response.
+The i.MX RT1020 EVK is a 2-layer low-cost through-hole USB-powered PCB. At its heart lies the i.MX RT1020 crossover MCU in LQFP144 package, featuring NXPs advanced implementation of the Arm Cortex-M7 core. This core operates at speeds up to 500 MHz to provide high CPU performance and excellent real-time response.
 ![board](figures/board.jpg)
 
 
@@ -27,16 +27,16 @@ Each peripheral supporting condition for this BSP is as follows:
 
 | **On-board Peripherals** | **Support** | **Remark**                            |
 | ------------------------ | ----------- | ------------------------------------- |
-| USB                      | √           |                                       |
-| SPI Flash                | √           |                                       |
-| Ethernet                 | √           |                                       |
+| USB                      |            |                                       |
+| SPI Flash                |            |                                       |
+| Ethernet                 |            |                                       |
 | **On-chip Peripherals**  | **Support** | **Remark**                            |
-| GPIO                     | √           |                                       |
-| SPI                      | √           |                                       |
-| I2C                      | √           |                                       |
-| SDIO                     | √           |                                       |
-| RTC                      | √           |                                       |
-| PWM                      | √           |                                       |
+| GPIO                     |            |                                       |
+| SPI                      |            |                                       |
+| I2C                      |            |                                       |
+| SDIO                     |            |                                       |
+| RTC                      |            |                                       |
+| PWM                      |            |                                       |
 
 
 ## Execution Instruction

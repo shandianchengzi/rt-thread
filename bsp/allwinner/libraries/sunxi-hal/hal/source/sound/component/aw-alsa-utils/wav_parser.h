@@ -7,12 +7,12 @@
 *
 * DISCLAIMER
 * THIRD PARTY LICENCES MAY BE REQUIRED TO IMPLEMENT THE SOLUTION/PRODUCT.
-* IF YOU NEED TO INTEGRATE THIRD PARTY’S TECHNOLOGY (SONY, DTS, DOLBY, AVS OR MPEGLA, ETC.)
-* IN ALLWINNERS’SDK OR PRODUCTS, YOU SHALL BE SOLELY RESPONSIBLE TO OBTAIN
+* IF YOU NEED TO INTEGRATE THIRD PARTYS TECHNOLOGY (SONY, DTS, DOLBY, AVS OR MPEGLA, ETC.)
+* IN ALLWINNERSSDK OR PRODUCTS, YOU SHALL BE SOLELY RESPONSIBLE TO OBTAIN
 * ALL APPROPRIATELY REQUIRED THIRD PARTY LICENCES.
 * ALLWINNER SHALL HAVE NO WARRANTY, INDEMNITY OR OTHER OBLIGATIONS WITH RESPECT TO MATTERS
 * COVERED UNDER ANY REQUIRED THIRD PARTY LICENSE.
-* YOU ARE SOLELY RESPONSIBLE FOR YOUR USAGE OF THIRD PARTY’S TECHNOLOGY.
+* YOU ARE SOLELY RESPONSIBLE FOR YOUR USAGE OF THIRD PARTYS TECHNOLOGY.
 *
 *
 * THIS SOFTWARE IS PROVIDED BY ALLWINNER"AS IS" AND TO THE MAXIMUM EXTENT
@@ -79,19 +79,19 @@ extern "C" {
 
 
 typedef struct {
-        unsigned int    riffType;               //4byte,资源交换文件标志:RIFF
-        unsigned int    riffSize;               //4byte,从下个地址到文件结尾的总字节数
-        unsigned int    waveType;               //4byte,wav文件标志:WAVE
-        unsigned int    formatType;             //4byte,波形文件标志:FMT(最后一位空格符)最后一位空格符
-        unsigned int    formatSize;             //4byte,音频属性(compressionCode,numChannels,sampleRate,bytesPerSecond,blockAlign,bitsPerSample)所占字节数
-        unsigned short  compressionCode;        //2byte,格式种类(1-线性pcm-WAVE_FORMAT_PCM,WAVEFORMAT_ADPCM)
-        unsigned short  numChannels;            //2byte,通道数
-        unsigned int    sampleRate;             //4byte,采样率
-        unsigned int    bytesPerSecond;         //4byte,传输速率
-        unsigned short  blockAlign;             //2byte,数据块的对齐，即DATA数据块长度
-        unsigned short  bitsPerSample;          //2byte,采样精度-PCM位宽
-        unsigned int    dataType;               //4byte,数据标志:data
-        unsigned int    dataSize;               //4byte,从下个地址到文件结尾的总字节数，即除了wav header以外的pcm data length
+        unsigned int    riffType;               //4byte,:RIFF
+        unsigned int    riffSize;               //4byte,
+        unsigned int    waveType;               //4byte,wav:WAVE
+        unsigned int    formatType;             //4byte,:FMT()
+        unsigned int    formatSize;             //4byte,(compressionCode,numChannels,sampleRate,bytesPerSecond,blockAlign,bitsPerSample)
+        unsigned short  compressionCode;        //2byte,(1-pcm-WAVE_FORMAT_PCM,WAVEFORMAT_ADPCM)
+        unsigned short  numChannels;            //2byte,
+        unsigned int    sampleRate;             //4byte,
+        unsigned int    bytesPerSecond;         //4byte,
+        unsigned short  blockAlign;             //2byte,DATA
+        unsigned short  bitsPerSample;          //2byte,-PCM
+        unsigned int    dataType;               //4byte,:data
+        unsigned int    dataSize;               //4byte,wav headerpcm data length
 } wav_header_t;
 
 typedef struct {

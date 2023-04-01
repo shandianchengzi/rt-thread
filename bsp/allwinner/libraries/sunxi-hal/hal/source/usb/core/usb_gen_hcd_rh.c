@@ -14,7 +14,7 @@
 * Date : 2008.05.xx
 *
 * Description :
-*           gen hcd的root hub部分
+*           gen hcdroot hub
 * History :
 ********************************************************************************************************************
 */
@@ -197,7 +197,7 @@ static const u8 hs_rh_config_descriptor [] =
     0x0c        /*  __u8  ep_bInterval; (256ms -- usb 2.0 spec) */
 };
 
-/* timer到时处理函数,其实就是直接调用hc_driver的hub_status_data() */
+/* timer,hc_driverhub_status_data() */
 void rh_timer_func(void *timer_para_hcd)
 {
     usb_hcd_poll_rh_status((struct hc_gen_dev *) timer_para_hcd);
@@ -215,9 +215,9 @@ void rh_timer_func(void *timer_para_hcd)
 ********************************************************************************
 *                     usb_hcd_poll_rh_status
 * Description:
-*     可以被如下几个用户调用:
-*         1，rh hub的timer到时间
-*         2，具体的hcd，发现有事件发生
+*     :
+*         1rh hubtimer
+*         2hcd
 * Arguments:
 *     hcd  : input.
 * Return value:
@@ -240,7 +240,7 @@ void usb_hcd_poll_rh_status(struct hc_gen_dev *hcd)
         return;
     }
 
-    //--<1>--获得低层hub端口的状态
+    //--<1>--hub
     length = hcd->driver->hub_status_data(hcd, buffer);
 
     if (length > 0)
@@ -371,8 +371,8 @@ static int rh_string(int id, struct hc_gen_dev *hcd, u8 *data, int len)
 #endif
 }
 
-/* 查询rh的status，是通过timer实现，所以这里只mod_timer
-   timer到时处理函数rh_timer_func(): */
+/* rhstatustimermod_timer
+   timerrh_timer_func(): */
 static int rh_queue_status(struct hc_gen_dev *hcd, struct urb *urb)
 {
     int     retval;
@@ -415,7 +415,7 @@ static int rh_queue_status(struct hc_gen_dev *hcd, struct urb *urb)
 }
 
 /* Root hub control transfers execute synchronously */
-/* rh的控制 请求，其实直接调用hcd driver->hub_control */
+/* rh hcd driver->hub_control */
 static int rh_call_control(struct hc_gen_dev *hcd, struct urb *urb)
 {
     struct usb_ctrlrequest *cmd = NULL;
@@ -585,7 +585,7 @@ static int rh_call_control(struct hc_gen_dev *hcd, struct urb *urb)
                         break;
                 }
 
-                //直接调用具体的hub驱动
+                //hub
         //hal_log_info("-----rh_call_control---1\n");
                 status = hcd->driver->hub_control(hcd,
                                                   typeReq,
@@ -649,11 +649,11 @@ error:
     return 0;
 }
 
-/* root hub的urb enqueue特殊通道, 都是被指向hc_driver的两个rh操作 */
+/* root huburb enqueue, hc_driverrh */
 int rh_urb_enqueue(struct hc_gen_dev *hcd, struct urb *urb)
 {
-    /* 查询rh的status，其实就是开启timer直接查询hc_driver的
-       hub_status_data(),获得root_hub的当前状态 */
+    /* rhstatustimerhc_driver
+       hub_status_data(),root_hub */
     //hal_log_info("----rh_urb_ehqueue\n");
     if (usb_pipeint(urb->pipe))
     {

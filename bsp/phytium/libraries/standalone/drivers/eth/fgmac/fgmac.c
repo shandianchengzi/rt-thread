@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fgmac.c
  * Date: 2022-04-06 14:46:52
  * LastEditTime: 2022-04-06 14:46:58
- * Description:  This file is for
+ * Description: This file is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 
@@ -54,21 +54,21 @@ static FError FGmacControllerConfigure(FGmac *instance_p);
 
 /*****************************************************************************/
 
-/* 此文件主要为了完成用户对外接口，用户可以使用这些接口直接开始工作 */
+/*  */
 
-/* - 包括用户API的定义和实现
-   - 同时包含必要的OPTION方法，方便用户进行配置
-   - 如果驱动可以直接进行I/O操作，在此源文件下可以将API 进行实现 */
+/* - API
+   - OPTION
+   - I/OAPI  */
 
-/* - 包括用户API的定义和实现
-   - 同时包含必要的OPTION方法，方便用户进行配置
-   - 如果驱动可以直接进行I/O操作，在此源文件下可以将API 进行实现 */
+/* - API
+   - OPTION
+   - I/OAPI  */
 
 /*
  * @name: FGmacStop
- * @msg: 停止FGMAC控制器寄存器
+ * @msg: FGMAC
  * @return {*}
- * @param {FGmac} *instance_p 驱动控制数据
+ * @param {FGmac} *instance_p 
  */
 void FGmacStop(FGmac *instance_p)
 {
@@ -96,7 +96,7 @@ void FGmacStop(FGmac *instance_p)
  * @msg: init FGMAC controller
  * @param {FGmac} *instance_p, instance of FGmac controller
  * @param {FGmacConfig} *cofig_p, input configuration parameters
- * @return err code information, FGMAC_SUCCESS indicates success，others indicates failed
+ * @return err code information, FGMAC_SUCCESS indicates successothers indicates failed
  */
 FError FGmacCfgInitialize(FGmac *instance_p, const FGmacConfig *input_config_p)
 {
@@ -150,7 +150,7 @@ FError FGmacCfgInitialize(FGmac *instance_p, const FGmacConfig *input_config_p)
  * @name: FGmacDeInitialize
  * @msg: deinit FGMAC controller
  * @param {FGmac} *instance_p, instance of FGmac controller
- * @return err code information, FGMAC_SUCCESS indicates success，others indicates failed
+ * @return err code information, FGMAC_SUCCESS indicates successothers indicates failed
  */
 FError FGmacDeInitialize(FGmac *instance_p)
 {
@@ -167,7 +167,7 @@ FError FGmacDeInitialize(FGmac *instance_p)
  * @name: FGmacReset
  * @msg: reset FGMAC controller
  * @param {FGmac} *instance_p, instance of FGmac controller
- * @return err code information, FGMAC_SUCCESS indicates success，others indicates failed
+ * @return err code information, FGMAC_SUCCESS indicates successothers indicates failed
  */
 static FError FGmacReset(FGmac *instance_p)
 {
@@ -216,24 +216,24 @@ void FGmacControllerSpeedConfig(FGmac *instance_p, u32 speed)
     uintptr base_addr = instance_p->config.base_addr;
     u32 reg_val = 0;
 
-    /* MAC配置寄存器 */
+    /* MAC */
     reg_val  = FGMAC_READ_REG32(base_addr, FGMAC_CONF_OFFSET);
 
-    /* 设置通信速度FES=1000Mbps */
+    /* FES=1000Mbps */
     if (speed == FGMAC_PHY_SPEED_1000)
     {
         reg_val &= (~FGMAC_CONF_PORTSELECT);
         reg_val &= (~FGMAC_CONF_FES);
     }
 
-    /* 设置通信速度FES=100Mbps */
+    /* FES=100Mbps */
     if (speed == FGMAC_PHY_SPEED_100)
     {
         reg_val |= FGMAC_CONF_PORTSELECT;
         reg_val |= FGMAC_CONF_FES;
     }
 
-    /* 设置通信速度FES=10Mbps */
+    /* FES=10Mbps */
     if (speed == FGMAC_PHY_SPEED_10)
     {
         reg_val |= FGMAC_CONF_PORTSELECT;
@@ -256,10 +256,10 @@ void FGmacControllerDuplexConfig(FGmac *instance_p, u32 duplex)
     uintptr base_addr = instance_p->config.base_addr;
     u32 reg_val = 0;
 
-    /* MAC配置寄存器 */
+    /* MAC */
     reg_val  = FGMAC_READ_REG32(base_addr, FGMAC_CONF_OFFSET);
 
-    /* 设置双工模式 */
+    /*  */
     if (duplex == FGMAC_PHY_MODE_FULLDUPLEX)
         reg_val |= FGMAC_CONF_DUPLEX_MODE;
     else
@@ -273,7 +273,7 @@ void FGmacControllerDuplexConfig(FGmac *instance_p, u32 duplex)
  * @name: FGmacControllerConfigure
  * @msg: config FGMAC controller
  * @param {FGmac} *instance_p, instance of FGmac controller
- * @return err code information, FGMAC_SUCCESS indicates success，others indicates failed
+ * @return err code information, FGMAC_SUCCESS indicates successothers indicates failed
  */
 static FError FGmacControllerConfigure(FGmac *instance_p)
 {
@@ -298,44 +298,44 @@ static FError FGmacControllerConfigure(FGmac *instance_p)
     /* Set the BL bit according to ETH BackOffLimit value */
     /* Set the DC bit according to ETH DeferralCheck value */
 
-    /* MAC配置寄存器 */
+    /* MAC */
     reg_val  = FGMAC_READ_REG32(base_addr, FGMAC_CONF_OFFSET);
 
-    /* 使能载波侦听DCRS、失能环回模式LM */
+    /* DCRSLM */
     reg_val &= ~(FGMAC_CONF_DCRS | FGMAC_CONF_LOOPBACK_MODE);
 
-    /* 设置帧内间隔IFG */
+    /* IFG */
     reg_val |= FGMAC_CONF_IFG(0);
 
     /* 1000Mbps default */
     reg_val &= (~FGMAC_CONF_PORTSELECT);
     reg_val &= (~FGMAC_CONF_FES);
 
-    /* 双工模式 */
+    /*  */
     if (instance_p->config.duplex_mode)
         reg_val |= FGMAC_CONF_DUPLEX_MODE;
     else
         reg_val &= ~FGMAC_CONF_DUPLEX_MODE;
 
-    /* 使能校验和卸载IPS */
+    /* IPS */
     if (FGMAC_CHECKSUM_BY_HARDWARE == instance_p->config.cheksum_mode)
         reg_val |= FGMAC_CONF_IPC;
     else
         reg_val &= ~FGMAC_CONF_IPC;
 
-    /* 重发DR=1, 重发一次 */
+    /* DR=1,  */
     reg_val |= FGMAC_CONF_DISABLE_RETRY;
 
-    /* 自动 PAD/ CRC 剥线, 全双工模式保留 */
+    /*  PAD/ CRC ,  */
     reg_val |= FGMAC_CONF_ACS;
 
-    /* 后退限制, 全双工模式保留 */
+    /* ,  */
     reg_val |= FGMAC_CONF_BL(0);
 
-    /* 延期检查禁用 */
+    /*  */
     reg_val &= ~FGMAC_CONF_DC;
 
-    /* 使能类型帧的CRC剥离、禁用看门狗WD、禁用Jabber JD、帧突发启用BE、不能自接收DO(全双工保留)*/
+    /* CRCWDJabber JDBEDO()*/
     reg_val |= (FGMAC_CONF_CST | FGMAC_CONF_WD | FGMAC_CONF_JD | FGMAC_CONF_BE | FGMAC_CONF_DO);
 
     FGMAC_WRITE_REG32(base_addr, FGMAC_CONF_OFFSET, reg_val);
@@ -350,25 +350,25 @@ static FError FGmacControllerConfigure(FGmac *instance_p)
     /* Set the PM, HMC and HPF bits according to ETH MulticastFramesFilter value */
     /* Set the HUC and HPF bits according to ETH UnicastFramesFilter value */
 
-    /* MAC帧过滤寄存器 */
+    /* MAC */
     reg_val  = FGMAC_READ_REG32(base_addr, FGMAC_FRAME_FILTER_OFFSET);
 
-    /* 全部接收RA */
+    /* RA */
     reg_val |= FGMAC_FRAME_FILTER_RA;
 
-    /* 通过控制帧PCF 10b */
+    /* PCF 10b */
     reg_val |= FGMAC_FRAME_FILTER_PCF(2);
 
-    /* 失能禁用广播帧DBF */
+    /* DBF */
     reg_val &= ~FGMAC_FRAME_FILTER_DBF;
 
-    /* 失能通过所有多播PM */
+    /* PM */
     reg_val &= ~FGMAC_FRAME_FILTER_PM;
 
-    /* 失能目的地址反向过滤DAIF */
+    /* DAIF */
     reg_val &= ~FGMAC_FRAME_FILTER_DAIF;
 
-    /* 失能哈希单播PR */
+    /* PR */
     reg_val &= ~FGMAC_FRAME_FILTER_PR;
     FGMAC_WRITE_REG32(base_addr, FGMAC_FRAME_FILTER_OFFSET, reg_val);
 
@@ -385,25 +385,25 @@ static FError FGmacControllerConfigure(FGmac *instance_p)
     /* Set the RFE bit according to ETH ReceiveFlowControl value */
     /* Set the TFE bit according to ETH TransmitFlowControl value */
     reg_val = FGMAC_READ_REG32(base_addr, FGMAC_FLOW_CTRL_OFFSET);
-    /* 禁用自动零暂停帧生成DZPQ */
+    /* DZPQ */
     reg_val |= FGMAC_FLOW_DZPQ;
 
-    /* 暂停低阈值PLT */
+    /* PLT */
     reg_val |= FGMAC_FLOW_PLT(0);
 
-    /* 禁用接收流控制RFE */
+    /* RFE */
     reg_val &= ~FGMAC_FLOW_RFE;
 
-    /* 禁用传输流控制TFE */
+    /* TFE */
     reg_val &= ~FGMAC_FLOW_TFE;
     FGMAC_WRITE_REG32(base_addr, FGMAC_FLOW_CTRL_OFFSET, reg_val);
 
     /********vlan tag reg*********/
     /* Set the ETV bit according to ETH VLANTagComparison value */
     /* Set the VL bit according to ETH VLANTagIdentifier value */
-    /* 接收帧的 VLAN 标记标识符 VL */
+    /*  VLAN  VL */
     reg_val = FGMAC_VLAN_TAG_VL(0);
-    /* 设置VLAN 标记比较的位数ETV  1-12bit 0-16bit */
+    /* VLAN ETV  1-12bit 0-16bit */
     reg_val &= ~FGMAC_VLAN_TAG_ETV;
     FGMAC_WRITE_REG32(base_addr, FGMAC_VLAN_TAG_OFFSET, reg_val);
 
@@ -417,7 +417,7 @@ static FError FGmacDmaConfigure(FGmac *instance_p)
     FError ret = FGMAC_SUCCESS;
     uintptr base_addr = instance_p->config.base_addr;
 
-    /********DMA总线模式寄存器*********/
+    /********DMA*********/
     /* Set the AAL bit according to ETH AddressAlignedBeats value */
     /* Set the FB bit according to ETH FixedBurst value */
     /* Set the RPBL and 4*PBL bits according to ETH RxDMABurstLength value */
@@ -427,21 +427,21 @@ static FError FGmacDmaConfigure(FGmac *instance_p)
     /* Set the PR and DA bits according to ETH DMAArbitration value */
     reg_val  = FGMAC_READ_REG32(base_addr, FGMAC_DMA_BUS_MODE_OFFSET);
     reg_val |= FGMAC_DMA_BUS_AAL;
-    /* 使用单独的 PBL USP */
+    /*  PBL USP */
     reg_val |= FGMAC_DMA_BUS_USP;
     /* RxDMA PBL RPBL */
     reg_val |= FGMAC_DMA_BUS_RPBL(32);
 
-    /* 固定突发 FB */
+    /*  FB */
     reg_val |= FGMAC_DMA_BUS_FB;
 
-    /* 控制 RxDMA 和 TxDMA 之间的加权循环仲裁中的优先级比率 PR */
+    /*  RxDMA  TxDMA  PR */
     reg_val |= FGMAC_DMA_BUS_PR(0);
 
-    /* 可编程突发长度 PBL */
+    /*  PBL */
     reg_val |= FGMAC_DMA_BUS_PBL(32);
 
-    /* 交替描述表大小 ATDS */
+    /*  ATDS */
     reg_val |= FGMAC_DMA_BUS_ATDS;
 
 
@@ -450,7 +450,7 @@ static FError FGmacDmaConfigure(FGmac *instance_p)
     /* dma set bus mode */
     // FGMAC_WRITE_REG32(base_addr, FGMAC_DMA_BUS_MODE_OFFSET, FGMAC_DMA_BUS_INIT);
 
-    /********DMA操作模式寄存器*********/
+    /********DMA*********/
     /* Set the DT bit according to ETH DropTCPIPChecksumErrorFrame value */
     /* Set the RSF bit according to ETH ReceiveStoreForward value */
     /* Set the DFF bit according to ETH FlushReceivedFrame value */
@@ -462,26 +462,26 @@ static FError FGmacDmaConfigure(FGmac *instance_p)
     /* Set the OSF bit according to ETH SecondFrameOperate value */
     reg_val  = FGMAC_READ_REG32(base_addr, FGMAC_DMA_OP_OFFSET);
     reg_val &= FGMAC_DMA_OP_CLEAR_MASK;
-    /* 丢弃 TCP / IP 校验和错误帧 DT */
+    /*  TCP / IP  DT */
     reg_val &= ~FGMAC_DMA_OP_DT;
 
-    /* 接收存储转发 RSF */
+    /*  RSF */
     reg_val |= FGMAC_DMA_OP_RSF;
 
-    /* 刷新正在接收的帧 DFF */
+    /*  DFF */
     reg_val &= ~FGMAC_DMA_OP_DFF;
 
-    /* 发送存储和转发 TSF */
+    /*  TSF */
     reg_val |= FGMAC_DMA_OP_TSF;
 
-    /* 传输阈值控制 TTC */
+    /*  TTC */
     reg_val |= FGMAC_DMA_OP_TTC(7);
 
-    /* 在第二帧上操作 OSF */
+    /*  OSF */
     reg_val |= FGMAC_DMA_OP_OSF;
     FGMAC_WRITE_REG32(base_addr, FGMAC_DMA_OP_OFFSET, reg_val);
 
-    /* 刷新DMA发送FIFO FTF */
+    /* DMAFIFO FTF */
     ret = FGmacFlushTxFifo(base_addr, FGMAC_RETRY_TIMES);
 
     if (FGMAC_SUCCESS != ret)
@@ -489,7 +489,7 @@ static FError FGmacDmaConfigure(FGmac *instance_p)
         printf("FGmac Flush Failed\r\n");
     }
 
-    /* AXI 突发长度 BLEN 16,8,4 */
+    /* AXI  BLEN 16,8,4 */
     reg_val = (FGMAC_DMA_AXI_BUS_MOD_BLEN16 | FGMAC_DMA_AXI_BUS_MOD_BLEN8 | FGMAC_DMA_AXI_BUS_MOD_BLEN4);
     FGMAC_WRITE_REG32(base_addr, FGMAC_DMA_AXI_BUS_MOD_OFFSET, reg_val);
 

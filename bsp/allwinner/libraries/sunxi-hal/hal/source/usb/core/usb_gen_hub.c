@@ -67,8 +67,8 @@ static int old_scheme_first = 0;
 #define PORT_RESET_TRIES    5
 #define SET_ADDRESS_TRIES   2
 #define GET_DESCRIPTOR_TRIES    2
-//#define SET_CONFIG_TRIES  (2 * (use_both_schemes + 1))    //--FIXME--这个是旧的
-#define SET_CONFIG_TRIES    (2)                             //这个是为了加速
+//#define SET_CONFIG_TRIES  (2 * (use_both_schemes + 1))    //--FIXME--
+#define SET_CONFIG_TRIES    (2)                             //
 #define USE_NEW_SCHEME(i)   ((i) / 2 == old_scheme_first)
 
 #define HUB_ROOT_RESET_TIME     50  /* times are in msec */
@@ -113,10 +113,10 @@ static void recursively_mark_NOTATTACHED(struct usb_host_virt_dev *udev)
 *                     kick_khubd
 *
 * Description:
-*     把需要处理的hub加入到hub_event_list里, 并且唤醒hub线程
+*     hubhub_event_list, hub
 *
 * Arguments:
-*     hub  :  input. 待处理的hub
+*     hub  :  input. hub
 * Return value:
 *     void
 * note:
@@ -143,7 +143,7 @@ void hub_activate(struct usb_hub *hub)
     int status;
     hub->quiescing = 0;
     hub->activating = 1;
-    //--<1>--发送get status urb
+    //--<1>--get status urb
     status = usb_submit_urb(hub->urb, 0);
 
     if (status < 0)
@@ -380,9 +380,9 @@ static int hub_port_debounce(struct usb_hub *hub, int port1)
     return portstatus;
 }
 
-/* 延迟一定时候后，读取port status,由此判断其
-   1,是否connect
-   2,握手后的速度。
+/* port status,
+   1,connect
+   2,
 */
 static int hub_port_wait_reset(struct usb_hub *hub, int port1,
                                struct usb_host_virt_dev *udev, unsigned int delay)
@@ -446,9 +446,9 @@ static int hub_port_wait_reset(struct usb_hub *hub, int port1,
     return -EBUSY;
 }
 
-/* 要求port reset,并判定速度.给hub发送port reset
-   延迟一定时候后，读取port status,由此判断其
-   1,是否connect . 2,握手后的速度
+/* port reset,.hubport reset
+   port status,
+   1,connect . 2,
 */
 int hub_port_reset(struct usb_hub *hub,
                    int port1,
@@ -460,7 +460,7 @@ int hub_port_reset(struct usb_hub *hub,
     /* Reset the port */
     for (i = 0; i < PORT_RESET_TRIES; i++)
     {
-        //--<1>--给hub发送port reset
+        //--<1>--hubport reset
         status = set_port_feature(hub->hdev, port1, USB_PORT_FEAT_RESET);
 
         if (status)
@@ -469,8 +469,8 @@ int hub_port_reset(struct usb_hub *hub,
         }
         else
         {
-            //--<2>--延迟一定时候后，读取port status,由此判断其
-            //1,是否connect . 2,握手后的速度?
+            //--<2>--port status,
+            //1,connect . 2,?
             status = hub_port_wait_reset(hub, port1, udev, delay);
 
             if (status)
@@ -546,7 +546,7 @@ static int hub_set_address(struct usb_host_virt_dev *udev)
     return retval;
 }
 
-//port1上的设备时候present
+//port1present
 static int32_t _dev_is_present(struct usb_hub *hub, int port1)
 {
     int32_t ret = 0;
@@ -595,7 +595,7 @@ static int32_t _dev_is_present(struct usb_hub *hub, int port1)
 *     void
 *
 * note:
-*     这里完成了3件大事，
+*     3
 * 1,reset
 * 2,set addr
 * 3,get desc
@@ -662,7 +662,7 @@ static int hub_port_init(struct usb_hub *hub,
     hal_log_info("hub_port_init: udev address = %d", udev->devnum);
     release_address(udev);
     udev->devnum = 0;
-    //--<1>--发送port reset,并判定速度
+    //--<1>--port reset,
     /* Reset the device; full speed may morph to high speed */
     retval = hub_port_reset(hub, port1, udev, delay);
 
@@ -733,7 +733,7 @@ static int hub_port_init(struct usb_hub *hub,
 
 #endif
 
-    //--<2>--获得设备desc
+    //--<2>--desc
     /* Why interleave GET_DESCRIPTOR and SET_ADDRESS this way?
      * Because device hardware and firmware is sometimes buggy in
      * this area, and this is how Linux has done it for ages.
@@ -764,7 +764,7 @@ static int hub_port_init(struct usb_hub *hub,
             memset(buf, 0, buff_size);
             // hal_log_info("hub_port_init--1--");
 
-            //获得设备desc
+            //desc
             /* Use a short timeout the first time through,
              * so that recalcitrant full-speed devices with
              * 8- or 16-byte ep0-maxpackets won't slow things
@@ -820,7 +820,7 @@ static int hub_port_init(struct usb_hub *hub,
             udev->descriptor.bMaxPacketSize0 = buf->bMaxPacketSize0;
             free((void *)buf);
             buf = NULL;
-            //重新reset
+            //reset
             retval = hub_port_reset(hub, port1, udev, delay);
 
             if (retval < 0)         /* error or disconnect */
@@ -851,7 +851,7 @@ static int hub_port_init(struct usb_hub *hub,
             goto fail;
         }
 
-        //--<3>--设置地址
+        //--<3>--
         for (j = 0; j < SET_ADDRESS_TRIES; ++j)
         {
             retval = hub_set_address(udev);
@@ -885,8 +885,8 @@ static int hub_port_init(struct usb_hub *hub,
         }
 
         // hal_log_info("hub_port_init--6--");
-        //--<4>--获得设备desc,会自动拷贝到usb_host_virt_dev->设备描述符中
-        //这里只要求获取8字节，只是为了获得bMaxPacketSize0
+        //--<4>--desc,usb_host_virt_dev->
+        //8bMaxPacketSize0
         retval = usb_get_device_descriptor(udev, 8);
 
         if (retval < 8)
@@ -931,7 +931,7 @@ static int hub_port_init(struct usb_hub *hub,
     }
 
     // hal_log_info("hub_port_init--8--");
-    //--<5>--正式获得设备描述符
+    //--<5>--
     retval = usb_get_device_descriptor(udev, USB_DT_DEVICE_SIZE);
 
     if (retval < (signed)sizeof(udev->descriptor))
@@ -949,7 +949,7 @@ static int hub_port_init(struct usb_hub *hub,
     // hal_log_info("hub_port_init--9--");
     retval = 0;
 fail:
-    /*临时删除,不禁止该port
+    /*,port
     if (retval){
         hub_port_disable(hub, port1, 0);
     }
@@ -1004,7 +1004,7 @@ static void get_string(struct usb_host_virt_dev *udev, char **string, u8 index)
     }
 }
 
-/* 如果多余1个config的话，我们将按次序挑选一个标准类 */
+/* 1config */
 static int choose_configuration(struct usb_host_virt_dev *udev)
 {
     int c = 0, i = 0;
@@ -1057,17 +1057,17 @@ static int choose_configuration(struct usb_host_virt_dev *udev)
 *                     usb_new_device
 *
 * Description:
-*    枚举一个新设备。获得该设备的所有描述符，并且匹配相应的驱动。
+*    
 *
 * Parameters:
-*    udev  ： input. 新设备信息
+*    udev   input. 
 *
 * Return value:
-*    0  ：成功
-*   !0  ：失败
+*    0  
+*   !0  
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -1228,7 +1228,7 @@ static void hub_port_connect_change(struct usb_hub *hub, u32 port1, u16 portstat
 
 #endif
 
-    //--<1>--先断开该port下的设备
+    //--<1>--port
     /* Disconnect any existing devices under this port */
     if (hdev->children[port1 - 1])
     {
@@ -1246,7 +1246,7 @@ static void hub_port_connect_change(struct usb_hub *hub, u32 port1, u16 portstat
 
 #endif
 
-    //--<2>--如果是连接改变，则软件debounce
+    //--<2>--debounce
     if (portchange & USB_PORT_STAT_C_CONNECTION)
     {
         status = hub_port_debounce(hub, port1);
@@ -1311,7 +1311,7 @@ static void hub_port_connect_change(struct usb_hub *hub, u32 port1, u16 portstat
         usb_set_device_state(udev, USB_STATE_POWERED);
         udev->speed = USB_SPEED_UNKNOWN;
         /*
-                //--<3_1>--选地址
+                //--<3_1>--
                 choose_address(udev);
                 if (udev->devnum <= 0) {
                     status = -ENOTCONN; // Don't retry
@@ -1336,7 +1336,7 @@ static void hub_port_connect_change(struct usb_hub *hub, u32 port1, u16 portstat
          */
 #if 0
 
-        //如果是hub设备，则特殊处理
+        //hub
         if (udev->descriptor.bDeviceClass == USB_CLASS_HUB
             && hub->power_budget)
         {
@@ -1402,8 +1402,8 @@ static void hub_port_connect_change(struct usb_hub *hub, u32 port1, u16 portstat
 
         hal_spin_unlock_irqrestore(&device_lock, sr);
 
-        //--<3_4>--完整的获取desc，并向usb_virt_bus注册本usb_host_virt_dev
-        //这个暂时不注册了，因为无实际价值，
+        //--<3_4>--descusb_virt_bususb_host_virt_dev
+        //
         /* Run it through the hoops (find a driver, etc) */
         if (!status)
         {
@@ -1434,7 +1434,7 @@ static void hub_port_connect_change(struct usb_hub *hub, u32 port1, u16 portstat
 
         return;
 loop_disable:
-        /*临时删除,不禁止该port
+        /*,port
             hub_port_disable(hub, port1, 1);
         */
 loop:
@@ -1454,7 +1454,7 @@ loop:
     }
 
 done:
-    /*临时删除,不禁止该port
+    /*,port
     hub_port_disable(hub, port1, 1);
     */
     return;
@@ -1587,7 +1587,7 @@ static void hub_events(u32 flag)
      */
     while (1)
     {
-        //--<1>--退出
+        //--<1>--
         if (flag == USB_HUB_THREAD_EXIT_FLAG_TRUE)
         {
             hal_log_err("hub thread is exit, hub_events must exit");
@@ -1595,7 +1595,7 @@ static void hub_events(u32 flag)
             break;
         }
 
-        //--<2>--从hub_event_list里取出设备
+        //--<2>--hub_event_list
         //USB_OS_ENTER_CRITICAL(hub_event_lock);
         flags = hal_spin_lock_irqsave(&hub_event_lock);
 
@@ -1630,7 +1630,7 @@ static void hub_events(u32 flag)
         hal_spin_unlock_irqrestore(&hub_event_lock, flags);
 
         usb_lock_device(hdev);
-        //--<3>--唤醒hub上的设备
+        //--<3>--hub
         if (i)
         {
             usb_resume_device(hdev);
@@ -1664,7 +1664,7 @@ static void hub_events(u32 flag)
             hub->error = 0;
         }
 
-        //--<4>--遍历各个port，处理各个port的status change
+        //--<4>--portportstatus change
         for (i = 1; i <= hub->descriptor->bNbrPorts; i++)
         {
             if (flag == USB_HUB_THREAD_EXIT_FLAG_TRUE)
@@ -1686,7 +1686,7 @@ static void hub_events(u32 flag)
                 continue;
             }
 
-            //获得port state
+            //port state
             ret = hub_port_status(hub, i, &portstatus, &portchange);
 
         hal_log_info("portstatus = 0x%x, portchange = 0x%x\n", portstatus, portchange);
@@ -1702,7 +1702,7 @@ static void hub_events(u32 flag)
                 connect_change = 1;
             }
 
-            //清除一些state
+            //state
             if (portchange & USB_PORT_STAT_C_CONNECTION)
             {
                 clear_port_feature(hdev, i, USB_PORT_FEAT_C_CONNECTION);
@@ -1775,7 +1775,7 @@ static void hub_events(u32 flag)
                 goto loop;
             }
 
-            //处理port connect chang状态
+            //port connect chang
             if (connect_change)
             {
                 hub_port_connect_change(hub, i, portstatus, portchange);
@@ -2118,7 +2118,7 @@ void usb_disable_device(struct usb_host_virt_dev *dev, int skip_ep0)
     /* getting rid of interfaces will disconnect
      * any drivers bound to them (a key side effect)
      */
-    //一个接口，对应一个逻辑device
+    //device
     if (dev->actconfig)
     {
         for (i = 0; i < dev->actconfig->desc.bNumInterfaces; i++)
@@ -2245,13 +2245,13 @@ void usb_disconnect(struct usb_host_virt_dev **pdev)
      * cleaning up all state associated with the current configuration
      * so that the hardware is now fully quiesced.
      */
-    //--<1>--会删除device结构
+    //--<1>--device
     usb_disable_device(udev, 0);
     /* Free the device number, remove the /proc/bus/usb entry and
      * the sysfs attributes, and delete the parent's children[]
      * (or root_hub) pointer.
      */
-    //回收地址
+    //
     release_address(udev);
     /* Avoid races with recursively_mark_NOTATTACHED() */
     //USB_OS_ENTER_CRITICAL(sr);
@@ -2299,7 +2299,7 @@ static void hub_pre_reset(struct usb_hub *hub)
 ***********************************************************
 *
 * Description   :
-*     用来查询hub的status的urb的complete
+*     hubstatusurbcomplete
 * Arguments     :
 *
 * Returns       :
@@ -2334,7 +2334,7 @@ static void hub_status_request(struct urb *urb)
 
         /* FALL THROUGH */
 
-        //将事件传递给hub thread,让它来处理
+        //hub thread,
         case 0:         /* we got data:  port status changed */
             bits = 0;
 
@@ -2359,7 +2359,7 @@ resubmit:
 
     hub->hub_req_busy = 1;
 
-    //--3--继续压urb
+    //--3--urb
     if ((status = usb_submit_urb(hub->urb, 0)) != 0
         && status != -ENODEV && status != -EPERM)
     {
@@ -2370,7 +2370,7 @@ resubmit:
     return ;
 }
 
-/* 实时获得hub的状态 */
+/* hub */
 static void HubStatusThread(void *hub)
 {
     struct usb_hub *usb_hub = (struct usb_hub *)hub;
@@ -2458,7 +2458,7 @@ static int _hub_config(struct usb_hub *hub, struct usb_endpoint_descriptor *endp
      * hub->descriptor can handle USB_MAXCHILDREN ports,
      * but the hub can/will return fewer bytes here.
      */
-    //--<2>--获得hub desc，并解析之
+    //--<2>--hub desc
     ret = get_hub_descriptor(hdev, (void *)(hub->descriptor), sizeof(*hub->descriptor));
 
     if (ret < 0)
@@ -2651,7 +2651,7 @@ static int _hub_config(struct usb_hub *hub, struct usb_endpoint_descriptor *endp
     }
 
     hal_log_info("_hub_config--11--");
-    //--<5>--设置interrupt ep，用来获得hub port 的status
+    //--<5>--interrupt ephub port status
     pipe = usb_rcvintpipe(hdev, endpoint->bEndpointAddress);
     maxp = usb_maxpacket(hdev, pipe, usb_pipeout(pipe));
 
@@ -2671,7 +2671,7 @@ static int _hub_config(struct usb_hub *hub, struct usb_endpoint_descriptor *endp
     }
 
     hal_log_info("_hub_config--13--");
-    //填充该urb
+    //urb
     usb_fill_int_urb(hub->urb,
                      hdev,
                      pipe,
@@ -2692,7 +2692,7 @@ static int _hub_config(struct usb_hub *hub, struct usb_endpoint_descriptor *endp
 
     hub_power_on(hub);
     hal_log_info("_hub_config--15--");
-    //--<6>--发送get status的urb
+    //--<6>--get statusurb
     hub_activate(hub);
     hal_log_info("_hub_config--16--");
     return 0;
@@ -2802,7 +2802,7 @@ static void hub_disconnect(struct usb_interface *intf)
 
 /*
 ***********************************************************
-*                       probe函数
+*                       probe
 *
 * Description   :
 *
@@ -2944,7 +2944,7 @@ descriptor_error:
 
 ERR0:
     hal_log_err("ERR: hub config failed");
-    //--<3>--失败，则disconnect
+    //--<3>--disconnect
     hub_disconnect(intf);
     return ret;
 }
@@ -3029,9 +3029,9 @@ static struct usb_drv_dev_match_table hub_id_table [] =
 ***********************************************************
 *
 * Description   :
-*               初始化hub drv
+*               hub drv
 * Arguments     :
-*   @hub_drv_input  :   要初始化的hub_drv_input
+*   @hub_drv_input  :   hub_drv_input
 * Returns       :
 *
 * Notes         :
@@ -3065,7 +3065,7 @@ static void usb_gen_hub_func_drv_init(struct usb_host_func_drv *hub_drv_input)
 * Description   :
 *
 * Arguments     :
-*   @hub_drv_input  :   要初始化的hub_drv_input
+*   @hub_drv_input  :   hub_drv_input
 * Returns       :
 *
 * Notes         :
@@ -3088,7 +3088,7 @@ static void usb_gen_hub_func_drv_exit(struct usb_host_func_drv *hub_drv_input)
 ***********************************************************
 *
 * Description   :
-*               hub context的init
+*               hub contextinit
 * Arguments     :
 *
 * Returns       :
@@ -3120,7 +3120,7 @@ static int32_t __usb_gen_hub_thread_init(struct hub_thread_context *thread_cont)
 ***********************************************************
 *
 * Description   :
-*               hub context的销毁
+*               hub context
 * Arguments     :
 *
 * Returns       :
@@ -3139,7 +3139,7 @@ static int32_t __usb_gen_hub_thread_exit(struct hub_thread_context *thread_cont)
         return -1;
     }
 
-    //等待hub thread结束，然后再del 其内部的同步semi
+    //hub threaddel semi
     //while (USB_OS_THREAD_DELREQ(hub_thread_id) != USB_OS_THREAD_NOT_EXIST)
     hal_log_info("--usb_gen_hub_thread_exit---1------\n");
     while (!kthread_stop(hub_thread))
@@ -3200,7 +3200,7 @@ uint32_t hub_GetHubSeries(struct usb_host_virt_dev *udev)
         usb_dev = usb_dev->parent;
     }
 
-    /* roothub不能算在其中 */
+    /* roothub */
     if (cnt)
     {
         --cnt;
@@ -3214,7 +3214,7 @@ uint32_t hub_GetHubSeries(struct usb_host_virt_dev *udev)
 ***********************************************************
 *
 * Description   :
-*               hub的主thread
+*               hubthread
 * Arguments     :
 *
 * Returns       :
@@ -3288,10 +3288,10 @@ int32_t usb_gen_hub_init(void)
     }
 
     hal_log_info("--usb_gen_hub_init---2----\n");
-    //--<1>--初始化hub drv
+    //--<1>--hub drv
     usb_gen_hub_func_drv_init(&hub_driver);
 
-    //--<2>--注册hub驱动
+    //--<2>--hub
     if (usb_host_func_drv_reg(&hub_driver) != 0)
     {
         hal_log_err("ERR: usb_host_func_drv_reg failed");
@@ -3299,14 +3299,14 @@ int32_t usb_gen_hub_init(void)
     }
     hal_log_info("--usb_gen_hub_init---4----\n");
 
-    //--<3>--开启hub thread
+    //--<3>--hub thread
 //#ifdef CONFIG_SOC_SUN3IW2
 //    ret = USB_OS_THREAD_CREATE(hub_main_thread, NULL, 0x4000, HUB_THREAD_PID_PRIO_LEVEL);
 //#elif defined CONFIG_SOC_SUN3IW1
 //    ret = USB_OS_THREAD_CREATE(hub_main_thread, NULL, 0x8000, HUB_THREAD_PID_PRIO_LEVEL);
 //#endif
 
-    /*会死机--0829*/
+    /*--0829*/
     hub_thread = kthread_create(hub_main_thread, NULL, "hub-main-thread");
     if (IS_ERR((long)hub_thread))
     {
@@ -3333,7 +3333,7 @@ hub_failed_1:
 ***********************************************************
 *
 * Description   :
-*               exit时候调用，用来回收资源
+*               exit
 * Arguments     :
 *
 * Returns       :
@@ -3344,14 +3344,14 @@ hub_failed_1:
 */
 int32_t usb_gen_hub_exit(void)
 {
-    //--<1>--停止hub thread
+    //--<1>--hub thread
     hub_thread_cont.hub_thread_exit_flag = USB_HUB_THREAD_EXIT_FLAG_TRUE;
     hub_thread_wakeup(&hub_thread_cont);
-    //--<2>--结束hub线程
+    //--<2>--hub
     __usb_gen_hub_thread_exit(&hub_thread_cont);
-    //--<3>--卸载hub drvier
+    //--<3>--hub drvier
     usb_host_func_drv_unreg(&hub_driver);
-    //--<4>--注销hub driver
+    //--<4>--hub driver
     usb_gen_hub_func_drv_exit(&hub_driver);
     if (usb_address0_sem)
     {

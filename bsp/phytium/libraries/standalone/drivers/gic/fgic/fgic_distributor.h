@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fgic_distributor.h
  * Date: 2022-03-28 15:18:56
  * LastEditTime: 2022-03-28 15:18:56
- * Description:  This file is for
+ * Description: This file is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 #ifndef  DRIVERS_GIC_FGIC_DISTRIBUTOR_H
 #define  DRIVERS_GIC_FGIC_DISTRIBUTOR_H
@@ -37,7 +37,7 @@ typedef enum
     GICD_CTLR_ENABLE_GRP1A = (1 << 1),
     GICD_CTLR_ENABLE_GRP1S = (1 << 2),
     GICD_CTLR_ENABLE_ALL = (1 << 2) | (1 << 1) | (1 << 0),
-    GICD_CTLR_BIT_ARE_S = (1 << 4), /* Enable Secure state affinity routing ， for single Security state ，this bit is  */
+    GICD_CTLR_BIT_ARE_S = (1 << 4), /* Enable Secure state affinity routing  for single Security state this bit is  */
     GICD_CTLR_BIT_ARE_NS = (1 << 5),    /* Enable Non-Secure state affinity routing */
     GICD_CTLR_BIT_DS = (1 << 6),    /* Disable Security support */
     GICD_CTLR_BIT_E1NWF = (1 << 7)  /* Enable "1-of-N" wakeup model */

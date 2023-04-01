@@ -1,14 +1,14 @@
 # RT-Smart QEMU SYSTEM RISC-V RV64 BSP
 
-English | [中文](./README_ch.md)
+English | [](./README_ch.md)
 
 ## 1. Introduction
 
 QEMU can emulate both 32-bit and 64-bit RISC-V CPUs. Use the qemu-system-riscv64 executable to simulate a 64-bit RISC-V machine, qemu-system-riscv32 executable to simulate a 32-bit RISC-V machine.
 
-QEMU has generally good support for RISC-V guests. It has support for several different machines. The reason we support so many is that RISC-V hardware is much more widely varying than x86 hardware. RISC-V CPUs are generally built into “system-on-chip” (SoC) designs created by many different companies with different devices, and these SoCs are then built into machines which can vary still further even if they use the same SoC.
+QEMU has generally good support for RISC-V guests. It has support for several different machines. The reason we support so many is that RISC-V hardware is much more widely varying than x86 hardware. RISC-V CPUs are generally built into system-on-chip (SoC) designs created by many different companies with different devices, and these SoCs are then built into machines which can vary still further even if they use the same SoC.
 
-For most boards the CPU type is fixed (matching what the hardware has), so typically you don’t need to specify the CPU type by hand, except for special cases like the virt board.
+For most boards the CPU type is fixed (matching what the hardware has), so typically you dont need to specify the CPU type by hand, except for special cases like the virt board.
 
 ## 2. Building
 

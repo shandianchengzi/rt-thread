@@ -63,7 +63,7 @@ enum user_state
     USER_STATE_MAX
 };
 ///Attributes database elements
-/// 修改服务列表
+/// 
 enum user_att_db_list
 {
     USER_IDX_SVC,

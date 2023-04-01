@@ -1,70 +1,70 @@
-# RTC 驱动程序
+# RTC 
 
-## 1. 概述
+## 1. 
 
-- 实时时钟(RTC)提供可靠的系统时间，包括年月日和时分秒。
+- (RTC)
 
-- 通过采用电池供电，在系统处于关机状态时，RTC也能正常工作。
+- RTC
 
-- RTC 驱动支持的平台包括 FT2000/4、D2000。
+- RTC  FT2000/4D2000
 
-## 2. 功能
+## 2. 
 
-RTC 驱动程序主要完成RTC模块的初始化、时间设置和读取，该驱动程序具备以下功能：
-- 初始化RTC模块
-- 设置RTC时间
-- 读取RTC时间
+RTC RTC
+- RTC
+- RTC
+- RTC
 
-相关源文件为：
+
 ```
 frtc
-    ├── frtc.c
-    ├── frtc.h
-    ├── frtc_g.c
-    ├── frtc_hw.c
-    ├── frtc_hw.h
-    ├── frtc_intr.c
-    └── frtc_sinit.c
+     frtc.c
+     frtc.h
+     frtc_g.c
+     frtc_hw.c
+     frtc_hw.h
+     frtc_intr.c
+     frtc_sinit.c
 ```
 
 
-## 3. 配置方法
+## 3. 
 
-以下部分将指导您完成 RTC 驱动的软件配置:
+ RTC :
 
-- 配置驱动程序，新建应用工程，使能RTC驱动模块
-- 设置配置参数
-- 设置RTC时间
-- 读取RTC时间
+- RTC
+- 
+- RTC
+- RTC
 
-## 4. 应用示例
+## 4. 
 
 
 ### [rtc_test](../../../baremetal/example/rtc_test/README.md)
 
 
-## 5. API参考
+## 5. API
 
 
-### 5.1. 用户数据结构
+### 5.1. 
 
 - drivers/rtc/frtc/frtc.h
 
 ```c
 typedef struct
 {
-	uintptr control_base_addr; /* rtc控制寄存器基地址 */
+	uintptr control_base_addr; /* rtc */
 	const char *instance_name; /* instance name */
-} FRtcConfig;				   /* rtc配置 */
+} FRtcConfig;				   /* rtc */
 
 typedef struct
 {
-	FRtcConfig config; 	/* rtc配置 */
-	u32 is_ready;		/* rtc初始化完成标志 */
+	FRtcConfig config; 	/* rtc */
+	u32 is_ready;		/* rtc */
 } FRtcCtrl;
 ```
 
-- RTC时间实例配置
+- RTC
 
 ```c
 typedef struct
@@ -83,9 +83,9 @@ typedef struct
 				This parameter must be a number between Min_Data = 0 and Max_Data = 59 */
 } FRtcDateTime;
 ```
-### 5.2  错误码定义
+### 5.2  
 
-- 模块错误码编号 `0x1020000`
+-  `0x1020000`
 
 - [0x0] FRTC_SUCCESS : success
 
@@ -94,9 +94,9 @@ typedef struct
 - [0x1020002] FRTC_ERR_TIME_INVALID : invalid time parameters
 
 
-### 5.3. 用户API接口
+### 5.3. API
 
-- 获取RTC驱动的默认配置参数
+- RTC
 
 ```c
 const FRtcConfig *FRtcLookupConfig(void);
@@ -104,36 +104,36 @@ const FRtcConfig *FRtcLookupConfig(void);
 
     Note:
 
-    - 用户需要修改配置参数时，可以通过修改返回的FRtcConfig副本，作为后续使用函数的入参，
+    - FRtcConfig
 
     Input:
 
-    - void, 只有一个RTC模块    
+    - void, RTC    
 
     Return:
 
-    - const FRTCConfig *, 返回驱动默认参数， NULL表示失败
+    - const FRTCConfig *,  NULL
 
 
-- 初始化RTC驱动
+- RTC
 ```c
 FError FRtcCfgInitialize(FRtcCtrl *instance_p, const FRtcConfig *config_p);
 ```
 
     Note:
 
-    - 用户需要修改配置参数时，可以通过修改返回的FRtcConfig副本，作为后续使用函数的入参，
+    - FRtcConfig
 
     Input:
 
-    - FRtcCtrl *instance_p, RTC驱动控制块 
-    - const FRtcConfig *config_p, RTC驱动配置数据
+    - FRtcCtrl *instance_p, RTC 
+    - const FRtcConfig *config_p, RTC
 
     Return:
 
-    - 返回初始化错误码，FRTC_SUCCESS表示初始化成功
+    - FRTC_SUCCESS
 
-- 设置RTC时间
+- RTC
 
 ```c
 FError FRtcSetDateTime(FRtcCtrl *pctrl, const FRtcDateTime *date_time);
@@ -141,19 +141,19 @@ FError FRtcSetDateTime(FRtcCtrl *pctrl, const FRtcDateTime *date_time);
 
     Note:
 
-    - 此函数会根据传入的时间初始化RTC时间寄存器
+    - RTC
 
     Input:
 
-    - FRtcCtrl *pctrl, RTC驱动实例数据 
+    - FRtcCtrl *pctrl, RTC 
     
-    - const FRtcDateTime *date, 设置的RTC时间年月日时分秒
+    - const FRtcDateTime *date, RTC
 
     Return:
 
-    - u32, 参考5.2章错误码定义
+    - u32, 5.2
 
-- 读取RTC时间
+- RTC
 
 ```c
 FError FRtcGetDateTime(FRtcCtrl *pctrl, FRtcDateTime *date_time);
@@ -161,19 +161,19 @@ FError FRtcGetDateTime(FRtcCtrl *pctrl, FRtcDateTime *date_time);
 
     Note:
 
-    - 此函数会获取当前的RTC时间
+    - RTC
 
     Input:
 
-    - FRtcCtrl *pctrl, RTC驱动实例数据 
+    - FRtcCtrl *pctrl, RTC 
     
-    - FRtcDateTime *date, 获取的RTC时间年月日时分秒
+    - FRtcDateTime *date, RTC
 
     Return:
 
-    - u32, 参考5.2章错误码定义
+    - u32, 5.2
 
-- 读取RTC时间戳
+- RTC
 
 ```c
 time_t FRtcReadTimeStamp(FRtcCtrl *pctrl, time_t *sec, time_t *msec);
@@ -181,16 +181,16 @@ time_t FRtcReadTimeStamp(FRtcCtrl *pctrl, time_t *sec, time_t *msec);
 
     Note:
 
-    - 此函数会读取RTC时间，并返回time_t格式的时间值
+    - RTCtime_t
 
     Input:
 
-    - FRtcCtrl *pctrl, RTC驱动实例数据
+    - FRtcCtrl *pctrl, RTC
 
-    - time_t *sec, 获取的秒时间戳，传入NULL表示不需要获取
+    - time_t *sec, NULL
     
-    - time_t *msec, 获取的毫秒时间戳，传入NULL表示不需要获取
+    - time_t *msec, NULL
 
     Return:
 
-    - time_t, 详见<time.h>中的定义
+    - time_t, <time.h>

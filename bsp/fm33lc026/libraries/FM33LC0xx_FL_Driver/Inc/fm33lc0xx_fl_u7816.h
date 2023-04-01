@@ -48,45 +48,45 @@ extern "C" {
   */
 typedef struct
 {
-    /** 卡时钟频率 */
+    /**  */
     uint32_t outputClockFreqence;
 
-    /** 接口发送失败后自动重装使能 */
+    /**  */
     uint32_t txAutoRetry;
 
-    /** 自动重装次数 */
+    /**  */
     uint32_t retryCnt;
 
-    /** 插入BGT使能 */
+    /** BGT */
     uint32_t blockGuard;
 
-    /** 强上拉使能 */
+    /**  */
     uint32_t strongPullUp;
 
-    /** 帧格式奇偶校验模式 */
+    /**  */
     uint32_t parity;
 
-    /** 帧格式接收Guard时间 */
+    /** Guard */
     uint32_t rxGuardTime;
 
-    /** 帧格式发送Guard时间 */
+    /** Guard */
     uint32_t txGuardTime;
-    /** 帧格式错误Guard时间 */
+    /** Guard */
     uint32_t errorGuardTime;
 
-    /** 帧错误信号长度 */
+    /**  */
     uint32_t errorSignalWidth;
 
-    /** 接收校验错误自动回发error signal使能 */
+    /** error signal */
     uint32_t rxAutoErrorSignal;
 
-    /** 传输BIT顺序 */
+    /** BIT */
     uint32_t transferOrder;
 
-    /** 通讯速率 */
+    /**  */
     uint32_t baud;
 
-    /** 额外发送Guard时间 */
+    /** Guard */
     uint32_t extraGuardTime;
 
 } FL_U7816_InitTypeDef;

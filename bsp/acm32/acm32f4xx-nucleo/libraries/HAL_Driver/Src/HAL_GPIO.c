@@ -17,7 +17,7 @@
 * Description : GPIO interrupt Handler
 * Input       : 
 * Outpu       : 
-* Author      : Chris_Kyle                         Data : 2020?那
+* Author      : Chris_Kyle                         Data : 2020?
 **********************************************************************************/
 void HAL_GPIO_IRQHandler(enum_GPIOx_t fe_GPIO, uint32_t fu32_GPIO_Pin)
 {
@@ -67,7 +67,7 @@ void HAL_GPIO_IRQHandler(enum_GPIOx_t fe_GPIO, uint32_t fu32_GPIO_Pin)
 * Input       : GPIO_Init: pointer to a GPIO_InitTypeDef structure that contains
                            the configuration information for the specified GPIO peripheral.
 * Outpu       : 
-* Author      : Chris_Kyle                         Data : 2020?那
+* Author      : Chris_Kyle                         Data : 2020?
 **********************************************************************************/
 void HAL_GPIO_Init(enum_GPIOx_t fe_GPIO, GPIO_InitTypeDef *GPIO_Init)
 {
@@ -75,12 +75,12 @@ void HAL_GPIO_Init(enum_GPIOx_t fe_GPIO, GPIO_InitTypeDef *GPIO_Init)
     uint32_t lu32_Current_Pin;
     uint32_t lu32_Position_Mask;
     
-    volatile uint32_t *lu32_SEL1 = NULL;        // ???辰 -> 1邦???∩車???∩??¯1
-    volatile uint32_t *lu32_SEL2 = NULL;        // ???辰 -> 1邦???∩車???∩??¯2
-    volatile uint32_t *lu32_PollUP   = NULL;    // ???辰 -> 谷?角-??????∩??¯
-    volatile uint32_t *lu32_PollDown = NULL;    // ???辰 -> ??角-??????∩??¯
-    volatile uint32_t *lu32_ODEnable = NULL;    // ???辰 -> ?a??那1?邦??∩??¯
-    volatile uint32_t *lu32_ADS      = NULL;    // ???辰 -> 那y℅??⊿?㏒?a??????∩??¯
+    volatile uint32_t *lu32_SEL1 = NULL;        // ??? -> 1????????1
+    volatile uint32_t *lu32_SEL2 = NULL;        // ??? -> 1????????2
+    volatile uint32_t *lu32_PollUP   = NULL;    // ??? -> ?-????????
+    volatile uint32_t *lu32_PollDown = NULL;    // ??? -> ??-????????
+    volatile uint32_t *lu32_ODEnable = NULL;    // ??? -> ?a??1?????
+    volatile uint32_t *lu32_ADS      = NULL;    // ??? -> y????a????????
     
     GPIO_TypeDef *GPIOx;
 
@@ -202,11 +202,11 @@ void HAL_GPIO_Init(enum_GPIOx_t fe_GPIO, GPIO_InitTypeDef *GPIO_Init)
                 {
                     /* Get Position Mask */
                     if (lu32_Position < 16) 
-                    {   /* GOIOA?⊿GPIOC?⊿GPIOE */
+                    {   /* GOIOA?GPIOC?GPIOE */
                         lu32_Position_Mask = lu32_Position;
                     }
                     else 
-                    {   /* GPIOB?⊿GPIOD?⊿GPIOF */
+                    {   /* GPIOB?GPIOD?GPIOF */
                         lu32_Position_Mask = lu32_Position - 16;
                     }
                     
@@ -228,7 +228,7 @@ void HAL_GPIO_Init(enum_GPIOx_t fe_GPIO, GPIO_InitTypeDef *GPIO_Init)
                 case GPIO_MODE_IT_HIGH_LEVEL:
                 case GPIO_MODE_IT_LOW_LEVEL:
                 {
-                    /* Set direction Input?⊿Enable INT */
+                    /* Set direction Input?Enable INT */
                     GPIOx->DIR &= ~lu32_Current_Pin;
                     GPIOx->IEN |=  lu32_Current_Pin;
 
@@ -311,11 +311,11 @@ void HAL_GPIO_Init(enum_GPIOx_t fe_GPIO, GPIO_InitTypeDef *GPIO_Init)
             {
                 /* Get Position Mask */
                 if (lu32_Position < 16) 
-                {   /* GOIOA?⊿GPIOC?⊿GPIOE */
+                {   /* GOIOA?GPIOC?GPIOE */
                     lu32_Position_Mask = lu32_Position;
                 }
                 else 
-                {   /* GPIOB?⊿GPIOD?⊿GPIOF */
+                {   /* GPIOB?GPIOD?GPIOF */
                     lu32_Position_Mask = lu32_Position - 16;
                 }
                 
@@ -348,8 +348,8 @@ void HAL_GPIO_Init(enum_GPIOx_t fe_GPIO, GPIO_InitTypeDef *GPIO_Init)
 /*********************************************************************************
 * Function    : HAL_GPIO_DeInit
 * Description : De-initializes the GPIOx peripheral registers to their default reset values.
-* Input       : fe_GPIO㏒oto select the GPIO peripheral.
-* Input       : fu32_Pin㏒ospecifies the port bit to be written.
+* Input       : fe_GPIOoto select the GPIO peripheral.
+* Input       : fu32_Pinospecifies the port bit to be written.
                 This parameter can be one of GPIO_PIN_x where x can be (0..15).
 * Outpu       : 
 * Author      : Chris_Kyle                         Data : 2020
@@ -360,12 +360,12 @@ void HAL_GPIO_DeInit(enum_GPIOx_t fe_GPIO, uint32_t fu32_Pin)
     uint32_t lu32_Current_Pin;
     uint32_t lu32_Position_Mask;
     
-    volatile uint32_t *lu32_SEL1 = NULL;        // ???辰 -> 1邦???∩車???∩??¯1
-    volatile uint32_t *lu32_SEL2 = NULL;        // ???辰 -> 1邦???∩車???∩??¯2
-    volatile uint32_t *lu32_PollUP   = NULL;    // ???辰 -> 谷?角-??????∩??¯
-    volatile uint32_t *lu32_PollDown = NULL;    // ???辰 -> ??角-??????∩??¯
-    volatile uint32_t *lu32_ODEnable = NULL;    // ???辰 -> ?a??那1?邦??∩??¯
-    volatile uint32_t *lu32_ADS      = NULL;    // ???辰 -> 那y℅??⊿?㏒?a??????∩??¯
+    volatile uint32_t *lu32_SEL1 = NULL;        // ??? -> 1????????1
+    volatile uint32_t *lu32_SEL2 = NULL;        // ??? -> 1????????2
+    volatile uint32_t *lu32_PollUP   = NULL;    // ??? -> ?-????????
+    volatile uint32_t *lu32_PollDown = NULL;    // ??? -> ??-????????
+    volatile uint32_t *lu32_ODEnable = NULL;    // ??? -> ?a??1?????
+    volatile uint32_t *lu32_ADS      = NULL;    // ??? -> y????a????????
     
     GPIO_TypeDef *GPIOx;
 
@@ -480,11 +480,11 @@ void HAL_GPIO_DeInit(enum_GPIOx_t fe_GPIO, uint32_t fu32_Pin)
 
             /* Get Position Mask */
             if (lu32_Position < 16) 
-            {   /* GOIOA?⊿GPIOC?⊿GPIOE */
+            {   /* GOIOA?GPIOC?GPIOE */
                 lu32_Position_Mask = lu32_Position;
             }
             else 
-            {   /* GPIOB?⊿GPIOD?⊿GPIOF */
+            {   /* GPIOB?GPIOD?GPIOF */
                 lu32_Position_Mask = lu32_Position - 16;
             }
 
@@ -516,18 +516,18 @@ void HAL_GPIO_DeInit(enum_GPIOx_t fe_GPIO, uint32_t fu32_Pin)
 /*********************************************************************************
 * Function    : HAL_GPIO_AnalogEnable
 * Description : Quickly Configure to analog function
-* Input       : fe_GPIO㏒oto select the GPIO peripheral.
-* Input       : fu32_Pin㏒ospecifies the port bit to be written.
+* Input       : fe_GPIOoto select the GPIO peripheral.
+* Input       : fu32_Pinospecifies the port bit to be written.
                 This parameter can be one of GPIO_PIN_x where x can be (0..15).
 * Outpu       : 
-* Author      : Chris_Kyle                         Data : 2020?那
+* Author      : Chris_Kyle                         Data : 2020?
 **********************************************************************************/
 void HAL_GPIO_AnalogEnable(enum_GPIOx_t fe_GPIO, uint32_t fu32_Pin)
 {
     uint32_t lu32_Position = 0;
     uint32_t lu32_Current_Pin;
 
-    volatile uint32_t *lp32_ADS = NULL;    // ???辰 -> 那y℅??⊿?㏒?a??????∩??¯
+    volatile uint32_t *lp32_ADS = NULL;    // ??? -> y????a????????
 
     GPIO_TypeDef *GPIOx;
 
@@ -601,7 +601,7 @@ void HAL_GPIO_AnalogEnable(enum_GPIOx_t fe_GPIO, uint32_t fu32_Pin)
 * Description : Set or clear the selected data port bit.
 * Input       : 
 * Outpu       : 
-* Author      : Chris_Kyle                         Data : 2020?那
+* Author      : Chris_Kyle                         Data : 2020?
 **********************************************************************************/
 void HAL_GPIO_WritePin(enum_GPIOx_t fe_GPIO, uint32_t fu32_GPIO_Pin, enum_PinState_t fe_PinState)
 {
@@ -657,7 +657,7 @@ void HAL_GPIO_WritePin(enum_GPIOx_t fe_GPIO, uint32_t fu32_GPIO_Pin, enum_PinSta
 * Description : Read the specified input port pin.
 * Input       : 
 * Outpu       : 
-* Author      : Chris_Kyle                         Data : 2020?那
+* Author      : Chris_Kyle                         Data : 2020?
 **********************************************************************************/
 enum_PinState_t HAL_GPIO_ReadPin(enum_GPIOx_t fe_GPIO, uint32_t fu32_GPIO_Pin)
 {

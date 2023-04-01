@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fiopad_comm.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:25:29
- * Description:  This files is for io-pad function definition
+ * Description: This files is for io-pad function definition
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   huanghe    2021/11/5    init commit
  * 1.1   zhugengyu  2022/3/21    adopt to lastest tech spec.
  */
@@ -36,23 +36,23 @@
 /************************** Constant Definitions *****************************/
 /** @name IO PAD Control Register
  */
-#define FIOPAD_X_REG0_BEG_OFFSET            0x0    /* 上下拉/驱动能力/复用功能配置 */
+#define FIOPAD_X_REG0_BEG_OFFSET            0x0    /* // */
 #define FIOPAD_X_REG0_END_OFFSET            0x24c
 
-#define FIOPAD_X_REG1_BEG_OFFSET            0x1024 /* 输入/输出延时配置 */
+#define FIOPAD_X_REG1_BEG_OFFSET            0x1024 /* / */
 #define FIOPAD_X_REG1_END_OFFSET            0x124c
 
 /** @name X_reg0 Register
  */
-#define FIOPAD_X_REG0_PULL_MASK        GENMASK(9, 8)    /* 上下拉配置 */
+#define FIOPAD_X_REG0_PULL_MASK        GENMASK(9, 8)    /*  */
 #define FIOPAD_X_REG0_PULL_GET(x)      GET_REG32_BITS((x), 9, 8)
 #define FIOPAD_X_REG0_PULL_SET(x)      SET_REG32_BITS((x), 9, 8)
 
-#define FIOPAD_X_REG0_DRIVE_MASK       GENMASK(7, 4)    /* 驱动能力配置 */
+#define FIOPAD_X_REG0_DRIVE_MASK       GENMASK(7, 4)    /*  */
 #define FIOPAD_X_REG0_DRIVE_GET(x)     GET_REG32_BITS((x), 7, 4)
 #define FIOPAD_X_REG0_DRIVE_SET(x)     SET_REG32_BITS((x), 7, 4)
 
-#define FIOPAD_X_REG0_FUNC_MASK        GENMASK(2, 0)   /* 引脚复用配置 */
+#define FIOPAD_X_REG0_FUNC_MASK        GENMASK(2, 0)   /*  */
 #define FIOPAD_X_REG0_FUNC_GET(x)      GET_REG32_BITS((x), 2, 0)
 #define FIOPAD_X_REG0_FUNC_SET(x)      SET_REG32_BITS((x), 2, 0)
 
@@ -60,18 +60,18 @@
  */
 #define FIOPAD_X_REG1_OUT_DELAY_EN                BIT(8)
 #define FIOPAD_X_REG1_OUT_DELAY_DELICATE_MASK     GENMASK(11, 9)
-#define FIOPAD_X_REG1_OUT_DELAY_DELICATE_GET(x)   GET_REG32_BITS((x), 11, 9) /* 延时精调  */
+#define FIOPAD_X_REG1_OUT_DELAY_DELICATE_GET(x)   GET_REG32_BITS((x), 11, 9) /*   */
 #define FIOPAD_X_REG1_OUT_DELAY_DELICATE_SET(x)   SET_REG32_BITS((x), 11, 9)
 #define FIOPAD_X_REG1_OUT_DELAY_ROUGH_MASK        GENMASK(14, 12)
-#define FIOPAD_X_REG1_OUT_DELAY_ROUGH_GET(x)      GET_REG32_BITS((x), 14, 12) /* 延时粗调 */
+#define FIOPAD_X_REG1_OUT_DELAY_ROUGH_GET(x)      GET_REG32_BITS((x), 14, 12) /*  */
 #define FIOPAD_X_REG1_OUT_DELAY_ROUGH_SET(x)      SET_REG32_BITS((x), 14, 12)
 
 #define FIOPAD_X_REG1_IN_DELAY_EN                BIT(0)
 #define FIOPAD_X_REG1_IN_DELAY_DELICATE_MASK     GENMASK(3, 1)
-#define FIOPAD_X_REG1_IN_DELAY_DELICATE_GET(x)   GET_REG32_BITS((x), 3, 1) /* 延时精调 */
+#define FIOPAD_X_REG1_IN_DELAY_DELICATE_GET(x)   GET_REG32_BITS((x), 3, 1) /*  */
 #define FIOPAD_X_REG1_IN_DELAY_DELICATE_SET(x)   SET_REG32_BITS((x), 3, 1)
 #define FIOPAD_X_REG1_IN_DELAY_ROUGH_MASK        GENMASK(6, 4)
-#define FIOPAD_X_REG1_IN_DELAY_ROUGH_GET(x)      GET_REG32_BITS((x), 6, 4) /* 延时粗调 */
+#define FIOPAD_X_REG1_IN_DELAY_ROUGH_GET(x)      GET_REG32_BITS((x), 6, 4) /*  */
 #define FIOPAD_X_REG1_IN_DELAY_ROUGH_SET(x)      SET_REG32_BITS((x), 6, 4)
 
 #define FIOPAD_DELAY_MAX                       15
@@ -107,10 +107,10 @@ static inline void FIOPadWrite(FPinIndex pin, u32 reg_val)
 /************************** Function Prototypes ******************************/
 /**
  * @name: FPinGetFunc
- * @msg: 获取IO引脚当前的复用功能
- * @return {FPinFunc} 当前的复用功能
- * @param {FPinIndex} pin IO引脚索引
- * @note 参考编程手册，使用 FIOPAD_INDEX 宏定义index的值
+ * @msg: IO
+ * @return {FPinFunc} 
+ * @param {FPinIndex} pin IO
+ * @note  FIOPAD_INDEX index
  */
 FPinFunc FPinGetFunc(const FPinIndex pin)
 {
@@ -122,11 +122,11 @@ FPinFunc FPinGetFunc(const FPinIndex pin)
 
 /**
  * @name: FPinSetFunc
- * @msg: 设置IO引脚复用功能
+ * @msg: IO
  * @return {*}
- * @param {FPinIndex} pin IO引脚索引
- * @param {FPinFunc} func IO复用功能
- * @note 参考编程手册，使用 FIOPAD_INDEX 宏定义index的值
+ * @param {FPinIndex} pin IO
+ * @param {FPinFunc} func IO
+ * @note  FIOPAD_INDEX index
  */
 void FPinSetFunc(const FPinIndex pin, FPinFunc func)
 {
@@ -153,9 +153,9 @@ void FPinSetFunc(const FPinIndex pin, FPinFunc func)
 
 /**
  * @name: FPinGetDrive
- * @msg: 获取IO引脚的驱动能力
- * @return {FPinDrive} 引脚的当前的驱动能力
- * @param {FPinIndex} pin IO引脚索引
+ * @msg: IO
+ * @return {FPinDrive} 
+ * @param {FPinIndex} pin IO
  */
 FPinDrive FPinGetDrive(const FPinIndex pin)
 {
@@ -167,10 +167,10 @@ FPinDrive FPinGetDrive(const FPinIndex pin)
 
 /**
  * @name: FPinSetDrive
- * @msg: 设置IO引脚的驱动能力
+ * @msg: IO
  * @return {*}
- * @param {FPinIndex} pin, IO引脚索引
- * @param {FPinDrive} drive, 引脚驱动能力设置
+ * @param {FPinIndex} pin, IO
+ * @param {FPinDrive} drive, 
  */
 void FPinSetDrive(const FPinIndex pin, FPinDrive drive)
 {
@@ -228,10 +228,10 @@ void FPinSetConfig(const FPinIndex pin, FPinFunc func, FPinPull pull, FPinDrive 
 
 /**
  * @name: FPinGetPull
- * @msg: 获取IO引脚当前的上下拉设置
+ * @msg: IO
  * @return {*}
- * @param {FPinIndex} pin IO引脚索引
- * @note 参考编程手册，使用 FIOPAD_INDEX 宏定义index的值
+ * @param {FPinIndex} pin IO
+ * @note  FIOPAD_INDEX index
  */
 FPinPull FPinGetPull(const FPinIndex pin)
 {
@@ -243,10 +243,10 @@ FPinPull FPinGetPull(const FPinIndex pin)
 
 /**
  * @name: FPinSetPull
- * @msg: 设置IO引脚当前的上下拉
+ * @msg: IO
  * @return {*}
- * @param {FPinIndex} pin IO引脚索引
- * @param {FPinPull} pull 上下拉设置
+ * @param {FPinIndex} pin IO
+ * @param {FPinPull} pull 
  */
 void FPinSetPull(const FPinIndex pin, FPinPull pull)
 {
@@ -264,11 +264,11 @@ void FPinSetPull(const FPinIndex pin, FPinPull pull)
 
 /**
  * @name: FPinGetDelay
- * @msg: 获取IO引脚当前的延时设置
- * @return {FPinDelay} 当前的延时设置
- * @param {FPinIndex} pin IO引脚延时设置索引
- * @param {FPinDelayDir} dir 输入/输出延时
- * @param {FPinDelayType} type 精调/粗调延时
+ * @msg: IO
+ * @return {FPinDelay} 
+ * @param {FPinIndex} pin IO
+ * @param {FPinDelayDir} dir /
+ * @param {FPinDelayType} type /
  */
 FPinDelay FPinGetDelay(const FPinIndex pin, FPinDelayDir dir, FPinDelayType type)
 {
@@ -317,10 +317,10 @@ FPinDelay FPinGetDelay(const FPinIndex pin, FPinDelayDir dir, FPinDelayType type
 
 /**
  * @name: FPinGetDelayEn
- * @msg: 获取IO引脚当前的延时使能标志位
+ * @msg: IO
  * @return {*}
- * @param {FPinIndex} pin IO引脚延时设置索引
- * @param {FPinDelayDir} dir 输入/输出延时
+ * @param {FPinIndex} pin IO
+ * @param {FPinDelayDir} dir /
  */
 boolean FPinGetDelayEn(const FPinIndex pin, FPinDelayDir dir)
 {
@@ -352,12 +352,12 @@ boolean FPinGetDelayEn(const FPinIndex pin, FPinDelayDir dir)
 
 /**
  * @name: FPinSetDelay
- * @msg: 设置IO引脚延时
+ * @msg: IO
  * @return {*}
- * @param {FPinIndex} pin IO引脚延时设置索引
- * @param {FPinDelayDir} dir 输入/输出延时
- * @param {FPinDelayType} type 精调/粗调延时
- * @param {FPinDelay} delay 延时设置
+ * @param {FPinIndex} pin IO
+ * @param {FPinDelayDir} dir /
+ * @param {FPinDelayType} type /
+ * @param {FPinDelay} delay 
  */
 void FPinSetDelay(const FPinIndex pin, FPinDelayDir dir, FPinDelayType type, FPinDelay delay)
 {
@@ -410,11 +410,11 @@ void FPinSetDelay(const FPinIndex pin, FPinDelayDir dir, FPinDelayType type, FPi
 
 /**
  * @name: FPinSetDelayEn
- * @msg: 使能/去使能IO引脚延时
+ * @msg: /IO
  * @return {*}
- * @param {FPinIndex} pin IO引脚延时设置索引
- * @param {FPinDelayDir} dir 输入/输出延时
- * @param {boolean} enable TRUE: 使能, FALSE: 去使能
+ * @param {FPinIndex} pin IO
+ * @param {FPinDelayDir} dir /
+ * @param {boolean} enable TRUE: , FALSE: 
  */
 void FPinSetDelayEn(const FPinIndex pin, FPinDelayDir dir, boolean enable)
 {
@@ -450,7 +450,7 @@ void FPinSetDelayEn(const FPinIndex pin, FPinDelayDir dir, boolean enable)
  * @msg: Update and enable common IO pin delay config
  * @return {NONE}
  * @param {FPinIndex} pin, IO pin index
- * @param {FPinDelayIOType} in_out_type, Select the input and output types ，
+ * @param {FPinDelayIOType} in_out_type, Select the input and output types 
  * @param {FPinDelay} roungh_delay, delay rough setting
  * @param {FPinDelay} delicate_delay, delay delicate setting
  * @param {boolean} enable, enable delay
@@ -512,10 +512,10 @@ void FPinSetDelayConfig(const FPinIndex pin, FPinDelayIOType in_out_type, FPinDe
  * @msg: Get current common IO pin delay config
  * @return {NONE}
  * @param {FPinIndex} pin, IO pin index
- * @param {FPinDelay} *in_roungh_delay, input delay rough setting (输入粗调)
- * @param {FPinDelay} *in_delicate_delay, input delay delicate setting (输入精调)
- * @param {FPinDelay} *out_roungh_delay, output delay rough setting (输出粗调)
- * @param {FPinDelay} *out_delicate_delay, output delay delicate setting (输出精调)
+ * @param {FPinDelay} *in_roungh_delay, input delay rough setting ()
+ * @param {FPinDelay} *in_delicate_delay, input delay delicate setting ()
+ * @param {FPinDelay} *out_roungh_delay, output delay rough setting ()
+ * @param {FPinDelay} *out_delicate_delay, output delay delicate setting ()
  */
 void FPinGetDelayConfig(const FPinIndex pin, FPinDelay *in_roungh_delay, FPinDelay *in_delicate_delay,
                         FPinDelay *out_roungh_delay, FPinDelay *out_delicate_delay)

@@ -14,7 +14,7 @@
  *           suitable processor architectures. This file can be freely distributed.
  *           Modifications to this file shall be clearly marked.
  *
- *           THIS SOFTWARE IS PROVIDED “AS IS”. NO WARRANTIES, WHETHER EXPRESS, IMPLIED
+ *           THIS SOFTWARE IS PROVIDED AS IS. NO WARRANTIES, WHETHER EXPRESS, IMPLIED
  *           OR STATUTORY, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF
  *           MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE APPLY TO THIS SOFTWARE.
  *           ARM SHALL NOT, IN ANY CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL, OR
@@ -61,46 +61,46 @@ extern "C" {
 
 typedef enum {
 /******  Cortex-M0 Processor Exceptions Numbers ****************************************************************/
-  Reset_IRQn                    = -15,              /*!<   1  复位向量 */
-  NMI_IRQn                      = -14,              /*!<   2  WKUPx中断、低功耗模式错误中断 */
-  HardFault_IRQn                = -13,              /*!<   3  HardFault中断向量 */
-  SVC_IRQn                      = -5,               /*!<  11  SVCall系统服务请求 */
-  PendSV_IRQn                   = -2,               /*!<  14  可挂起系统服务请求 */
-  SysTick_IRQn                  = -1,               /*!<  15  内部定时器中断向量 */
+  Reset_IRQn                    = -15,              /*!<   1   */
+  NMI_IRQn                      = -14,              /*!<   2  WKUPx */
+  HardFault_IRQn                = -13,              /*!<   3  HardFault */
+  SVC_IRQn                      = -5,               /*!<  11  SVCall */
+  PendSV_IRQn                   = -2,               /*!<  14   */
+  SysTick_IRQn                  = -1,               /*!<  15   */
 
 /* --------------------  FM33LG0XX specific Interrupt Numbers  --------------------*/
-  WWDT_IRQn                     = 0,                /*!<   0  窗口看门狗或独立看门狗中断 */
-  SVD_IRQn                      = 1,                /*!<   1  电源监测报警中断 */
-  RTCx_IRQn                       = 2,                /*!<   2  实时时钟中断 */
-  FLASH_IRQn                    = 3,                /*!<   3  NVMIF中断 */
-  FDET_IRQn                     = 4,                /*!<   4  XTLF或XTHF停振检测中断、系统时钟选择错误中断 */
-  ADC_IRQn                      = 5,                /*!<   5  ADC转换完成中断 */
-  DAC_IRQn                      = 6,                /*!<   6  DAC中断 */
-  SPI0_IRQn                     = 7,                /*!<   7  SPI0中断 */
-  SPI1_IRQn                     = 8,                /*!<   8  SPI1中断 */
-  SPI2_IRQn                     = 9,                /*!<   9  SPI2中断 */
-  UART0_IRQn                    = 10,               /*!<  10  UART0中断 */
-  UART1_IRQn                    = 11,               /*!<  11  UART1中断 */
-  UART3_IRQn                    = 12,               /*!<  12  UART3中断 */
-  UART4_IRQn                    = 13,               /*!<  13  UART4中断 */
-  UART5_IRQn                    = 14,               /*!<  14  UART5中断 */
-  U7816_IRQn                    = 15,               /*!<  15  U7816中断 */
-  LPUARTx_IRQn                  = 16,               /*!<  16  LPUART0/1/2中断 */
-  I2C_IRQn                      = 17,               /*!<  17  I2C中断 */
-  CCL_IRQn                      = 18,               /*!<  18  时钟校准中断 */
-  AES_IRQn                      = 19,               /*!<  19  AES中断 */
-  LPTIMx_IRQn                   = 20,               /*!<  20  LPTIM16或LPTIM32中断 */
-  DMA_IRQn                      = 21,               /*!<  21  DMA中断 */
-  WKUPx_IRQn                    = 22,               /*!<  22  WKUP引脚中断 */
-  LUT_IRQn                      = 23,               /*!<  23  LUT中断 */
-  BSTIM_IRQn                    = 24,               /*!<  24  BSTIM16或BSTIM32中断 */
-  COMPx_IRQn                    = 25,               /*!<  25  COMPx中断 */
-  GPTIM01_IRQn                  = 26,               /*!<  26  通用定时器0,1中断 */
-  GPTIM2_IRQn                   = 27,               /*!<  27  通用定时器2中断 */
-  ATIM_IRQn                     = 28,               /*!<  28  高级定时器中断 */
-  VREF_IRQn                     = 29,               /*!<  29  1.2V内部基准电压建立中断、VREF_VREG中断 */
-  GPIO_IRQn                     = 30,               /*!<  30  外部引脚中断 */
-  CAN_IRQn                      = 31,               /*!<  31  CAN2.0中断 */
+  WWDT_IRQn                     = 0,                /*!<   0   */
+  SVD_IRQn                      = 1,                /*!<   1   */
+  RTCx_IRQn                       = 2,                /*!<   2   */
+  FLASH_IRQn                    = 3,                /*!<   3  NVMIF */
+  FDET_IRQn                     = 4,                /*!<   4  XTLFXTHF */
+  ADC_IRQn                      = 5,                /*!<   5  ADC */
+  DAC_IRQn                      = 6,                /*!<   6  DAC */
+  SPI0_IRQn                     = 7,                /*!<   7  SPI0 */
+  SPI1_IRQn                     = 8,                /*!<   8  SPI1 */
+  SPI2_IRQn                     = 9,                /*!<   9  SPI2 */
+  UART0_IRQn                    = 10,               /*!<  10  UART0 */
+  UART1_IRQn                    = 11,               /*!<  11  UART1 */
+  UART3_IRQn                    = 12,               /*!<  12  UART3 */
+  UART4_IRQn                    = 13,               /*!<  13  UART4 */
+  UART5_IRQn                    = 14,               /*!<  14  UART5 */
+  U7816_IRQn                    = 15,               /*!<  15  U7816 */
+  LPUARTx_IRQn                  = 16,               /*!<  16  LPUART0/1/2 */
+  I2C_IRQn                      = 17,               /*!<  17  I2C */
+  CCL_IRQn                      = 18,               /*!<  18   */
+  AES_IRQn                      = 19,               /*!<  19  AES */
+  LPTIMx_IRQn                   = 20,               /*!<  20  LPTIM16LPTIM32 */
+  DMA_IRQn                      = 21,               /*!<  21  DMA */
+  WKUPx_IRQn                    = 22,               /*!<  22  WKUP */
+  LUT_IRQn                      = 23,               /*!<  23  LUT */
+  BSTIM_IRQn                    = 24,               /*!<  24  BSTIM16BSTIM32 */
+  COMPx_IRQn                    = 25,               /*!<  25  COMPx */
+  GPTIM01_IRQn                  = 26,               /*!<  26  0,1 */
+  GPTIM2_IRQn                   = 27,               /*!<  27  2 */
+  ATIM_IRQn                     = 28,               /*!<  28   */
+  VREF_IRQn                     = 29,               /*!<  29  1.2VVREF_VREG */
+  GPIO_IRQn                     = 30,               /*!<  30   */
+  CAN_IRQn                      = 31,               /*!<  31  CAN2.0 */
 
 } IRQn_Type;
 

@@ -1,15 +1,15 @@
 /*
- * @ : Copyright (c) 2020 Phytium Information Technology, Inc.
+ * @: Copyright(c)2020PhytiumInformationTechnology,Inc.
  *
- * SPDX-License-Identifier: Apache-2.0.
+ * SPDX-License-Identifier:Apache-2.0.
  *
  * @Date: 2021-05-26 10:09:45
  * @LastEditTime: 2021-08-16 16:32:08
- * @Description:  This files is for
+ * @Description: Thisfilesisfor
  *
- * @Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * @ModifyHistory:
+ * VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 #include <rtthread.h>

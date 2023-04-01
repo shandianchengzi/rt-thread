@@ -1,10 +1,10 @@
 /******************************************************************************************************************************************
-* 文件名称: usbh_msc_scsi.c
-* 功能说明:
-* 技术支持: http://www.synwit.com.cn/e/tool/gbook/?bid=1
-* 注意事项:
-* 版本日期: V1.1.0      2020年11月3日
-* 升级记录:
+* : usbh_msc_scsi.c
+* :
+* : http://www.synwit.com.cn/e/tool/gbook/?bid=1
+* :
+* : V1.1.0      2020113
+* :
 *
 *
 *******************************************************************************************************************************************
@@ -43,11 +43,11 @@ static uint8_t DataInBuffer[64];
 
 
 /******************************************************************************************************************************************
-* 函数名称: USBH_MSC_TestUnitReady()
-* 功能说明: Issues 'Test unit ready' command to the device.
-* 输    入: 无
-* 输    出: 无
-* 注意事项: 无
+* : USBH_MSC_TestUnitReady()
+* : Issues 'Test unit ready' command to the device.
+*     : 
+*     : 
+* : 
 ******************************************************************************************************************************************/
 USBH_MSC_Status USBH_MSC_TestUnitReady(void)
 {
@@ -83,11 +83,11 @@ USBH_MSC_Status USBH_MSC_TestUnitReady(void)
 
 
 /******************************************************************************************************************************************
-* 函数名称: USBH_MSC_ReadCapacity10()
-* 功能说明: Issue the read capacity command to the device.
-* 输    入: 无
-* 输    出: 无
-* 注意事项: 无
+* : USBH_MSC_ReadCapacity10()
+* : Issue the read capacity command to the device.
+*     : 
+*     : 
+* : 
 ******************************************************************************************************************************************/
 USBH_MSC_Status USBH_MSC_ReadCapacity10(void)
 {
@@ -139,12 +139,12 @@ USBH_MSC_Status USBH_MSC_ReadCapacity10(void)
 
 
 /******************************************************************************************************************************************
-* 函数名称: USBH_MSC_ModeSense6()
-* 功能说明: Issue the Mode Sense6 Command to the device.
+* : USBH_MSC_ModeSense6()
+* : Issue the Mode Sense6 Command to the device.
 *           Used for reading the WriteProtect Status of the Mass-Storage device.
-* 输    入: 无
-* 输    出: 无
-* 注意事项: 无
+*     : 
+*     : 
+* : 
 ******************************************************************************************************************************************/
 USBH_MSC_Status USBH_MSC_ModeSense6(void)
 {
@@ -200,11 +200,11 @@ USBH_MSC_Status USBH_MSC_ModeSense6(void)
 
 
 /******************************************************************************************************************************************
-* 函数名称: USBH_MSC_Read10()
-* 功能说明: Issue the read command to the device.
-* 输    入: 无
-* 输    出: 无
-* 注意事项: 无
+* : USBH_MSC_Read10()
+* : Issue the read command to the device.
+*     : 
+*     : 
+* : 
 ******************************************************************************************************************************************/
 USBH_MSC_Status USBH_MSC_Read10(uint8_t *buffer, uint32_t address, uint32_t nbOfbytes)
 {
@@ -255,11 +255,11 @@ USBH_MSC_Status USBH_MSC_Read10(uint8_t *buffer, uint32_t address, uint32_t nbOf
 
 
 /******************************************************************************************************************************************
-* 函数名称: USBH_MSC_Write10()
-* 功能说明: Issue the write command to the device.
-* 输    入: 无
-* 输    出: 无
-* 注意事项: 无
+* : USBH_MSC_Write10()
+* : Issue the write command to the device.
+*     : 
+*     : 
+* : 
 ******************************************************************************************************************************************/
 USBH_MSC_Status USBH_MSC_Write10(uint8_t *buffer, uint32_t address, uint32_t nbOfbytes)
 {
@@ -310,11 +310,11 @@ USBH_MSC_Status USBH_MSC_Write10(uint8_t *buffer, uint32_t address, uint32_t nbO
 
 
 /******************************************************************************************************************************************
-* 函数名称: USBH_MSC_RequestSense()
-* 功能说明: Issues the Request Sense command to the device.
-* 输    入: 无
-* 输    出: 无
-* 注意事项: 无
+* : USBH_MSC_RequestSense()
+* : Issues the Request Sense command to the device.
+*     : 
+*     : 
+* : 
 ******************************************************************************************************************************************/
 USBH_MSC_Status USBH_MSC_RequestSense(void)
 {

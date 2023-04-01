@@ -426,9 +426,9 @@ typedef union {
 #define DAC_DACCTRL_CCTRL_Pos       2            /**< \brief (DAC_DACCTRL) Current Control */
 #define DAC_DACCTRL_CCTRL_Msk       (_U_(0x3) << DAC_DACCTRL_CCTRL_Pos)
 #define DAC_DACCTRL_CCTRL(value)    (DAC_DACCTRL_CCTRL_Msk & ((value) << DAC_DACCTRL_CCTRL_Pos))
-#define   DAC_DACCTRL_CCTRL_CC100K_Val    _U_(0x0)   /**< \brief (DAC_DACCTRL) GCLK_DAC ≤ 1.2MHz (100kSPS) */
-#define   DAC_DACCTRL_CCTRL_CC1M_Val      _U_(0x1)   /**< \brief (DAC_DACCTRL) 1.2MHz < GCLK_DAC  ≤ 6MHz (500kSPS) */
-#define   DAC_DACCTRL_CCTRL_CC12M_Val     _U_(0x2)   /**< \brief (DAC_DACCTRL) 6MHz < GCLK_DAC ≤ 12MHz (1MSPS) */
+#define   DAC_DACCTRL_CCTRL_CC100K_Val    _U_(0x0)   /**< \brief (DAC_DACCTRL) GCLK_DAC  1.2MHz (100kSPS) */
+#define   DAC_DACCTRL_CCTRL_CC1M_Val      _U_(0x1)   /**< \brief (DAC_DACCTRL) 1.2MHz < GCLK_DAC   6MHz (500kSPS) */
+#define   DAC_DACCTRL_CCTRL_CC12M_Val     _U_(0x2)   /**< \brief (DAC_DACCTRL) 6MHz < GCLK_DAC  12MHz (1MSPS) */
 #define DAC_DACCTRL_CCTRL_CC100K    (DAC_DACCTRL_CCTRL_CC100K_Val  << DAC_DACCTRL_CCTRL_Pos)
 #define DAC_DACCTRL_CCTRL_CC1M      (DAC_DACCTRL_CCTRL_CC1M_Val    << DAC_DACCTRL_CCTRL_Pos)
 #define DAC_DACCTRL_CCTRL_CC12M     (DAC_DACCTRL_CCTRL_CC12M_Val   << DAC_DACCTRL_CCTRL_Pos)

@@ -21,18 +21,18 @@ extern "C" {
 void Set_SPI_Handle_Ext(SPI_HandleTypeDef *handle);
 
 /**
- * @brief  专为屏幕清屏而修改，将需要清屏的颜色批量传输
- * @param  pData  : 要写入的数据
- * @param  Size   : 数据大小
+ * @brief  
+ * @param  pData  : 
+ * @param  Size   : 
  * @retval status
  */
 
 rt_err_t SPI_Transmit_Ext(uint16_t pData, uint32_t Size);
 
 /**
- * @brief  专为批量写入数据修改，使之不限长度的传输数据
- * @param  pData  : 要写入的数据
- * @param  Size   : 数据大小
+ * @brief  
+ * @param  pData  : 
+ * @param  Size   : 
  * @retval status
  */
 rt_err_t SPI_TransmitBuffer_Ext(uint16_t *pData, uint32_t Size);

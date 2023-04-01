@@ -83,11 +83,11 @@
 
 /**
  ******************************************************************************
- ** \brief  SPI 请求状态获取
+ ** \brief  SPI 
  **
- ** \param [in]SPIx 通道， enStatus 获取请求
+ ** \param [in]SPIx  enStatus 
  **
- ** \retval 请求状态
+ ** \retval 
  **
  ******************************************************************************/
 boolean_t Spi_GetStatus(M0P_SPI_TypeDef* SPIx, en_spi_status_t enStatus)
@@ -106,11 +106,11 @@ boolean_t Spi_GetStatus(M0P_SPI_TypeDef* SPIx, en_spi_status_t enStatus)
 }
 /**
  ******************************************************************************
- ** \brief  SPI中断清除
+ ** \brief  SPI
  **
- ** \param [in]SPIx 通道选择
+ ** \param [in]SPIx 
  **
- ** \retval 请求状态
+ ** \retval 
  **
  ******************************************************************************/
 en_result_t Spi_ClearStatus(M0P_SPI_TypeDef* SPIx)
@@ -122,11 +122,11 @@ en_result_t Spi_ClearStatus(M0P_SPI_TypeDef* SPIx)
 
 /**
  ******************************************************************************
- ** \brief  SPI 中断使能函数
+ ** \brief  SPI 
  **
- ** \param [in] SPIx 通道
+ ** \param [in] SPIx 
  **
- ** \retval Ok成功
+ ** \retval Ok
  **
  ******************************************************************************/
 en_result_t Spi_IrqEnable(M0P_SPI_TypeDef* SPIx)
@@ -138,11 +138,11 @@ en_result_t Spi_IrqEnable(M0P_SPI_TypeDef* SPIx)
 
 /**
  ******************************************************************************
- ** \brief  SPI 中断禁止函数
+ ** \brief  SPI 
  **
- ** \param [in] enCh通道
+ ** \param [in] enCh
  **
- ** \retval Ok成功
+ ** \retval Ok
  **
  ******************************************************************************/
 en_result_t Spi_IrqDisable(M0P_SPI_TypeDef* SPIx)
@@ -154,11 +154,11 @@ en_result_t Spi_IrqDisable(M0P_SPI_TypeDef* SPIx)
 
 /**
  ******************************************************************************
- ** \brief  SPI 功能使能函数
+ ** \brief  SPI 
  **
- ** \param [in] SPIx 通道，enFunc功能
+ ** \param [in] SPIx enFunc
  **
- ** \retval Ok初始化成功
+ ** \retval Ok
  **
  ******************************************************************************/
 en_result_t Spi_FuncEnable(M0P_SPI_TypeDef* SPIx, en_spi_func_t enFunc)
@@ -170,11 +170,11 @@ en_result_t Spi_FuncEnable(M0P_SPI_TypeDef* SPIx, en_spi_func_t enFunc)
 
 /**
  ******************************************************************************
- ** \brief  SPI 功能禁止函数
+ ** \brief  SPI 
  **
- ** \param [in] SPIx 通道，enFunc功能
+ ** \param [in] SPIx enFunc
  **
- ** \retval Ok初始化成功
+ ** \retval Ok
  **
  ******************************************************************************/
 en_result_t Spi_FuncDisable(M0P_SPI_TypeDef* SPIx, en_spi_func_t enFunc)
@@ -186,13 +186,13 @@ en_result_t Spi_FuncDisable(M0P_SPI_TypeDef* SPIx, en_spi_func_t enFunc)
 
 /**
  ******************************************************************************
- ** \brief  SPI 总体初始化函数
+ ** \brief  SPI 
  **
- ** \param [in] SPIx 通道
- ** \param [in] pstcSpiCfg 初始化结构体
+ ** \param [in] SPIx 
+ ** \param [in] pstcSpiCfg 
  **
- ** \retval Ok初始化成功
- ** \retval ErrorInvalidParameter 初始化错误
+ ** \retval Ok
+ ** \retval ErrorInvalidParameter 
  ******************************************************************************/
 en_result_t Spi_Init(M0P_SPI_TypeDef* SPIx, stc_spi_cfg_t *pstcSpiCfg)
 {
@@ -215,11 +215,11 @@ en_result_t Spi_Init(M0P_SPI_TypeDef* SPIx, stc_spi_cfg_t *pstcSpiCfg)
 
 /**
  ******************************************************************************
- ** \brief  SPI 配置主发送的电平
+ ** \brief  SPI 
  **
- ** \param [in] SPIx 通道选择，bFlag高低电平
+ ** \param [in] SPIx bFlag
  **
- ** \retval 无
+ ** \retval 
  **
  ******************************************************************************/
 void Spi_SetCS(M0P_SPI_TypeDef* SPIx, boolean_t bFlag)
@@ -228,11 +228,11 @@ void Spi_SetCS(M0P_SPI_TypeDef* SPIx, boolean_t bFlag)
 }
 /**
  ******************************************************************************
- ** \brief  SPI 发送一字节函数
+ ** \brief  SPI 
  **
- ** \param [in] SPIx 通道选择，u8Data发送字节
+ ** \param [in] SPIx u8Data
  **
- ** \retval Ok发送成功
+ ** \retval Ok
  **
  ******************************************************************************/
 en_result_t Spi_SendData(M0P_SPI_TypeDef* SPIx, uint8_t u8Data)
@@ -244,12 +244,12 @@ en_result_t Spi_SendData(M0P_SPI_TypeDef* SPIx, uint8_t u8Data)
 
 /**
  ******************************************************************************
- ** \brief  SPI 读/写一字节函数
+ ** \brief  SPI /
  **
- ** \param [in] SPIx   通道选择
- ** \param [in] u8Data 发送一字节数据
+ ** \param [in] SPIx   
+ ** \param [in] u8Data 
  **
- ** \retval 接收一字节数据
+ ** \retval 
  **
  ******************************************************************************/
 uint8_t Spi_RWByte(M0P_SPI_TypeDef* SPIx, uint8_t u8Data)
@@ -262,10 +262,10 @@ uint8_t Spi_RWByte(M0P_SPI_TypeDef* SPIx, uint8_t u8Data)
 
 /**
  ******************************************************************************
-** \brief  SPI 从机预准备第一字节数据
+** \brief  SPI 
  **
- ** \param [in] SPIx   通道选择
- ** \param [in] u8Data 预准备第一字节数据
+ ** \param [in] SPIx   
+ ** \param [in] u8Data 
  **
  ** \retval None
  **
@@ -278,12 +278,12 @@ void Spi_Slave_DummyWriteData(M0P_SPI_TypeDef* SPIx, uint8_t u8Data)
 
 /**
  ******************************************************************************
- ** \brief  SPI 连续发送多字节函数
+ ** \brief  SPI 
  **
- ** \param [in] SPIx   通道选择
- ** \param [in] pu8Buf 发送数据指针
+ ** \param [in] SPIx   
+ ** \param [in] pu8Buf 
  **
- ** \retval Ok发送成功
+ ** \retval Ok
  **
  ******************************************************************************/
 en_result_t Spi_SendBuf(M0P_SPI_TypeDef* SPIx, uint8_t* pu8Buf, uint32_t u32Len)
@@ -306,11 +306,11 @@ en_result_t Spi_SendBuf(M0P_SPI_TypeDef* SPIx, uint8_t* pu8Buf, uint32_t u32Len)
 
 /**
  ******************************************************************************
- ** \brief  SPI 接收一字节函数
+ ** \brief  SPI 
  **
- ** \param [in] SPIx接收通道
+ ** \param [in] SPIx
  **
- ** \retval 接收一字节数据
+ ** \retval 
  **
  ******************************************************************************/
 uint8_t Spi_ReceiveData(M0P_SPI_TypeDef* SPIx)
@@ -320,12 +320,12 @@ uint8_t Spi_ReceiveData(M0P_SPI_TypeDef* SPIx)
 
 /**
  ******************************************************************************
- ** \brief  SPI 连续接收多字节函数
+ ** \brief  SPI 
  **
- ** \param [in] SPIx   通道选择
- ** \param [in] pu8Buf 发送数据指针
+ ** \param [in] SPIx   
+ ** \param [in] pu8Buf 
  **
- ** \retval Ok发送成功
+ ** \retval Ok
  **
  ******************************************************************************/
 en_result_t Spi_ReceiveBuf(M0P_SPI_TypeDef* SPIx, uint8_t* pu8Buf, uint32_t u32Len)

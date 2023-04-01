@@ -170,7 +170,7 @@ void rt_hw_us_delay(rt_uint32_t us)
 void rt_hw_systick_init(void)
 {
     CLKCON2 &= 0x00ffffff;
-    CLKCON2 |= (25 << 24);                                  //配置x26m_div_clk = 1M (timer, ir, fmam ...用到)
+    CLKCON2 |= (25 << 24);                                  //x26m_div_clk = 1M (timer, ir, fmam ...)
     CLKCON0 &= ~(7 << 23);
     CLKCON0 |= BIT(24);                                     //tmr_inc select x26m_div_clk = 1M
 

@@ -108,7 +108,7 @@ bool wait_for_status_enable(void)
 {
 #if 0
     while (!eif_get_status_io_value());
-    eif_delay_us(500);  //根据时钟频率设置为延时100us
+    eif_delay_us(500);  //100us
     while (!eif_get_status_io_value());
     return 1;
 #else
@@ -169,8 +169,8 @@ void bt_features_init(void)
 
     app_env.adv_para.adv_type       =  GAPM_ADV_UNDIRECT;    // GAP OPCODE     direct  ,no connect  undirect
     app_env.adv_para.channel_map    = 0x7; // BTstack_data.user_config.adv_para.channel_map;//
-    app_env.adv_para.adv_int_min    = 0x320;  //广播间隔时间最小值：0.5S = 0x320*0.625 ms
-    app_env.adv_para.adv_int_max    = 0x320;  //广播间隔时间最大值：0.5S = 0x320*0.625 ms
+    app_env.adv_para.adv_int_min    = 0x320;  //0.5S = 0x320*0.625 ms
+    app_env.adv_para.adv_int_max    = 0x320;  //0.5S = 0x320*0.625 ms
     app_env.adv_para.discover_mode  = GAP_GEN_DISCOVERABLE;
 
 #ifdef N32WB452_BT_API
@@ -182,7 +182,7 @@ void bt_features_init(void)
                 name_len++;
             }
         }
-        if (name_len >= 3) {//必须2个字符以上
+        if (name_len >= 3) {//2
             //fill name in addr data
             app_env.adv_data_buf[app_env.adv_data_len++] = name_len + 1; // length
             app_env.adv_data_buf[app_env.adv_data_len++] = 0x08;                // device name tag
@@ -224,7 +224,7 @@ void bt_features_init(void)
 #ifdef N32WB452_BT_API
     if (g_bt_init) {
         memcpy(app_env.scan_rsp_data_buf, g_bt_init->scan_rsp_data, g_bt_init->scan_rsp_data_len);
-        app_env.scan_rsp_data_buf[g_bt_init->scan_rsp_data_len] = 0x00;//最后一个设置为0
+        app_env.scan_rsp_data_buf[g_bt_init->scan_rsp_data_len] = 0x00;//0
         app_env.scan_rsp_data_len  = g_bt_init->scan_rsp_data_len;
     } else {
         uint8_t scan_rsp_data[31] = "\x09\xFF\x60\x52\x57\x2D\x42\x4C\x45\0x00";
@@ -237,7 +237,7 @@ void bt_features_init(void)
 
 #ifdef N32WB452_BT_API
     if (g_bt_init) {
-        //地址为十六进制如12:34:56:AB:CD:EF
+        //12:34:56:AB:CD:EF
         size = MIN(strlen((const char *)ptmp), sizeof(g_bt_init->device_addr));
         for (i = 0; i < size;) {
             if ((g_bt_init->device_addr[i + 0] && (g_bt_init->device_addr[i + 0] >= '0') && (g_bt_init->device_addr[i + 0] <= '9'))) {
@@ -298,7 +298,7 @@ void bt_features_init(void)
 #endif
 
 #ifdef BLE_OTA_WRITE_CHAR_EN
-    //在广播中增加manufacture数据
+    //manufacture
     app_env.adv_data_buf[app_env.adv_data_len++] = 3+sizeof(app_env.bdaddr.addr);                // device name tag
     app_env.adv_data_buf[app_env.adv_data_len++] = 0xff;                // device name tag
     app_env.adv_data_buf[app_env.adv_data_len++] = 0x56;                // device name tag
@@ -306,7 +306,7 @@ void bt_features_init(void)
     memcpy(&app_env.adv_data_buf[app_env.adv_data_len], app_env.bdaddr.addr, sizeof(app_env.bdaddr.addr));
     app_env.adv_data_len += sizeof(app_env.bdaddr.addr);
 
-    //在广播中增加服务ID数据
+    //ID
     uint8_t service_uuid_len                     = sizeof(g_bt_init->service[0].svc_uuid);
     app_env.adv_data_buf[app_env.adv_data_len++] = service_uuid_len + 1; // length
     app_env.adv_data_buf[app_env.adv_data_len++] = 0x03;                 // service uuid tag
@@ -331,7 +331,7 @@ int32_t send_vendor_array(uint8_t cmd_type, const uint8_t * byte_array, uint16_t
     length_cmd[4] = size % 0x100;
     length_cmd[5] = size / 0x100;
     int32_t ret;
-    //增加SPI发送和接收
+    //SPI
    // eif_uart_send_bytes(length_cmd, 6);
    // eif_uart_recv_bytes(recv_event,5);
     eif_spi_send_bytes(length_cmd, 6);

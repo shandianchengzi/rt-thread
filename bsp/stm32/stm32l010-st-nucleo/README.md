@@ -1,6 +1,6 @@
 # STM32L010-Nucleo BSP Introduction
 
-[中文](README_zh.md) 
+[](README_zh.md) 
 
 ## MCU: STM32L010RB @32MHz, 128KB FLASH,  20KB RAM
 
@@ -8,14 +8,14 @@
 
 - Ultra-low-power platform
   - 1.8 V to 3.6 V power supply
-  - –40 to 85 °C temperature range
-  - 0.29 µA Standby mode (2 wakeup pins)
-  - 0.43 µA Stop mode (16 wakeup lines)
-  - 0.86 µA Stop mode + RTC + 20-Kbyte RAM retention
-  - Down to 93 µA/MHz in Run mode
-  - 5 µs wakeup time (from Flash memory)
-  - 41 µA 12-bit ADC conversion at 10 ksps
-- Core: Arm® 32-bit Cortex®-M0+
+  - 40 to 85 C temperature range
+  - 0.29 A Standby mode (2 wakeup pins)
+  - 0.43 A Stop mode (16 wakeup lines)
+  - 0.86 A Stop mode + RTC + 20-Kbyte RAM retention
+  - Down to 93 A/MHz in Run mode
+  - 5 s wakeup time (from Flash memory)
+  - 41 A 12-bit ADC conversion at 10 ksps
+- Core: Arm 32-bit Cortex-M0+
   - From 32 kHz to 32 MHz
   - 0.95 DMIPS/MHz
 - Reset and supply management
@@ -24,7 +24,7 @@
 - Clock sources
   - 0 to 32 MHz external clock
   - 32 kHz oscillator for RTC with calibration
-  - High-speed internal 16 MHz factory-trimmed RC (±1%)
+  - High-speed internal 16 MHz factory-trimmed RC (1%)
   - Internal low-power 37 kHz RC
   - Internal multispeed low-power 65 kHz to 4.2 MHz RC
   - PLL for CPU clock

@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fspim_hw.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 09:08:00
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   zhugengyu  2021-12-3   init commit
  * 1.1   zhugengyu  2022-4-15   support test mode
  */
@@ -48,9 +48,9 @@
 
 /**
  * @name: FSpimGetTxFifoDepth
- * @msg: 获取TX Fifo可以设置的最大深度
- * @return {u32} TX Fifo的深度
- * @param {uintptr} base_addr, SPI控制器基地址
+ * @msg: TX Fifo
+ * @return {u32} TX Fifo
+ * @param {uintptr} base_addr, SPI
  */
 u32 FSpimGetTxFifoDepth(uintptr base_addr)
 {
@@ -71,9 +71,9 @@ u32 FSpimGetTxFifoDepth(uintptr base_addr)
 
 /**
  * @name: FSpimGetRxFifoDepth
- * @msg: 获取RX Fifo可以设置的最大深度
- * @return {u32} Rx Fifo的深度
- * @param {uintptr} base_addr, SPI控制器基地址
+ * @msg: RX Fifo
+ * @return {u32} Rx Fifo
+ * @param {uintptr} base_addr, SPI
  */
 u32 FSpimGetRxFifoDepth(uintptr base_addr)
 {
@@ -95,10 +95,10 @@ u32 FSpimGetRxFifoDepth(uintptr base_addr)
 
 /**
  * @name: FSpimSelSlaveDev
- * @msg: 选择SPI从设备
- * @return {无}
- * @param {uintptr} base_addr, SPI控制器基地址
- * @param {u32} slave_dev_id, 从设备ID
+ * @msg: SPI
+ * @return {}
+ * @param {uintptr} base_addr, SPI
+ * @param {u32} slave_dev_id, ID
  */
 void FSpimSelSlaveDev(uintptr base_addr, u32 slave_dev_id)
 {
@@ -112,10 +112,10 @@ void FSpimSelSlaveDev(uintptr base_addr, u32 slave_dev_id)
 
 /**
  * @name: FSpimSetSpeed
- * @msg: 设置SPI传输速度
+ * @msg: SPI
  * @return {FError}
- * @param {uintptr} base_addr, SPI控制器基地址
- * @param {u32} speed, SPI传输速度设置
+ * @param {uintptr} base_addr, SPI
+ * @param {u32} speed, SPI
  */
 FError FSpimSetSpeed(uintptr base_addr, u32 speed)
 {
@@ -137,10 +137,10 @@ FError FSpimSetSpeed(uintptr base_addr, u32 speed)
 
 /**
  * @name: FSpimSetTransMode
- * @msg: 设置SPI传输模式
- * @return {无}
- * @param {uintptr} base_addr, SPI控制器基地址
- * @param {u32} trans_mode, SPI传输模式设置
+ * @msg: SPI
+ * @return {}
+ * @param {uintptr} base_addr, SPI
+ * @param {u32} trans_mode, SPI
  */
 void FSpimSetTransMode(uintptr base_addr, u32 trans_mode)
 {
@@ -182,10 +182,10 @@ void FSpimSetTransMode(uintptr base_addr, u32 trans_mode)
 
 /**
  * @name: FSpimSetCpha
- * @msg: 设置串行时钟相位
- * @return {无}
- * @param {uintptr} base_addr, SPI控制器基地址
- * @param {u32} cpha_mode, SPI控制器的相位设置
+ * @msg: 
+ * @return {}
+ * @param {uintptr} base_addr, SPI
+ * @param {u32} cpha_mode, SPI
  */
 void FSpimSetCpha(uintptr base_addr, u32 cpha_mode)
 {
@@ -204,10 +204,10 @@ void FSpimSetCpha(uintptr base_addr, u32 cpha_mode)
 
 /**
  * @name: FSpimSetCpol
- * @msg: 设置串行时钟极性
- * @return {无}
- * @param {uintptr} base_addr, SPI控制器基地址
- * @param {u32} cpol_mode, SPI控制器的极性设置
+ * @msg: 
+ * @return {}
+ * @param {uintptr} base_addr, SPI
+ * @param {u32} cpol_mode, SPI
  */
 void FSpimSetCpol(uintptr base_addr, u32 cpol_mode)
 {
@@ -226,10 +226,10 @@ void FSpimSetCpol(uintptr base_addr, u32 cpol_mode)
 
 /**
  * @name: FSpimSetSlaveEnable
- * @msg: 使能/去使能和从设备的连接
- * @return {无}
- * @param {uintptr} base_addr, SPI控制器基地址
- * @param {boolean} enable, TRUE: 使能从设备, FALSE: 去使能从设备
+ * @msg: /
+ * @return {}
+ * @param {uintptr} base_addr, SPI
+ * @param {boolean} enable, TRUE: , FALSE: 
  */
 void FSpimSetSlaveEnable(uintptr base_addr, boolean enable)
 {

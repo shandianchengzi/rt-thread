@@ -86,7 +86,7 @@ static func_ptr_t pfnLpTimCallback = NULL;
 
 /**
  *****************************************************************************
- ** \brief Low Power Timer 中断标志获取
+ ** \brief Low Power Timer 
  **
  **
  ** 
@@ -104,7 +104,7 @@ boolean_t Lpt_GetIntFlag(void)
 
 /**
  *****************************************************************************
- ** \brief Low Power Timer 中断标志清除
+ ** \brief Low Power Timer 
  **
  **
  ** 
@@ -123,7 +123,7 @@ en_result_t Lpt_ClearIntFlag(void)
 
 /**
  *****************************************************************************
- ** \brief Low Power Timer 中断服务函数
+ ** \brief Low Power Timer 
  **
  **
  ** \param [in] u8Param         == 0
@@ -139,7 +139,7 @@ void LpTim_IRQHandler(uint8_t u8Param)
 
 /**
  *****************************************************************************
- ** \brief Low Power Timer 中断使能
+ ** \brief Low Power Timer 
  **
  **
  ** 
@@ -158,7 +158,7 @@ en_result_t Lpt_EnableIrq (void)
 
 /**
  *****************************************************************************
- ** \brief Low Power Timer 中断禁止
+ ** \brief Low Power Timer 
  **
  **
  ** 
@@ -177,10 +177,10 @@ en_result_t Lpt_DisableIrq(void)
 
 /**
  *****************************************************************************
- ** \brief Low Power Timer 初始化配置
+ ** \brief Low Power Timer 
  **
  **
- ** \param [in]  pstcConfig       初始化配置结构体指针
+ ** \param [in]  pstcConfig       
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -204,7 +204,7 @@ en_result_t Lpt_Init(stc_lpt_config_t* pstcConfig)
 
 /**
  *****************************************************************************
- ** \brief Low Power Timer 启动运行
+ ** \brief Low Power Timer 
  **
  **
  ** 
@@ -222,7 +222,7 @@ en_result_t Lpt_Run(void)
 
 /**
  *****************************************************************************
- ** \brief Low Power Timer 停止运行
+ ** \brief Low Power Timer 
  **
  **
  ** 
@@ -240,10 +240,10 @@ en_result_t Lpt_Stop(void)
 
 /**
  *****************************************************************************
- ** \brief Low Power Timer 重载值设置
+ ** \brief Low Power Timer 
  **
  **
- ** \param [in]  u16Data          16bits重载值
+ ** \param [in]  u16Data          16bits
  ** 
  ** \retval Ok or Error                                      
  *****************************************************************************/
@@ -267,11 +267,11 @@ en_result_t Lpt_ARRSet(uint16_t u16Data)
 
 /**
  *****************************************************************************
- ** \brief Low Power Timer 16位计数值获取
+ ** \brief Low Power Timer 16
  **
  **
  ** 
- ** \retval 16bits计数值                                      
+ ** \retval 16bits                                      
  *****************************************************************************/
 uint16_t Lpt_Cnt16Get(void)
 {

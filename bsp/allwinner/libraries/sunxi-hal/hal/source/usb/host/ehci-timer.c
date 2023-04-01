@@ -93,7 +93,7 @@ static unsigned long event_delays_ns[] = {
 };
 
 /* Enable a pending hrtimer event */
-//高精度定时器，插入一个定时事件
+//
 static void ehci_enable_event(struct ehci_hcd *ehci, unsigned event,
         bool resched)
 {

@@ -168,14 +168,14 @@ STATIC INLINE bool Chip_Clock_IsSystemPLLLocked(void)
  * See (MF) field in the SYSPLLSSCTRL1 register in the UM.
  */
 typedef enum {
-	SS_MF_512 = (0 << 20),		/*!< Nss = 512 (fm ˜ 3.9 - 7.8 kHz) */
-	SS_MF_384 = (1 << 20),		/*!< Nss ˜= 384 (fm ˜ 5.2 - 10.4 kHz) */
-	SS_MF_256 = (2 << 20),		/*!< Nss = 256 (fm ˜ 7.8 - 15.6 kHz) */
-	SS_MF_128 = (3 << 20),		/*!< Nss = 128 (fm ˜ 15.6 - 31.3 kHz) */
-	SS_MF_64  = (4 << 20),		/*!< Nss = 64 (fm ˜ 32.3 - 64.5 kHz) */
-	SS_MF_32  = (5 << 20),		/*!< Nss = 32 (fm ˜ 62.5- 125 kHz) */
-	SS_MF_24  = (6 << 20),		/*!< Nss ˜= 24 (fm ˜ 83.3- 166.6 kHz) */
-	SS_MF_16  = (7 << 20)		/*!< Nss = 16 (fm ˜ 125- 250 kHz) */
+	SS_MF_512 = (0 << 20),		/*!< Nss = 512 (fm  3.9 - 7.8 kHz) */
+	SS_MF_384 = (1 << 20),		/*!< Nss = 384 (fm  5.2 - 10.4 kHz) */
+	SS_MF_256 = (2 << 20),		/*!< Nss = 256 (fm  7.8 - 15.6 kHz) */
+	SS_MF_128 = (3 << 20),		/*!< Nss = 128 (fm  15.6 - 31.3 kHz) */
+	SS_MF_64  = (4 << 20),		/*!< Nss = 64 (fm  32.3 - 64.5 kHz) */
+	SS_MF_32  = (5 << 20),		/*!< Nss = 32 (fm  62.5- 125 kHz) */
+	SS_MF_24  = (6 << 20),		/*!< Nss = 24 (fm  83.3- 166.6 kHz) */
+	SS_MF_16  = (7 << 20)		/*!< Nss = 16 (fm  125- 250 kHz) */
 } SS_PROGMODFM_T;
 
 /** @brief PLL Spread Spectrum (SS) Programmable frequency modulation depth

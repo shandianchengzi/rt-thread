@@ -77,7 +77,7 @@ extern "C"
  ******************************************************************************/
 /**
  *******************************************************************************
- ** \brief OPA通道选择
+ ** \brief OPA
  ** \note
  ******************************************************************************/
 typedef enum en_opa_channel
@@ -89,41 +89,41 @@ typedef enum en_opa_channel
 
 /**
  *******************************************************************************
- ** \brief OPA反向增益选择
+ ** \brief OPA
  ** \note
  ******************************************************************************/
 typedef enum en_opa_invert_pagagain
 {
-    Gain15         = 0u,               ///< 反向增益15倍
-    Gain07         = 1u,               ///< 反向增益7倍
-    Gain13_3       = 2u,               ///< 反向增益13/3倍
-    Gain03         = 3u,               ///< 反向增益3倍
-    Gain05_3       = 4u,               ///< 反向增益5/3倍
-    Gain01         = 5u,               ///< 反向增益1倍
-    Gain01_3        = 6u,               ///< 反向增益1/3倍
-    Gain11_5       = 7u,               ///< 反向增益11/5倍   
+    Gain15         = 0u,               ///< 15
+    Gain07         = 1u,               ///< 7
+    Gain13_3       = 2u,               ///< 13/3
+    Gain03         = 3u,               ///< 3
+    Gain05_3       = 4u,               ///< 5/3
+    Gain01         = 5u,               ///< 1
+    Gain01_3        = 6u,               ///< 1/3
+    Gain11_5       = 7u,               ///< 11/5   
 }en_opa_invert_pagagain_t;
 
 /**
  *******************************************************************************
- ** \brief OPA正向增益选择
+ ** \brief OPA
  ** \note
  ******************************************************************************/
 typedef enum en_opa_noinvert_pagagain
 {
-    Gain16         = 0u,               ///< 正向增益16倍
-    Gain08         = 1u,               ///< 正向增益8倍
-    Gain16_3       = 2u,               ///< 正向增益16/3倍
-    Gain04         = 3u,               ///< 正向增益4倍
-    Gain08_3       = 4u,               ///< 正向增益8/3倍
-    Gain02         = 5u,               ///< 正向增益2倍
-    Gain04_3       = 6u,               ///< 正向增益4/3倍
-    Gain16_5       = 7u,               ///< 正向增益16/5倍   
+    Gain16         = 0u,               ///< 16
+    Gain08         = 1u,               ///< 8
+    Gain16_3       = 2u,               ///< 16/3
+    Gain04         = 3u,               ///< 4
+    Gain08_3       = 4u,               ///< 8/3
+    Gain02         = 5u,               ///< 2
+    Gain04_3       = 6u,               ///< 4/3
+    Gain16_5       = 7u,               ///< 16/5   
 }en_opa_noinvert_pagagain_t;
 
 /**
  *******************************************************************************
- ** \brief 仪表增益配置
+ ** \brief 
  ******************************************************************************/
 typedef enum opa_metergain
 {
@@ -135,39 +135,39 @@ typedef enum opa_metergain
 
 /**
  *******************************************************************************
- ** \brief opa 模式选择
+ ** \brief opa 
  ******************************************************************************/
 typedef enum opa_modesel
 {
-    OpaUintMode     = 0u,           ///< PGA单位增益        
-    OpaForWardMode  = 1u,           ///< 正向输入PGA            
-    OpaOppositeMode = 2u,           ///< 反向输入PGA              
-    OpaThreeOppMode = 3u,           ///< 3个OPA级联反向输入PGA
-    OpaThreeForMode = 4u,           ///< 3个OPA级联正向输入PGA
-    OpaDiffMode     = 5u,           ///< 两运放差分输入PGA
-    OpaMeterMode    = 6u,           ///< 仪表放大器
-    OpaGpMode       = 7u,           ///< 通用运放       
+    OpaUintMode     = 0u,           ///< PGA        
+    OpaForWardMode  = 1u,           ///< PGA            
+    OpaOppositeMode = 2u,           ///< PGA              
+    OpaThreeOppMode = 3u,           ///< 3OPAPGA
+    OpaThreeForMode = 4u,           ///< 3OPAPGA
+    OpaDiffMode     = 5u,           ///< PGA
+    OpaMeterMode    = 6u,           ///< 
+    OpaGpMode       = 7u,           ///<        
 }en_opa_modesel_t;
 
 /**
  *******************************************************************************
- ** \brief opa 校正模式
+ ** \brief opa 
  ******************************************************************************/
 typedef enum opa_calsel
 {
-    OpaSoftMode         = 0u,           ///< 软件控制     
-    OpaSoftTriggerMode  = 1u,           ///< 软件触发      
-    OpaADCTriggerMode   = 2u,           ///< ADC触发                  
+    OpaSoftMode         = 0u,           ///<      
+    OpaSoftTriggerMode  = 1u,           ///<       
+    OpaADCTriggerMode   = 2u,           ///< ADC                  
 }en_opa_calsel_t;
 
 /**
  ******************************************************************************
- ** \brief OPA增益配置
+ ** \brief OPA
  *****************************************************************************/
 typedef struct stc_opa_gain_config
 {
-    en_opa_invert_pagagain_t     enInGain;  ///< 反向增益
-    en_opa_noinvert_pagagain_t   enNoInGain;  ///< 正向增益
+    en_opa_invert_pagagain_t     enInGain;  ///< 
+    en_opa_noinvert_pagagain_t   enNoInGain;  ///< 
 }stc_opa_gain_config_t;
 
 
@@ -178,17 +178,17 @@ typedef struct stc_opa_gain_config
 /******************************************************************************
  * Global function prototypes (definition in C source)
  ******************************************************************************/
-///< OPA初始化
+///< OPA
 en_result_t OPA_Init(void);
-///< OPA去初始化
+///< OPA
 en_result_t OPA_DeInit(void);
-///< OPA基本功能设置
+///< OPA
 en_result_t OPA_Operate(en_opa_channel_t enchannel ,en_opa_modesel_t enMode,stc_opa_gain_config_t *pstrGain);
-///< OPA三级联设置
+///< OPA
 en_result_t OPA_ThreeOperate(en_opa_modesel_t enMode,stc_opa_gain_config_t *pstrGain0,stc_opa_gain_config_t *pstrGain1,stc_opa_gain_config_t *pstrGain2);
-///< OPA 仪表模式
+///< OPA 
 en_result_t OPA_MeterOperate(en_opa_metergain_t enGainMode);
-///< OPA校正模式
+///< OPA
 en_result_t OPA_Cal(en_opa_calsel_t enCalMode);
 
 

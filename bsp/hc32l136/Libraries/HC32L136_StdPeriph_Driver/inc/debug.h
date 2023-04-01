@@ -81,7 +81,7 @@ extern "C"
  ******************************************************************************/ 
 /**
  *******************************************************************************
- ** \brief 调试模式下各模块工作状态类型定义
+ ** \brief 
  ** \note
  ******************************************************************************/
 typedef enum en_debug_module_active
@@ -111,9 +111,9 @@ typedef enum en_debug_module_active
 /******************************************************************************
  * Global function prototypes (definition in C source)
  ******************************************************************************/
-///< 在SWD调试界面下，使能模块功能
+///< SWD
 en_result_t Debug_ActiveEnable(en_debug_module_active_t enModule);
-///< 在SWD调试界面下，暂停模块功能
+///< SWD
 en_result_t Debug_ActiveDisable(en_debug_module_active_t enModule);
 
 //@} // Debug Group

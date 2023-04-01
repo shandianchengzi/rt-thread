@@ -40,7 +40,7 @@
 #define ES_C_UART_STOP_2          STOP_BITS_2
 
 
-/* UART 配置 */
+/* UART  */
 
 /* codes_main */
 

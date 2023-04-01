@@ -53,7 +53,7 @@ regular_func __aeabi_mem_init
 // Note from Run-time ABI for the ARM architecture 4.3.4:
 // If there is an attached device with efficient memory copying or clearing operations
 // (such as a DMA engine), its device supplement specifies whether it may be used in
-// implementations of these functions and what effect such use has on the device’s state.
+// implementations of these functions and what effect such use has on the devices state.
 
 mem_section aeabi_memset_memcpy
 

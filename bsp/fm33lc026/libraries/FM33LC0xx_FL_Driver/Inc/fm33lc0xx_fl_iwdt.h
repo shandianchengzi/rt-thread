@@ -48,9 +48,9 @@ extern "C" {
   */
 typedef  struct
 {
-    /** 看门狗溢出时间 */
+    /**  */
     uint32_t overflowPeriod;
-    /** 清狗窗口 */
+    /**  */
     uint32_t iwdtWindows;
 
 } FL_IWDT_InitTypeDef;

@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fusb.h
  * Date: 2022-02-11 13:33:11
  * LastEditTime: 2022-02-18 09:22:25
- * Description:  This files is for definition of FUSB user interface
+ * Description: This files is for definition of FUSB user interface
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   Zhugengyu  2022/2/7    init commit
  */
 
@@ -290,60 +290,60 @@ static inline unsigned char FUsbGenerateReqType(FUsbReqDirection dir, FUsbReqTyp
 }
 
 /************************** Function Prototypes ******************************/
-/* 获取USB的默认配置 */
+/* USB */
 const FUsbConfig *FUsbLookupConfig(u32 instance_id);
 
-/* 初始化USB实例 */
+/* USB */
 FError FUsbCfgInitialize(FUsb *instance, const FUsbConfig *config);
 
-/* 去初始化USB实例 */
+/* USB */
 void FUsbDeInitialize(FUsb *instance);
 
-/* 轮询所有的USB控制器连接的所有设备, 更新设备拓扑 */
+/* USB,  */
 void FUsbPoll(FUsb *instance);
 
-/* 关闭所有的USB控制器，移除所有连接的设备 */
+/* USB */
 void FUsbExit(FUsb *instance);
 
-/* 从USB内存池分配一块内存，并清零分配的空间 */
+/* USB */
 void *FUsbMempAllocate(FUsb *instance, size_t size, size_t align);
 
-/* 释放从USB内存池分配的空间 */
+/* USB */
 void FUsbMempFree(FUsb *instance, void *ptr);
 
-/* 指定特定USB设备的初始化函数，供创建USB设备实例时使用 */
+/* USBUSB */
 FError FUsbAssignDevInitFunc(FUsb *instance, const FUsbDevIndex *index, FUsbDevInitHandler handler);
 
-/* 获取USB控制器上连接的所有USB设备实例 */
+/* USBUSB */
 size_t FUsbGetAllDevEntries(FUsbHc *controller, FUsbDev *devs[], size_t max_dev_num);
 
-/* 标准USB主机请求，使能设备/接口/端点的某个特性 */
+/* USB// */
 FUsbTransCode FUsbSetFeature(FUsbDev *dev, int endp, int feature, int rtype);
 
-/* 标准USB主机请求，获取设备/接口/端点的状态 */
+/* USB// */
 FUsbTransCode FUsbGetStatus(FUsbDev *dev, int endp, int rtype, int len, void *data);
 
-/* 标准USB主机请求，获取指定描述符 */
+/* USB */
 FUsbTransCode FUsbGetDescriptor(FUsbDev *dev, int rtype, FUsbDescriptorType descType, int descIdx,
                                 void *data, size_t len);
 
-/* USB主机请求，获取字符串描述符 */
+/* USB */
 FUsbTransCode FUsbGetStringDescriptor(FUsbDev *dev, int rtype, FUsbDescriptorType desc_type, int desc_idx, int lang_id,
                                       void *data, size_t len);
 
-/* 标准USB主机请求，设置配置值 */
+/* USB */
 FUsbTransCode FUsbSetConfiguration(FUsbDev *dev);
 
-/* 标准USB主机请求，去使能设备/接口/端点的某个特性 */
+/* USB// */
 FUsbTransCode FUsbClearFeature(FUsbDev *dev, int endp, int feature, int rtype);
 
-/* 打印描述符信息 */
+/*  */
 void FUsbDumpAllDescriptors(FUsbDev *dev);
 
-/* 从USB主机移除指定USB设备(USB设备驱动使用) */
+/* USBUSB(USB) */
 void FUsbDetachDev(FUsbHc *controller, int devno);
 
-/* 向USB主机添加USB设备(USB设备驱动使用) */
+/* USBUSB(USB) */
 FUsbDevAddr FUsbAttachDev(FUsbHc *controller, int hubaddress, int port,
                           FUsbSpeed speed);
 
@@ -378,7 +378,7 @@ void __attribute__((weak)) FUsbGenericCreate(FUsbDev *dev);
  */
 void __attribute__((weak)) FUsbGenericRemove(FUsbDev *dev);
 
-/* 支持带TAG的内存分配，用于跟踪动态内存使用 */
+/* TAG */
 #ifdef FMEMP_TAG_DEBUG
 void *FUsbMempAllocateTag(FUsb *instance, size_t size, size_t align, const char *file, unsigned long line, const char *msg);
 void FUsbMempFreeTag(FUsb *instance, void *ptr);

@@ -2513,7 +2513,7 @@ ul
     <h3 style="background: rgb(51, 102, 255) none repeat scroll 0% 50%; margin-right: 500pt; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;"><span style="font-size: 10pt; font-family: &quot;Arial&quot;,sans-serif; color: white;">v1.2.9/
     12-February-2021</span><span style=""><o:p></o:p></span></h3>
     <p class="MsoNormal" style="margin: 4.5pt 0in 4.5pt 0.25in;"><b><u><span style="font-size: 10pt; font-family: &quot;Verdana&quot;,sans-serif; color: black;">Main Changes<o:p></o:p></span></u></b></p>
-    <p style="margin-left: 0.5in; text-indent: -0.25in;"><!--[if !supportLists]--><span style="font-size: 10pt; font-family: Symbol; color: rgb(17, 17, 17);"><span style="">·<span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <p style="margin-left: 0.5in; text-indent: -0.25in;"><!--[if !supportLists]--><span style="font-size: 10pt; font-family: Symbol; color: rgb(17, 17, 17);"><span style=""><span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </span></span></span><!--[endif]--><span dir="ltr"></span><span style="font-size: 10pt; font-family: &quot;Verdana&quot;,sans-serif; color: rgb(17, 17, 17);">General updates to fix known defects and enhancements
     implementation.<o:p></o:p></span></p>
     <ul type="disc">
@@ -2533,7 +2533,7 @@ ul
        <li class="MsoNormal" style="color: rgb(17, 17, 17);"><span style="font-size: 10pt; font-family: &quot;Verdana&quot;,sans-serif;">Updated Hal_Init_<span class="grame">Tick(</span>) API to properly store the priority when
            using the non-default time base.<o:p></o:p></span></li>
       </ul>
-      <li class="MsoNormal" style="color: rgb(17, 17, 17);"><span style="font-size: 10pt; font-family: &quot;Verdana&quot;,sans-serif;">‘register’ keyword
+      <li class="MsoNormal" style="color: rgb(17, 17, 17);"><span style="font-size: 10pt; font-family: &quot;Verdana&quot;,sans-serif;">register keyword
           retired to be compliant with C++17 (already deprecated in C++11).<o:p></o:p></span></li>
       <li class="MsoNormal" style="color: rgb(17, 17, 17);"><span style="font-size: 10pt; font-family: &quot;Verdana&quot;,sans-serif;">Add License.md
           and Readme.md files required for GitHub publication.<o:p></o:p></span></li>
@@ -2603,7 +2603,7 @@ ul
        <li class="MsoNormal" style="color: rgb(17, 17, 17);"><span style="font-size: 10pt; font-family: &quot;Verdana&quot;,sans-serif;">Update HAL_UART_<span class="grame">IRQHandler(</span>) to handle receiver timeout
            interrupt.<o:p></o:p></span></li>
        <li class="MsoNormal" style="color: rgb(17, 17, 17);"><span style="font-size: 10pt; font-family: &quot;Verdana&quot;,sans-serif;">Update UART
-           receive processes (IT and DMA) to handle the UART receive’s timeout
+           receive processes (IT and DMA) to handle the UART receives timeout
            interrupt.<o:p></o:p></span></li>
       </ul>
       <li class="MsoNormal" style="color: rgb(17, 17, 17);"><strong style=""><span style="font-size: 10pt; font-family: &quot;Verdana&quot;,sans-serif;">HAL
@@ -2707,7 +2707,7 @@ ul
           GPIO</span></strong><span style="font-size: 10pt; font-family: &quot;Verdana&quot;,sans-serif;">&nbsp;update<o:p></o:p></span></li>
       <ul type="square">
        <li class="MsoNormal" style="color: rgb(17, 17, 17);"><span style="font-size: 10pt; font-family: &quot;Verdana&quot;,sans-serif;">Update LL/HAL
-           GPIO_<span class="grame">TogglePin(</span>) APIs to allow multi Pin’s
+           GPIO_<span class="grame">TogglePin(</span>) APIs to allow multi Pins
            toggling.<o:p></o:p></span></li>
       </ul>
       <li class="MsoNormal" style="color: rgb(17, 17, 17);"><strong style=""><span style="font-size: 10pt; font-family: &quot;Verdana&quot;,sans-serif;">HAL
@@ -4529,11 +4529,11 @@ ul
        <li class="MsoNormal" style="color: black; margin-top: 4.5pt; margin-bottom: 4.5pt;"><span style="font-size: 10pt; font-family: &quot;Verdana&quot;,sans-serif;">HAL_LTDC_DisableCLUT_<span class="grame">NoReload(</span>)
            to disable the color lookup table without reloading</span><span style=""><o:p></o:p></span></li>
        <li class="MsoNormal" style="color: black; margin-top: 4.5pt; margin-bottom: 4.5pt;"><i><u><span style="font-size: 10pt; font-family: &quot;Verdana&quot;,sans-serif;">Note:</span></u></i><span style="font-size: 10pt; font-family: &quot;Verdana&quot;,sans-serif;">
-           Variant functions with “_NoReload” post fix allows to set the LTDC
+           Variant functions with _NoReload post fix allows to set the LTDC
            configuration/settings without immediate reload. This is useful in
            case when the program requires to modify several LTDC settings (on
            one or both layers) then applying (reload) these settings in one
-           shot by calling the function “HAL_LTDC_<span class="grame">Reload</span>”</span><span style=""><o:p></o:p></span></li>
+           shot by calling the function HAL_LTDC_<span class="grame">Reload</span></span><span style=""><o:p></o:p></span></li>
       </ul>
      </ul>
      <li class="MsoNormal" style="color: black; margin-top: 4.5pt; margin-bottom: 4.5pt;"><b><span style="font-size: 10pt; font-family: &quot;Verdana&quot;,sans-serif;">HAL NOR</span></b><span style="font-size: 10pt; font-family: &quot;Verdana&quot;,sans-serif;">

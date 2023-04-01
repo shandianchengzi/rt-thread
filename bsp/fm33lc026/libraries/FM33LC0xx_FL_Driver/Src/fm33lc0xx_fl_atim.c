@@ -248,25 +248,25 @@
   */
 
 /**
-  * @brief  ATIM配置输出通道
-  * @param  TIMx 外设入口地址
-  * @param  channel ATIM通道
-  *         此参数可取以下值：
+  * @brief  ATIM
+  * @param  TIMx 
+  * @param  channel ATIM
+  *         
   *         @arg @ref FL_ATIM_CHANNEL_1
   *         @arg @ref FL_ATIM_CHANNEL_2
   *         @arg @ref FL_ATIM_CHANNEL_3
   *         @arg @ref FL_ATIM_CHANNEL_4
-  * @param  TIM_OC_InitStruct 指向 @ref FL_ATIM_OC_InitTypeDef 结构体指针.
-  * @retval 错误状态，可能值：
-  *         -FL_PASS 配置成功
-  *         -FL_FAIL 配置过程发生错误
+  * @param  TIM_OC_InitStruct  @ref FL_ATIM_OC_InitTypeDef .
+  * @retval 
+  *         -FL_PASS 
+  *         -FL_FAIL 
   */
 static FL_ErrorStatus OCConfig(ATIM_Type *TIMx, uint32_t channel, FL_ATIM_OC_InitTypeDef *TIM_OC_InitStruct)
 {
     FL_ErrorStatus result = FL_PASS;
-    /* 配置比较输出通道模式 */
+    /*  */
     FL_ATIM_OC_SetMode(TIMx, TIM_OC_InitStruct->OCMode, channel);
-    /* 配置TRF清零使能 */
+    /* TRF */
     if(TIM_OC_InitStruct->OCETRFStatus == FL_ENABLE)
     {
         FL_ATIM_OC_EnableClear(TIMx, channel);
@@ -275,7 +275,7 @@ static FL_ErrorStatus OCConfig(ATIM_Type *TIMx, uint32_t channel, FL_ATIM_OC_Ini
     {
         FL_ATIM_OC_DisableClear(TIMx, channel);
     }
-    /* 比较输出通道快速模式 */
+    /*  */
     if(TIM_OC_InitStruct->OCFastMode == FL_ENABLE)
     {
         FL_ATIM_OC_EnableFastMode(TIMx, channel);
@@ -284,7 +284,7 @@ static FL_ErrorStatus OCConfig(ATIM_Type *TIMx, uint32_t channel, FL_ATIM_OC_Ini
     {
         FL_ATIM_OC_DisableFastMode(TIMx, channel);
     }
-    /* 比较输出通道缓冲模式 */
+    /*  */
     if(TIM_OC_InitStruct->OCPreload == FL_ENABLE)
     {
         FL_ATIM_OC_EnablePreload(TIMx, channel);
@@ -295,7 +295,7 @@ static FL_ErrorStatus OCConfig(ATIM_Type *TIMx, uint32_t channel, FL_ATIM_OC_Ini
     }
     if(TIM_OC_InitStruct->OCNState == FL_ENABLE)
     {
-        /* 互补通道使能 */
+        /*  */
         FL_ATIM_OC_EnableReverseChannel(TIMx, channel);
     }
     else
@@ -304,14 +304,14 @@ static FL_ErrorStatus OCConfig(ATIM_Type *TIMx, uint32_t channel, FL_ATIM_OC_Ini
     }
     if(TIM_OC_InitStruct->OCState == FL_ENABLE)
     {
-        /* 通道使能 */
+        /*  */
         FL_ATIM_OC_EnableChannel(TIMx, channel);
     }
     else
     {
         FL_ATIM_OC_DisableChannel(TIMx, channel);
     }
-    /* 设置比较值 */
+    /*  */
     switch(channel)
     {
         case FL_ATIM_CHANNEL_1:
@@ -343,75 +343,75 @@ static FL_ErrorStatus OCConfig(ATIM_Type *TIMx, uint32_t channel, FL_ATIM_OC_Ini
   */
 
 /**
-  * @brief  复位ATIM外设
-  * @param  TIMx 外设入口地址
-  * @retval 错误状态，可能值：
-  *         -FL_PASS 外设寄存器值恢复复位值
-  *         -FL_FAIL 未成功执行
+  * @brief  ATIM
+  * @param  TIMx 
+  * @retval 
+  *         -FL_PASS 
+  *         -FL_FAIL 
   */
 FL_ErrorStatus FL_ATIM_DeInit(ATIM_Type *TIMx)
 {
     FL_ErrorStatus result = FL_PASS;
     /* Check the parameters */
     assert_param(IS_ATIM_INSTANCE(TIMx));
-    /* 使能外设复位 */
+    /*  */
     FL_RCC_EnablePeripheralReset();
-    /* 复位ATIM外设寄存器 */
+    /* ATIM */
     FL_RCC_EnableResetAPB2Peripheral(FL_RCC_RSTAPB_ATIM);
     FL_RCC_DisableResetAPB2Peripheral(FL_RCC_RSTAPB_ATIM);
-    /* 关闭外设总线始时钟和工作时钟 */
+    /*  */
     FL_RCC_DisableGroup4BusClock(FL_RCC_GROUP4_BUSCLK_ATIM);
     FL_RCC_DisableGroup1OperationClock(FL_RCC_GROUP1_OPCLK_ATIM);
-    /* 锁定外设复位 */
+    /*  */
     FL_RCC_DisablePeripheralReset();
     return result;
 }
 
 /**
-  * @brief  配置基本定时器时基单元（内部时钟源）
-  * @param  TIMx 外设入口地址
-  * @param  TIM_InitStruct 指向 @ref FL_ATIM_InitTypeDef 结构体的指针
-  * @retval 错误状态，可能值：
-  *         -FL_PASS 配置成功
-  *         -FL_FAIL 配置过程发生错误
+  * @brief  
+  * @param  TIMx 
+  * @param  TIM_InitStruct  @ref FL_ATIM_InitTypeDef 
+  * @retval 
+  *         -FL_PASS 
+  *         -FL_FAIL 
   */
 FL_ErrorStatus FL_ATIM_Init(ATIM_Type *TIMx, FL_ATIM_InitTypeDef *TIM_InitStruct)
 {
     uint32_t i = 5;
-    /* 参数检查 */
+    /*  */
     assert_param(IS_ATIM_INSTANCE(TIMx));
     assert_param(IS_FL_ATIM_COUNTERMODE(TIM_InitStruct->counterMode));
     assert_param(IS_FL_ATIM_CLOCKDIVISION(TIM_InitStruct->clockDivision));
     assert_param(IS_FL_ATIM_AUTORELOAB_STATE(TIM_InitStruct->autoReloadState));
     assert_param(IS_ATIM_CLKSRC(TIM_InitStruct->clockSource));
-    /* 时钟总线使能配置 */
+    /*  */
     FL_RCC_SetATIMClockSource(TIM_InitStruct->clockSource);
     FL_RCC_EnableGroup4BusClock(FL_RCC_GROUP4_BUSCLK_ATIM);
     FL_RCC_EnableGroup1OperationClock(FL_RCC_GROUP1_OPCLK_ATIM);
-    /* 设置重复计数值 */
+    /*  */
     FL_ATIM_WriteRepetitionCounter(TIMx, TIM_InitStruct->repetitionCounter);
-    /* 计数器计数模式配置 */
+    /*  */
     switch(TIM_InitStruct->counterMode)
     {
-        /* 中心对称模式 */
+        /*  */
         case FL_ATIM_COUNTER_ALIGNED_CENTER_DOWN   :
         case FL_ATIM_COUNTER_ALIGNED_CENTER_UP     :
         case FL_ATIM_COUNTER_ALIGNED_CENTER_UP_DOWN:
             FL_ATIM_SetCounterAlignedMode(TIMx, TIM_InitStruct->counterMode);
             break;
         default:
-            /* 边沿模式 */
+            /*  */
             FL_ATIM_SetCounterDirection(TIMx, TIM_InitStruct->counterMode);
             FL_ATIM_SetCounterAlignedMode(TIMx, FL_ATIM_COUNTER_ALIGNED_EDGE);
             break;
     }
-    /* 自动重装载值 */
+    /*  */
     FL_ATIM_WriteAutoReload(TIMx, TIM_InitStruct->autoReload);
-    /* 定时器分频系数与数字滤波器所使用的采样时钟分频比 */
+    /*  */
     FL_ATIM_SetClockDivision(TIMx, TIM_InitStruct->clockDivision);
-    /* 时钟分频 */
+    /*  */
     FL_ATIM_WritePrescaler(TIMx, TIM_InitStruct->prescaler);
-    /* 预装载配置 */
+    /*  */
     if(TIM_InitStruct->autoReloadState == FL_ENABLE)
     {
         FL_ATIM_EnableARRPreload(TIMx);
@@ -420,21 +420,21 @@ FL_ErrorStatus FL_ATIM_Init(ATIM_Type *TIMx, FL_ATIM_InitTypeDef *TIM_InitStruct
     {
         FL_ATIM_DisableARRPreload(TIMx);
     }
-    /* 手动触发更新事件，将配置值写入 */
+    /*  */
     FL_ATIM_GenerateUpdateEvent(TIMx);
     while((!FL_ATIM_IsActiveFlag_Update(ATIM))&&i)
     {
         i--;
     }
-    /*清除UIF标志，防止产生UG事件中断*/
+    /*UIFUG*/
     FL_ATIM_ClearFlag_Update(ATIM);
     return FL_PASS;
 }
 
 
 /**
-  * @brief  将 @ref FL_ATIM_InitTypeDef 结构体初始化为默认配置
-  * @param  TIM_InitStruct 指向 @ref FL_ATIM_InitTypeDef 结构体的指针
+  * @brief   @ref FL_ATIM_InitTypeDef 
+  * @param  TIM_InitStruct  @ref FL_ATIM_InitTypeDef 
   *
   * @retval None
   */
@@ -451,32 +451,32 @@ void FL_ATIM_StructInit(FL_ATIM_InitTypeDef *TIM_InitStruct)
 }
 
 /**
-  * @brief  配置基本定时器从模式，包括编码器模式
-  * @param  TIMx 外设入口地址
-  * @param  TIM_InitStruct 指向 @ref FL_ATIM_SlaveInitTypeDef 结构体的指针
-  * @retval 错误状态，可能值：
-  *         -FL_PASS 配置成功
-  *         -FL_FAIL 配置过程发生错误
+  * @brief  
+  * @param  TIMx 
+  * @param  TIM_InitStruct  @ref FL_ATIM_SlaveInitTypeDef 
+  * @retval 
+  *         -FL_PASS 
+  *         -FL_FAIL 
   */
 FL_ErrorStatus FL_ATIM_SlaveMode_Init(ATIM_Type *TIMx, FL_ATIM_SlaveInitTypeDef *TIM_InitStruct)
 {
-    /* 参数检查 */
+    /*  */
     assert_param(IS_ATIM_INSTANCE(TIMx));
     assert_param(IS_FL_ATIM_TRIGGER_DELAY(TIM_InitStruct->triggerDelay));
     assert_param(IS_FL_ATIM_TRIGGER_SRC(TIM_InitStruct->triggerSrc));
     assert_param(IS_FL_ATIM_SLAVE_MODE(TIM_InitStruct->slaveMode));
-    /* 时钟总线使能配置 */
+    /*  */
     FL_RCC_EnableGroup4BusClock(FL_RCC_GROUP4_BUSCLK_ATIM);
     FL_RCC_EnableGroup1OperationClock(FL_RCC_GROUP1_OPCLK_ATIM);
-    /* 触发延迟默认关闭 */
+    /*  */
     FL_ATIM_DisableMasterSlaveMode(TIMx);
-    /* 关闭从模式以能写入TS */
+    /* TS */
     FL_ATIM_SetSlaveMode(TIMx, 0);
-    /* 从模式输入源选择 */
+    /*  */
     FL_ATIM_SetTriggerInput(TIMx, TIM_InitStruct->triggerSrc);
-    /* 从模式选择 */
+    /*  */
     FL_ATIM_SetSlaveMode(TIMx, TIM_InitStruct->slaveMode);
-    /* 触发延迟默认关闭 */
+    /*  */
     if(TIM_InitStruct->triggerDelay == FL_ENABLE)
     {
         FL_ATIM_EnableMasterSlaveMode(TIMx);
@@ -485,8 +485,8 @@ FL_ErrorStatus FL_ATIM_SlaveMode_Init(ATIM_Type *TIMx, FL_ATIM_SlaveInitTypeDef 
 }
 
 /**
-  * @brief  将 @ref FL_ATIM_SlaveInitTypeDef 结构体初始化为默认配置
-  * @param  TIM_InitStruct 指向 @ref FL_ATIM_SlaveInitTypeDef 结构体的指针
+  * @brief   @ref FL_ATIM_SlaveInitTypeDef 
+  * @param  TIM_InitStruct  @ref FL_ATIM_SlaveInitTypeDef 
   *
   * @retval None
   */
@@ -498,40 +498,40 @@ void FL_ATIM_SlaveModeStructInit(FL_ATIM_SlaveInitTypeDef *TIM_InitStruct)
 }
 
 /**
-  * @brief  配置ATIM的输入捕获通道
-  * @param  TIMx 外设入口地址
-  * @param  channel ATIM通道
-  *         此参数可取以下值：
+  * @brief  ATIM
+  * @param  TIMx 
+  * @param  channel ATIM
+  *         
   *         @arg @ref FL_ATIM_CHANNEL_1
   *         @arg @ref FL_ATIM_CHANNEL_2
   *         @arg @ref FL_ATIM_CHANNEL_3
   *         @arg @ref FL_ATIM_CHANNEL_4
-  * @param  TIM_IC_InitStruct 指向 @ref FL_ATIM_IC_InitTypeDef 结构体的指针
-  * @retval 错误状态，可能值：
-  *         -FL_PASS 配置成功
-  *         -FL_FAIL 配置过程发生错误
+  * @param  TIM_IC_InitStruct  @ref FL_ATIM_IC_InitTypeDef 
+  * @retval 
+  *         -FL_PASS 
+  *         -FL_FAIL 
   */
 FL_ErrorStatus  FL_ATIM_IC_Init(ATIM_Type *TIMx, uint32_t channel, FL_ATIM_IC_InitTypeDef *IC_InitStruct)
 {
-    /* 参数检查 */
+    /*  */
     assert_param(IS_FL_ATIM_CHANNEL(channel));
     assert_param(IS_FL_ATIM_IC_CAPTURE_STATE(IC_InitStruct->captureState));
     assert_param(IS_FL_ATIM_IC_POLARITY(IC_InitStruct->ICPolarity));
     assert_param(IS_FL_ATIM_IC_ACTIVEINPUT(IC_InitStruct->ICActiveInput));
     assert_param(IS_FL_ATIM_IC_PRESCALER(IC_InitStruct->ICPrescaler));
     assert_param(IS_FL_ATIM_IC_FILTER(IC_InitStruct->ICFilter));
-    /* 时钟总线使能配置 */
+    /*  */
     FL_RCC_EnableGroup4BusClock(FL_RCC_GROUP4_BUSCLK_ATIM);
     FL_RCC_EnableGroup1OperationClock(FL_RCC_GROUP1_OPCLK_ATIM);
-    /* 通道关闭 */
+    /*  */
     FL_ATIM_OC_DisableChannel(TIMx, channel);
-    /*捕获极性 */
+    /* */
     FL_ATIM_IC_SetChannelPolarity(TIMx, IC_InitStruct->ICPolarity, channel);
-    /* 捕获映射通道 */
+    /*  */
     FL_ATIM_CC_SetChannelMode(TIMx, IC_InitStruct->ICActiveInput, channel);
-    /* 捕获预分频 */
+    /*  */
     FL_ATIM_IC_SetPrescaler(TIMx, IC_InitStruct->ICPrescaler, channel);
-    /* 捕获滤波器 */
+    /*  */
     FL_ATIM_IC_SetFilter(TIMx, IC_InitStruct->ICFilter, channel);
     if(IC_InitStruct->captureState == FL_ENABLE)
     {
@@ -541,14 +541,14 @@ FL_ErrorStatus  FL_ATIM_IC_Init(ATIM_Type *TIMx, uint32_t channel, FL_ATIM_IC_In
 }
 
 /**
-  * @brief  将 @ref FL_ATIM_IC_InitTypeDef 结构体初始化为默认配置
-  * @param  TIM_ICInitStruct 指向 @ref FL_ATIM_IC_InitTypeDef 结构体的指针
+  * @brief   @ref FL_ATIM_IC_InitTypeDef 
+  * @param  TIM_ICInitStruct  @ref FL_ATIM_IC_InitTypeDef 
   *
   * @retval None
   */
 void FL_ATIM_IC_StructInit(FL_ATIM_IC_InitTypeDef *TIM_ICInitStruct)
 {
-    /* 默认配置 */
+    /*  */
     TIM_ICInitStruct->ICPolarity    = FL_ATIM_IC_POLARITY_NORMAL;
     TIM_ICInitStruct->ICActiveInput = FL_ATIM_CHANNEL_MODE_INPUT_NORMAL;
     TIM_ICInitStruct->ICPrescaler   = FL_ATIM_IC_PSC_DIV1;
@@ -557,26 +557,26 @@ void FL_ATIM_IC_StructInit(FL_ATIM_IC_InitTypeDef *TIM_ICInitStruct)
 }
 
 /**
-  * @brief  配置ATIM触发输入捕获通道ETR
-  * @param  TIMx 外设入口地址
-  * @param  TIM_InitStruct 指向一个 @ref FL_ATIM_ETR_InitTypeDef 结构体
-  * @retval 错误状态，可能值：
-  *         -FL_PASS 配置成功
-  *         -FL_FAIL 配置过程发生错误
+  * @brief  ATIMETR
+  * @param  TIMx 
+  * @param  TIM_InitStruct  @ref FL_ATIM_ETR_InitTypeDef 
+  * @retval 
+  *         -FL_PASS 
+  *         -FL_FAIL 
   */
 FL_ErrorStatus  FL_ATIM_ETR_Init(ATIM_Type *TIMx, FL_ATIM_ETR_InitTypeDef *TIM_InitStruct)
 {
     assert_param(IS_FL_ATIM_ETP_FILTER(TIM_InitStruct->ETRFilter));
     assert_param(IS_FL_ATIM_ETR_PSC(TIM_InitStruct->ETRClockDivision));
     assert_param(IS_FL_ATIM_ETR_POLARITY(TIM_InitStruct->ETRPolarity));
-    /* 时钟总线使能配置 */
+    /*  */
     FL_RCC_EnableGroup4BusClock(FL_RCC_GROUP4_BUSCLK_ATIM);
     FL_RCC_EnableGroup1OperationClock(FL_RCC_GROUP1_OPCLK_ATIM);
-    /* 外部时钟极性 */
+    /*  */
     FL_ATIM_SetETRPolarity(TIMx, TIM_InitStruct->ETRPolarity);
-    /* 外部时钟滤波 */
+    /*  */
     FL_ATIM_SetETRFilter(TIMx, TIM_InitStruct->ETRFilter);
-    /* 外部时钟分频 */
+    /*  */
     FL_ATIM_SetETRPrescaler(TIMx, TIM_InitStruct->ETRClockDivision);
     if(TIM_InitStruct->useExternalTrigger == FL_ENABLE)
     {
@@ -590,8 +590,8 @@ FL_ErrorStatus  FL_ATIM_ETR_Init(ATIM_Type *TIMx, FL_ATIM_ETR_InitTypeDef *TIM_I
 }
 
 /**
-  * @brief  将 @ref FL_ATIM_ETR_InitTypeDef 结构体初始化为默认配置
-  * @param  TIM_InitStruct 指向 @ref FL_ATIM_ETR_InitTypeDef 结构体的指针
+  * @brief   @ref FL_ATIM_ETR_InitTypeDef 
+  * @param  TIM_InitStruct  @ref FL_ATIM_ETR_InitTypeDef 
   *
   * @retval None
   */
@@ -604,24 +604,24 @@ void FL_ATIM_ETRStructInit(FL_ATIM_ETR_InitTypeDef *TIM_InitStruct)
 }
 
 /**
-  * @brief  配置TIM的比较输出通道.
-  * @param  TIMx 外设入口地址
-  * @param  channel ATIM通道
-  *         此参数可取以下值：
+  * @brief  TIM.
+  * @param  TIMx 
+  * @param  channel ATIM
+  *         
   *         @arg @ref FL_ATIM_CHANNEL_1
   *         @arg @ref FL_ATIM_CHANNEL_2
   *         @arg @ref FL_ATIM_CHANNEL_3
   *         @arg @ref FL_ATIM_CHANNEL_4
-  * @param  TIM_OC_InitStruct 指向 @ref FL_ATIM_OC_InitTypeDef 结构体的指针
-  * @retval 错误状态，可能值：
-  *         -FL_PASS 配置成功
-  *         -FL_FAIL 配置过程发生错误
+  * @param  TIM_OC_InitStruct  @ref FL_ATIM_OC_InitTypeDef 
+  * @retval 
+  *         -FL_PASS 
+  *         -FL_FAIL 
   */
 FL_ErrorStatus FL_ATIM_OC_Init(ATIM_Type *TIMx, uint32_t channel, FL_ATIM_OC_InitTypeDef *TIM_OC_InitStruct)
 {
     uint32_t i = 5;
     FL_ErrorStatus result = FL_PASS;
-    /* 参数检查 */
+    /*  */
     assert_param(IS_ATIM_INSTANCE(TIMx));
     assert_param(IS_FL_ATIM_OC_MODE(TIM_OC_InitStruct->OCMode));
     assert_param(IS_FL_ATIM_OC_PRELOAD(TIM_OC_InitStruct->OCPreload));
@@ -633,35 +633,35 @@ FL_ErrorStatus FL_ATIM_OC_Init(ATIM_Type *TIMx, uint32_t channel, FL_ATIM_OC_Ini
     assert_param(IS_FL_ATIM_OC_IDLESTATE(TIM_OC_InitStruct->OCIdleState));
     assert_param(IS_FL_ATIM_OC_NIDLESTATE(TIM_OC_InitStruct->OCNIdleState));
     assert_param(IS_FL_ATIM_OC_NPOLARITY(TIM_OC_InitStruct->OCNPolarity));
-    /* 通道关闭 */
+    /*  */
     FL_ATIM_OC_DisableChannel(TIMx, channel);
     FL_ATIM_OC_DisableReverseChannel(TIMx, channel);
-    /* 通道极性 */
+    /*  */
     FL_ATIM_OC_SetChannelPolarity(TIMx, TIM_OC_InitStruct->OCPolarity, channel);
-    /* 通道空闲电平 */
+    /*  */
     FL_ATIM_OC_SetChannelIdleState(TIMx, TIM_OC_InitStruct->OCIdleState, channel);
-    /* 互补通道空闲电平 */
+    /*  */
     FL_ATIM_OC_SetReverseChannelIdleState(TIMx, TIM_OC_InitStruct->OCNIdleState, channel);
-    /* 互补通道极性 */
+    /*  */
     FL_ATIM_OC_SetReverseChannelPolarity(TIMx, TIM_OC_InitStruct->OCNPolarity, channel);
-    /* 捕获映射到输出通道 */
+    /*  */
     FL_ATIM_CC_SetChannelMode(TIMx, FL_ATIM_CHANNEL_MODE_OUTPUT, channel);
-    /* 输出比较模式寄存器配置 */
+    /*  */
     OCConfig(TIMx, channel, TIM_OC_InitStruct);
-    /* 手动触发更新事件，将配置值写入 */
+    /*  */
     FL_ATIM_GenerateUpdateEvent(TIMx);
     while((!FL_ATIM_IsActiveFlag_Update(ATIM))&&i)
     {
         i--;
     }
-    /*清除UIF标志，防止产生UG事件中断*/
+    /*UIFUG*/
     FL_ATIM_ClearFlag_Update(ATIM);
     return result;
 }
 
 /**
-  * @brief  将 @ref FL_ATIM_OC_InitTypeDef 结构体初始化为默认配置
-  * @param  TIM_OC_InitStruct 指向 @ref FL_ATIM_OC_InitTypeDef 结构体的指针
+  * @brief   @ref FL_ATIM_OC_InitTypeDef 
+  * @param  TIM_OC_InitStruct  @ref FL_ATIM_OC_InitTypeDef 
   *
   * @retval None
   */
@@ -681,17 +681,17 @@ void FL_ATIM_OC_StructInit(FL_ATIM_OC_InitTypeDef *TIM_OC_InitStruct)
 }
 
 /**
-  * @brief  配置ATIM的输入捕获通道
-  * @param  TIMx 外设入口地址
-  * @param  TIM_BDTR_InitStruct 指向 @ref FL_ATIM_BDTR_InitTypeDef 结构体的指针
-  * @retval 错误状态，可能值：
-  *         -FL_PASS 配置成功
-  *         -FL_FAIL 配置过程发生错误
+  * @brief  ATIM
+  * @param  TIMx 
+  * @param  TIM_BDTR_InitStruct  @ref FL_ATIM_BDTR_InitTypeDef 
+  * @retval 
+  *         -FL_PASS 
+  *         -FL_FAIL 
   */
 FL_ErrorStatus FL_ATIM_BDTR_Init(ATIM_Type *TIMx, FL_ATIM_BDTR_InitTypeDef *TIM_BDTR_InitStruct)
 {
     FL_ErrorStatus result = FL_PASS;
-    /* 参数检查 */
+    /*  */
     assert_param(IS_ATIM_INSTANCE(TIMx));
     assert_param(IS_FL_ATIM_OSSR_STATE(TIM_BDTR_InitStruct->OSSRState));
     assert_param(IS_FL_ATIM_OSSI_STATE(TIM_BDTR_InitStruct->OSSIState));
@@ -699,25 +699,25 @@ FL_ErrorStatus FL_ATIM_BDTR_Init(ATIM_Type *TIMx, FL_ATIM_BDTR_InitTypeDef *TIM_
     assert_param(IS_FL_ATIM_BREAK_POLARITY(TIM_BDTR_InitStruct->breakPolarity));
     assert_param(IS_FL_ATIM_AUTOMATIC_OUTPUT_STATE(TIM_BDTR_InitStruct->automaticOutput));
     assert_param(IS_FL_ATIM_BDTR_FILTER(TIM_BDTR_InitStruct->breakFilter));
-    /* 关闭所有输出 */
+    /*  */
     FL_ATIM_DisableALLOutput(TIMx);
-    /* 设置死区时间 */
+    /*  */
     FL_ATIM_WriteDeadTime(TIMx, TIM_BDTR_InitStruct->deadTime);
-    /* 设置寄存器锁定等级 */
+    /*  */
     FL_ATIM_SetLockLevel(TIMx, TIM_BDTR_InitStruct->lockLevel);
-    /* Idle状态下关闭状态 */
+    /* Idle */
     FL_ATIM_SetOffStateIdle(TIMx, TIM_BDTR_InitStruct->OSSIState);
-    /* run状态下关闭状态 */
+    /* run */
     FL_ATIM_SetOffStateRun(TIMx, TIM_BDTR_InitStruct->OSSRState);
-    /* 门控1刹车信号 */
+    /* 1 */
     FL_ATIM_SetBreak1GateState(TIMx, TIM_BDTR_InitStruct->gatedBrakeSignal_1);
-    /* 门控2刹车信号 */
+    /* 2 */
     FL_ATIM_SetBreak2GateState(TIMx, TIM_BDTR_InitStruct->gatedBrakeSignal_2);
-    /* 门控刹车信号组合方式设置  */
+    /*   */
     FL_ATIM_SetBreakSignalCombination(TIMx, TIM_BDTR_InitStruct->brakeSignalCombined);
-    /* 刹车极性设置 */
+    /*  */
     FL_ATIM_SetBreakPolarity(TIMx, TIM_BDTR_InitStruct->breakPolarity);
-    /* 更新时间自动设置输出配置，如果刹车事件发生过并且当前功能使能，则下一个更新事件将重新自动输出 */
+    /*  */
     if(TIM_BDTR_InitStruct->automaticOutput == FL_ENABLE)
     {
         FL_ATIM_EnableAutomaticOutput(TIMx);
@@ -726,7 +726,7 @@ FL_ErrorStatus FL_ATIM_BDTR_Init(ATIM_Type *TIMx, FL_ATIM_BDTR_InitTypeDef *TIM_
     {
         FL_ATIM_DisableAutomaticOutput(TIMx);
     }
-    /* 刹车功能开关配置 */
+    /*  */
     if(TIM_BDTR_InitStruct->breakState == FL_ENABLE)
     {
         FL_ATIM_EnableBreak(TIMx);
@@ -735,16 +735,16 @@ FL_ErrorStatus FL_ATIM_BDTR_Init(ATIM_Type *TIMx, FL_ATIM_BDTR_InitTypeDef *TIM_
     {
         FL_ATIM_DisableBreak(TIMx);
     }
-    /* 使能全部输出 */
+    /*  */
     FL_ATIM_EnableALLOutput(TIMx);
-    /* 手动触发更新事件，将配置值写入 */
+    /*  */
     FL_ATIM_GenerateCOMEvent(TIMx);
     return result;
 }
 
 /**
-  * @brief  将 @ref FL_ATIM_BDTR_InitTypeDef 结构体初始化为默认配置
-  * @param  TIM_BDTR_InitStruct 指向 @ref FL_ATIM_BDTR_InitTypeDef 结构体的指针
+  * @brief   @ref FL_ATIM_BDTR_InitTypeDef 
+  * @param  TIM_BDTR_InitStruct  @ref FL_ATIM_BDTR_InitTypeDef 
   *
   * @retval None
   */

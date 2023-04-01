@@ -1,15 +1,15 @@
 /*
- * @ : Copyright (c) 2021 Phytium Information Technology, Inc.
- *
- * SPDX-License-Identifier: Apache-2.0.
- *
+*@:Copyright(c)2021PhytiumInformationTechnology,Inc.
+*
+*SPDX-License-Identifier:Apache-2.0.
+*
  * @Date: 2021-04-07 09:53:07
  * @LastEditTime: 2021-05-25 10:51:35
- * @Description:  This files is for generic timer functions
+ * @Description: This files is for generic timer functions
  *
- * @Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * @ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 #include "ft_status.h"
@@ -33,9 +33,9 @@ typedef struct ft_Generictimer
     u64 MaxCount;
     u64 TicksPerUs;
     u32 Isr_PeriodMsec;
-    u32 Isr_PeriodCnt; //<! 中断周期填充值
+    u32 Isr_PeriodCnt; //<! 
     u8 UseVirtual;
-    u8 InitFlg;      //<! 初始化标志，1 is 完成初始化,0 is 尚未初始化
+    u8 InitFlg;      //<! 1 is ,0 is 
     u8 Isr_IsEnable; //<! 1 is init , 2 is open, 0 is close
     Ft_GenericTimer_Isr_Callback Callback;
 } ft_Generictimer_handler_t;
@@ -45,9 +45,9 @@ ft_Generictimer_handler_t Ft_GenericTimer_Handler = {0};
 /**
  * @name: GenericTimer_WriteReg
  * @msg:
- * @in IsVirtual{u8}: 1 使用 虚拟计数器，0 使用物理计数器
- * @in reg{u32}: 需要写入寄存器类型， GEN_TIMER_REG_CTL ，GEN_TIMER_REG_TVAL 。
- * @in val{u32}: 需要写入参数  GEN_TIMER_CTRL_ENABLE GEN_TIMER_CTRL_IMASK GEN_TIMER_CTRL_ISTATUS
+ * @in IsVirtual{u8}: 1  0 
+ * @in reg{u32}:  GEN_TIMER_REG_CTL GEN_TIMER_REG_TVAL 
+ * @in val{u32}:   GEN_TIMER_CTRL_ENABLE GEN_TIMER_CTRL_IMASK GEN_TIMER_CTRL_ISTATUS
  * @return {*}
  */
 __STATIC_INLINE void GenericTimer_WriteReg(FT_IN u8 IsVirtual, FT_IN u32 reg, FT_IN u32 val)
@@ -80,10 +80,10 @@ __STATIC_INLINE void GenericTimer_WriteReg(FT_IN u8 IsVirtual, FT_IN u32 reg, FT
 
 /**
  * @name: GenericTimer_ReadReg
- * @msg:  读取GenericTimer 寄存器参数。
- * @in IsVirtual{u8}: 1 使用 虚拟计数器，0 使用物理计数器
- * @in reg{u32}: 需要写入寄存器类型， GEN_TIMER_REG_CTL ，GEN_TIMER_REG_TVAL 。
- * @return {u32} 读取寄存器参数
+ * @msg:  GenericTimer 
+ * @in IsVirtual{u8}: 1  0 
+ * @in reg{u32}:  GEN_TIMER_REG_CTL GEN_TIMER_REG_TVAL 
+ * @return {u32} 
  */
 __STATIC_INLINE u32 GenericTimer_ReadReg(FT_IN u8 IsVirtual, FT_IN u32 reg)
 {
@@ -117,8 +117,8 @@ __STATIC_INLINE u32 GenericTimer_ReadReg(FT_IN u8 IsVirtual, FT_IN u32 reg)
 
 /**
  * @name: GenericTimer_GetTimerCnt
- * @msg:  获取定时器定时器计数值。
- * @in IsVirtual{u8}: 1 使用 虚拟计数器，0 使用物理计数器
+ * @msg:  
+ * @in IsVirtual{u8}: 1  0 
  * @return {u64} timer count value.
  */
 __STATIC_INLINE u64 GenericTimer_GetTimerCnt(FT_IN u8 IsVirtual)
@@ -138,8 +138,8 @@ __STATIC_INLINE u64 GenericTimer_GetTimerCnt(FT_IN u8 IsVirtual)
 
 /**
  * @name: Ft_GenericTimer_UsDelay
- * @msg:  使用定时器进行us级别延时
- * @in param{u32}: DelayUs 需要延时的us
+ * @msg:  us
+ * @in param{u32}: DelayUs us
  * @param {u32} DelayUs
  */
 int32_t Ft_GenericTimer_UsDelay(FT_IN u32 DelayUs)
@@ -199,10 +199,10 @@ int32_t Ft_GenericTimer_UsDelay(FT_IN u32 DelayUs)
 
 /**
  * @name: Ft_GenericTimer_IsrSet
- * @msg:  配置与控制 GenericTimer 中断参数
- * @in param{u32}: HzRate 设置需要中断频率,输入参数应该小于等于 1000。
- * @in param{u32}: Cmd 1 使能中断，0关闭中断。
- * @return {int32_t}: 设置是否成功
+ * @msg:   GenericTimer 
+ * @in param{u32}: HzRate , 1000
+ * @in param{u32}: Cmd 1 0
+ * @return {int32_t}: 
  */
 int32_t Ft_GenericTimer_IsrSet(FT_IN u32 HzRate, FT_IN u32 Cmd)
 {
@@ -247,8 +247,8 @@ int32_t Ft_GenericTimer_IsrSet(FT_IN u32 HzRate, FT_IN u32 Cmd)
 
 /**
  * @name: Ft_GenericTimer_IrqHandler
- * @msg:  中断函数
- * @in param{void *}: param 用户定义变量。
+ * @msg:  
+ * @in param{void *}: param 
  */
 void Ft_GenericTimer_IrqHandler(void *param)
 {
@@ -277,7 +277,7 @@ void Ft_GenericTimer_Debug(void)
 
 /**
  * @name: Ft_GenericTimer_GetTick
- * @msg:  获取中断计数次数
+ * @msg:  
  * @return {u32} _TickCnt
  */
 u32 Ft_GenericTimer_GetTick(void)
@@ -287,7 +287,7 @@ u32 Ft_GenericTimer_GetTick(void)
 
 /**
  * @name: Ft_GenericTimer_Msec
- * @msg:  获取中断ms级别计数
+ * @msg:  ms
  * @return {u32}
  */
 u32 Ft_GenericTimer_Msec(void)
@@ -297,9 +297,9 @@ u32 Ft_GenericTimer_Msec(void)
 
 /**
  * @name: Ft_GenericTimer_Init
- * @msg:  GenericTimer 初始化
- * @in param { u8} UseVirtual 1 使用 虚拟时钟，0使用真实时钟。
- * @in param { Ft_GenericTimer_Isr_Callback} 中断回调函数。
+ * @msg:  GenericTimer 
+ * @in param { u8} UseVirtual 1  0
+ * @in param { Ft_GenericTimer_Isr_Callback} 
  * @return {*}
  */
 void Ft_GenericTimer_Init(FT_IN u8 UseVirtual, FT_IN Ft_GenericTimer_Isr_Callback Callback)
@@ -316,7 +316,7 @@ void Ft_GenericTimer_Init(FT_IN u8 UseVirtual, FT_IN Ft_GenericTimer_Isr_Callbac
     _Tickms = 0;
     _TickCnt = 0;
 
-    //<! 开启时钟
+    //<! 
     /* update the timer value register with maxTimerCount */
     GenericTimer_WriteReg(Ft_GenericTimer_Handler.UseVirtual, GEN_TIMER_REG_TVAL,
                           Ft_GenericTimer_Handler.MaxCount);

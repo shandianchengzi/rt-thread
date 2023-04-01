@@ -26,7 +26,7 @@ enum {
     //select adpll
 };
 
-//需要与sysclk_sel_tbl对应, 按时钟频率升序
+//sysclk_sel_tbl, 
 enum {
     SYSCLK_2M,
     SYSCLK_12M,

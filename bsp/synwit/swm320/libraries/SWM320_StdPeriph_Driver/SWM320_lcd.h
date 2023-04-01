@@ -3,25 +3,25 @@
 
 
 typedef struct {
-    uint16_t HnPixel;       //水平方向像素个数，最大取值1024
-    uint16_t VnPixel;       //垂直方向像素个数，最大取值 768
-    uint8_t  Hfp;           //horizonal front porch，最大取值32
-    uint8_t  Hbp;           //horizonal back porch， 最大取值128
-    uint8_t  Vfp;           //vertical front porch， 最大取值8
-    uint8_t  Vbp;           //vertical back porch，  最大取值32
-    uint8_t  ClkDiv;        //系统时钟经ClkDiv分频后产生DOCCLK，0 2分频    1 4分频    2 6分频    ... ...    31 64分频
-    uint8_t  SamplEdge;     //屏幕在DOTCLK的哪个边沿采样数据：LCD_SAMPLEDGE_RISE、LCD_SAMPLEDGE_FALL
-    uint8_t  ClkAlways;     //1 一直输出DOTCLK    0 只在传输数据时输出DOTCLK
-    uint8_t  HsyncWidth;    //HSYNC低电平持续多少个DOTCLK，取值：LCD_HSYNC_1DOTCLK、LCD_HSYNC_2DOTCLK、LCD_HSYNC_3DOTCLK、LCD_HSYNC_4DOTCLK
+    uint16_t HnPixel;       //1024
+    uint16_t VnPixel;       // 768
+    uint8_t  Hfp;           //horizonal front porch32
+    uint8_t  Hbp;           //horizonal back porch 128
+    uint8_t  Vfp;           //vertical front porch 8
+    uint8_t  Vbp;           //vertical back porch  32
+    uint8_t  ClkDiv;        //ClkDivDOCCLK0 2    1 4    2 6    ... ...    31 64
+    uint8_t  SamplEdge;     //DOTCLKLCD_SAMPLEDGE_RISELCD_SAMPLEDGE_FALL
+    uint8_t  ClkAlways;     //1 DOTCLK    0 DOTCLK
+    uint8_t  HsyncWidth;    //HSYNCDOTCLKLCD_HSYNC_1DOTCLKLCD_HSYNC_2DOTCLKLCD_HSYNC_3DOTCLKLCD_HSYNC_4DOTCLK
 
-    uint8_t  IntEOTEn;      //End of Transter（传输完成）中断使能
+    uint8_t  IntEOTEn;      //End of Transter
 } LCD_InitStructure;
 
 
-#define LCD_SAMPLEDGE_RISE  0   //屏幕在DOTCLK的上升沿采样数据
-#define LCD_SAMPLEDGE_FALL  1   //屏幕在DOTCLK的下降沿采样数据
+#define LCD_SAMPLEDGE_RISE  0   //DOTCLK
+#define LCD_SAMPLEDGE_FALL  1   //DOTCLK
 
-#define LCD_HSYNC_1DOTCLK   0   //1个DOTCLK
+#define LCD_HSYNC_1DOTCLK   0   //1DOTCLK
 #define LCD_HSYNC_2DOTCLK   1
 #define LCD_HSYNC_3DOTCLK   2
 #define LCD_HSYNC_4DOTCLK   3

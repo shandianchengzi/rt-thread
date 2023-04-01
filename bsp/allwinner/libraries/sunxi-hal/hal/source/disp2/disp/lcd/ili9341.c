@@ -374,7 +374,7 @@ static void lcd_panel_ili9341_init(struct disp_panel_para *info)
     LCD_WRITE_COMMAND(0x36);
     LCD_WRITE_DATA(0x08);
     LCD_WRITE_COMMAND(0xB0);
-    /*E0,E9£¬D3£¬40*/
+    /*E0,E9D340*/
     LCD_WRITE_DATA(0xE9);
     LCD_WRITE_COMMAND(0xB1);
     LCD_WRITE_DATA(0x00);

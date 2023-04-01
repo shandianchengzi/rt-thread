@@ -238,7 +238,7 @@ void DMA_AESInit(DMA_AESInitType *InitStruct)
 
 /**
   * @brief  Interrupt configure.
-  * @param  INTMask: can use the ¡®|¡¯ operator
+  * @param  INTMask: can use the | operator
                  DMA_INT_C3DA 
                  DMA_INT_C2DA  
                  DMA_INT_C1DA  
@@ -302,7 +302,7 @@ uint8_t DMA_GetINTStatus(uint32_t INTMask)
 
 /**
   * @brief  Clear interrupt status.
-  * @param  INTMask: can use the ¡®|¡¯ operator
+  * @param  INTMask: can use the | operator
                DMA_INTSTS_C3DA
                DMA_INTSTS_C2DA
                DMA_INTSTS_C1DA

@@ -29,7 +29,7 @@
 #define XTH_8M_CRYSTAL
 //#define XTH_12M_CRYSTAL
 
-#define DEFAULT_SYSTEM_CLOCK    (64000000)    // 默认系统时钟为64MHz
+#define DEFAULT_SYSTEM_CLOCK    (64000000)    // 64MHz
 
 #define RD_WAIT_SET_DEFAULT     2
 

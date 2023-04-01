@@ -7,10 +7,10 @@
  ***********************************************************************/
 #include "ACM32Fxx_HAL.h"  
 
-static uint16_t ep1_stall[2]= {0};    // EP1 stall×´Ì¬
-static uint16_t ep2_stall[2]= {0};    // EP2 stall×´Ì¬
-static uint16_t ep3_stall[2]= {0};    // EP3 stall×´Ì¬
-static uint16_t ep4_stall[2]= {0};    // EP3 stall×´Ì¬     
+static uint16_t ep1_stall[2]= {0};    // EP1 stall
+static uint16_t ep2_stall[2]= {0};    // EP2 stall
+static uint16_t ep3_stall[2]= {0};    // EP3 stall
+static uint16_t ep4_stall[2]= {0};    // EP3 stall     
 
 uint32_t HAL_FSUSB_MSP_Init(void)  
 {
@@ -348,7 +348,7 @@ void HAL_FSUSB_Receive_Data(uint8_t *buffer,uint32_t length,uint8_t ep_index)
 } 
 
 
-//ep_index±íÊ¾¶Ëµã±àºÅ
+//ep_index
 void HAL_FSUSB_EP0_Send_Empty_Packet(void)
 {
 	HAL_FSUSB_Start_EP_Transfer(0,USB_EP0);    

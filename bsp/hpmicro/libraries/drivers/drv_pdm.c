@@ -184,7 +184,7 @@ static rt_err_t hpm_pdm_init(struct rt_audio_device* audio)
 
     /* init audio configure */
     hpm_pdm_dev.record_config.channels = 1U;
-    hpm_pdm_dev.record_config.samplebits = 32U; /* 数据为32位，实际有效位24bit，高位为0  */
+    hpm_pdm_dev.record_config.samplebits = 32U; /* 3224bit0  */
     hpm_pdm_dev.record_config.samplerate = PDM_SOC_SAMPLE_RATE_IN_HZ; /* fix 16KHz */
 
     pdm_get_default_config(HPM_PDM, &pdm_config);

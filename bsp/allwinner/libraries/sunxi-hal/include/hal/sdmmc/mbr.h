@@ -39,7 +39,7 @@ typedef struct tag_PARTITION
     __u8  classname[12];                // major device name
     __u8  name[12];                     // minor device name
     __u8  res[24];                      // reserved
-} PARTITION;                            // 64 bytes Ӧ�ô��� pack
+} PARTITION;                            // 64 bytes  pack
 
 // mbr information
 typedef struct tag_MBR
@@ -80,12 +80,12 @@ typedef struct sunxi_partition_t
 typedef struct sunxi_mbr
 {
     unsigned  int       crc32;                      // crc 1k - 4
-    unsigned  int       version;                    // 版本信息， 0x00000100
+    unsigned  int       version;                    //  0x00000100
     unsigned  char      magic[8];                   //"softw311"
-    unsigned  int       copy;                       //分数
-    unsigned  int       index;                      //第几个MBR备份
-    unsigned  int       PartCount;                  //分区个数
-    unsigned  int       stamp[1];                   //对齐
+    unsigned  int       copy;                       //
+    unsigned  int       index;                      //MBR
+    unsigned  int       PartCount;                  //
+    unsigned  int       stamp[1];                   //
     sunxi_partition     array[SUNXI_MBR_MAX_PART_COUNT];    //
     unsigned  int       lockflag;
     unsigned  char      res[(SUNXI_MBR_SIZE - 32 - 4 - (SUNXI_MBR_MAX_PART_COUNT * sizeof(sunxi_partition)))];

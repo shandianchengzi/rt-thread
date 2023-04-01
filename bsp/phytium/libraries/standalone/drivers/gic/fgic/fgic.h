@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fgic.h
  * Date: 2022-03-28 09:30:29
  * LastEditTime: 2022-03-28 09:30:29
- * Description:  This file is for
+ * Description: This file is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 #ifndef DRIVERS_GIC_FGIC_H
@@ -34,11 +34,11 @@
 #define FGIC_RSGI_AFF3_OFFSET 48
 
 #define FGIC_SUCCESS    FT_SUCCESS
-#define FGIC_CTLR_ERR_TYPE   FT_MAKE_ERRCODE(ErrModBsp, ErrGic, 1) /* 错误选择CTLR 寄存器 */
-#define FGIC_CTLR_ERR_NUM    FT_MAKE_ERRCODE(ErrModBsp, ErrGic, 2) /* 当前控制器不支持此中断id */
-#define FGIC_CTLR_ERR_IN_SET    FT_MAKE_ERRCODE(ErrModBsp, ErrGic, 3) /* 在设置过程中出现的异常 */
-#define FGIC_CTLR_ERR_IN_GET    FT_MAKE_ERRCODE(ErrModBsp, ErrGic, 4) /* 在获取过程中出现的异常 */
-#define FGIC_ERR_IN_TIMEOUT    FT_MAKE_ERRCODE(ErrModBsp, ErrGic, 5)  /* 超时退出 */
+#define FGIC_CTLR_ERR_TYPE   FT_MAKE_ERRCODE(ErrModBsp, ErrGic, 1) /* CTLR  */
+#define FGIC_CTLR_ERR_NUM    FT_MAKE_ERRCODE(ErrModBsp, ErrGic, 2) /* id */
+#define FGIC_CTLR_ERR_IN_SET    FT_MAKE_ERRCODE(ErrModBsp, ErrGic, 3) /*  */
+#define FGIC_CTLR_ERR_IN_GET    FT_MAKE_ERRCODE(ErrModBsp, ErrGic, 4) /*  */
+#define FGIC_ERR_IN_TIMEOUT    FT_MAKE_ERRCODE(ErrModBsp, ErrGic, 5)  /*  */
 
 
 typedef enum

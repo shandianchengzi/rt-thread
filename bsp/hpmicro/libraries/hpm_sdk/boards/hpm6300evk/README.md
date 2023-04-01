@@ -44,7 +44,7 @@ Board overall hpm6300evk
 
 ## Pin Description
 
-- SPI Pin：
+- SPI Pin
 
 | Function | Position |
 | ---- | -------- |
@@ -53,7 +53,7 @@ Board overall hpm6300evk
 | SPI3.MISO   | J28[21] |
 | SPI3.MOSI   | J28[19] |
 
-- I2C Pin：
+- I2C Pin
 
 | Function | Position |
 | ---- | -------- |

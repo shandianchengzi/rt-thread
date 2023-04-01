@@ -5,7 +5,7 @@
  *
  * Change Logs:
  * Date           Author       Notes
- * 2017-11-02     勤为本       first version
+ * 2017-11-02            first version
  * 2018-06-09     zhuangwei    add spi0 cs0 support,remove msd_init
  */
 
@@ -57,28 +57,28 @@ static rt_err_t configure(struct rt_spi_device *device,
     spi_base = ls1c_spi_get_base(SPIx);
 
     {
-        // 使能SPI控制器，master模式，关闭中断
+        // SPImaster
         reg_write_8(0x53, spi_base + LS1C_SPI_SPCR_OFFSET);
 
-        // 清空状态寄存器
+        // 
         reg_write_8(0xc0, spi_base + LS1C_SPI_SPSR_OFFSET);
 
-        // 1字节产生中断，采样(读)与发送(写)时机同时
+        // 1()()
         reg_write_8(0x03, spi_base + LS1C_SPI_SPER_OFFSET);
 
-        // 关闭SPI flash
+        // SPI flash
         val = reg_read_8(spi_base + LS1C_SPI_SFC_PARAM_OFFSET);
         val &= 0xfe;
         reg_write_8(val, spi_base + LS1C_SPI_SFC_PARAM_OFFSET);
 
-        // spi flash时序控制寄存器
+        // spi flash
         reg_write_8(0x05, spi_base + LS1C_SPI_SFC_TIMING_OFFSET);
     }
 
     // baudrate
     ls1c_spi_set_clock(spi_base, configuration->max_hz);
 
-    // 设置通信模式(时钟极性和相位)
+    // ()
     if (configuration->mode & RT_SPI_CPOL)      // cpol
     {
         cpol = SPI_CPOL_1;
@@ -136,7 +136,7 @@ static rt_uint32_t xfer(struct rt_spi_device *device,
         ls1c_spi_set_cs(spi_base, cs, 0);
     }
 
-    // 收发数据
+    // 
     send_ptr = message->send_buf;
     recv_ptr = message->recv_buf;
     while (size--)
@@ -188,9 +188,9 @@ static struct rt_spi_bus spi1_bus;
 
 
 /*
- * 初始化并注册龙芯1c的spi总线
- * @SPI SPI总线，比如LS1C_SPI_0， LS1C_SPI_1
- * @spi_bus_name 总线名字
+ * 1cspi
+ * @SPI SPILS1C_SPI_0 LS1C_SPI_1
+ * @spi_bus_name 
  * @ret
  */
 rt_err_t ls1c_spi_bus_register(rt_uint8_t SPI, const char *spi_bus_name)

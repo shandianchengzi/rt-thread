@@ -81,7 +81,7 @@ static void dump_hex(const rt_uint8_t *ptr, rt_size_t buflen)
 
 /**
  * @name: rt_gmacmem_create
- * @msg:  Initialize the Gmac TX/Rx Describe Memory 。
+ * @msg:  Initialize the Gmac TX/Rx Describe Memory 
  * @param {*}
  * @return {*}
  */
@@ -390,7 +390,7 @@ rt_err_t rt_ft2004_gmac_tx(rt_device_t dev, struct pbuf *p)
         BufferOffset = BufferOffset + BytesLeftToCopy;
         FrameLength = FrameLength + BytesLeftToCopy;
     }
-    /* 指向下一个位置 */
+    /*  */
     FCache_cpuDcacheClean((rt_uint32_t *)DmaTxDesc->Buffer1Addr, GMAC_MAX_PACKET_SIZE);
     GMAC_INC_DESC(pGmac->TxDescRingData.DescBufIndex, pGmac->TxDescRingData.DescMaxNumber);
 #if RT_LWIP_ETH_PAD_SIZE

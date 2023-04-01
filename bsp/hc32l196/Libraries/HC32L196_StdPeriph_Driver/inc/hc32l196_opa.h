@@ -83,39 +83,39 @@ typedef enum en_opa_oenx
     OpaOen4  = 6u             //OUT4
 }en_opa_oenx_t;
  
-typedef enum en_opa_clksrc    // 自动校准脉冲宽度设置
+typedef enum en_opa_clksrc    // 
 {
-    OpaM1Pclk     = 0u,       // 1个PCLK周期
-    OpaM2Pclk     = 1u,       // 2个PCLK周期
-    OpaM4Pclk     = 2u,       // 4个PCLK周期
-    OpaM8Pclk     = 3u,       // 8个PCLK周期
-    OpaM16Pclk    = 4u,       // 16个PCLK周期
-    OpaM32Pclk    = 5u,       // 32个PCLK周期
-    OpaM64Pclk    = 6u,       // 64个PCLK周期
-    OpaM128Pclk   = 7u,       // 128个PCLK周期
-    OpaM256Pclk   = 8u,       // 256个PCLK周期
-    OpaM512Pclk   = 9u,       // 512个PCLK周期
-    OpaM1024Pclk  = 10u,      // 1024个PCLK周期
-    OpaM2048Pclk  = 11u,      // 2048个PCLK周期
-    OpaM4096Pclk  = 12u       // 4096个PCLK周期
+    OpaM1Pclk     = 0u,       // 1PCLK
+    OpaM2Pclk     = 1u,       // 2PCLK
+    OpaM4Pclk     = 2u,       // 4PCLK
+    OpaM8Pclk     = 3u,       // 8PCLK
+    OpaM16Pclk    = 4u,       // 16PCLK
+    OpaM32Pclk    = 5u,       // 32PCLK
+    OpaM64Pclk    = 6u,       // 64PCLK
+    OpaM128Pclk   = 7u,       // 128PCLK
+    OpaM256Pclk   = 8u,       // 256PCLK
+    OpaM512Pclk   = 9u,       // 512PCLK
+    OpaM1024Pclk  = 10u,      // 1024PCLK
+    OpaM2048Pclk  = 11u,      // 2048PCLK
+    OpaM4096Pclk  = 12u       // 4096PCLK
 }en_opa_clksrc_t;
 
 typedef enum en_opa_set0ctrl
 {
-    enClkSwSet = 3u,          // 软件校准使能
-    enAzPulse  = 2u,          // 软件校准
-    enTrigger  = 1u,          // 软件触发自动教零
-    enAdctr    = 1u           // 使能ADC启动触发OPA自动校准功能
+    enClkSwSet = 3u,          // 
+    enAzPulse  = 2u,          // 
+    enTrigger  = 1u,          // 
+    enAdctr    = 1u           // ADCOPA
 }en_opa_set0ctrl_t;
 
 typedef struct
 {
-    boolean_t         bAzen;        // 自动教零配置
-    boolean_t         bClk_sw_set;  // 自动教零选择
-    boolean_t         bAz_pulse;    // 软件校准设置
-    boolean_t         bTrigger;     // 软件触发校准设置
-    boolean_t         bAdctr_en;    // ADC启动触发OPA自动校准设置
-    en_opa_clksrc_t   enClksrc;     // 自动校准脉冲宽度设置
+    boolean_t         bAzen;        // 
+    boolean_t         bClk_sw_set;  // 
+    boolean_t         bAz_pulse;    // 
+    boolean_t         bTrigger;     // 
+    boolean_t         bAdctr_en;    // ADCOPA
+    en_opa_clksrc_t   enClksrc;     // 
 }stc_opa_zcfg_t;    
 
 
@@ -126,17 +126,17 @@ typedef struct
 /******************************************************************************
  * Global function prototypes (definition in C source)
  ******************************************************************************/
-//OPA 通道使能
+//OPA 
 extern void Opa_Cmd(boolean_t NewStatus);
 extern void Opa_CmdBuf(boolean_t NewStatus);
 
-//OPA零点校准配置
+//OPA
 extern void Opa_SetZero(stc_opa_zcfg_t* InitZero);
 
-//使能输出OUTX
+//OUTX
 extern void Opa_CmdOnex(en_opa_oenx_t onex, boolean_t NewState);
 
-//配置校零相关的位
+//
 extern void Opa_ZeroBitCtrl(en_opa_set0ctrl_t CtrlBit, boolean_t NewState);
 
 //@} // OPA Group

@@ -32,20 +32,20 @@
 #include "air105.h"
 
 
-#define SSC_ITSysXTAL12M                    BIT(18) //ϵͳ��12Mʱ�ӱ�־
-#define SSC_ITSysGlitch                     BIT(17) //����Դë�̱�־
-#define SSC_ITSysVolHigh                    BIT(16) //����Դ��ѹ��־
-#define SSC_ITSysVolLow                     BIT(15) //����ԴǷѹ��־
+#define SSC_ITSysXTAL12M                    BIT(18) //12M
+#define SSC_ITSysGlitch                     BIT(17) //
+#define SSC_ITSysVolHigh                    BIT(16) //
+#define SSC_ITSysVolLow                     BIT(15) //
 
 typedef struct
 {
-    FunctionalState ParityCheck;                                //��żУ��ʹ��
+    FunctionalState ParityCheck;                                //
 }SSC_InitTypeDef;
 
 
 /*
- *  ��BPK��Ϊ4��ÿ��256����Ϊ��λ���ö�дȨ��
- *  SSC_BPKAccessCtrBlock_0Ϊ��ʼ0��ַ��
+ *  BPK4256
+ *  SSC_BPKAccessCtrBlock_00
  */
 #define SSC_BPKAccessCtrBlock_0             (0x01)
 #define SSC_BPKAccessCtrBlock_1             (0x02)
@@ -53,9 +53,9 @@ typedef struct
 
 typedef enum
 {
-    SSC_BPKReadOnly     = 0x01,     //BPK��ֻ��
-    SSC_BPKWriteOnly    = 0x02,     //BPK��ֻд
-    SSC_BPKReadWrite    = 0x03      //BPK���д
+    SSC_BPKReadOnly     = 0x01,     //BPK
+    SSC_BPKWriteOnly    = 0x02,     //BPK
+    SSC_BPKReadWrite    = 0x03      //BPK
 }SSC_BPKAccessCtrlTypeDef;
 #define IS_BPK_ACCESS_CTRL(CTRL) (((CTRL) == SSC_BPKReadOnly) || ((CTRL) == SSC_BPKWriteOnly) || \
                                 ((CTRL) == SSC_BPKReadWrite))
@@ -76,7 +76,7 @@ typedef enum
 
 /**
   * @method SSC_Init
-  * @brief  SSC��ȫ���Գ�ʼ��
+  * @brief  SSC
   * @param  SSC_InitTypeDef SSC_InitStruct
   * @retval void
   */
@@ -85,7 +85,7 @@ void SSC_Init(SSC_InitTypeDef *SSC_InitStruct);
 
 /**
   * @method SSC_GetITStatus
-  * @brief  SSC��ȫ�ж�״̬
+  * @brief  SSC
   * @param  uint32_t SSC_IT
   * @retval ITStatus
   */
@@ -94,7 +94,7 @@ ITStatus SSC_GetITStatus(uint32_t SSC_IT);
 
 /**
   * @method SSC_ClearITPendingBit
-  * @brief  SSC��ȫ�ж����
+  * @brief  SSC
   * @param  uint32_t SSC_IT
   * @retval void
   */
@@ -103,7 +103,7 @@ void SSC_ClearITPendingBit( uint32_t SSC_IT);
 
 /**
   * @method SSC_SetDataRAMScrambler
-  * @brief  ��������RAM����
+  * @brief  RAM
   * @param  uint32_t Scrambler
   * @retval void
   */
@@ -112,7 +112,7 @@ void SSC_SetDataRAMScrambler(uint32_t Scrambler);
 
 /**
   * @method SSC_BPKAccessCtrConfig
-  * @brief  ����BPK����Ȩ��
+  * @brief  BPK
   * @param  uint32_t SSC_BPKAccessCtrBlock
   * @param  SSC_BPKAccessCtrlTypeDef SSC_BPKAccessCtr
   * @retval void
@@ -122,7 +122,7 @@ void SSC_BPKAccessCtrlConfig(uint32_t SSC_BPKAccessCtrBlock, SSC_BPKAccessCtrlTy
 
 /**
   * @method SSC_SENSOR_Enable
-  * @brief  ����ϵͳSensor
+  * @brief  Sensor
   * @param  SSC_SENSOR
   * @retval
   */
@@ -131,7 +131,7 @@ uint32_t SSC_SENSORCmd(uint32_t SSC_SENSOR, FunctionalState NewState);
 
 /**
   * @method SSC_SENSORLock
-  * @brief  ����ϵͳSensor����״̬
+  * @brief  Sensor
   * @param  SSC_SENSOR
   * @retval
   */
@@ -140,7 +140,7 @@ void SSC_SENSORLock(uint32_t SSC_SENSOR);
 
 /**
   * @method SSC_SENSOR_AttackRespMode
-  * @brief  ϵͳSensor��Ӧ��ʽ
+  * @brief  Sensor
   * @param  SSC_SENSOR_RespMode
   * @retval
   */

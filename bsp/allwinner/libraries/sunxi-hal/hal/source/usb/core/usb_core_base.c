@@ -41,18 +41,18 @@ static u32 usb_host_is_run_flag = 0;
 #define USB_HOST_IS_RUN_FAIL    0x22
 
 
-//usb host开启
+//usb host
 void usb_host_enable(void)
 {
     usb_host_is_run_flag = USB_HOST_IS_RUN_TRUE;
 }
-//usb host 禁止
+//usb host 
 void usb_host_disable(void)
 {
     usb_host_is_run_flag = USB_HOST_IS_RUN_FAIL;
 }
-//查询usb host是否开启
-//return    :   非0为enable
+//usb host
+//return    :   0enable
 u8 usb_host_is_enabled(void)
 {
     return (usb_host_is_run_flag == USB_HOST_IS_RUN_TRUE) ? 0x01 : 0x00;
@@ -70,7 +70,7 @@ u8 usb_host_is_enabled(void)
  *
  * This call may not be used in a non-sleeping context.
  */
-/* 创建usb_host_virt_dev结构 */
+/* usb_host_virt_dev */
 struct usb_host_virt_dev *usb_host_alloc_virt_dev(struct usb_host_virt_dev *parent, struct usb_virt_bus *bus, u32 port1)
 {
     struct usb_host_virt_dev *dev = NULL;
@@ -136,7 +136,7 @@ struct usb_host_virt_dev *usb_host_alloc_virt_dev(struct usb_host_virt_dev *pare
     dev->usb_virt_dev_semi =  hal_sem_create(1);
 
     //=================================
-    //初始化virt_sub_dev部分
+    //virt_sub_dev
     for (i = 0; i < USB_MAX_VIRT_SUB_DEV_NR; i ++)
     {
         dev->virt_sub_dev_array[i].usb_virt_sub_dev_semi = hal_sem_create(1);
@@ -158,8 +158,8 @@ void usb_host_free_virt_dev(struct usb_host_virt_dev *virt_dev)
         return ;
     }
 
-    // --<1>--释放semi
-    // 释放virt_sub_dev部分
+    // --<1>--semi
+    // virt_sub_dev
     for (i = 0; i < USB_MAX_VIRT_SUB_DEV_NR; i ++)
     {
        if (virt_dev->virt_sub_dev_array[i].usb_virt_sub_dev_semi)
@@ -183,7 +183,7 @@ void usb_host_free_virt_dev(struct usb_host_virt_dev *virt_dev)
        return;
     }
 
-    //--<2>--释放string
+    //--<2>--string
     if (virt_dev->manufacturer)
     {
         free(virt_dev->manufacturer);
@@ -214,7 +214,7 @@ void usb_host_free_virt_dev(struct usb_host_virt_dev *virt_dev)
         __err("ERR: parameter is NULL, can't free");
     }
 
-    //--<3>--释放,所有相关描述符
+    //--<3>--,
     if (virt_dev->config)
     {
         int j = 0;
@@ -262,7 +262,7 @@ void usb_host_free_virt_dev(struct usb_host_virt_dev *virt_dev)
                     __err("ERR: parameter is NULL, can't free");
                 }
 
-                /*--在usb_disable_device()中已经删除了
+                /*--usb_disable_device()
                 DMSG_INFO("new_interfaces[n]--free-- = %x",virt_dev->config[j].interfac[k]);
                 if(virt_dev->config[j].interfac[k]){
                     free(virt_dev->config[j].interfac[k]);
@@ -311,14 +311,14 @@ void usb_host_free_virt_dev(struct usb_host_virt_dev *virt_dev)
         __err("ERR: parameter is NULL, can't free");
     }
 
-    //--<4>--释放自己
+    //--<4>--
     free(virt_dev);
     // virt_dev = NULL;
     return;
 }
 
-//return    :   0       //成功
-//      :   其余    //失败
+//return    :   0       //
+//      :       //
 int32_t _usb_core_func_drv_probe_interface(struct usb_host_virt_sub_dev *sub_dev)
 {
     struct usb_interface *intf = NULL;
@@ -370,7 +370,7 @@ int32_t _usb_core_func_drv_probe_interface(struct usb_host_virt_sub_dev *sub_dev
         return error;
     }
 
-    return -ENODEV; //失败
+    return -ENODEV; //
 }
 
 int32_t _usb_core_func_drv_disconncet_interface(struct usb_host_virt_sub_dev *dev)
@@ -404,7 +404,7 @@ int32_t _usb_core_func_drv_disconncet_interface(struct usb_host_virt_sub_dev *de
     /* release all urbs for this interface */
     usb_disable_interface(usb_mod_interface_to_usbdev(intf), intf);
 
-    /* 调用driver的disconnect,如msc_disconnect() */
+    /* driverdisconnect,msc_disconnect() */
     if (driver && driver->disconnect)
     {
         driver->disconnect(intf);

@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fpcir_intx.c
  * Date: 2022-02-10 14:55:11
  * LastEditTime: 2022-02-18 08:59:42
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 
@@ -72,7 +72,7 @@ FError FPcieIntxRegiterIrqHandler(FPcie *instance_p,
     FASSERT(instance_p != NULL);
     FASSERT(instance_p->is_ready == FT_COMPONENT_IS_READY);
 
-    /* 通过ecm 直接访问 控制寄存器 */
+    /* ecm   */
     FPcieEcamReadConfig8bit(instance_p->config.ecam, bdf, FPCIE_HEADER_TYPE_REG, &header_type) ;
 
     if (header_type == 0)
@@ -81,18 +81,18 @@ FError FPcieIntxRegiterIrqHandler(FPcie *instance_p,
         {
             if (instance_p->scaned_bdf_array[i] == (s32)bdf)
             {
-                break;          //获取到i的值，直接跳出循环
+                break;          //i
             }
         }
 
-        /* 读出 Interrupt Pin*/
+        /*  Interrupt Pin*/
         FPcieEcamReadConfig8bit(instance_p->config.ecam, bdf, FPCIE_INTERRUPT_PIN_REG, &interrupt_pin) ;
         switch (interrupt_pin)
         {
         case 0x1: /* INTA# */
             interrupt_line = instance_p->config.inta_irq_num ;
-            instance_p->inta_fun[i] = *intx_fun_p;  //中断函数，写入的是pcie instance的成员，一个pcie rc只有一个中断处理函数？
-            instance_p->inta_fun[i].bdf  = bdf; //一个中断函数对应一个bdf号
+            instance_p->inta_fun[i] = *intx_fun_p;  //pcie instancepcie rc
+            instance_p->inta_fun[i].bdf  = bdf; //bdf
             break ;
         case 0x2: /* INTB# */
             interrupt_line = instance_p->config.intb_irq_num ;
@@ -130,8 +130,8 @@ static void FPcieIntxCallback(FPcie *instance_p, u8 INTx_NUM)
 {
     int i;
     u16 status ;
-    /* 读取对应bdf 的status  */
-    for (i = 0; i < instance_p->scaned_bdf_count; i++)  //轮询所有扫描到的pcie节点的interrupt status
+    /* bdf status  */
+    for (i = 0; i < instance_p->scaned_bdf_count; i++)  //pcieinterrupt status
     {
         FPcieEcamReadConfig16bit(instance_p->config.ecam, instance_p->scaned_bdf_array[i], FPCIE_STATUS_REG, &status) ;
         if (status & 0x8) /* check intrrupt status */
@@ -192,7 +192,7 @@ static void FPcieIntxIrqEoi(FPcie *instance_p, u32 intx_idx)
  * @param {s32} vector is interrupt vector number
  * @param {void} *args is Pass in a pointer to be processed
  */
-void FPcieIntxIrqHandler(s32 vector, void *args)        //中断响应函数
+void FPcieIntxIrqHandler(s32 vector, void *args)        //
 {
     FPcie *instance_p = (FPcie *)args;
     FASSERT(instance_p != NULL);
@@ -200,7 +200,7 @@ void FPcieIntxIrqHandler(s32 vector, void *args)        //中断响应函数
 
     switch (vector)
     {
-    case FT_PCI_INTA_IRQ_NUM:       //如果响应的是INTA中断，则调用pcie_obj中INTA的中断处理函数
+    case FT_PCI_INTA_IRQ_NUM:       //INTApcie_objINTA
         FPcieIntxCallback(instance_p, INTA) ;
         FPcieIntxIrqEoi(instance_p, 0) ;
         break;

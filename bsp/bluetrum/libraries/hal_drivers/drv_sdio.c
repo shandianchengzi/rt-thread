@@ -226,7 +226,7 @@ static void rthw_sdio_send_command(struct rthw_sdio *sdio, struct sdio_pkg *pkg)
     /* save pkg */
     sdio->pkg = pkg;
 
-    #define CK8E            BIT(11)             //在命令/数据包后加上8CLK
+    #define CK8E            BIT(11)             ///8CLK
     #define CBUSY           BIT(10)             //Busy Check
     #define CLRSP           BIT(9)              //17Byte Long Rsp
     #define CRSP            BIT(8)              //Need Rsp

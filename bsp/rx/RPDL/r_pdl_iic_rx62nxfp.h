@@ -1,8 +1,8 @@
 /*""FILE COMMENT""*******************************************************
-* System Name	: I²C API for RX62Nxx (FP suffix)
+* System Name	: IC API for RX62Nxx (FP suffix)
 * File Name		: r_pdl_iic_RX62NxFP.h
 * Version		: 1.02
-* Contents		: I²C API header
+* Contents		: IC API header
 * Customer		:
 * Model			:
 * Order			:

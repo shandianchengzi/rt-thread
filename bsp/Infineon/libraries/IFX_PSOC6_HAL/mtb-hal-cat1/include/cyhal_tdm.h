@@ -96,7 +96,7 @@
 *
 * <b>Code examples (Github)</b>
 * * <a href="https://github.com/infineon/mtb-example-psoc6-tdm" ><b>
-PSoCâ„¢ 6 MCU: Time Division Multiplexing (TDM)</b></a>
+PSoC 6 MCU: Time Division Multiplexing (TDM)</b></a>
 */
 
 #pragma once

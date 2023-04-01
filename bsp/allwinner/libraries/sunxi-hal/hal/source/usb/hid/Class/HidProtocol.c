@@ -11,7 +11,7 @@
 *
 * Date          :  2010/06/02
 *
-* Description   :  Hid 协议
+* Description   :  Hid 
 *
 * Others        :  NULL
 *
@@ -247,7 +247,7 @@ static void print_parser(usbHidParser_t *Parser)
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -294,7 +294,7 @@ int HidGetClassDescriptor(HidDev_t *HidDev,
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -322,7 +322,7 @@ int HidGetIdle(HidDev_t *HidDev,
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -364,7 +364,7 @@ int HidSetIlde(HidDev_t *HidDev,
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -408,7 +408,7 @@ int HidGetReport(HidDev_t *HidDev,
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -438,7 +438,7 @@ int HidSetReport(HidDev_t *HidDev,
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -463,7 +463,7 @@ int HidGetProtocol(HidDev_t *HidDev, unsigned int InterfaceNo, void *ProtocolDat
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -488,7 +488,7 @@ int HidSetProtocol(HidDev_t *HidDev, unsigned int InterfaceNo, unsigned int Prot
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -537,7 +537,7 @@ static usbHidReport_t *HidRegisterReport(HidDev_t *HidDev, unsigned int type, un
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -604,7 +604,7 @@ ERR:
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -613,11 +613,11 @@ static int open_collection(usbHidParser_t *parser, unsigned type)
     usbHidCollectionItems_t *collection = NULL;
     unsigned int usage = 0;
 
-    // 从取出最先进入local的usage
-    // 在处理local usage的函数hid_parser_local==>HID_LOCAL_ITEM_TAG_USAGE中
+    // localusage
+    // local usagehid_parser_local==>HID_LOCAL_ITEM_TAG_USAGE
     // data = (parser->global.usage_page local.usage[0];
-    // 高16位对应global.usage_page,低16位才对应local的usage
-    // 比如报告描述符的前6个字节数据如下：
+    // 16global.usage_page,16localusage
+    // 6
     // parser->global.usage_page = 0x01;  0x05, 0x01, // USAGE_PAGE (Generic Desktop)
     // parser->local.usage[0] = (0x01 local.usage[0] = (0x01 local.usage[0];
     usage = parser->local.usage[0];
@@ -675,7 +675,7 @@ static int open_collection(usbHidParser_t *parser, unsigned type)
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -706,7 +706,7 @@ static int close_collection(usbHidParser_t *parser)
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -739,7 +739,7 @@ static unsigned hid_lookup_collection(usbHidParser_t *parser, unsigned int type)
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -773,7 +773,7 @@ static int HidAddUsage(usbHidParser_t *Parser, unsigned int Usage)
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -860,7 +860,7 @@ static int HidAddField(usbHidParser_t *Parser, unsigned int ReportType, unsigned
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -900,7 +900,7 @@ static unsigned int item_udata(usbHidItem_t *Item)
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -931,17 +931,17 @@ static int item_sdata(usbHidItem_t *Item)
 *                     HidParserGlobal
 *
 * Description:
-*     解析全局目录项
+*     
 *
 * Parameters:
-*     Parser  :  output. 解析的结果
-*     Item    :  input.  待解析的目录项
+*     Parser  :  output. 
+*     Item    :  input.  
 *
 * Return value:
-*    成功或者失败
+*    
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -955,7 +955,7 @@ static int HidParserGlobal(usbHidParser_t *Parser, usbHidItem_t *Item)
                 return USB_ERR_DATA_OVERFLOW;
             }
 
-            /* 将parser->global压入堆栈parser->global_stack[global_stack_ptr] */
+            /* parser->globalparser->global_stack[global_stack_ptr] */
             memcpy(Parser->global_stack + Parser->global_stack_ptr++,
                           &Parser->global,
                           sizeof(usbHidGlobalItems_t));
@@ -969,7 +969,7 @@ static int HidParserGlobal(usbHidParser_t *Parser, usbHidItem_t *Item)
                 return -1;
             }
 
-            /* 将parser->global_stack[--global_stack_ptr]出栈[luther.gliethttp] */
+            /* parser->global_stack[--global_stack_ptr][luther.gliethttp] */
             memcpy(&Parser->global,
                           Parser->global_stack + --Parser->global_stack_ptr,
                           sizeof(usbHidGlobalItems_t));
@@ -977,7 +977,7 @@ static int HidParserGlobal(usbHidParser_t *Parser, usbHidItem_t *Item)
         //break;
 
         case USB_HID_GLOBAL_ITEM_TAG_USAGE_PAGE:
-            /* 全局量global.usage_page, 比如:
+            /* global.usage_page, :
                0x05, 0x01, --- USAGE_PAGE (Generic Desktop)
                0x05, 0x09, --- USAGE_PAGE (Button)
              */
@@ -1026,7 +1026,7 @@ static int HidParserGlobal(usbHidParser_t *Parser, usbHidItem_t *Item)
         //break;
 
         case USB_HID_GLOBAL_ITEM_TAG_REPORT_SIZE:
-            /* 比如：0x75, 0x01, REPORT_SIZE (1), 表示1个bit */
+            /* 0x75, 0x01, REPORT_SIZE (1), 1bit */
             if ((Parser->global.ReportSize = item_udata(Item)) > 32) {
                 hal_log_err("ERR: invalid report_size %d\n", Parser->global.ReportSize);
                 return USB_ERR_UNKOWN_ERROR;
@@ -1063,17 +1063,17 @@ static int HidParserGlobal(usbHidParser_t *Parser, usbHidItem_t *Item)
 *                     HidParserGlobal
 *
 * Description:
-*     解析全局目录项
+*     
 *
 * Parameters:
-*     Parser  :  output. 解析的结果
-*     Item    :  input.  待解析的目录项
+*     Parser  :  output. 
+*     Item    :  input.  
 *
 * Return value:
-*    成功或者失败
+*    
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -1183,10 +1183,10 @@ static int HidParserLocal(usbHidParser_t *Parser, usbHidItem_t *Item)
 *
 *
 * Return value:
-*    成功或者失败
+*    
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -1195,16 +1195,16 @@ static int HidParserMain(usbHidParser_t *parser, usbHidItem_t *item)
     unsigned int data = 0;
     int ret = 0;
 
-    data = item_udata(item);    //返回该Short Item数据,数据有4种,0,1,2,4字节
+    data = item_udata(item);    //Short Item,4,0,1,2,4
 
     switch (item->tag) {
         case USB_HID_MAIN_ITEM_TAG_BEGIN_COLLECTION:
-            //Open a collection. 入栈push操作The type/usage is pushed on the stack
+            //Open a collection. pushThe type/usage is pushed on the stack
             ret = open_collection(parser, data & 0xff);
         break;
 
         case USB_HID_MAIN_ITEM_TAG_END_COLLECTION:
-            // Close a collection.出栈pop操作parser->collection_stack_ptr
+            // Close a collection.popparser->collection_stack_ptr
             ret = close_collection(parser);
         break;
 
@@ -1225,7 +1225,7 @@ static int HidParserMain(usbHidParser_t *parser, usbHidItem_t *item)
             ret = 0;
     }
 
-    // 清0所有parser->local内存数据,local包括:
+    // 0parser->local,local:
     // struct hid_local {
     //    unsigned usage[HID_MAX_USAGES];               /* usage array */
     //    unsigned collection_index[HID_MAX_USAGES];    /* collection index array */
@@ -1234,7 +1234,7 @@ static int HidParserMain(usbHidParser_t *parser, usbHidItem_t *item)
     //    unsigned delimiter_depth;
     //    unsigned delimiter_branch;
     // };
-    // 所以parser->local.usage_index在遇到main item时全部清0.
+    // parser->local.usage_indexmain item0.
     print_local(&(parser->local));
     memset(&(parser->local), 0, sizeof(parser->local)); /* Reset the local parser environment */
 
@@ -1252,10 +1252,10 @@ static int HidParserMain(usbHidParser_t *parser, usbHidItem_t *item)
 *
 *
 * Return value:
-*    成功或者失败
+*    
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -1334,18 +1334,18 @@ void hid_free_device(HidDev_t *HidDev)
 *                     HidFetchItem
 *
 * Description:
-*     取出Item，并且解析
+*     Item
 *
 * Parameters:
-*     Start  :  input.  本次带解析的report起始地址
-*     End    :  input.  report的结束地址
-*     Item   :  output. 解析后的Item
+*     Start  :  input.  report
+*     End    :  input.  report
+*     Item   :  output. Item
 *
 * Return value:
-*    返回解析后的Item
+*    Item
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -1367,8 +1367,8 @@ static __u8 *HidFetchItem(__u8 *Start, __u8 *End, usbHidItem_t *Item)
 
     b = *Start++;
 
-    Item->type = (b >> 2) & 3;  // 取出类型
-    Item->tag  = (b >> 4) & 15; // 取出tag信息
+    Item->type = (b >> 2) & 3;  // 
+    Item->tag  = (b >> 4) & 15; // tag
 
     if (Item->tag == USB_HID_ITEM_TAG_LONG) {
         Item->format = USB_HID_ITEM_FORMAT_LONG;
@@ -1381,45 +1381,45 @@ static __u8 *HidFetchItem(__u8 *Start, __u8 *End, usbHidItem_t *Item)
         Item->size = *Start++;
         Item->tag  = *Start++;
 
-        // 保证该Long item拥有所需的足够数据
+        // Long item
         if ((End - Start) < Item->size){
             hal_log_err("ERR: the item is invalid. Start = %x, End = %x, Item->size = %x\n",
                        Start, End, Item->size);
             return NULL;
         }
 
-        Item->data.longdata = Start;    // 从第4个字节开始就是数据区
-        Start += Item->size;            // start指向下一个item开始处
+        Item->data.longdata = Start;    // 4
+        Start += Item->size;            // startitem
 
         return Start;
     }
 
     Item->format = USB_HID_ITEM_FORMAT_SHORT;
-    Item->size = b & 3;  //取出数据大小
+    Item->size = b & 3;  //
 
     switch(Item->size){
-        case 0: // 没有数据区,start指向下一个item开始处
+        case 0: // ,startitem
             return Start;
 
         case 1:
             if ((End - Start) < 1)
                 return NULL;
-            Item->data.Data_u8 = *Start++;   // 取出1字节数据
+            Item->data.Data_u8 = *Start++;   // 1
             return Start;
 
         case 2:
             if ((End - Start) < 2)
                 return NULL;
             Item->data.Data_u16 = le16_to_cpu(*((__u16 *)Start));
-            Start = (__u8 *)((__u16 *)Start + 1);   // start加2
+            Start = (__u8 *)((__u16 *)Start + 1);   // start2
             return Start;
 
         case 3:
-            Item->size++;   // 强制调整到4字节
+            Item->size++;   // 4
             if ((End - Start) < 4)
                 return NULL;
             Item->data.Data_u32 = le32_to_cpu(*((unsigned int*)Start));
-            Start = (__u8 *)((unsigned int *)Start + 1);    // start加4
+            Start = (__u8 *)((unsigned int *)Start + 1);    // start4
             return Start;
     }
 
@@ -1440,13 +1440,13 @@ static __u8 *HidFetchItem(__u8 *Start, __u8 *End, usbHidItem_t *Item)
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
 int HidParseReport(__u8 *ReportData, unsigned int ReportSize, HidDev_t *HidDev)
 {
-    usbHidParser_t *parser = NULL;  /* 因为usbHidParser_t结构大于16k, 因此使用malloc */
+    usbHidParser_t *parser = NULL;  /* usbHidParser_t16k, malloc */
     usbHidItem_t item;
     __u8 *end = NULL;
     int ret = 0;
@@ -1475,12 +1475,12 @@ int HidParseReport(__u8 *ReportData, unsigned int ReportSize, HidDev_t *HidDev)
     HidDev->collection_size = USB_HID_DEFAULT_NUM_COLLECTIONS;
     parser->HidDev = HidDev;
 
-    // 从设备报告描述符中读取一个item项
+    // item
     end = ReportData + ReportSize;
     while ((ReportData = HidFetchItem(ReportData, end, &item)) != NULL) {
         print_item(&item);
 
-        /* 现在Long item项还没有使用,所以这里不支持 */
+        /* Long item, */
         if (item.format != USB_HID_ITEM_FORMAT_SHORT) {
             hal_log_err("ERR: unexpected long global item\n");
             ret = USB_ERR_UNKOWN_ERROR;
@@ -1536,18 +1536,18 @@ int HidParseReport(__u8 *ReportData, unsigned int ReportSize, HidDev_t *HidDev)
                 }
         }
 
-        // 解析完了
+        // 
         if (ReportData == end) {
-            // 入栈操作多于出栈操作,比如COLLECTION (Application)就是入栈, END_COLLECTION对应出栈
-            // 目前定义堆栈大小为4个, #define HID_COLLECTION_STACK_SIZE 4
-            // 所以报告描述符脚本书写有误,返回NULL,失败
+            // ,COLLECTION (Application), END_COLLECTION
+            // 4, #define HID_COLLECTION_STACK_SIZE 4
+            // ,NULL,
             if (parser->collection_stack_ptr) {
                 hal_log_err("ERR: unbalanced collection at end of report description\n");
                 ret = USB_ERR_UNKOWN_ERROR;
                 goto ERR2;
             }
 
-            // 该变量也是通过入栈,出栈收集的,所以也必须配对
+            // ,,
             if (parser->local.delimiter_depth) {
                 hal_log_err("ERR: unbalanced delimiter at end of report description\n");
                 ret = USB_ERR_UNKOWN_ERROR;
@@ -1561,12 +1561,12 @@ int HidParseReport(__u8 *ReportData, unsigned int ReportSize, HidDev_t *HidDev)
                 hal_free(parser);
             }
 
-            //正常解析成功,释放vmalloc到的parser解释器结构体内存.
+            //,vmallocparser.
             return USB_ERR_SUCCESS;
         }
     }
 
-    // 报告描述脚本有误
+    // 
     hal_log_err("ERR: item fetching failed at offset %d\n", (int)(end - ReportData));
 
     ret = USB_ERR_UNKOWN_ERROR;
@@ -1598,7 +1598,7 @@ ERR0:
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */

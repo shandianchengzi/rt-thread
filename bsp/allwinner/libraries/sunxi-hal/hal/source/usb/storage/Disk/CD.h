@@ -89,10 +89,10 @@ typedef struct _MSF_LBA
     unsigned int lba;
 } __attribute__((packed)) MSF_LBA_t;
 
-/* 某个 track 的 Toc entry */
+/*  track  Toc entry */
 typedef struct _CDROM_TocEntry
 {
-    unsigned int TrackNumber;      /* Toc 所属的 track     */
+    unsigned int TrackNumber;      /* Toc  track     */
     unsigned int Format;           /* CD-ROM address types */
     unsigned int Adr   : 4;        /* The type of information encode in the Q sub-channel of this blocks */
     unsigned int Ctrl  : 4;        /* attributes of the track */
@@ -103,28 +103,28 @@ typedef struct _CDROM_TocEntry
 
 typedef struct _CD_Rom
 {
-    /* 光驱的信息 */
-    unsigned int DriveType;                    /* 光驱的型号               */
-    unsigned int MaxSpeed;                     /* 光驱最大的速度           */
-    unsigned int CurrentSpeed;                 /* 光驱当前的速度           */
+    /*  */
+    unsigned int DriveType;                    /*                */
+    unsigned int MaxSpeed;                     /*            */
+    unsigned int CurrentSpeed;                 /*            */
     unsigned int Readcd_cdda;                  /* reading audio data using READ_CD */
-    unsigned int WriteAble;                    /* 光驱是否支持写操作       */
-    CDROM_Capitilities_t Capitilities;  /* 光驱的驱动能力           */
-    unsigned int Eject;                        /* 是否支持光驱退出         */
-    unsigned int PowerStatus;                  /* 光驱电源状态. Active, Idle, Standby ? */
+    unsigned int WriteAble;                    /*        */
+    CDROM_Capitilities_t Capitilities;  /*            */
+    unsigned int Eject;                        /*          */
+    unsigned int PowerStatus;                  /* . Active, Idle, Standby ? */
 
-    /* 光碟信息 */
-    unsigned int DiscType;                     /* 光碟的型号               */
-    unsigned int DoubleDisc;                   /* 是否是双面光碟?          */
-    unsigned int LastWriteSector;              /* 但前已经写的最后一个扇区 */
-    unsigned int MultiSession;                 /* 多区段                   */
-    unsigned int NumberOfSUinitPerMUnit;       /* MSF中每M保护的s个数      */
-    unsigned int NumberOfFUinitPerSUnit;       /* MSF中每S保护的F个数      */
+    /*  */
+    unsigned int DiscType;                     /*                */
+    unsigned int DoubleDisc;                   /* ?          */
+    unsigned int LastWriteSector;              /*  */
+    unsigned int MultiSession;                 /*                    */
+    unsigned int NumberOfSUinitPerMUnit;       /* MSFMs      */
+    unsigned int NumberOfFUinitPerSUnit;       /* MSFSF      */
     unsigned int InactivityTimeMultiPlier;     /*                          */
 
-    /* 光驱管理 */
-    unsigned int DriveStatus;                  /* 光驱状态                 */
-    unsigned int IsMeduimPrevent;              /* 是否设置禁止介质移动     */
+    /*  */
+    unsigned int DriveStatus;                  /*                  */
+    unsigned int IsMeduimPrevent;              /*      */
 } CD_Rom_t;
 
 /*
@@ -132,7 +132,7 @@ typedef struct _CD_Rom
 *                     lba_to_msf
 *
 * Description:
-*    LBA转换为msf
+*    LBAmsf
 *
 * Parameters:
 *    lba    :  input.
@@ -141,10 +141,10 @@ typedef struct _CD_Rom
 *    f      :  input.
 *
 * Return value:
-*    无
+*    
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -163,7 +163,7 @@ static inline void lba_to_msf(int lba, u8 *m, u8 *s, u8 *f)
 *                     msf_to_lba
 *
 * Description:
-*    msf转换为LBA
+*    msfLBA
 *
 * Parameters:
 *    m      :  input.
@@ -173,7 +173,7 @@ static inline void lba_to_msf(int lba, u8 *m, u8 *s, u8 *f)
 * Return value:
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */

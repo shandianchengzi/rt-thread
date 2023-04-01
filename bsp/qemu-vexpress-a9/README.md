@@ -1,107 +1,107 @@
-# QEMU VExpress A9板级支持包说明
+# QEMU VExpress A9
 
-## 1 简介
+## 1 
 
-- Versatile Express系统由ARM Ltd提供，作为CortexA9四核处理器的开发环境，硬件由uATX主板和CoreTile Express A9x4子板组成。有关该系统的详细信息，可以访问 [ARM官方页面][1] 。
+- Versatile ExpressARM LtdCortexA9uATXCoreTile Express A9x4 [ARM][1] 
 
-- Versatile Express的核心是一套FPGA的开发环境，Cortex-A芯片基于FPGA上的硬件逻辑，所以本身是不存在这么一款真实芯片。
+- Versatile ExpressFPGACortex-AFPGA
 
-- QEMU/VExpress A9是QEMU模拟器针对ARM VExpress-A9 FPGA开发板进行软件模拟的指令级虚拟机。QEMU/VExpress因为是软件仿真模式，可以配置成多种模式，例如单核Cortex-A9，多核Cortex-A9，以及多核Cortex-A15等。同时也能够模拟出VExpress FPGA开发板上大多数的外设。
+- QEMU/VExpress A9QEMUARM VExpress-A9 FPGAQEMU/VExpressCortex-A9Cortex-A9Cortex-A15VExpress FPGA
 
-- 这份RT-Thread BSP是针对QEMU/VExpress-A9的一份移植，也并未在真实的VExpress FPGA开发板上运行过，主要是提供给开发者一定的便利，能够使用、验证一定的功能。对于真实FPGA开发板的执行情况，不做任何假设。
+- RT-Thread BSPQEMU/VExpress-A9VExpress FPGAFPGA
 
-当前QEMU/VExpress-A9对应的硬件特性：
+QEMU/VExpress-A9
 
-| 硬件 | 描述 |
+|  |  |
 | -- | -- |
-| CPU | ARM Cortex-A9（单核） |
-| 主频 | NA |
+| CPU | ARM Cortex-A9 |
+|  | NA |
 | Memory | 128MB(0x60000000 - 0x68000000) |
 
-## 2 编译说明
+## 2 
 
-- 推荐使用[env工具][2]编译工程，在`bsp/qemu-vexpress-a9`目录中打开env环境，运行命令`scons -j4`
+- [env][2]`bsp/qemu-vexpress-a9`env`scons -j4`
 
 ![image-20220626114422344](figures/image-20220626114422344.png)
 
 
 
-- 如果编译正确无误，会产生rtthread.elf、rtthread.bin文件。在QEMU中一般使用elf方式来运行，所以只需要使用rtthread.elf文件即可。
+- rtthread.elfrtthread.binQEMUelfrtthread.elf
 
   ![image-20220626114611158](figures/image-20220626114611158.png)
 
 
 
-- 当前测试使用的RT-Thread Env版本
+- RT-Thread Env
 
   ![image-20220626113747893](figures/image-20220626113747893.png)
 
-- 当前测试使用的GCC 交叉编译工具链版本
+- GCC 
 
   ![image-20220626114020634](figures/image-20220626114020634.png)
 
-- 如果在Linux下使用，请自行下载[GNU GCC工具链][3]。
+- Linux[GNU GCC][3]
 
-## 3 执行和退出
+## 3 
 
-### 3.1 执行脚本文件说明
+### 3.1 
 
-在这个bsp目录下已经提供了下面几个执行脚本文件，具体的说明如下表所示：
+bsp
 
-| 执行脚本文件 | 运行平台  |  备注  |
+|  |   |    |
 | ------ | ----  | :------:  |
-| qemu.bat | Windows | 普通模式启动运行 |
-| qemu.sh | Linux | 同上 |
-| qemu-dbg.bat | Windows | 调试模式启动运行 |
-| qemu-dbg.sh | Linux | 同上 |
-| qemu-nographic.bat | Windows | 以不带界面的模式启动运行 |
-| qemu-nographic.sh | Linux | 同上 |
+| qemu.bat | Windows |  |
+| qemu.sh | Linux |  |
+| qemu-dbg.bat | Windows |  |
+| qemu-dbg.sh | Linux |  |
+| qemu-nographic.bat | Windows |  |
+| qemu-nographic.sh | Linux |  |
 
-### 3.2 RT-Studio IDE下运行RT-Thread
+### 3.2 RT-Studio IDERT-Thread
 
-推荐使用该方式进行学习，简单易用
 
-- 创建QEMU工程，创建RT-Thread项目，选择基于开发板，选择QEMU-VEXPRESS-A9
+
+- QEMURT-ThreadQEMU-VEXPRESS-A9
 
   ![image-20220626125511399](figures/image-20220626125511399.png)
 
-- 创建好工程后，点击完成，选中qemu-a9工程，编译工程
+- qemu-a9
 
   ![image-20220626125644099](figures/image-20220626125644099.png)
 
-- 调试工程，发现程序停在了main函数开头处
+- main
 
   ![image-20220626125717698](figures/image-20220626125717698.png)
 
-- 点击全速运行，发现程序正常运行起来
+- 
 
   ![image-20220626125837849](figures/image-20220626125837849.png)
 
 
 
-###  3.3 Windows ENV下运行RT-Thread
+###  3.3 Windows ENVRT-Thread
 
-#### 3.3.1 启动QEMU运行
+#### 3.3.1 QEMU
 
-- 当要运行编译好的RT-Thread时，可以在bsp目录下运行env，在env中敲入qemu.bat即可直接运行。这个执行脚本默认把串口输出到stdio（即控制台）上，所以直接执行脚本后就可以输出结果了。
+- RT-Threadbspenvenvqemu.batstdio
 
-- 默认情况下，我们发现已经成功挂载SD卡
+- SD
 
-  > 注意一下，默认情况下，由于SD中没有文件系统存在，因此挂载失败，程序中检测到文件系统挂载失败后，会自动执行mkfs对文件系统进行格式化操作，格式化完后，再次执行mount操作，文件系统挂载成功
+  > SDmkfsmount
 
   ![image-20220626115233881](figures/image-20220626115233881.png)
 
   ![image-20220626115854706](figures/image-20220626115854706.png)
 
-- 文件系统操作，测试文件系统是否可以正常读写
+- 
 
   ![image-20220626115504981](figures/image-20220626115504981.png)
 
-- 当然你也可以尝试使用其他两个**.bat**文件启动运行。
+- **.bat**
 
-#### 3.3.2 退出QEMU运行
+#### 3.3.2 QEMU
 
-在msh提示输入的状态下，按下 **CTRL+C** ，有以下提示之后，按下 **y** ，即可退出 QEMU 。
+msh **CTRL+C**  **y**  QEMU 
 
 ```shell
 hello rt-thread
@@ -110,24 +110,24 @@ msh />
 msh />Terminate batch job (Y/N)? y
 ```
 
-### 3.4 Windows VSCode 中运行RT-Thread
+### 3.4 Windows VSCode RT-Thread
 
-参考文档：[使用VS Code开发RT-Thread](https://www.rt-thread.org/document/site/#/rt-thread-version/rt-thread-standard/application-note/setup/qemu/vscode/an0021-qemu-vscode?id=%e4%bd%bf%e7%94%a8-vs-code-%e5%bc%80%e5%8f%91-rt-thread)
+[VS CodeRT-Thread](https://www.rt-thread.org/document/site/#/rt-thread-version/rt-thread-standard/application-note/setup/qemu/vscode/an0021-qemu-vscode?id=%e4%bd%bf%e7%94%a8-vs-code-%e5%bc%80%e5%8f%91-rt-thread)
 
 
 
-###  3.5 Linux下执行RT-Thread
+###  3.5 LinuxRT-Thread
 
-#### 3.5.1 安装QEMU工具包
+#### 3.5.1 QEMU
 
-在Linux下调试启动与Windows下稍微有点点区别，由于Windows下安装了**env**工具就自带了**qemu-system-arm**，而Linux下默认是没有这个工具的，所以执行执行`./qemu.sh`会报错：
+LinuxWindowsWindows**env****qemu-system-arm**Linux`./qemu.sh`
 
 ```shell
 bsp/qemu-vexpress-a9$ ./qemu-nographic.sh
 ./qemu-nographic.sh: line 5: /usr/bin/qemu-system-arm: No such file or directory
 ```
 
-这个时候需要在Linux平台安装**qemu-system-arm**工具包，以**Linux Ubuntu**平台为例，使用以下命令即可安装对应的工具包：
+Linux**qemu-system-arm****Linux Ubuntu**
 
 ```shell
 bsp/qemu-vexpress-a9$ sudo apt-get install qemu-system-arm
@@ -152,7 +152,7 @@ Setting up qemu-system-arm (1:4.2-3ubuntu6.17) ...
 Processing triggers for man-db (2.9.1-1) ...
 ```
 
-提示安装成功后，输入查看**qemu-system-arm**版本信息的命令，如果可以看到对应的版本信息，证明它可以正常使用。
+**qemu-system-arm**
 
 ```shell
 /bsp/qemu-vexpress-a9$ qemu-system-arm --version
@@ -160,9 +160,9 @@ QEMU emulator version 4.2.1 (Debian 1:4.2-3ubuntu6.17)
 Copyright (c) 2003-2019 Fabrice Bellard and the QEMU Project developers
 ```
 
-#### 3.5.2 启动QEMU运行
+#### 3.5.2 QEMU
 
-由于Linux平台一般都是不带界面的服务器，所以推荐使用`qemu-nographic.sh`脚本来启动运行，参考运行示例如下：
+Linux`qemu-nographic.sh`
 
 ```shell
 bsp/qemu-vexpress-a9$ ./qemu-nographic.sh
@@ -210,11 +210,11 @@ msh />
 msh />
 ```
 
-**注意**： 前面的错误信息可以忽略，能看到RT-Thread的启动logo输出，以及msh能正常输入输出，即可进行代码调试了。
+**** RT-Threadlogomsh
 
-#### 3.5.3 退出QEMU运行
+#### 3.5.3 QEMU
 
-Linux下退出QEMU的方式与Windows下有些不一样；在msh提示输入的状态下，按下 **CTRL+A** ，再按下 **X** ，即可退出 QEMU 。
+LinuxQEMUWindowsmsh **CTRL+A**  **X**  QEMU 
 
 ```shell
 hello rt-thread
@@ -225,22 +225,22 @@ msh />QEMU: Terminated
 
 
 
-## 4 支持情况
+## 4 
 
-| 驱动 | 支持情况  |  备注  |
+|  |   |    |
 | ------ | ----  | :------:  |
-| UART | 支持 | UART0/1 |
-| SD/MMC | 支持 |  |
-| CLCD | 支持 |  |
-| Key | 支持 |  |
-| Mouse | 支持 |  |
-| EMAC | 支持 |  |
+| UART |  | UART0/1 |
+| SD/MMC |  |  |
+| CLCD |  |  |
+| Key |  |  |
+| Mouse |  |  |
+| EMAC |  |  |
 
 
 
-## 5 联系人信息
+## 5 
 
-维护人：[bernard][4]  [recan-li][5]
+[bernard][4]  [recan-li][5]
 
 [1]: http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.subset.boards.express/index.html
 [2]: https://www.rt-thread.org/page/download.html

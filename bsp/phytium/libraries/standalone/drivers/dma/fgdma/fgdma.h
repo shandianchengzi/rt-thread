@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fgdma.h
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:25:35
- * Description:  This files is for gdma user api implementation
+ * Description: This files is for gdma user api implementation
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   huanghe    2021-11-5    init commit
  * 1.1   zhugengyu  2022-5-16    modify according to tech manual.
  */
@@ -59,12 +59,12 @@ typedef enum
     FGDMA_CHAN15_INDEX = 15,
 
     FGDMA_NUM_OF_CHAN
-} FGdmaChanIndex; /* 16个独立通道, 0 ~ 15 */
+} FGdmaChanIndex; /* 16, 0 ~ 15 */
 
 typedef enum
 {
-    FGDMA_OPER_NONE_PRIORITY_POLL = -1, /* Priority = -1 表示读写请求仲裁模式为Poll */
-    FGDMA_OPER_PRIORITY0 = 0, /* Priority >= 0 表示读写请求仲裁模式为Qos */
+    FGDMA_OPER_NONE_PRIORITY_POLL = -1, /* Priority = -1 Poll */
+    FGDMA_OPER_PRIORITY0 = 0, /* Priority >= 0 Qos */
     FGDMA_OPER_PRIORITY1 = 1,
     FGDMA_OPER_PRIORITY2 = 2,
     FGDMA_OPER_PRIORITY3 = 3,
@@ -80,13 +80,13 @@ typedef enum
     FGDMA_OPER_PRIORITY13 = 13,
     FGDMA_OPER_PRIORITY14 = 14,
     FGDMA_OPER_PRIORITY15 = 15
-} FGdmaOperPriority; /* Qos配置，值越高，优先级越高 */
+} FGdmaOperPriority; /* Qos */
 
 typedef enum
 {
-    FGDMA_OPER_DIRECT = 0, /* 直接操作模式 */
-    FGDMA_OPER_BDL /* BDL操作模式 */
-} FGdmaOperMode; /* 支持的操作模式 */
+    FGDMA_OPER_DIRECT = 0, /*  */
+    FGDMA_OPER_BDL /* BDL */
+} FGdmaOperMode; /*  */
 
 typedef enum
 {
@@ -95,20 +95,20 @@ typedef enum
     FGDMA_BURST_SIZE_4_BYTE = 2,
     FGDMA_BURST_SIZE_8_BYTE = 3,
     FGDMA_BURST_SIZE_16_BYTE = 4
-} FGdmaBurstSize; /* 支持的读写请求size大小 */
+} FGdmaBurstSize; /* size */
 
 #define FGDMA_GET_BURST_SIZE(brust_align)   (1U << brust_align)
 
 typedef enum
 {
-    FGDMA_CHAN_EVT_FIFO_EMPTY = 0, /* 通道Fifo空事件 */
-    FGDMA_CHAN_EVT_FIFO_FULL,      /* 通道Fifo满事件 */
-    FGDMA_CHAN_EVT_BDL_END,        /* BDL模式下一个BDL条目传输完成 */
-    FGDMA_CHAN_EVT_TRANS_END,      /* 所有传输数据完成 */
-    FGDMA_CHAN_EVT_BUSY,           /* 前一次传输未完成，当前还处于传输中 */
+    FGDMA_CHAN_EVT_FIFO_EMPTY = 0, /* Fifo */
+    FGDMA_CHAN_EVT_FIFO_FULL,      /* Fifo */
+    FGDMA_CHAN_EVT_BDL_END,        /* BDLBDL */
+    FGDMA_CHAN_EVT_TRANS_END,      /*  */
+    FGDMA_CHAN_EVT_BUSY,           /*  */
 
     FGDMA_CHAN_NUM_OF_EVT
-} FGdmaChanEvtType; /* 通道中断事件 */
+} FGdmaChanEvtType; /*  */
 
 #define FGDMA_SUCCESS           FT_SUCCESS
 #define FGDMA_ERR_NOT_INIT      FT_MAKE_ERRCODE(ErrModBsp, ErrGdma, 0)
@@ -118,7 +118,7 @@ typedef enum
 #define FGDMA_ERR_INVALID_SIZE  FT_MAKE_ERRCODE(ErrModBsp, ErrGdma, 4)
 #define FGDMA_ERR_BDL_NOT_ENOUGH  FT_MAKE_ERRCODE(ErrModBsp, ErrGdma, 5)
 
-#define FGDMA_ADDR_ALIGMENT                      128U  /* 直接模式和BDL模式的地址需要按128位对齐 */
+#define FGDMA_ADDR_ALIGMENT                      128U  /* BDL128 */
 
 /**************************** Type Definitions *******************************/
 typedef struct _FGdma FGdma;
@@ -126,71 +126,71 @@ typedef struct _FGdmaChan FGdmaChan;
 
 typedef struct
 {
-    u32 instance_id;               /* GDMA控制器ID */
-    u32 irq_num;                   /* GDMA控制器中断号 */
-    u32 irq_prority;               /* GDMA控制器中断优先级 */
-    volatile uintptr_t base_addr;  /* GDMA控制器基地址 */
-    FGdmaOperPriority rd_qos;      /* 读操作优先级 */
-    FGdmaOperPriority wr_qos;      /* 写操作优先级 */
-} FGdmaConfig; /* GDMA控制器配置 */
+    u32 instance_id;               /* GDMAID */
+    u32 irq_num;                   /* GDMA */
+    u32 irq_prority;               /* GDMA */
+    volatile uintptr_t base_addr;  /* GDMA */
+    FGdmaOperPriority rd_qos;      /*  */
+    FGdmaOperPriority wr_qos;      /*  */
+} FGdmaConfig; /* GDMA */
 
 typedef struct
 {
-    u32 src_addr_l; /* 0x0, 数据源地址低32位 */
-    u32 src_addr_h; /* 0x4, 数据源地址高32位 */
-    u32 dst_addr_l; /* 0x8, 数据目的地址低32位 */
-    u32 dst_addr_h; /* 0xc, 数据目的地址高32位 */
+    u32 src_addr_l; /* 0x0, 32 */
+    u32 src_addr_h; /* 0x4, 32 */
+    u32 dst_addr_l; /* 0x8, 32 */
+    u32 dst_addr_h; /* 0xc, 32 */
 #define FGDMA_SRC_TC_BDL_BURST_SET(x)      SET_REG32_BITS((x), 1U, 0U)
 #define FGDMA_SRC_TC_BDL_SIZE_SET(x)       SET_REG32_BITS((x), 6U, 4U)
 #define FGDMA_SRC_TC_BDL_LEN_SET(x)        SET_REG32_BITS((x), 15U, 8U)
-    u32 src_tc;     /* 0x10, 源传输控制位 */
+    u32 src_tc;     /* 0x10,  */
 #define FGDMA_DST_TC_BDL_BURST_SET(x)      SET_REG32_BITS((x), 1U, 0U)
 #define FGDMA_DST_TC_BDL_SIZE_SET(x)       SET_REG32_BITS((x), 6U, 4U)
 #define FGDMA_DST_TC_BDL_LEN_SET(x)        SET_REG32_BITS((x), 15U, 8U)
-    u32 dst_tc;     /* 0x14, 目的传输控制 */
-    u32 total_bytes;/* 0x18, 传输数据总量，以Byte为单位  */
-    u32 ioc;        /* 0x1c, 该条目传输完成中断产生控制位  */
-} __attribute__((__packed__)) FGdmaBdlDesc; /* BDL描述符 */
+    u32 dst_tc;     /* 0x14,  */
+    u32 total_bytes;/* 0x18, Byte  */
+    u32 ioc;        /* 0x1c,   */
+} __attribute__((__packed__)) FGdmaBdlDesc; /* BDL */
 
 FASSERT_STATIC(0x20U == sizeof(FGdmaBdlDesc));
 
 typedef struct
 {
-    FGdmaChanIndex      chan_id; /* DMA通道ID */
-    FGdmaOperPriority   rd_qos;  /* DMA通道读Qos配置 */
-    FGdmaOperPriority   wr_qos;  /* DMA通道写Qos配置 */
-    FGdmaOperMode       trans_mode; /* DMA通道的操作模式，直接模式或者BDL模式 */
-    /* Direct模式有效 */
-    FGdmaBurstSize      rd_align; /* DMA读请求的Burst对齐方式 */
-    FGdmaBurstSize      wr_align; /* DMA写请求的Burst对齐方式 */
-    /* BDL模式有效 */
-    boolean             roll_back; /* 循环模式，TRUE: 当前BDL列表完成后，从第一个BDL项从新开始传输 */
+    FGdmaChanIndex      chan_id; /* DMAID */
+    FGdmaOperPriority   rd_qos;  /* DMAQos */
+    FGdmaOperPriority   wr_qos;  /* DMAQos */
+    FGdmaOperMode       trans_mode; /* DMABDL */
+    /* Direct */
+    FGdmaBurstSize      rd_align; /* DMABurst */
+    FGdmaBurstSize      wr_align; /* DMABurst */
+    /* BDL */
+    boolean             roll_back; /* TRUE: BDLBDL */
     FGdmaBdlDesc        *descs;
     u32                 total_desc_num;
     u32                 valid_desc_num;
-} FGdmaChanConfig; /* DMA通道配置 */
+} FGdmaChanConfig; /* DMA */
 
 typedef void (*FGdmaChanEvtHandler)(FGdmaChan *const chan, void *args);
 
 typedef struct _FGdmaChan
 {
-    FGdmaChanConfig config;     /* DMA通道配置 */
-    FGdma *gdma;                /* DMA控制器实例 */
-    FGdmaChanEvtHandler evt_handlers[FGDMA_CHAN_NUM_OF_EVT];  /* DMA通道事件回调函数 */
-    void *evt_handler_args[FGDMA_CHAN_NUM_OF_EVT];            /* DMA通道事件回调函数入参 */
-} FGdmaChan; /* GDMA通道实例 */
+    FGdmaChanConfig config;     /* DMA */
+    FGdma *gdma;                /* DMA */
+    FGdmaChanEvtHandler evt_handlers[FGDMA_CHAN_NUM_OF_EVT];  /* DMA */
+    void *evt_handler_args[FGDMA_CHAN_NUM_OF_EVT];            /* DMA */
+} FGdmaChan; /* GDMA */
 
 typedef struct _FGdma
 {
-    FGdmaConfig config;       /* GDMA控制器配置 */
-    u32 is_ready;             /* GDMA控制器初始化是否完成 */
-    FGdmaChan *chans[FGDMA_NUM_OF_CHAN]; /* GDMA通道实例，如果通道没有分配，值为NULL */
-} FGdma; /* GDMA控制器实例 */
+    FGdmaConfig config;       /* GDMA */
+    u32 is_ready;             /* GDMA */
+    FGdmaChan *chans[FGDMA_NUM_OF_CHAN]; /* GDMANULL */
+} FGdma; /* GDMA */
 
 /************************** Variable Definitions *****************************/
 
 /***************** Macros (Inline Functions) Definitions *********************/
-/* 获取默认的通道配置 */
+/*  */
 #define FGDMA_DEFAULT_DIRECT_CHAN_CONFIG(_chan_id)\
 (FGdmaChanConfig){ \
     .chan_id = (_chan_id),\
@@ -217,45 +217,45 @@ typedef struct _FGdma
 }
 
 /************************** Function Prototypes ******************************/
-/* 获取GDMA控制器默认配置 */
+/* GDMA */
 const FGdmaConfig *FGdmaLookupConfig(u32 instance_id);
 
-/* 初始化GDMA控制器实例 */
+/* GDMA */
 FError FGdmaCfgInitialize(FGdma *const instance_p, const FGdmaConfig *config_p);
 
-/* 去初始化GDMA控制器实例 */
+/* GDMA */
 void FGdmaDeInitialize(FGdma *const instance_p);
 
-/* 分配指定GDMA通道 */
+/* GDMA */
 FError FGdmaAllocateChan(FGdma *const instance_p, FGdmaChan *const chan_p,
                          const FGdmaChanConfig *config_p);
 
-/* 释放GDMA通道 */
+/* GDMA */
 FError FGdmaDellocateChan(FGdmaChan *const chan_p);
 
-/* 直接操作模式下发起DMA传输 */
+/* DMA */
 FError FGdmaDirectTransfer(FGdmaChan *const chan_p, uintptr src_addr, uintptr dst_addr, fsize_t data_len);
 
-/* 设置BDL描述符的一个条目 */
+/* BDL */
 FError FGdmaAppendBDLEntry(FGdmaChan *const chan_p, uintptr src_addr, uintptr dst_addr, fsize_t data_len);
 
-/* BDL操作模式下发起DMA传输 */
+/* BDLDMA */
 FError FGdmaBDLTransfer(FGdmaChan *const chan_p);
 
-/* 使能启动GDMA控制器 */
+/* GDMA */
 FError FGdmaStart(FGdma *const instance_p);
 
-/* 停止GDMA控制器 */
+/* GDMA */
 FError FGdmaStop(FGdma *const instance_p);
 
-/* GDMA中断处理函数 */
+/* GDMA */
 void FGdmaIrqHandler(s32 vector, void *args);
 
-/* 注册GDMA通道事件回调函数 */
+/* GDMA */
 void FGdmaChanRegisterEvtHandler(FGdmaChan *const chan_p, FGdmaChanEvtType evt,
                                  FGdmaChanEvtHandler handler, void *handler_arg);
 
-/* 打印当前的GDMA寄存器值, DEBUG模式下有效 */
+/* GDMA, DEBUG */
 void FGdmaDumpRegisterVals(uintptr base_addr, u32 max_chan);
 
 #ifdef __cplusplus

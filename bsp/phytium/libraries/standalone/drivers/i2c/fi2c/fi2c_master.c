@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,18 +14,18 @@
  * FilePath: fi2c_master.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:36:46
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 
 /*
-    - 一些驱动模块，直接操作硬件的I/O接口，无法实现有意义的操作，此时需要针对中间件或者用户使用习惯设计此模块 （i2c,nand,eth）
-    - 部分场景适用, 分角色的 I/O 操作
-    - 此模块的函数原型，在fooxx.h 中声明一次，方便用户或者中间件层调用
+    - I/O i2c,nand,eth
+    - ,  I/O 
+    - fooxx.h 
 
 */
 
@@ -56,10 +56,10 @@
 /*****************************************************************************/
 /**
  * @name: FI2cMasterStartTrans
- * @msg: I2C主机开始传输
+ * @msg: I2C
  * @return {*}
- * @param {FI2c} *instance_p, I2C驱动实例数据
- * @param {u32} mem_addr, 从机的片内偏移
+ * @param {FI2c} *instance_p, I2C
+ * @param {u32} mem_addr, 
  * @param {u8} mem_byte_len, Size of internal memory address 1->8bit ~ 4->32bit
  * @param {u8} flag ,for cmd reg STOP,RESTART.
  */
@@ -73,7 +73,7 @@ static FError FI2cMasterStartTrans(FI2c *instance_p, u32 mem_addr, u8 mem_byte_l
     ret = FI2cWaitBusBusy(base_addr);
     if (FI2C_SUCCESS != ret)
         return ret;
-    ret = FI2cSetTar(base_addr, instance_p->config.slave_addr); /* 设备地址 */
+    ret = FI2cSetTar(base_addr, instance_p->config.slave_addr); /*  */
     if (FI2C_SUCCESS != ret)
         return ret;
     while (addr_len)
@@ -101,9 +101,9 @@ static FError FI2cMasterStartTrans(FI2c *instance_p, u32 mem_addr, u8 mem_byte_l
 
 /**
  * @name: FI2cMasterStopTrans
- * @msg: I2C主机结束传输
+ * @msg: I2C
  * @return {*}
- * @param {FI2c} *instance_p, I2C驱动实例数据
+ * @param {FI2c} *instance_p, I2C
  */
 static FError FI2cMasterStopTrans(FI2c *instance_p)
 {
@@ -138,13 +138,13 @@ static FError FI2cMasterStopTrans(FI2c *instance_p)
 
 /**
  * @name: FI2cMasterReadPoll
- * @msg: I2C主机读，阻塞直到完成读操作或失败
- * @return {FError *} 返回错误码
- * @param {FI2c} *instance_p I2C驱动实例数据
- * @param {u32} mem_addr 从机的内部偏移地址
+ * @msg: I2C
+ * @return {FError *} 
+ * @param {FI2c} *instance_p I2C
+ * @param {u32} mem_addr 
  * @param {u8} mem_byte_len, Size of internal memory address 1->8bit ~ 4->32bit
- * @param {u8} *buf_p 读目的缓冲区
- * @param {int} buf_len 读目的缓冲区长度
+ * @param {u8} *buf_p 
+ * @param {int} buf_len 
  */
 FError FI2cMasterReadPoll(FI2c *instance_p, u32 mem_addr, u8 mem_byte_len, u8 *buf_p, u32 buf_len)
 {
@@ -228,13 +228,13 @@ FError FI2cMasterReadPoll(FI2c *instance_p, u32 mem_addr, u8 mem_byte_len, u8 *b
 
 /**
  * @name: FI2cMasterWritePoll
- * @msg: I2C主机写，阻塞直到完成写操作或失败
- * @return {FError *} 返回错误码
- * @param {FI2c} *instance_p I2C驱动实例数据
- * @param {u32} mem_addr 从机的内部偏移地址
+ * @msg: I2C
+ * @return {FError *} 
+ * @param {FI2c} *instance_p I2C
+ * @param {u32} mem_addr 
  * @param {u8} mem_byte_len, Size of internal memory address 1->8bit ~ 4->32bit
- * @param {u8} *buf_p 写源缓冲区
- * @param {size_t} buf_len 写源缓冲区长度
+ * @param {u8} *buf_p 
+ * @param {size_t} buf_len 
  */
 FError FI2cMasterWritePoll(FI2c *instance_p, u32 mem_addr, u8 mem_byte_len, const u8 *buf_p, u32 buf_len)
 {
@@ -302,13 +302,13 @@ FError FI2cMasterWritePoll(FI2c *instance_p, u32 mem_addr, u8 mem_byte_len, cons
 
 /**
  * @name: FI2cMasterReadIntr
- * @msg: I2C主机读，中断完成读操作或失败
- * @return {FError *} 返回错误码
- * @param {FI2c} *instance_p I2C驱动实例数据
- * @param {u32} mem_addr 从机的内部偏移地址
+ * @msg: I2C
+ * @return {FError *} 
+ * @param {FI2c} *instance_p I2C
+ * @param {u32} mem_addr 
  * @param {u8} mem_byte_len, Size of internal memory address 1->8bit ~ 4->32bit
- * @param {u8} *buf_p 读目的缓冲区
- * @param {int} buf_len 读目的缓冲区长度
+ * @param {u8} *buf_p 
+ * @param {int} buf_len 
  */
 FError FI2cMasterReadIntr(FI2c *instance_p, u32 mem_addr, u8 mem_byte_len, u8 *buf_p, u32 buf_len)
 {
@@ -344,7 +344,7 @@ FError FI2cMasterReadIntr(FI2c *instance_p, u32 mem_addr, u8 mem_byte_len, u8 *b
     instance_p->rxframe.rx_total_num = buf_len;
     instance_p->txframe.tx_total_num = buf_len;
     instance_p->rxframe.rx_cnt = 0;
-    FI2C_SET_RX_TL(instance_p->config.base_addr, 0);/* 0 表示接收缓冲区大于等于 1 时触发中断 */
+    FI2C_SET_RX_TL(instance_p->config.base_addr, 0);/* 0  1  */
     ret = FI2cMasterStartTrans(instance_p, mem_addr, mem_byte_len, FI2C_DATA_CMD_WRITE);
     instance_p->status = STATUS_READ_IN_PROGRESS;
     if (FI2C_SUCCESS != ret)
@@ -359,13 +359,13 @@ FError FI2cMasterReadIntr(FI2c *instance_p, u32 mem_addr, u8 mem_byte_len, u8 *b
 
 /**
  * @name: FI2cMasterWriteIntr
- * @msg: I2C主机写，中断写操作或失败
- * @return {FError *} 返回错误码
- * @param {FI2c} *instance_p I2C驱动实例数据
- * @param {u32} mem_addr 从机的内部偏移地址
+ * @msg: I2C
+ * @return {FError *} 
+ * @param {FI2c} *instance_p I2C
+ * @param {u32} mem_addr 
  * @param {u8} mem_byte_len, Size of internal memory address 1->8bit ~ 4->32bit
- * @param {u8} *buf_p 写源缓冲区
- * @param {size_t} buf_len 写源缓冲区长度
+ * @param {u8} *buf_p 
+ * @param {size_t} buf_len 
  */
 FError FI2cMasterWriteIntr(FI2c *instance_p, u32 mem_addr, u8 mem_byte_len, const u8 *buf_p, u32 buf_len)
 {

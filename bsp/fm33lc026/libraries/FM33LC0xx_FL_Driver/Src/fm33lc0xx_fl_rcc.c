@@ -36,9 +36,9 @@
   */
 
 /**
-  * @brief  获取USB提供给系统总线时钟的频率
+  * @brief  USB
   *
-  * @retval USB提供给SYSCLK的时钟频率(Hz)
+  * @retval USBSYSCLK(Hz)
   */
 uint32_t FL_RCC_GetUSBClockFreqToSysclk(void)
 {
@@ -53,38 +53,38 @@ uint32_t FL_RCC_GetUSBClockFreqToSysclk(void)
 }
 
 /**
-  * @brief  获取系统当前工作时钟SYSCLK
+  * @brief  SYSCLK
   *
-  * @note   函数中用到了 @ref XTHF_VALUE 宏，这个宏应该被定义为外部晶振的输入频率值
+  * @note    @ref XTHF_VALUE 
   *
-  * @retval 系统时钟频率(Hz)
+  * @retval (Hz)
   *
   */
 uint32_t FL_RCC_GetSystemClockFreq(void)
 {
     uint32_t frequency = 0;
-    /* 获取系统时钟源 */
+    /*  */
     switch(FL_RCC_GetSystemClockSource())
     {
-        /* 系统时钟源为内部RCHF */
+        /* RCHF */
         case FL_RCC_SYSTEM_CLK_SOURCE_RCHF:
-            /* 内部RCHF默认为8MHz ,可以配置为16或24M */
+            /* RCHF8MHz ,1624M */
             frequency = FL_RCC_GetRCHFClockFreq();
             break;
-        /* 系统时钟源为XTHF */
+        /* XTHF */
         case FL_RCC_SYSTEM_CLK_SOURCE_XTHF:
             frequency = XTHFClock;
             break;
-        /* 系统时钟源为PLL */
+        /* PLL */
         case FL_RCC_SYSTEM_CLK_SOURCE_PLL:
             frequency = FL_RCC_GetPLLClockFreq();
             break;
-        /* 系统时钟源为内部RCMF */
+        /* RCMF */
         case FL_RCC_SYSTEM_CLK_SOURCE_RCMF_PSC:
-            /* 根据RCMF的分频配置得出系统时钟 */
+            /* RCMF */
             frequency = FL_RCC_GetRCMFClockFreq();
             break;
-        /* 系统时钟源为LSCLK */
+        /* LSCLK */
         case FL_RCC_SYSTEM_CLK_SOURCE_LSCLK:
             #ifdef USE_LSCLK_CLOCK_SRC_LPOSC
             frequency = 32000;
@@ -92,12 +92,12 @@ uint32_t FL_RCC_GetSystemClockFreq(void)
             frequency = XTLFClock;
             #endif
             break;
-        /* 系统时钟源为USB BCK */
+        /* USB BCK */
         case FL_RCC_SYSTEM_CLK_SOURCE_USBCLK:
-            /* USB时钟频率获取 */
+            /* USB */
             frequency = FL_RCC_GetUSBClockFreqToSysclk();
             break;
-        /* 系统时钟源为LPOSC */
+        /* LPOSC */
         case FL_RCC_SYSTEM_CLK_SOURCE_LPOSC:
             frequency = 32000;
             break;
@@ -108,15 +108,15 @@ uint32_t FL_RCC_GetSystemClockFreq(void)
     return frequency;
 }
 /**
-  * @brief  获取AHB总线时钟频率
+  * @brief  AHB
   *
-  * @retval AHB总线时钟频率(Hz)
+  * @retval AHB(Hz)
   *
   */
 uint32_t FL_RCC_GetAHBClockFreq(void)
 {
     uint32_t frequency = 0;
-    /* 获取AHB分频系数，AHB源自系统主时钟 */
+    /* AHBAHB */
     switch(FL_RCC_GetAHBPrescaler())
     {
         case FL_RCC_AHBCLK_PSC_DIV1:
@@ -142,15 +142,15 @@ uint32_t FL_RCC_GetAHBClockFreq(void)
 }
 
 /**
-  * @brief  获取当前系统的APB1总线时钟
+  * @brief  APB1
   *
-  * @retval APB1总线时钟频率(Hz)
+  * @retval APB1(Hz)
   *
   */
 uint32_t FL_RCC_GetAPB1ClockFreq(void)
 {
     uint32_t frequency = 0;
-    /* 获取APB1分频系数，APB源自AHB */
+    /* APB1APBAHB */
     switch(FL_RCC_GetAPB1Prescaler())
     {
         case FL_RCC_APB1CLK_PSC_DIV1:
@@ -175,15 +175,15 @@ uint32_t FL_RCC_GetAPB1ClockFreq(void)
     return frequency;
 }
 /**
-  * @brief  获取当前系统的APB2总线时钟
+  * @brief  APB2
   *
-  * @retval APB2总线时钟频率(Hz)
+  * @retval APB2(Hz)
   *
   */
 uint32_t FL_RCC_GetAPB2ClockFreq(void)
 {
     uint32_t frequency = 0;
-    /* 获取APB2分频系数，APB源自AHB */
+    /* APB2APBAHB */
     switch(FL_RCC_GetAPB2Prescaler())
     {
         case FL_RCC_APB2CLK_PSC_DIV1:
@@ -208,9 +208,9 @@ uint32_t FL_RCC_GetAPB2ClockFreq(void)
     return frequency;
 }
 /**
-  * @brief  获取RCMF输出时钟频率
+  * @brief  RCMF
   *
-  * @retval RCMF输出时钟频率(Hz)
+  * @retval RCMF(Hz)
   *
   */
 uint32_t FL_RCC_GetRCMFClockFreq(void)
@@ -237,9 +237,9 @@ uint32_t FL_RCC_GetRCMFClockFreq(void)
     return frequency;
 }
 /**
-  * @brief  获取RCHF输出时钟频率
+  * @brief  RCHF
   *
-  * @retval 返回RCHF输出时钟频率(Hz)
+  * @retval RCHF(Hz)
   *
   */
 uint32_t FL_RCC_GetRCHFClockFreq(void)
@@ -263,20 +263,20 @@ uint32_t FL_RCC_GetRCHFClockFreq(void)
     return frequency;
 }
 /**
-  * @brief  获取PLL输出时钟频率
+  * @brief  PLL
   *
-  * @retval 返回PLL输出时钟频率(Hz)
+  * @retval PLL(Hz)
   *
   */
 uint32_t FL_RCC_GetPLLClockFreq(void)
 {
     uint32_t frequency = 0;
     uint32_t multiplier = 0;
-    /* 获取PLL时钟源 */
+    /* PLL */
     switch(FL_RCC_PLL_GetClockSource())
     {
         case FL_RCC_PLL_CLK_SOURCE_RCHF:
-            /* 获取RCHF配置主频 */
+            /* RCHF */
             frequency = FL_RCC_GetRCHFClockFreq();
             break;
         case FL_RCC_PLL_CLK_SOURCE_XTHF:
@@ -286,7 +286,7 @@ uint32_t FL_RCC_GetPLLClockFreq(void)
             frequency = FL_RCC_GetRCHFClockFreq();
             break;
     }
-    /* 获取PLL时钟分频系数 */
+    /* PLL */
     switch(FL_RCC_PLL_GetPrescaler())
     {
         case FL_RCC_PLL_PSC_DIV1:

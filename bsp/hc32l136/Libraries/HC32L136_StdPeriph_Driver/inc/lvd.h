@@ -76,7 +76,7 @@ extern "C"
 
 /**
  ******************************************************************************
- ** \brief LVD输入电压源
+ ** \brief LVD
  **
  ** \note
  ******************************************************************************/
@@ -90,7 +90,7 @@ typedef enum en_lvd_input
 
 /**
  ******************************************************************************
- ** \brief LVD监测电压选择
+ ** \brief LVD
  **
  ** \note
  ******************************************************************************/
@@ -104,7 +104,7 @@ typedef enum en_lvd_threshold
     LvdTH2p3V = 5u,                  ///< 2.3V
     LvdTH2p4V = 6u,                  ///< 2.4V
     LvdTH2p5V = 7u,                  ///< 2.5V
-    LvdTH2p6V = 8u,                  ///< 2.6V 默认电压
+    LvdTH2p6V = 8u,                  ///< 2.6V 
     LvdTH2p7V = 9u,                  ///< 2.7V
     LvdTH2p8V = 10u,                  ///< 2.8V
     LvdTH2p9V = 11u,                  ///< 2.9V
@@ -116,7 +116,7 @@ typedef enum en_lvd_threshold
 
 /**
  ******************************************************************************
- ** \brief LVD输出滤波时间
+ ** \brief LVD
  **
  ** \note
  ******************************************************************************/
@@ -134,31 +134,31 @@ typedef enum en_lvd_filter_time
 
 /**
  ******************************************************************************
- ** \brief LVD中断触发方式
+ ** \brief LVD
  **
  ** \note
  ******************************************************************************/
 typedef enum en_lvd_irq_type
 {
-    LvdIrqHigh  = 0u,                 ///< 高电平触发
-    LvdIrqRise  = 1u,                 ///< 上升沿触发
-    LvdIrqFall  = 2u,                 ///< 下降沿触发
+    LvdIrqHigh  = 0u,                 ///< 
+    LvdIrqRise  = 1u,                 ///< 
+    LvdIrqFall  = 2u,                 ///< 
 }en_lvd_irq_type_t;
 
 /**
  ******************************************************************************
- ** \brief LVD配置
+ ** \brief LVD
  ** \note
  ******************************************************************************/
 typedef struct stc_lvd_config
 {
-    boolean_t               bLvdReset;      ///< TRUE-重启,FALSE-中断
-    en_lvd_input_t          enInput;        ///< LVD输入电压源
-    en_lvd_threshold_t      enThreshold;    ///< LVD监测电压
-    boolean_t               bFilter;        ///< 是否使用输出滤波
-    en_lvd_filter_time_t    enFilterTime;   ///< 输出滤波时间
-    en_lvd_irq_type_t       enIrqType;      ///< 中断触发方式
-    func_ptr_t              pfnIrqCbk;      ///< 中断回调函数
+    boolean_t               bLvdReset;      ///< TRUE-,FALSE-
+    en_lvd_input_t          enInput;        ///< LVD
+    en_lvd_threshold_t      enThreshold;    ///< LVD
+    boolean_t               bFilter;        ///< 
+    en_lvd_filter_time_t    enFilterTime;   ///< 
+    en_lvd_irq_type_t       enIrqType;      ///< 
+    func_ptr_t              pfnIrqCbk;      ///< 
 }stc_lvd_config_t;
 
 

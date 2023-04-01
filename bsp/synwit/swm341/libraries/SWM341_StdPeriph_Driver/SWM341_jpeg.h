@@ -5,13 +5,13 @@
 
 
 typedef struct {
-    uint8_t  DoneIEn;           // 解码完成中断使能
-    uint8_t  ErrorIEn;          // 解码出错中断使能
+    uint8_t  DoneIEn;           // 
+    uint8_t  ErrorIEn;          // 
 } JPEG_InitStructure;
 
 
 typedef struct {
-    uint8_t  format;            // 解码输出格式，可取值JPEG_OUT_YUV、JPEG_OUT_YUVsp、JPEG_OUT_XRGB888、...
+    uint8_t  format;            // JPEG_OUT_YUVJPEG_OUT_YUVspJPEG_OUT_XRGB888...
 
     /* for RGB output */
     uint8_t  dither;            // RGB565 dithering enable
@@ -52,12 +52,12 @@ typedef struct {
     uint16_t Height;
 
     struct {
-        uint8_t id;             // 1：Y   2：Cb   3：Cr
-        uint8_t hfactor;        // 颜色分量水平采样因子
-        uint8_t vfactor;        // 颜色分量垂直采样因子
-        uint8_t qtab_id;        // 颜色分量使用的量化表ID
-        uint8_t htab_id_dc;     // 直流分量使用的霍夫曼表ID
-        uint8_t htab_id_ac;     // 交流分量使用的霍夫曼表ID
+        uint8_t id;             // 1Y   2Cb   3Cr
+        uint8_t hfactor;        // 
+        uint8_t vfactor;        // 
+        uint8_t qtab_id;        // ID
+        uint8_t htab_id_dc;     // ID
+        uint8_t htab_id_ac;     // ID
     } CompInfo[3];              // Component Information
     uint8_t CompCnt;
 
@@ -79,7 +79,7 @@ typedef struct {
     } HTable[JFIF_HTAB_MAX];
     uint8_t HTableCnt;
 
-    uint32_t CodeAddr;          // 待解码数据
+    uint32_t CodeAddr;          // 
     uint32_t CodeLen;
 } jfif_info_t;
 

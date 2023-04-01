@@ -14,7 +14,7 @@
 * Date : 2008.07.07
 *
 * Description :
-*           usb的通用设备模型，临时版本，
+*           usb
 * History :
 *
 ********************************************************************************************************************
@@ -25,7 +25,7 @@
 #include "usb_list.h"
 
 //to_usb_interface
-//从sub_devf转换到interface
+//sub_devfinterface
 struct usb_interface *usb_mod_to_usb_interface(struct usb_host_virt_sub_dev *sub_dev)
 {
     if (!sub_dev)
@@ -37,7 +37,7 @@ struct usb_interface *usb_mod_to_usb_interface(struct usb_host_virt_sub_dev *sub
     return sub_dev->sub_dev_interface;
 }
 
-//从intf转换到virt_sub_dev
+//intfvirt_sub_dev
 struct usb_host_virt_sub_dev *usb_mod_interface_to_virt_sub_dev(struct usb_interface *intf)
 {
     if (!intf)
@@ -49,7 +49,7 @@ struct usb_host_virt_sub_dev *usb_mod_interface_to_virt_sub_dev(struct usb_inter
     return intf->virt_sub_dev;
 }
 
-//从intf转换到func_drv
+//intffunc_drv
 struct usb_host_func_drv *usb_mod_interface_to_func_drv(struct usb_interface *intf)
 {
     if (!intf)
@@ -70,7 +70,7 @@ struct usb_host_func_drv *usb_mod_interface_to_func_drv(struct usb_interface *in
 }
 
 //interface_to_usbdev
-//从intf转换到virt_dev
+//intfvirt_dev
 struct usb_host_virt_dev *usb_mod_interface_to_usbdev(struct usb_interface *intf)
 {
     struct usb_host_virt_sub_dev *virt_sub_dev = NULL;

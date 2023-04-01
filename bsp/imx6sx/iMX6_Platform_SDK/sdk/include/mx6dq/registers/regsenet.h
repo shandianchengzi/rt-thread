@@ -2917,7 +2917,7 @@ typedef union _hw_enet_tfwr
  * Reset value: 0x00000000
  *
  * RDSR points to the beginning of the circular receive buffer descriptor queue in external memory.
- * This pointer must be 64-bit aligned (bits 2–0 must be zero); however, This register must be
+ * This pointer must be 64-bit aligned (bits 20 must be zero); however, This register must be
  * initialized prior to operation
  */
 typedef union _hw_enet_rdsr
@@ -2982,7 +2982,7 @@ typedef union _hw_enet_rdsr
  * Reset value: 0x00000000
  *
  * TDSR provides a pointer to the beginning of the circular transmit buffer descriptor queue in
- * external memory. This pointer must be 64-bit aligned (bits 2–0 must be zero); however, This
+ * external memory. This pointer must be 64-bit aligned (bits 20 must be zero); however, This
  * register must be initialized prior to operation.
  */
 typedef union _hw_enet_tdsr

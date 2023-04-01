@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fsdmmc.h
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:55:57
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   zhugengyu  2021/12/2    init
  */
 
@@ -53,7 +53,7 @@ enum
     FSDMMC_ERROR_INTR,
 
     FSDMMC_INTR_NUM
-}; /* 中断类型 */
+}; /*  */
 
 enum
 {
@@ -66,7 +66,7 @@ enum
     FSDMMC_EVT_DATA_WRITE_DONE,
 
     FSDMMC_EVT_NUM
-}; /* 事件类型 */
+}; /*  */
 
 /**
  * This typedef contains data information for the device.
@@ -132,37 +132,37 @@ typedef struct
 
 /************************** Function Prototypes ******************************/
 
-/* 获取FSDMMC控制器默认配置 */
+/* FSDMMC */
 const FSdmmcConfig *FSdmmcLookupConfig(u32 instance_id);
 
-/* 初始化FSDMMC控制器, 使之可以使用 */
+/* FSDMMC,  */
 FError FSdmmcCfgInitialize(FSdmmc *instance_p, const FSdmmcConfig *cofig_p);
 
-/* 去使能FSDMMC控制器, 清零实例数据 */
+/* FSDMMC,  */
 void FSdmmcDeInitialize(FSdmmc *instance_p);
 
-/* 通过FSDMMC轮询方式发送/接收数据和命令 */
+/* FSDMMC/ */
 FError FSdmmcPollTransfer(FSdmmc *instance_p, FSdmmcCmd *cmd_data_p);
 
-/* 通过FSDMMC中断方式发送/接收数据和命令 */
+/* FSDMMC/ */
 FError FSdmmcInterruptTransfer(FSdmmc *instance_p, FSdmmcCmd *cmd_data_p);
 
-/* 获取FSDMMC的中断掩码 */
+/* FSDMMC */
 u32 FSdmmcGetInterruptMask(uintptr base_addr, u32 intr_type);
 
-/* 设置FSDMMC的中断掩码 */
+/* FSDMMC */
 void FSdmmcSetInterruptMask(uintptr base_addr, u32 intr_type, u32 mask, boolean enable);
 
-/* 命令中断响应函数 */
+/*  */
 void FSdmmcCmdInterrupHandler(s32 vector, void *param);
 
-/* 错误中断响应函数 */
+/*  */
 void FSdmmcErrInterrupHandler(s32 vector, void *param);
 
-/* DMA中断响应函数 */
+/* DMA */
 void FSdmmcDmaInterrupHandler(s32 vector, void *param);
 
-/* 注册中断事件响应函数 */
+/*  */
 void FSdmmcRegisterInterruptHandler(FSdmmc *instance_p, u32 event, FSdmmcEventHandler handler);
 
 #ifdef __cplusplus

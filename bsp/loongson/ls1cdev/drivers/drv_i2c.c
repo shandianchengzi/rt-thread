@@ -5,7 +5,7 @@
  *
  * Change Logs:
  * Date           Author       Notes
- * 2017-11-14     勤为本       first version
+ * 2017-11-14            first version
  */
 
 #include <rtthread.h>
@@ -90,8 +90,8 @@ static const struct rt_i2c_bit_ops bit_ops = {
 
     .udelay     = ls1c_udelay,
 
-    .delay_us   = 20,       // 此值为周期(us)
-    .timeout    = 10,       // 单位为tick
+    .delay_us   = 20,       // (us)
+    .timeout    = 10,       // tick
 };
 
 

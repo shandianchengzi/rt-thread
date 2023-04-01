@@ -67,38 +67,38 @@
   */
 
 /**
-  * @brief  复位AES外设
-  * @retval 错误状态，可能值：
-  *         -FL_PASS 外设寄存器值恢复复位值
-  *         -FL_FAIL 未成功执行
+  * @brief  AES
+  * @retval 
+  *         -FL_PASS 
+  *         -FL_FAIL 
   */
 FL_ErrorStatus FL_AES_DeInit(void)
 {
-    /* 外设复位使能 */
+    /*  */
     FL_RCC_EnablePeripheralReset();
-    /* 复位AES */
+    /* AES */
     FL_RCC_EnableResetAPB2Peripheral(FL_RCC_RSTAPB_AES);
     FL_RCC_DisableResetAPB2Peripheral(FL_RCC_RSTAPB_AES);
-    /* 关闭总线时钟 */
+    /*  */
     FL_RCC_DisableGroup2BusClock(FL_RCC_GROUP2_BUSCLK_AES);
-    /* 锁定外设复位功能 */
+    /*  */
     FL_RCC_DisablePeripheralReset();
     return FL_PASS;
 }
 
 /**
-  * @brief  根据 AES_InitStructer 初始化对应外设入口地址的寄存器值.
+  * @brief   AES_InitStructer .
   *
-  * @param  AESx 外设入口地址
-  * @param  AES_InitStructer 指向 @ref FL_AES_InitTypeDef 结构体的指针
+  * @param  AESx 
+  * @param  AES_InitStructer  @ref FL_AES_InitTypeDef 
   *
-  * @retval 错误状态，可能值：
-  *         -FL_PASS 配置成功
-  *         -FL_FAIL 配置过程发生错误
+  * @retval 
+  *         -FL_PASS 
+  *         -FL_FAIL 
   */
 FL_ErrorStatus FL_AES_Init(AES_Type *AESx, FL_AES_InitTypeDef *AES_InitStructer)
 {
-    /* 入口合法性检查 */
+    /*  */
     assert_param(IS_FL_AES_INSTANCE(AESx));
     assert_param(IS_FL_AES_KEYLENGTH(AES_InitStructer->keyLength));
     assert_param(IS_FL_AES_CIPHERMODE(AES_InitStructer->cipherMode));
@@ -107,15 +107,15 @@ FL_ErrorStatus FL_AES_Init(AES_Type *AESx, FL_AES_InitTypeDef *AES_InitStructer)
     FL_AES_Disable(AES);
     if(FL_AES_IsEnabled(AESx) == 0)
     {
-        /* 开启总线时钟 */
+        /*  */
         FL_RCC_EnableGroup2BusClock(FL_RCC_GROUP2_BUSCLK_AES);
-        /* key长度 */
+        /* key */
         FL_AES_SetKeySize(AESx, AES_InitStructer->keyLength);
-        /* 数据流处理模式 */
+        /*  */
         FL_AES_SetCipherMode(AESx, AES_InitStructer->cipherMode);
-        /* 操作模式 */
+        /*  */
         FL_AES_SetOperationMode(AESx, AES_InitStructer->operationMode);
-        /* 数据类型 */
+        /*  */
         FL_AES_SetDataType(AESx, AES_InitStructer->dataType);
     }
     else
@@ -126,8 +126,8 @@ FL_ErrorStatus FL_AES_Init(AES_Type *AESx, FL_AES_InitTypeDef *AES_InitStructer)
 }
 
 /**
-  * @brief  将 @ref FL_AES_InitTypeDef 结构体初始化为默认配置
-  * @param  AES_InitStructer 指向 @ref FL_AES_InitTypeDef 结构体的指针
+  * @brief   @ref FL_AES_InitTypeDef 
+  * @param  AES_InitStructer  @ref FL_AES_InitTypeDef 
   *
   * @retval None
   */

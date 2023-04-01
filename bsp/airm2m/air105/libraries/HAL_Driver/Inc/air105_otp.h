@@ -34,12 +34,12 @@ extern "C" {
 typedef enum
 {
     OTP_Complete = 0,
-    OTP_ReadOnProgramOrSleep,               //�ڱ�̡�����״̬�¶�OTP���ж�����
-    OTP_ProgramIn_HiddenOrRO_Block,         //��ֻ�������б��
-    OTP_ProgramOutOfAddr,                   //��̷�Χ����OTP��Χ
-    OTP_ProgramOnSleep,                     //������״̬���б�̲���
-    OTP_WakeUpOnNoSleep,                    //�ڷ�����״̬�½��л��Ѳ���
-    OTP_TimeOut,                            //OTP��ɱ�־λ��ʱû����λ
+    OTP_ReadOnProgramOrSleep,               //OTP
+    OTP_ProgramIn_HiddenOrRO_Block,         //
+    OTP_ProgramOutOfAddr,                   //OTP
+    OTP_ProgramOnSleep,                     //
+    OTP_WakeUpOnNoSleep,                    //
+    OTP_TimeOut,                            //OTP
     OTP_DataWrong,
 }OTP_StatusTypeDef;
 

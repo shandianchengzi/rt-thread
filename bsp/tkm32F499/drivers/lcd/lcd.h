@@ -36,10 +36,10 @@
                         GPIOD->BRR  = GPIO_Pin_6;
 #define Set_Rst         GPIOD->BSRR = GPIO_Pin_6
 #define Clr_Rst         GPIOD->BRR  = GPIO_Pin_6
-#define Lcd_Light_ON    GPIOD->BSRR = GPIO_Pin_8  //PD8为高电平 背光打开
-#define Lcd_Light_OFF   GPIOD->BRR  = GPIO_Pin_8  //PD8为低电平 背光关闭
+#define Lcd_Light_ON    GPIOD->BSRR = GPIO_Pin_8  //PD8 
+#define Lcd_Light_OFF   GPIOD->BRR  = GPIO_Pin_8  //PD8 
 
-//*************  24位色（1600万色）定义 *************//
+//*************  241600 *************//
 #define White          0xFFFFFF
 #define Black          0x000000
 #define Blue           0xFF0000
@@ -50,7 +50,7 @@
 #define Cyan           0xFFFF00
 #define Yellow         0x00FFFF
 
-//*************  16位色定义 *************//
+//*************  16 *************//
 //#define White          0xFFFF
 //#define Black          0x0000
 //#define Blue           0x001F
@@ -63,7 +63,7 @@
 
 
 
-void LCD_Initial(rt_uint32_t LTDC_Buf1, rt_uint32_t LTDC_Buf2); //LCD初始化函数
+void LCD_Initial(rt_uint32_t LTDC_Buf1, rt_uint32_t LTDC_Buf2); //LCD
 // volatile void LCD_delay(volatile int time);
 // void WriteComm(unsigned char CMD);
 // void WriteData(rt_uint32_t dat);

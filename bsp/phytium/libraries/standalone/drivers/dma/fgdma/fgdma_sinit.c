@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fgdma_sinit.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:25:15
- * Description:  This files is for gdma static init
+ * Description: This files is for gdma static init
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   huanghe    2021-11-5    init commit
  * 1.1   zhugengyu  2022-5-16    modify according to tech manual.
  */
@@ -42,9 +42,9 @@ extern const FGdmaConfig fgdma_cfg_tbl[FGDMA_INSTANCE_NUM];
 /************************** Function Prototypes ******************************/
 /**
  * @name: FGdmaLookupConfig
- * @msg: 获取GDMA控制器默认配置
- * @return {const FGdmaConfig *} 控制器默认配置
- * @param {u32} instance_id, GDMA控制器ID
+ * @msg: GDMA
+ * @return {const FGdmaConfig *} 
+ * @param {u32} instance_id, GDMAID
  */
 const FGdmaConfig *FGdmaLookupConfig(u32 instance_id)
 {

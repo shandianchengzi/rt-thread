@@ -88,11 +88,11 @@ extern "C" {
                             ((((_N_VALUE_ >> 16) & 0xffff) ==   \
                             ((~_N_VALUE_) & 0xffff)) ? _N_VALUE_ : _T_VALUE_)
 
-#define LPOSC_LDT_TRIM      (*(uint32_t *)0x1FFFFB20)   // LPOSC 常温校准值
-#define RCHF8M_LDT_TRIM     (*(uint32_t *)0x1FFFFB40)   // RC8M 常温校准值
-#define RCHF16M_LDT_TRIM    (*(uint32_t *)0x1FFFFB3C)   // RC16M 常温校准值
-#define RCHF24M_LDT_TRIM    (*(uint32_t *)0x1FFFFB38)   // RC24M 常温校准值
-#define RCMF4M_LDT_TRIM     (*(uint32_t *)0x1FFFFB44)   // RCMF 常温校准值
+#define LPOSC_LDT_TRIM      (*(uint32_t *)0x1FFFFB20)   // LPOSC 
+#define RCHF8M_LDT_TRIM     (*(uint32_t *)0x1FFFFB40)   // RC8M 
+#define RCHF16M_LDT_TRIM    (*(uint32_t *)0x1FFFFB3C)   // RC16M 
+#define RCHF24M_LDT_TRIM    (*(uint32_t *)0x1FFFFB38)   // RC24M 
+#define RCMF4M_LDT_TRIM     (*(uint32_t *)0x1FFFFB44)   // RCMF 
 
 #define LPOSC_TRIM          (LDT_CHECK(LPOSC_LDT_TRIM, 0x80) & 0xff)
 #define RCMF4M_TRIM         (LDT_CHECK(RCMF4M_LDT_TRIM, 0x40) & 0x7f)
@@ -109,7 +109,7 @@ extern "C" {
   */
 typedef  struct
 {
-    /* 中断抢占优先级 */
+    /*  */
     uint32_t preemptPriority;
 
 }NVIC_ConfigTypeDef;

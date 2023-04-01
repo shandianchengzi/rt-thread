@@ -1,4 +1,4 @@
-﻿# NuMaker-IoT-M467
+# NuMaker-IoT-M467
 
 ## 1. Introduction
 
@@ -66,7 +66,7 @@ Notice: Please install Nu-Link_Keil_Driver or Nu-Link_IAR_Driver for development
 
 ### Step 1
 
-At first, you need to configure switch on the NuMaker-IoT-M467 board. Set the No.1/2 switches to ‘ON’ position. After the configuration is done, connect the NuMaker-IoT-M467 board and your computer using the USB Micro cable. After that, window manager will show a ‘NuMicro MCU’ virtual disk. Finally, you will use this virtual disk to burn firmware.
+At first, you need to configure switch on the NuMaker-IoT-M467 board. Set the No.1/2 switches to ON position. After the configuration is done, connect the NuMaker-IoT-M467 board and your computer using the USB Micro cable. After that, window manager will show a NuMicro MCU virtual disk. Finally, you will use this virtual disk to burn firmware.
 
 ![NuLinkMe2_SwitchSetting](./figures/NuLinkMe_SwitchSetting.png)
 

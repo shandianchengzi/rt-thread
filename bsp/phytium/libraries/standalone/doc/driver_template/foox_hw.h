@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: foox_hw.h
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:24:52
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 
@@ -26,16 +26,16 @@
 #define  DRIVERS_XXXX_FOOXX_HW_H
 
 
-/* - 传入模块基地址，不能复杂结构体
+/* - 
 - hardware interface of device || low-level driver function prototypes
 
-- 包括驱动寄存器参数和low-level操作定义
-1. 定义寄存器偏移
-2. 对上提供该模块寄存器操作的接口
-3. 一些简单外设提供直接操作接口
-4. 可以定义一些状态的接口，用于响应驱动状态的变化
+- low-level
+1. 
+2. 
+3. 
+4. 
 
-note: 本文件不能引用fooxx.h
+note: fooxx.h
 */
 
 #ifdef __cplusplus

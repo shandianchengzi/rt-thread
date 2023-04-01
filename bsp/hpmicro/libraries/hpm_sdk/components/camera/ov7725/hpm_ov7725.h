@@ -23,15 +23,15 @@
 #define OV7725_PWDN_ACTIVE   1
 #define OV7725_PWDN_INACTIVE 0
 
-#define GAIN                    (0x00U) /* AGC – Gain control gain setting */
-#define BLUE                    (0x01U) /* AWB – Blue channel gain setting */
-#define RED                     (0x02U) /* AWB – Red channel gain setting */
-#define GREEN                   (0x03U) /* AWB – Green channel gain setting */
+#define GAIN                    (0x00U) /* AGC  Gain control gain setting */
+#define BLUE                    (0x01U) /* AWB  Blue channel gain setting */
+#define RED                     (0x02U) /* AWB  Red channel gain setting */
+#define GREEN                   (0x03U) /* AWB  Green channel gain setting */
 
 #define BAVG                    (0x05U) /* U/B Average Level */
 #define GAVG                    (0x06U) /* Y/Gb Average Level */
 #define RAVG                    (0x07U) /* V/R Average Level */
-#define AECH                    (0x08U) /* Exposure Value – AEC MSBs */
+#define AECH                    (0x08U) /* Exposure Value  AEC MSBs */
 
 #define COM2                    (0x09U) /* Common Control 2 */
 #define COM2_SOFT_SLEEP         (0x10U) /* Soft sleep mode */
@@ -136,8 +136,8 @@
 #define VSTART                  (0x19U) /* Vertical Frame (row) Start 8 MSBs (1 LSB is at HREF[6]) */
 #define VSIZE                   (0x1AU) /* Vertical Sensor Size (1 LSB is at HREF[2]) */
 #define PSHFT                   (0x1BU) /* Data Format - Pixel Delay Select */
-#define REG_MIDH                (0x1CU) /* Manufacturer ID Byte – High */
-#define REG_MIDL                (0x1DU) /* Manufacturer ID Byte – Low */
+#define REG_MIDH                (0x1CU) /* Manufacturer ID Byte  High */
+#define REG_MIDL                (0x1DU) /* Manufacturer ID Byte  Low */
 #define LAEC                    (0x1FU) /* Fine AEC Value - defines exposure value less than one row period */
 
 #define COM11                   (0x20U) /* Common Control 11 */
@@ -324,8 +324,8 @@
 
 #define USAT                    (0xA7U) /* U Component Saturation Gain */
 #define VSAT                    (0xA8U) /* V Component Saturation Gain */
-#define HUECOS                  (0xA9U) /* Cosine value × (0x80U) */
-#define HUESIN                  (0xAAU) /* Sine value × (0x80U) */
+#define HUECOS                  (0xA9U) /* Cosine value  (0x80U) */
+#define HUESIN                  (0xAAU) /* Sine value  (0x80U) */
 #define SIGN_BIT                (0xABU) /* Sign Bit for Hue and Brightness */
 
 #define DSPAUTO                 (0xACU) /* DSP Auto Function ON/OFF Control */

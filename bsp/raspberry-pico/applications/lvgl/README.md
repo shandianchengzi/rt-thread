@@ -1,6 +1,6 @@
 # How to Run LVGL on Raspberry Pi PICO
 
-[中文页](README_zh.md) |
+[](README_zh.md) |
 
 ## Hardware: 
 

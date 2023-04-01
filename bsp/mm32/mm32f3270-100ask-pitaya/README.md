@@ -1,83 +1,83 @@
-# 百问网PitayaLite开发板BSP说明
+# PitayaLiteBSP
 
-## 简介
+## 
 
-本文档是为百问网PitayaLite开发板提供的BSP(板级支持包)说明。
+PitayaLiteBSP()
 
-主要内容如下：
 
-* 开发板资源介绍
 
-* BSP快速上手
+* 
 
-* 进阶使用方法
+* BSP
 
-通过阅读快速上手章节开发者可以快速的上手该BSP，将RT-Thread运行在开发板上。在进阶使用指南章节，将会介绍更多高级功能，帮助开发者利用RT-Thread驱动更多板载资源。
+* 
 
-## 开发板介绍
+BSPRT-ThreadRT-Thread
 
-PitayaLite开发板是百问网推出的一块基于ARM Cortex-M3内核的开发板，最高主频为120MHz，该开发板具有丰富的板载资源，可以较好地发挥MM32F3277G8P这块处理器的性能。
+## 
 
-开发板外观如下图所示：
+PitayaLiteARM Cortex-M3120MHzMM32F3277G8P
+
+
 ![board](figures/board.png)
 
-该开发板常用**板载资源**如下：
+****
 
-* MCU: MM32F3273G8P，主频120MHz，512KB FLASH，128KB RAM
-* 常用外设：
-  * 按键：1个，KEY（兼具唤醒功能，PA0）
-  * LED：1，蓝灯（PA1）
-* 常用接口：USB转串口
-* 调试接口：DAP
+* MCU: MM32F3273G8P120MHz512KB FLASH128KB RAM
+* 
+  * 1KEYPA0
+  * LED1PA1
+* USB
+* DAP
 
-开发板更多详细信息请参考百问网[火龙果Pitaya开发板介绍](https://item.taobao.com/item.htm?id=682573965671)。
+[Pitaya](https://item.taobao.com/item.htm?id=682573965671)
 
-配套资料：[开发板资料下载](http://download.100ask.org/boards/MindMotion/pitaya_lite/index.html)
+[](http://download.100ask.org/boards/MindMotion/pitaya_lite/index.html)
 
-## 外设支持
+## 
 
-本BSP目前对外设的支持情况如下：
+BSP
 
-| 板载外设     | 支持情况     | 备注                                    |
+|      |      |                                     |
 | -------- |:--------:| ------------------------------------- |
-| USB转串口   | 支持       | UART1                                 |
-| 用户LED    | 支持       | 蓝灯（PA1）                               |
-| 用户按键     | 支持       | KEY(PA0)                              |
-| **片上外设** | **支持情况** | **备注**                                |
-| GPIO     | 支持       | PA0, PA1... PK15 ---> PIN: 0, 1...176 |
-| UART     | 支持       | UART1/2/3                             |
+| USB   |        | UART1                                 |
+| LED    |        | PA1                               |
+|      |        | KEY(PA0)                              |
+| **** | **** | ****                                |
+| GPIO     |        | PA0, PA1... PK15 ---> PIN: 0, 1...176 |
+| UART     |        | UART1/2/3                             |
 
-## 使用说明
+## 
 
-使用说明分为如下两个章节：
 
-- 快速上手
+
+- 
   
-  本章节是为刚接触 RT-Thread 的新手准备的使用说明，遵循简单的步骤即可将 RT-Thread 操作系统运行在该开发板上，看到实验效果 。
+   RT-Thread  RT-Thread  
 
-- 进阶使用
+- 
   
-  本章节是为需要在 RT-Thread 操作系统上使用更多开发板资源的开发者准备的。通过使用 ENV 工具对 BSP 进行配置，可以开启更多板载资源，实现更多高级功能。
+   RT-Thread  ENV  BSP 
 
-### 快速上手
+### 
 
-本 BSP 为开发者提供 MDK5 和 IAR 工程，并且支持 GCC 开发环境。下面以 MDK5 开发环境为例，介绍如何将系统运行起来。
+ BSP  MDK5  IAR  GCC  MDK5 
 
-#### 硬件连接
+#### 
 
-使用数据线将开发板的DAP和USB转串口和PC连接起来。
+DAPUSBPC
 
-#### 编译下载
+#### 
 
-双击 project.uvprojx 文件，打开 MDK5 工程，编译并下载程序到开发板。
+ project.uvprojx  MDK5 
 
-> 工程默认配置使用 CMSIS-DAP 下载程序，在通过 CMSIS-DAP连接开发板的基础上，点击下载按钮即可下载程序到开发板
+>  CMSIS-DAP  CMSIS-DAP
 
-#### 运行结果
+#### 
 
-下载程序成功之后，系统会自动运行，观察开发板上 LED 的运行效果，其中一个 LED 会周期性闪烁。
+ LED  LED 
 
-连接开发板对应串口到 PC , 在终端工具里打开相应的串口（115200-8-1-N），复位设备后，可以看到 RT-Thread 的输出信息:
+ PC , 115200-8-1-N RT-Thread :
 
 ```bash
  \ | /
@@ -87,26 +87,26 @@ PitayaLite开发板是百问网推出的一块基于ARM Cortex-M3内核的开发
 msh />
 ```
 
-### 进阶使用
+### 
 
-此 BSP 默认只开启了 GPIO 和 串口1 的功能，如果需使用 ADC、Flash 等更多高级功能，需要利用 ENV 工具对BSP 进行配置，步骤如下：
+ BSP  GPIO  1  ADCFlash  ENV BSP 
 
-1. 在 bsp 下打开 env 工具。
+1.  bsp  env 
 
-2. 输入`menuconfig`命令配置工程，配置好之后保存退出。
+2. `menuconfig`
 
-3. 输入`pkgs --update`命令更新软件包。
+3. `pkgs --update`
 
-4. 输入`scons --target=mdk5/iar` 命令重新生成工程。
+4. `scons --target=mdk5/iar` 
 
-本章节更多详细的介绍请参考 [STM32 系列 BSP 外设驱动使用教程](../docs/STM32系列BSP外设驱动使用教程.md)。
+ [STM32  BSP ](../docs/STM32BSP.md)
 
-## 注意事项
+## 
 
-暂无
 
-## 联系人信息
 
-维护人: 
+## 
 
-* 100ask-Alen, 邮箱:<3062056224@qq.com>
+: 
+
+* 100ask-Alen, :<3062056224@qq.com>

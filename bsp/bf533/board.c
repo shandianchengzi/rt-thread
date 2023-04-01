@@ -238,7 +238,7 @@ void rt_hw_isr_install(void)
     *pSIC_IAR1 &= IVG_CLR(IAR1_DMA6_UARTRX_IVG);
     *pSIC_IAR1 |= IVG_SET(IAR1_DMA6_UARTRX_IVG,ik_ivg9);
     register_handler(ik_ivg9,uart_rx_isr);
-    *pSIC_IMASK |= DMA6_UART_RX_INT_MASK;/*  开中断      */
+    *pSIC_IMASK |= DMA6_UART_RX_INT_MASK;/*        */
 }
 
 void rt_hw_board_init(void)

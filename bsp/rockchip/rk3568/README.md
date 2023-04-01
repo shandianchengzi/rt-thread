@@ -1,6 +1,6 @@
 # RK3568 BSP Introduction
 
-[中文页](README_zh.md) | English
+[](README_zh.md) | English
 
 ## 1. Introduction
 

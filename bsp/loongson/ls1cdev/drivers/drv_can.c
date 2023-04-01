@@ -41,10 +41,10 @@ static rt_err_t bxmodifyfilter(struct ls1c_bxcan *pbxcan, struct rt_can_filter_i
     CAN_TypeDef* CANx;
     CANx = pbxcan->reg;
 
-    /*pitem->mode     1-掩码模式; 0- 滤波器模式 SJA1000中使用以下方式*/
-    /*SJA1000中AFM    1-单滤波器模式; 0- 双滤波器模式 */
+    /*pitem->mode     1-; 0-  SJA1000*/
+    /*SJA1000AFM    1-; 0-  */
 
-    fcase = pitem->mode;/*1-单滤波器模式; 0- 双滤波器模式*/
+    fcase = pitem->mode;/*1-; 0- */
     {
         if (!actived)
         {
@@ -410,26 +410,26 @@ void ls1c_can0_irqhandler(int irq, void *param)
     CAN_TypeDef* CANx;
     unsigned char status;
     CANx =  CAN0;
-    /*读寄存器清除中断*/
+    /**/
    status = CANx->IR;
 
-    /*接收中断*/
+    /**/
     if (( status & CAN_IR_RI) == CAN_IR_RI)
     {
-        /*清除RI 中断*/
+        /*RI */
        CAN_Receive(CANx, &RxMessage);
        CANx->CMR |= CAN_CMR_RRB;
        CANx->CMR |= CAN_CMR_CDO;
        rt_hw_can_isr(&bxcan0, RT_CAN_EVENT_RX_IND);
        rt_kprintf("\r\nCan0 int RX happened!\r\n");
     }
-    /*发送中断*/
+    /**/
     else if (( status  & CAN_IR_TI) == CAN_IR_TI)
     {
        rt_hw_can_isr(&bxcan0, RT_CAN_EVENT_TX_DONE | 0 << 8);
        rt_kprintf("\r\nCan0 int TX happened!\r\n");
     }
-    /*数据溢出中断*/
+    /**/
     else if (( status  & CAN_IR_DOI) == CAN_IR_DOI)
     {
        rt_hw_can_isr(&bxcan0, RT_CAN_EVENT_RXOF_IND);
@@ -450,26 +450,26 @@ void ls1c_can1_irqhandler(int irq, void *param)
     CAN_TypeDef* CANx;
     unsigned char status;
     CANx =  CAN1;
-    /*读寄存器清除中断*/
+    /**/
    status = CANx->IR;
 
-    /*接收中断*/
+    /**/
     if (( status & CAN_IR_RI) == CAN_IR_RI)
     {
-        /*清除RI 中断*/
+        /*RI */
        CAN_Receive(CANx, &RxMessage);
        CANx->CMR |= CAN_CMR_RRB;
        CANx->CMR |= CAN_CMR_CDO;
        rt_hw_can_isr(&bxcan1, RT_CAN_EVENT_RX_IND);
        rt_kprintf("\r\nCan1 int RX happened!\r\n");
     }
-    /*发送中断*/
+    /**/
     else if (( status  & CAN_IR_TI) == CAN_IR_TI)
     {
        rt_hw_can_isr(&bxcan1, RT_CAN_EVENT_TX_DONE | 0 << 8);
        rt_kprintf("\r\nCan1 int TX happened!\r\n");
     }
-    /*数据溢出中断*/
+    /**/
     else if (( status  & CAN_IR_DOI) == CAN_IR_DOI)
     {
        rt_hw_can_isr(&bxcan1, RT_CAN_EVENT_RXOF_IND);

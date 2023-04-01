@@ -297,7 +297,7 @@ static void lcd_panel_st7789v_init(u32 sel, struct disp_panel_para *info)
 
     sunxi_lcd_cpu_write_index(0, 0xC2);
     sunxi_lcd_cpu_write_data(0, 0x01);
-    /* VRH--->值越大越暗，反之越白 */
+    /* VRH---> */
     sunxi_lcd_cpu_write_index(0, 0xC3);
     /* 0x0b);//0x0b);   0x0B 0x06 */
     sunxi_lcd_cpu_write_data(0, 0x19);

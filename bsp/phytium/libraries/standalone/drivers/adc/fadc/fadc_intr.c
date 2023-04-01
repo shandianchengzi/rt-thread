@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fadc_intr.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:28:45
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 #include "fparameters.h"
 #include "fassert.h"
@@ -107,7 +107,7 @@ void FAdcIntrHandler(s32 vector, void *args)
         }
     }
 
-    /* 有中断转换完成的情况下，根据adc_intr_reg寄存器的通道转换完成中断标志位bit0~7，读取转换结果 */
+    /* adc_intr_regbit0~7 */
     if (status & FADC_INTR_REG_COVFIN_MASK)
     {
         for (channel = 0; channel < FADC_CHANNEL_NUM; channel++)

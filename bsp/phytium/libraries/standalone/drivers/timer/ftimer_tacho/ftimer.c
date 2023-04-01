@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: ftimer.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 09:09:49
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 /***************************** Include Files *********************************/
@@ -31,9 +31,9 @@
 /************************** Function Prototypes ******************************/
 /**
  * @name: FTimerSoftwareReset
- * @msg: 将控制器复位
- * @return {FError} 驱动初始化的错误码信息，FTIMER_TACHO_SUCCESS 表示初始化成功，其它返回值表示初始化失败
- * @param {FTimerTachoCtrl} *instance_p 驱动控制数据结构
+ * @msg: 
+ * @return {FError} FTIMER_TACHO_SUCCESS 
+ * @param {FTimerTachoCtrl} *instance_p 
  */
 FError FTimerSoftwareReset(FTimerTachoCtrl *instance_p)
 {
@@ -68,9 +68,9 @@ FError FTimerSoftwareReset(FTimerTachoCtrl *instance_p)
 
 /**
  * @name: FTimerStart
- * @msg: 启动timer_tacho外设,根据不同的功能，开启使能位
- * @return {FError} 驱动初始化的错误码信息，FTIMER_TACHO_SUCCESS 表示初始化成功，其它返回值表示初始化失败
- * @param {FTimerTachoCtrl} *instance_p 驱动控制数据结构
+ * @msg: timer_tacho,
+ * @return {FError} FTIMER_TACHO_SUCCESS 
+ * @param {FTimerTachoCtrl} *instance_p 
  */
 FError FTimerStart(FTimerTachoCtrl *instance_p)
 {
@@ -96,9 +96,9 @@ FError FTimerStart(FTimerTachoCtrl *instance_p)
 
 /**
  * @name: FTimerStop
- * @msg: 停止timer外设，根据不同的功能，关闭使能位，计数值停止并冻结
- * @return {FError} 驱动初始化的错误码信息，FTIMER_TACHO_SUCCESS 表示初始化成功，其它返回值表示初始化失败
- * @param {FTimerTachoCtrl} *instance_p 驱动控制数据结构
+ * @msg: timer
+ * @return {FError} FTIMER_TACHO_SUCCESS 
+ * @param {FTimerTachoCtrl} *instance_p 
  */
 FError FTimerStop(FTimerTachoCtrl *instance_p)
 {
@@ -125,9 +125,9 @@ FError FTimerStop(FTimerTachoCtrl *instance_p)
 
 /**
  * @name: TimerSwithBits
- * @msg: 计数器32/64切换
- * @return {FError} 驱动初始化的错误码信息，FTIMER_TACHO_SUCCESS 表示初始化成功，其它返回值表示初始化失败
- * @param {FTimerTachoCtrl} *instance_p 驱动控制数据结构
+ * @msg: 32/64
+ * @return {FError} FTIMER_TACHO_SUCCESS 
+ * @param {FTimerTachoCtrl} *instance_p 
  */
 static FError TimerSwithBits(FTimerTachoCtrl *instance_p)
 {
@@ -160,9 +160,9 @@ static FError TimerSwithBits(FTimerTachoCtrl *instance_p)
 
 /**
  * @name: TimerForceLoad
- * @msg: 强制更新位置位
- * @return {void} 无
- * @param {FTimerTachoCtrl} *instance_p 驱动控制数据结构
+ * @msg: 
+ * @return {void} 
+ * @param {FTimerTachoCtrl} *instance_p 
  */
 static void TimerForceLoad(FTimerTachoCtrl *instance_p)
 {
@@ -181,9 +181,9 @@ static void TimerForceLoad(FTimerTachoCtrl *instance_p)
 
 /**
  * @name: FTimerSetPeriod32
- * @msg: 设置32位计数模式下，计数器的compare的值，达到此值，如果开启中断，则开启中断
- * @return {FError} 驱动初始化的错误码信息，FTIMER_TACHO_SUCCESS 表示初始化成功，其它返回值表示初始化失败
- * @param {FTimerTachoCtrl} *instance_p 驱动控制数据结构
+ * @msg: 32compare
+ * @return {FError} FTIMER_TACHO_SUCCESS 
+ * @param {FTimerTachoCtrl} *instance_p 
  * @param {u32}NewCmpL
  */
 FError FTimerSetPeriod32(FTimerTachoCtrl *instance_p, u32 new_cmp_l)
@@ -205,9 +205,9 @@ FError FTimerSetPeriod32(FTimerTachoCtrl *instance_p, u32 new_cmp_l)
 
 /**
  * @name: FTimerSetPeriod64
- * @msg: 设置64位计数模式下，计数器的compare的值，达到此值，如果开启中断，则开启中断
- * @return {FError} 驱动初始化的错误码信息，FTIMER_TACHO_SUCCESS 表示初始化成功，其它返回值表示初始化失败
- * @param {FTimerTachoCtrl} *instance_p 驱动控制数据结构
+ * @msg: 64compare
+ * @return {FError} FTIMER_TACHO_SUCCESS 
+ * @param {FTimerTachoCtrl} *instance_p 
  * @param {u64}ticks
  */
 FError FTimerSetPeriod64(FTimerTachoCtrl *instance_p, u64 ticks)
@@ -235,9 +235,9 @@ FError FTimerSetPeriod64(FTimerTachoCtrl *instance_p, u64 ticks)
 
 /**
  * @name: FTimerSetStartVal
- * @msg: 设置计数器初始值
- * @return {FError} 驱动初始化的错误码信息，FTIMER_TACHO_SUCCESS 表示初始化成功，其它返回值表示初始化失败
- * @param {FTimerTachoCtrl} *instance_p 驱动控制数据结构
+ * @msg: 
+ * @return {FError} FTIMER_TACHO_SUCCESS 
+ * @param {FTimerTachoCtrl} *instance_p 
  * @param {u32} cnt
  */
 inline FError FTimerSetStartVal(FTimerTachoCtrl *instance_p, u32 cnt)
@@ -254,7 +254,7 @@ inline FError FTimerSetStartVal(FTimerTachoCtrl *instance_p, u32 cnt)
     }
 
     FTIMER_STAR_WRITE(instance_p, cnt);
-    /* set force_load=1，invalid previous cmp val,
+    /* set force_load=1invalid previous cmp val,
        otherwise the previous cmp val still work */
     TimerForceLoad(instance_p);
 
@@ -266,9 +266,9 @@ inline FError FTimerSetStartVal(FTimerTachoCtrl *instance_p, u32 cnt)
 
 /**
  * @name: FTimerGetCurCnt32
- * @msg: 32位模式下，获取计数器当前计数值
- * @return {u32}返回当前计数器的值
- * @param {FTimerTachoCtrl} *instance_p 驱动控制数据结构
+ * @msg: 32
+ * @return {u32}
+ * @param {FTimerTachoCtrl} *instance_p 
  */
 u32 FTimerGetCurCnt32(FTimerTachoCtrl *instance_p)
 {
@@ -281,9 +281,9 @@ u32 FTimerGetCurCnt32(FTimerTachoCtrl *instance_p)
 
 /**
  * @name: FTimerGetCurCnt64
- * @msg: 64位模式下，获取计数器当前计数值
- * @return {u64}返回当前计数器的值
- * @param {FTimerTachoCtrl} *instance_p 驱动控制数据结构
+ * @msg: 64
+ * @return {u64}
+ * @param {FTimerTachoCtrl} *instance_p 
  */
 inline u64 FTimerGetCurCnt64(FTimerTachoCtrl *instance_p)
 {
@@ -300,10 +300,10 @@ inline u64 FTimerGetCurCnt64(FTimerTachoCtrl *instance_p)
 
 /**
  * @name: FTimerInit
- * @msg: 完成TimerTacho驱动实例的初始化，使之在就绪状态
- * @return {FError} 驱动初始化的错误码信息，FTIMER_TACHO_SUCCESS 表示初始化成功，其它返回值表示初始化失败
- * @param {FTimerTachoCtrl} *instance_p 驱动控制数据结构
- * @param {FTimerTachoConfig} *config_p 驱动配置数据结构
+ * @msg: TimerTacho
+ * @return {FError} FTIMER_TACHO_SUCCESS 
+ * @param {FTimerTachoCtrl} *instance_p 
+ * @param {FTimerTachoConfig} *config_p 
  */
 FError FTimerInit(FTimerTachoCtrl *instance_p, const FTimerTachoConfig *config_p)
 {
@@ -416,9 +416,9 @@ void FTimerDeInit(FTimerTachoCtrl *instance_p)
 
 /**
  * @name: FTimeSettingDump
- * @msg: 打印寄存器信息
- * @return {FError} 驱动初始化的错误码信息，FTIMER_TACHO_SUCCESS 表示初始化成功，其它返回值表示初始化失败
- * @param {FTimerTachoCtrl} *instance_p 驱动控制数据结构
+ * @msg: 
+ * @return {FError} FTIMER_TACHO_SUCCESS 
+ * @param {FTimerTachoCtrl} *instance_p 
  */
 FError FTimeSettingDump(const FTimerTachoCtrl *instance_p)
 {

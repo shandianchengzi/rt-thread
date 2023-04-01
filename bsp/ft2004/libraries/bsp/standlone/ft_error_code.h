@@ -1,15 +1,15 @@
 /*
- * @ : Copyright (c) 2021 Phytium Information Technology, Inc.
- *
- * SPDX-License-Identifier: Apache-2.0.
- *
+*@:Copyright(c)2021PhytiumInformationTechnology,Inc.
+*
+*SPDX-License-Identifier:Apache-2.0.
+*
  * @Date: 2021-04-07 09:53:30
  * @LastEditTime: 2021-05-24 10:12:07
- * @Description:  This files is for error code functions
+ * @Description: This files is for error code functions
  *
- * @Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * @ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 #ifndef _FT_ERROR_CODE_H
@@ -20,7 +20,7 @@
 
 typedef ft_base_t ft_error_t;
 
-/* 系统错误码模块定义 */
+/*  */
 typedef enum _ft_errcode_module_mask
 {
     errModGeneral = 0,
@@ -38,7 +38,7 @@ typedef enum _ft_errcode_module_mask
     errModMaxMask = 255,
 } ft_errcode_module_mask_t;
 
-/* BSP模块的错误子模块定义 */
+/* BSP */
 typedef enum _ft_errcode_bsp_mask
 {
     errBspGeneral = 0,
@@ -66,7 +66,7 @@ typedef enum _ft_errcode_bsp_mask
      (tail & FT_ERRCODE_TAIL_VALUE_MASK))
 #define FT_CODE_ERR FT_MAKE_ERRCODE
 
-#define ERR_SUCCESS FT_MAKE_ERRCODE(errModGeneral, errBspGeneral, FST_SUCCESS) /* 成功 */
-#define ERR_GENERAL FT_MAKE_ERRCODE(errModGeneral, errBspGeneral, FST_FAILURE) /* 一般错误 */
+#define ERR_SUCCESS FT_MAKE_ERRCODE(errModGeneral, errBspGeneral, FST_SUCCESS) /*  */
+#define ERR_GENERAL FT_MAKE_ERRCODE(errModGeneral, errBspGeneral, FST_FAILURE) /*  */
 
 #endif

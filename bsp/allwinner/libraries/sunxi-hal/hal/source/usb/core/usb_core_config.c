@@ -14,7 +14,7 @@
 * Date : 2008.05.xx
 *
 * Description :
-*           usb 配置描述符以及其下游的子描述符的解析
+*           usb 
 * History :
 ********************************************************************************************************************
 */
@@ -45,7 +45,7 @@ static inline const char *plural(int n)
 }
 
 
-/* 查找,直到遇到dt1,dt2类型的desc */
+/* ,dt1,dt2desc */
 static int _find_next_desc(unsigned char *buffer,
                            int size,
                            int dt1,
@@ -153,7 +153,7 @@ skip_to_next_endpoint_or_interface_descriptor:
 
 //cfgno :
 //cofnig    :
-//buffer    :   指向本interface的开始
+//buffer    :   interface
 static int _usb_parse_interface_desc(int cfgno,
                                      struct usb_host_virt_config *config,
                                      unsigned char *buffer,
@@ -179,8 +179,8 @@ static int _usb_parse_interface_desc(int cfgno,
     }
 
     //Which interface entry is this?
-    //根据该interface的index，
-    //在config中找到其对应的intf_cache[]中的entry
+    //interfaceindex
+    //configintf_cache[]entry
     intfc = NULL;
     inum = interface_desc->bInterfaceNumber;
 
@@ -216,7 +216,7 @@ static int _usb_parse_interface_desc(int cfgno,
     memcpy((void *)(&alt->desc), (void *)interface_desc, USB_DT_INTERFACE_SIZE);
     /* Skip over any Class Specific or Vendor Specific descriptors;
      * find the first endpoint or interface descriptor */
-    //跳到endpoint desc
+    //endpoint desc
     alt->extra = buffer;
     i = _find_next_desc(buffer, size, USB_DT_ENDPOINT, USB_DT_INTERFACE, &n);
     alt->extralen = i;
@@ -244,7 +244,7 @@ static int _usb_parse_interface_desc(int cfgno,
         num_ep = USB_MAXENDPOINTS;
     }
 
-    //分配endpoint desc的空间
+    //endpoint desc
     len = sizeof(struct usb_host_virt_endpoint) * num_ep;
     alt->endpoint = malloc(len);
 
@@ -293,9 +293,9 @@ skip_to_next_interface_descriptor:
 
 
 //cfgidx    :   config index
-//config    :   为本config准备的usb_host_virt_config
-//buff  :   完整config的内容(包括下游的)
-//size  :   完整config的长度
+//config    :   configusb_host_virt_config
+//buff  :   config()
+//size  :   config
 static int _usb_parse_config_desc(int cfgidx,
                                   struct usb_host_virt_config *config,
                                   unsigned char *buffer,
@@ -303,17 +303,17 @@ static int _usb_parse_config_desc(int cfgidx,
 {
     unsigned char *buffer0 = buffer;
     int cfgno = 0;
-    s32 interface_nr = 0;                   //本config的interface数
+    s32 interface_nr = 0;                   //configinterface
     s32 nintf_orig = 0;
     int i = 0, j = 0, n = 0;
     struct usb_interface_cache *intfc = NULL;
-    u8 *buffer2 = NULL;                     //临时buff,
+    u8 *buffer2 = NULL;                     //buff,
     int size2 = 0;
     struct usb_descriptor_header *header = NULL;
     int len = 0, retval = 0;
-    u8 inums[USB_MAXINTERFACES];            //记录interface的编号
-    u8 alt_setting_nr[USB_MAXINTERFACES];   //本config中各个interface的AlertateSetting的数目
-    //--<1>--将config自身保存到config->desc
+    u8 inums[USB_MAXINTERFACES];            //interface
+    u8 alt_setting_nr[USB_MAXINTERFACES];   //configinterfaceAlertateSetting
+    //--<1>--configconfig->desc
     memcpy((void *)(&config->desc), (void *)buffer, USB_DT_CONFIG_SIZE);
 
     if (config->desc.bDescriptorType != USB_DT_CONFIG ||
@@ -325,11 +325,11 @@ static int _usb_parse_config_desc(int cfgidx,
         return -EINVAL;
     }
 
-    cfgno = config->desc.bConfigurationValue;   //本config的nr
-    //--<2>--跳过config自身
+    cfgno = config->desc.bConfigurationValue;   //confignr
+    //--<2>--config
     buffer += config->desc.bLength;
     size -= config->desc.bLength;
-    interface_nr = nintf_orig = config->desc.bNumInterfaces;    //本config的interface数
+    interface_nr = nintf_orig = config->desc.bNumInterfaces;    //configinterface
 
     if (interface_nr > USB_MAXINTERFACES)
     {
@@ -339,7 +339,7 @@ static int _usb_parse_config_desc(int cfgidx,
         interface_nr = USB_MAXINTERFACES;
     }
 
-    //--<3>--遍历完整config中余下的desc, 其实只关心Interface，统计各个interface的数目
+    //--<3>--configdesc, Interfaceinterface
     n = 0;
 
     for ((buffer2 = buffer, size2 = size);
@@ -365,7 +365,7 @@ static int _usb_parse_config_desc(int cfgidx,
             break;
         }
 
-        //--<3_1>--Interface描述符号
+        //--<3_1>--Interface
         if (header->bDescriptorType == USB_DT_INTERFACE)
         {
             struct usb_interface_descriptor *d = NULL;
@@ -436,7 +436,7 @@ static int _usb_parse_config_desc(int cfgidx,
         hal_log_err("PANIC : [hub] :config %d has no interfaces?\n", cfgno);
     }
 
-    //记录interface的数目
+    //interface
     config->desc.bNumInterfaces = interface_nr = n;
 
     /* Check for missing interface numbers */
@@ -457,7 +457,7 @@ static int _usb_parse_config_desc(int cfgidx,
         }
     }
 
-    //--<4>--为各个interface分配存储空间
+    //--<4>--interface
     /* Allocate the usb_interface_caches and altsetting arrays */
     for (i = 0; i < interface_nr; ++i)
     {
@@ -474,7 +474,7 @@ static int _usb_parse_config_desc(int cfgidx,
             alt_setting_nr[i] = j = USB_MAXALTSETTING;
         }
 
-        //--<4_1>--分配存储usb_interface_cache的空间
+        //--<4_1>--usb_interface_cache
         len = sizeof(struct usb_interface_cache) ;
         config->intf_cache[i] = intfc = malloc(len);
 
@@ -485,7 +485,7 @@ static int _usb_parse_config_desc(int cfgidx,
         }
 
         memset(intfc, 0, len);
-        //--<4_2>--分配存储usb_host_virt_interface[]的空间
+        //--<4_2>--usb_host_virt_interface[]
         len =  sizeof(struct usb_host_virt_interface) * j;
         intfc->altsetting_array = malloc(len);
 
@@ -500,7 +500,7 @@ static int _usb_parse_config_desc(int cfgidx,
         memset(intfc->altsetting_array, 0, len);
     }
 
-    //--<4>--后移，直到Interface desc
+    //--<4>--Interface desc
     /* Skip over any Class Specific or Vendor Specific descriptors;
      * find the first interface descriptor */
     config->extra = buffer;
@@ -561,12 +561,12 @@ static int _usb_parse_config_desc(int cfgidx,
     return 0;
 }
 
-/* 获得confg描述符，并parser之 */
+/* confgparser */
 int usb_get_all_config_desc_and_parser(struct usb_host_virt_dev *dev)
 {
     int result      = -ENOMEM;
-    int ncfg        = dev->descriptor.bNumConfigurations;   //config的总数目
-    u32 cur_cfg_nr  = 0;    //当前cfg的编号
+    int ncfg        = dev->descriptor.bNumConfigurations;   //config
+    u32 cur_cfg_nr  = 0;    //cfg
     u32 length      = 0;
     u8 *buffer      = NULL;
     u8 *bigbuffer   = NULL;
@@ -616,10 +616,10 @@ int usb_get_all_config_desc_and_parser(struct usb_host_virt_dev *dev)
     memset(buffer, 0, USB_DT_CONFIG_SIZE);
     desc = (struct usb_config_descriptor *)buffer;
 
-    //逐个获取config,并解析该config
+    //config,config
     for (cur_cfg_nr = 0; cur_cfg_nr < ncfg; cur_cfg_nr++)
     {
-        //--<1>--试探性的获取config，主要目的是获取整个config的total len
+        //--<1>--configconfigtotal len
         result = usb_get_descriptor(dev, USB_DT_CONFIG, cur_cfg_nr, buffer, USB_DT_CONFIG_SIZE);
 
         if (result < 0)
@@ -649,7 +649,7 @@ int usb_get_all_config_desc_and_parser(struct usb_host_virt_dev *dev)
         }
 
         memset(bigbuffer, 0, length);
-        //--<2>--完整的获取config
+        //--<2>--config
         result = usb_get_descriptor(dev, USB_DT_CONFIG, cur_cfg_nr, bigbuffer, length);
 
         if (result < 0)
@@ -669,7 +669,7 @@ int usb_get_all_config_desc_and_parser(struct usb_host_virt_dev *dev)
         }
 
         dev->rawdescriptors[cur_cfg_nr] = bigbuffer;
-        //--<3>--解析该config
+        //--<3>--config
         result = _usb_parse_config_desc(cur_cfg_nr, &dev->config[cur_cfg_nr], bigbuffer, length);
 
         if (result < 0)

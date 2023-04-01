@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fnand.h
  * Date: 2022-05-07 15:40:42
  * LastEditTime: 2022-05-07 15:40:42
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 #ifndef DRIVERS_NAND_FNAND_H
 #define DRIVERS_NAND_FNAND_H
@@ -87,30 +87,30 @@ typedef enum
 
 typedef enum
 {
-    FNAND_CMD_TYPE = 0,     /* 采用cmd 类型的操作类型 */
-    FNAND_WRITE_PAGE_TYPE,     /* PAGE program 操作 */
-    FNAND_READ_PAGE_TYPE,     /* PAGE read 操作 */
-    FNAND_WAIT_ECC_TYPE, /* Waiting ECC FINISH 操作 */
+    FNAND_CMD_TYPE = 0,     /* cmd  */
+    FNAND_WRITE_PAGE_TYPE,     /* PAGE program  */
+    FNAND_READ_PAGE_TYPE,     /* PAGE read  */
+    FNAND_WAIT_ECC_TYPE, /* Waiting ECC FINISH  */
     FNAND_TYPE_NUM
 } FNandOperationType;
 
 /* Irq Callback events */
 typedef enum
 {
-    FNAND_IRQ_BUSY_EVENT = 0,/* nandflash控制器忙状态中断状态位 */
-    FNAND_IRQ_DMA_BUSY_EVENT, /* dma控制器忙状态中断状态位 */
-    FNAND_IRQ_DMA_PGFINISH_EVENT, /* dma页操作完成中断状态位 */
-    FNAND_IRQ_DMA_FINISH_EVENT, /* dma操作完成中断完成中断状态位 */
-    FNAND_IRQ_FIFO_EMP_EVENT, /* fifo为空中断状态位 */
-    FNAND_IRQ_FIFO_FULL_EVENT, /* fifo为满中断状态位 */
-    FNAND_IRQ_FIFO_TIMEOUT_EVENT, /* fifo超时中断状态位 */
-    FNAND_IRQ_CMD_FINISH_EVENT, /* nand接口命令完成中断状态位 */
-    FNAND_IRQ_PGFINISH_EVENT, /* nand接口页操作完成中断状态位 */
-    FNAND_IRQ_RE_EVENT, /* re_n门控打开中断状态位 */
-    FNAND_IRQ_DQS_EVENT, /* dqs门控打开中断状态位 */
-    FNAND_IRQ_RB_EVENT, /* rb_n信号busy中断状态位 */
-    FNAND_IRQ_ECC_FINISH_EVENT, /* ecc完成中断状态蔽位 */
-    FNAND_IRQ_ECC_ERR_EVENT /* ecc正确中断状态蔽位 */
+    FNAND_IRQ_BUSY_EVENT = 0,/* nandflash */
+    FNAND_IRQ_DMA_BUSY_EVENT, /* dma */
+    FNAND_IRQ_DMA_PGFINISH_EVENT, /* dma */
+    FNAND_IRQ_DMA_FINISH_EVENT, /* dma */
+    FNAND_IRQ_FIFO_EMP_EVENT, /* fifo */
+    FNAND_IRQ_FIFO_FULL_EVENT, /* fifo */
+    FNAND_IRQ_FIFO_TIMEOUT_EVENT, /* fifo */
+    FNAND_IRQ_CMD_FINISH_EVENT, /* nand */
+    FNAND_IRQ_PGFINISH_EVENT, /* nand */
+    FNAND_IRQ_RE_EVENT, /* re_n */
+    FNAND_IRQ_DQS_EVENT, /* dqs */
+    FNAND_IRQ_RB_EVENT, /* rb_nbusy */
+    FNAND_IRQ_ECC_FINISH_EVENT, /* ecc */
+    FNAND_IRQ_ECC_ERR_EVENT /* ecc */
 } FNAND_CALL_BACK_EVENT;
 
 typedef struct
@@ -128,9 +128,9 @@ typedef struct
     u8 rowaddr_cycles;        /* Row address cycles */
     u8 coladdr_cycles;        /* Column address cycles */
     u32 hw_ecc_steps;         /* number of ECC steps per page */
-    u32 hw_ecc_length;        /* 产生硬件ecc校验参数的个数 */
-    u32 ecc_offset;           /* spare_bytes_per_page - hw_ecc_length = obb存放硬件ecc校验参数页位置的偏移 */
-    u32 ecc_step_size;        /* 进行读写操作时，单次ecc 的步骤的跨度 */
+    u32 hw_ecc_length;        /* ecc */
+    u32 ecc_offset;           /* spare_bytes_per_page - hw_ecc_length = obbecc */
+    u32 ecc_step_size;        /* ecc  */
 } FNandNandGeometry;
 
 typedef enum
@@ -155,8 +155,8 @@ typedef struct
     u32 instance_id; /* Id of device*/
     u32 irq_num;     /* Irq number */
     volatile uintptr_t base_address;
-    u32 ecc_strength; /* 每次ecc 步骤纠正的位数 */
-    u32 ecc_step_size; /* 进行读写操作时，单次ecc 的步骤的跨度 */
+    u32 ecc_strength; /* ecc  */
+    u32 ecc_step_size; /* ecc  */
 } FNandConfig;
 
 /**
@@ -174,14 +174,14 @@ typedef struct
 typedef struct
 {
     u32 page_addr;
-    u8 *page_buf; /* page 数据缓存空间 */
-    u32 page_offset; /* 从offset开始拷贝页数据 */
-    u32 page_length; /* 从offset开始拷贝页数据的长度 */
-    s32 obb_required; /* obb 是否读取的标志位,1 需要操作oob 区域 */
-    u8 *oob_buf; /* obb 数据缓存空间 */
-    u32 oob_offset; /* 从offset开始拷贝页数据 */
-    u32 oob_length; /* 从offset开始拷贝页数据的长度 */
-    u32 chip_addr; /* 芯片地址 */
+    u8 *page_buf; /* page  */
+    u32 page_offset; /* offset */
+    u32 page_length; /* offset */
+    s32 obb_required; /* obb ,1 oob  */
+    u8 *oob_buf; /* obb  */
+    u32 oob_offset; /* offset */
+    u32 oob_length; /* offset */
+    u32 chip_addr; /*  */
 } FNandOpData;
 
 /**
@@ -251,7 +251,7 @@ typedef struct _FNand
     FNandBadBlockManager bbt_manager[FNAND_CONNECT_MAX_NUM];    /* bad block manager handler */
     /* nand detect */
     FNandNandGeometry nand_geometry[FNAND_CONNECT_MAX_NUM];     /* nand flash infomation */
-    /* dma 页操作 */
+    /* dma  */
     FnandIrqEventHandler irq_event_fun_p;                       /* Interrupt event response function */
     void *irq_args;
 

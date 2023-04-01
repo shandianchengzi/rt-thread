@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fpwm_hw.h
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-25 11:45:05
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 #ifndef BSP_DRIVERS_FPWM_HW_H
@@ -120,10 +120,10 @@ extern "C"
 
 /***************** Macros (Inline Functions) Definitions *********************/
 
-/* 读FPWM寄存器 */
+/* FPWM */
 #define FPWM_READ_REG32(addr, reg_offset) FtIn32((addr) + (u32)reg_offset)
 
-/* 写FPWM寄存器 */
+/* FPWM */
 #define FPWM_WRITE_REG32(addr, reg_offset, reg_value) FtOut32((addr) + (u32)reg_offset, (u32)reg_value)
 
 #define FPWM_SETBIT(base_addr, reg_offset, data) FtSetBit32((base_addr) + (u32)(reg_offset), (u32)(data))

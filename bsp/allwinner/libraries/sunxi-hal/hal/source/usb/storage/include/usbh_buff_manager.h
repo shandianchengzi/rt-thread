@@ -16,8 +16,8 @@
 * Description   :
 *
 * History       :
-*     v1.0  holi  2008.11.22 - 读写速度快, 但是只支持单个lun
-*     v2.0  javen 2009.08.19 - 支持多个lun 和 多种类型的设备
+*     v1.0  holi  2008.11.22 - , lun
+*     v2.0  javen 2009.08.19 - lun  
 ********************************************************************************************************************
 */
 #ifndef _USBH_BUFF_MANAGER_H_
@@ -25,34 +25,34 @@
 
 typedef void       *__hdle;
 
-/* usb host 临时 buffer */
+/* usb host  buffer */
 typedef struct tag_usbh_temp_buff
 {
-    unsigned int num;            /* buffer在整个buffer管理里面的号码     */
+    unsigned int num;            /* bufferbuffer     */
 
-    unsigned int dev_id;         /* 设备id, 确定设备身份的唯一标识       */
-    unsigned int start_lba;      /* 起始扇区                             */
-    unsigned int end_lba;        /* 结束扇区, 最后一个有效扇区           */
-    unsigned int sector_size;    /* 扇区大小                             */
+    unsigned int dev_id;         /* id,        */
+    unsigned int start_lba;      /*                              */
+    unsigned int end_lba;        /* ,            */
+    unsigned int sector_size;    /*                              */
 
-    unsigned int used_time;      /* 被文件系统使用的次数                 */
+    unsigned int used_time;      /*                  */
 
-    void *buff;         /* 存放从设备读取的数据                 */
-    unsigned int buff_len;       /* buffer的大小                         */
+    void *buff;         /*                  */
+    unsigned int buff_len;       /* buffer                         */
 
-    unsigned int is_valid;       /* 这个buff的内容是否有效               */
-    unsigned int is_busy;        /* 防止buff正在接收device数据，但是
-                           又被usbh_buff_manager设置为无效      */
+    unsigned int is_valid;       /* buff               */
+    unsigned int is_busy;        /* buffdevice
+                           usbh_buff_manager      */
 } usbh_temp_buff_t;
 
 
-#define  USBH_TEMP_BUFFER_MAX_NUM    8              //buffer的个数, 先分4个，不够用再加
-#define  USBH_TEMP_BUFFER_MAX_LEN    (32 * 1024)    //32k, 必须是k的倍数, 因为要palloc
+#define  USBH_TEMP_BUFFER_MAX_NUM    8              //buffer, 4
+#define  USBH_TEMP_BUFFER_MAX_LEN    (32 * 1024)    //32k, k, palloc
 
 typedef struct tag_usbh_buff_manager
 {
-    unsigned int temp_buff_len;    /* 临时buff的大小, 它决定了usbh_temp_buff_t里buff_len的大小 */
-    unsigned int temp_buff_nr;     /* 临时buff的个数 */
+    unsigned int temp_buff_len;    /* buff, usbh_temp_buff_tbuff_len */
+    unsigned int temp_buff_nr;     /* buff */
 
     usbh_temp_buff_t buff_array[USBH_TEMP_BUFFER_MAX_NUM];
 } usbh_buff_manager_t;

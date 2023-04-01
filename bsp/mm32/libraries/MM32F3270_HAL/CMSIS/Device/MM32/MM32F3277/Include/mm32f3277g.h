@@ -154,7 +154,7 @@ typedef enum IRQ {
   #error Not supported compiler type
 #endif
 
-/* 定义大存储块映射基址 */
+/*  */
 #define FLASH_ADDR_BASE    0x08000000u
 #define EEPROM_BASE        0x08100000u
 #define SRAM_BASE          0x20000000u
@@ -171,7 +171,7 @@ typedef enum IRQ {
 #define FSMC_BANK1_BASE    0x64000000u
 #define FSMC_BANK2_BASE    0x68000000u
 #define FSMC_BANK3_BASE    0x6C000000u
-/* 定义外设模块映射基址 */
+/*  */
 
 #define TIM2_BASE     (APB1_BASE)
 #define TIM3_BASE     (APB1_BASE + 0x0400)

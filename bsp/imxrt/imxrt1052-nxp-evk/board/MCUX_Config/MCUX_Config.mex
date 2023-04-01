@@ -198,12 +198,12 @@
       </clocks>
       <periphs name="Peripherals" version="5.0" enabled="true" update_project_code="true">
          <dependencies>
-            <dependency resourceType="SWComponent" resourceId="platform.drivers.elcdif" description="在工具链/IDE工程中未发现elcdif。" problem_level="2" source="Peripherals">
+            <dependency resourceType="SWComponent" resourceId="platform.drivers.elcdif" description="/IDEelcdif" problem_level="2" source="Peripherals">
                <feature name="enabled" evaluation="equal">
                   <data type="Boolean">true</data>
                </feature>
             </dependency>
-            <dependency resourceType="SWComponent" resourceId="platform.drivers.elcdif" description="工具链/IDE工程中elcdif不被支持的版本。需要：${required_value}，实际：${actual_value}。" problem_level="1" source="Peripherals">
+            <dependency resourceType="SWComponent" resourceId="platform.drivers.elcdif" description="/IDEelcdif${required_value}${actual_value}" problem_level="1" source="Peripherals">
                <feature name="version" evaluation="equivalent">
                   <data type="Version">2.0.0</data>
                </feature>

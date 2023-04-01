@@ -1,82 +1,82 @@
-# GD32450Z-EVAL开发板BSP说明
+# GD32450Z-EVALBSP
 
-## 简介
+## 
 
-GD32450Z-EVAL是-兆易创新推出的一款GD32F4XX系列的评估板，最高主频高达168M，该开发板具有丰富的板载资源，可以充分发挥 GD32F450ZKT6的芯片性能。
+GD32450Z-EVAL-GD32F4XX168M GD32F450ZKT6
 
-该开发板常用 **板载资源** 如下：
+ **** 
 
-- GD32F450ZKT6，主频 200MHz，3072KB FLASH ，256KB RAM 
+- GD32F450ZKT6 200MHz3072KB FLASH 256KB RAM 
 
-- 常用外设
+- 
   
-  - LED ：3个，LED1 (PD4），LED2（PD5），LED3（PG3）
-  - 按键：2个，K1（PA0），K2（PC13），K3（PB14）
-  - General TM * 10、Advanced TM * 2、Basic TM * 2
-  - 系统时钟 * 1
-  - 看门狗 * 2
+  - LED 3LED1 (PD4LED2PD5LED3PG3
+  - 2K1PA0K2PC13K3PB14
+  - General TM * 10Advanced TM * 2Basic TM * 2
+  -  * 1
+  -  * 2
   - RTC * 1
-  - USART * 4、UART * 4
-  - I2C * 3、I2S * 2
+  - USART * 4UART * 4
+  - I2C * 3I2S * 2
   - SPI * 6
   - CAN2.0B * 2
   - USB2.0 OTG * 2
-  - 以太网 * 1
+  -  * 1
   - TFT-LCD
   - EXMC/SDRAM * 1
   - ADC * 3
   - DAC * 2
-  - 最多支持114GPIOs
-- 常用接口：USB 接口
+  - 114GPIOs
+- USB 
 
-- 调试接口：GD-LINK
+- GD-LINK
 
-## 外设支持
+## 
 
-本 BSP 目前对外设的支持情况如下：
+ BSP 
 
-| **片上外设** | **支持情况** | **备注**                         |
+| **** | **** | ****                         |
 | :----------- | :----------: | :------------------------------- |
-| GPIO         |     支持     | PA0, PA1... ---> PIN: 0, 1...113 |
-| UART         |     支持     | UART0 - UART7                    |
-| I2C          |     支持     | I2C1                             |
-| SPI          |     支持     | SPI0 - SPI2                      |
-| SPI FLASH    |     支持     |                                  |
-| ADC          |     支持     | ADC0 - ADC2                      |
-| **扩展模块** | **支持情况** | **备注**                         |
-| 暂无         |   暂不支持   | 暂不支持                         |
+| GPIO         |          | PA0, PA1... ---> PIN: 0, 1...113 |
+| UART         |          | UART0 - UART7                    |
+| I2C          |          | I2C1                             |
+| SPI          |          | SPI0 - SPI2                      |
+| SPI FLASH    |          |                                  |
+| ADC          |          | ADC0 - ADC2                      |
+| **** | **** | ****                         |
+|          |      |                          |
 
-## 使用说明
+## 
 
-使用说明分为如下两个章节：
 
-- 快速上手
+
+- 
   
-  本章节是为刚接触 RT-Thread 的新手准备的使用说明，遵循简单的步骤即可将 RT-Thread 操作系统运行在该开发板上，看到实验效果 。
+   RT-Thread  RT-Thread  
 
-- 进阶使用
+- 
   
-  本章节是为需要在 RT-Thread 操作系统上使用更多开发板资源的开发者准备的。通过使用 ENV 工具对 BSP 进行配置，可以开启更多板载资源，实现更多高级功能。
+   RT-Thread  ENV  BSP 
 
-### 快速上手
+### 
 
-本 BSP 为开发者提供 MDK4、MDK5 和 IAR 工程，并且支持 GCC 开发环境，也可使用RT-Thread Studio开发。下面以 MDK5 开发环境为例，介绍如何将系统运行起来。
+ BSP  MDK4MDK5  IAR  GCC RT-Thread Studio MDK5 
 
-#### 硬件连接
+#### 
 
-使用数据线连接开发板到 PC，使用USB转232连接USART0，打开电源开关。
+ PCUSB232USART0
 
-#### 编译下载
+#### 
 
-双击 project.uvprojx 文件，打开 MDK5 工程，编译并下载程序到开发板。
+ project.uvprojx  MDK5 
 
-> 工程默认配置使用 GD-Link  仿真器下载程序，在通过 GD-Link  连接开发板的基础上，点击下载按钮即可下载程序到开发板
+>  GD-Link   GD-Link  
 
-#### 运行结果
+#### 
 
-下载程序成功之后，系统会自动运行，LED 闪烁。
+LED 
 
-连接开发板对应串口到 PC , 在终端工具里打开相应的串口（115200-8-1-N），复位设备后，可以看到 RT-Thread 的输出信息:
+ PC , 115200-8-1-N RT-Thread :
 
 ```bash
  \ | /
@@ -86,24 +86,24 @@ GD32450Z-EVAL是-兆易创新推出的一款GD32F4XX系列的评估板，最高�
 msh >
 ```
 
-### 进阶使用
+### 
 
-此 BSP 默认只开启了 GPIO 和 串口1的功能，如果需使用高级功能，需要利用 ENV 工具对BSP 进行配置，步骤如下：
+ BSP  GPIO  1 ENV BSP 
 
-1. 在 bsp 下打开 env 工具。
+1.  bsp  env 
 
-2. 输入`menuconfig`命令配置工程，配置好之后保存退出。
+2. `menuconfig`
 
-3. 输入`pkgs --update`命令更新软件包。
+3. `pkgs --update`
 
-4. 输入`scons --target=mdk4/mdk5/iar` 命令重新生成工程。
+4. `scons --target=mdk4/mdk5/iar` 
 
-## 注意事项
+## 
 
-暂无
 
-## 联系人信息
 
-维护人:
+## 
 
-- [BruceOu](https://github.com/Ouxiaolong/), 邮箱：<ouxiaolong@bruceou.cn>
+:
+
+- [BruceOu](https://github.com/Ouxiaolong/), <ouxiaolong@bruceou.cn>

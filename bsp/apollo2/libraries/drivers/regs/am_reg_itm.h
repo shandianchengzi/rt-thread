@@ -483,7 +483,7 @@
 #define AM_REG_ITM_TCR_TS_PRESCALE_M                 0x00000300
 #define AM_REG_ITM_TCR_TS_PRESCALE(n)                (((uint32_t)(n) << 8) & 0x00000300)
 
-// Enable SWV behavior – count on TPIUEMIT and TPIUBAUD.
+// Enable SWV behavior  count on TPIUEMIT and TPIUBAUD.
 #define AM_REG_ITM_TCR_SWV_ENABLE_S                  4
 #define AM_REG_ITM_TCR_SWV_ENABLE_M                  0x00000010
 #define AM_REG_ITM_TCR_SWV_ENABLE(n)                 (((uint32_t)(n) << 4) & 0x00000010)

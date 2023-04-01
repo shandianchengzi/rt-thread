@@ -61,7 +61,7 @@ extern "C" {
  */
 #define EXT_CLOCK_IN_FREQ_HZ		0
 
-//#define USE_IRC_AS_ROOT_CLOCK /*注释掉使用外部晶体 打开定义则是使用内部IRC*/
+//#define USE_IRC_AS_ROOT_CLOCK /* IRC*/
 
 #define BOARD_LED_CNT 8
 #define BOARD_KEY_CNT 3

@@ -19,13 +19,13 @@
 * Input       : hcan : pointer to a LCD structure that contains
 *                      the configuration information for LCD module
 * Output      :
-* Author      : CWT                         Data : 2020年
+* Author      : CWT                         Data : 2020
 **********************************************************************************/
 __weak void HAL_LCD_MspInit(LCD_HandleTypeDef *hlcd)
 {
 
     /* NOTE : This function only enable lcd clk and config NVIC
-    Because lcd's SEG and COM is different，so the gpio of lcd need user config self.*/
+    Because lcd's SEG and COM is differentso the gpio of lcd need user config self.*/
 
     /* Enable LCD clock */
     System_Module_Enable(EN_LCD);
@@ -42,7 +42,7 @@ __weak void HAL_LCD_MspInit(LCD_HandleTypeDef *hlcd)
 * Input       : hcan : pointer to a LCD structure that contains
 *                      the configuration information for LCD module
 * Output      :
-* Author      : CWT                         Data : 2020年
+* Author      : CWT                         Data : 2020
 **********************************************************************************/
 void HAL_LCD_MspDeInit(LCD_HandleTypeDef *hlcd)
 {
@@ -55,7 +55,7 @@ void HAL_LCD_MspDeInit(LCD_HandleTypeDef *hlcd)
 * Input       : hcan : pointer to a LCD structure that contains
 *                      the configuration information for LCD module
 * Output      :
-* Author      : CWT                         Data : 2020年
+* Author      : CWT                         Data : 2020
 **********************************************************************************/
 HAL_StatusTypeDef HAL_LCD_Init(LCD_HandleTypeDef *hlcd)
 {
@@ -88,7 +88,7 @@ HAL_StatusTypeDef HAL_LCD_Init(LCD_HandleTypeDef *hlcd)
     }
     else
     {
-        hlcd->Instance->CR0&=~(LCD_CR0_STATIC);//当DUTY选择非静态时，该位必须设置为0
+        hlcd->Instance->CR0&=~(LCD_CR0_STATIC);//DUTY0
     }
     return HAL_OK;
 }
@@ -99,7 +99,7 @@ HAL_StatusTypeDef HAL_LCD_Init(LCD_HandleTypeDef *hlcd)
 * Input       : hcan : pointer to a LCD structure that contains
 *                      the configuration information for LCD module
 * Output      :
-* Author      : CWT                         Data : 2020年
+* Author      : CWT                         Data : 2020
 **********************************************************************************/
 HAL_StatusTypeDef HAL_LCD_DeInit(LCD_HandleTypeDef *hlcd)
 {
@@ -119,7 +119,7 @@ HAL_StatusTypeDef HAL_LCD_DeInit(LCD_HandleTypeDef *hlcd)
 *                      the configuration information for LCD module
 *               LCD_InResInitStruct:LCD_InResInitTypeDef
 * Output      :
-* Author      : CWT                         Data : 2020年
+* Author      : CWT                         Data : 2020
 **********************************************************************************/
 HAL_StatusTypeDef HAL_LCD_InResConfig(LCD_HandleTypeDef *hlcd,LCD_InResInitTypeDef* LCD_InResInitStruct)
 {
@@ -154,7 +154,7 @@ HAL_StatusTypeDef HAL_LCD_InResConfig(LCD_HandleTypeDef *hlcd,LCD_InResInitTypeD
 *                      the configuration information for LCD module
 *               SegCom:LCD_SegComInitTypeDef
 * Output      :
-* Author      : CWT                         Data : 2020年
+* Author      : CWT                         Data : 2020
 **********************************************************************************/
 HAL_StatusTypeDef HAL_LCD_SegComConfig(LCD_HandleTypeDef *hlcd,LCD_SegComInitTypeDef *SegCom)
 {
@@ -173,7 +173,7 @@ HAL_StatusTypeDef HAL_LCD_SegComConfig(LCD_HandleTypeDef *hlcd,LCD_SegComInitTyp
 *               LCDRAMIndex:LCD RAM index
 *               Data:The data you want to write
 * Output      :
-* Author      : CWT                         Data : 2020年
+* Author      : CWT                         Data : 2020
 **********************************************************************************/
 HAL_StatusTypeDef HAL_LCD_Write(LCD_HandleTypeDef *hlcd, uint32_t LCDRAMIndex, uint32_t Data)
 {
@@ -191,7 +191,7 @@ HAL_StatusTypeDef HAL_LCD_Write(LCD_HandleTypeDef *hlcd, uint32_t LCDRAMIndex, u
 * Input       : hlcd : pointer to a LCD structure that contains
 *                      the configuration information for LCD module
 * Output      :
-* Author      : CWT                         Data : 2020年
+* Author      : CWT                         Data : 2020
 **********************************************************************************/
 HAL_StatusTypeDef HAL_LCD_Clear(LCD_HandleTypeDef *hlcd)
 {
@@ -214,7 +214,7 @@ HAL_StatusTypeDef HAL_LCD_Clear(LCD_HandleTypeDef *hlcd)
 *               pData:The data want to transfer
 *               Length:transfer Size
 * Output      :
-* Author      : CWT                         Data : 2020年
+* Author      : CWT                         Data : 2020
 **********************************************************************************/
 HAL_StatusTypeDef HAL_LCD_Start_DMA(LCD_HandleTypeDef *hlcd, uint32_t *pData, uint32_t Length)
 {
@@ -240,7 +240,7 @@ HAL_StatusTypeDef HAL_LCD_Start_DMA(LCD_HandleTypeDef *hlcd, uint32_t *pData, ui
 *               pData:The data want to transfer
 *               Length:transfer Size
 * Output      :
-* Author      : CWT                         Data : 2020年
+* Author      : CWT                         Data : 2020
 **********************************************************************************/
 HAL_StatusTypeDef HAL_LCD_Stop_DMA(LCD_HandleTypeDef *hlcd)
 {
@@ -261,7 +261,7 @@ HAL_StatusTypeDef HAL_LCD_Stop_DMA(LCD_HandleTypeDef *hlcd)
 * Input       : hlcd : pointer to a LCD structure that contains
 *                      the configuration information for LCD module
 * Output      :
-* Author      : CWT                         Data : 2020年
+* Author      : CWT                         Data : 2020
 **********************************************************************************/
 void HAL_LCD_IRQHandler(LCD_HandleTypeDef *hlcd)
 {

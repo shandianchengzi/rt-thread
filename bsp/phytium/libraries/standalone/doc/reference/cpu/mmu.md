@@ -1,5 +1,5 @@
 <!--
- * Copyright : (C) 2022 Phytium Information Technology, Inc. 
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc. 
  * All Rights Reserved.
  *  
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it  
@@ -14,42 +14,42 @@
  * FilePath: mmu.md
  * Date: 2022-02-22 16:26:16
  * LastEditTime: 2022-02-22 16:26:16
- * Description:  This file is for 
+ * Description: This file is for 
  * 
- * Modify History: 
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory: 
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
 -->
 
 # MMU 
 
-## 1. 概述
+## 1. 
 
-- 虚拟内存系统（VMSA）提供了一套内存管理单元（MMU）， 它控制着地址转换、访问权限和内存属性的确定和检查。
+- VMSAMMU 
 
-- 地址转换过程将CPU使用的虚拟地址(VAs)映射到物理内存系统的物理地址(PAs)上。
+- CPU(VAs)(PAs)
 
-- 在本SDK中 aarch32 state 采用 section 格式的转换表
-- 在本SDK中 aarch64 state 采用 4KB 粒度 格式的转换表
+- SDK aarch32 state  section 
+- SDK aarch64 state  4KB  
 
-## 2. 功能
+## 2. 
 
-- MMU功能支持用户根据需要修改MMU表的默认内存属性。
+- MMUMMU
 
-## 3. 配置方法
+## 3. 
 
-## 4. 应用示例
+## 4. 
 
 "baremetal/example/system/amp/libmetal_test"
 "baremetal/example/system/amp/openamp"
 
-## 5. API参考
+## 5. API
 
 
-### 5.1 用户定义
+### 5.1 
 
 
-/* 访问权限 */
+/*  */
 ```
 #define MT_P_NA_U_NA  /* higher Exception level access=NA, user=NA */
 #define MT_P_RW_U_NA  /* higher Exception level access=RW, user=NA */
@@ -59,7 +59,7 @@
 #define MT_P_RO_U_RO  /* higher Exception level access=RO, user=RO */
 ```
 
-/* 内存属性参数 */
+/*  */
 ```
 #define MT_DEVICE_NGNRNE       /* Device-nGnRnE , Outer Shareable */
 #define MT_DEVICE_NGNRE        /* Device-nGnRE , Outer Shareable */
@@ -73,25 +73,25 @@
 
 ```
 
-### 5.2 用户API接口
+### 5.2 API
 
-- 此函数用于配置转换表中地址对应条目的内存属性与访问权限
+- 
 
 ```c
 void FSetTlbAttributes(uintptr addr, fsize_t size, u32 attrib);
 ```
 
     Note:
-        aarch32 state 采用 section 页表，由此addr 建议采用1MB 地址对齐，size 建议为MB的整数倍。
-        aarch64 state 采用 4KB 粒度 页表，由此addr 建议采用4KB 地址对齐，size 建议为4KB的整数倍。
+        aarch32 state  section addr 1MB size MB
+        aarch64 state  4KB  addr 4KB size 4KB
 
     Input:
 
-    - addr ， 需要为内存区域设置属性与权限的起始地址
+    - addr  
 
-    - size ， 内存区域的范围
+    - size  
 
-    - attrib，指定内存区域的属性 ,内存属性的取值由 访问权限 与 内存属性参数 组成，具体类型参考 ### 5.1 用户定义
+    - attrib ,     ### 5.1 
 
     Return:
 

@@ -3450,7 +3450,7 @@ typedef struct
 /*******************  Bit definition for SPI_INTEN register  ********************/
 #define  SPI_INTEN_TX_IEN                   ((uint16_t)0x0001)  		   /*!<  Transmitter empty interrupt flag bit*/  
 #define  SPI_INTEN_RX_IEN                   ((uint16_t)0x0002)  		   /*!<  Receive FIFO interrupt enable bit*/  
-#define  SPI_INTEN_UNDERRUN_IEN             ((uint16_t)0x0004)  		   /*!<  Transmitter underrun interrupt enable bit（SPI slave mode only）*/  
+#define  SPI_INTEN_UNDERRUN_IEN             ((uint16_t)0x0004)  		   /*!<  Transmitter underrun interrupt enable bitSPI slave mode only*/  
 #define  SPI_INTEN_RXOERR_IEN               ((uint16_t)0x0008)  		   /*!<  Overrun error interrupt enable bit*/ 
 #define  SPI_INTEN_RXMATCH_IEN              ((uint16_t)0x0010)  		   /*!<  Receive data complete interrupt enable bit*/ 
 #define  SPI_INTEN_RXFULL_IEN               ((uint16_t)0x0020)   		   /*!<  Receive FIFO full interrupt enable bit*/
@@ -3459,7 +3459,7 @@ typedef struct
 /*******************  Bit definition for SPI_INTCLR register  ********************/
 #define  SPI_INTCLR_TX_ICLR                 ((uint16_t)0x0001)    		   /*!<  Transmitter FIFO empty interrupt clear bit*/
 #define  SPI_INTCLR_RX_ICLR                 ((uint16_t)0x0002)      	   /*!<  Receive interrupt clear bit*/
-#define  SPI_INTCLR_UNDERRUN_ICLR           ((uint16_t)0x0004)         	   /*!<  Transmitter underrun interrupt clear bit（SPI slave mode only）*/
+#define  SPI_INTCLR_UNDERRUN_ICLR           ((uint16_t)0x0004)         	   /*!<  Transmitter underrun interrupt clear bitSPI slave mode only*/
 #define  SPI_INTCLR_RXOERR_ICLR             ((uint16_t)0x0008)  		   /*!<  Overrun error interrupt clear bit*/  
 #define  SPI_INTCLR_RXMATCH_ICLR            ((uint16_t)0x0010)  		   /*!<  Receive completed interrupt clear bit*/  
 #define  SPI_INTCLR_RXFULL_ICLR             ((uint16_t)0x0020)  		   /*!<  Receiver buffer full interrupt clear bit*/  

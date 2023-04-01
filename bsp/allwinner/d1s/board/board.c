@@ -34,13 +34,13 @@
 #include "page.h"
 #include "lwp_arch.h"
 
-// 这个结构体描述了buddy system的页分配范围
+// buddy system
 rt_region_t init_page_region =
     {
         (rt_size_t)RT_HW_PAGE_START,
         (rt_size_t)RT_HW_PAGE_END};
 
-// 内核页表
+// 
 extern volatile rt_size_t MMUTable[__SIZE(VPN2_BIT)] __attribute__((aligned(4 * 1024)));
 
 struct mem_desc platform_mem_desc[] = {
@@ -52,7 +52,7 @@ struct mem_desc platform_mem_desc[] = {
 
 #endif /* RT_USING_SMART */
 
-// 初始化BSS节区
+// BSS
 void init_bss(void)
 {
     unsigned int *dst;
@@ -71,21 +71,21 @@ static void __rt_assert_handler(const char *ex_string, const char *func, rt_size
                      : "memory");
 }
 
-// BSP的C入口
+// BSPC
 void primary_cpu_entry(void)
 {
     extern void entry(void);
 
-    // 关中断
+    // 
     rt_hw_interrupt_disable();
     rt_assert_set_hook(__rt_assert_handler);
-    // 启动RT-Thread Smart内核
+    // RT-Thread Smart
     entry();
 }
 
 #define IOREMAP_SIZE (1ul << 30)
 
-// 这个初始化程序由内核主动调用，此时调度器还未启动，因此在此不能使用依赖线程上下文的函数
+// 
 void rt_hw_board_init(void)
 {
 #ifdef RT_USING_SMART

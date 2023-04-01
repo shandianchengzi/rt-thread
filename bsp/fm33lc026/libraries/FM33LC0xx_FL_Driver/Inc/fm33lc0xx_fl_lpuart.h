@@ -48,17 +48,17 @@ extern "C" {
   */
 typedef struct
 {
-    /** 时钟源选择 */
+    /**  */
     uint32_t clockSrc;
-    /** 通讯波特率*/
+    /** */
     uint32_t baudRate;
-    /**  数据位宽*/
+    /**  */
     uint32_t dataWidth;
-    /** 停止位 */
+    /**  */
     uint32_t stopBits;
-    /** 奇偶校验 */
+    /**  */
     uint32_t parity;
-    /** 传输方向 */
+    /**  */
     uint32_t transferDirection;
 
 } FL_LPUART_InitTypeDef;

@@ -5,11 +5,11 @@
  *
  * Change Logs:
  * Date           Author       Notes
- * 2017-09-06     勤为本       first version
+ * 2017-09-06            first version
  * 2021-02-02     michael5hzg@gmail.com       adapt to ls1b
  */
 
-// 龙芯1b外设寄存器
+// 1b
 
 
 #ifndef __LOONGSON_LS1B_REGS_H
@@ -18,12 +18,12 @@
 
 
 
-// 时钟相关寄存器地址
+// 
 #define LS1B_START_FREQ                     (0xbfe78030)
 #define LS1B_CLK_DIV_PARAM                  (0xbfe78034)
 
 
-// gpio相关寄存器地址
+// gpio
 #define LS1B_GPIO_CFG0                      (0xbfd010c0)
 #define LS1B_GPIO_EN0                       (0xbfd010d0)
 #define LS1B_GPIO_IN0                       (0xbfd010e0)
@@ -36,7 +36,7 @@
 
 
 
-// 复用相关寄存器
+// 
 #define LS1B_CBUS_FIRST0                    (0xbfd011c0)
 #define LS1B_CBUS_SECOND0                   (0xbfd011d0)
 #define LS1B_CBUS_THIRD0                    (0xbfd011e0)
@@ -62,22 +62,22 @@
 #define LS1B_CBUS_FIFTH3                    (0xbfd0120c)
 
 
-// PWM寄存器偏移
+// PWM
 #define LS1B_PWM_CNTR                       (0x0)
 #define LS1B_PWM_HRC                        (0x4)
 #define LS1B_PWM_LRC                        (0x8)
 #define LS1B_PWM_CTRL                       (0xC)
-// PWM基地址
+// PWM
 #define LS1B_REG_BASE_PWM0                  (0xbfe5c000)
 #define LS1B_REG_BASE_PWM1                  (0xbfe5c010)
 #define LS1B_REG_BASE_PWM2                  (0xbfe5c020)
 #define LS1B_REG_BASE_PWM3                  (0xbfe5c030)
 
-//CAN基地址
+//CAN
 #define  LS1B_REG_BASE_CAN0				    (0xbfe50000)
 #define  LS1B_REG_BASE_CAN1					(0xbfe54000)
 
-// 中断配置寄存器
+// 
 #define LS1B_INT0_SR                        (0xbfd01040)
 #define LS1B_INT0_EN                        (0xbfd01044)
 #define LS1B_INT0_SET                       (0xbfd01048)
@@ -114,18 +114,18 @@
 #define LS1B_INT4_EDGE                      (0xbfd010b4)
 
 
-// I2C寄存器
+// I2C
 #define LS1B_I2C0_BASE                      (0xbfe58000)
 #define LS1B_I2C1_BASE                      (0xbfe68000)
 #define LS1B_I2C2_BASE                      (0xbfe70000)
 
 
-// SPI寄存器
+// SPI
 #define LS1B_SPI0_BASE                      (0xbfe80000)
 #define LS1B_SPI1_BASE                      (0xbfec0000)
 
 
-// 串口寄存器
+// 
 #define LS1B_UART00_BASE                    (0xbfe40000)
 #define LS1B_UART01_BASE                    (0xbfe41000)
 #define LS1B_UART1_BASE                     (0xbfe44000)
@@ -140,7 +140,7 @@
 #define LS1B_UART10_BASE                    (0xbfe46000)
 #define LS1B_UART11_BASE                    (0xbfe47000)
 
-//RTC寄存器
+//RTC
 #define LS1B_RTC_BASE                       (0xbfe64024)
 
 

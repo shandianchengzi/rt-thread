@@ -104,15 +104,15 @@ void SYSCFG_MemoryRemapSelect(uint8_t memory)
  *                       @arg SYSCFG_DAM_REMAP_USART1RX: USART1 RX DMA remap
  *                       @arg SYSCFG_DAM_REMAP_TMR16:    Timer 16 DMA remap
  *                       @arg SYSCFG_DAM_REMAP_TMR17:    Timer 17 DMA remap
- *                       @arg SYSCFG_DAM_REMAP_TMR16_2£º Timer 16 DMA remap2(only for APM32F072)
- *                       @arg SYSCFG_DAM_REMAP_TMR17_2£º Timer 17 DMA remap2(only for APM32F072)
- *                       @arg SYSCFG_DAM_REMAP_SPI2£º    SPI2 DMA remap(only for APM32F072)
- *                       @arg SYSCFG_DAM_REMAP_USART2£º  USART1 TX DMA remap(only for APM32F072)
- *                       @arg SYSCFG_DAM_REMAP_USART3£º  USART1 RX DMA remap(only for APM32F072)
- *                       @arg SYSCFG_DAM_REMAP_I2C1£º    I2C1 DMA remap(only for APM32F072)
- *                       @arg SYSCFG_DAM_REMAP_TMR1£º    Timer 1 DMA remap(only for APM32F072)
- *                       @arg SYSCFG_DAM_REMAP_TMR2£º    Timer 2 DMA remap(only for APM32F072)
- *                       @arg SYSCFG_DAM_REMAP_TMR3£º    Timer 3 DMA remap(only for APM32F072)
+ *                       @arg SYSCFG_DAM_REMAP_TMR16_2 Timer 16 DMA remap2(only for APM32F072)
+ *                       @arg SYSCFG_DAM_REMAP_TMR17_2 Timer 17 DMA remap2(only for APM32F072)
+ *                       @arg SYSCFG_DAM_REMAP_SPI2    SPI2 DMA remap(only for APM32F072)
+ *                       @arg SYSCFG_DAM_REMAP_USART2  USART1 TX DMA remap(only for APM32F072)
+ *                       @arg SYSCFG_DAM_REMAP_USART3  USART1 RX DMA remap(only for APM32F072)
+ *                       @arg SYSCFG_DAM_REMAP_I2C1    I2C1 DMA remap(only for APM32F072)
+ *                       @arg SYSCFG_DAM_REMAP_TMR1    Timer 1 DMA remap(only for APM32F072)
+ *                       @arg SYSCFG_DAM_REMAP_TMR2    Timer 2 DMA remap(only for APM32F072)
+ *                       @arg SYSCFG_DAM_REMAP_TMR3    Timer 3 DMA remap(only for APM32F072)
  *
  * @retval      None
  */
@@ -131,15 +131,15 @@ void SYSCFG_EnableDMAChannelRemap(uint32_t channel)
  *                       @arg SYSCFG_DAM_REMAP_USART1RX: USART1 RX DMA remap
  *                       @arg SYSCFG_DAM_REMAP_TMR16:    Timer 16 DMA remap
  *                       @arg SYSCFG_DAM_REMAP_TMR17:    Timer 17 DMA remap
- *                       @arg SYSCFG_DAM_REMAP_TMR16_2£º Timer 16 DMA remap2(only for APM32F072)
- *                       @arg SYSCFG_DAM_REMAP_TMR17_2£º Timer 17 DMA remap2(only for APM32F072)
- *                       @arg SYSCFG_DAM_REMAP_SPI2£º    SPI2 DMA remap(only for APM32F072)
- *                       @arg SYSCFG_DAM_REMAP_USART2£º  USART1 TX DMA remap(only for APM32F072)
- *                       @arg SYSCFG_DAM_REMAP_USART3£º  USART1 RX DMA remap(only for APM32F072)
- *                       @arg SYSCFG_DAM_REMAP_I2C1£º    I2C1 DMA remap(only for APM32F072)
- *                       @arg SYSCFG_DAM_REMAP_TMR1£º    Timer 1 DMA remap(only for APM32F072)
- *                       @arg SYSCFG_DAM_REMAP_TMR2£º    Timer 2 DMA remap(only for APM32F072)
- *                       @arg SYSCFG_DAM_REMAP_TMR3£º    Timer 3 DMA remap(only for APM32F072)
+ *                       @arg SYSCFG_DAM_REMAP_TMR16_2 Timer 16 DMA remap2(only for APM32F072)
+ *                       @arg SYSCFG_DAM_REMAP_TMR17_2 Timer 17 DMA remap2(only for APM32F072)
+ *                       @arg SYSCFG_DAM_REMAP_SPI2    SPI2 DMA remap(only for APM32F072)
+ *                       @arg SYSCFG_DAM_REMAP_USART2  USART1 TX DMA remap(only for APM32F072)
+ *                       @arg SYSCFG_DAM_REMAP_USART3  USART1 RX DMA remap(only for APM32F072)
+ *                       @arg SYSCFG_DAM_REMAP_I2C1    I2C1 DMA remap(only for APM32F072)
+ *                       @arg SYSCFG_DAM_REMAP_TMR1    Timer 1 DMA remap(only for APM32F072)
+ *                       @arg SYSCFG_DAM_REMAP_TMR2    Timer 2 DMA remap(only for APM32F072)
+ *                       @arg SYSCFG_DAM_REMAP_TMR3    Timer 3 DMA remap(only for APM32F072)
  *
  * @retval      None
  */

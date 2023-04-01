@@ -59,11 +59,11 @@ uint32_t LCD_GetBrightness(void)
 #endif
 }
 
-//在指定位置显示一个字符
-//x,y:起始坐标
-//num:要显示的字符:" "--->"~"
-//size:字体大小 12/16
-//mode:叠加方式(1)还是非叠加方式(0)
+//
+//x,y:
+//num::" "--->"~"
+//size: 12/16
+//mode:(1)(0)
 void LCD_ShowChar(uint16_t x,uint16_t y,uint8_t num,uint8_t size,uint8_t mode)
 {
     uint8_t temp,t1,t;
@@ -77,16 +77,16 @@ void LCD_ShowChar(uint16_t x,uint16_t y,uint8_t num,uint8_t size,uint8_t mode)
     ST7735_GetXSize(&st7735_pObj,&w);
     ST7735_GetYSize(&st7735_pObj,&h);
 
-    //设置窗口
-    num=num-' ';//得到偏移后的值
+    //
+    num=num-' ';//
     count = 0;
 
-    if(!mode) //非叠加方式
+    if(!mode) //
     {
         for(t=0;t<size;t++)
         {
-            if(size==12)temp=asc2_1206[num][t];  //调用1206字体
-            else temp=asc2_1608[num][t];         //调用1608字体
+            if(size==12)temp=asc2_1206[num][t];  //1206
+            else temp=asc2_1608[num][t];         //1608
 
             for(t1=0;t1<8;t1++)
             {
@@ -100,23 +100,23 @@ void LCD_ShowChar(uint16_t x,uint16_t y,uint8_t num,uint8_t size,uint8_t mode)
 
                 temp<<=1;
                 y++;
-                if(y>=h){return;}//超区域了
+                if(y>=h){return;}//
                 if((y-y0)==size)
                 {
                     y=y0;
                     x++;
-                    if(x>=w){return;}//超区域了
+                    if(x>=w){return;}//
                     break;
                 }
             }
         }
     }
-    else//叠加方式
+    else//
     {
         for(t=0;t<size;t++)
         {
-            if(size==12)temp=asc2_1206[num][t];  //调用1206字体
-            else temp=asc2_1608[num][t];         //调用1608字体
+            if(size==12)temp=asc2_1206[num][t];  //1206
+            else temp=asc2_1608[num][t];         //1608
             for(t1=0;t1<8;t1++)
             {
                 if(temp&0x80)
@@ -126,12 +126,12 @@ void LCD_ShowChar(uint16_t x,uint16_t y,uint8_t num,uint8_t size,uint8_t mode)
 
                 temp<<=1;
                 y++;
-                if(y>=h){return;}//超区域了
+                if(y>=h){return;}//
                 if((y-y0)==size)
                 {
                     y=y0;
                     x++;
-                    if(x>=w){return;}//超区域了
+                    if(x>=w){return;}//
                     break;
                 }
             }
@@ -140,20 +140,20 @@ void LCD_ShowChar(uint16_t x,uint16_t y,uint8_t num,uint8_t size,uint8_t mode)
     ST7735_FillRGBRect(&st7735_pObj,x0,y0,(uint8_t *)&write,size==12?6:8,size);
 }
 
-//显示字符串
-//x,y:起点坐标
-//width,height:区域大小
-//size:字体大小
-//*p:字符串起始地址
+//
+//x,y:
+//width,height:
+//size:
+//*p:
 void LCD_ShowString(uint16_t x,uint16_t y,uint16_t width,uint16_t height,uint8_t size,uint8_t *p)
 {
     uint8_t x0=x;
     width+=x;
     height+=y;
-    while((*p<='~')&&(*p>=' '))//判断是不是非法字符!
+    while((*p<='~')&&(*p>=' '))//!
     {
         if(x>=width){x=x0;y+=size;}
-        if(y>=height)break;//退出
+        if(y>=height)break;//
         LCD_ShowChar(x,y,*p,size,0);
         x+=size/2;
         p++;

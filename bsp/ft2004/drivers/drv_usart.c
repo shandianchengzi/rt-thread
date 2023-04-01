@@ -42,11 +42,11 @@ static rt_err_t uart_configure(struct rt_serial_device *serial, struct serial_co
     rt_hw_interrupt_install(uart_ptr->Config.IsrNum, rt_hw_uart_isr, uart_ptr, "uart");
     rt_hw_interrupt_umask(uart_ptr->Config.IsrNum);
 
-    //<! 设置波特率
+    //<! 
     ret = FUart_SetBaudRate(uart_ptr, cfg->baud_rate);
     RT_ASSERT(ret == FST_SUCCESS);
 
-    //<! 打开接收中断
+    //<! 
     RegTemp = FUart_GetInterruptMask(uart_ptr);
     RegTemp |= UARTMIS_RTMIS;
     FUart_SetInterruptMask(uart_ptr, RegTemp);

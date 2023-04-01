@@ -20,7 +20,7 @@ extern "C" {
 
 /*******************************************************************************************************
 * @function: HK_Dvsq_Init
-* @brief:    使能DVSQ外设时钟
+* @brief:    DVSQ
 ********************************************************************************************************/
 void HK_Dvsq_Init(void)
 {
@@ -29,30 +29,30 @@ void HK_Dvsq_Init(void)
 
 /*******************************************************************************************************
 * @function: HK_Dvsq_Divsion
-* @brief:    DVSQ除法运算
-* @param:    u32Dividend: 32位无符号被除数
-* @param:    u32Divisor: 除数
-* @param:    u32pRemainder: 用于存放余数的数据指针
-* @param:    u8IsUnsigned: 1-启用无符号除法运算模式
-                           0-启用带符号除法运算模式
-* @param:    u8IsFastStart: 1-使用除法快速启动模式(硬件检测到除数写入后即刻开始运算)
-*                           0-不使用除法快速启动模式(由软件启动除法运算)
-*            FlagStatus定义在"hk32f0xx.h"里面
-* @return:   商
-* @note  :   u32开头的变量： 32位无符号型变量          e开头的变量： enum枚举类型
+* @brief:    DVSQ
+* @param:    u32Dividend: 32
+* @param:    u32Divisor: 
+* @param:    u32pRemainder: 
+* @param:    u8IsUnsigned: 1-
+                           0-
+* @param:    u8IsFastStart: 1-()
+*                           0-()
+*            FlagStatus"hk32f0xx.h"
+* @return:   
+* @note  :   u32 32          e enum
 *******************************************************************************************************/
 uint32_t HK_Dvsq_Divsion(uint32_t u32Dividend, uint32_t u32Divisor, uint32_t *u32pRemainder,
                          FlagStatus eIsUnsigned, FlagStatus eIsFastStart)
 {
     DVSQ_Wait();
 
-    // 是否使用无符号模式进行除法运算
+    // 
     if (eIsUnsigned == SET)
         DVSQ_ConfigDivUnsigned();
     else
         DVSQ_ConfigDivSigned();
 
-    // 是否启用快速启动除法功能
+    // 
     if (eIsFastStart == SET)
     {
         DVSQ_EnableDivFastStart();
@@ -83,19 +83,19 @@ uint32_t HK_Dvsq_Divsion(uint32_t u32Dividend, uint32_t u32Divisor, uint32_t *u3
 
 /*******************************************************************************************************
 * @function: HK_Dvsq_Sqrt
-* @brief:    DVSQ开方运算
-* @param:    u32Radicand: 被开方数
-* @param:    eIsHighPres: 1-启用高精度开方运算模式
-*                         0-不启用高精度开方运算模式
-*                         FlagStatus定义在"hk32f0xx.h"里面
-* @return:   开方结果
-* @note  :   u32开头的变量： 32位无符号型变量          e开头的变量： enum枚举类型
+* @brief:    DVSQ
+* @param:    u32Radicand: 
+* @param:    eIsHighPres: 1-
+*                         0-
+*                         FlagStatus"hk32f0xx.h"
+* @return:   
+* @note  :   u32 32          e enum
 *******************************************************************************************************/
 uint32_t HK_Dvsq_Sqrt(uint32_t u32Radicand, FlagStatus eIsHighPres)
 {
     DVSQ_Wait();
 
-    // 是否使能高精度开方模式
+    // 
     if (eIsHighPres == SET)
         DVSQ_ConfigSqrtPresHigh();
     else

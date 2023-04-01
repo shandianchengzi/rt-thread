@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,16 +14,16 @@
  * FilePath: fi2c_g.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:36:14
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 
 /*  - This file contains a configuration table that specifies the configuration
-- 驱动全局变量定义，包括静态配置参数 */
+-  */
 
 /***************************** Include Files *********************************/
 
@@ -42,7 +42,7 @@
 /************************** Variable Definitions *****************************/
 /**
  * @name: FI2C_CONFIG_TBL
- * @msg: I2C驱动的默认配置参数
+ * @msg: I2C
  */
 #if defined(CONFIG_TARGET_E2000)
 const FI2cConfig FI2C_CONFIG_TBL[I2C_INSTANCE_NUM] =

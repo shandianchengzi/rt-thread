@@ -6,7 +6,7 @@ extern "C" {
 #endif
 
 /* LPRCNT CH_TH mask */
-#define DACREF_default         ((uint32_t)0xFFC0FFFF)           //比较器内部参考电压设置
+#define DACREF_default         ((uint32_t)0xFFC0FFFF)           //
 
 /* LPRCNT Chanal define */
 typedef enum

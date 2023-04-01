@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fxmac.h
  * Date: 2022-04-06 14:46:52
  * LastEditTime: 2022-04-06 14:46:58
- * Description:  This file is for
+ * Description: This file is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 #ifndef DRIVERS_ETH_F_XMAC_H
@@ -168,11 +168,11 @@ typedef enum
  * These constants are used as parameters to FXMAC_SetHandler()
  * @{
  */
-#define FXMAC_HANDLER_DMASEND 1U        /* 发送中断 */
-#define FXMAC_HANDLER_DMARECV 2U        /* 接收中断 */
-#define FXMAC_HANDLER_ERROR 3U          /* 异常中断 */
-#define FXMAC_HANDLER_LINKCHANGE 4U     /* 连接状态 */
-#define FXMAC_HANDLER_RESTART 5U        /* 发送描述符队列发生异常 */
+#define FXMAC_HANDLER_DMASEND 1U        /*  */
+#define FXMAC_HANDLER_DMARECV 2U        /*  */
+#define FXMAC_HANDLER_ERROR 3U          /*  */
+#define FXMAC_HANDLER_LINKCHANGE 4U     /*  */
+#define FXMAC_HANDLER_RESTART 5U        /*  */
 /*@}*/
 
 #define FXMAC_DMA_SG_IS_STARTED 0
@@ -245,7 +245,7 @@ typedef struct
     u32 hotplug_irq_num;
     u32 dma_brust_length; /*  burst length */
     u32 network_default_config;
-    u32 queue_irq_num[FT_XMAC_QUEUE_MAX_NUM]; /* mac0 8个 ，其他的 4个 */
+    u32 queue_irq_num[FT_XMAC_QUEUE_MAX_NUM]; /* mac0 8  4 */
 } FXmacConfig;
 
 typedef struct

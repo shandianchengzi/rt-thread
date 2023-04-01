@@ -5,7 +5,7 @@
  *
  * Change Logs:
  * Date           Author       Notes
- * 2017-09-06     勤为本       first version
+ * 2017-09-06            first version
  */
 
 
@@ -15,22 +15,22 @@
 
 
 /*
- * 延时指定时间，单位ms
- * @j 延时时间，单位ms
+ * ms
+ * @j ms
  */
 void delay_ms(int j);
 
 
 /*
- * 延时指定时间，单位us
- * @n 延时时间，单位us
+ * us
+ * @n us
  */
 void delay_us(int n);
 
 
 /*
- * 延时指定时间，单位s
- * @i 延时时间，单位s
+ * s
+ * @i s
  */
 void delay_s(int i);
 

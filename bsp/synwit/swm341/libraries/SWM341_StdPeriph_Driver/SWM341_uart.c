@@ -1,10 +1,10 @@
 /******************************************************************************************************************************************
-* 文件名称: SWM341_uart.c
-* 功能说明: SWM341单片机的UART串口功能驱动库
-* 技术支持: http://www.synwit.com.cn/e/tool/gbook/?bid=1
-* 注意事项: 没有编写LIN功能相关的函数
-* 版本日期: V1.0.0      2016年1月30日
-* 升级记录:
+* : SWM341_uart.c
+* : SWM341UART
+* : http://www.synwit.com.cn/e/tool/gbook/?bid=1
+* : LIN
+* : V1.0.0      2016130
+* :
 *
 *
 *******************************************************************************************************************************************
@@ -23,12 +23,12 @@
 
 
 /******************************************************************************************************************************************
-* 函数名称: UART_Init()
-* 功能说明: UART串口初始化
-* 输    入: UART_TypeDef * UARTx  指定要被设置的UART串口，有效值包括UART0、UART1、UART2、UART3
-*           UART_InitStructure * initStruct    包含UART串口相关设定值的结构体
-* 输    出: 无
-* 注意事项: 无
+* : UART_Init()
+* : UART
+*     : UART_TypeDef * UARTx  UARTUART0UART1UART2UART3
+*           UART_InitStructure * initStruct    UART
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void UART_Init(UART_TypeDef * UARTx, UART_InitStructure * initStruct)
 {
@@ -51,7 +51,7 @@ void UART_Init(UART_TypeDef * UARTx, UART_InitStructure * initStruct)
         break;
     }
 
-    UART_Close(UARTx);  //一些关键寄存器只能在串口关闭时设置
+    UART_Close(UARTx);  //
 
     UARTx->BAUD &= ~(UART_BAUD_BAUD_Msk | UART_BAUD_FRAC_Msk);
     UARTx->BAUD |= (((SystemCoreClock/initStruct->Baudrate - 1) / 16) << UART_BAUD_BAUD_Pos) |
@@ -123,11 +123,11 @@ void UART_Init(UART_TypeDef * UARTx, UART_InitStructure * initStruct)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: UART_Open()
-* 功能说明: UART串口打开
-* 输    入: UART_TypeDef * UARTx  指定要被设置的UART串口，有效值包括UART0、UART1、UART2、UART3
-* 输    出: 无
-* 注意事项: 无
+* : UART_Open()
+* : UART
+*     : UART_TypeDef * UARTx  UARTUART0UART1UART2UART3
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void UART_Open(UART_TypeDef * UARTx)
 {
@@ -135,11 +135,11 @@ void UART_Open(UART_TypeDef * UARTx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: UART_Close()
-* 功能说明: UART串口关闭
-* 输    入: UART_TypeDef * UARTx  指定要被设置的UART串口，有效值包括UART0、UART1、UART2、UART3
-* 输    出: 无
-* 注意事项: 无
+* : UART_Close()
+* : UART
+*     : UART_TypeDef * UARTx  UARTUART0UART1UART2UART3
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void UART_Close(UART_TypeDef * UARTx)
 {
@@ -147,12 +147,12 @@ void UART_Close(UART_TypeDef * UARTx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: UART_WriteByte()
-* 功能说明: 发送一个字节数据
-* 输    入: UART_TypeDef * UARTx  指定要被设置的UART串口，可取值包括UART0、UART1、UART2、UART3、UART4
-*           uint8_t data            要发送的字节
-* 输    出: 无
-* 注意事项: 无
+* : UART_WriteByte()
+* : 
+*     : UART_TypeDef * UARTx  UARTUART0UART1UART2UART3UART4
+*           uint8_t data            
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void UART_WriteByte(UART_TypeDef * UARTx, uint8_t data)
 {
@@ -160,12 +160,12 @@ void UART_WriteByte(UART_TypeDef * UARTx, uint8_t data)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: UART_ReadByte()
-* 功能说明: 读取一个字节数据，并指出数据是否Valid
-* 输    入: UART_TypeDef * UARTx  指定要被设置的UART串口，可取值包括UART0、UART1、UART2、UART3、UART4
-*           uint32_t * data         接收到的数据
-* 输    出: uint32_t              0 无错误    UART_ERR_PARITY 奇偶校验错误
-* 注意事项: 无
+* : UART_ReadByte()
+* : Valid
+*     : UART_TypeDef * UARTx  UARTUART0UART1UART2UART3UART4
+*           uint32_t * data         
+*     : uint32_t              0     UART_ERR_PARITY 
+* : 
 ******************************************************************************************************************************************/
 uint32_t UART_ReadByte(UART_TypeDef * UARTx, uint32_t * data)
 {
@@ -179,11 +179,11 @@ uint32_t UART_ReadByte(UART_TypeDef * UARTx, uint32_t * data)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: UART_IsTXBusy()
-* 功能说明: UART是否正在发送数据
-* 输    入: UART_TypeDef * UARTx  指定要被设置的UART串口，有效值包括UART0、UART1、UART2、UART3
-* 输    出: uint32_t              1 UART正在发送数据    0 数据已发完
-* 注意事项: 无
+* : UART_IsTXBusy()
+* : UART
+*     : UART_TypeDef * UARTx  UARTUART0UART1UART2UART3
+*     : uint32_t              1 UART    0 
+* : 
 ******************************************************************************************************************************************/
 uint32_t UART_IsTXBusy(UART_TypeDef * UARTx)
 {
@@ -191,11 +191,11 @@ uint32_t UART_IsTXBusy(UART_TypeDef * UARTx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: UART_IsRXFIFOEmpty()
-* 功能说明: 接收FIFO是否为空，如果不空则说明其中有数据可以读取
-* 输    入: UART_TypeDef * UARTx  指定要被设置的UART串口，有效值包括UART0、UART1、UART2、UART3
-* 输    出: uint32_t              1 接收FIFO空    0 接收FIFO非空
-* 注意事项: 无
+* : UART_IsRXFIFOEmpty()
+* : FIFO
+*     : UART_TypeDef * UARTx  UARTUART0UART1UART2UART3
+*     : uint32_t              1 FIFO    0 FIFO
+* : 
 ******************************************************************************************************************************************/
 uint32_t UART_IsRXFIFOEmpty(UART_TypeDef * UARTx)
 {
@@ -203,11 +203,11 @@ uint32_t UART_IsRXFIFOEmpty(UART_TypeDef * UARTx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: UART_IsTXFIFOFull()
-* 功能说明: 发送FIFO是否为满，如果不满则可以继续向其中写入数据
-* 输    入: UART_TypeDef * UARTx  指定要被设置的UART串口，有效值包括UART0、UART1、UART2、UART3
-* 输    出: uint32_t              1 发送FIFO满    0 发送FIFO不满
-* 注意事项: 无
+* : UART_IsTXFIFOFull()
+* : FIFO
+*     : UART_TypeDef * UARTx  UARTUART0UART1UART2UART3
+*     : uint32_t              1 FIFO    0 FIFO
+* : 
 ******************************************************************************************************************************************/
 uint32_t UART_IsTXFIFOFull(UART_TypeDef * UARTx)
 {
@@ -215,12 +215,12 @@ uint32_t UART_IsTXFIFOFull(UART_TypeDef * UARTx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: UART_SetBaudrate()
-* 功能说明: 设置波特率
-* 输    入: UART_TypeDef * UARTx  指定要被设置的UART串口，有效值包括UART0、UART1、UART2、UART3
-*           uint32_t baudrate       要设置的波特率
-* 输    出: 无
-* 注意事项: 不要在串口工作时更改波特率，使用此函数前请先调用UART_Close()关闭串口
+* : UART_SetBaudrate()
+* : 
+*     : UART_TypeDef * UARTx  UARTUART0UART1UART2UART3
+*           uint32_t baudrate       
+*     : 
+* : UART_Close()
 ******************************************************************************************************************************************/
 void UART_SetBaudrate(UART_TypeDef * UARTx, uint32_t baudrate)
 {
@@ -230,11 +230,11 @@ void UART_SetBaudrate(UART_TypeDef * UARTx, uint32_t baudrate)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: UART_GetBaudrate()
-* 功能说明: 查询波特率
-* 输    入: UART_TypeDef * UARTx  指定要被设置的UART串口，有效值包括UART0、UART1、UART2、UART3
-* 输    出: uint32_t              当前波特率
-* 注意事项: 无
+* : UART_GetBaudrate()
+* : 
+*     : UART_TypeDef * UARTx  UARTUART0UART1UART2UART3
+*     : uint32_t              
+* : 
 ******************************************************************************************************************************************/
 uint32_t UART_GetBaudrate(UART_TypeDef * UARTx)
 {
@@ -243,13 +243,13 @@ uint32_t UART_GetBaudrate(UART_TypeDef * UARTx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: UART_CTSConfig()
-* 功能说明: UART CTS流控配置
-* 输    入: UART_TypeDef * UARTx  指定要被设置的UART串口，有效值包括UART0、UART1、UART2、UART3
-*           uint32_t enable         1 使能CTS流控    0 禁止CTS流控
-*           uint32_t polarity       0 CTS输入为低表示可以发送数据    1 CTS输入为高表示可以发送数据
-* 输    出: 无
-* 注意事项: 无
+* : UART_CTSConfig()
+* : UART CTS
+*     : UART_TypeDef * UARTx  UARTUART0UART1UART2UART3
+*           uint32_t enable         1 CTS    0 CTS
+*           uint32_t polarity       0 CTS    1 CTS
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void UART_CTSConfig(UART_TypeDef * UARTx, uint32_t enable, uint32_t polarity)
 {
@@ -259,11 +259,11 @@ void UART_CTSConfig(UART_TypeDef * UARTx, uint32_t enable, uint32_t polarity)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: UART_CTSLineState()
-* 功能说明: UART CTS线当前状态
-* 输    入: UART_TypeDef * UARTx  指定要被设置的UART串口，有效值包括UART0、UART1、UART2、UART3
-* 输    出: uint32_t              0 CTS线当前为低电平    1 CTS线当前为高电平
-* 注意事项: 无
+* : UART_CTSLineState()
+* : UART CTS
+*     : UART_TypeDef * UARTx  UARTUART0UART1UART2UART3
+*     : uint32_t              0 CTS    1 CTS
+* : 
 ******************************************************************************************************************************************/
 uint32_t UART_CTSLineState(UART_TypeDef * UARTx)
 {
@@ -271,14 +271,14 @@ uint32_t UART_CTSLineState(UART_TypeDef * UARTx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: UART_RTSConfig()
-* 功能说明: UART RTS流控配置
-* 输    入: UART_TypeDef * UARTx  指定要被设置的UART串口，有效值包括UART0、UART1、UART2、UART3
-*           uint32_t enable         1 使能RTS流控    0 禁止RTS流控
-*           uint32_t polarity       0 RTS输出低表示可以接收数据    1 RTS输出高表示可以接收数据
-*           uint32_t threshold      RTS流控的触发阈值，可取值UART_RTS_1BYTE、UART_RTS_2BYTE、UART_RTS_4BYTE、UART_RTS_6BYTE
-* 输    出: 无
-* 注意事项: 无
+* : UART_RTSConfig()
+* : UART RTS
+*     : UART_TypeDef * UARTx  UARTUART0UART1UART2UART3
+*           uint32_t enable         1 RTS    0 RTS
+*           uint32_t polarity       0 RTS    1 RTS
+*           uint32_t threshold      RTSUART_RTS_1BYTEUART_RTS_2BYTEUART_RTS_4BYTEUART_RTS_6BYTE
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void UART_RTSConfig(UART_TypeDef * UARTx, uint32_t enable, uint32_t polarity, uint32_t threshold)
 {
@@ -289,11 +289,11 @@ void UART_RTSConfig(UART_TypeDef * UARTx, uint32_t enable, uint32_t polarity, ui
 }
 
 /******************************************************************************************************************************************
-* 函数名称: UART_RTSLineState()
-* 功能说明: UART RTS线当前状态
-* 输    入: UART_TypeDef * UARTx  指定要被设置的UART串口，有效值包括UART0、UART1、UART2、UART3
-* 输    出: uint32_t              0 RTS线当前为低电平    1 RTS线当前为高电平
-* 注意事项: 无
+* : UART_RTSLineState()
+* : UART RTS
+*     : UART_TypeDef * UARTx  UARTUART0UART1UART2UART3
+*     : uint32_t              0 RTS    1 RTS
+* : 
 ******************************************************************************************************************************************/
 uint32_t UART_RTSLineState(UART_TypeDef * UARTx)
 {
@@ -301,15 +301,15 @@ uint32_t UART_RTSLineState(UART_TypeDef * UARTx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: UART_LINConfig()
-* 功能说明: UART LIN功能配置
-* 输    入: UART_TypeDef * UARTx  指定要被设置的UART串口，有效值包括UART0、UART1、UART2、UART3
-*           uint32_t detectedLen    检测到Break需要的低电平长度（位数），取值1--16
-*           uint32_t detectedIEn    检测到Break中断使能
-*           uint32_t generatedLen   Break发送低电平长度，取值1--15
-*           uint32_t generatedIEn   Break发送完成中断使能
-* 输    出: 无
-* 注意事项: 无
+* : UART_LINConfig()
+* : UART LIN
+*     : UART_TypeDef * UARTx  UARTUART0UART1UART2UART3
+*           uint32_t detectedLen    Break1--16
+*           uint32_t detectedIEn    Break
+*           uint32_t generatedLen   Break1--15
+*           uint32_t generatedIEn   Break
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void UART_LINConfig(UART_TypeDef * UARTx, uint32_t detectedLen, uint32_t detectedIEn, uint32_t generatedLen, uint32_t generatedIEn)
 {
@@ -322,11 +322,11 @@ void UART_LINConfig(UART_TypeDef * UARTx, uint32_t detectedLen, uint32_t detecte
 }
 
 /******************************************************************************************************************************************
-* 函数名称: UART_LINGenerate()
-* 功能说明: UART LIN产生/发送Break
-* 输    入: UART_TypeDef * UARTx  指定要被设置的UART串口，有效值包括UART0、UART1、UART2、UART3
-* 输    出: 无
-* 注意事项: 无
+* : UART_LINGenerate()
+* : UART LIN/Break
+*     : UART_TypeDef * UARTx  UARTUART0UART1UART2UART3
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void UART_LINGenerate(UART_TypeDef * UARTx)
 {
@@ -334,11 +334,11 @@ void UART_LINGenerate(UART_TypeDef * UARTx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: UART_LINIsDetected()
-* 功能说明: UART LIN是否检测到Break
-* 输    入: UART_TypeDef * UARTx  指定要被设置的UART串口，有效值包括UART0、UART1、UART2、UART3
-* 输    出: uint32_t              1 检测到LIN Break    0 未检测到LIN Break
-* 注意事项: 无
+* : UART_LINIsDetected()
+* : UART LINBreak
+*     : UART_TypeDef * UARTx  UARTUART0UART1UART2UART3
+*     : uint32_t              1 LIN Break    0 LIN Break
+* : 
 ******************************************************************************************************************************************/
 uint32_t UART_LINIsDetected(UART_TypeDef * UARTx)
 {
@@ -346,11 +346,11 @@ uint32_t UART_LINIsDetected(UART_TypeDef * UARTx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: UART_LINIsGenerated()
-* 功能说明: UART LIN Break是否发送完成
-* 输    入: UART_TypeDef * UARTx  指定要被设置的UART串口，有效值包括UART0、UART1、UART2、UART3
-* 输    出: uint32_t              1 LIN Break 发送完成    0 LIN Break发送未完成
-* 注意事项: 无
+* : UART_LINIsGenerated()
+* : UART LIN Break
+*     : UART_TypeDef * UARTx  UARTUART0UART1UART2UART3
+*     : uint32_t              1 LIN Break     0 LIN Break
+* : 
 ******************************************************************************************************************************************/
 uint32_t UART_LINIsGenerated(UART_TypeDef * UARTx)
 {
@@ -358,14 +358,14 @@ uint32_t UART_LINIsGenerated(UART_TypeDef * UARTx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: UART_ABRStart()
-* 功能说明: UART 自动波特率检测开始
-* 输    入: UART_TypeDef * UARTx  指定要被设置的UART串口，有效值包括UART0、UART1、UART2、UART3
-*           uint32_t detectChar     用于自动检测、计算波特率的检测字符
-*                                   8位数据时可取值：0xFF、0xFE、0xF8、0x80，分别表示发送方必须发送0xFF、0xFE、0xF8、0x80
-*                                   9位数据时可取值：0x1FF、0x1FE、0x1F8、0x180，分别表示发送方必须发送0x1FF、0x1FE、0x1F8、0x180
-* 输    出: 无
-* 注意事项: 自动波特率检测时不能开启奇偶校验
+* : UART_ABRStart()
+* : UART 
+*     : UART_TypeDef * UARTx  UARTUART0UART1UART2UART3
+*           uint32_t detectChar     
+*                                   80xFF0xFE0xF80x800xFF0xFE0xF80x80
+*                                   90x1FF0x1FE0x1F80x1800x1FF0x1FE0x1F80x180
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void UART_ABRStart(UART_TypeDef * UARTx, uint32_t detectChar)
 {
@@ -383,11 +383,11 @@ void UART_ABRStart(UART_TypeDef * UARTx, uint32_t detectChar)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: UART_ABRIsDone()
-* 功能说明: UART 自动波特率是否完成
-* 输    入: UART_TypeDef * UARTx  指定要被设置的UART串口，有效值包括UART0、UART1、UART2、UART3
-* 输    出: uint32_t              0 未完成    UART_ABR_RES_OK 已完成，且成功    UART_ABR_RES_ERR 已完成，但失败、出错
-* 注意事项: 无
+* : UART_ABRIsDone()
+* : UART 
+*     : UART_TypeDef * UARTx  UARTUART0UART1UART2UART3
+*     : uint32_t              0     UART_ABR_RES_OK     UART_ABR_RES_ERR 
+* : 
 ******************************************************************************************************************************************/
 uint32_t UART_ABRIsDone(UART_TypeDef * UARTx)
 {
@@ -406,11 +406,11 @@ uint32_t UART_ABRIsDone(UART_TypeDef * UARTx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: UART_INTRXThresholdEn()
-* 功能说明: 当RX FIFO中数据个数 >= RXThreshold时 触发中断
-* 输    入: UART_TypeDef * UARTx  指定要被设置的UART串口，有效值包括UART0、UART1、UART2、UART3
-* 输    出: 无
-* 注意事项: 无
+* : UART_INTRXThresholdEn()
+* : RX FIFO >= RXThreshold 
+*     : UART_TypeDef * UARTx  UARTUART0UART1UART2UART3
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void UART_INTRXThresholdEn(UART_TypeDef * UARTx)
 {
@@ -418,11 +418,11 @@ void UART_INTRXThresholdEn(UART_TypeDef * UARTx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: UART_INTRXThresholdDis()
-* 功能说明: 当RX FIFO中数据个数 >= RXThreshold时 不触发中断
-* 输    入: UART_TypeDef * UARTx  指定要被设置的UART串口，有效值包括UART0、UART1、UART2、UART3
-* 输    出: 无
-* 注意事项: 无
+* : UART_INTRXThresholdDis()
+* : RX FIFO >= RXThreshold 
+*     : UART_TypeDef * UARTx  UARTUART0UART1UART2UART3
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void UART_INTRXThresholdDis(UART_TypeDef * UARTx)
 {
@@ -430,11 +430,11 @@ void UART_INTRXThresholdDis(UART_TypeDef * UARTx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: UART_INTRXThresholdStat()
-* 功能说明: 是否RX FIFO中数据个数 >= RXThreshold
-* 输    入: UART_TypeDef * UARTx  指定要被设置的UART串口，有效值包括UART0、UART1、UART2、UART3
-* 输    出: uint32_t              1 RX FIFO中数据个数 >= RXThreshold       0 RX FIFO中数据个数 < RXThreshold
-* 注意事项: RXIF = RXTHRF & RXIE
+* : UART_INTRXThresholdStat()
+* : RX FIFO >= RXThreshold
+*     : UART_TypeDef * UARTx  UARTUART0UART1UART2UART3
+*     : uint32_t              1 RX FIFO >= RXThreshold       0 RX FIFO < RXThreshold
+* : RXIF = RXTHRF & RXIE
 ******************************************************************************************************************************************/
 uint32_t UART_INTRXThresholdStat(UART_TypeDef * UARTx)
 {
@@ -442,11 +442,11 @@ uint32_t UART_INTRXThresholdStat(UART_TypeDef * UARTx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: UART_INTTXThresholdEn()
-* 功能说明: 当TX FIFO中数据个数 <= TXThreshold时 触发中断
-* 输    入: UART_TypeDef * UARTx  指定要被设置的UART串口，有效值包括UART0、UART1、UART2、UART3
-* 输    出: 无
-* 注意事项: 无
+* : UART_INTTXThresholdEn()
+* : TX FIFO <= TXThreshold 
+*     : UART_TypeDef * UARTx  UARTUART0UART1UART2UART3
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void UART_INTTXThresholdEn(UART_TypeDef * UARTx)
 {
@@ -454,11 +454,11 @@ void UART_INTTXThresholdEn(UART_TypeDef * UARTx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: UART_INTTXThresholdDis()
-* 功能说明: 当TX FIFO中数据个数 <= TXThreshold时 不触发中断
-* 输    入: UART_TypeDef * UARTx  指定要被设置的UART串口，有效值包括UART0、UART1、UART2、UART3
-* 输    出: 无
-* 注意事项: 无
+* : UART_INTTXThresholdDis()
+* : TX FIFO <= TXThreshold 
+*     : UART_TypeDef * UARTx  UARTUART0UART1UART2UART3
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void UART_INTTXThresholdDis(UART_TypeDef * UARTx)
 {
@@ -466,11 +466,11 @@ void UART_INTTXThresholdDis(UART_TypeDef * UARTx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: UART_INTTXThresholdStat()
-* 功能说明: 是否TX FIFO中数据个数 <= TXThreshold
-* 输    入: UART_TypeDef * UARTx  指定要被设置的UART串口，有效值包括UART0、UART1、UART2、UART3
-* 输    出: uint32_t              1 TX FIFO中数据个数 <= TXThreshold       0 TX FIFO中数据个数 > TXThreshold
-* 注意事项: TXIF = TXTHRF & TXIE
+* : UART_INTTXThresholdStat()
+* : TX FIFO <= TXThreshold
+*     : UART_TypeDef * UARTx  UARTUART0UART1UART2UART3
+*     : uint32_t              1 TX FIFO <= TXThreshold       0 TX FIFO > TXThreshold
+* : TXIF = TXTHRF & TXIE
 ******************************************************************************************************************************************/
 uint32_t UART_INTTXThresholdStat(UART_TypeDef * UARTx)
 {
@@ -478,11 +478,11 @@ uint32_t UART_INTTXThresholdStat(UART_TypeDef * UARTx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: UART_INTTimeoutEn()
-* 功能说明: 接收发生超时时 触发中断
-* 输    入: UART_TypeDef * UARTx  指定要被设置的UART串口，有效值包括UART0、UART1、UART2、UART3
-* 输    出: 无
-* 注意事项: 无
+* : UART_INTTimeoutEn()
+* :  
+*     : UART_TypeDef * UARTx  UARTUART0UART1UART2UART3
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void UART_INTTimeoutEn(UART_TypeDef * UARTx)
 {
@@ -490,11 +490,11 @@ void UART_INTTimeoutEn(UART_TypeDef * UARTx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: UART_INTTimeoutDis()
-* 功能说明: 接收发生超时时 不触发中断
-* 输    入: UART_TypeDef * UARTx  指定要被设置的UART串口，有效值包括UART0、UART1、UART2、UART3
-* 输    出: 无
-* 注意事项: 无
+* : UART_INTTimeoutDis()
+* :  
+*     : UART_TypeDef * UARTx  UARTUART0UART1UART2UART3
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void UART_INTTimeoutDis(UART_TypeDef * UARTx)
 {
@@ -502,11 +502,11 @@ void UART_INTTimeoutDis(UART_TypeDef * UARTx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: UART_INTTimeoutStat()
-* 功能说明: 是否发生了接收超时，即超过 TimeoutTime/(Baudrate/10) 秒没有在RX线上接收到数据时触发中断
-* 输    入: UART_TypeDef * UARTx  指定要被设置的UART串口，有效值包括UART0、UART1、UART2、UART3
-* 输    出: uint32_t              1 发生了接收超时       0 未发生接收超时
-* 注意事项: 无
+* : UART_INTTimeoutStat()
+* :  TimeoutTime/(Baudrate/10) RX
+*     : UART_TypeDef * UARTx  UARTUART0UART1UART2UART3
+*     : uint32_t              1        0 
+* : 
 ******************************************************************************************************************************************/
 uint32_t UART_INTTimeoutStat(UART_TypeDef * UARTx)
 {
@@ -514,11 +514,11 @@ uint32_t UART_INTTimeoutStat(UART_TypeDef * UARTx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: UART_INTTXDoneEn()
-* 功能说明: 发送FIFO空且发送移位寄存器空中断使能
-* 输    入: UART_TypeDef * UARTx  指定要被设置的UART串口，有效值包括UART0、UART1、UART2、UART3
-* 输    出: 无
-* 注意事项: 无
+* : UART_INTTXDoneEn()
+* : FIFO
+*     : UART_TypeDef * UARTx  UARTUART0UART1UART2UART3
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void UART_INTTXDoneEn(UART_TypeDef * UARTx)
 {
@@ -526,11 +526,11 @@ void UART_INTTXDoneEn(UART_TypeDef * UARTx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: UART_INTTXDoneDis()
-* 功能说明: 发送FIFO空且发送移位寄存器空中断禁止
-* 输    入: UART_TypeDef * UARTx  指定要被设置的UART串口，有效值包括UART0、UART1、UART2、UART3
-* 输    出: 无
-* 注意事项: 无
+* : UART_INTTXDoneDis()
+* : FIFO
+*     : UART_TypeDef * UARTx  UARTUART0UART1UART2UART3
+*     : 
+* : 
 ******************************************************************************************************************************************/
 void UART_INTTXDoneDis(UART_TypeDef * UARTx)
 {
@@ -538,11 +538,11 @@ void UART_INTTXDoneDis(UART_TypeDef * UARTx)
 }
 
 /******************************************************************************************************************************************
-* 函数名称: UART_INTTXDoneStat()
-* 功能说明: 发送FIFO空且发送移位寄存器空中断状态
-* 输    入: UART_TypeDef * UARTx  指定要被设置的UART串口，有效值包括UART0、UART1、UART2、UART3
-* 输    出: uint32_t              1 发送FIFO空且发送移位寄存器空      0 发送FIFO或发送移位寄存器未空
-* 注意事项: 无
+* : UART_INTTXDoneStat()
+* : FIFO
+*     : UART_TypeDef * UARTx  UARTUART0UART1UART2UART3
+*     : uint32_t              1 FIFO      0 FIFO
+* : 
 ******************************************************************************************************************************************/
 uint32_t UART_INTTXDoneStat(UART_TypeDef * UARTx)
 {

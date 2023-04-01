@@ -312,8 +312,8 @@ typedef struct {
  *
  * AXI bus error interrupt
  * AXI Bus error interrupt is generated in following cases:
- * • AXI address is invalid
- * • AXI 8-bit or 16-bit WRAP write/read
+ *  AXI address is invalid
+ *  AXI 8-bit or 16-bit WRAP write/read
  */
 #define DRAM_INTR_AXIBUSERR_MASK (0x8U)
 #define DRAM_INTR_AXIBUSERR_SHIFT (3U)
@@ -336,9 +336,9 @@ typedef struct {
  *
  * IP command error done interrupt
  * IP command error interrupt is generated in following case:
- * • IP Command Address target invalid device space
- * • IP Command Code unsupported
- * • IP Command triggered when previous command
+ *  IP Command Address target invalid device space
+ *  IP Command Code unsupported
+ *  IP Command triggered when previous command
  */
 #define DRAM_INTR_IPCMDERR_MASK (0x2U)
 #define DRAM_INTR_IPCMDERR_SHIFT (1U)
@@ -743,15 +743,15 @@ typedef struct {
  * CMD (RW)
  *
  * SDRAM Commands:
- * • 0x8: READ
- * • 0x9: WRITE
- * • 0xA: MODESET
- * • 0xB: ACTIVE
- * • 0xC: AUTO REFRESH
- * • 0xD: SELF REFRESH
- * • 0xE: PRECHARGE
- * • 0xF: PRECHARGE ALL
- * • Others: RSVD
+ *  0x8: READ
+ *  0x9: WRITE
+ *  0xA: MODESET
+ *  0xB: ACTIVE
+ *  0xC: AUTO REFRESH
+ *  0xD: SELF REFRESH
+ *  0xE: PRECHARGE
+ *  0xF: PRECHARGE ALL
+ *  Others: RSVD
  * NOTE: SELF REFRESH is sent to all SDRAM devices because they shared same CLK pin.
  */
 #define DRAM_IPCMD_CMD_MASK (0xFFFFU)

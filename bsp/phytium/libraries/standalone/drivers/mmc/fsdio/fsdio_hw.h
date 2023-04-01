@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fsdio_hw.h
  * Date: 2022-05-26 15:32:34
  * LastEditTime: 2022-05-26 15:32:35
- * Description:  This files is for SDIO register function definition
+ * Description: This files is for SDIO register function definition
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   zhugengyu  2021/12/2    init
  * 1.1   zhugengyu  2022/5/26    modify according to tech manual.
  */
@@ -91,45 +91,45 @@ extern "C"
 
 /** @name FSDIO_CNTRL_OFFSET x0 Register
  */
-#define FSDIO_CNTRL_CONTROLLER_RESET BIT(0)             /* RW 复位控制器，除 DMA，FIFO */
-#define FSDIO_CNTRL_FIFO_RESET BIT(1)                   /* RW 复位 FIFO, 1 有效 */
-#define FSDIO_CNTRL_DMA_RESET BIT(2)                    /* RW 复位内部 DMA, 1 有效 */
-#define FSDIO_CNTRL_INT_ENABLE BIT(4)                   /* RW 全局中断使能配置, 1 使能 */
-#define FSDIO_CNTRL_DMA_ENABLE BIT(5)                   /* RW 外部 DMA 模式使能  */
-#define FSDIO_CNTRL_READ_WAIT BIT(6)                    /* RW SDIO 读等待 1 有效 */
-#define FSDIO_CNTRL_SEND_IRQ_RESPONSE BIT(7)            /* RW MMC 中断自动响应配置 1 有效 */
-#define FSDIO_CNTRL_ABORT_READ_DATA BIT(8)              /* RW 读暂停异常清除 */
-#define FSDIO_CNTRL_SEND_CCSD BIT(9)                    /* RW 发送CCD (NOT USED) */
-#define FSDIO_CNTRL_SEND_AUTO_STOP_CCSD BIT(10)         /* RW 发送CCD，自动STOP (NOT USED) */
-#define FSDIO_CNTRL_ENDIAN BIT(11)                      /* RW 0：小端，1：大端 */
-#define FSDIO_CNTRL_CARD_VOLTAGE_A_MASK GENMASK(19, 16) /* RW A电压选择 */
-#define FSDIO_CNTRL_CARD_VOLTAGE_B_MASK GENMASK(23, 20) /* RW B电压选择 */
-#define FSDIO_CNTRL_ENABLE_OD_PULLUP BIT(24)            /* RW 外部开漏输出 */
-#define FSDIO_CNTRL_USE_INTERNAL_DMAC BIT(25)           /* RW 使用内部DMA */
+#define FSDIO_CNTRL_CONTROLLER_RESET BIT(0)             /* RW  DMAFIFO */
+#define FSDIO_CNTRL_FIFO_RESET BIT(1)                   /* RW  FIFO, 1  */
+#define FSDIO_CNTRL_DMA_RESET BIT(2)                    /* RW  DMA, 1  */
+#define FSDIO_CNTRL_INT_ENABLE BIT(4)                   /* RW , 1  */
+#define FSDIO_CNTRL_DMA_ENABLE BIT(5)                   /* RW  DMA   */
+#define FSDIO_CNTRL_READ_WAIT BIT(6)                    /* RW SDIO  1  */
+#define FSDIO_CNTRL_SEND_IRQ_RESPONSE BIT(7)            /* RW MMC  1  */
+#define FSDIO_CNTRL_ABORT_READ_DATA BIT(8)              /* RW  */
+#define FSDIO_CNTRL_SEND_CCSD BIT(9)                    /* RW CCD (NOT USED) */
+#define FSDIO_CNTRL_SEND_AUTO_STOP_CCSD BIT(10)         /* RW CCDSTOP (NOT USED) */
+#define FSDIO_CNTRL_ENDIAN BIT(11)                      /* RW 01 */
+#define FSDIO_CNTRL_CARD_VOLTAGE_A_MASK GENMASK(19, 16) /* RW A */
+#define FSDIO_CNTRL_CARD_VOLTAGE_B_MASK GENMASK(23, 20) /* RW B */
+#define FSDIO_CNTRL_ENABLE_OD_PULLUP BIT(24)            /* RW  */
+#define FSDIO_CNTRL_USE_INTERNAL_DMAC BIT(25)           /* RW DMA */
 
 /** @name FSDIO_PWREN_OFFSET 0x4 Register
  */
-#define FSDIO_PWREN_ENABLE BIT(0) /* RW 卡供电开关, 0：关；1：开*/
+#define FSDIO_PWREN_ENABLE BIT(0) /* RW , 01*/
 
 /** @name FSDIO_CLKDIV_OFFSET 0x8 Register
  */
-/* CLK_SAMPLE 和 CLK_SAMPLE 必须小于 CLK_DIVIDER */
+/* CLK_SAMPLE  CLK_SAMPLE  CLK_DIVIDER */
 #define FSDIO_CLK_SAMPLE_SET(x)  SET_REG32_BITS((x), 23, 16)
 #define FSDIO_CLK_DRV_SET(x)     SET_REG32_BITS((x), 15, 8)
-#define FSDIO_CLK_DIVIDER_SET(x) SET_REG32_BITS((x), 7, 0) /* 分频系数 =  2 * bit[7:0] */
+#define FSDIO_CLK_DIVIDER_SET(x) SET_REG32_BITS((x), 7, 0) /*  =  2 * bit[7:0] */
 #define FSDIO_CLK_DIV(samp, drv, div) FSDIO_CLK_SAMPLE_SET(samp) | \
                                       FSDIO_CLK_DRV_SET(drv) | \
                                       FSDIO_CLK_DIVIDER_SET(div)
 
 /** @name FSDIO_CLKENA_OFFSET Register
  */
-#define FSDIO_CLKENA_CCLK_ENABLE    BIT(0)     /* RW 0：Clock disabled；1：Clock enabled */
-#define FSDIO_CLKENA_CCLK_LOW_POWER BIT(16)    /* RW 0x0：非低功耗；0x1：低功耗 */
+#define FSDIO_CLKENA_CCLK_ENABLE    BIT(0)     /* RW 0Clock disabled1Clock enabled */
+#define FSDIO_CLKENA_CCLK_LOW_POWER BIT(16)    /* RW 0x00x1 */
 
 /** @name FSDIO_TMOUT_OFFSET Register
  */
-#define FSDIO_MAX_DATA_TIMEOUT 0xffffff /* RW 读卡超时（以卡时钟为单位） */
-#define FSDIO_MAX_RESP_TIMEOUT 0xff     /* RW 响应超时（以卡时钟为单位） */
+#define FSDIO_MAX_DATA_TIMEOUT 0xffffff /* RW  */
+#define FSDIO_MAX_RESP_TIMEOUT 0xff     /* RW  */
 #define FSDIO_TIMEOUT_DATA(data_timeout, resp_timeout) \
     ((GENMASK(31, 8) & ((data_timeout) << 8)) |        \
      (GENMASK(7, 0) & ((resp_timeout))))
@@ -171,41 +171,41 @@ extern "C"
 
 /** @name FSDIO_CMD_OFFSET Register
  */
-#define FSDIO_CMD_START BIT(31)           /* 启动命令 */
-#define FSDIO_CMD_USE_HOLD_REG BIT(29)    /* 0: 旁路HOLD寄存器，1: 使能HOLD寄存器 */
-#define FSDIO_CMD_VOLT_SWITCH BIT(28)     /* 0: 无电压转换，1: 有电压转换 */
+#define FSDIO_CMD_START BIT(31)           /*  */
+#define FSDIO_CMD_USE_HOLD_REG BIT(29)    /* 0: HOLD1: HOLD */
+#define FSDIO_CMD_VOLT_SWITCH BIT(28)     /* 0: 1:  */
 #define FSDIO_CMD_BOOT_MODE BIT(27)       /* 0: Mandatory boot, 1: Alternate boot */
-#define FSDIO_CMD_DISABLE_BOOT BIT(26)    /* 中止boot进程 */
+#define FSDIO_CMD_DISABLE_BOOT BIT(26)    /* boot */
 #define FSDIO_CMD_EXPECT_BOOT_ACK BIT(25) /* 1: Expect book ack */
-#define FSDIO_CMD_ENABLE_BOOT BIT(24)     /* 1: 使能 boot for mandatory */
-#define FSDIO_CMD_UPD_CLK BIT(21)         /* 1：不发送指令，仅更新时钟寄存器的值到卡时钟域内 */
+#define FSDIO_CMD_ENABLE_BOOT BIT(24)     /* 1:  boot for mandatory */
+#define FSDIO_CMD_UPD_CLK BIT(21)         /* 1 */
 #define FSDIO_CMD_CARD_NUM_SET(num)      SET_REG32_BITS((num), 20, 16)
-#define FSDIO_CMD_INIT BIT(15)           /* 0：在发送指令前不发送初始化序列（80 个周期） 1: 发送 */
-#define FSDIO_CMD_STOP_ABORT BIT(14)     /* 1：停止或中止命令，用于停止当前的数据传输 */
-#define FSDIO_CMD_WAIT_PRVDATA_COMPLETE BIT(13)   /* 1：等待前面的数据传输完成后再发送指令 0: 立即发送命令 */
-#define FSDIO_CMD_SEND_AUTO_STOP BIT(12) /* 1：在数据传送结束时发送停止命令 */
-#define FSDIO_CMD_TRANSF_MODE_SET(mode) SET_REG32_BITS((mode), 12, 11)      /* 1: 流数据传输指令 */
-#define FSDIO_CMD_DAT_WRITE BIT(10)         /* 0：读卡 1：写卡 */
-#define FSDIO_CMD_DAT_EXP BIT(9)         /* 0：不等待数据传输, 1：等待数据传输 */
-#define FSDIO_CMD_RESP_CRC BIT(8)        /* 1：检查响应 CRC */
-#define FSDIO_CMD_RESP_LONG BIT(7)       /* 0：等待卡的短响应 1：等待卡的长响应 */
-#define FSDIO_CMD_RESP_EXP BIT(6)        /* 1：等待卡的响应，0：命令不需要卡响应 */
-#define FSDIO_CMD_INDX_SET(ind) SET_REG32_BITS((ind), 5, 0) /* 命令索引号 */
+#define FSDIO_CMD_INIT BIT(15)           /* 080  1:  */
+#define FSDIO_CMD_STOP_ABORT BIT(14)     /* 1 */
+#define FSDIO_CMD_WAIT_PRVDATA_COMPLETE BIT(13)   /* 1 0:  */
+#define FSDIO_CMD_SEND_AUTO_STOP BIT(12) /* 1 */
+#define FSDIO_CMD_TRANSF_MODE_SET(mode) SET_REG32_BITS((mode), 12, 11)      /* 1:  */
+#define FSDIO_CMD_DAT_WRITE BIT(10)         /* 0 1 */
+#define FSDIO_CMD_DAT_EXP BIT(9)         /* 0, 1 */
+#define FSDIO_CMD_RESP_CRC BIT(8)        /* 1 CRC */
+#define FSDIO_CMD_RESP_LONG BIT(7)       /* 0 1 */
+#define FSDIO_CMD_RESP_EXP BIT(6)        /* 10 */
+#define FSDIO_CMD_INDX_SET(ind) SET_REG32_BITS((ind), 5, 0) /*  */
 
 /** @name FSDIO_STATUS_OFFSET Register
  */
-#define FSDIO_STATUS_FIFO_RX BIT(0)     /* RO, 达到 FIFO_RX 标记 */
-#define FSDIO_STATUS_FIFO_TX BIT(1)     /* RO, 达到 FIFO_TX 标记 */
+#define FSDIO_STATUS_FIFO_RX BIT(0)     /* RO,  FIFO_RX  */
+#define FSDIO_STATUS_FIFO_TX BIT(1)     /* RO,  FIFO_TX  */
 #define FSDIO_STATUS_FIFO_EMPTY BIT(2)  /* RO, FIFO empty */
 #define FSDIO_STATUS_FIFO_FULL BIT(3)   /* RO, FIFO full */
 #define FSDIO_STATUS_CMD_FSM_GET(reg_val)  GET_REG32_BITS((reg_val), 7, 4)
-#define FSDIO_STATUS_DATA3_STATUS BIT(8) /* RO DATA[3] 卡在位检测，1：在位 */
-#define FSDIO_STATUS_DATA_BUSY BIT(9)   /* RO 1: 卡 busy */
+#define FSDIO_STATUS_DATA3_STATUS BIT(8) /* RO DATA[3] 1 */
+#define FSDIO_STATUS_DATA_BUSY BIT(9)   /* RO 1:  busy */
 #define FSDIO_STATUS_DATA_STATE_MC_BUSY BIT(10)  /* RO DATA TX|RX FSM busy  */
 #define FSDIO_STATUS_RESP_INDEX_GET(reg_val) GET_REG32_BITS((reg_val), 16, 11)
-#define FSDIO_STATUS_FIFO_CNT_GET(reg_val)  GET_REG32_BITS((reg_val), 29, 17)  /* RO: FIFO 填充计数器 */
-#define FSDIO_STATUS_DMA_ACK BIT(30)    /* RO DMA 确认 */
-#define FSDIO_STATUS_DMA_REQ BIT(31)    /* RO DMA 请求 */
+#define FSDIO_STATUS_FIFO_CNT_GET(reg_val)  GET_REG32_BITS((reg_val), 29, 17)  /* RO: FIFO  */
+#define FSDIO_STATUS_DMA_ACK BIT(30)    /* RO DMA  */
+#define FSDIO_STATUS_DMA_REQ BIT(31)    /* RO DMA  */
 
 /** @name FSDIO_FIFOTH_OFFSET Register
  */
@@ -221,9 +221,9 @@ enum
     FSDIO_FIFOTH_DMA_TRANS_256 = 0b111
 };
 
-#define FSDIO_FIFOTH_DMA_TRANS_MASK GENMASK(30, 28) /* 多次传输的突发大小 */
-#define FSDIO_FIFOTH_RX_WMARK_MASK GENMASK(27, 16)  /* 当接收数据给卡时FIFO的阈值 */
-#define FSDIO_FIFOTH_TX_WMARK_MASK GENMASK(11, 0)   /* 当发送数据给卡时FIFO的阈值 */
+#define FSDIO_FIFOTH_DMA_TRANS_MASK GENMASK(30, 28) /*  */
+#define FSDIO_FIFOTH_RX_WMARK_MASK GENMASK(27, 16)  /* FIFO */
+#define FSDIO_FIFOTH_TX_WMARK_MASK GENMASK(11, 0)   /* FIFO */
 
 #define FSDIO_RX_WMARK      0x7U
 #define FSDIO_TX_WMARK      0x100U
@@ -244,42 +244,42 @@ enum
 
 /** @name FSDIO_CARD_DETECT_OFFSET Register
  */
-#define FSDIO_CARD_DETECTED BIT(0)  /* 1：卡不在位；0：卡在位 */
+#define FSDIO_CARD_DETECTED BIT(0)  /* 10 */
 
 /** @name FSDIO_CARD_WRTPRT_OFFSET Register
  */
-#define FSDIO_CARD_WRITE_PROTECTED BIT(0) /* 1：写保护；0：无写保护 */
+#define FSDIO_CARD_WRITE_PROTECTED BIT(0) /* 10 */
 
 /** @name FSDIO_GPIO_OFFSET Register
  */
-#define FSDIO_CLK_READY BIT(0) /* CIU 时钟 ready */
+#define FSDIO_CLK_READY BIT(0) /* CIU  ready */
 
 /** @name FSDIO_UHS_REG_OFFSET Register
  */
-#define FSDIO_UHS_REG_VOLT_180 BIT(0)      /* RW 外部调压器接口电压 0: 3.3v, 1: 1.8v */
+#define FSDIO_UHS_REG_VOLT_180 BIT(0)      /* RW  0: 3.3v, 1: 1.8v */
 #define FSDIO_UHS_REG_VOLT_330 0U
-#define FSDIO_UHS_REG_DDR  BIT(16)     /* RW DDR 模式 */
+#define FSDIO_UHS_REG_DDR  BIT(16)     /* RW DDR  */
 
 /** @name FSDIO_CARD_RESET_OFFSET Register
  */
-#define FSDIO_CARD_RESET_ENABLE BIT(0) /* RW 1：运行；0：复位 */
+#define FSDIO_CARD_RESET_ENABLE BIT(0) /* RW 10 */
 
 /** @name FSDIO_BUS_MODE_OFFSET Register
  */
-#define FSDIO_BUS_MODE_SWR BIT(0) /* RW 软复位，复位idma内部寄存器 */
-#define FSDIO_BUS_MODE_FB BIT(1)  /* RW 固定burst */
-#define FSDIO_BUS_MODE_DE BIT(7)  /* RW idma使能 */
+#define FSDIO_BUS_MODE_SWR BIT(0) /* RW idma */
+#define FSDIO_BUS_MODE_FB BIT(1)  /* RW burst */
+#define FSDIO_BUS_MODE_DE BIT(7)  /* RW idma */
 #define FSDIO_BUS_MODE_PBL_GET(reg_val)  GET_REG32_BITS((reg_val), 10, 8) /* burst LEN */
 
 /** @name FSDIO_DMAC_STATUS_OFFSET Register
  */
-#define FSDIO_DMAC_STATUS_TI BIT(0)  /* RW 发送中断。表示链表的数据发送完成 */
-#define FSDIO_DMAC_STATUS_RI BIT(1)  /* RW 接收中断。表示链表的数据接收完成 */
-#define FSDIO_DMAC_STATUS_FBE BIT(2) /* RW 致命总线错误中断 */
-#define FSDIO_DMAC_STATUS_DU BIT(4)  /* RW 链表不可用中断 */
-#define FSDIO_DMAC_STATUS_CES BIT(5) /* RW 卡错误汇总 */
-#define FSDIO_DMAC_STATUS_NIS BIT(8) /* RW 正常中断汇总 */
-#define FSDIO_DMAC_STATUS_AIS BIT(9) /* RW 异常中断汇总 */
+#define FSDIO_DMAC_STATUS_TI BIT(0)  /* RW  */
+#define FSDIO_DMAC_STATUS_RI BIT(1)  /* RW  */
+#define FSDIO_DMAC_STATUS_FBE BIT(2) /* RW  */
+#define FSDIO_DMAC_STATUS_DU BIT(4)  /* RW  */
+#define FSDIO_DMAC_STATUS_CES BIT(5) /* RW  */
+#define FSDIO_DMAC_STATUS_NIS BIT(8) /* RW  */
+#define FSDIO_DMAC_STATUS_AIS BIT(9) /* RW  */
 #define FSDIO_DMAC_STATUS_EB_GET(reg_val) GET_REG32_BITS((reg_val), 12, 10)
 #define FSDIO_DMAC_STATUS_ALL_BITS  GENMASK(9, 0)
 
@@ -288,13 +288,13 @@ enum
 
 /** @name FSDIO_DMAC_INT_EN_OFFSET Register
  */
-#define FSDIO_DMAC_INT_ENA_TI BIT(0)            /* RW 发送完成中断使能 */
-#define FSDIO_DMAC_INT_ENA_RI BIT(1)            /* RW 接收完成中断使能 */
-#define FSDIO_DMAC_INT_ENA_FBE BIT(2)           /* RW 总线错误中断使能 */
-#define FSDIO_DMAC_INT_ENA_DU BIT(4)            /* RW 描述符不可读中断使能 */
-#define FSDIO_DMAC_INT_ENA_CES BIT(5)           /* RW 卡错误中断使能 */
-#define FSDIO_DMAC_INT_ENA_NIS BIT(8)           /* RW 正常中断汇总使能 */
-#define FSDIO_DMAC_INT_ENA_AIS BIT(9)           /* RW 异常中断汇总使能 */
+#define FSDIO_DMAC_INT_ENA_TI BIT(0)            /* RW  */
+#define FSDIO_DMAC_INT_ENA_RI BIT(1)            /* RW  */
+#define FSDIO_DMAC_INT_ENA_FBE BIT(2)           /* RW  */
+#define FSDIO_DMAC_INT_ENA_DU BIT(4)            /* RW  */
+#define FSDIO_DMAC_INT_ENA_CES BIT(5)           /* RW  */
+#define FSDIO_DMAC_INT_ENA_NIS BIT(8)           /* RW  */
+#define FSDIO_DMAC_INT_ENA_AIS BIT(9)           /* RW  */
 #define FSDIO_DMAC_INT_ENA_ALL GENMASK(9, 0)
 
 #define FSDIO_DMAC_INTS_MASK    (FSDIO_DMAC_INT_ENA_FBE | FSDIO_DMAC_INT_ENA_DU | \
@@ -302,9 +302,9 @@ enum
 
 /** @name FSDIO_CARD_THRCTL_OFFSET Register
  */
-#define FSDIO_CARD_THRCTL_CARDRD BIT(0)   /* RW 读卡threshold使能 */
-#define FSDIO_CARD_THRCTL_BUSY_CLR BIT(1) /* RW busy清中断 */
-#define FSDIO_CARD_THRCTL_CARDWR BIT(2)   /* RO 写卡threshold使能 */
+#define FSDIO_CARD_THRCTL_CARDRD BIT(0)   /* RW threshold */
+#define FSDIO_CARD_THRCTL_BUSY_CLR BIT(1) /* RW busy */
+#define FSDIO_CARD_THRCTL_CARDWR BIT(2)   /* RO threshold */
 enum
 {
     FSDIO_FIFO_DEPTH_8 = 23,
@@ -314,25 +314,25 @@ enum
     FSDIO_FIFO_DEPTH_128 = 27
 };
 
-#define FSDIO_CARD_THRCTL_THRESHOLD(n) BIT(n) /* 读卡 Threshold */
+#define FSDIO_CARD_THRCTL_THRESHOLD(n) BIT(n) /*  Threshold */
 
 /** @name FSDIO_UHS_REG_EXT_OFFSET Register
  */
-#define FSDIO_UHS_EXT_MMC_VOLT BIT(0)         /* RW 1.2V供电选择 */
-#define FSDIO_UHS_EXT_CLK_ENA BIT(1)          /* RW 外部时钟，CIU时钟使能 */
-#define FSDIO_UHS_CLK_DIV_MASK GENMASK(14, 8) /* RW 分频系数，ciu_f = clk_div_ctrl + 1, min=1*/
+#define FSDIO_UHS_EXT_MMC_VOLT BIT(0)         /* RW 1.2V */
+#define FSDIO_UHS_EXT_CLK_ENA BIT(1)          /* RW CIU */
+#define FSDIO_UHS_CLK_DIV_MASK GENMASK(14, 8) /* RW ciu_f = clk_div_ctrl + 1, min=1*/
 #define FSDIO_UHS_CLK_DIV(x) (FSDIO_UHS_CLK_DIV_MASK & ((x) << 8))
-#define FSDIO_UHS_CLK_SAMP_MASK GENMASK(22, 16) /* RW 采样相位参数，相对于ciu时钟相位点 */
+#define FSDIO_UHS_CLK_SAMP_MASK GENMASK(22, 16) /* RW ciu */
 #define FSDIO_UHS_CLK_SAMP(x) (FSDIO_UHS_CLK_SAMP_MASK & ((x) << 16))
-#define FSDIO_UHS_CLK_DRV_MASK GENMASK(30, 24) /* RW 输出相位参数，相对于ciu时钟相位点 */
+#define FSDIO_UHS_CLK_DRV_MASK GENMASK(30, 24) /* RW ciu */
 #define FSDIO_UHS_CLK_DRV(x) (FSDIO_UHS_CLK_DRV_MASK & ((x) << 24))
 #define FSDIO_UHS_EXT_CLK_MUX BIT(31)
 
-/* FSDIO_UHS_REG_EXT_OFFSET 和 FSDIO_CLKDIV_OFFSET 两个寄存器配合完成卡时钟和驱动采样相位调整
-    UHS_REG_EXT 配置一级分频，CLK_DIV 决定CARD工作时钟频率, DRV 和 SAMP 分别控制驱动相位和采样相位粗调
-        分配系数 = bit [14 : 8] + 1
-    CLKDIV 配置二级分频, DIVIDER , DRV 和 SAMP 分别控制驱动相位和采样相位精调
-        分配系数 = bit [7: 0] * 2
+/* FSDIO_UHS_REG_EXT_OFFSET  FSDIO_CLKDIV_OFFSET 
+    UHS_REG_EXT CLK_DIV CARD, DRV  SAMP 
+         = bit [14 : 8] + 1
+    CLKDIV , DIVIDER , DRV  SAMP 
+         = bit [7: 0] * 2
 */
 #define FSDIO_UHS_REG(drv_phase, samp_phase, clk_div) \
     (FSDIO_UHS_CLK_DRV(drv_phase) |                   \
@@ -346,7 +346,7 @@ enum
 
 /** @name FSDIO_REG_EMMC_DDR_REG_OFFSET Register
  */
-#define FSDIO_EMMC_DDR_CYCLE BIT(0) /* RW 1: start bit小于一个周期，0：start bit 为一个周期 */
+#define FSDIO_EMMC_DDR_CYCLE BIT(0) /* RW 1: start bit0start bit  */
 
 #define FSDIO_TIMEOUT (50000) /* timeout for retries */
 #define FSDIO_DELAY_US (5)
@@ -575,7 +575,7 @@ static inline u32 FSdioGetBusWidth(uintptr base_addr)
 static inline void FSdioResetIDMA(uintptr base_addr)
 {
     u32 reg_val = FSDIO_READ_REG(base_addr, FSDIO_BUS_MODE_OFFSET);
-    reg_val |= FSDIO_BUS_MODE_SWR; /* 写1软复位idma，复位完成后硬件自动清0 */
+    reg_val |= FSDIO_BUS_MODE_SWR; /* 1idma0 */
     FSDIO_WRITE_REG(base_addr, FSDIO_BUS_MODE_OFFSET, reg_val);
 }
 

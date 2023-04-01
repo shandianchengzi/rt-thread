@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fsemaphore.c
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 08:25:29
- * Description:  This files is for semaphore user api implmentation
+ * Description: This files is for semaphore user api implmentation
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   zhugengyu  2022/5/23    init commit
  */
 
@@ -53,10 +53,10 @@
 /*****************************************************************************/
 /**
  * @name: FSemaCfgInitialize
- * @msg: 初始化Semaphore控制器
- * @return {FError} FSEMA_SUCCESS 表示初始化成功
- * @param {FSema} *instance, Semaphore控制器实例
- * @param {FSemaConfig} *input_config, Semaphore控制器配置
+ * @msg: Semaphore
+ * @return {FError} FSEMA_SUCCESS 
+ * @param {FSema} *instance, Semaphore
+ * @param {FSemaConfig} *input_config, Semaphore
  */
 FError FSemaCfgInitialize(FSema *const instance, const FSemaConfig *input_config)
 {
@@ -73,7 +73,7 @@ FError FSemaCfgInitialize(FSema *const instance, const FSemaConfig *input_config
     if (&instance->config != input_config)
         instance->config = *input_config;
 
-    FSemaHwResetAll(base_addr); /* 重置所有的锁 */
+    FSemaHwResetAll(base_addr); /*  */
 
     if (FSEMA_SUCCESS == ret)
         instance->is_ready = FT_COMPONENT_IS_READY;
@@ -83,9 +83,9 @@ FError FSemaCfgInitialize(FSema *const instance, const FSemaConfig *input_config
 
 /**
  * @name: FSemaDeInitialize
- * @msg: 去初始化Semaphore控制器
- * @return {void} 无
- * @param {FSema} *instance, Semaphore控制器实例
+ * @msg: Semaphore
+ * @return {void} 
+ * @param {FSema} *instance, Semaphore
  */
 void FSemaDeInitialize(FSema *const instance)
 {
@@ -103,7 +103,7 @@ void FSemaDeInitialize(FSema *const instance)
 
     }
 
-    if (0 != base_addr) /* 如果base addr为0，实例可能还没有初始化 */
+    if (0 != base_addr) /* base addr0 */
     {
         FSemaHwResetAll(base_addr);
     }
@@ -115,10 +115,10 @@ void FSemaDeInitialize(FSema *const instance)
 
 /**
  * @name: FSemaCreateLocker
- * @msg: 分配和创建Semaphore锁
- * @return {FError} FSEMA_SUCCESS 表示分配成功
- * @param {FSema} *instance, Semaphore控制器实例
- * @param {FSemaLocker} *locker, Semaphore锁的实例
+ * @msg: Semaphore
+ * @return {FError} FSEMA_SUCCESS 
+ * @param {FSema} *instance, Semaphore
+ * @param {FSemaLocker} *locker, Semaphore
  */
 FError FSemaCreateLocker(FSema *const instance, FSemaLocker *const locker)
 {
@@ -133,7 +133,7 @@ FError FSemaCreateLocker(FSema *const instance, FSemaLocker *const locker)
 
     for (locker_idx = 0; locker_idx < FSEMA_NUM_OF_LOCKER; locker_idx++)
     {
-        /* 分配一把未创建的锁 */
+        /*  */
         if (NULL == instance->locker[locker_idx])
         {
             FSEMA_INFO("allocate locker %d", locker_idx);
@@ -144,13 +144,13 @@ FError FSemaCreateLocker(FSema *const instance, FSemaLocker *const locker)
     if (locker_idx >= FSEMA_NUM_OF_LOCKER)
     {
         FSEMA_ERROR("no locker available !!!");
-        return FSEMA_ERR_NO_AVAILABLE_LOCKER; /* 所有的锁都已经分配创建 */
+        return FSEMA_ERR_NO_AVAILABLE_LOCKER; /*  */
     }
 
     instance->locker[locker_idx] = locker;
-    locker->index = locker_idx; /* 分配锁，将锁的实例挂在控制器实例上 */
+    locker->index = locker_idx; /*  */
 
-    locker->owner = FSEMA_OWNER_NONE; /* 当前锁还没有owner */
+    locker->owner = FSEMA_OWNER_NONE; /* owner */
     locker->name[0] = '\0';
     locker->sema = instance;
 
@@ -159,12 +159,12 @@ FError FSemaCreateLocker(FSema *const instance, FSemaLocker *const locker)
 
 /**
  * @name: FSemaTryLock
- * @msg: 尝试获取Semaphore锁
- * @return {FError} FSEMA_SUCCESS 表示成功获取锁，FSEMA_ERR_LOCK_TIMEOUT 表示锁已经被占用
- * @param {FSemaLocker} *locker, Semaphore锁的实例
- * @param {u32} owner, 当前尝试获取锁的是谁
- * @param {u32} try_times, 尝试获取的次数
- * @param {FSemaRelaxHandler} relax_handler, 每次尝试获取锁失败后的relax函数
+ * @msg: Semaphore
+ * @return {FError} FSEMA_SUCCESS FSEMA_ERR_LOCK_TIMEOUT 
+ * @param {FSemaLocker} *locker, Semaphore
+ * @param {u32} owner, 
+ * @param {u32} try_times, 
+ * @param {FSemaRelaxHandler} relax_handler, relax
  */
 FError FSemaTryLock(FSemaLocker *const locker, u32 owner, u32 try_times, FSemaRelaxHandler relax_handler)
 {
@@ -182,7 +182,7 @@ FError FSemaTryLock(FSemaLocker *const locker, u32 owner, u32 try_times, FSemaRe
 
     while (try_times > 0)
     {
-        /* 尝试获取锁 */
+        /*  */
         lock_success = FSemaTryLockOnce(base_addr, locker->index);
         if (TRUE == lock_success)
             break;
@@ -200,7 +200,7 @@ FError FSemaTryLock(FSemaLocker *const locker, u32 owner, u32 try_times, FSemaRe
     }
     else
     {
-        locker->owner = owner; /* 记录当前locker的owner */
+        locker->owner = owner; /* lockerowner */
         FSEMA_INFO("locker-%d taken success by owner 0x%x", locker->index, owner);
     }
 
@@ -209,10 +209,10 @@ FError FSemaTryLock(FSemaLocker *const locker, u32 owner, u32 try_times, FSemaRe
 
 /**
  * @name: FSemaUnlock
- * @msg: 尝试释放Semaphore锁
- * @return {FError} FSEMA_SUCCESS释放锁成功
- * @param {FSemaLocker} *locker, Semaphore锁实例
- * @param {u32} owner, 当前尝试释放锁的身份
+ * @msg: Semaphore
+ * @return {FError} FSEMA_SUCCESS
+ * @param {FSemaLocker} *locker, Semaphore
+ * @param {u32} owner, 
  */
 FError FSemaUnlock(FSemaLocker *const locker, u32 owner)
 {
@@ -243,17 +243,17 @@ FError FSemaUnlock(FSemaLocker *const locker, u32 owner)
     }
 
     reg_val = FSEMA_RLOCK_X_UNLOCK;
-    FSemaWriteReg(base_addr, FSEMA_RLOCK_X_REG_OFFSET(locker->index), reg_val); /* 写0解锁信号量 */
-    locker->owner = FSEMA_OWNER_NONE; /* 解锁成功，当前锁持有者为None */
+    FSemaWriteReg(base_addr, FSEMA_RLOCK_X_REG_OFFSET(locker->index), reg_val); /* 0 */
+    locker->owner = FSEMA_OWNER_NONE; /* None */
 
     return ret;
 }
 
 /**
  * @name: FSemaUnlockAll
- * @msg: 强制解除所有Semaphore锁
- * @return {FError} FSEMA_SUCCESS表示强制解锁成功
- * @param {FSema} *instance, Semaphore控制器实例
+ * @msg: Semaphore
+ * @return {FError} FSEMA_SUCCESS
+ * @param {FSema} *instance, Semaphore
  */
 FError FSemaUnlockAll(FSema *const instance)
 {
@@ -273,7 +273,7 @@ FError FSemaUnlockAll(FSema *const instance)
     {
         if (NULL != instance->locker[loop])
         {
-            instance->locker[loop]->owner = FSEMA_OWNER_NONE; /* 解锁成功，当前锁持有者为None */
+            instance->locker[loop]->owner = FSEMA_OWNER_NONE; /* None */
         }
     }
 
@@ -282,9 +282,9 @@ FError FSemaUnlockAll(FSema *const instance)
 
 /**
  * @name: FSemaDeleteLocker
- * @msg: 强制解除Semaphore锁并删除锁实例
- * @return {FError} FSEMA_SUCCESS 表示删除锁成功
- * @param {FSemaLocker} *locker, Semaphore锁实例
+ * @msg: Semaphore
+ * @return {FError} FSEMA_SUCCESS 
+ * @param {FSemaLocker} *locker, Semaphore
  */
 FError FSemaDeleteLocker(FSemaLocker *const locker)
 {
@@ -307,7 +307,7 @@ FError FSemaDeleteLocker(FSemaLocker *const locker)
 
     FASSERT_MSG((instance->locker[locker_idx] == locker), "invalid locker index %d", locker_idx);
 
-    FSemaWriteReg(base_addr, FSEMA_RLOCK_X_REG_OFFSET(locker->index), FSEMA_RLOCK_X_UNLOCK); /* 写0解锁信号量 */
+    FSemaWriteReg(base_addr, FSEMA_RLOCK_X_REG_OFFSET(locker->index), FSEMA_RLOCK_X_UNLOCK); /* 0 */
 
     instance->locker[locker_idx] = NULL;
     memset(locker, 0, sizeof(*locker));
@@ -317,9 +317,9 @@ FError FSemaDeleteLocker(FSemaLocker *const locker)
 
 /**
  * @name: FSemaIsLocked
- * @msg: 检查指定Semaphore锁是否处于锁定状态
- * @return {boolean} TRUE: 处于锁定状态
- * @param {FSemaLocker} *locker, Semaphore锁实例
+ * @msg: Semaphore
+ * @return {boolean} TRUE: 
+ * @param {FSemaLocker} *locker, Semaphore
  */
 boolean FSemaIsLocked(FSemaLocker *locker)
 {

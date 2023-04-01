@@ -27,9 +27,9 @@
 //----------------------------------------------------------------------------
 
 // timeout values (milliseconds)
-#define  SCSI_MEDIA_POLL_INTERVAL    1250   /* 1.25s, 查询media change间隔时间  */
-#define  SCSI_MEDIA_OP_TIMEOUT       40000  /* 10s, 读/写等介质操作超时时间     */
-#define  SCSI_COMMAND_TIMEOUT        20000   /* 2s, 普通命令超时时间             */
+#define  SCSI_MEDIA_POLL_INTERVAL    1250   /* 1.25s, media change  */
+#define  SCSI_MEDIA_OP_TIMEOUT       40000  /* 10s, /     */
+#define  SCSI_COMMAND_TIMEOUT        20000   /* 2s,              */
 
 #define  SCSI_CMD_RETRY              3
 
@@ -159,65 +159,65 @@
 
 
 //----------------------------------------------------------------------------
-// 命令执行的结果
+// 
 //----------------------------------------------------------------------------
-#define  USB_STATUS_SUCCESS                                 0   /* 命令执行成功                 */
+#define  USB_STATUS_SUCCESS                                 0   /*                  */
 
-/* 输入参数 */
-#define  USB_STATUS_BAD_ARGUMENTS                           1   /* 参数错误                     */
-#define  USB_STATUS_BUFFER_TOO_SMALL                        2   /* 输入buffer太小               */
+/*  */
+#define  USB_STATUS_BAD_ARGUMENTS                           1   /*                      */
+#define  USB_STATUS_BUFFER_TOO_SMALL                        2   /* buffer               */
 
-/* 设备相关 */
-#define  USB_STATUS_DEVICE_DISCONNECTED                     30  /* 设备已经断开连接             */
-#define  USB_STATUS_IO_TIMEOUT                              31  /* IO操作超时                   */
-#define  USB_STATUS_IO_DEVICE_ERROR                         32  /* 设备错误                     */
-#define  USB_STATUS_DEVICE_BUSY                             33  /* 设备忙                       */
+/*  */
+#define  USB_STATUS_DEVICE_DISCONNECTED                     30  /*              */
+#define  USB_STATUS_IO_TIMEOUT                              31  /* IO                   */
+#define  USB_STATUS_IO_DEVICE_ERROR                         32  /*                      */
+#define  USB_STATUS_DEVICE_BUSY                             33  /*                        */
 
-/* 命令相关 */
-#define  USB_STATUS_INVALID_COMMAND                         60  /* 不支持的命令                 */
-#define  USB_STATUS_INVALID_FIELD_IN_COMMAND                61  /* 命令中有不支持的字段         */
-#define  USB_STATUS_LOGICAL_BLOCK_ADDRESS_OUT_OF_RANGE      62  /* 超过最大逻辑块               */
-#define  USB_STATUS_COMMAND_FAILED                          63  /* 命令执行失败                 */
+/*  */
+#define  USB_STATUS_INVALID_COMMAND                         60  /*                  */
+#define  USB_STATUS_INVALID_FIELD_IN_COMMAND                61  /*          */
+#define  USB_STATUS_LOGICAL_BLOCK_ADDRESS_OUT_OF_RANGE      62  /*                */
+#define  USB_STATUS_COMMAND_FAILED                          63  /*                  */
 
-/* 命令结果相关 */
-#define  USB_STATUS_UNIT_NOT_READY                          91  /* 介质单元没有就绪             */
-#define  USB_STATUS_MEDIA_NOT_PRESENT                       92  /* 媒体介质不存在               */
-#define  USB_STATUS_NOT_READY_TO_READY_TRANSITION           93  /* Media从没有准备就绪到就绪    */
-#define  USB_STATUS_UNRECOGNIZED_MEDIA                      94  /* 不支持的Media                */
-#define  USB_STATUS_MEDIA_CHANGE                            95  /* Media发生变化                */
-#define  USB_STATUS_UNKOWN_SENSE                            96  /* 未知sense                    */
+/*  */
+#define  USB_STATUS_UNIT_NOT_READY                          91  /*              */
+#define  USB_STATUS_MEDIA_NOT_PRESENT                       92  /*                */
+#define  USB_STATUS_NOT_READY_TO_READY_TRANSITION           93  /* Media    */
+#define  USB_STATUS_UNRECOGNIZED_MEDIA                      94  /* Media                */
+#define  USB_STATUS_MEDIA_CHANGE                            95  /* Media                */
+#define  USB_STATUS_UNKOWN_SENSE                            96  /* sense                    */
 
-#define  USB_STATUS_UNKOWN_ERROR                            255 /* 未知错误                     */
+#define  USB_STATUS_UNKOWN_ERROR                            255 /*                      */
 
 
 
 //----------------------------------------------------------------------------
-// Inquiry返回的数据
+// Inquiry
 //----------------------------------------------------------------------------
 typedef struct __InquiryData
 {
-    unsigned char Device_Type : 5;           /* 设备类型                     */
-    unsigned char Qualifier   : 3;           /* 外围标识符                   */
+    unsigned char Device_Type : 5;           /*                      */
+    unsigned char Qualifier   : 3;           /*                    */
 
-    unsigned char scsi_1             : 7;    /* 命令集版本                   */
-    unsigned char Removable_Media    : 1;    /* 可移动位                     */
+    unsigned char scsi_1             : 7;    /*                    */
+    unsigned char Removable_Media    : 1;    /*                      */
 
-    unsigned char ANSI_Version   : 4;        /* 设备支持的命令集版本         */
-    unsigned char ECMA_Version   : 2;        /* 设备支持的ECMA-111版本       */
-    unsigned char ISO_Version    : 2;        /* 设备支持的ISO IS-9316版本    */
+    unsigned char ANSI_Version   : 4;        /*          */
+    unsigned char ECMA_Version   : 2;        /* ECMA-111       */
+    unsigned char ISO_Version    : 2;        /* ISO IS-9316    */
 
-    unsigned char Data_Format;               /* 标准INQUIRY数据的响应格式    */
-    unsigned char Additional_Length;         /* 附加长度                     */
+    unsigned char Data_Format;               /* INQUIRY    */
+    unsigned char Additional_Length;         /*                      */
     unsigned char res[3];
 
-    unsigned char Vendor_Info[8];            /* 设备制造商                   */
-    unsigned char Product_Info[16];          /* 产品信息                     */
-    unsigned char Product_Revision[4];       /* 产品修订版                   */
+    unsigned char Vendor_Info[8];            /*                    */
+    unsigned char Product_Info[16];          /*                      */
+    unsigned char Product_Revision[4];       /*                    */
 } __attribute__((packed)) __InquiryData_t;
 
 
 //----------------------------------------------------------------------------
-// request sense 返回的数据
+// request sense 
 //----------------------------------------------------------------------------
 typedef struct __SenseData
 {
@@ -239,14 +239,14 @@ typedef struct __SenseData
 } __attribute__((packed))  __SenseData_t;
 
 //----------------------------------------------------------------------------
-// mode sense 返回的数据
+// mode sense 
 //----------------------------------------------------------------------------
 #define  SCSI_MODE_SENSE_MAX_DATA_LEN       192
 
 typedef struct __BlockDevSpecPara
 {
     unsigned char res_1 : 4;
-    unsigned char DpoFua : 1;    /* 是否支持禁止页输出和强迫单元存取 */
+    unsigned char DpoFua : 1;    /*  */
     unsigned char res_2 : 2;
     unsigned char WP: 1;         /* write protect */
 } __attribute__((packed))  __BlockDevSpecPara_t;
@@ -505,7 +505,7 @@ typedef struct _CDROM_Capitilities
  * C/DVD envent status
  *
  */
-#define  CDROM_GET_EVENT_CMD_MAX_RETURN_DATA_LEN        0xff /* 通常都是8个byte */
+#define  CDROM_GET_EVENT_CMD_MAX_RETURN_DATA_LEN        0xff /* 8byte */
 
 /* Notification class request */
 #define  CDROM_NOTIFICATION_CLASS_REQUEST_POWER_MANAGEMENT  0x04

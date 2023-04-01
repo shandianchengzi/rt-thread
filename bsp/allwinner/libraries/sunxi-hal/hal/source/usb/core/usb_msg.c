@@ -108,7 +108,7 @@ int usb_control_msg(struct usb_host_virt_dev *dev, u32 pipe, u8 request, u8 requ
  *  @pipe: endpoint "pipe" to send the message to
  *  @data: pointer to the data to send
  *  @len: length in bytes of the data to send
- *  @actual_length: pointer to a location to put the actual length transferred in bytes,实际收发的长度
+ *  @actual_length: pointer to a location to put the actual length transferred in bytes,
  *  @timeout: time in msecs to wait for the message to complete before
  *      timing out (if 0 the wait is forever)
  *  Context: !in_interrupt ()
@@ -165,7 +165,7 @@ int usb_bulk_msg(struct usb_host_virt_dev *usb_dev, unsigned int pipe,
  * Returns the number of bytes received on success, or else the status code
  * returned by the underlying usb_control_msg() call.
  */
-/* 带重试的ctrl传输，的desc */
+/* ctrldesc */
 s32 usb_get_descriptor(struct usb_host_virt_dev *dev, u8 type, u8 index, void *buf, s32 size)
 {
     int i = 0;
@@ -209,19 +209,19 @@ s32 usb_get_descriptor(struct usb_host_virt_dev *dev, u8 type, u8 index, void *b
 *                     usb_get_extra_descriptor
 *
 * Description:
-*     在已得到的全部描述符里找到想要的描述符。
+*     
 *
 * Parameters:
-*     buffer  :  input. 已经得到的全部描述符
-*     size    :  input. 全部描述符的长度
-*     type    :  input. 想要的描述符类型
-*     ptr     :  input. 想要的描述符的起始位置
+*     buffer  :  input. 
+*     size    :  input. 
+*     type    :  input. 
+*     ptr     :  input. 
 *
 * Return value:
 *
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -477,17 +477,17 @@ static void usb_enable_interface(struct usb_host_virt_dev *dev,
  */
 
 
-//virt_father_dev   :   与物理设备对应的
-//configuration :   要设置的config的index
+//virt_father_dev   :   
+//configuration :   configindex
 s32 usb_set_configuration(struct usb_host_virt_dev *virt_father_dev, s32 configuration)
 {
     int i = 0, ret = 0;
     struct usb_host_virt_config *virt_confg = NULL;
-    struct usb_interface **new_interfaces = NULL;       //记录分配的usb_interface的地址
+    struct usb_interface **new_interfaces = NULL;       //usb_interface
     s32 n = 0;
-    s32 nintf = 0;      //该config的interface数目
+    s32 nintf = 0;      //configinterface
 
-    //--<1>--根据具体的config index,获得其virt_config结构
+    //--<1>--config index,virt_config
     for (i = 0; i < virt_father_dev->descriptor.bNumConfigurations; i++)
     {
         if (virt_father_dev->config[i].desc.bConfigurationValue == configuration)
@@ -518,7 +518,7 @@ s32 usb_set_configuration(struct usb_host_virt_dev *virt_father_dev, s32 configu
         return -EHOSTUNREACH;
     }
 
-    //--<2>--创建cp->desc.bNumInterfaces个usb_interface结构
+    //--<2>--cp->desc.bNumInterfacesusb_interface
     /* Allocate memory for new interfaces before doing anything else,
      * so that if we run out then nothing will have changed. */
     n = nintf = 0;
@@ -591,7 +591,7 @@ free_interfaces:
         usb_disable_device(virt_father_dev, 1);     // Skip ep0
     }
 
-    //--<3>--发送set config
+    //--<3>--set config
     if ((ret = usb_control_msg(virt_father_dev, usb_sndctrlpipe(virt_father_dev, 0),
                                USB_REQ_SET_CONFIGURATION, 0, configuration, 0,
                                NULL, 0, USB_CTRL_SET_TIMEOUT)) < 0)
@@ -599,10 +599,10 @@ free_interfaces:
         goto free_interfaces;
     }
 
-    //--<4>--记录当前active的ep
+    //--<4>--activeep
     virt_father_dev->actconfig = virt_confg;
 
-    //--<5>--配置该config旗下的 interface
+    //--<5>--config interface
     if (!virt_confg)
     {
         usb_set_device_state(virt_father_dev, USB_STATE_ADDRESS);
@@ -619,7 +619,7 @@ free_interfaces:
             struct usb_interface_cache *intf_cache;
             struct usb_interface *intf;
             struct usb_host_virt_interface *alt;
-            //从interface cache中获取，并初始化usb_interface
+            //interface cacheusb_interface
             virt_confg->interfac[i] = intf = new_interfaces[i];
             memset(intf, 0, sizeof(struct usb_interface));
             intf_cache = virt_confg->intf_cache[i];
@@ -639,9 +639,9 @@ free_interfaces:
 
             intf->cur_altsetting = alt;
             usb_enable_interface(virt_father_dev, intf);
-            //完成virt_dev,virt_sub_dev,intf互相指
+            //virt_dev,virt_sub_dev,intf
             intf->virt_sub_dev = &(virt_father_dev->virt_sub_dev_array[i]);
-            intf->virt_sub_dev->father_dev = virt_father_dev;   //指向父亲
+            intf->virt_sub_dev->father_dev = virt_father_dev;   //
             intf->virt_sub_dev->sub_dev_interface = intf;
         }
 
@@ -672,14 +672,14 @@ free_interfaces:
          * claim() any interfaces not yet bound.  Many class drivers
          * need that: CDC, audio, video, etc.
          */
-        //--<5_2>--将创建的usb_host_virt_sub_dev添加到bus
+        //--<5_2>--usb_host_virt_sub_devbus
         for (i = 0; i < nintf; ++i)
         {
             struct usb_interface *intf = virt_confg->interfac[i];
             __inf("[usbh core]: adding sub dev  (config #%d, interface %d)", configuration, intf->altsetting [0].desc.bInterfaceNumber);
 
-            /* msc在扫描盘符的时候,这里发get_interface, 两个urb会造成suni的hcd混乱,
-              因此, 这里只识别device的第一个interface */
+            /* msc,get_interface, urbsunihcd,
+              , deviceinterface */
             if (!i)
             {
                 if ((intf->cur_altsetting->desc.iInterface) && (intf->cur_altsetting->string == NULL))
@@ -749,7 +749,7 @@ free_interfaces:
  * Returns the number of bytes received on success, or else the status code
  * returned by the underlying usb_control_msg() call.
  */
-/* 获得设备desc,会自动拷贝到usb_host_virt_dev->设备描述符中 */
+/* desc,usb_host_virt_dev-> */
 #if 0
 s32 usb_get_device_descriptor(struct usb_host_virt_dev *dev, u32 size)
 {
@@ -837,7 +837,7 @@ s32 usb_get_device_descriptor(struct usb_host_virt_dev *dev, u32 size)
  * Returns the number of bytes received on success, or else the status code
  * returned by the underlying usb_control_msg() call.
  */
-/* 发送到hub的get status的ctrl传输 */
+/* hubget statusctrl */
 int usb_get_status(struct usb_host_virt_dev *dev, s32 type, s32 target, void *data)
 {
     s32 ret = 0;
@@ -845,7 +845,7 @@ int usb_get_status(struct usb_host_virt_dev *dev, s32 type, s32 target, void *da
 
     if (!status)
     {
-        __err("ERR:　usb_get_status, malloc failed");
+        __err("ERR:usb_get_status, malloc failed");
         return -ENOMEM;
     }
 

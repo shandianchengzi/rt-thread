@@ -204,7 +204,7 @@ static rt_err_t es32f0x_configure(struct rt_serial_device *serial, struct serial
     gpio_initstructure.flt  = GPIO_FILTER_DISABLE;
     gpio_initstructure.type = GPIO_TYPE_TTL;
 
-    if((uint32_t)(uart->huart.perh) > (uint32_t)UART3)  /*根据外设物理地址区分UART和USART*/
+    if((uint32_t)(uart->huart.perh) > (uint32_t)UART3)  /*UARTUSART*/
     {
        /*USART*/
         struct es32_usart *usart= (struct es32_usart *)serial->parent.user_data;
@@ -259,7 +259,7 @@ static rt_err_t es32f0x_configure(struct rt_serial_device *serial, struct serial
        /*
         BIT_ORDER_LSB  BIT_ORDER_MSB
         NRZ_NORMAL   NRZ_INVERTED
-        无相关寄存器*/
+        */
 
         /* enable rx int */
         ald_usart_interrupt_config(&usart->huart, USART_IT_RXNE, ENABLE);
@@ -388,7 +388,7 @@ static rt_err_t es32f0x_control(struct rt_serial_device *serial, int cmd, void *
 
     uart = (struct es32_uart *)serial->parent.user_data;
 
-    if((uint32_t)(uart->huart.perh) > (uint32_t)UART3)  /*根据外设物理地址区分UART和USART*/
+    if((uint32_t)(uart->huart.perh) > (uint32_t)UART3)  /*UARTUSART*/
     {
        /*USART*/
         struct es32_usart *usart= (struct es32_usart *)serial->parent.user_data;
@@ -443,7 +443,7 @@ static int es32f0x_putc(struct rt_serial_device *serial, char c)
     RT_ASSERT(serial != RT_NULL);
     uart = (struct es32_uart *)serial->parent.user_data;
 
-    if((uint32_t)(uart->huart.perh) > (uint32_t)UART3)  /*根据外设物理地址区分UART和USART*/
+    if((uint32_t)(uart->huart.perh) > (uint32_t)UART3)  /*UARTUSART*/
     {
        /*USART*/
         struct es32_usart *usart= (struct es32_usart *)serial->parent.user_data;
@@ -468,7 +468,7 @@ static int es32f0x_getc(struct rt_serial_device *serial)
     RT_ASSERT(serial != RT_NULL);
     uart = (struct es32_uart *)serial->parent.user_data;
 
-    if((uint32_t)(uart->huart.perh) > (uint32_t)UART3)  /*根据外设物理地址区分UART和USART*/
+    if((uint32_t)(uart->huart.perh) > (uint32_t)UART3)  /*UARTUSART*/
     {
        /*USART*/
         struct es32_usart *usart= (struct es32_usart *)serial->parent.user_data;

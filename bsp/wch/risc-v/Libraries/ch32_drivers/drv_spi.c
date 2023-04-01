@@ -219,7 +219,7 @@ static rt_err_t spi_receive(SPI_TypeDef *Instance, rt_uint8_t *recv_buf,rt_uint1
     rt_uint16_t i=0;
     for(i = 0; i < send_length; i++)
     {
-        recv_buf[i] = spix_readwritebyte(Instance, 0xFF);  /*发送数据为0xff 此时显示为不发送*/
+        recv_buf[i] = spix_readwritebyte(Instance, 0xFF);  /*0xff */
     }
     return RT_EOK;
 }

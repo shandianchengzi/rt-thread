@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: frtc_hw.h
  * Date: 2022-02-10 14:53:42
  * LastEditTime: 2022-02-18 09:01:54
- * Description:  This files is for
+ * Description: This files is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  * 1.0   wangxiaodong 2021/11/5   init
  */
 
@@ -58,28 +58,28 @@ extern "C"
 
 /**
  * @name: RTC_READ_REG32
- * @msg:  读取RTC寄存器
- * @param {u32} addr 定时器的基地址
- * @param {u32} reg_offset   定时器的寄存器的偏移
- * @return {u32} 寄存器参数
+ * @msg:  RTC
+ * @param {u32} addr 
+ * @param {u32} reg_offset   
+ * @return {u32} 
  */
 #define FRTC_READ_REG32(addr, reg_offset) FtIn32((addr) + (u32)reg_offset)
 
 /**
  * @name: RTC_READ_REG64
- * @msg:  读取RTC寄存器
- * @param {u32} addr 定时器的基地址
- * @param {u32} reg_offset   定时器的寄存器的偏移
- * @return {u64} 寄存器参数
+ * @msg:  RTC
+ * @param {u32} addr 
+ * @param {u32} reg_offset   
+ * @return {u64} 
  */
 #define FRTC_READ_REG64(addr, reg_offset) FtIn64((addr) + (u64)reg_offset)
 
 /**
  * @name: RTC_WRITE_REG32
- * @msg:  写入RTC寄存器
- * @param {u32} addr 定时器的基地址
- * @param {u32} reg_offset   定时器的寄存器的偏移
- * @param {u32} reg_value    写入寄存器参数
+ * @msg:  RTC
+ * @param {u32} addr 
+ * @param {u32} reg_offset   
+ * @param {u32} reg_value    
  * @return {void}
  */
 #define FRTC_WRITE_REG32(addr, reg_offset, reg_value) FtOut32((addr) + (u32)reg_offset, (u32)reg_value)

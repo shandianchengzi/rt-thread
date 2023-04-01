@@ -183,7 +183,7 @@ uint32_t OPA_GetOutputLevel(OPA_TypeDef* OPAx, uint32_t OPA_OutLevel)
   *          This parameter can be one of the following values:
   *            @arg OPA:  OPA1 selected
   *            @arg OPA2: OPA2 selected 
-  * @retval Returns:	0：fail		others：The calibration value 
+  * @retval Returns:	0fail		othersThe calibration value 
   *       
   */
 uint8_t OPA_Cali(OPA_TypeDef* OPAx)

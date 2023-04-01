@@ -247,7 +247,7 @@ void UART_ITConfig(UART_TypeDef* UARTx, uint16_t UART_IT, FunctionalState NewSta
 }
 
 /**
-* @brief  Enables or disables the UART’s DMA interface.
+* @brief  Enables or disables the UARTs DMA interface.
 * @param UARTx: Select the UART or the UART peripheral.
 *   This parameter can be one of the following values:
 *   UART1, UART2, UART3 .
@@ -398,7 +398,7 @@ ITStatus UART_GetITStatus(UART_TypeDef* UARTx, uint16_t UART_IT)
 }
 
 /**
-* @brief  Clears the UARTx’s interrupt pending bits.
+* @brief  Clears the UARTxs interrupt pending bits.
 * @param UARTx: Select the UART or the UART peripheral.
 *   This parameter can be one of the following values:
 *   UART1, UART2, UART3, UART4 or UART5.

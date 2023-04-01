@@ -1,86 +1,86 @@
 
-# PHYTIUM BSP 说明
+# PHYTIUM BSP 
 
-## 简介
+## 
 
-本文档为基于 RT-THREAD 的 Phytium 系列 CPU 相关 BSP 说明。
+ RT-THREAD  Phytium  CPU  BSP 
 
-本文的主要内容如下:
+:
 
-- BSP 简介
-- 移植支持情况
-- 如何在 Ubuntu/Windows 环境下使用此 BSP
-- 如何进行编译与实验
-- 维护人信息
-- 注意事项
-
-
-## BSP简介
-
-- 飞腾芯片产品具有谱系全、性能高、生态完善、自主化程度高等特点，目前主要包括高性能服务器CPU（飞腾腾云S系列）、高效能桌面CPU（飞腾腾锐D系列）、高端嵌入式CPU（飞腾腾珑E系列）和飞腾套片四大系列，为从端到云的各型设备提供核心算力支撑。
+- BSP 
+- 
+-  Ubuntu/Windows  BSP
+- 
+- 
+- 
 
 
+## BSP
 
-- 本BSP目前支持飞腾腾锐D系列、飞腾腾珑E系列 相关CPU,基于 Phytium-Standalone-SDK 进行开发。开发者能够使用
-
-- 本BSP 支持Phytium系列CPU 工作在 aarch32/aarch64 两种执行状态 ，开发者能够根据自己的应用场景灵活选择CPU 工作状态。
+- CPUSCPUDCPUE
 
 
 
-## 移植支持情况
+- BSPDE CPU, Phytium-Standalone-SDK 
 
-| **片上外设**      | **支持情况** | **备注**                              |
+- BSP PhytiumCPU  aarch32/aarch64  CPU 
+
+
+
+## 
+
+| ****      | **** | ****                              |
 | :----------------- | :----------: | :------------------------------------- |
-| UART              |     支持     | uart1 打印输出|
+| UART              |          | uart1 |
 
-| **芯片**      | **支持情况** | **备注**                              |
+| ****      | **** | ****                              |
 | :----------------- | :----------: | :------------------------------------- |
-| E2000D              |     支持     | 支持SMP |
-| E2000Q              |     支持     | 支持SMP |
-| E2000S              |     支持     | |
+| E2000D              |          | SMP |
+| E2000Q              |          | SMP |
+| E2000S              |          | |
 
 
-##  如何在Ubuntu/Windows 环境下使用此BSP
+##  Ubuntu/Windows BSP
 
 
-### Ubuntu 环境
+### Ubuntu 
 
-1. 根据 [Linux x86_64 SDK安装方法](https://gitee.com/phytium_embedded/phytium-standalone-sdk/blob/release/doc/reference/usr/install_linux_x86_64.md) 中1.1  - 1.2 节中介绍，先安装 SDK 编译环境
-2. 参考[RT-Thread/env](https://github.com/RT-Thread/env) 中Tutorial 在ubuntu 环境下安装 env 环境
-3. 在编译环境下执行 ```source ~/.env/env.sh```
-4. 以aarch32 执行状态为例，```cd bsp/phytium/aarch32```
-
-
-### Windows 环境
-
-1. 根据[Windows 10 SDK安装方法](https://gitee.com/phytium_embedded/phytium-standalone-sdk/blob/release/doc/reference/usr/install_windows.md)，安装 SDK 编译环境，编辑新建 Windows 环境变量 AARCH32_CROSS_PATH 和 AARCH64_CROSS_PATH
-2. 参考[RT-Thread/env](https://github.com/RT-Thread/env) 中Tutorial 在 Windows 环境下解压 env 压缩包
-3. 以aarch32 执行状态为例，```cd bsp/phytium/aarch32```
-4. 使用 export_project.py 导出 BSP 工程到其他目录进行开发
-5. 使用 RT-Studio 导入 BSP 工程进行开发
+1.  [Linux x86_64 SDK](https://gitee.com/phytium_embedded/phytium-standalone-sdk/blob/release/doc/reference/usr/install_linux_x86_64.md) 1.1  - 1.2  SDK 
+2. [RT-Thread/env](https://github.com/RT-Thread/env) Tutorial ubuntu  env 
+3.  ```source ~/.env/env.sh```
+4. aarch32 ```cd bsp/phytium/aarch32```
 
 
-## 如何进行编译与实验
+### Windows 
 
-### 编译说明
+1. [Windows 10 SDK](https://gitee.com/phytium_embedded/phytium-standalone-sdk/blob/release/doc/reference/usr/install_windows.md) SDK  Windows  AARCH32_CROSS_PATH  AARCH64_CROSS_PATH
+2. [RT-Thread/env](https://github.com/RT-Thread/env) Tutorial  Windows  env 
+3. aarch32 ```cd bsp/phytium/aarch32```
+4.  export_project.py  BSP 
+5.  RT-Studio  BSP 
+
+
+## 
+
+### 
 
 - [AARCH32](./aarch32/README.md)
 - [AARCH64](./aarch64/README.md)
 
-###  烧写及执行
+###  
 
-#### Ubuntu 环境配置 tftp 服务
+#### Ubuntu  tftp 
 
-- 在开发环境`host`侧安装`tftp`服务
+- `host``tftp`
 
 ```
 sudo apt-get install tftp-hpa tftpd-hpa
 sudo apt-get install xinetd
 ```
 
-- 新建 tftboot 目录, 以`/mnt/d/tftboot`为例, 此目录应与项目编译脚本makefile中的USR_BOOT_DIR一致, 并确保 tftboot 目录有执行权限`chmod 777 /**/tftboot`
+-  tftboot , `/mnt/d/tftboot`, makefileUSR_BOOT_DIR,  tftboot `chmod 777 /**/tftboot`
 
-- 配置主机 tftpboot 服务, 新建并配置文件`/etc/xinetd.d/tftp`
+-  tftpboot , `/etc/xinetd.d/tftp`
 
 ```
 # /etc/xinetd.d/tftp
@@ -100,14 +100,14 @@ server tftp
 }
 ```
 
-- 启动主机`tftp`服务，生成默认配置
+- `tftp`
 
 ```
 $ sudo service tftpd-hpa start
 ```
 
-- 修改主机`tftp`配置，指向`tftboot`目录
-  修改/etc/default/tftpd-hpa
+- `tftp``tftboot`
+  /etc/default/tftpd-hpa
 
 ```
 $ sudo nano /etc/default/tftpd-hpa
@@ -119,14 +119,14 @@ TFTP_ADDRESS=":69"
 TFTP_OPTIONS="-l -c -s"
 ```
 
-- 重启主机`tftp`服务
+- `tftp`
 
 ```
 $ sudo service tftpd-hpa restart
 ```
 
-- 测试主机`tftp`服务的可用性
-  > 登录`tftp`服务，获取`tftboot`目录下的一个文件
+- `tftp`
+  > `tftp``tftboot`
 
 ```
 $ tftp 192.168.4.50
@@ -134,38 +134,38 @@ tftp> get test1234
 tftp> q
 ```
 
-#### Windows环境下配置 tftp 服务
+#### Windows tftp 
 
-- 下载Tftpd64 工具 ，并安装Tftpd64 工具
+- Tftpd64  Tftpd64 
 
-![输入图片说明](./figures/tftp32_srv.png)
+![](./figures/tftp32_srv.png)
 
-- 之后每次使用前，进入Windows服务，手动将一下服务打开
+- Windows
 
-![输入图片说明](./figures/config_tftp32.png)
+![](./figures/config_tftp32.png)
 
-#### 利用uboot 上tftp 服务加载镜像
+#### uboot tftp 
 
-- 进入`u-boot`界面，输入如下指令，配置开发板ip，`host`侧ip和网关地址
+- `u-boot`ip`host`ip
   ```
   setenv ipaddr 192.168.4.20  
   setenv serverip 192.168.4.50 
   setenv gatewayip 192.168.4.1 
   ```
-- 将编译好的elf 或者bin 文件拷贝至Tftpd64所设置文件夹下
-- 随后烧录的文件到开发板，输入以下指令
+- elf bin Tftpd64
+- 
   
   ```
   tftpboot 0x90100000 rtthread.elf
   bootelf -p 0x90100000
   ```
 
-### 运行结果
+### 
 
-![运行结果](./figures/result.png)
+![](./figures/result.png)
 
 
-## 维护人信息
+## 
 
 - huanghe:  huanghe@phytium.com.cn
 - zhugengyu:  zhugengyu@phytium.com.cn

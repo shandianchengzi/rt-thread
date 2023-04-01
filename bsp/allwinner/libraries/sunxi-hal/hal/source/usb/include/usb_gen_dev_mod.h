@@ -6,7 +6,7 @@
 struct usb_gen_dev_mod
 {
     struct usb_gen_dev_mod *parent;
-    void *driver_data;      //驱动用来临时积存私有数据的。
+    void *driver_data;      //
 };
 
 struct usb_interface *usb_mod_to_usb_interface(struct usb_host_virt_sub_dev *sub_dev);

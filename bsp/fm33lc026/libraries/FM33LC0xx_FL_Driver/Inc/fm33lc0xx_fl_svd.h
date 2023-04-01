@@ -48,16 +48,16 @@ extern "C" {
   */
 typedef struct
 {
-    /* 参考电压 */
+    /*  */
     uint32_t referenceVoltage;
 
-    /* 报警阈值 */
+    /*  */
     uint32_t warningThreshold;
 
-    /* 数字滤波 */
+    /*  */
     uint32_t digitalFilter;
 
-    /* SVS通道选择 */
+    /* SVS */
     uint32_t SVSChannel;
 
 } FL_SVD_InitTypeDef;

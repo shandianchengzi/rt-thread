@@ -84,7 +84,7 @@ void  SystemClock_Config(void)
     SYSCFG_LOCK();
 
 #if  ES_CMU_PLL1_EN
-    /*PLL的源必须是4M*/
+    /*PLL4M*/
     ald_cmu_pll1_config(ES_PLL1_REFER_CLK, ES_PLL1_OUT_CLK);
 
     #if ES_CMU_PLL1_SAFE_EN
@@ -107,7 +107,7 @@ void  SystemClock_Config(void)
 
     ald_cmu_perh_clock_config(CMU_PERH_ALL, ENABLE);
 
-/*低功耗时钟使能*/
+/**/
 #ifdef RT_USING_PM
         SYSCFG_UNLOCK();
         SET_BIT(CMU->LPENR, CMU_LPENR_LRCEN_MSK);

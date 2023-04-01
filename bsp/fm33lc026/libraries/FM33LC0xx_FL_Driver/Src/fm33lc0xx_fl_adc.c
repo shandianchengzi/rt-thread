@@ -142,67 +142,67 @@
   */
 
 /**
-  * @brief  恢复ADC公用寄存器到复位值
+  * @brief  ADC
   * @param  None
-  * @retval 执行结果
-  *         -FL_PASS ADC公用寄存器值恢复复位值
-  *         -FL_FAIL 未成功执行
+  * @retval 
+  *         -FL_PASS ADC
+  *         -FL_FAIL 
   */
 FL_ErrorStatus FL_ADC_CommonDeInit(void)
 {
-    /* 关闭总线时钟 */
+    /*  */
     FL_RCC_DisableGroup2BusClock(FL_RCC_GROUP2_BUSCLK_ADC);
-    /* 关闭操作时钟 */
+    /*  */
     FL_RCC_DisableGroup2OperationClock(FL_RCC_GROUP2_OPCLK_ADC);
     return FL_PASS;
 }
 /**
-  * @brief  配置ADC公用寄存器
-  * @param  ADC_CommonInitStruct 指向 @ref FL_ADC_CommonInitTypeDef 的结构体，它包含ADC公用寄存器的配置信息
-  * @retval 执行结果
-  *         -FL_FAIL 配置过程发生错误
-  *         -FL_PASS ADC公用寄存器配置成功
+  * @brief  ADC
+  * @param  ADC_CommonInitStruct  @ref FL_ADC_CommonInitTypeDef ADC
+  * @retval 
+  *         -FL_FAIL 
+  *         -FL_PASS ADC
   */
 FL_ErrorStatus FL_ADC_CommonInit(FL_ADC_CommonInitTypeDef *ADC_CommonInitStruct)
 {
     FL_ErrorStatus status = FL_PASS;
-    /* 入口参数检查 */
+    /*  */
     assert_param(IS_FL_ADC_ADCCLK_PRESCALER(ADC_CommonInitStruct->clockPrescaler));
     assert_param(IS_FL_ADC_ADCCLK_SOURCE(ADC_CommonInitStruct->clockSource));
-    /* 开启总线时钟 */
+    /*  */
     FL_RCC_EnableGroup2BusClock(FL_RCC_GROUP2_BUSCLK_ADC);
-    /* 开启操作时钟 */
+    /*  */
     FL_RCC_EnableGroup2OperationClock(FL_RCC_GROUP2_OPCLK_ADC);
-    /* 配置ADCCLOCK时钟预分频 */
+    /* ADCCLOCK */
     FL_RCC_SetADCPrescaler(ADC_CommonInitStruct->clockPrescaler);
-    /* 配置ADCCLOCK时钟模块时钟源 */
+    /* ADCCLOCK */
     FL_RCC_SetADCClockSource(ADC_CommonInitStruct->clockSource);
     return status;
 }
 /**
-  * @brief  初始化 @ref FL_ADC_CommonInitTypeDef 配置结构体
-  * @param  ADC_CommonInitStruct 指向需要初始化的 @ref FL_ADC_CommonInitTypeDef 结构体
+  * @brief   @ref FL_ADC_CommonInitTypeDef 
+  * @param  ADC_CommonInitStruct  @ref FL_ADC_CommonInitTypeDef 
   * @retval None
   */
 void FL_ADC_CommonStructInit(FL_ADC_CommonInitTypeDef *ADC_CommonInitStruct)
 {
-    /*默认使用RCHF作为ADC时钟模块时钟源，预分频系数16*/
+    /*RCHFADC16*/
     ADC_CommonInitStruct->clockSource     = FL_RCC_ADC_CLK_SOURCE_RCHF;
     ADC_CommonInitStruct->clockPrescaler  = FL_RCC_ADC_PSC_DIV16;
 }
 /**
-  * @brief  恢复ADC外设寄存器到复位值
-  * @param  ADCx  外设入口地址
-  * @retval 执行结果
-  *         -FL_PASS ADC外设寄存器值恢复复位值
-  *         -FL_FAIL 未成功执行
+  * @brief  ADC
+  * @param  ADCx  
+  * @retval 
+  *         -FL_PASS ADC
+  *         -FL_FAIL 
   */
 FL_ErrorStatus FL_ADC_DeInit(ADC_Type *ADCx)
 {
     FL_ErrorStatus status = FL_PASS;
-    /* 入口合法性检查 */
+    /*  */
     assert_param(IS_FL_ADC_INSTANCE(ADCx));
-    /* 外设复位使能 */
+    /*  */
     FL_RCC_EnablePeripheralReset();
     FL_RCC_EnableResetAPB2Peripheral(FL_RCC_RSTAPB_ADC);
     FL_RCC_DisableResetAPB2Peripheral(FL_RCC_RSTAPB_ADC);
@@ -212,20 +212,20 @@ FL_ErrorStatus FL_ADC_DeInit(ADC_Type *ADCx)
     return status;
 }
 /**
-  * @brief  配置指定的ADC外设
-  * @note   用户必须检查此函数的返回值，以确保自校准完成，否则转换结果精度无法保证，除此之外ADC使能过采样实际不会增加ADC的
-  *         转换精度只会提高转换结果的稳定性（同时配置移位寄存器的情况下），同时过采样会降低转换速度。
-  * @param  ADCx  外设入口地址
-  * @param  ADC_InitStruct 指向 @ref FL_ADC_InitTypeDef 的结构体，它包含ADC外设寄存器的配置信息
-  * @retval 执行结果
-  *         -FL_FAIL 配置过程发生错误
-  *         -FL_PASS ADC外设寄存器配置成功
+  * @brief  ADC
+  * @note   ADCADC
+  *         
+  * @param  ADCx  
+  * @param  ADC_InitStruct  @ref FL_ADC_InitTypeDef ADC
+  * @retval 
+  *         -FL_FAIL 
+  *         -FL_PASS ADC
   */
 FL_ErrorStatus FL_ADC_Init(ADC_Type *ADCx, FL_ADC_InitTypeDef  *ADC_InitStruct)
 {
     FL_ErrorStatus status = FL_PASS;
     uint32_t i = 0;
-    /* 入口合法性检查 */
+    /*  */
     assert_param(IS_FL_ADC_INSTANCE(ADCx));
     assert_param(IS_FL_ADC_CONTINUOUSCONVMODE(ADC_InitStruct->conversionMode));
     assert_param(IS_FL_ADC_AUTO_MODE(ADC_InitStruct->autoMode));
@@ -234,15 +234,15 @@ FL_ErrorStatus FL_ADC_Init(ADC_Type *ADCx, FL_ADC_InitTypeDef  *ADC_InitStruct)
     assert_param(IS_FL_ADC_OVERSAMPCOFIG(ADC_InitStruct->oversamplingMode));
     assert_param(IS_FL_ADC_OVERSAMPINGRATIO(ADC_InitStruct->overSampingMultiplier));
     assert_param(IS_FL_ADC_OVERSAMPINGSHIFT(ADC_InitStruct->oversamplingShift));
-    /* 使能ADC工作时钟 */
+    /* ADC */
     FL_RCC_EnableGroup1BusClock(FL_RCC_GROUP1_BUSCLK_ANAC);
     FL_SVD_EnableADCMonitor(SVD);
     if(!FL_VREF_IsEnabled(VREF))
     {
         FL_VREF_ClearFlag_Ready(VREF);
-        FL_VREF_Enable(VREF);   /* 置位VREF_EN寄存器，使能VREF1p2模块 */
+        FL_VREF_Enable(VREF);   /* VREF_ENVREF1p2 */
     }
-    FL_VREF_EnableTemperatureSensor(VREF);  /* 置位PTAT_EN寄存器 */
+    FL_VREF_EnableTemperatureSensor(VREF);  /* PTAT_EN */
     while(FL_VREF_IsActiveFlag_Ready(VREF) == 0)
     {
         if(i >= 128000)
@@ -254,11 +254,11 @@ FL_ErrorStatus FL_ADC_Init(ADC_Type *ADCx, FL_ADC_InitTypeDef  *ADC_InitStruct)
     FL_ADC_Disable(ADCx);
     if(FL_ADC_IsEnabled(ADCx) == 0U)
     {
-        /* 连续转换模式 */
+        /*  */
         FL_ADC_SetConversionMode(ADCx, ADC_InitStruct->conversionMode);
-        /* 自动转换模式 */
+        /*  */
         FL_ADC_SetSingleConversionAutoMode(ADCx, ADC_InitStruct->autoMode);
-        /* 通道等待使能 */
+        /*  */
         if(ADC_InitStruct->waitMode)
         {
             FL_ADC_EnableWaitMode(ADCx);
@@ -267,7 +267,7 @@ FL_ErrorStatus FL_ADC_Init(ADC_Type *ADCx, FL_ADC_InitTypeDef  *ADC_InitStruct)
         {
             FL_ADC_DisableWaitMode(ADCx);
         }
-        /*数据冲突模式设置*/
+        /**/
         if(ADC_InitStruct->overrunMode)
         {
             FL_ADC_EnableOverrunMode(ADCx);
@@ -276,31 +276,31 @@ FL_ErrorStatus FL_ADC_Init(ADC_Type *ADCx, FL_ADC_InitTypeDef  *ADC_InitStruct)
         {
             FL_ADC_DisableOverrunMode(ADCx);
         }
-        /* 多通道扫描方向 */
+        /*  */
         FL_ADC_SetSequenceScanDirection(ADCx, ADC_InitStruct->scanDirection);
-        /* 采样控制模式*/
+        /* */
         FL_ADC_SetSamplingTimeControlMode(ADCx, FL_ADC_SAMPLING_TIME_CONTROL_BY_REG);
         FL_ADC_SetSamplingStartControlMode(ADCx, FL_ADC_SAMPLING_START_CONTROL_BY_REG);
-        /* 触发模式 */
+        /*  */
         FL_ADC_SetTriggerEdge(ADCx, ADC_InitStruct->externalTrigConv);
-        /* 触发源 */
+        /*  */
         FL_ADC_SetTriggerSource(ADCx, ADC_InitStruct->triggerSource);
-        /*通道采样时间设置*/
+        /**/
         FL_ADC_SetSamplingInterval(ADCx, FL_ADC_SAMPLING_INTERVAL_11_CYCLE);
         FL_ADC_SetFastChannelSamplingTime(ADCx, ADC_InitStruct->fastChannelTime);
         FL_ADC_SetSlowChannelSamplingTime(ADCx, ADC_InitStruct->lowChannelTime);
         if(ADC_InitStruct->oversamplingMode)
         {
-            /*使能过采样倍数后，需要配置移位寄存器进行移位，这一过程是硬件自动完成的最终最大
-            可输出16位的结果值（即256被采样得到的结果是20bit的，右移4bit结果就是16bit的）*/
+            /*
+            1625620bit4bit16bit*/
             FL_ADC_SetOverSamplingMultiplier(ADCx, ADC_InitStruct->overSampingMultiplier);
             FL_ADC_SetOverSamplingShift(ADCx, ADC_InitStruct->oversamplingShift);
-            /* 过采样使能 */
+            /*  */
             FL_ADC_EnableOverSampling(ADCx);
         }
         else
         {
-            /* 关闭过采样 */
+            /*  */
             FL_ADC_DisableOverSampling(ADCx);
         }
     }
@@ -311,8 +311,8 @@ FL_ErrorStatus FL_ADC_Init(ADC_Type *ADCx, FL_ADC_InitTypeDef  *ADC_InitStruct)
     return status;
 }
 /**
-  * @brief  初始化 @ref FL_ADC_InitTypeDef 配置结构体
-  * @param  ADC_InitStruct 指向需要初始化的 @ref FL_ADC_InitTypeDef 结构体
+  * @brief   @ref FL_ADC_InitTypeDef 
+  * @param  ADC_InitStruct  @ref FL_ADC_InitTypeDef 
   * @retval None
   */
 void FL_ADC_StructInit(FL_ADC_InitTypeDef *ADC_InitStruct)

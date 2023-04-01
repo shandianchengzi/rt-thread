@@ -72,11 +72,11 @@
  }
 /**
  ******************************************************************************
- ** \brief  LCD Bias源选择函数
+ ** \brief  LCD Bias
  **
- ** \param [in] enBiasSrc偏置源选择
+ ** \param [in] enBiasSrc
  **
- ** \retval enRet 成功或失败
+ ** \retval enRet 
  **
  ******************************************************************************/
  en_result_t LCD_SelBiasSrc(en_lcd_biassrc_t enBiasSrc)
@@ -99,11 +99,11 @@
  }
 /**
  ******************************************************************************
- ** \brief  LCD 占空比选择函数
+ ** \brief  LCD 
  **
- ** \param [in] enDuty占空比
+ ** \param [in] enDuty
  **
- ** \retval enRet 成功或失败
+ ** \retval enRet 
  **
  ******************************************************************************/
 en_result_t LCD_SetDuty(en_lcd_duty_t enDuty)
@@ -127,11 +127,11 @@ en_result_t LCD_SetDuty(en_lcd_duty_t enDuty)
 }
 /**
  ******************************************************************************
- ** \brief  LCD bias设置函数
+ ** \brief  LCD bias
  **
- ** \param [in] enBias　偏置
+ ** \param [in] enBias
  **
- ** \retval enRet 成功或失败
+ ** \retval enRet 
  **
  ******************************************************************************/
  en_result_t LCD_SetBias(en_lcd_bias_t enBias)
@@ -151,11 +151,11 @@ en_result_t LCD_SetDuty(en_lcd_duty_t enDuty)
  }
  /**
  ******************************************************************************
- ** \brief  LCD 电压泵时钟频率选择函数
+ ** \brief  LCD 
  **
- ** \param [in] enCpClk 电压泵频率
+ ** \param [in] enCpClk 
  **
- ** \retval enRet 成功或失败
+ ** \retval enRet 
  **
  ******************************************************************************/
 en_result_t LCD_SelCpClk(en_lcd_cpclk_t enCpClk)
@@ -177,11 +177,11 @@ en_result_t LCD_SelCpClk(en_lcd_cpclk_t enCpClk)
 }
  /**
  ******************************************************************************
- ** \brief  LCD 扫描时钟频率选择函数
+ ** \brief  LCD 
  **
- ** \param [in] enScanClk 扫描时钟频率
+ ** \param [in] enScanClk 
  **
- ** \retval enRet 成功或失败
+ ** \retval enRet 
  **
  ******************************************************************************/
 en_result_t LCD_SelScanClk(en_lcd_scanclk_t enScanClk)
@@ -203,11 +203,11 @@ en_result_t LCD_SelScanClk(en_lcd_scanclk_t enScanClk)
 }
  /**
  ******************************************************************************
- ** \brief  LCD 模块使能或闪屏使能禁止函数
+ ** \brief  LCD 
  **
- ** \param [in] enFunc功能，bFlag使能或禁止
+ ** \param [in] enFuncbFlag
  **
- ** \retval enRet 成功或失败
+ ** \retval enRet 
  **
  ******************************************************************************/
  en_result_t LCD_EnFunc(en_lcd_func_t enFunc,boolean_t bFlag)
@@ -229,11 +229,11 @@ en_result_t LCD_SelScanClk(en_lcd_scanclk_t enScanClk)
  }
  /**
  ******************************************************************************
- ** \brief  LCD 显示模式0/1设置
+ ** \brief  LCD 0/1
  **
- ** \param [in] enDispMode模式
+ ** \param [in] enDispMode
  **
- ** \retval enRet 成功或失败
+ ** \retval enRet 
  **
  ******************************************************************************/
  en_result_t LCD_SetDispMode(en_lcd_dispmode_t enDispMode)
@@ -253,11 +253,11 @@ en_result_t LCD_SelScanClk(en_lcd_scanclk_t enScanClk)
  }
  /**
  ******************************************************************************
- ** \brief  LCD 对比度设置
+ ** \brief  LCD 
  **
- ** \param [in] u8Contrast对比度
+ ** \param [in] u8Contrast
  **
- ** \retval enRet 成功或失败
+ ** \retval enRet 
  **
  ******************************************************************************/
  en_result_t LCD_SetContrast(uint8_t u8Contrast)
@@ -269,11 +269,11 @@ en_result_t LCD_SelScanClk(en_lcd_scanclk_t enScanClk)
  }
  /**
  ******************************************************************************
- ** \brief  LCD 闪屏计数器设置
+ ** \brief  LCD 
  **
- ** \param [in] u8BlinkCnt计数器
+ ** \param [in] u8BlinkCnt
  **
- ** \retval enRet 成功或失败
+ ** \retval enRet 
  **
  ******************************************************************************/
  en_result_t LCD_SetBlinkCnt(uint8_t u8BlinkCnt)
@@ -285,11 +285,11 @@ en_result_t LCD_SelScanClk(en_lcd_scanclk_t enScanClk)
  }
   /**
  ******************************************************************************
- ** \brief  LCD 中断标记清除
+ ** \brief  LCD 
  **
- ** \param [in] 无
+ ** \param [in] 
  **
- ** \retval enRet 成功或失败
+ ** \retval enRet 
  **
  ******************************************************************************/
 en_result_t LCD_ClrIntState(void)
@@ -301,11 +301,11 @@ en_result_t LCD_ClrIntState(void)
 }
   /**
  ******************************************************************************
- ** \brief  根据LCD显示模式获取端口配置
+ ** \brief  LCD
  **
- ** \param [in]enLcdRunMode：显示方式， stcSegCom获取端口参数
+ ** \param [in]enLcdRunMode stcSegCom
  **
- ** \retval enRet 成功或失败
+ ** \retval enRet 
  **
  ******************************************************************************/
  en_result_t LCD_GetSegCom(stc_lcd_segcompara_t *pstcSegComPara,stc_lcd_segcom_t *pstcSegCom)
@@ -325,13 +325,13 @@ en_result_t LCD_ClrIntState(void)
             break;
         case LcdExtCap:
         case LcdExtRes:
-            //VLCD模拟端口配置
+            //VLCD
             if(pstcSegComPara->u8MaxSeg>36)
             {
                 return ErrorInvalidParameter;
             }
             pstcSegCom->bMux = 0;
-            pstcSegCom->Seg32_39VLcdCom7_4_t.SegVLcdCom = 0x0f;//seg32_35置0
+            pstcSegCom->Seg32_39VLcdCom7_4_t.SegVLcdCom = 0x0f;//seg32_350
             break;
         default:
           return ErrorInvalidParameter;
@@ -343,15 +343,15 @@ en_result_t LCD_ClrIntState(void)
             pstcSegCom->Seg32_39VLcdCom7_4_t.SegVLcdCom &= 0xff;
             break;
         case LcdDuty2:
-            pstcSegCom->u8Com0_3 = 0xfc;//COM口配置，默认按顺序进行配置com0/com1
+            pstcSegCom->u8Com0_3 = 0xfc;//COMcom0/com1
             pstcSegCom->Seg32_39VLcdCom7_4_t.SegVLcdCom &= 0xff;
             break;
         case LcdDuty3:
-            pstcSegCom->u8Com0_3 = 0xf8;//只取低4bit
+            pstcSegCom->u8Com0_3 = 0xf8;//4bit
             pstcSegCom->Seg32_39VLcdCom7_4_t.SegVLcdCom &= 0xff;
             break;
         case LcdDuty4:
-            pstcSegCom->u8Com0_3 = 0xf0;//只取低4bit
+            pstcSegCom->u8Com0_3 = 0xf0;//4bit
             pstcSegCom->Seg32_39VLcdCom7_4_t.SegVLcdCom &= 0xff;
             break;
         case LcdDuty6:
@@ -359,7 +359,7 @@ en_result_t LCD_ClrIntState(void)
             {
                 return ErrorInvalidParameter;
             }
-            pstcSegCom->u8Com0_3 = 0xf0;//只取低4bit
+            pstcSegCom->u8Com0_3 = 0xf0;//4bit
             pstcSegCom->Seg32_39VLcdCom7_4_t.SegVLcdCom &= 0xfc;
             break;
         case LcdDuty8:
@@ -367,7 +367,7 @@ en_result_t LCD_ClrIntState(void)
             {
                 return ErrorInvalidParameter;
             }
-            pstcSegCom->u8Com0_3 = 0xf0;//只取低4bit
+            pstcSegCom->u8Com0_3 = 0xf0;//4bit
             pstcSegCom->Seg32_39VLcdCom7_4_t.SegVLcdCom &= 0xf0;
             break;            
         default:
@@ -377,11 +377,11 @@ en_result_t LCD_ClrIntState(void)
 }
  /**
  ******************************************************************************
- ** \brief  LCD COMSEG端口配置
+ ** \brief  LCD COMSEG
  **
- ** \param [in] pstcSegCom端口配置结构体
+ ** \param [in] pstcSegCom
  **
- ** \retval enRet 成功或失败
+ ** \retval enRet 
  **
  ******************************************************************************/
  en_result_t LCD_SetSegCom(stc_lcd_segcom_t *pstcSegCom)
@@ -399,11 +399,11 @@ en_result_t LCD_ClrIntState(void)
  }
   /**
  ******************************************************************************
- ** \brief  液晶全显
+ ** \brief  
  **
- ** \param [in] 无
+ ** \param [in] 
  **
- ** \retval enRet 成功或失败
+ ** \retval enRet 
  **
  ******************************************************************************/
   en_result_t LCD_FullDisp(void)
@@ -427,11 +427,11 @@ en_result_t LCD_ClrIntState(void)
   }
     /**
  ******************************************************************************
- ** \brief  液晶全清
+ ** \brief  
  **
- ** \param [in] 无
+ ** \param [in] 
  **
- ** \retval enRet 成功或失败
+ ** \retval enRet 
  **
  ******************************************************************************/
  en_result_t LCD_ClearDisp(void)
@@ -450,11 +450,11 @@ en_result_t LCD_ClrIntState(void)
 }
   /**
  ******************************************************************************
- ** \brief  LCD RAM bit设置函数
+ ** \brief  LCD RAM bit
  **
- ** \param [in] u16Row RAM地址索引，u32List bit位索引，bData写入0或1
+ ** \param [in] u16Row RAMu32List bitbData01
  **
- ** \retval enRet 成功或失败
+ ** \retval enRet 
  **
  ******************************************************************************/
   en_result_t LCD_WriteRam(uint16_t u16Row, uint32_t u32List, boolean_t bData)
@@ -492,11 +492,11 @@ en_result_t LCD_ClrIntState(void)
   }
 /**
  ******************************************************************************
- ** \brief  LCD RAM 0-7寄存器设置函数
+ ** \brief  LCD RAM 0-7
  **
- ** \param [in] u8Row RAM地址索引，u32Data写入寄存器数值
+ ** \param [in] u8Row RAMu32Data
  **
- ** \retval enRet 成功或失败
+ ** \retval enRet 
  **
  ******************************************************************************/
 en_result_t LCD_WriteRam0_7Int32(uint8_t u8Row,uint32_t u32Data)
@@ -518,11 +518,11 @@ en_result_t LCD_WriteRam0_7Int32(uint8_t u8Row,uint32_t u32Data)
 }
 /**
  ******************************************************************************
- ** \brief  LCD RAM 8-f寄存器设置函数
+ ** \brief  LCD RAM 8-f
  **
- ** \param [in] u8Row RAM地址索引，u8Data写入寄存器数值
+ ** \param [in] u8Row RAMu8Data
  **
- ** \retval enRet 成功或失败
+ ** \retval enRet 
  **
  ******************************************************************************/
 en_result_t LCD_WriteRam8_FInt8(uint8_t u8Row,uint8_t u8Data)
@@ -544,11 +544,11 @@ en_result_t LCD_WriteRam8_FInt8(uint8_t u8Row,uint8_t u8Data)
 }
 /**
  ******************************************************************************
- ** \brief  LCD模块初始化函数
+ ** \brief  LCD
  **
- ** \param [in] stcLcdCfg配置结构体
+ ** \param [in] stcLcdCfg
  **
- ** \retval enRet 成功或失败
+ ** \retval enRet 
  **
  ******************************************************************************/
  en_result_t LCD_Init(stc_lcd_config_t *pstcLcdCfg)

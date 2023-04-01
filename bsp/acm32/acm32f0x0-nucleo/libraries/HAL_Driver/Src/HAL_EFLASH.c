@@ -30,7 +30,7 @@ void HAL_EFlash_Init(uint32_t fu32_freq)
 * Input       :
 * Outpu       : false: FAIL
                 true:  SUCCESS
-* Author      : Chris_Kyle                         Data : 2020年
+* Author      : Chris_Kyle                         Data : 2020
 **********************************************************************************/
 bool HAL_EFlash_ErasePage(uint32_t fu32_Addr)
 {
@@ -53,7 +53,7 @@ bool HAL_EFlash_ErasePage(uint32_t fu32_Addr)
 * Input       :
 * Outpu       : false: FAIL
                 true:  SUCCESS
-* Author      : Chris_Kyle                         Data : 2020年
+* Author      : Chris_Kyle                         Data : 2020
 **********************************************************************************/
 bool HAL_EFlash_Program_Word(uint32_t fu32_Addr, uint32_t fu32_Data)
 {

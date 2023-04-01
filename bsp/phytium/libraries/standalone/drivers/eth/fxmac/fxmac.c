@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fxmac.c
  * Date: 2022-04-06 14:46:52
  * LastEditTime: 2022-04-06 14:46:58
- * Description:  This file is for
+ * Description: This file is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 #include "fxmac.h"
@@ -462,7 +462,7 @@ static void FXmacDmaReset(FXmac *instance_p)
         dmacfg |= (config_p->dma_brust_length & FXMAC_DMACR_BLENGTH_MASK);
 
         dmacfg &= ~FXMAC_DMACR_ENDIAN_MASK;
-        dmacfg &= ~FXMAC_DMACR_SWAP_MANAGEMENT_MASK; /* 选择小端 */
+        dmacfg &= ~FXMAC_DMACR_SWAP_MANAGEMENT_MASK; /*  */
 
         dmacfg &= ~FXMAC_DMACR_TCPCKSUM_MASK; /* close  transmitter checksum generation engine */
 
@@ -480,7 +480,7 @@ static void FXmacDmaReset(FXmac *instance_p)
         dmacfg |= (config_p->dma_brust_length & FXMAC_DMACR_BLENGTH_MASK);
 
         dmacfg &= ~FXMAC_DMACR_ENDIAN_MASK;
-        dmacfg &= ~FXMAC_DMACR_SWAP_MANAGEMENT_MASK; /* 选择小端 */
+        dmacfg &= ~FXMAC_DMACR_SWAP_MANAGEMENT_MASK; /*  */
 
         dmacfg &= ~FXMAC_DMACR_TCPCKSUM_MASK; /* close  transmitter checksum generation engine */
 
@@ -548,7 +548,7 @@ static void FXmacReset(FXmac *instance_p)
                      ((FXMAC_NWCTRL_STATCLR_MASK) & (u32)(~FXMAC_NWCTRL_LOOPEN_MASK)) | FXMAC_NWCTRL_MDEN_MASK);
 
     write_reg = FXmacClkDivGet(instance_p); /* mdio clock division */
-    write_reg |= FXmacDmaWidth(instance_p); /* 位宽 */
+    write_reg |= FXmacDmaWidth(instance_p); /*  */
 
     FXMAC_WRITEREG32(instance_p->config.base_address, FXMAC_NWCFG_OFFSET, write_reg);
 

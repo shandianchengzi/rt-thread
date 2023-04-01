@@ -37,11 +37,11 @@
 *
 *
 * Return value:
-*    0  ：成功
-*   !0  ：失败
+*    0  
+*   !0  
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -78,11 +78,11 @@ static void *DiskOpen(void *open_arg, uint32_t mode)
 *
 *
 * Return value:
-*    0  ：成功
-*   !0  ：失败
+*    0  
+*   !0  
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -119,11 +119,11 @@ static int32_t DiskClose(void * hDev)
 *
 *
 * Return value:
-*    0  ：成功
-*   !0  ：失败
+*    0  
+*   !0  
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -131,7 +131,7 @@ static unsigned int __DiskRead(void *pBuffer, unsigned int blk, unsigned int n, 
 {
     __UsbBlkDev_t *BlkDev = NULL;
     __mscLun_t *mscLun = NULL;
-    unsigned int cmd_version = 10;   /* 默认为10 */
+    unsigned int cmd_version = 10;   /* 10 */
     int ret = 0;
 
     if (hDev == NULL)
@@ -155,7 +155,7 @@ static unsigned int __DiskRead(void *pBuffer, unsigned int blk, unsigned int n, 
         return EPDK_FAIL;
     }
 
-    /* 如果没有注册disk设备, 就不能够读数据 */
+    /* disk,  */
     if (!BlkDev->is_RegDisk)
     {
         hal_log_err("ERR: __DiskRead: Not reged Disk, can not read");
@@ -170,7 +170,7 @@ static unsigned int __DiskRead(void *pBuffer, unsigned int blk, unsigned int n, 
         return EPDK_FAIL;
     }
 
-    /* 如果介质不存在, 就不能够从设备读数据 */
+    /* ,  */
     if (!mscLun->MediaPresent)
     {
         hal_log_err("ERR: __DiskRead: media is not present, __DiskRead failed");
@@ -197,7 +197,7 @@ static unsigned int __DiskRead(void *pBuffer, unsigned int blk, unsigned int n, 
             cmd_version = 10;
         }
     */
-    /* 目前所见的USB设备里面都使用的是10字节命名，而且协议规定的是10/12字节命令 */
+    /* USB1010/12 */
     cmd_version = 10;
     hal_sem_wait(mscLun->Lock);
 
@@ -240,11 +240,11 @@ static unsigned int __DiskRead(void *pBuffer, unsigned int blk, unsigned int n, 
 *
 *
 * Return value:
-*    0  ：成功
-*   !0  ：失败
+*    0  
+*   !0  
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -252,7 +252,7 @@ static unsigned int __DiskWrite(const void *pBuffer, unsigned int blk, unsigned 
 {
     __UsbBlkDev_t *BlkDev = NULL;
     __mscLun_t *mscLun = NULL;
-    unsigned int cmd_version = 10;   /* 默认为10 */
+    unsigned int cmd_version = 10;   /* 10 */
     int ret = 0;
 
     if (hDev == NULL)
@@ -276,7 +276,7 @@ static unsigned int __DiskWrite(const void *pBuffer, unsigned int blk, unsigned 
         return 0;
     }
 
-    /* 如果没有注册disk设备, 就不能够读数据 */
+    /* disk,  */
     if (!BlkDev->is_RegDisk)
     {
         hal_log_err("ERR: __DiskWrite: Not reged Disk, can not read");
@@ -291,7 +291,7 @@ static unsigned int __DiskWrite(const void *pBuffer, unsigned int blk, unsigned 
         return 0;
     }
 
-    /* 如果介质不存在, 就不能够往设备写数据 */
+    /* ,  */
     if (!mscLun->MediaPresent)
     {
         hal_log_err("ERR: __DiskWrite: media is not present, __DiskWrite failed");
@@ -324,7 +324,7 @@ static unsigned int __DiskWrite(const void *pBuffer, unsigned int blk, unsigned 
             cmd_version = 10;
         }
     */
-    /* 目前所见的USB设备里面都使用的是10字节命名，而且协议规定的是10/12字节命令 */
+    /* USB1010/12 */
     cmd_version = 10;
     hal_sem_wait(mscLun->Lock);
 
@@ -362,20 +362,20 @@ static unsigned int __DiskWrite(const void *pBuffer, unsigned int blk, unsigned 
 *                     DiskRead
 *
 * Description:
-*    设备读
+*    
 *
 * Parameters:
-*    pBuffer    :  output. 装载读回来的数据
-*    blk        :  input.  起始扇区
-*    n          :  input.  扇区个数
-*    hDev       :  input.  设备
+*    pBuffer    :  output. 
+*    blk        :  input.  
+*    n          :  input.  
+*    hDev       :  input.  
 *
 * Return value:
-*    0  ：成功
-*   !0  ：失败
+*    0  
+*   !0  
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -414,8 +414,8 @@ static uint32_t DiskRead(void *pBuffer, uint32_t blk, uint32_t n, void * hDev)
         return 0;
     }
 
-    /* 1、lba0 不预读
-       2、本次读写长度超过了最大容量，不预读
+    /* 1lba0 
+       2
     */
     if ((blk != 0)
         && ((blk + (USBH_TEMP_BUFFER_MAX_LEN / mscLun->disk_info.sector_size)) < mscLun->disk_info.capacity))
@@ -450,20 +450,20 @@ static uint32_t DiskRead(void *pBuffer, uint32_t blk, uint32_t n, void * hDev)
 *                     DiskWrite
 *
 * Description:
-*    设备写
+*    
 *
 * Parameters:
-*    pBuffer    :  input. 要写的数据
-*    blk        :  input. 起始扇区
-*    n          :  input. 扇区个数
-*    hDev       :  input. 设备
+*    pBuffer    :  input. 
+*    blk        :  input. 
+*    n          :  input. 
+*    hDev       :  input. 
 *
 * Return value:
-*    0  ：成功
-*   !0  ：失败
+*    0  
+*   !0  
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -502,8 +502,8 @@ static uint32_t DiskWrite(const void *pBuffer, uint32_t blk, uint32_t n, void * 
         return 0;
     }
 
-    /* 1、lba0 不预读
-       2、本次读写长度超过了最大容量，不预读
+    /* 1lba0 
+       2
     */
     if ((blk != 0)
         && ((blk + (USBH_TEMP_BUFFER_MAX_LEN / mscLun->disk_info.sector_size)) < mscLun->disk_info.capacity))
@@ -559,11 +559,11 @@ static unsigned int DiskWrite(const void *pBuffer, unsigned int blk, unsigned in
 *
 *
 * Return value:
-*    0  ：成功
-*   !0  ：失败
+*    0  
+*   !0  
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -595,7 +595,7 @@ static int32_t DiskIoctl(void * hDev, uint32_t Cmd, long Aux, void *pBuffer)
         return EPDK_FAIL;
     }
 
-    /* 由于块设备不支持光驱设备, 因此这里就只能做个临时版本 */
+    /* ,  */
     if (mscLun->DeviceType == SCSI_DEVICE_CDROM)
     {
         ret = CDIOCtrl(BlkDev, Cmd, Aux, pBuffer);
@@ -658,11 +658,11 @@ static int32_t DiskIoctl(void * hDev, uint32_t Cmd, long Aux, void *pBuffer)
 *
 *
 * Return value:
-*    0  ：成功
-*   !0  ：失败
+*    0  
+*   !0  
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -741,11 +741,11 @@ __UsbBlkDev_t *UsbBlkDevAllocInit(__mscLun_t *mscLun)
 *
 *
 * Return value:
-*    0  ：成功
-*   !0  ：失败
+*    0  
+*   !0  
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -947,7 +947,7 @@ static void WaitForDeviceReady(__UsbBlkDev_t *BlkDev)
             break;
         }
 
-        /* 判断media的状态 */
+        /* media */
         if (ret != USB_STATUS_SUCCESS)
         {
             mscLun->MediaPresent = 0;
@@ -1035,7 +1035,7 @@ static void ReadCapacity(__UsbBlkDev_t *BlkDev)
 *                     ReadProtectFlag
 *
 * Description:
-*    获得设备写保护标志位
+*    
 *
 * Parameters:
 *
@@ -1052,7 +1052,7 @@ static void ReadProtectFlag(__UsbBlkDev_t *BlkDev)
 {
     __mscLun_t *mscLun = NULL;
     __BlockDevSpecPara_t *DevSpecPara = NULL;
-    unsigned int cmd_version = 6;   /* 默认使用mode sense 6 */
+    unsigned int cmd_version = 6;   /* mode sense 6 */
     int ret = 0;
     unsigned int ActLen = 0;
     unsigned char  buffer[SCSI_MODE_SENSE_MAX_DATA_LEN];
@@ -1167,7 +1167,7 @@ static void ReadProtectFlag(__UsbBlkDev_t *BlkDev)
 static void ReadCacheType(__UsbBlkDev_t *BlkDev)
 {
     __mscLun_t *mscLun = NULL;
-    unsigned int cmd_version = 6;   /* 默认使用mode sense 6 */
+    unsigned int cmd_version = 6;   /* mode sense 6 */
     int ret = 0;
     unsigned char  buffer[SCSI_MODE_SENSE_MAX_DATA_LEN];
     unsigned int ActLen = 0;
@@ -1288,11 +1288,11 @@ static void ReadCacheType(__UsbBlkDev_t *BlkDev)
 *
 *
 * Return value:
-*    0  ：成功
-*   !0  ：失败
+*    0  
+*   !0  
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -1337,9 +1337,9 @@ void GetDiskInfo(__UsbBlkDev_t *BlkDev)
 
     /* read capacity */
     ReadCapacity(BlkDev);
-    /* Lun是否写保护? */
+    /* Lun? */
     ReadProtectFlag(BlkDev);
-    /* Lun是否带cache? */
+    /* Luncache? */
     ReadCacheType(BlkDev);
     Pr__s32DiskInfo(BlkDev);
 //  printf("%s %d %s\n", __FILE__, __LINE__, __func__);
@@ -1402,11 +1402,11 @@ void ShutDown(__UsbBlkDev_t *BlkDev)
 *
 *
 * Return value:
-*    0  ：成功
-*   !0  ：失败
+*    0  
+*   !0  
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */
@@ -1421,7 +1421,7 @@ extern unsigned int hub_GetHubNo(struct usb_host_virt_dev *udev);
         return -1;
     }
 
-    //更新标志位
+    //
     BlkDev->Magic = USB_BLK_DEV_MAGIC;
 
     if (RegDisk)
@@ -1495,11 +1495,11 @@ extern unsigned int hub_GetHubNo(struct usb_host_virt_dev *udev);
 *
 *
 * Return value:
-*    0  ：成功
-*   !0  ：失败
+*    0  
+*   !0  
 *
 * note:
-*    无
+*    
 *
 *******************************************************************************
 */

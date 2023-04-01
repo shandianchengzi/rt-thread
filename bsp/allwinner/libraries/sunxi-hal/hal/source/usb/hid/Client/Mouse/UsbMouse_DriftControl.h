@@ -28,25 +28,25 @@
 //
 //--------------------------------------------------------
 typedef struct _UsbMouseEventUnit{
-    unsigned int vaild;                 /* 是否有效 */
-    USBHMouseEvent_t MouseEvent;    /* 鼠标事件 */
+    unsigned int vaild;                 /*  */
+    USBHMouseEvent_t MouseEvent;    /*  */
 }UsbMouseEventUnit_t;
 
 typedef struct _UsbMouseDriftControl{
     usbMouse_t *usbMouse;
 
-    osal_timer_t TimerHdle; /* timer 句柄             */
-    hal_sem_t ThreadSemi;       /* 线程信号量            */
-    hal_sem_t notify_complete;  /* 线程同步信号量      */
-    void *ThreadId;                         /* 线程ID                 */
+    osal_timer_t TimerHdle; /* timer              */
+    hal_sem_t ThreadSemi;       /*             */
+    hal_sem_t notify_complete;  /*       */
+    void *ThreadId;                         /* ID                 */
 
-    unsigned int ButtonDown;                        /* 按键按下             */
+    unsigned int ButtonDown;                        /*              */
 
-    UsbMouseEventUnit_t PreMouseEvent;      /* 上一次的鼠标事件     */
-    UsbMouseEventUnit_t DubiousMouseEvent;  /* 可以的鼠标事件      */
-    UsbMouseEventUnit_t CurrentMouseEvent;  /* 当前的鼠标事件      */
-    unsigned int DubiousCoordinate;             /* 可疑坐标, bit1:X, bit2:Y, bit3: X & Y */
-    unsigned int WaitEvent;                     /* 等待下一次的事件     */
+    UsbMouseEventUnit_t PreMouseEvent;      /*      */
+    UsbMouseEventUnit_t DubiousMouseEvent;  /*       */
+    UsbMouseEventUnit_t CurrentMouseEvent;  /*       */
+    unsigned int DubiousCoordinate;             /* , bit1:X, bit2:Y, bit3: X & Y */
+    unsigned int WaitEvent;                     /*      */
 }UsbMouseDriftControl_t;
 
 

@@ -14,40 +14,40 @@ Description  : board I/O config file.
 #include "yc_exti.h"
 #include "yc_spi.h"
 
-//开发板选择
+//
 #define MPOS_BOARD_V2_1  0
 #define EPOS_BOARD_V1_0  1
 #define BOARD_VER  EPOS_BOARD_V1_0
 
-//ADC管脚配置
+//ADC
 #define ADC_IO_PORT  GPIOC
 #define ADC2_IO_PIN  GPIO_Pin_7
 #define ADC3_IO_PIN  GPIO_Pin_8
 
-//外部中断管脚配置
+//
 #define EXTI_PORT  EXTI_Line0
 #define EXTI_PIN   EXTI_PinSource14
 
 #if (BOARD_VER == MPOS_BOARD_V2_1)
-//DEBUG串口配置
+//DEBUG
 #define UARTBAUD            921600
 #define UART0_TX_PORT       GPIOA
 #define UART0_TX_PIN        GPIO_Pin_1
 #define UART0_RX_PORT       GPIOA
 #define UART0_RX_PIN        GPIO_Pin_0
 
-//串口1配置
+//1
 #define UART1_TX_PORT       GPIOA
 #define UART1_TX_PIN        GPIO_Pin_14
 #define UART1_RX_PORT       GPIOA
 #define UART1_RX_PIN        GPIO_Pin_15
 
-//BEEP驱动IO
+//BEEPIO
 #define BEEP_PWM   0
 #define BEEP_PORT  GPIOA
 #define BEEP_PIN   GPIO_Pin_11
 
-//IC卡在位检测IO
+//ICIO
 #define DET_PORT  GPIOC
 #define DET_PIN   GPIO_Pin_12
 
@@ -71,19 +71,19 @@ Description  : board I/O config file.
 #define NFC_SPI_CS_PORT  GPIOB
 #define NFC_SPI_CS_PIN   GPIO_Pin_6
 
-//EEPROM写保护控制IO
+//EEPROMIO
 #define IIC_WP2_PORT    GPIOB
 #define IIC_WP2_PIN     GPIO_Pin_0
 #define IIC_WP128_PORT  GPIOC
 #define IIC_WP128_PIN   GPIO_Pin_10
 
-//IIC驱动IO
+//IICIO
 #define IIC_SDA_PORT GPIOB
 #define IIC_SDA_PIN  GPIO_Pin_2
 #define IIC_SCL_PORT GPIOA
 #define IIC_SCL_PIN  GPIO_Pin_11
 
-//KEYBOARD配置
+//KEYBOARD
 #define GPIO_GROUP_Line_1 GPIOC
 #define Line_1 GPIO_Pin_7
 
@@ -99,7 +99,7 @@ Description  : board I/O config file.
 #define GPIO_GROUP_Line_5 GPIOC
 #define Line_5 GPIO_Pin_11
 
-//LCD屏幕驱动配置
+//LCD
 #define LCD_SPI     SPI0
 #define LCDSDA_PIN  GPIO_Pin_1
 #define LCDSDA_PORT GPIOB
@@ -115,25 +115,25 @@ Description  : board I/O config file.
 #define LCDBL_PORT  GPIOA
 
 #elif (BOARD_VER == EPOS_BOARD_V1_0)
-//DEBUG串口配置
+//DEBUG
 #define UARTBAUD            921600
 #define UART0_TX_PORT       GPIOA
 #define UART0_TX_PIN        GPIO_Pin_1
 #define UART0_RX_PORT       GPIOA
 #define UART0_RX_PIN        GPIO_Pin_0
 
-//串口1配置
+//1
 #define UART1_TX_PORT       GPIOA
 #define UART1_TX_PIN        GPIO_Pin_14
 #define UART1_RX_PORT       GPIOA
 #define UART1_RX_PIN        GPIO_Pin_15
 
-//BEEP驱动IO
+//BEEPIO
 #define BEEP_PWM   0
 #define BEEP_PORT  GPIOC
 #define BEEP_PIN   GPIO_Pin_1
 
-//IC卡在位检测IO
+//ICIO
 #define DET_PORT  GPIOA
 #define DET_PIN   GPIO_Pin_4
 
@@ -160,9 +160,9 @@ Description  : board I/O config file.
 #define NFC_SPI_CS_PORT  GPIOC
 #define NFC_SPI_CS_PIN   GPIO_Pin_9
 
-//IIC驱动IO
+//IICIO
 
-//KEYBOARD配置
+//KEYBOARD
 #define KEY_PORT_1    GPIOA
 #define KEY_PIN_1     GPIO_Pin_9
 
@@ -181,7 +181,7 @@ Description  : board I/O config file.
 #define KEY_PORT_6    GPIOA
 #define KEY_PIN_6     GPIO_Pin_6
 
-//TFT屏幕驱动配置
+//TFT
 #define ST7789VTFTSPI       SPI1
 #define ST7789_TFT_SDA_PIN  GPIO_Pin_7
 #define ST7789_TFT_SDA_PORT GPIOC

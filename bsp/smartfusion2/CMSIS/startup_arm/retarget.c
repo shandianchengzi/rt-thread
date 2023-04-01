@@ -73,7 +73,7 @@ static int g_stdio_uart_init_done = 0;
 int sendchar(int ch)  
 {
     uint32_t tx_ready;
-	//第一次调用时，初始化串口
+	//
     if(!g_stdio_uart_init_done)
     {
         MSS_UART_init(gp_my_uart,

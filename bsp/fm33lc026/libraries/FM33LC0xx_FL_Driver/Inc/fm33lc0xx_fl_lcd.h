@@ -48,23 +48,23 @@ extern "C" {
   */
 typedef struct
 {
-    /*! 电流源大小控制 */
+    /*!  */
     uint32_t biasCurrent;
-    /*! 驱动模式 */
+    /*!  */
     uint32_t mode;
-    /*! 偏执电平 */
+    /*!  */
     uint32_t biasVoltage;
-    /*! 偏执类型 */
+    /*!  */
     uint32_t biasMode;
-    /*! 驱动波形 */
+    /*!  */
     uint32_t waveform;
-    /*! COM数目 */
+    /*! COM */
     uint32_t COMxNum;
-    /*! 显示频率 */
+    /*!  */
     uint32_t displayFreq;
-    /*! 显示闪烁点亮时间(ms) */
+    /*! (ms) */
     uint32_t flickOnTime;
-    /*! 显示闪烁熄灭时间(ms) */
+    /*! (ms) */
     uint32_t flickOffTime;
 } FL_LCD_InitTypeDef;
 

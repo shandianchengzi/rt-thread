@@ -1,5 +1,5 @@
 /*
- * Copyright : (C) 2022 Phytium Information Technology, Inc.
+ * Copyright: (C)2022PhytiumInformationTechnology,Inc.
  * All Rights Reserved.
  *
  * This program is OPEN SOURCE software: you can redistribute it and/or modify it
@@ -14,11 +14,11 @@
  * FilePath: fgmac_dma.c
  * Date: 2022-04-06 14:46:52
  * LastEditTime: 2022-04-06 14:46:58
- * Description:  This file is for
+ * Description: This file is for
  *
- * Modify History:
- *  Ver   Who        Date         Changes
- * ----- ------     --------    --------------------------------------
+ * ModifyHistory:
+ *  VerWhoDateChanges
+ * ---------------------------------------------------------
  */
 
 /***************************** Include Files *********************************/
@@ -53,14 +53,14 @@
 
 /**
  * @name: FGmacSetupTxDescRing
- * @msg: 配置FGMAC的接收DMA描述符和缓冲区
- * @param {FGmac *}instance_p 驱动控制数据
- *        {volatile FGmacDmaDesc *} rx_desc_tbl 接收DMA描述符表(数组)
- *        {u8} *rx_buf 接收DMA缓冲区(数组，每一个描述符对应一个缓冲区)
- *        {const fsize_t} rx_pre_buf_len 单个DMA缓冲区的字节数
- *        {const fsize_t} rx_buf_num DMA描述符或者DMA缓存区的数目
- * @return  {FError} RX DMA初始化的错误码信息，FGMAC_SUCCESS 表示RX DMA初始化成功，其它返回值表示RX DMA初始化失败
- * @note 传入的rx_desc_tbl和rx_buf必须为32位空间地址
+ * @msg: FGMACDMA
+ * @param {FGmac *}instance_p 
+ *        {volatile FGmacDmaDesc *} rx_desc_tbl DMA()
+ *        {u8} *rx_buf DMA()
+ *        {const fsize_t} rx_pre_buf_len DMA
+ *        {const fsize_t} rx_buf_num DMADMA
+ * @return  {FError} RX DMAFGMAC_SUCCESS RX DMARX DMA
+ * @note rx_desc_tblrx_buf32
  */
 FError FGmacSetupRxDescRing(FGmac *instance_p, volatile FGmacDmaDesc *rx_desc_tbl,
                             u8 *rx_buf, const fsize_t rx_pre_buf_len, const fsize_t rx_buf_num)
@@ -116,14 +116,14 @@ FError FGmacSetupRxDescRing(FGmac *instance_p, volatile FGmacDmaDesc *rx_desc_tb
 
 /**
  * @name: FGmacSetupTxDescRing
- * @msg: 配置FGMAC的发送DMA描述符和缓冲区
- * @param {FGmac *}instance_p 驱动控制数据
- *        {volatile FGmacDmaDesc *} tx_desc_tbl 发送DMA描述符表(数组)
- *        {u8} *tx_buf 发送DMA缓冲区(数组，每一个描述符对应一个缓冲区)
- *        {const fsize_t} tx_pre_buf_len 单个DMA缓冲区的字节数
- *        {const fsize_t} tx_buf_num DMA描述符或者DMA缓存区的数目
- * @return  {FError} TX DMA初始化的错误码信息，FGMAC_SUCCESS 表示TX DMA初始化成功，其它返回值表示TX DMA初始化失败
- * @note 传入的tx_desc_tbl和tx_buf必须为32位空间地址
+ * @msg: FGMACDMA
+ * @param {FGmac *}instance_p 
+ *        {volatile FGmacDmaDesc *} tx_desc_tbl DMA()
+ *        {u8} *tx_buf DMA()
+ *        {const fsize_t} tx_pre_buf_len DMA
+ *        {const fsize_t} tx_buf_num DMADMA
+ * @return  {FError} TX DMAFGMAC_SUCCESS TX DMATX DMA
+ * @note tx_desc_tbltx_buf32
  */
 FError FGmacSetupTxDescRing(FGmac *instance_p, volatile FGmacDmaDesc *tx_desc_tbl,
                             u8 *tx_buf, const fsize_t tx_pre_buf_len, const fsize_t tx_buf_num)
@@ -173,10 +173,10 @@ FError FGmacSetupTxDescRing(FGmac *instance_p, volatile FGmacDmaDesc *tx_desc_tb
 
 /**
  * @name: FGmacStartTrans
- * @msg: 使能FGMAC DMA，使之可以接收/发送数据
- * @return {FError} FGMAC_SUCCESS 表示启动成功，其它返回值表示启动失败
- * @param {FGmac} *instance_p 驱动控制数据
- * @note 调用函数前需要确保FGMAC驱动初始化成功
+ * @msg: FGMAC DMA/
+ * @return {FError} FGMAC_SUCCESS 
+ * @param {FGmac} *instance_p 
+ * @note FGMAC
  */
 FError FGmacStartTrans(FGmac *instance_p)
 {
@@ -193,10 +193,10 @@ FError FGmacStartTrans(FGmac *instance_p)
 
 /**
  * @name: FGmacStopTrans
- * @msg: 去使能FGMAC DMA, 使之不再能接收/发送数据
- * @return {FError} FGMAC_SUCCESS 表示去启动成功，其它返回值表示去启动失败
- * @param {FGmac} *instance_p 驱动控制数据
- * @note 调用函数前需要确保FGMAC驱动初始化成功
+ * @msg: FGMAC DMA, /
+ * @return {FError} FGMAC_SUCCESS 
+ * @param {FGmac} *instance_p 
+ * @note FGMAC
  */
 FError FGmacStopTrans(FGmac *instance_p)
 {
@@ -213,10 +213,10 @@ FError FGmacStopTrans(FGmac *instance_p)
 
 /**
  * @name: FGmacRecvFrame
- * @msg: 通过FGMAC接收数据帧
- * @return  {FError} FGMAC_SUCCESS 表示接收数据帧成功，其它返回值表示接收数据帧失败
- * @param {FGmac} *instance_p 驱动控制数据
- * @note 调用函数前需要确保FGMAC驱动初始化成功
+ * @msg: FGMAC
+ * @return  {FError} FGMAC_SUCCESS 
+ * @param {FGmac} *instance_p 
+ * @note FGMAC
  */
 FError FGmacRecvFrame(FGmac *instance_p)
 {
@@ -255,11 +255,11 @@ FError FGmacRecvFrame(FGmac *instance_p)
 
 /**
  * @name: FGmacSendFrame
- * @msg: 通过FGMAC发送数据帧
- * @return {FError} FGMAC_SUCCESS 表示发送数据帧成功，其它返回值表示发送数据帧失败
- * @param {FGmac} *instance_p 驱动控制数据
- * @param {u32} frame_len 数据帧长度
- * @note 调用函数前需要确保FGMAC驱动初始化成功
+ * @msg: FGMAC
+ * @return {FError} FGMAC_SUCCESS 
+ * @param {FGmac} *instance_p 
+ * @param {u32} frame_len 
+ * @note FGMAC
  */
 FError FGmacSendFrame(FGmac *instance_p, u32 frame_len)
 {

@@ -140,10 +140,10 @@ static uint8_t user_init(struct prf_task_env *env, uint16_t *start_hdl, uint16_t
 
 #ifdef N32WB452_BT_API0
     if (g_bt_init) {
-        //设置其他默认服务
+        //
         memcpy((void*)user_att_db_api_define, (void*)user_att_db, sizeof(user_att_db_api_define));
 
-        //配置用户定义服务和character
+        //character
         if (g_bt_init->service[0].character[0].uuid \
             && (g_bt_init->service[0].character[0].permission & BT_WRITE_PERM)
             && (g_bt_init->service[0].character[0].permission & BT_NTF_PERM)) {

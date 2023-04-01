@@ -6,23 +6,23 @@
 
 /*************************  LL ************************************/
 
-#define CK8E            BIT(11)             //在命令/数据包后加上8CLK
+#define CK8E            BIT(11)             ///8CLK
 #define CBUSY           BIT(10)             //Busy Check
 #define CLRSP           BIT(9)              //17Byte Long Rsp
 #define CRSP            BIT(8)              //Need Rsp
 
-//0x40是CMD中的 01 开头。
+//0x40CMD 01 
 #define RSP_NO          (0x40 | CK8E)
-#define RSP_1           (0x40 | CRSP | CK8E)                //接收6BYTE
-#define RSP_1B          (0x40 | CBUSY | CRSP | CK8E)        //接收6BYTE，并等待BUSY
-#define RSP_2           (0x40 | CLRSP | CRSP | CK8E)        //接收17BYTE
-#define RSP_3           (0x40 | CRSP | CK8E)                //接收6BYTE
-#define RSP_6           (0x40 | CRSP | CK8E)                //接收6BYTE
-#define RSP_7           (0x40 | CRSP | CK8E)                //接收6BYTE
-#define REQ_MULTREAD    (18 | 0x40 | CRSP)                  //多块读时，不需要增加8CLK。其实，多块读先KICK DATA，这个是无所谓的
+#define RSP_1           (0x40 | CRSP | CK8E)                //6BYTE
+#define RSP_1B          (0x40 | CBUSY | CRSP | CK8E)        //6BYTEBUSY
+#define RSP_2           (0x40 | CLRSP | CRSP | CK8E)        //17BYTE
+#define RSP_3           (0x40 | CRSP | CK8E)                //6BYTE
+#define RSP_6           (0x40 | CRSP | CK8E)                //6BYTE
+#define RSP_7           (0x40 | CRSP | CK8E)                //6BYTE
+#define REQ_MULTREAD    (18 | 0x40 | CRSP)                  //8CLKKICK DATA
 
-#define RSP_BUSY_TIMEOUT            2400000     //大约2s
-#define RSP_TIMEOUT                 6000        //大约5ms
+#define RSP_BUSY_TIMEOUT            2400000     //2s
+#define RSP_TIMEOUT                 6000        //5ms
 
 uint8_t sysclk_update_baud(uint8_t baud);
 

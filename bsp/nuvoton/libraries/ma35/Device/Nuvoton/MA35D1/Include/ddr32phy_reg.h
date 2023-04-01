@@ -679,7 +679,7 @@ typedef struct
      * |[31:28] |DDPDRCDO  |Dynamic Data Power Down Receiver Count Down Offset
      * |        |          |Offset applied in calculating window of time where receiver is powered up
      * @var DDRPHY_T::DSGCR
-     * Offset: 0x40  DDR System General Configuration Register(DSGCR)
+     * Offset: 0x40  DDR System General Configuration Register(DSGCR)
      * ---------------------------------------------------------------------------------------------------
      * |Bits    |Field     |Descriptions
      * | :----: | :----:   | :---- |
@@ -5517,7 +5517,7 @@ typedef struct
     __IO uint32_t ACBDLR;                /*!< [0x0034] AC Bit Delay Line Register (ACBDLR)                              */
     __IO uint32_t ACIOCR;                /*!< [0x0038] AC I/O Configuration Register (ACIOCR)                           */
     __IO uint32_t DXCCR;                 /*!< [0x003c] DATX8 Common Configuration Register (DXCCR)                      */
-    __IO uint32_t DSGCR;                 /*!< [0x0040] DDR System General Configuration Register(DSGCR)                */
+    __IO uint32_t DSGCR;                 /*!< [0x0040] DDR System General Configuration Register(DSGCR)                */
     __IO uint32_t DCR;                   /*!< [0x0044] DRAM Configuration Register (DCR)                                */
     __IO uint32_t DTPR0;                 /*!< [0x0048] DRAM Timing Parameters Register 0 (DTPR0) 105                    */
     __IO uint32_t DTPR1;                 /*!< [0x004c] DRAM Timing Parameters Register 1 (DTPR1)                        */

@@ -1,6 +1,6 @@
 # NK-RTU980
 ## 1. Introduction
-NuMaker-RTU-NUC980, also known as Chili, is a Nuvoton’s development platform that uses NUC980DR61YC microprocessor with a 64-pin package on a 50 mm x 50 mm dimension PCB. Chili board provides a high-end hardware features including a NUC980DR61YC ARM926EJ-S processor with 64 MB DRAM, 32MB SPI NOR Flash, 10/100 Ethernet MAC interface, USB 2.0 High Speed host/device connector, CAN bus, RS-485 and five GPIOs. Crypto engine supports RSA2048, AES256, ECC, SHA512 algorithm and a Pseudo Random Number Generator for communication security protection.
+NuMaker-RTU-NUC980, also known as Chili, is a Nuvotons development platform that uses NUC980DR61YC microprocessor with a 64-pin package on a 50 mm x 50 mm dimension PCB. Chili board provides a high-end hardware features including a NUC980DR61YC ARM926EJ-S processor with 64 MB DRAM, 32MB SPI NOR Flash, 10/100 Ethernet MAC interface, USB 2.0 High Speed host/device connector, CAN bus, RS-485 and five GPIOs. Crypto engine supports RSA2048, AES256, ECC, SHA512 algorithm and a Pseudo Random Number Generator for communication security protection.
 
 
 [![NK-RTU980](https://i.imgur.com/gCKG4PN.png "NK-RTU980")](https://i.imgur.com/gCKG4PN.png "NK-RTU980")

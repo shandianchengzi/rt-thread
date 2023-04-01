@@ -6,7 +6,7 @@
   *          This file contains:
   *           - Data structures and the address mapping for all peripherals
   *           - Peripheral's registers declarations and bits definition
-  *           - Macros to access peripheral’s registers hardware
+  *           - Macros to access peripherals registers hardware
   *
   ******************************************************************************
 */
@@ -166,7 +166,7 @@ typedef struct
 }TIM_TypeDef;
 
 
-///*------------------- RTC、PMU Registers ----------------------*/
+///*------------------- RTCPMU Registers ----------------------*/
 typedef struct
 {
     __IO uint32_t WP;                // 0x00
