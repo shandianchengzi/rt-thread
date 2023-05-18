@@ -1,0 +1,865 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¦ÌVision V5.37.0.0
+Copyright (C) 2022 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: 1 think, 1, LIC=HN0AE-5JDPS-AR5XW-Q6ZH9-D1AVA-I8PD9
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Plus  Version: 5.37.0.0
+Toolchain Path:  D:\software\Keil5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.18
+Assembler:       Armasm.exe V6.18
+Linker/Locator:  ArmLink.exe V6.18
+Library Manager: ArmAr.exe V6.18
+Hex Converter:   FromElf.exe V6.18
+CPU DLL:         SARMCM3.DLL V5.37.0.0
+Dialog DLL:      DCM.DLL V1.17.5.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.9.0
+Dialog DLL:      TCM.DLL V1.56.1.0
+ 
+<h2>Project:</h2>
+E:\workspace\lab\mycode\third\rt-thread\bsp\stm32\stm32f103-100ask-mini\project.uvprojx
+Project File Date:  05/15/2023
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.18', folder: 'D:\software\Keil5\ARM\ARMCLANG\Bin'
+Rebuild target 'rt-thread'
+applications/main.c(236): warning: implicit declaration of function 'atoi' is invalid in C99 [-Wimplicit-function-declaration]
+            port = atoi(argv[4]);
+                   ^
+1 warning generated.
+compiling main.c...
+compiling cstdio.c...
+compiling div0.c...
+compiling cctype.c...
+compiling syscalls.c...
+compiling cstring.c...
+compiling showmem.c...
+compiling atomic_arm.c...
+compiling at_utils.c...
+compiling cstdlib.c...
+compiling syscall_mem.c...
+compiling cwchar.c...
+compiling ctime.c...
+assembling context_rvds.S...
+compiling cpuport.c...
+compiling completion.c...
+compiling pipe.c...
+compiling dataqueue.c...
+compiling waitqueue.c...
+compiling ringbuffer.c...
+compiling ringblk_buf.c...
+assembling startup_stm32f103xb.s...
+compiling workqueue.c...
+compiling pin.c...
+compiling stm32f1xx_hal_msp.c...
+compiling board.c...
+compiling serial.c...
+compiling user_key.c...
+compiling drv_common.c...
+compiling drv_gpio.c...
+compiling dfs_posix.c...
+compiling dfs_fs.c...
+compiling drv_usart.c...
+compiling msh_parse.c...
+compiling shell.c...
+compiling dfs.c...
+compiling msh.c...
+compiling dfs_file.c...
+compiling clock.c...
+compiling components.c...
+compiling device.c...
+compiling idle.c...
+compiling msh_file.c...
+compiling irq.c...
+compiling cmd.c...
+compiling mem.c...
+compiling mempool.c...
+compiling scheduler_up.c...
+compiling object.c...
+compiling kservice.c...
+compiling thread.c...
+compiling timer.c...
+compiling stm32f1xx_hal_rcc_ex.c...
+compiling stm32f1xx_hal_gpio_ex.c...
+compiling stm32f1xx_hal_cortex.c...
+compiling stm32f1xx_hal_pwr.c...
+compiling stm32f1xx_hal_rcc.c...
+compiling stm32f1xx_hal_dma.c...
+compiling ipc.c...
+compiling stm32f1xx_hal_crc.c...
+compiling system_stm32f1xx.c...
+compiling stm32f1xx_hal.c...
+compiling stm32f1xx_hal_cec.c...
+compiling stm32f1xx_hal_usart.c...
+compiling err.c...
+compiling stm32f1xx_hal_gpio.c...
+compiling netbuf.c...
+compiling netdb.c...
+compiling netifapi.c...
+compiling api_lib.c...
+compiling stm32f1xx_hal_uart.c...
+compiling def.c...
+compiling ping.c...
+compiling tcpip.c...
+compiling api_msg.c...
+compiling init.c...
+compiling ip.c...
+compiling dns.c...
+compiling autoip.c...
+compiling inet_chksum.c...
+compiling icmp.c...
+compiling ip4_frag.c...
+compiling etharp.c...
+compiling sockets.c...
+compiling ip4_addr.c...
+compiling igmp.c...
+compiling ip4.c...
+compiling memp.c...
+compiling stats.c...
+compiling sys.c...
+compiling netif.c...
+compiling raw.c...
+compiling dhcp.c...
+compiling timeouts.c...
+compiling pbuf.c...
+compiling ethernet.c...
+compiling lowpan6.c...
+compiling tcp_out.c...
+compiling netdev_ipaddr.c...
+compiling udp.c...
+compiling tcp_in.c...
+compiling net_netdb.c...
+compiling dfs_net.c...
+compiling tcp.c...
+compiling sys_arch.c...
+compiling ethernetif.c...
+../../../components/net/sal/impl/af_inet_lwip.c(23): warning: In file included from...
+../../../components/net/sal/include\sal_low_lvl.h(27): warning: redefinition of typedef 'socklen_t' is a C11 feature [-Wtypedef-redefinition]
+typedef uint32_t socklen_t;
+                 ^
+../../../components/net/lwip/lwip-2.0.3/src/include\lwip/sockets.h(108): note: previous definition is here
+typedef u32_t socklen_t;
+              ^
+1 warning generated.
+compiling af_inet_lwip.c...
+compiling net_sockets.c...
+../../../components/net/netdev/src/netdev.c(23): warning: In file included from...
+../../../components/net/sal/include\sal_low_lvl.h(27): warning: redefinition of typedef 'socklen_t' is a C11 feature [-Wtypedef-redefinition]
+typedef uint32_t socklen_t;
+                 ^
+../../../components/net/sal/include/sal_socket.h(22): note: previous definition is here
+typedef uint32_t socklen_t;
+                 ^
+1 warning generated.
+compiling netdev.c...
+../../../components/net/sal/src/sal_socket.c(22): warning: In file included from...
+../../../components/net/sal/include\sal_low_lvl.h(27): warning: redefinition of typedef 'socklen_t' is a C11 feature [-Wtypedef-redefinition]
+typedef uint32_t socklen_t;
+                 ^
+../../../components/net/sal/include/sal_socket.h(22): note: previous definition is here
+typedef uint32_t socklen_t;
+                 ^
+1 warning generated.
+compiling sal_socket.c...
+linking...
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.bss.memp_memory_PBUF_POOL_base).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.bss.memp_memory_PBUF_base).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.bss.memp_memory_TCP_SEG_base).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.bss.memp_memory_ARP_QUEUE_base).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dns.o(.bss.dns_table).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs_file.o(.bss.dfs_fm).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching startup_stm32f103xb.o(STACK).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching ethernetif.o(.bss.eth_rx_thread_stack).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching ethernetif.o(.bss.eth_tx_thread_stack).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.bss.memp_memory_NETCONN_base).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.bss.memp_memory_TCP_PCB_base).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.bss.memp_memory_TCP_PCB_LISTEN_base).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching timer.o(.bss._timer_thread_stack).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.bss.memp_memory_TCPIP_MSG_API_base).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.bss.memp_memory_TCPIP_MSG_INPKT_base).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.bss.memp_memory_IGMP_GROUP_base).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.bss.memp_memory_SYS_TIMEOUT_base).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.bss.memp_memory_NETDB_base).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.bss.memp_memory_UDP_PCB_base).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching drv_usart.o(.bss.uart_obj).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.bss.memp_memory_RAW_PCB_base).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching main.o(.bss.url).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching drv_gpio.o(.data.pin_irq_hdr_tab).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs.o(.data.working_directory).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching idle.o(.bss.idle_thread_stack).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching scheduler_up.o(.bss.rt_thread_priority_table).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching drv_usart.o(.text.stm32_configure).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching timer.o(.text.rt_timer_check).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching etharp.o(.bss.arp_table).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching ethernetif.o(.text.eth_rx_thread_entry).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching msh_file.o(.rodata.str1.1).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching igmp.o(.text.igmp_send).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcp.o(.text.tcp_pcb_remove).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching timeouts.o(.text.sys_timeout).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching thread.o(.text.rt_thread_delete).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching workqueue.o(.text._workqueue_submit_work).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs.o(.text.fdt_fd_release).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.rodata.str1.1).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching pbuf.o(.text.pbuf_free).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching rand.o(.bss).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching timer.o(.rodata.str1.1).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching device.o(.text.rt_device_open).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sal_socket.o(.text.sal_ioctlsocket).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching pbuf.o(.rodata.str1.1).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching mem.o(.text.plug_holes).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching thread.o(.text.rt_thread_detach).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching udp.o(.text.udp_bind).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching ethernet.o(.text.ethernet_output).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32f1xx_hal_uart.o(.text.HAL_UART_Init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching shell.o(.text.finsh_system_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcpip.o(.text.tcpip_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching netdev.o(.text.netdev_set_ipaddr).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32f1xx_hal_msp.o(.text.HAL_UART_MspInit).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcp_out.o(.text.tcp_zero_window_probe).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching thread.o(.text._thread_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching pbuf.o(.text.pbuf_copy_partial).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching object.o(.text.rt_object_allocate).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching serial.o(.text.rt_serial_control).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching mem.o(.text.rt_smem_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching netdev.o(.text.netdev_set_dns).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sal_socket.o(.text.socket_delete).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcp_out.o(.text.tcp_create_segment).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sal_socket.o(.text.sal_check_netdev_internet_up).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching workqueue.o(.rodata.str1.1).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching workqueue.o(.text.rt_work_sys_workqueue_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching ipc.o(.text.rt_sem_detach).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sal_socket.o(.text.socket_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching kservice.o(.text.rt_show_version).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching object.o(.text.rt_object_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching timeouts.o(.text.sys_timeouts_mbox_fetch).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching shell.o(.text.finsh_set_device).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching thread.o(.text.rt_thread_startup).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcp_out.o(.text.tcp_rst).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dataqueue.o(.text.rt_data_queue_reset).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching thread.o(.text.rt_thread_control).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dns.o(.text.dns_call_found).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dhcp.o(.text.dhcp_fine_tmr).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching object.o(.rodata.str1.1).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching kservice.o(.text.rt_malloc).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching etharp.o(.rodata.str1.1).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching netdev.o(.text.netdev_netstat).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs.o(.text.dfs_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching ipc.o(.text.rt_mb_create).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching timer.o(.text.rt_timer_detach).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32f1xx_hal_uart.o(.text.UART_Receive_IT).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching ethernetif.o(.rodata.str1.1).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcpip.o(.text.tcpip_thread).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching netdev_ipaddr.o(.text.netdev_ip4addr_ntoa).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs_posix.o(.text.chdir).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching object.o(.data._object_container).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching scheduler_up.o(.text.rt_schedule_insert_thread).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching kservice.o(.text.rt_memory_info).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching netdev.o(.text.netdev_auto_change_default).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs_file.o(.text.dfs_file_rename).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching kservice.o(.text.rt_free).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching netdev.o(.text.netdev_dhcp_close).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching workqueue.o(.text._workqueue_thread_entry).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching kservice.o(.text.rt_realloc).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32f1xx_hal_dma.o(.text.HAL_DMA_Abort_IT).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching netdev.o(.text.netdev_set_dns_server).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching netdev.o(.text.netdev_dhcp_open).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching board.o(.text.SystemClock_Config).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs_fs.o(.text.dfs_filesystem_lookup).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching ipc.o(.text.rt_sem_release).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching netif.o(.text.netif_set_addr).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching netdev.o(.rodata.name).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32f1xx_hal_uart.o(.text.HAL_UART_Receive_DMA).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching etharp.o(.text.etharp_tmr).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching netdev.o(.text.netdev_set_netmask).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching netdev.o(.text.netdev_set_gw).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching _strtoul.o(.text).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs_fs.o(.text.dfs_unmount).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs_file.o(.text.cat).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching shell.o(.text.shell_handle_history).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching etharp.o(.text.etharp_free_entry).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcp.o(.text.tcp_pcb_purge).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching workqueue.o(.text._delayed_work_timeout_handler).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching msh_file.o(.text.cmd_echo).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching kservice.o(.text.rt_system_heap_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32f1xx_hal_dma.o(.text.HAL_DMA_Start_IT).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcp.o(.text.tcp_process_refused_data).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching ethernetif.o(.text.eth_tx_thread_entry).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sys_arch.o(.text.sys_thread_new).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching object.o(.text.rt_object_find).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching strncmp.o(.text).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching shell.o(.text.finsh_getchar).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcp.o(.text.tcp_fasttmr).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching pin.o(.text._pin_cmd_conv).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching timer.o(.text.rt_timer_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs_file.o(.text.dfs_file_close).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dhcp.o(.text.dhcp_delete_msg).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sys_arch.o(.text.sys_mbox_new).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching thread.o(.text.rt_thread_resume).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching ip4.o(.text.ip4_route_src).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching serial.o(.text.rt_hw_serial_register).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching idle.o(.bss.idle_thread).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching thread.o(.text.rt_thread_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching timer.o(.bss._timer_thread).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching ethernetif.o(.bss.eth_rx_thread).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching ethernetif.o(.bss.eth_tx_thread).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching drv_gpio.o(.text.stm32_pin_attach_irq).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching thread.o(.text._thread_timeout).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching timer.o(.text.rt_timer_stop).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dataqueue.o(.text.rt_data_queue_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching msh_file.o(.text.cmd_mkfs).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching ipc.o(.text.rt_sem_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcp_out.o(.text.tcp_send_empty_ack).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching net_sockets.o(.text.socket).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sal_socket.o(.text.sal_recvfrom).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sal_socket.o(.text.sal_sendto).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching drv_usart.o(.text.rt_hw_usart_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching netif.o(.text.netif_set_ipaddr).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcpip.o(.text.tcpip_callback_with_block).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching completion.o(.rodata.str1.1).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching shell.o(.bss.finsh_get_prompt.finsh_prompt).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dataqueue.o(.text.rt_data_queue_peek).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching drv_gpio.o(.text.rt_hw_pin_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching msh.o(.text.cmd_free).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching msh_file.o(.text.cmd_mkdir).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching idle.o(.text.idle_thread_entry).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching ipc.o(.text.rt_mb_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching kservice.o(.bss.rt_kprintf.rt_log_buf).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.rodata..L__const.memp_overflow_check_element_overflow.errstr).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.rodata..L__const.memp_overflow_check_element_underflow.errstr).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcp.o(.text.tcp_netif_ip_addr_changed).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sys_arch.o(.text.sys_mutex_new).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sal_socket.o(.bss.sal_dev_res_tbl).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching strcmpv7m.o(.text).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcp_out.o(.text.tcp_output_alloc_header).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching udp.o(.text.udp_sendto).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching drv_gpio.o(.text.stm32_pin_mode).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs_file.o(.text.dfs_file_unlink).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching cmd.o(.rodata.device_type_str).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.bss.memp_memory_NETBUF_base).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs_file.o(.text.dfs_file_is_open).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32f1xx_hal_uart.o(.text.HAL_UART_Transmit_DMA).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching drv_usart.o(.text.HAL_UART_RxCpltCallback).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs.o(.text.fd_get).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching kservice.o(.text.rt_memcpy).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching workqueue.o(.text.rt_work_submit).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching object.o(.text.rt_object_delete).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32f1xx_hal_dma.o(.text.HAL_DMA_Init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sys_arch.o(.text.sys_arch_mbox_fetch).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching drv_usart.o(.text.stm32_dma_transmit).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching ipc.o(.text.rt_mutex_drop_thread).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sal_socket.o(.text.sal_connect).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching device.o(.text.rt_device_read).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching device.o(.text.rt_device_write).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcp_out.o(.text.tcp_keepalive).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sal_socket.o(.text.sal_closesocket).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sal_socket.o(.text.sal_poll).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching msh_file.o(.text.cmd_umount).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching device.o(.text.rt_device_close).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32f1xx_hal_uart.o(.text.UART_DMAError).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcp.o(.text.tcp_close_shutdown_fin).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching strtol.o(.text).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching ipc.o(.text.rt_mutex_create).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching scheduler_up.o(.text.rt_system_scheduler_start).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sal_socket.o(.rodata.str1.1).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching components.o(.text.rtthread_startup).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching netdev.o(.text.netdev_low_level_set_netmask).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching netdev.o(.text.netdev_ping).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching drv_usart.o(.rodata.str1.1).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs_posix.o(.text.opendir).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching scheduler_up.o(.text.rt_schedule_remove_thread).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.text.memp_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching netdev.o(.text.netdev_get_by_family).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching pin.o(.text.rt_pin_attach_irq).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching drv_usart.o(.text.HAL_UART_RxHalfCpltCallback).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching inet_chksum.o(.text.inet_chksum).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching pbuf.o(.text.pbuf_take_at).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching drv_gpio.o(.text.stm32_pin_get).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching drv_usart.o(.text.stm32_getc).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching msh.o(.rodata.name).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching msh_file.o(.text.cmd_cat).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching netdev.o(.text.netdev_low_level_set_ipaddr).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching netdev.o(.text.netdev_low_level_set_gw).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching rt_memcpy_w.o(.text).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcpip.o(.rodata.str1.1).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching drv_gpio.o(.text.stm32_pin_dettach_irq).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching completion.o(.text.rt_completion_done).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dataqueue.o(.text.rt_data_queue_deinit).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching workqueue.o(.text.rt_work_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching kservice.o(.text.rt_kprintf).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching libspace.o(.bss).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching clock.o(.text.rt_tick_increase).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching kservice.o(.text.rt_memset).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32f1xx_hal_dma.o(.text.HAL_DMA_DeInit).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching cmd.o(.rodata.name).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching idle.o(.text.rt_thread_idle_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching object.o(.text.rt_object_detach).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching netif.o(.text.netif_set_link_up).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching msh.o(.text.msh_help).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching net_sockets.o(.text.closesocket).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching cstdlib.o(.text.__rt_libc_exit).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching ipc.o(.text.rt_mutex_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching timer.o(.text.rt_system_timer_thread_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching timer.o(.text._timer_thread_entry).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching igmp.o(.text.igmp_report_groups).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching igmp.o(.text.igmp_tmr).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memcmp.o(.text).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32f1xx_hal_cortex.o(.text.HAL_NVIC_SetPriority).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching strncpy.o(.text).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching pin.o(.text.rt_pin_irq_enable).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32f1xx_hal_msp.o(.text.HAL_UART_MspDeInit).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching drv_common.o(.text._Error_Handler).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs_posix.o(.text.lseek).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching msh_file.o(.text.cmd_cp).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.text.memp_malloc_fn).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.text.memp_free).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs_posix.o(.text.mkdir).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32f1xx_hal_uart.o(.text.UART_DMAReceiveCplt).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sys_arch.o(.text.sys_mbox_post).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sal_socket.o(.text.sal_gethostbyname).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching serial.o(.text.rt_serial_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching drv_usart.o(.text.HAL_UART_TxCpltCallback).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching msh_file.o(.text.cmd_cd).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching msh_file.o(.text.cmd_df).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching defsig_rtmem_inner.o(.text).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs_posix.o(.text.readdir).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching netdev.o(.text.netdev_get_by_name).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching rt_memclr_w.o(.text).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching kservice.o(.text.rt_strerror).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching udp.o(.text.udp_sendto_if).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching netdev.o(.text.netdev_low_level_set_link_status).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching pin.o(.text.rt_device_pin_register).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching thread.o(.text.rt_thread_create).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sys_arch.o(.text.sys_mutex_lock).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sys_stackheap_outer.o(.text).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching user_key.o(.text.KEY_IRQHandler).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching device.o(.text.rt_device_set_rx_indicate).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching ip4.o(.rodata.str1.1).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching strcpy.o(.text).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching pin.o(.text._pin_read).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching pin.o(.text._pin_write).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching pin.o(.text._pin_control).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching pin.o(.bss._hw_pin).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching rt_memclr.o(.text).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching cpuport.o(.text.rt_hw_stack_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32f1xx_hal_msp.o(.text.HAL_MspInit).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs_posix.o(.text.open).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcp_out.o(.text.tcp_send_fin).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching completion.o(.text.rt_completion_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching drv_gpio.o(.rodata.pin_irq_map).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching drv_usart.o(.text.stm32_putc).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs.o(.text.dfs_lock).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs.o(.bss.filesystem_table).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching kservice.o(.text.rt_assert_handler).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32f1xx_hal_dma.o(.text.HAL_DMA_Abort).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching scheduler_up.o(.text.rt_exit_critical).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching pbuf.o(.text.pbuf_chain).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching raw.o(.text.raw_netif_ip_addr_changed).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching timeouts.o(.text.tcp_timer_needed).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching timeouts.o(.text.tcpip_tcp_timer).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching udp.o(.text.udp_netif_ip_addr_changed).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching strlen.o(.text).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching startup_stm32f103xb.o(.text).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching drv_common.o(.text.rt_hw_board_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching drv_gpio.o(.text.EXTI15_10_IRQHandler).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs_posix.o(.text.closedir).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching object.o(.text.rt_object_is_systemobject).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.rodata.memp_pools).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching timeouts.o(.rodata.str1.1).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching rand.o(.text).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching msh_parse.o(.text.msh_isint).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching kservice.o(.text.rt_memmove).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching pbuf.o(.text.pbuf_ref).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching netdev.o(.text.netdev_low_level_set_internet_status).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs_fs.o(.rodata.str1.1).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching drv_usart.o(.text.HAL_UART_ErrorCallback).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching shell.o(.text.finsh_rx_ind).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching shell.o(.rodata.str1.1).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching thread.o(.text._thread_exit).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching pbuf.o(.text.pbuf_free_ooseq_callback).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sys_arch.o(.text.lwip_ip4_route_src).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dns.o(.rodata.str1.1).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching udp.o(.rodata.str1.1).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching pin.o(.text.rt_pin_mode).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32f1xx_hal_uart.o(.text.HAL_UART_DeInit).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcp_out.o(.text.tcp_rexmit_rto).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sys_arch.o(.text.sys_arch_assert).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching main.o(.rodata.name).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs_file.o(.text.dfs_vnode_mgr_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching kservice.o(.text.rt_console_set_device).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching object.o(.text.rt_object_get_type).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching ip4.o(.text.ip4_output_if_opt).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching ip4_addr.o(.text.ip4_addr_isbroadcast_u32).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching timeouts.o(.text.sys_timeouts_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching udp.o(.text.udp_remove).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs_net.o(.text.dfs_net_read).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs_net.o(.text.dfs_net_write).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching rand.o(.emb_text).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching pin.o(.text.rt_pin_read).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching drv_gpio.o(.text.HAL_GPIO_EXTI_Callback).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs.o(.rodata.str1.1).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching etharp.o(.text.etharp_request).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching ip4.o(.text.ip4_output_if).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching defsig_general.o(.text).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching drv_gpio.o(.text.stm32_pin_read).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs_file.o(.text.dfs_file_read).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching components.o(.text.main_thread_entry).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching scheduler_up.o(.text.rt_system_scheduler_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dns.o(.bss.dns_requests).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching timeouts.o(.rodata.lwip_cyclic_timers).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching ethernetif.o(.bss.eth_rx_thread_mb).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching ethernetif.o(.bss.eth_tx_thread_mb).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching drv_common.o(.text.HAL_InitTick).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching drv_gpio.o(.text.EXTI9_5_IRQHandler).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs.o(.text.dfs_subdir).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs_file.o(.rodata.str1.1).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching device.o(.text.rt_device_register).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching irq.o(.text.rt_interrupt_enter).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching irq.o(.text.rt_interrupt_leave).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching netif.o(.text.netif_set_link_down).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching netdev.o(.text.netdev_get_first_by_flags).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching msh.o(.rodata.str1.1).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching drv_common.o(.text.SysTick_Handler).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching drv_gpio.o(.text.stm32_pin_write).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs_posix.o(.text.close).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs_posix.o(.text.read).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs_posix.o(.text.write).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs.o(.bss.fslock).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs.o(.bss.fdlock).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching components.o(.text.rt_components_board_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching kservice.o(.bss._lock).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching scheduler_up.o(.rodata.str1.1).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32f1xx_hal_cortex.o(.text.HAL_SYSTICK_Config).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dhcp.o(.text.dhcp_network_changed).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching pbuf.o(.text.pbuf_put_at).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sal_socket.o(.bss.sal_core_lock).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching lc_ctype_c.o(locale$$code).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32f1xx_hal_uart.o(.text.UART_DMATransmitCplt).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching user_key.o(.text.rt_hw_user_key_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs_posix.o(.text.rewinddir).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs_file.o(.text.dfs_file_getdents).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching components.o(.rodata.str1.1).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32f1xx_hal_cortex.o(.text.HAL_NVIC_DisableIRQ).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching init.o(.text.lwip_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcp.o(.text.tcp_segs_free).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching net_sockets.o(.text.recv).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching net_sockets.o(.text.send).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs_file.o(.text.dfs_file_lseek).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32f1xx_hal_rcc.o(.text.HAL_RCC_GetPCLK1Freq).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32f1xx_hal_rcc.o(.text.HAL_RCC_GetPCLK2Freq).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32f1xx_hal.o(.text.HAL_Init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcp.o(.text.tcp_eff_send_mss_impl).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs_posix.o(.text.getcwd).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching kservice.o(.text.rt_memcmp).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching kservice.o(.text.rt_strdup).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching kservice.o(.text.rt_sprintf).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcpip.o(.text.tcpip_api_call).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs_net.o(.rodata._net_fops).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching strncat.o(.text).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching strstr.o(.text).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching main.o(.rodata.send_data).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching kservice.o(.text.rt_set_errno).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching object.o(.text.rt_object_get_information).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcp.o(.text.tcp_seg_free).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching drv_common.o(.text.HAL_GetTick).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching kservice.o(.text.rt_get_errno).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32f1xx_hal_cortex.o(.text.HAL_NVIC_SetPriorityGrouping).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32f1xx_hal_cortex.o(.text.HAL_NVIC_EnableIRQ).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching igmp.o(.text.igmp_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching ethernetif.o(.bss.eth_rx_thread_mb_pool).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching ethernetif.o(.bss.eth_tx_thread_mb_pool).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs_net.o(.text.dfs_net_ioctl).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching kservice.o(.text.rt_calloc).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching ip4.o(.text.ip4_output_if_src).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcp.o(.text.tcp_tmr).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching toupper.o(.text).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching drv_gpio.o(.rodata._stm32_pin_ops).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs_file.o(.text.dfs_file_write).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching _chval.o(.text).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs_posix.o(.text.rename).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs_posix.o(.text.unlink).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs.o(.text.fd_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching msh_file.o(.text.cmd_pwd).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching kservice.o(.text.rt_snprintf).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching scheduler_up.o(.text.rt_enter_critical).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32f1xx_hal_uart.o(.text.UART_DMARxHalfCplt).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32f1xx_hal_gpio.o(.text.HAL_GPIO_EXTI_IRQHandler).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching netifapi.o(.text.netifapi_netif_common).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching timeouts.o(.text.cyclic_timer).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs_net.o(.text.dfs_net_getsocket).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching atoi.o(.text).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs_posix.o(.text.stat).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching msh_file.o(.text.cmd_ls).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching irq.o(.text.rt_interrupt_get_nest).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching netifapi.o(.text.netifapi_do_netif_common).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching strcat.o(.text).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching idle.o(.text.rt_thread_defunct_enqueue).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dns.o(.text.dns_tmr).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs_net.o(.text.dfs_net_close).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching strrchr.o(.text).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching drv_common.o(.rodata.name).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching drv_usart.o(.data.uart_config).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching drv_usart.o(.rodata.stm32_uart_ops).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching cmd.o(.text.clear).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching inet_chksum.o(.text.ip_chksum_pseudo).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching net_sockets.o(.text.connect).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching cpuport.o(.text.rt_hw_cpu_reset).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching drv_gpio.o(.text.EXTI0_IRQHandler).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching drv_gpio.o(.text.EXTI1_IRQHandler).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching drv_gpio.o(.text.EXTI2_IRQHandler).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching drv_gpio.o(.text.EXTI3_IRQHandler).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching drv_gpio.o(.text.EXTI4_IRQHandler).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs.o(.text.fd_release).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcp_in.o(.text.tcp_trigger_input_pcb_close).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sys_arch.o(.text.sys_mbox_trypost).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching exit.o(.text).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching pin.o(.rodata.name).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching syscalls.o(.text._ttywrch).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching cpuport.o(.text.__rt_ffs).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs.o(.text.dfs_unlock).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs.o(.text.fd_new).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs.o(.bss.filesystem_operation_table).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching idle.o(.bss.idle_hook_list).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32f1xx_hal_rcc.o(.rodata.cst16).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching system_stm32f1xx.o(.rodata.AHBPrescTable).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32f1xx_hal_uart.o(.text.UART_DMAAbortOnError).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dns.o(.bss.dns_pcbs).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.rodata.memp_RAW_PCB).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.rodata.memp_UDP_PCB).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.rodata.memp_TCP_PCB).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.rodata.memp_TCP_PCB_LISTEN).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.rodata.memp_TCP_SEG).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.rodata.memp_NETBUF).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.rodata.memp_NETCONN).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.rodata.memp_TCPIP_MSG_API).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.rodata.memp_TCPIP_MSG_INPKT).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.rodata.memp_ARP_QUEUE).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.rodata.memp_IGMP_GROUP).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.rodata.memp_SYS_TIMEOUT).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.rodata.memp_NETDB).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.rodata.memp_PBUF).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.rodata.memp_PBUF_POOL).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching pbuf.o(.text.pbuf_clen).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcp.o(.rodata.tcp_pcb_lists).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching netdev_ipaddr.o(.bss.netdev_ip4addr_ntoa.str).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching rt_ctype_table.o(.text).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching aeabi_memset.o(.text).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching board.o(.rodata.str1.1).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching timer.o(.text.rt_system_timer_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching defsig_rtmem_outer.o(.text).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcp.o(.rodata.tcp_backoff).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching main.o(FSymTab).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching clock.o(.text.rt_tick_get).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching clock.o(.text.rt_tick_get_millisecond).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching ipc.o(.text.rt_sem_trytake).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching ipc.o(.text.rt_mb_send).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching kservice.o(.text.rt_console_get_device).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching scheduler_up.o(.text.rt_critical_level).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching thread.o(.text.rt_thread_self).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching libinit2.o(.ARM.Collect$$libinit$$00000014).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching main.o(.text.main).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching syscalls.o(.text._sys_exit).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching msh.o(.text.cmd_ps).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching cmd.o(.text.version).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching components.o(.text.$Sub$$main).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching device.o(.text.rt_device_find).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching ipc.o(.text.rt_sem_take).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching ipc.o(.text.rt_mutex_take).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching ipc.o(.text.rt_mb_send_wait).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching ipc.o(.text.rt_mb_recv).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32f1xx_hal_uart.o(.text.UART_DMATxHalfCplt).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32f1xx_hal_gpio.o(.text.HAL_GPIO_ReadPin).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32f1xx_hal_gpio.o(.text.HAL_GPIO_WritePin).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching pbuf.o(.text.pbuf_header).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sys_arch.o(.text.sys_mutex_unlock).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sys_arch.o(.text.sys_mbox_valid).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs_net.o(.text.dfs_net_get_fops).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching defsig_exit.o(.text).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching drv_common.o(.text.reboot).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs.o(.bss._fdtab).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching idle.o(.data._rt_thread_defunct).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching thread.o(.text.rt_thread_delay).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching timer.o(.bss._soft_timer_list).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching timer.o(.bss._timer_list).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching system_stm32f1xx.o(.rodata.APBPrescTable).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dns.o(.bss.dns_servers).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sys_arch.o(.text.tcpip_init_done_callback).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sys_arch.o(.text.sys_arch_protect).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sys_arch.o(.text.sys_arch_unprotect).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sys_arch.o(.text.sys_now).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sys_arch.o(.text.mem_malloc).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sys_arch.o(.text.mem_free).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs_net.o(.text.dfs_net_poll).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching net_netdb.o(.text.gethostbyname).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sal_socket.o(.bss.socket_table).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching rt_errno_addr_intlibspace.o(.text).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching libspace.o(.text).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching rt_locale_intlibspace.o(.text).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching __rtentry2.o(.ARM.Collect$$rtentry$$0000000D).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcp.o(.rodata.tcp_persist_backoff).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching ethernet.o(.rodata.ethbroadcast).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching ethernet.o(.rodata.ethzero).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching heapauxi.o(.text).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching rtexit2.o(.ARM.Collect$$rtexit$$00000004).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching main.o(.data.port).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching syscalls.o(.text._sys_command_string).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching cpuport.o(.bss.rt_exception_hook).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching cpuport.o(.bss.rt_interrupt_from_thread).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching cpuport.o(.bss.rt_interrupt_to_thread).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching cpuport.o(.bss.rt_thread_switch_interrupt_flag).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching workqueue.o(.bss.sys_workq).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching workqueue.o(.rti_fn.2).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching user_key.o(.rti_fn.4).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching drv_gpio.o(.bss.pin_irq_enable_mask).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs.o(.rti_fn.2).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching shell.o(.bss._syscall_table_begin).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching shell.o(.bss._syscall_table_end).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching shell.o(.bss.finsh_prompt_custom).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching shell.o(.bss.shell).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching shell.o(.rti_fn.6).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching clock.o(.bss.rt_tick_hook).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching clock.o(.bss.rt_tick).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching components.o(.text.rti_start).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching components.o(.text.rti_board_start).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching components.o(.text.rti_board_end).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching components.o(.text.rti_end).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching components.o(.rti_fn.0).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching components.o(.rti_fn.0.end).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching components.o(.rti_fn.1.end).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching components.o(.rti_fn.6.end).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching irq.o(.bss.rt_interrupt_enter_hook).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching irq.o(.bss.rt_interrupt_leave_hook).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching kservice.o(.bss.__rt_errno).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching kservice.o(.bss._console_device).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching kservice.o(.bss.rt_malloc_hook).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching kservice.o(.bss.rt_free_hook).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching kservice.o(.bss.system_heap).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching kservice.o(.bss.rt_assert_hook).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching object.o(.bss.rt_object_attach_hook).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching object.o(.bss.rt_object_detach_hook).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching object.o(.bss.rt_object_trytake_hook).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching object.o(.bss.rt_object_take_hook).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching object.o(.bss.rt_object_put_hook).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching scheduler_up.o(.bss.rt_current_thread).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching scheduler_up.o(.bss.rt_scheduler_hook).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching scheduler_up.o(.bss.rt_scheduler_switch_hook).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching scheduler_up.o(.bss.rt_thread_ready_priority_group).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching thread.o(.bss.rt_thread_suspend_hook).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching thread.o(.bss.rt_thread_resume_hook).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching thread.o(.bss.rt_thread_inited_hook).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching timer.o(.bss.rt_timer_enter_hook).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching timer.o(.bss.rt_timer_exit_hook).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching timer.o(.bss.rt_timer_start.random_nr).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching system_stm32f1xx.o(.data.SystemCoreClock).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32f1xx_hal.o(.data.uwTickPrio).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32f1xx_hal.o(.bss.uwTick).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcpip.o(.bss.mbox).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcpip.o(.bss.lock_tcpip_core).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcpip.o(.bss.tcpip_init_done).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcpip.o(.bss.tcpip_init_done_arg).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching def.o(.text.lwip_htons).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching def.o(.text.lwip_htonl).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dhcp.o(.bss.dhcp_pcb).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dhcp.o(.rodata.cst4).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dhcp.o(.bss.dhcp_create_msg.xid).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching igmp.o(.bss.allsystems).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching igmp.o(.bss.allrouters).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching ip4.o(.bss.ip4_default_multicast_netif).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching ip4_addr.o(.rodata.ip_addr_any).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching ip4_addr.o(.rodata.ip_addr_broadcast).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.bss.memp_tab_RAW_PCB).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.bss.memp_tab_UDP_PCB).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.bss.memp_tab_TCP_PCB).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.bss.memp_tab_TCP_PCB_LISTEN).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.bss.memp_tab_TCP_SEG).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.bss.memp_tab_NETBUF).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.bss.memp_tab_NETCONN).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.bss.memp_tab_TCPIP_MSG_API).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.bss.memp_tab_TCPIP_MSG_INPKT).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.bss.memp_tab_ARP_QUEUE).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.bss.memp_tab_IGMP_GROUP).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.bss.memp_tab_SYS_TIMEOUT).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.bss.memp_tab_NETDB).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.bss.memp_tab_PBUF).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching memp.o(.bss.memp_tab_PBUF_POOL).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching netif.o(.bss.netif_list).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching netif.o(.bss.netif_default).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching raw.o(.bss.raw_pcbs).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcp.o(.bss.tcp_listen_pcbs).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcp.o(.bss.tcp_bound_pcbs).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcp.o(.bss.tcp_active_pcbs).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcp.o(.bss.tcp_tw_pcbs).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcp.o(.bss.tcp_ticks).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcp_in.o(.bss.tcp_input_pcb).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching timeouts.o(.bss.timeouts_last_time).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching timeouts.o(.bss.next_timeout).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching udp.o(.bss.udp_pcbs).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sys_arch.o(.rti_fn.2).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching netdev.o(.bss.netdev_list).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching netdev.o(.bss.netdev_default).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching netdev.o(.bss.g_netdev_default_change_callback).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sal_socket.o(.rti_fn.4).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching argv_veneer.o(.emb_text).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching hrguard.o(.text).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching kservice.o(.text.rt_hw_console_output).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching scheduler_up.o(.bss.rt_scheduler_lock_nest).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32f1xx_hal_rcc.o(.rodata..L__const.HAL_RCC_GetSysClockFreq.aPredivFactorTable).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching system_stm32f1xx.o(.text.SystemInit).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32f1xx_hal_uart.o(.text.HAL_UARTEx_RxEventCallback).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32f1xx_hal_uart.o(.text.HAL_UART_TxHalfCpltCallback).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dns.o(.text.dns_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching ip4.o(.bss.ip_id).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching netif.o(.text.netif_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcp.o(.text.tcp_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching udp.o(.text.udp_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching udp.o(.data.udp_port).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sys_arch.o(.text.sys_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sys_arch.o(.text.mem_init).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sys_arch.o(.text.mem_trim).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sys_arch.o(.bss.sys_mutex_new.counter).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sys_arch.o(.bss.sys_mbox_new.counter).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching use_no_semi_2.o(.text).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching use_no_semi.o(.text).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching libshutdown.o(.ARM.Collect$$libshutdown$$00000000).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching main.o(.bss.is_running).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching main.o(.bss.started).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching serial.o(.bss._serial_check_buffer_size.already_output).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching dfs.o(.bss.dfs_init.init_ok).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching irq.o(.bss.rt_interrupt_nest).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching scheduler_up.o(.bss.rt_current_priority).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching timer.o(.bss._soft_timer_status).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching etharp.o(.bss.etharp_cached_entry).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching pbuf.o(.bss.pbuf_free_ooseq_pending).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcp.o(.bss.tcp_timer).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcp.o(.bss.tcp_active_pcbs_changed).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcp.o(.bss.tcp_timer_ctr).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching tcp_in.o(.bss.recv_flags).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching timeouts.o(.bss.tcpip_tcp_timer_active).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sys_arch.o(.bss.lwip_system_init.init_ok).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching sal_socket.o(.bss.init_ok).
+.\Objects\rt-thread.axf: Error: L6406E: No space in execution regions with .ANY selector matching startup_stm32f103xb.o(HEAP).
+.\Objects\rt-thread.axf: Error: L6407E: Sections of aggregate size 0x15f38 bytes could not fit into .ANY selector(s).
+Not enough information to list image symbols.
+Not enough information to list load addresses in the image map.
+Finished: 2 information, 0 warning and 676 error messages.
+".\Objects\rt-thread.axf" - 676 Error(s), 4 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32F1xx_DFP.2.4.0.pack
+                Keil.STM32F1xx_DFP.2.4.0
+                STMicroelectronics STM32F1 Series Device Support, Drivers and Examples
+
+<h2>Collection of Component include folders:</h2>
+  D:/software/Keil5/ARM/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Include
+
+<h2>Collection of Component Files used:</h2>
+Target not created.
+Build Time Elapsed:  00:00:04
+</pre>
+</body>
+</html>

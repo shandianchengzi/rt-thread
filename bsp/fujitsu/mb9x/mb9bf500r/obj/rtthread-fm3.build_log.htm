@@ -1,0 +1,284 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¦ÌVision V5.37.0.0
+Copyright (C) 2022 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: 1 think, 1, LIC=HN0AE-5JDPS-AR5XW-Q6ZH9-D1AVA-I8PD9
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Plus  Version: 5.37.0.0
+Toolchain Path:  D:\software\Keil5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.18
+Assembler:       Armasm.exe V6.18
+Linker/Locator:  ArmLink.exe V6.18
+Library Manager: ArmAr.exe V6.18
+Hex Converter:   FromElf.exe V6.18
+CPU DLL:         SARMCM3.DLL V5.37.0.0
+Dialog DLL:      DCM.DLL V1.17.5.0
+Target DLL:      Segger\JL2CM3.dll V2.99.42.0
+Dialog DLL:      TCM.DLL V1.56.1.0
+ 
+<h2>Project:</h2>
+E:\workspace\lab\mycode\third\rt-thread\bsp\fujitsu\mb9x\mb9bf500r\project.uvproj
+Project File Date:  04/17/2023
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.18', folder: 'D:\software\Keil5\ARM\ARMCLANG\Bin'
+Build target 'RT-Thread FM3'
+cpuusage.c(10): error: 'rtthread.h' file not found
+#include <rtthread.h>
+         ^~~~~~~~~~~~
+1 error generated.
+compiling cpuusage.c...
+ArmClang: error: no such file or directory: '../../libcpu/arm/cortex-m3/context_rvds.S'
+ArmClang: error: no input files
+assembling context_rvds.S...
+ArmClang: error: no such file or directory: '../../libcpu/arm/cortex-m3/cpuport.c'
+ArmClang: error: no input files
+compiling cpuport.c...
+application.c(17): error: 'rtthread.h' file not found
+#include <rtthread.h>
+         ^~~~~~~~~~~~
+1 error generated.
+compiling application.c...
+info.c(10): error: 'rtthread.h' file not found
+#include <rtthread.h>
+         ^~~~~~~~~~~~
+1 error generated.
+compiling info.c...
+adc.c(11): error: 'rtthread.h' file not found
+#include <rtthread.h>
+         ^~~~~~~~~~~~
+1 error generated.
+compiling adc.c...
+board.c(11): error: 'rthw.h' file not found
+#include <rthw.h>
+         ^~~~~~~~
+1 error generated.
+compiling board.c...
+key.c(11): error: 'rtthread.h' file not found
+#include <rtthread.h>
+         ^~~~~~~~~~~~
+1 error generated.
+compiling key.c...
+led.c(11): error: 'rtthread.h' file not found
+#include <rtthread.h>
+         ^~~~~~~~~~~~
+1 error generated.
+compiling led.c...
+startup.c(11): error: 'rthw.h' file not found
+#include <rthw.h>
+         ^~~~~~~~
+1 error generated.
+compiling startup.c...
+lcd.c(11): error: 'rtthread.h' file not found
+#include <rtthread.h>
+         ^~~~~~~~~~~~
+1 error generated.
+compiling lcd.c...
+CMSIS/system_mb9bf50x.c(34): warning: In file included from...
+CMSIS/mb9bf506r.h(122): warning: In file included from...
+CMSIS/core_cm3.h(787): warning: In file included from...
+CMSIS/core_cmInstr.h(445): error: unknown type name 'inline'
+static __INLINE void __NOP()                      { __ASM volatile ("nop"); }
+       ^
+CMSIS/core_cm3.h(778): note: expanded from macro '__INLINE'
+  #define __INLINE         inline                                     /*!< inline keyword for GNU Compiler       */
+                           ^
+CMSIS/system_mb9bf50x.c(34): warning: In file included from...
+CMSIS/mb9bf506r.h(122): warning: In file included from...
+CMSIS/core_cm3.h(787): warning: In file included from...
+CMSIS/core_cmInstr.h(453): error: unknown type name 'inline'
+static __INLINE void __WFI()                      { __ASM volatile ("wfi"); }
+       ^
+CMSIS/core_cm3.h(778): note: expanded from macro '__INLINE'
+  #define __INLINE         inline                                     /*!< inline keyword for GNU Compiler       */
+                           ^
+CMSIS/system_mb9bf50x.c(34): warning: In file included from...
+CMSIS/mb9bf506r.h(122): warning: In file included from...
+CMSIS/core_cm3.h(787): warning: In file included from...
+CMSIS/core_cmInstr.h(461): error: unknown type name 'inline'
+static __INLINE void __WFE()                      { __ASM volatile ("wfe"); }
+       ^
+CMSIS/core_cm3.h(778): note: expanded from macro '__INLINE'
+  #define __INLINE         inline                                     /*!< inline keyword for GNU Compiler       */
+                           ^
+CMSIS/system_mb9bf50x.c(34): warning: In file included from...
+CMSIS/mb9bf506r.h(122): warning: In file included from...
+CMSIS/core_cm3.h(787): warning: In file included from...
+CMSIS/core_cmInstr.h(469): error: unknown type name 'inline'
+static __INLINE void __SEV()                      { __ASM volatile ("sev"); }
+       ^
+CMSIS/core_cm3.h(778): note: expanded from macro '__INLINE'
+  #define __INLINE         inline                                     /*!< inline keyword for GNU Compiler       */
+                           ^
+CMSIS/system_mb9bf50x.c(34): warning: In file included from...
+CMSIS/mb9bf506r.h(122): warning: In file included from...
+CMSIS/core_cm3.h(787): warning: In file included from...
+CMSIS/core_cmInstr.h(478): error: unknown type name 'inline'
+static __INLINE void __ISB()                      { __ASM volatile ("isb"); }
+       ^
+CMSIS/core_cm3.h(778): note: expanded from macro '__INLINE'
+  #define __INLINE         inline                                     /*!< inline keyword for GNU Compiler       */
+                           ^
+CMSIS/system_mb9bf50x.c(34): warning: In file included from...
+CMSIS/mb9bf506r.h(122): warning: In file included from...
+CMSIS/core_cm3.h(787): warning: In file included from...
+CMSIS/core_cmInstr.h(487): error: unknown type name 'inline'
+static __INLINE void __DSB()                      { __ASM volatile ("dsb"); }
+       ^
+CMSIS/core_cm3.h(778): note: expanded from macro '__INLINE'
+  #define __INLINE         inline                                     /*!< inline keyword for GNU Compiler       */
+                           ^
+CMSIS/system_mb9bf50x.c(34): warning: In file included from...
+CMSIS/mb9bf506r.h(122): warning: In file included from...
+CMSIS/core_cm3.h(787): warning: In file included from...
+CMSIS/core_cmInstr.h(495): error: unknown type name 'inline'
+static __INLINE void __DMB()                      { __ASM volatile ("dmb"); }
+       ^
+CMSIS/core_cm3.h(778): note: expanded from macro '__INLINE'
+  #define __INLINE         inline                                     /*!< inline keyword for GNU Compiler       */
+                           ^
+CMSIS/system_mb9bf50x.c(34): warning: In file included from...
+CMSIS/mb9bf506r.h(122): warning: In file included from...
+CMSIS/core_cm3.h(787): warning: In file included from...
+CMSIS/core_cmInstr.h(505): error: unknown type name 'inline'
+static __INLINE uint32_t __REV(uint32_t value)
+       ^
+CMSIS/core_cm3.h(778): note: expanded from macro '__INLINE'
+  #define __INLINE         inline                                     /*!< inline keyword for GNU Compiler       */
+                           ^
+CMSIS/system_mb9bf50x.c(34): warning: In file included from...
+CMSIS/mb9bf506r.h(122): warning: In file included from...
+CMSIS/core_cm3.h(787): warning: In file included from...
+CMSIS/core_cmInstr.h(505): error: expected ';' after top level declarator
+static __INLINE uint32_t __REV(uint32_t value)
+                        ^
+                        ;
+CMSIS/system_mb9bf50x.c(34): warning: In file included from...
+CMSIS/mb9bf506r.h(122): warning: In file included from...
+CMSIS/core_cm3.h(790): warning: In file included from...
+CMSIS/core_cmFunc.h(703): error: unknown type name 'inline'
+static __INLINE uint32_t __get_PSP(void)
+       ^
+CMSIS/core_cm3.h(778): note: expanded from macro '__INLINE'
+  #define __INLINE         inline                                     /*!< inline keyword for GNU Compiler       */
+                           ^
+CMSIS/system_mb9bf50x.c(34): warning: In file included from...
+CMSIS/mb9bf506r.h(122): warning: In file included from...
+CMSIS/core_cm3.h(790): warning: In file included from...
+CMSIS/core_cmFunc.h(703): error: expected ';' after top level declarator
+static __INLINE uint32_t __get_PSP(void)
+                        ^
+                        ;
+CMSIS/core_cmFunc.h(721): error: unknown type name 'inline'
+static __INLINE void __set_PSP(uint32_t topOfProcStack)
+       ^
+CMSIS/core_cm3.h(778): note: expanded from macro '__INLINE'
+  #define __INLINE         inline                                     /*!< inline keyword for GNU Compiler       */
+                           ^
+CMSIS/system_mb9bf50x.c(34): warning: In file included from...
+CMSIS/mb9bf506r.h(122): warning: In file included from...
+CMSIS/core_cm3.h(790): warning: In file included from...
+CMSIS/core_cmFunc.h(735): error: unknown type name 'inline'
+static __INLINE uint32_t __get_MSP(void) __attribute__( ( naked ) );
+       ^
+CMSIS/core_cm3.h(778): note: expanded from macro '__INLINE'
+  #define __INLINE         inline                                     /*!< inline keyword for GNU Compiler       */
+                           ^
+CMSIS/system_mb9bf50x.c(34): warning: In file included from...
+CMSIS/mb9bf506r.h(122): warning: In file included from...
+CMSIS/core_cm3.h(790): warning: In file included from...
+CMSIS/core_cmFunc.h(735): error: expected ';' after top level declarator
+static __INLINE uint32_t __get_MSP(void) __attribute__( ( naked ) );
+                        ^
+                        ;
+CMSIS/core_cmFunc.h(736): error: unknown type name 'inline'
+static __INLINE uint32_t __get_MSP(void)
+       ^
+CMSIS/core_cm3.h(778): note: expanded from macro '__INLINE'
+  #define __INLINE         inline                                     /*!< inline keyword for GNU Compiler       */
+                           ^
+CMSIS/system_mb9bf50x.c(34): warning: In file included from...
+CMSIS/mb9bf506r.h(122): warning: In file included from...
+CMSIS/core_cm3.h(790): warning: In file included from...
+CMSIS/core_cmFunc.h(736): error: expected ';' after top level declarator
+static __INLINE uint32_t __get_MSP(void)
+                        ^
+                        ;
+CMSIS/core_cmFunc.h(754): error: unknown type name 'inline'
+static __INLINE void __set_MSP(uint32_t topOfMainStack)
+       ^
+CMSIS/core_cm3.h(778): note: expanded from macro '__INLINE'
+  #define __INLINE         inline                                     /*!< inline keyword for GNU Compiler       */
+                           ^
+CMSIS/system_mb9bf50x.c(34): warning: In file included from...
+CMSIS/mb9bf506r.h(122): warning: In file included from...
+CMSIS/core_cm3.h(790): warning: In file included from...
+CMSIS/core_cmFunc.h(767): error: unknown type name 'inline'
+static __INLINE uint32_t __get_PRIMASK(void)
+       ^
+CMSIS/core_cm3.h(778): note: expanded from macro '__INLINE'
+  #define __INLINE         inline                                     /*!< inline keyword for GNU Compiler       */
+                           ^
+CMSIS/system_mb9bf50x.c(34): warning: In file included from...
+CMSIS/mb9bf506r.h(122): warning: In file included from...
+CMSIS/core_cm3.h(790): warning: In file included from...
+CMSIS/core_cmFunc.h(767): error: expected ';' after top level declarator
+static __INLINE uint32_t __get_PRIMASK(void)
+                        ^
+                        ;
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+compiling system_mb9bf50x.c...
+ArmClang: error: no such file or directory: '../../src/clock.c'
+ArmClang: error: no input files
+compiling clock.c...
+ArmClang: error: no such file or directory: '../../src/device.c'
+ArmClang: error: no input files
+compiling device.c...
+ArmClang: error: no such file or directory: '../../src/idle.c'
+ArmClang: error: no input files
+compiling idle.c...
+"CMSIS\start_rvds.S", line 269: Error: A1185E: Symbol missing
+  269 00000024                 IF :DEF:1
+1 Error, 0 Warnings
+assembling start_rvds.S...
+ArmClang: error: no such file or directory: '../../src/ipc.c'
+ArmClang: error: no input files
+compiling ipc.c...
+ArmClang: error: no such file or directory: '../../src/irq.c'
+ArmClang: error: no input files
+compiling irq.c...
+ArmClang: error: no such file or directory: '../../src/kservice.c'
+ArmClang: error: no input files
+compiling kservice.c...
+ArmClang: error: no such file or directory: '../../src/mem.c'
+ArmClang: error: no input files
+compiling mem.c...
+ArmClang: error: no such file or directory: '../../src/mempool.c'
+ArmClang: error: no input files
+compiling mempool.c...
+ArmClang: error: no such file or directory: '../../src/scheduler.c'
+ArmClang: error: no input files
+compiling scheduler.c...
+ArmClang: error: no such file or directory: '../../src/slab.c'
+ArmClang: error: no input files
+compiling slab.c...
+ArmClang: error: no such file or directory: '../../src/object.c'
+ArmClang: error: no input files
+compiling object.c...
+ArmClang: error: no such file or directory: '../../src/thread.c'
+ArmClang: error: no input files
+compiling thread.c...
+ArmClang: error: no such file or directory: '../../src/timer.c'
+ArmClang: error: no input files
+compiling timer.c...
+".\obj\rtthread-fm3.axf" - 58 Error(s), 0 Warning(s).
+Target not created.
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>
