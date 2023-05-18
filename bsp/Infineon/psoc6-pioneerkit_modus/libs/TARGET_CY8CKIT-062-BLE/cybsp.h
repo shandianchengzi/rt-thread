@@ -52,7 +52,7 @@ extern "C" {
 
 /**
  * \brief Initialize all hardware on the board
- * \returns CY_RSLT_SUCCESS if the board is sucessfully initialized, if there is
+ * \returns CY_RSLT_SUCCESS if the board is successfully initialized, if there is
  *          a problem initializing any hardware it returns an error code specific
  *          to the hardware module that had a problem.
  */

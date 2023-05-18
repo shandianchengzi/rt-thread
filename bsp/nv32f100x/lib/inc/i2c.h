@@ -38,7 +38,7 @@ extern "C" {
 *//*! @addtogroup i2c_error_state_list
 * @{
 *******************************************************************************/
-#define I2C_ERROR_NULL                  0x00			/*!< I2C sucess*/
+#define I2C_ERROR_NULL                  0x00			/*!< I2C success*/
 #define I2C_ERROR_NO_WAIT_TCF_FLAG      0x01			/*!< I2C wait TCF overETMe*/
 #define I2C_ERROR_NO_WAIT_IICIF_FLAG    0x02			/*!< I2C wait IICIF overETMe */
 #define I2C_ERROR_NO_GET_ACK            0x04			/*!< I2C no get ACK */

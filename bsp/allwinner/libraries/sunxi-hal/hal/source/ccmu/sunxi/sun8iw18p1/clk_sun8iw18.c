@@ -1000,7 +1000,7 @@ hal_clk_status_t sunxi_factor_pll_cpu_init(void)
     }
     //set AXI clock aprent to PLL_CPUX after PLL_CPUX change rate
     ret = sunxi_clk_periph_set_parent(periph, 0x03);
-    CCMU_DBG("clk init sucess! \n");
+    CCMU_DBG("clk init success! \n");
     return ret;
 }
 

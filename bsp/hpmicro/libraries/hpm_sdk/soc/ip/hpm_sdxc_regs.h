@@ -4039,7 +4039,7 @@ typedef struct {
  * Enable or Disable CQE's PREFETCH feature
  * This field allows Software to disable CQE's data prefetch feature when set to 1.
  * Values:
- * 0x0 (PREFETCH_ENABLE): CQE can Prefetch data for sucessive WRITE transfers and pipeline sucessive READ transfers
+ * 0x0 (PREFETCH_ENABLE): CQE can Prefetch data for successive WRITE transfers and pipeline successive READ transfers
  * 0x1 (PREFETCH_DISABLE): Prefetch for WRITE and Pipeline for READ are disabled
  */
 #define SDXC_EMMC_BOOT_CTRL_CQE_PREFETCH_DISABLE_MASK (0x400U)

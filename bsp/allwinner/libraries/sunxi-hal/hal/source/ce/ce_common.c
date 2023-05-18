@@ -330,7 +330,7 @@ static int ce_aes_start(crypto_aes_req_ctx_t *req_ctx)
         return HAL_AES_CRYPTO_ERROR;
     }
 
-    CE_DBG("do_aes_crypto sucess\n");
+    CE_DBG("do_aes_crypto success\n");
     hal_free(task);
     return HAL_AES_STATUS_OK;
 }

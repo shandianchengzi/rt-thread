@@ -61,7 +61,7 @@ static const struct _i2cm_sync_cfg *_get_i2cm_sync_cfg(void *hw);
  * \param[in] msg The pointer of I2C message struct
  *
  * \return The status of the operation
- * \retval ERR_NONE Operation sucessfully
+ * \retval ERR_NONE Operation successfully
  */
 static inline int32_t _i2c_m_sync_read(struct _i2c_m_sync_device *const dev, struct _i2c_m_msg *msg);
 
@@ -72,7 +72,7 @@ static inline int32_t _i2c_m_sync_read(struct _i2c_m_sync_device *const dev, str
  * \param[in] msg The pointer of I2C message struct
  *
  * \return The status of the operation
- * \retval ERR_NONE Operation sucessfully
+ * \retval ERR_NONE Operation successfully
  */
 static inline int32_t _i2c_m_sync_write(struct _i2c_m_sync_device *const dev, struct _i2c_m_msg *msg);
 
