@@ -48,8 +48,8 @@
             <NotGenerated>0</NotGenerated>
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
-          <OutputDirectory>.\</OutputDirectory>
-          <OutputName>rt-thread.elf</OutputName>
+          <OutputDirectory>.\build\keil\Obj\</OutputDirectory>
+          <OutputName>rt-thread</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
@@ -82,7 +82,7 @@
           <AfterMake>
             <RunUserProg1>1</RunUserProg1>
             <RunUserProg2>0</RunUserProg2>
-            <UserProg1Name>fromelf --bin !L --output rt-thread.bin</UserProg1Name>
+            <UserProg1Name>fromelf --bin !L --output rtthread.bin</UserProg1Name>
             <UserProg2Name></UserProg2Name>
             <UserProg1Dos16Mode>0</UserProg1Dos16Mode>
             <UserProg2Dos16Mode>0</UserProg2Dos16Mode>
@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>__STDC_LIMIT_MACROS, RT_USING_ARMLIBC, USE_HAL_DRIVER, RT_USING_LIBC, __CLK_TCK=RT_TICK_PER_SECOND, __RTTHREAD__, STM32F429xx</Define>
               <Undefine></Undefine>
-              <IncludePath>..\libraries\HAL_Drivers\config;board\ports;..\..\..\components\net\sal\include\socket;..\..\..\components\drivers\include;.;..\..\..\components\drivers\include;applications;..\..\..\components\dfs\dfs_v1\include;..\..\..\components\dfs\dfs_v1\filesystems\devfs;..\..\..\components\libc\compilers\common\extension;..\..\..\components\libc\posix\io\poll;..\libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Inc;..\libraries\HAL_Drivers\CMSIS\Include;..\..\..\components\libc\compilers\common\include;board\CubeMX_Config\Inc;..\..\..\include;..\..\..\libcpu\arm\cortex-m4;..\..\..\components\libc\posix\io\stdio;..\..\..\libcpu\arm\common;..\..\..\components\net\sal\include\socket\sys_socket;..\..\..\components\libc\posix\ipc;board;..\libraries\STM32F4xx_HAL\CMSIS\Device\ST\STM32F4xx\Include;..\..\..\components\net\sal\include\dfs_net;..\..\..\components\libc\compilers\common\extension\fcntl\octal;..\..\..\components\drivers\include;..\..\..\components\net\sal\include;..\libraries\HAL_Drivers;..\..\..\components\net\netdev\include</IncludePath>
+              <IncludePath>..\libraries\HAL_Drivers\config;board\ports;..\..\..\components\net\sal\include\socket;..\..\..\components\drivers\include;..\libraries\HAL_Drivers;packages\peripheral_samples-latest;packages\filesystem_samples-latest;..\..\..\components\drivers\include;applications;..\..\..\components\dfs\dfs_v1\include;..\..\..\components\dfs\dfs_v1\filesystems\devfs;..\..\..\components\libc\compilers\common\extension;.;..\libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Inc;..\libraries\HAL_Drivers\CMSIS\Include;..\..\..\components\libc\compilers\common\include;board\CubeMX_Config\Inc;..\..\..\include;..\..\..\components\drivers\include;..\..\..\libcpu\arm\cortex-m4;..\..\..\components\libc\posix\io\stdio;..\..\..\libcpu\arm\common;..\..\..\components\net\sal\include\socket\sys_socket;packages\kernel_samples-latest\en;..\..\..\components\libc\posix\ipc;board;..\libraries\STM32F4xx_HAL\CMSIS\Device\ST\STM32F4xx\Include;..\..\..\components\net\sal\include\dfs_net;..\..\..\components\libc\compilers\common\extension\fcntl\octal;packages\network_samples-latest;..\..\..\components\drivers\include;..\..\..\components\net\sal\include;..\..\..\components\libc\posix\io\poll;..\..\..\components\net\netdev\include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -475,6 +475,11 @@
           <GroupName>DeviceDrivers</GroupName>
           <Files>
             <File>
+              <FileName>can.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\components\drivers\can\can.c</FilePath>
+            </File>
+            <File>
               <FileName>completion.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\components\drivers\ipc\completion.c</FilePath>
@@ -538,6 +543,11 @@
               <FileName>board.c</FileName>
               <FileType>1</FileType>
               <FilePath>board\board.c</FilePath>
+            </File>
+            <File>
+              <FileName>drv_can.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\libraries\HAL_Drivers\drv_can.c</FilePath>
             </File>
             <File>
               <FileName>drv_common.c</FileName>
@@ -735,6 +745,11 @@
               <FilePath>..\libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.c</FilePath>
             </File>
             <File>
+              <FileName>stm32f4xx_hal_can.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_can.c</FilePath>
+            </File>
+            <File>
               <FileName>stm32f4xx_hal_cryp.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cryp.c</FilePath>
@@ -743,21 +758,6 @@
               <FileName>stm32f4xx_hal_gpio.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>POSIX</GroupName>
-          <Files>
-            <File>
-              <FileName>poll.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\components\libc\posix\io\poll\poll.c</FilePath>
-            </File>
-            <File>
-              <FileName>select.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\components\libc\posix\io\poll\select.c</FilePath>
             </File>
           </Files>
         </Group>

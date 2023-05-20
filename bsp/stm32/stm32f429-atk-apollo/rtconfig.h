@@ -82,6 +82,9 @@
 #define RT_USING_SERIAL_V1
 #define RT_SERIAL_USING_DMA
 #define RT_SERIAL_RB_BUFSZ 64
+#define RT_USING_CAN
+#define RT_CAN_USING_HDR
+#define RT_CAN_USING_CANFD
 #define RT_USING_PIN
 
 /* Using USB */
@@ -94,8 +97,6 @@
 /* POSIX (Portable Operating System Interface) layer */
 
 #define RT_USING_POSIX_FS
-#define RT_USING_POSIX_POLL
-#define RT_USING_POSIX_SELECT
 
 /* Interprocess Communication (IPC) */
 
@@ -200,6 +201,15 @@
 
 /* samples: kernel and components samples */
 
+#define PKG_USING_KERNEL_SAMPLES
+#define PKG_USING_KERNEL_SAMPLES_LATEST_VERSION
+#define PKG_USING_KERNEL_SAMPLES_EN
+#define PKG_USING_FILESYSTEM_SAMPLES
+#define PKG_USING_FILESYSTEM_SAMPLES_LATEST_VERSION
+#define PKG_USING_NETWORK_SAMPLES
+#define PKG_USING_NETWORK_SAMPLES_LATEST_VERSION
+#define PKG_USING_PERIPHERAL_SAMPLES
+#define PKG_USING_PERIPHERAL_SAMPLES_LATEST_VERSION
 
 /* entertainment: terminal games and other interesting software packages */
 
