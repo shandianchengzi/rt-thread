@@ -179,42 +179,13 @@ static int mqtt_resolve_uri(MQTTClient *c, struct addrinfo **res)
 
         rt_memset(&hint, 0, sizeof(hint));
 
-        // ret = getaddrinfo(host_addr_new, port_str, &hint, res);
-        // if (ret != 0)
-        // {
-        //     LOG_E("getaddrinfo err: %d '%s'", ret, host_addr_new);
-        //     rc = -1;
-        //     goto _exit;
-        // }
-
-        // directly set the res as addrinfo value.
-        
-
-        struct sockaddr *ai_addr;
-        ai_addr = (struct sockaddr *)malloc(sizeof(struct sockaddr));
-        if (ai_addr == NULL) {
-            LOG_E("Memory allocation error\n");
-            rc = -1;
-            goto _exit;
-        }
-        ai_addr->sa_family = AF_INET;
-        ai_addr->sa_len = 16;
-        ai_addr->sa_data[0] = 192;
-        
-        hint.ai_family = AF_INET;
-        hint.ai_socktype = SOCK_STREAM;
-        hint.ai_protocol = IPPROTO_TCP;
-        hint.ai_flags = 0;
-        hint.ai_addrlen = 16;
-        hint.ai_addr = ai_addr;
-        res = (struct addrinfo *)malloc(sizeof(struct addrinfo));
-        if (res == NULL) {
+        ret = getaddrinfo(host_addr_new, port_str, &hint, res);
+        if (ret != 0)
+        {
             LOG_E("getaddrinfo err: %d '%s'", ret, host_addr_new);
             rc = -1;
             goto _exit;
         }
-        // copy the hints to result
-        memcpy(res, &hint, sizeof(struct addrinfo));
     }
 
 _exit:
