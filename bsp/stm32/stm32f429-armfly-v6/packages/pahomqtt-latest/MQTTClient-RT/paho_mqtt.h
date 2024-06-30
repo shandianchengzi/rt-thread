@@ -134,6 +134,8 @@ int paho_mqtt_start(MQTTClient *client);
  */
 int MQTTPublish(MQTTClient *client, const char *topic, MQTTMessage *message);
 
+int MQTTPublish_fake(MQTTClient *client, const char *topic, MQTTMessage *message, size_t payloadlen);
+
 #ifdef PAHOMQTT_PIPE_MODE
 
 /**
@@ -178,6 +180,8 @@ int paho_mqtt_unsubscribe(MQTTClient *client, const char *topic);
  * @return the error code, 0 on subscribe successfully.
  */
 int paho_mqtt_publish(MQTTClient *client, enum QoS qos, const char *topic, const char *msg_str);
+
+int paho_mqtt_publish_fake(MQTTClient *client, enum QoS qos, const char *topic, const char *msg_str, int payloadlen_fake);
 
 /**
  * This function control MQTT client configure, such as connect timeout, reconnect interval.

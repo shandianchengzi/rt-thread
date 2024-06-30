@@ -34,10 +34,6 @@
 #endif
 #endif
 
-#define DBG_TAG "paho-mqtt"
-#define DBG_LVL DBG_INFO
-#include <rtdbg.h>
-
 static uint16_t pub_port = 7000;
 
 /*
@@ -975,13 +971,6 @@ int MQTTPublish(MQTTClient *client, const char *topic, MQTTMessage *message)
         goto exit;
 
     msg_len = sizeof(MQTTMessage) + message->payloadlen + strlen(topic) + 1;
-     if(msg_len >= client->buf_size)
-    {
-        LOG_E("Message is too long %d:%d.", msg_len, client->buf_size);
-        rc = PAHO_BUFFER_OVERFLOW;
-        goto exit;
-    }
-
     data = rt_malloc(msg_len);
     if (!data)
         goto exit;

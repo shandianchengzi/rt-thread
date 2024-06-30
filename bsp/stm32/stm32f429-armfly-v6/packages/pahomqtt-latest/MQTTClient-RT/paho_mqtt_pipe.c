@@ -61,6 +61,8 @@
  * tcp://[fe80::20c:29ff:fe9a:a07e]:1883
  * tls://[fe80::20c:29ff:fe9a:a07e]:61614
  */
+#include<sys/socket.h>
+#include<netinet/in.h>
 static int mqtt_resolve_uri(MQTTClient *c, struct addrinfo **res)
 {
     int rc = 0;
@@ -177,13 +179,42 @@ static int mqtt_resolve_uri(MQTTClient *c, struct addrinfo **res)
 
         rt_memset(&hint, 0, sizeof(hint));
 
-        ret = getaddrinfo(host_addr_new, port_str, &hint, res);
-        if (ret != 0)
-        {
+        // ret = getaddrinfo(host_addr_new, port_str, &hint, res);
+        // if (ret != 0)
+        // {
+        //     LOG_E("getaddrinfo err: %d '%s'", ret, host_addr_new);
+        //     rc = -1;
+        //     goto _exit;
+        // }
+
+        // directly set the res as addrinfo value.
+        
+
+        struct sockaddr *ai_addr;
+        ai_addr = (struct sockaddr *)malloc(sizeof(struct sockaddr));
+        if (ai_addr == NULL) {
+            LOG_E("Memory allocation error\n");
+            rc = -1;
+            goto _exit;
+        }
+        ai_addr->sa_family = AF_INET;
+        ai_addr->sa_len = 16;
+        ai_addr->sa_data[0] = 192;
+        
+        hint.ai_family = AF_INET;
+        hint.ai_socktype = SOCK_STREAM;
+        hint.ai_protocol = IPPROTO_TCP;
+        hint.ai_flags = 0;
+        hint.ai_addrlen = 16;
+        hint.ai_addr = ai_addr;
+        res = (struct addrinfo *)malloc(sizeof(struct addrinfo));
+        if (res == NULL) {
             LOG_E("getaddrinfo err: %d '%s'", ret, host_addr_new);
             rc = -1;
             goto _exit;
         }
+        // copy the hints to result
+        memcpy(res, &hint, sizeof(struct addrinfo));
     }
 
 _exit:
@@ -1391,6 +1422,87 @@ int paho_mqtt_unsubscribe(MQTTClient *client, const char *topic)
     }
 
 _exit:
+    return rc;
+}
+
+/**
+ * This function publish message to specified mqtt topic.
+ *
+ * @param client the pointer of MQTT context structure
+ * @param qos MQTT QOS type
+ * @param topic topic filter name
+ * @param msg_str the pointer of MQTTMessage structure
+ *
+ * @return the error code, 0 on subscribe successfully.
+ */
+int paho_mqtt_publish_fake(MQTTClient *client, enum QoS qos, const char *topic, const char *msg_str, int payloadlen_fake)
+{
+    MQTTMessage message = {0};
+
+    message.qos = qos;
+    message.retained = 0;
+    message.payload = (void *)msg_str;
+    message.payloadlen = payloadlen_fake;
+
+    if (client->isblocking && client->pub_sem)
+    {
+        if(rt_sem_take(client->pub_sem, 5 * RT_TICK_PER_SECOND) < 0)
+        {
+            return PAHO_FAILURE;
+        }
+    }
+
+    return MQTTPublish_fake(client, topic, &message, rt_strlen(message.payload));
+}
+
+/**
+ * This function publish message to specified mqtt topic.
+ * [MQTTMessage] + [payload] + [topic] + '\0'
+ *
+ * @param client the pointer of MQTT context structure
+ * @param topic topic filter name
+ * @param message the pointer of MQTTMessage structure
+ *
+ * @return the error code, 0 on subscribe successfully.
+ */
+int MQTTPublish_fake(MQTTClient *client, const char *topic, MQTTMessage *message, size_t payloadlen)
+{
+    int rc = PAHO_FAILURE;
+    int len, msg_len;
+    char *data = 0;
+
+    if (!client->isconnected)
+        goto exit;
+
+    msg_len = sizeof(MQTTMessage) + payloadlen + strlen(topic) + 1;
+    if(msg_len >= client->buf_size)
+    {
+        LOG_E("Message is too long %d:%d.", msg_len, client->buf_size);
+        rc = PAHO_BUFFER_OVERFLOW;
+        goto exit;
+    }
+
+    data = rt_malloc(msg_len);
+    if (!data)
+        goto exit;
+
+    rt_memcpy(data, message, sizeof(MQTTMessage));
+    rt_memcpy(data + sizeof(MQTTMessage), message->payload, payloadlen);
+    strcpy(data + sizeof(MQTTMessage) + payloadlen, topic);
+
+
+    len = MQTT_local_send(client, data, msg_len);
+    if (len == msg_len)
+    {
+        rc = PAHO_SUCCESS;
+    }
+
+exit:
+    if (data)
+        rt_free(data);
+
+    message->payloadlen = payloadlen; // let it real to prohibit other influence.
+
     return rc;
 }
 
