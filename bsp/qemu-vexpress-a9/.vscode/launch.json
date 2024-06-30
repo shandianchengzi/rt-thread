@@ -15,7 +15,7 @@
             "serverLaunchTimeout": 2000,
             "targetArchitecture": "ARM",
             "MIMode": "gdb",
-            "miDebuggerPath": "arm-none-eabi-gdb.exe",
+            "miDebuggerPath": "D:/software/env-windows-v2.0.0/env-windows/tools/gnu_gcc/arm_gcc/mingw/bin/arm-none-eabi-gdb.exe",
             "customLaunchSetupCommands": [],
             "launchCompleteCommand": "exec-run",
         },
